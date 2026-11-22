@@ -1,3 +1,5 @@
+import { EditorState, Text } from "@codemirror/state";
+import { Decoration, EditorView, lineNumbers } from "@codemirror/view";
 import {
   EMPTY,
   labelPath,
@@ -65,6 +67,38 @@ function inputArea(parent, title, text, rows) {
 }
 export function details(title, content) {
   dialog(title).append(el("pre", content));
+  action("Close", close);
+}
+export function showBranchFile(hit, lines, branch) {
+  const doc = Text.of(lines);
+  const line = doc.line(hit.line);
+  const from = line.from + hit.from,
+    to = line.from + hit.to;
+  const body = dialog(labelPath(hit.path), "branch-source");
+  body.append(
+    el(
+      "p",
+      `${refName(branch)} · ${hit.revision.slice(0, 10)} · Line ${hit.line}`,
+    ),
+  );
+  const view = new EditorView({
+    parent: body,
+    state: EditorState.create({
+      doc,
+      extensions: [
+        EditorState.readOnly.of(true),
+        EditorView.editable.of(false),
+        lineNumbers(),
+        EditorView.decorations.of(
+          Decoration.set([
+            Decoration.mark({ class: "bl-find-current" }).range(from, to),
+          ]),
+        ),
+      ],
+    }),
+  });
+  view.dispatch({ effects: EditorView.scrollIntoView(from, { y: "center" }) });
+  dlg().addEventListener("close", () => view.destroy(), { once: true });
   action("Close", close);
 }
 export function compose(note, callbacks) {

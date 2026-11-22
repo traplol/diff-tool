@@ -41,6 +41,64 @@ fn content(repo: &Repository, c: &Comparison, group: &str, path: &str) -> Vec<St
 }
 
 #[test]
+fn whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move() {
+    let dir = history();
+    let root = dir.path();
+    write(&dir, "before", b"first\r\nlast\n");
+    write(&dir, "image", b"binary\0data");
+    write(&dir, "removed", b"old text");
+    record(&dir, "Base");
+    git(root, &["mv", "before", "after"]).unwrap();
+    git(root, &["rm", "removed"]).unwrap();
+    write(&dir, "created", b"new text\n\n");
+    record(&dir, "Rename");
+    let repo = open_repo(root).unwrap();
+    let c = compare(&repo, "HEAD^", &repo.checkout).unwrap();
+    write(&dir, "after", b"later content\n");
+    record(&dir, "Move tip");
+
+    let renamed = file_contents(&repo, file(&c, "", "after")).unwrap();
+    assert_eq!(renamed, ["first", "last"]);
+    let created = file_contents(&repo, file(&c, "", "created")).unwrap();
+    assert_eq!(created, ["new text", ""]);
+    let removed = file_contents(&repo, file(&c, "", "removed")).unwrap();
+    assert!(removed.is_empty());
+    assert_eq!(revision_lines(&repo, &c.head, "after").unwrap(), renamed);
+    assert!(revision_lines(&repo, &c.head, "before").is_err());
+    assert!(revision_lines(&repo, &c.head, "image").is_err());
+}
+
+#[test]
+fn whole_file_reconstructs_unstaged_gaps_after_the_index_and_disk_change() {
+    let dir = history();
+    let base: Vec<_> = (1..=60).map(|n| format!("line {n}")).collect();
+    write(&dir, "code", base.join("\r\n").as_bytes());
+    record(&dir, "Base");
+    let mut staged = base.clone();
+    staged[20] = "staged".into();
+    write(&dir, "code", staged.join("\r\n").as_bytes());
+    git(dir.path(), &["add", "code"]).unwrap();
+    let mut live = staged.clone();
+    live.insert(6, "inserted".into());
+    live.remove(32);
+    live[46] = "replaced".into();
+    write(&dir, "code", live.join("\r\n").as_bytes());
+    write(&dir, "draft", b"new\r\n\xff");
+    let repo = open_repo(dir.path()).unwrap();
+    let c = work(&repo);
+    write(&dir, "code", b"completely different");
+    write(&dir, "draft", b"later draft");
+    record(&dir, "Commit other edits");
+
+    let index = file_contents(&repo, file(&c, "Staged", "code")).unwrap();
+    assert_eq!(index, staged);
+    let working = file_contents(&repo, file(&c, "Unstaged", "code")).unwrap();
+    assert_eq!(working, live);
+    let draft = file_contents(&repo, file(&c, "Untracked", "draft")).unwrap();
+    assert_eq!(draft, ["new", "�"]);
+}
+
+#[test]
 fn first_commit_diverged_base_stack_and_forks() {
     let dir = history();
     let root = dir.path();
@@ -226,6 +284,11 @@ fn merge_conflict_shows_existing_stage_two_and_other_staged_changes() {
     assert_eq!(c.files.len(), 2);
     assert_eq!(file(&c, "Unstaged", "shared").status, "U");
     assert!(content(&repo, &c, "Unstaged", "shared").contains(&"<<<<<<< HEAD".to_owned()));
+    let conflict = file_contents(&repo, file(&c, "Unstaged", "shared")).unwrap();
+    assert_eq!(
+        conflict.join("\n") + "\n",
+        fs::read_to_string(root.join("shared")).unwrap()
+    );
     assert_eq!(content(&repo, &c, "Staged", "new"), ["staged"]);
 }
 
@@ -257,10 +320,17 @@ fn symlinks_type_changes_nested_repo_and_non_utf8_names() {
         ["unusual name"]
     );
     assert_eq!(file(&c, "Untracked", "nested").mode, "160000");
+    assert!(file_contents(&repo, file(&c, "Untracked", "nested")).is_err());
+    let changed = file_contents(&repo, file(&c, "Unstaged", "type")).unwrap();
+    assert_eq!(changed, ["target"]);
     fs::remove_dir_all(root.join("nested")).unwrap();
     record(&dir, "Links and names");
     let repo = open_repo(root).unwrap();
     let c = compare(&repo, "HEAD^", &repo.checkout).unwrap();
+    assert_eq!(
+        revision_lines(&repo, &c.head, &name(bad.as_bytes())).unwrap(),
+        ["unusual name"]
+    );
     assert_eq!(
         content(&repo, &c, "", &name(bad.as_bytes())),
         ["unusual name"]

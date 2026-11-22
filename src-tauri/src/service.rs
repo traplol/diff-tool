@@ -9,6 +9,7 @@ use serde_json::{json, Value};
 use std::{
     collections::{BTreeMap, HashSet},
     path::{Path, PathBuf},
+    sync::Arc,
 };
 
 type Pair = [String; 2];
@@ -35,6 +36,13 @@ pub enum Request {
     },
     DisplayPatch {
         file: usize,
+    },
+    FileContents {
+        file: usize,
+    },
+    BranchFile {
+        path: String,
+        revision: String,
     },
     Commits,
     Details {
@@ -88,7 +96,7 @@ pub struct Workspace {
 struct Session {
     repo: Repository,
     stack: Vec<String>,
-    current: Option<Comparison>,
+    current: Option<Arc<Comparison>>,
     notes: Vec<Value>,
     locations: BTreeMap<i64, Vec<Value>>,
 }
@@ -206,7 +214,7 @@ fn open_stack(repo: &Repository, saved: &RepoSettings) -> Result<Vec<String>, St
 impl Session {
     fn comparison(&self) -> Result<&Comparison, String> {
         self.current
-            .as_ref()
+            .as_deref()
             .ok_or_else(|| "Choose a comparison first.".into())
     }
     fn file(&self, index: usize) -> Result<(&Comparison, &Change), String> {
@@ -220,8 +228,12 @@ impl Session {
     }
     fn reload_notes(&mut self, store: &Store) -> Result<Value, String> {
         self.notes = store.notes(&self.repo)?;
-        self.locations =
-            tracking::locate_notes(&self.repo, &self.stack, self.current.as_ref(), &self.notes);
+        self.locations = tracking::locate_notes(
+            &self.repo,
+            &self.stack,
+            self.current.as_deref(),
+            &self.notes,
+        );
         if let Some(c) = &self.current {
             for note in &self.notes {
                 let Some(id) = note["id"].as_i64() else {
@@ -260,7 +272,7 @@ impl Session {
         };
         let result = git::compare(&next.repo, &pair[0], &pair[1]);
         let error = result.as_ref().err().cloned();
-        next.current = result.ok();
+        next.current = result.ok().map(Arc::new);
         next.reload_notes(store)?;
         let viewed = next
             .current
@@ -269,7 +281,7 @@ impl Session {
             .transpose()?
             .unwrap_or_default();
         let response = json!({"snapshot":token,"repo":next.repo,"stack":next.stack,"pair":pair,
-            "comparison":next.current,"notes":next.notes,"locations":next.locations,"viewed":viewed,
+            "comparison":next.current.as_deref(),"notes":next.notes,"locations":next.locations,"viewed":viewed,
             "error":error});
         Ok((next, response))
     }
@@ -338,6 +350,24 @@ impl Session {
 }
 
 impl Workspace {
+    pub(crate) fn search_source(&self, snapshot: u64) -> Result<crate::search::Source, String> {
+        if self.snapshot != snapshot {
+            return Err("The review changed. Run the search again.".into());
+        }
+        let session = self
+            .session
+            .as_ref()
+            .ok_or("Open a Git repository first.")?;
+        Ok(crate::search::Source {
+            repo: session.repo.clone(),
+            stack: session.stack.clone(),
+            current: session
+                .current
+                .clone()
+                .ok_or("Choose a comparison first.")?,
+        })
+    }
+
     fn settings_file(&self) -> Result<PathBuf, String> {
         self.config_path.clone().map_or_else(config::path, Ok)
     }
@@ -459,6 +489,16 @@ impl Workspace {
             Request::DisplayPatch { file } => {
                 let (c, f) = s.file(file)?;
                 return Ok(json!(git::display_patch(&s.repo, c, f)?));
+            }
+            Request::FileContents { file } => {
+                let (_, f) = s.file(file)?;
+                return Ok(json!(git::file_contents(&s.repo, f)?));
+            }
+            Request::BranchFile { path, revision } => {
+                if revision != s.comparison()?.branch_tip() {
+                    return Err("The branch changed. Search again.".into());
+                }
+                return Ok(json!(git::revision_lines(&s.repo, &revision, &path)?));
             }
             Request::Commits => return Ok(json!(git::commits(&s.repo, s.comparison()?)?)),
             Request::Details { sha } => return Ok(json!(git::commit_details(&s.repo, &sha)?)),

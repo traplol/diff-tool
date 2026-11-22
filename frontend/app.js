@@ -1,5 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
-import { contextMenu, createDiff } from "./editor.js";
+import { canExpandFile, contextMenu, createDiff } from "./editor.js";
+import { setupFind } from "./find.js";
 import "./editor.css";
 import {
   $,
@@ -9,6 +10,7 @@ import {
   details,
   preview,
   stackDialog,
+  showBranchFile,
 } from "./dialogs.js";
 import {
   WORKTREE,
@@ -129,8 +131,9 @@ function leaveFile() {
   }
   lines = [];
   sequence++;
-  $("find").disabled = true;
-  if (!$("find-bar").hidden) updateFind();
+  $("full-file").disabled = true;
+  contextButton({ full: false, expanded: false });
+  find.fileChanged();
 }
 function choiceIndex() {
   return pairs(state.stack, state.repo.checkout).findIndex(
@@ -138,7 +141,7 @@ function choiceIndex() {
   );
 }
 
-async function changeWorkspace(op, args) {
+async function changeWorkspace(op, args, keepFind = false) {
   if (loading || editLock) return;
   loading = true;
   $("app").setAttribute("aria-busy", "true");
@@ -168,7 +171,7 @@ async function changeWorkspace(op, args) {
       tab = "Changes";
       openFilter = "Open";
       $("filter").value = "";
-      closeFind();
+      find.close();
       $("diff-search").value = "";
       $("scope").value = "current";
     }
@@ -176,6 +179,7 @@ async function changeWorkspace(op, args) {
     commits = null;
     $("welcome").hidden = true;
     $("workspace").hidden = false;
+    $("find").disabled = false;
     const name = basename(state.repo.root);
     document.title = name + " · Branchline";
     $("crumb").textContent = name;
@@ -234,6 +238,7 @@ async function changeWorkspace(op, args) {
     );
     fileIndex = keep ?? ids[0] ?? -1;
     await navigate(tab);
+    if (!keepFind) find.refresh();
     const warning = [state.error, state.config_warning]
       .filter(Boolean)
       .join(" · ");
@@ -372,7 +377,8 @@ async function pick(index, focus = false, jump) {
   leaveFile();
   fileIndex = index;
   const f = currentFile(),
-    token = sequence;
+    token = sequence,
+    snapshot = state.snapshot;
   renderFiles();
   $("filename").textContent = f ? labelPath(f.path) : "Diff";
   $("filename").title =
@@ -404,6 +410,8 @@ async function pick(index, focus = false, jump) {
       emptyBase: state.comparison.base === state.repo.refs[EMPTY],
       lines,
       notes: fileNotes(state, f),
+      loadContents: () => request("file_contents", { file: index }, snapshot),
+      onContextChange: contextButton,
       mode,
       position: positions.get(positionKey()),
       folds,
@@ -412,15 +420,15 @@ async function pick(index, focus = false, jump) {
       onStatus: status,
       canApply,
       onCopy: copy,
-      onSelection: ({ label, canSuggest }) => {
+      onSelection: ({ label, canSuggest, canComment = true }) => {
+        $("comment").disabled = !canComment;
         if ($("selection").textContent !== label)
           $("selection").textContent = label;
         $("suggest").disabled = !canSuggest;
       },
     });
-    $("comment").disabled = false;
-    $("find").disabled = lines.length === 0;
-    if (!$("find-bar").hidden) updateFind();
+    $("full-file").disabled = !canExpandFile(f);
+    find.fileChanged();
     if (jump != null) editor.jump(jump);
     if (focus && tab === "Changes") editor.focus();
   } catch (err) {
@@ -520,7 +528,9 @@ async function jumpToNote(note) {
   await navigate("Changes");
   editor?.setNotes(fileNotes(state, currentFile()));
   await pick(index, true, note.id);
-  // Reveal even a file inside folders the reviewer previously collapsed.
+  revealFileInTree(index);
+}
+function revealFileInTree(index) {
   for (
     let node = $("file-list").querySelector(
       '[data-file="' + index + '"]',
@@ -665,66 +675,67 @@ async function exportReview() {
       : "Markdown preview ready",
   );
 }
-function updateFind(step = 0) {
-  const query = $("diff-search").value;
-  const result = editor?.find(query, step);
-  $("find-status").textContent = !query
-    ? ""
-    : result?.total
-      ? `${result.current} of ${result.total}`
-      : "No matches";
-  $("find-prev").disabled = $("find-next").disabled = !result?.total;
+function contextButton({ full, expanded }) {
+  activate($("full-file"), full);
+  $("full-file").textContent = full ? "Changes only" : "Full file";
+  $("collapse-context").hidden = full || !expanded;
 }
-function openFind() {
-  if ($("find").disabled) return;
-  $("find-bar").hidden = false;
-  $("find").setAttribute("aria-expanded", "true");
-  $("diff-search").focus();
-  $("diff-search").select();
-  updateFind();
-}
-function closeFind() {
-  $("find-bar").hidden = true;
-  $("find").setAttribute("aria-expanded", "false");
-  editor?.find("");
-}
-on("find", openFind);
-for (const [id, step] of [
-  ["find-prev", -1],
-  ["find-next", 1],
-]) {
-  on(id, () => {
-    updateFind(step);
-    $("diff-search").focus();
-  });
-}
-on("find-close", () => {
-  closeFind();
-  editor?.focus();
-});
-$("diff-search").oninput = () => updateFind();
-$("diff-search").onkeydown = (e) => {
-  if (e.key === "Enter" && !e.isComposing) {
-    e.preventDefault();
-    updateFind(e.shiftKey ? -1 : 1);
-  }
-};
-$("changes").addEventListener(
-  "keydown",
-  (e) => {
-    if (
-      e.key === "Escape" &&
-      !$("find-bar").hidden &&
-      e.target.closest("#find-bar, #diff")
-    ) {
-      e.preventDefault();
-      e.stopPropagation();
-      closeFind();
-      editor?.focus();
-    }
-  },
-  true,
+on("full-file", () =>
+  $("full-file").getAttribute("aria-pressed") === "true"
+    ? editor?.collapseContext()
+    : editor?.showFullFile(),
 );
+on("collapse-context", () => editor?.collapseContext());
+
+async function openSearchHit(hit, scope, valid) {
+  if (scope === "branch") {
+    const contents = await request("branch_file", {
+      path: hit.path,
+      revision: hit.revision,
+    });
+    if (valid())
+      showBranchFile(
+        hit,
+        contents,
+        state.pair[1] === WORKTREE ? state.repo.checkout : state.pair[1],
+      );
+    return;
+  }
+  if (state.pair[0] !== hit.pair[0] || state.pair[1] !== hit.pair[1]) {
+    await changeWorkspace("compare", { pair: hit.pair }, true);
+  }
+  if (!valid()) return;
+  const c = state.comparison;
+  if (
+    !c ||
+    c.left !== hit.pair[0] ||
+    c.right !== hit.pair[1] ||
+    c.base !== hit.base ||
+    c.head !== hit.head
+  ) {
+    throw Error(
+      "This comparison changed. Refresh the search to locate this match.",
+    );
+  }
+  const i = files().findIndex(
+    (f) => f.path === hit.path && f.group === hit.group,
+  );
+  if (i < 0) throw Error("This file changed. Refresh the search.");
+  $("filter").value = "";
+  renderFiles();
+  await pick(i);
+  if (valid() && fileIndex === i && editor) {
+    revealFileInTree(i);
+    editor.revealPatchRow(hit.row, hit.from, hit.to);
+  }
+}
+const find = setupFind({
+  activeEditor: () => editor,
+  patchLines: () => lines,
+  searchReview: (scope, query) =>
+    invoke("search_review", { snapshot: state.snapshot, scope, query }),
+  openHit: openSearchHit,
+});
 
 for (const id of ["choose", "welcome-open"]) on(id, choose);
 on("refresh", refresh);
@@ -837,7 +848,7 @@ document.addEventListener(
       if (key === "b") return $("edit-stack").click();
       if (key === "e") return exportReview();
       await navigate("Changes");
-      if (key === "f") return openFind();
+      if (key === "f") return find.open(e.shiftKey ? "comparison" : undefined);
       $("filter").focus();
       $("filter").select();
       return;

@@ -50,6 +50,16 @@ pub struct Comparison {
     pub files: Vec<Change>,
 }
 
+impl Comparison {
+    pub fn branch_tip(&self) -> &str {
+        if self.right == WORKTREE {
+            &self.base
+        } else {
+            &self.head
+        }
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Serialize)]
 pub struct Line {
     pub kind: String,
@@ -159,7 +169,7 @@ fn git_executable(directory: &Path) -> Result<PathBuf> {
         })
 }
 
-fn run_git<S: AsRef<OsStr>>(root: &Path, args: &[S], diff_exit: bool) -> Result<Vec<u8>> {
+pub(crate) fn command(root: &Path) -> Result<Command> {
     #[cfg(windows)]
     let mut cmd = {
         use std::os::windows::process::CommandExt;
@@ -169,14 +179,18 @@ fn run_git<S: AsRef<OsStr>>(root: &Path, args: &[S], diff_exit: bool) -> Result<
     };
     #[cfg(not(windows))]
     let mut cmd = Command::new("git");
-    let output = cmd
-        .args(["--no-pager", "--literal-pathspecs", "-C"])
+    cmd.args(["--no-pager", "--literal-pathspecs", "-C"])
         .arg(root)
-        .args(args)
         .env("GIT_NO_LAZY_FETCH", "1")
         .env("GIT_TERMINAL_PROMPT", "0")
         .env("GIT_OPTIONAL_LOCKS", "0")
-        .stdin(Stdio::null())
+        .stdin(Stdio::null());
+    Ok(cmd)
+}
+
+fn run_git<S: AsRef<OsStr>>(root: &Path, args: &[S], diff_exit: bool) -> Result<Vec<u8>> {
+    let output = command(root)?
+        .args(args)
         .output()
         .map_err(|e| format!("Could not start Git. Check your PATH. {e}"))?;
     if output.status.success()
@@ -901,20 +915,93 @@ fn with_patch_sections<T>(
     Ok(read(&chunks))
 }
 
-pub fn patch(repo: &Repository, c: &Comparison, file: &Change) -> Result<Vec<Line>> {
-    with_patch_sections(repo, c, file, |chunks| {
-        let mut lines = Vec::new();
-        patch_data::visit(chunks, |kind, text, old, new, hunk| {
-            lines.push(Line {
-                kind: kind.into(),
-                text: text.into(),
-                old: matches!(kind, "-" | " ").then_some(old),
-                new: matches!(kind, "+" | " ").then_some(new),
-                hunk,
-            });
+fn patch_lines(chunks: &[&[u8]]) -> Vec<Line> {
+    let mut lines = Vec::new();
+    patch_data::visit(chunks, |kind, text, old, new, hunk| {
+        lines.push(Line {
+            kind: kind.into(),
+            text: text.into(),
+            old: matches!(kind, "-" | " ").then_some(old),
+            new: matches!(kind, "+" | " ").then_some(new),
+            hunk,
         });
-        lines
-    })
+    });
+    lines
+}
+
+pub fn patch(repo: &Repository, c: &Comparison, file: &Change) -> Result<Vec<Line>> {
+    with_patch_sections(repo, c, file, patch_lines)
+}
+
+fn blob_lines(repo: &Repository, object: &OsStr) -> Result<Vec<String>> {
+    let data = run_git(
+        &repo.root,
+        &["cat-file".as_ref(), "blob".as_ref(), object],
+        false,
+    )?;
+    if data.contains(&0) {
+        return Err("This file contains binary data.".into());
+    }
+    Ok(String::from_utf8_lossy(&data)
+        .split_terminator('\n')
+        .map(|line| line.strip_suffix('\r').unwrap_or(line).to_owned())
+        .collect())
+}
+
+pub fn revision_lines(repo: &Repository, revision: &str, path: &str) -> Result<Vec<String>> {
+    let mut object = OsString::from(format!("{revision}:"));
+    object.push(path_arg(path)?);
+    blob_lines(repo, &object)
+}
+
+pub fn file_contents(repo: &Repository, file: &Change) -> Result<Vec<String>> {
+    if file.added.is_none() || file.removed.is_none() {
+        return Err("This file contains binary data.".into());
+    }
+    if file.old_mode == "160000" || file.mode == "160000" {
+        return Err("A Git submodule has no file text.".into());
+    }
+    if file.mode == "000000" {
+        return Ok(vec![]);
+    }
+    if matches!(file.group.as_str(), "" | "Staged") || file.oid == file.old_oid {
+        return blob_lines(repo, file.oid.as_ref());
+    }
+    let old = if file.old_mode == "000000" {
+        vec![]
+    } else {
+        blob_lines(repo, file.old_oid.as_ref())?
+    };
+    // Git may never have stored the working copy as a blob. Rebuild it
+    // from the frozen patch and its immutable index preimage.
+    let mismatch = "The patch does not match the saved file contents. Refresh the review.";
+    let mut output = Vec::new();
+    let mut consumed = 0;
+    let chunks: Vec<_> = file.local_sections.iter().map(Vec::as_slice).collect();
+    for line in patch_lines(&chunks) {
+        let gap = if let Some(number) = line.old {
+            number.checked_sub(consumed + 1)
+        } else if let Some(number) = line.new {
+            number.checked_sub(output.len() + 1)
+        } else {
+            continue;
+        }
+        .ok_or(mismatch)?;
+        let end = consumed.checked_add(gap).ok_or(mismatch)?;
+        output.extend_from_slice(old.get(consumed..end).ok_or(mismatch)?);
+        consumed = end;
+        if line.old.is_some() {
+            if old.get(consumed) != Some(&line.text) {
+                return Err(mismatch.into());
+            }
+            consumed += 1;
+        }
+        if line.new.is_some() {
+            output.push(line.text);
+        }
+    }
+    output.extend_from_slice(&old[consumed..]);
+    Ok(output)
 }
 
 pub fn display_patch(

@@ -114,6 +114,28 @@
   color: #302310;
   outline: 1px solid #855817;
 }
+.bl-context {
+  width: fit-content;
+  padding: 2px 6px;
+  line-height: 22px;
+}
+.bl-context button {
+  min-height: 22px;
+  padding: 1px 7px;
+  color: #285b40;
+  background: #edf4ed;
+  border: 1px solid #cad8cc;
+  border-radius: 4px;
+  font:
+    12px/18px system-ui,
+    sans-serif;
+}
+.bl-context button::before {
+  content: "▸ ";
+}
+.bl-context button[aria-expanded="true"]::before {
+  content: "▾ ";
+}
 .bl-comments {
   box-sizing: border-box;
   width: min(44rem, 100%);

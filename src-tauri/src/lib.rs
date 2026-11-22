@@ -1,6 +1,7 @@
 mod config;
 mod git;
 mod review;
+mod search;
 mod service;
 mod suggestions;
 mod tracking;
@@ -115,6 +116,7 @@ pub fn run() {
             startup_path,
             choose_repository,
             save_markdown,
+            search::search_review,
             workspace
         ])
         .run(tauri::generate_context!())

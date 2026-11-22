@@ -42,7 +42,7 @@ The Rust build uses the same SQLite database as the previous Python release. Exi
 1. Open a repository or any directory inside it. Branchline reads local branches and remote-tracking refs already present in the checkout.
 2. On first open, Branchline follows branch tips in Git history to suggest a stack around the checked-out branch. To start from another ref, open **Edit stack**, select the ref, and choose **Find stack**. At a fork, choose the path you want. You can also use **Add** and **Replace** to arrange the stack manually. The first ref is the base. Choose **Review stack** to save the order.
 3. Use **Full stack** to compare the base with the final branch. Select a layer to compare adjacent refs. Each comparison starts at the Git merge base, as in a pull request.
-4. Use **Ctrl+P** to filter changed files by path. **Ctrl+F** searches the text of the current file's diff, including additions and deletions in either layout. Press **Enter** for the next match, **Shift+Enter** for the previous one, and **Escape** to return to the diff. Choose **Unified** or **Split**, then drag across lines or Shift-click to extend a selection. The viewer remembers your place when you switch layouts or revisit the file. Press **C** to comment and **Ctrl+Enter** to save. To comment on the whole file, press **Escape** to clear the selection first, or right-click and choose **Comment on file**. **Viewed** tracks your progress for this snapshot.
+4. Use **Ctrl+P** to filter changed files by path. In **Unified** or **Split**, click a gap to see the unchanged lines there, or choose **Full file** to expand every gap. **Changes only** restores the patch. Drag or Shift-click to select patch lines, press **C** to comment, then **Ctrl+Enter** to save. Press **Escape** to clear the selection before commenting on the whole file. **Viewed** tracks your progress for this snapshot.
 5. Comments appear below their lines, or above the diff for whole-file comments. **Resolve** folds a comment. Expand it to read it again or choose **Reopen** to return it to active review. Open comments on the same line stay visible.
 6. The **Comments** panel starts on **Open**. Select **Resolved** to revisit completed items or **All** to see both. Choose **Entire repository** to include other comparisons. **Show in diff** expands the selected comment at its current lines. **Open comment** shows the saved excerpt.
 7. Choose **Export Markdown** to open an editable preview. Select **Open comments only** to send the agent outstanding feedback. The preview starts with the full review, including resolved history. From **Comments**, it uses the selected scope. From other panels, it uses the current stack or working-tree review. Each version keeps its own edits while the preview is open. **Copy Markdown** and **Save as…** use the text you see.
@@ -50,6 +50,20 @@ The Rust build uses the same SQLite database as the previous Python release. Exi
 In **Commits**, choose **Fit columns to content** to size columns to their values. Right-click a cell to copy its value, the row, or the full SHA. **Commit details…** shows the message, author, committer, and change statistics. Drag the right edge of the green sidebar to resize it. Branchline remembers the width.
 
 **Refresh** rereads branch tips after a fetch, commit, or rebase. For an initial commit, use **Empty tree** as the base.
+
+### Find text in a review
+
+Press **Ctrl+F** in Changes to open Find, or **Ctrl+Shift+F** to search the whole comparison. Choose how much to search in the dropdown.
+
+| Scope | Search contents |
+| --- | --- |
+| This patch | The selected file’s patch, including additions, deletions, and the context Git included. |
+| Full file | The selected file, including hidden context and removed lines. A match in hidden context expands that part of the diff. |
+| Whole diff | Patches for every changed file in the active comparison. In Working tree this includes staged, unstaged, and untracked files. |
+| Branch files | Tracked text files at the selected branch tip, including unchanged files. In Working tree this uses the checked-out commit. Selecting a match opens the file at that revision. |
+| Stack changes | Each adjacent pair in the stack, including intermediate edits. Local changes are included when the checked-out branch belongs to the stack or Working tree is active. |
+
+Search is literal and case-insensitive. Click a result to open its location. **Enter** and **Shift+Enter** step through matches from the search field. **Escape** returns to the diff. Searches across files show up to 200 results. Narrow the query to see more specific matches.
 
 ## Review before committing
 
@@ -103,7 +117,8 @@ Hardware acceleration is enabled by default. The system graphics libraries choos
 | --- | --- |
 | Ctrl+O | Open a repository |
 | Ctrl+B | Edit the stack |
-| Ctrl+F | Find text in the current diff |
+| Ctrl+F | Open Find in Changes |
+| Ctrl+Shift+F | Find text across all files in the active diff |
 | Enter / Shift+Enter in diff search | Next / previous match |
 | Escape in diff search | Close search and focus the diff |
 | Ctrl+P | Filter changed files by path |

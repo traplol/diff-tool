@@ -1,4 +1,5 @@
 import { setFold, spans, suggestionSource } from "./review-ui.js";
+import { contextGaps, displayContext, gapLength } from "./context.js";
 import { Compartment, EditorState, StateEffect, Text } from "@codemirror/state";
 import {
   Decoration,
@@ -62,7 +63,8 @@ export function findDiffMatches(lines, query) {
   if (query) {
     const literal = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const pattern = new RegExp(literal, "giu");
-    lines.forEach(({ text }, line) => {
+    lines.forEach(({ text, contextOnly }, line) => {
+      if (contextOnly) return;
       const first = matches.length;
       for (const hit of text.matchAll(pattern)) {
         matches.push({ line, from: hit.index, to: hit.index + hit[0].length });
@@ -108,9 +110,50 @@ export function canSuggest(file, side, selected) {
     selected.length > 0 &&
     selected[0].new != null &&
     selected.every(
-      (l, i) => l.new === selected[0].new + i && l.hunk === selected[0].hunk,
+      (l, i) =>
+        !l.contextOnly &&
+        l.new === selected[0].new + i &&
+        l.hunk === selected[0].hunk,
     )
   );
+}
+
+export function canExpandFile(file) {
+  return (
+    !!file &&
+    !file.binary &&
+    file.added != null &&
+    file.removed != null &&
+    file.mode !== "160000" &&
+    file.old_mode !== "160000"
+  );
+}
+
+class ContextBlock extends WidgetType {
+  constructor(control, hidden, toggle) {
+    super();
+    this.control = control;
+    this.hidden = hidden;
+    this.toggle = toggle;
+  }
+  toDOM() {
+    const { gap, count, open } = this.control;
+    const label =
+      count === null
+        ? "Show remaining context"
+        : `${open ? "Hide" : "Show"} ${count.toLocaleString()} unchanged ${count === 1 ? "line" : "lines"}`;
+    const box = element("div", "bl-context");
+    const toggle = button(label, () => this.toggle(gap));
+    toggle.setAttribute("aria-expanded", String(open));
+    if (!this.hidden) toggle.dataset.contextAt = gap.at;
+    box.append(toggle);
+    if (this.hidden) {
+      box.classList.add("bl-spacer");
+      box.inert = true;
+      box.setAttribute("aria-hidden", "true");
+    }
+    return box;
+  }
 }
 
 function numberRange(lines, side) {
@@ -290,7 +333,18 @@ function emptyMessage(file) {
 }
 
 export function createDiff(parent, options) {
-  const { lines, file, folds = new Map() } = options;
+  const { lines: patch, file, folds = new Map() } = options;
+  const gaps =
+    canExpandFile(file) && options.loadContents ? contextGaps(patch, file) : [];
+  const expanded = new Set();
+  let { lines, controls } = displayContext(patch, gaps, expanded);
+  let contents,
+    loadingContents,
+    disposed = false,
+    contextVersion = 0,
+    searchVersion = 0,
+    full = false;
+  let explicitHit;
   let notes = options.notes || [];
   let selection = options.position?.selection ?? null,
     activeCol = 0;
@@ -303,14 +357,19 @@ export function createDiff(parent, options) {
   const isCode = codeFiles.test(file.path);
   const numbered = { old: new Map(), new: new Map() };
   let digits = 2;
-  lines.forEach((line, i) => {
-    for (const side of ["old", "new"]) {
-      if (line[side] != null) {
-        numbered[side].set(line[side], i);
-        digits = Math.max(digits, String(line[side]).length);
+  function indexLines() {
+    numbered.old.clear();
+    numbered.new.clear();
+    lines.forEach((line, i) => {
+      for (const side of ["old", "new"]) {
+        if (line[side] != null) {
+          numbered[side].set(line[side], i);
+          digits = Math.max(digits, String(line[side]).length);
+        }
       }
-    }
-  });
+    });
+  }
+  indexLines();
 
   const controller = {
     folded: (n) => folds.get(n.id) ?? !!n.resolved,
@@ -361,6 +420,9 @@ export function createDiff(parent, options) {
           });
     options.onSelection?.({
       label,
+      canComment:
+        !selection ||
+        (selected.length > 0 && !selected.some((line) => line.contextOnly)),
       canSuggest: canSuggest(file, side, selected),
     });
   }
@@ -368,6 +430,10 @@ export function createDiff(parent, options) {
   function compose(suggestion = false, wholeFile = false) {
     const selected = wholeFile ? [] : selectedLines(lines, selection);
     const side = selection?.side ?? "both";
+    if (selected.some((line) => line.contextOnly))
+      return options.onStatus?.(
+        "Select lines within a diff hunk to add a line comment.",
+      );
     if (suggestion && !canSuggest(file, side, selected)) {
       return options.onStatus?.(
         "Select consecutive lines on the new side to suggest a change.",
@@ -438,7 +504,11 @@ export function createDiff(parent, options) {
       selectRow(col, row, false);
     closeMenu?.();
     closeMenu = contextMenu(event, [
-      ["Add comment", () => compose()],
+      [
+        "Add comment",
+        () => compose(),
+        !selectedLines(lines, selection).some((line) => line.contextOnly),
+      ],
       [
         "Suggest change",
         () => compose(true),
@@ -500,6 +570,18 @@ export function createDiff(parent, options) {
 
   function noteDecorations(doc, groups, col) {
     const ranges = [];
+    for (const control of controls) {
+      const atEnd = control.before === lines.length;
+      const row = layout.rowForLine[control.before];
+      const pos = atEnd ? doc.length : doc.line(row + 1).from;
+      ranges.push(
+        Decoration.widget({
+          widget: new ContextBlock(control, col !== 0, toggleGap),
+          block: true,
+          side: atEnd ? 2 : -2,
+        }).range(pos),
+      );
+    }
     for (const [row, group] of groups) {
       const owner = layout.split && group.some((n) => n.new?.length) ? 1 : 0;
       const pos = row < 0 ? 0 : doc.line(row + 1).to;
@@ -557,6 +639,20 @@ export function createDiff(parent, options) {
               }).range(row.from + hit.from, row.from + hit.to),
             );
           }
+        }
+        if (
+          line &&
+          explicitHit?.line === line &&
+          sideMatches(side, explicitHit.side)
+        ) {
+          const { from, to } = explicitHit;
+          if (from < to)
+            ranges.push(
+              Decoration.mark({ class: "bl-find-current" }).range(
+                row.from + from,
+                row.from + to,
+              ),
+            );
         }
         if (row.to >= range.to || row.number === view.state.doc.lines) break;
         row = view.state.doc.line(row.number + 1);
@@ -748,6 +844,8 @@ export function createDiff(parent, options) {
       element("p", "", detail),
       button("Comment on file", () => compose(false, true)),
     );
+    if (controls.length)
+      box.append(new ContextBlock(controls[0], false, toggleGap).toDOM());
     if (groups.has(-1))
       box.append(new CommentBlock(groups.get(-1), false, controller).toDOM());
     layout.root.replaceChildren(box);
@@ -793,6 +891,153 @@ export function createDiff(parent, options) {
   function cancelRestore() {
     cancelAnimationFrame(restoreFrame);
     pendingPosition = null;
+  }
+
+  async function loadContents() {
+    if (!contents) {
+      loadingContents ??= options
+        .loadContents()
+        .then((result) => (contents = result))
+        .finally(() => {
+          loadingContents = null;
+        });
+      await loadingContents;
+    }
+    return contents;
+  }
+
+  function dropLayouts() {
+    cancelAnimationFrame(paintFrame);
+    paintFrame = null;
+    cancelRestore();
+    closeMenu?.();
+    for (const { panes, root } of layouts.values()) {
+      for (const { view } of panes) view.destroy();
+      root.remove();
+    }
+    layouts.clear();
+    layout = undefined;
+  }
+
+  // Persisted positions use patch indices. Expanded positions refer to the
+  // display list, where the same Git line can have a different index.
+  function remapPosition(saved, source, target) {
+    if (source === target) return saved;
+    const indexOf = (i) => {
+      const line = source[i];
+      if (!line) return -1;
+      if (!line.contextOnly) return target.indexOf(line);
+      return target.findIndex(
+        (candidate) => candidate.new === line.new && candidate.old === line.old,
+      );
+    };
+    const anchor = indexOf(saved.selection?.anchor),
+      head = indexOf(saved.selection?.head);
+    let top = indexOf(saved.top);
+    if (top < 0 && source[saved.top]?.contextOnly) {
+      // Stay at the hunk bordering a gap when collapsing the row at the top.
+      let i = saved.top;
+      while (i < source.length && source[i].contextOnly) i++;
+      if (i === source.length) {
+        i = saved.top - 1;
+        while (i >= 0 && source[i].contextOnly) i--;
+      }
+      top = indexOf(i);
+    }
+    return {
+      ...saved,
+      top,
+      selection:
+        anchor >= 0 && head >= 0 ? { ...saved.selection, anchor, head } : null,
+    };
+  }
+
+  function rebuildContext(opening) {
+    const split = layout.split,
+      previous = lines,
+      saved = position();
+    const next = displayContext(patch, gaps, expanded, contents);
+    const restore = remapPosition(saved, previous, next.lines);
+    if (
+      opening &&
+      (restore.top < 0 || previous[saved.top] === patch[opening.at])
+    ) {
+      restore.top = next.controls.find(
+        (control) => control.gap === opening,
+      )?.before;
+      restore.offset = 0;
+    }
+    dropLayouts();
+    ({ lines, controls } = next);
+    selection = restore.selection;
+    indexLines();
+    if (explicitHit?.line.contextOnly) {
+      const current = lines[numbered.new.get(explicitHit.line.new)];
+      explicitHit = current ? { ...explicitHit, line: current } : undefined;
+    }
+    if (findQuery) found = findDiffMatches(lines, findQuery);
+    showLayout(split, restore);
+    options.onContextChange?.({ full, expanded: expanded.size > 0 });
+  }
+
+  async function toggleGap(gap) {
+    const turn = ++contextVersion;
+    searchVersion++;
+    try {
+      await loadContents();
+      if (disposed || turn !== contextVersion) return;
+      const opening = !expanded.has(gap.at);
+      if (opening && gapLength(gap, contents)) expanded.add(gap.at);
+      else expanded.delete(gap.at);
+      full = gaps.every(
+        (g) => gapLength(g, contents) === 0 || expanded.has(g.at),
+      );
+      rebuildContext(opening ? gap : null);
+      if (!gapLength(gap, contents))
+        options.onStatus?.("This hunk reaches the end of the file.");
+      const toggle = layout.root.querySelector(`[data-context-at="${gap.at}"]`);
+      if (toggle) toggle.focus({ preventScroll: true });
+      else layout.panes[activeCol]?.view.focus();
+    } catch (error) {
+      if (!disposed) options.onStatus?.(String(error));
+    }
+  }
+
+  function sideMatches(column, side) {
+    return column === "both" || side === "both" || column === side;
+  }
+  function paintFind() {
+    for (const { panes } of layouts.values()) {
+      for (const { view } of panes)
+        view.dispatch({ effects: repaint.of(null) });
+    }
+  }
+  function scrollToMatch(index, from, side) {
+    cancelRestore();
+    const row = layout.rowForLine[index],
+      cells = layout.rows[row];
+    if (layout.split && side !== "both") activeCol = side === "new" ? 1 : 0;
+    if (cells[activeCol] !== index) activeCol = cells.indexOf(index);
+    const view = layout.panes[activeCol].view;
+    const start = view.state.doc.line(row + 1).from + from;
+    view.dispatch({
+      effects: EditorView.scrollIntoView(start, { y: "center" }),
+    });
+  }
+  function reveal(index, side, from, to) {
+    const line = lines[index];
+    if (!line) return false;
+    explicitHit = {
+      line,
+      side,
+      from: Math.max(0, Math.min(from ?? 0, line.text.length)),
+      to: Math.min(to ?? line.text.length, line.text.length),
+    };
+    found = undefined;
+    findQuery = "";
+    paintFind();
+    scrollToMatch(index, explicitHit.from, side);
+    return true;
   }
 
   function showLayout(split, saved) {
@@ -886,7 +1131,58 @@ export function createDiff(parent, options) {
 
   showLayout(options.mode?.toLowerCase() === "split", options.position);
   return {
+    contents: loadContents,
+    async showFullFile() {
+      const turn = ++contextVersion;
+      searchVersion++;
+      if (gaps.length) await loadContents();
+      if (disposed || turn !== contextVersion) return;
+      full = true;
+      if (!gaps.length)
+        return options.onContextChange?.({ full, expanded: false });
+      for (const gap of gaps)
+        if (gapLength(gap, contents)) expanded.add(gap.at);
+      rebuildContext();
+    },
+    collapseContext() {
+      contextVersion++;
+      searchVersion++;
+      full = false;
+      if (!expanded.size)
+        return options.onContextChange?.({ full, expanded: false });
+      expanded.clear();
+      rebuildContext();
+    },
+    async revealLine(side, number, from, to) {
+      const turn = ++searchVersion;
+      if (!numbered[side]?.has(number)) {
+        await loadContents();
+        if (disposed || turn !== searchVersion) return false;
+        const gap = gaps.find(
+          (g) => number >= g[side] && number < g[side] + gapLength(g, contents),
+        );
+        if (!gap) return false;
+        expanded.add(gap.at);
+        full = gaps.every(
+          (g) => gapLength(g, contents) === 0 || expanded.has(g.at),
+        );
+        rebuildContext(gap);
+      }
+      return reveal(numbered[side].get(number), side, from, to);
+    },
+    revealPatchRow(index, from, to) {
+      searchVersion++;
+      const line = patch[index];
+      return reveal(
+        lines === patch ? index : lines.indexOf(line),
+        line?.kind === "-" ? "old" : line?.kind === "+" ? "new" : "both",
+        from,
+        to,
+      );
+    },
     find(query, step = 0) {
+      searchVersion++;
+      explicitHit = undefined;
       if (query !== findQuery) {
         findQuery = query;
         found = query ? findDiffMatches(lines, query) : undefined;
@@ -896,22 +1192,9 @@ export function createDiff(parent, options) {
           (currentMatch + step + found.matches.length) % found.matches.length;
       }
       // A retained pane may become visible again before the query changes.
-      for (const { panes } of layouts.values()) {
-        for (const { view } of panes)
-          view.dispatch({ effects: repaint.of(null) });
-      }
+      paintFind();
       const hit = found?.matches[currentMatch];
-      if (hit) {
-        cancelRestore();
-        const row = layout.rowForLine[hit.line];
-        const cells = layout.rows[row];
-        if (cells[activeCol] !== hit.line) activeCol = cells.indexOf(hit.line);
-        const view = layout.panes[activeCol].view;
-        const start = view.state.doc.line(row + 1).from + hit.from;
-        view.dispatch({
-          effects: EditorView.scrollIntoView(start, { y: "center" }),
-        });
-      }
+      if (hit) scrollToMatch(hit.line, hit.from, "both");
       return {
         current: hit ? currentMatch + 1 : 0,
         total: found?.matches.length ?? 0,
@@ -919,7 +1202,7 @@ export function createDiff(parent, options) {
     },
     setMode(value) {
       const split = value.toLowerCase() === "split";
-      if (split !== layout.split && lines.length) showLayout(split, position());
+      if (split !== layout.split) showLayout(split, position());
     },
     setNotes(next) {
       const previous = new Map(notes.map((n) => [n.id, !!n.resolved]));
@@ -930,7 +1213,9 @@ export function createDiff(parent, options) {
       notes = next;
       refreshNotes();
     },
-    getPosition: position,
+    getPosition() {
+      return remapPosition(position(), lines, patch);
+    },
     jump(id) {
       const row = layout.anchorRows.get(id);
       if (row == null) return false;
@@ -969,14 +1254,8 @@ export function createDiff(parent, options) {
       compose(true);
     },
     destroy() {
-      cancelAnimationFrame(paintFrame);
-      cancelRestore();
-      closeMenu?.();
-      for (const { panes, root } of layouts.values()) {
-        for (const { view } of panes) view.destroy();
-        root.remove();
-      }
-      layouts.clear();
+      disposed = true;
+      dropLayouts();
     },
   };
 }

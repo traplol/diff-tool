@@ -447,6 +447,35 @@ tr.selected {
 #find-bar button {
   padding: 3px 7px;
 }
+#find-results {
+  max-height: min(24vh, 15rem);
+  overflow: auto;
+  border-bottom: 1px solid var(--line);
+}
+#find-results button {
+  display: grid;
+  width: 100%;
+  text-align: left;
+  padding: 5px 10px;
+  gap: 2px;
+  border: 0;
+  border-radius: 0;
+}
+#find-results button[aria-current="true"] {
+  background: #e5f2df;
+}
+#find-results code,
+#find-results strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+dialog.branch-source {
+  width: min(960px, 92vw);
+}
+.branch-source .cm-editor {
+  height: min(60vh, 600px);
+}
 .diff-actions,
 .panel-footer {
   border-top: 1px solid var(--line);
