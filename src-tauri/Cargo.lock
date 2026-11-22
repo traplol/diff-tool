@@ -162,6 +162,7 @@ dependencies = [
  "tauri-build",
  "tauri-plugin-dialog",
  "tempfile",
+ "webkit2gtk",
  "windows-sys 0.61.2",
  "xattr",
 ]

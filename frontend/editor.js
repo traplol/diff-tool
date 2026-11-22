@@ -55,6 +55,24 @@ export function diffRows(lines, split) {
   return rows;
 }
 
+// Keep matches on patch lines so a shared context line counts once in Split.
+export function findDiffMatches(lines, query) {
+  const matches = [],
+    firstByLine = new Map();
+  if (query) {
+    const literal = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const pattern = new RegExp(literal, "giu");
+    lines.forEach(({ text }, line) => {
+      const first = matches.length;
+      for (const hit of text.matchAll(pattern)) {
+        matches.push({ line, from: hit.index, to: hit.index + hit[0].length });
+      }
+      if (matches.length > first) firstByLine.set(line, first);
+    });
+  }
+  return { matches, firstByLine };
+}
+
 function codeLine(line) {
   return line && (line.kind === " " || line.kind === "+" || line.kind === "-");
 }
@@ -278,6 +296,9 @@ export function createDiff(parent, options) {
     activeCol = 0;
   const layouts = new Map();
   let layout, closeMenu, paintFrame, restoreFrame, pendingPosition;
+  let findQuery = "",
+    found,
+    currentMatch = 0;
   let notesVersion = 0;
   const isCode = codeFiles.test(file.path);
   const numbered = { old: new Map(), new: new Map() };
@@ -523,6 +544,17 @@ export function createDiff(parent, options) {
                 row.from + match.index,
                 row.from + match.index + match[0].length,
               ),
+            );
+          }
+        }
+        const first = found?.firstByLine.get(index);
+        if (first !== undefined) {
+          for (let i = first; found.matches[i]?.line === index; i++) {
+            const hit = found.matches[i];
+            ranges.push(
+              Decoration.mark({
+                class: i === currentMatch ? "bl-find-current" : "bl-find-match",
+              }).range(row.from + hit.from, row.from + hit.to),
             );
           }
         }
@@ -854,6 +886,37 @@ export function createDiff(parent, options) {
 
   showLayout(options.mode?.toLowerCase() === "split", options.position);
   return {
+    find(query, step = 0) {
+      if (query !== findQuery) {
+        findQuery = query;
+        found = query ? findDiffMatches(lines, query) : undefined;
+        currentMatch = 0;
+      } else if (found?.matches.length) {
+        currentMatch =
+          (currentMatch + step + found.matches.length) % found.matches.length;
+      }
+      // A retained pane may become visible again before the query changes.
+      for (const { panes } of layouts.values()) {
+        for (const { view } of panes)
+          view.dispatch({ effects: repaint.of(null) });
+      }
+      const hit = found?.matches[currentMatch];
+      if (hit) {
+        cancelRestore();
+        const row = layout.rowForLine[hit.line];
+        const cells = layout.rows[row];
+        if (cells[activeCol] !== hit.line) activeCol = cells.indexOf(hit.line);
+        const view = layout.panes[activeCol].view;
+        const start = view.state.doc.line(row + 1).from + hit.from;
+        view.dispatch({
+          effects: EditorView.scrollIntoView(start, { y: "center" }),
+        });
+      }
+      return {
+        current: hit ? currentMatch + 1 : 0,
+        total: found?.matches.length ?? 0,
+      };
+    },
     setMode(value) {
       const split = value.toLowerCase() === "split";
       if (split !== layout.split && lines.length) showLayout(split, position());

@@ -106,6 +106,14 @@
 .bl-token-comment {
   color: #677a6b;
 }
+.bl-find-match {
+  background: #ffedaa;
+}
+.bl-find-current {
+  background: #ffbd54;
+  color: #302310;
+  outline: 1px solid #855817;
+}
 .bl-comments {
   box-sizing: border-box;
   width: min(44rem, 100%);

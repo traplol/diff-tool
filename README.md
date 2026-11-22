@@ -42,7 +42,7 @@ The Rust build uses the same SQLite database as the previous Python release. Exi
 1. Open a repository or any directory inside it. Branchline reads local branches and remote-tracking refs already present in the checkout.
 2. On first open, Branchline follows branch tips in Git history to suggest a stack around the checked-out branch. To start from another ref, open **Edit stack**, select the ref, and choose **Find stack**. At a fork, choose the path you want. You can also use **Add** and **Replace** to arrange the stack manually. The first ref is the base. Choose **Review stack** to save the order.
 3. Use **Full stack** to compare the base with the final branch. Select a layer to compare adjacent refs. Each comparison starts at the Git merge base, as in a pull request.
-4. Press **Ctrl+F** and type part of a file path. The first match opens automatically. Press **Enter** to focus its diff. Choose **Unified** or **Split**, then drag across lines or Shift-click to extend a selection. The viewer remembers your place when you switch layouts or revisit the file. Press **C** to comment and **Ctrl+Enter** to save. To comment on the whole file, press **Escape** to clear the selection first, or right-click and choose **Comment on file**. **Viewed** tracks your progress for this snapshot.
+4. Use **Ctrl+P** to filter changed files by path. **Ctrl+F** searches the text of the current file's diff, including additions and deletions in either layout. Press **Enter** for the next match, **Shift+Enter** for the previous one, and **Escape** to return to the diff. Choose **Unified** or **Split**, then drag across lines or Shift-click to extend a selection. The viewer remembers your place when you switch layouts or revisit the file. Press **C** to comment and **Ctrl+Enter** to save. To comment on the whole file, press **Escape** to clear the selection first, or right-click and choose **Comment on file**. **Viewed** tracks your progress for this snapshot.
 5. Comments appear below their lines, or above the diff for whole-file comments. **Resolve** folds a comment. Expand it to read it again or choose **Reopen** to return it to active review. Open comments on the same line stay visible.
 6. The **Comments** panel starts on **Open**. Select **Resolved** to revisit completed items or **All** to see both. Choose **Entire repository** to include other comparisons. **Show in diff** expands the selected comment at its current lines. **Open comment** shows the saved excerpt.
 7. Choose **Export Markdown** to open an editable preview. Select **Open comments only** to send the agent outstanding feedback. The preview starts with the full review, including resolved history. From **Comments**, it uses the selected scope. From other panels, it uses the current stack or working-tree review. Each version keeps its own edits while the preview is open. **Copy Markdown** and **Save as…** use the text you see.
@@ -73,7 +73,29 @@ On the checked-out branch, choose **Apply to working file** to make the edit. Br
 
 Applying a suggestion leaves its review status open until you select **Resolve**. Reopening an applied suggestion keeps its application receipt. A comment keeps its status when its lines move into the index or a stack commit.
 
-Branchline saves comments, the last stack, and viewed files in SQLite under `$XDG_DATA_HOME/branchline` (default `~/.local/share/branchline`) or `%LOCALAPPDATA%\Branchline` on Windows. Comments are local to a checkout and a branch pair. The current stack includes the full-stack pair and all adjacent pairs, including notes saved against earlier tips.
+Branchline saves comments and viewed files in SQLite under `$XDG_DATA_HOME/branchline` (default `~/.local/share/branchline`) or `%LOCALAPPDATA%\Branchline` on Windows. Comments are local to a checkout and a branch pair. The current stack includes the full-stack pair and all adjacent pairs, including notes saved against earlier tips.
+
+## Preferences
+
+On Linux and WSL, preferences live in `~/.config/branchline/config.json`. Setting `XDG_CONFIG_HOME` changes the parent directory. On Windows the usual path is `%APPDATA%\Branchline\config.json`.
+
+Choose **Edit stack → Review stack** to remember the base branch for that checkout. Branchline reuses it when a review head is renamed or deleted. Switching between **Unified** and **Split** and resizing the sidebar save those preferences across repositories. Branchline creates the file when you open a repository and imports your existing stack and sidebar width. After editing the branch or layout settings by hand, press **F5** to reload them.
+
+```json
+{
+  "hardware_acceleration": true,
+  "diff_layout": "split",
+  "sidebar_width": 280,
+  "repositories": {
+    "/home/alex/src/project": {
+      "base_branch": "refs/heads/develop",
+      "layers": ["refs/heads/feature/search"]
+    }
+  }
+}
+```
+
+Hardware acceleration is enabled by default. The system graphics libraries choose an available device and handle fallback. To use software rendering, set `hardware_acceleration` to `false`, close all Branchline windows, and relaunch.
 
 ## Keyboard shortcuts
 
@@ -81,7 +103,10 @@ Branchline saves comments, the last stack, and viewed files in SQLite under `$XD
 | --- | --- |
 | Ctrl+O | Open a repository |
 | Ctrl+B | Edit the stack |
-| Ctrl+F | Filter changed files |
+| Ctrl+F | Find text in the current diff |
+| Enter / Shift+Enter in diff search | Next / previous match |
+| Escape in diff search | Close search and focus the diff |
+| Ctrl+P | Filter changed files by path |
 | Enter / Escape in the file filter | Open the match / clear the filter |
 | Alt+Down / Alt+Up | Next / previous visible file |
 | Up / Down in the diff | Select a line |

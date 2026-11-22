@@ -427,6 +427,26 @@ tr.selected {
   overflow: hidden;
   position: relative;
 }
+#find-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--line);
+}
+#diff-search {
+  flex: 1 1 8em;
+  min-width: 0;
+  padding: 4px 8px;
+}
+#find-status {
+  font-size: 12px;
+  color: #576c5b;
+}
+#find-bar button {
+  padding: 3px 7px;
+}
 .diff-actions,
 .panel-footer {
   border-top: 1px solid var(--line);

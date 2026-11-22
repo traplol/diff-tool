@@ -80,6 +80,7 @@
                 type="search"
                 aria-label="Filter changed files"
                 placeholder="Filter files…"
+                title="Filter files (Ctrl+P)"
               />
               <div id="file-list" role="group" aria-label="Changed files"></div>
             </section>
@@ -91,7 +92,47 @@
                   <button id="unified">Unified</button
                   ><button id="split">Split</button>
                 </div>
+                <button
+                  id="find"
+                  aria-label="Find in diff"
+                  aria-controls="find-bar"
+                  aria-expanded="false"
+                  title="Find in diff (Ctrl+F)"
+                  disabled
+                >
+                  Find
+                </button>
                 <label><input type="checkbox" id="viewed" /> Viewed</label>
+              </div>
+              <div id="find-bar" role="search" aria-label="Find in diff" hidden>
+                <input
+                  id="diff-search"
+                  type="search"
+                  aria-label="Find in diff"
+                  placeholder="Find in diff…"
+                />
+                <span id="find-status" role="status"></span>
+                <button
+                  id="find-prev"
+                  aria-label="Previous match"
+                  title="Previous match (Shift+Enter)"
+                >
+                  ↑
+                </button>
+                <button
+                  id="find-next"
+                  aria-label="Next match"
+                  title="Next match (Enter)"
+                >
+                  ↓
+                </button>
+                <button
+                  id="find-close"
+                  aria-label="Close find"
+                  title="Close find (Esc)"
+                >
+                  ×
+                </button>
               </div>
               <div id="diff"></div>
               <div class="diff-actions">

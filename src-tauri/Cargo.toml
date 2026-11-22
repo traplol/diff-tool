@@ -18,6 +18,9 @@ sha1 = "0.10"
 sha2 = "0.10"
 tempfile = "3"
 
+[target.'cfg(target_os = "linux")'.dependencies]
+webkit2gtk = { version = "2", features = ["v2_16"] }
+
 [target.'cfg(unix)'.dependencies]
 xattr = "1"
 libc = "0.2"

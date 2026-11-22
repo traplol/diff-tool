@@ -1,6 +1,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { diffRows, selectedLines, canSuggest } from "./editor.js";
+import {
+  diffRows,
+  findDiffMatches,
+  selectedLines,
+  canSuggest,
+} from "./editor.js";
 
 const lines = [
   { kind: "@", text: "@@ -7,4 +7,3 @@", old: null, new: null, hunk: 1 },
@@ -43,6 +48,32 @@ test("backward split selections exclude the opposite side and headers", () => {
     lines.slice(2, 5),
   );
   assert.deepEqual(selectedLines(lines, null), []);
+});
+
+test("find counts literal matches across the patch and preserves editor offsets", () => {
+  const lines = [
+    { kind: "-", text: "İ 🛠 [old] [OLD]" },
+    { kind: "+", text: "old without brackets" },
+    { kind: " ", text: "shared [Old]" },
+    { kind: "+", text: "another [old]" },
+  ];
+  const { matches, firstByLine } = findDiffMatches(lines, "[old]");
+  assert.deepEqual(matches, [
+    { line: 0, from: 5, to: 10 },
+    { line: 0, from: 11, to: 16 },
+    { line: 2, from: 7, to: 12 },
+    { line: 3, from: 8, to: 13 },
+  ]);
+  assert.deepEqual(
+    [...firstByLine],
+    [
+      [0, 0],
+      [2, 2],
+      [3, 3],
+    ],
+  );
+  assert.deepEqual(findDiffMatches(lines, "").matches, []);
+  assert.deepEqual(findDiffMatches(lines, "missing").matches, []);
 });
 
 test("suggestions require consecutive new-side lines of one hunk in a regular file", () => {

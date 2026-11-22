@@ -36,6 +36,9 @@ jobs:
       - name: Exercise the packaged Linux application
         if: runner.os == 'Linux'
         run: xvfb-run -a -s '-screen 0 3840x2160x24' dbus-run-session -- python3 tools/smoke_current.py --binary src-tauri/target/release/branchline
+      - name: Check diff search and saved settings
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 1920x1080x24' dbus-run-session -- python3 tools/check_review_controls.py --binary src-tauri/target/release/branchline
       - uses: actions/upload-artifact@v4
         with:
           name: branchline-${{ runner.os }}

@@ -48,6 +48,13 @@ const closedFolders = new Set(),
 const basename = (path) => path.split(/[\\/]/).filter(Boolean).at(-1) || path;
 const request = (op, args = {}, snapshot = state?.snapshot) =>
   invoke("workspace", { request: { op, ...args }, snapshot: snapshot ?? null });
+let preferenceWrite = Promise.resolve();
+function savePreference(op, args) {
+  preferenceWrite = preferenceWrite
+    .then(() => request(op, args))
+    .catch((err) => status(String(err), true));
+  return preferenceWrite;
+}
 const status = (message = "", error = false) => {
   $("status").textContent = message;
   $("status").title = message;
@@ -122,6 +129,8 @@ function leaveFile() {
   }
   lines = [];
   sequence++;
+  $("find").disabled = true;
+  if (!$("find-bar").hidden) updateFind();
 }
 function choiceIndex() {
   return pairs(state.stack, state.repo.checkout).findIndex(
@@ -137,6 +146,8 @@ async function changeWorkspace(op, args) {
   try {
     const previous = currentFile(),
       previousRoot = state?.repo.root;
+    const pending = preferenceWrite;
+    if (op === "open") await pending;
     const next = await request(op, args);
     leaveFile();
     if (
@@ -157,6 +168,8 @@ async function changeWorkspace(op, args) {
       tab = "Changes";
       openFilter = "Open";
       $("filter").value = "";
+      closeFind();
+      $("diff-search").value = "";
       $("scope").value = "current";
     }
     fileIndex = -1;
@@ -168,7 +181,10 @@ async function changeWorkspace(op, args) {
     $("crumb").textContent = name;
     $("repo-name").textContent = name;
     $("choose").title = state.repo.root;
-    setWidth(state.width);
+    if (op === "open" && pending === preferenceWrite) {
+      setWidth(state.width);
+      setMode(state.diff_layout);
+    }
     const choices = pairs(state.stack, state.repo.checkout);
     $("pair").replaceChildren(
       ...choices.map(([label], i) => new Option(label, String(i))),
@@ -218,7 +234,10 @@ async function changeWorkspace(op, args) {
     );
     fileIndex = keep ?? ids[0] ?? -1;
     await navigate(tab);
-    status(state.error || "Comparison up to date", !!state.error);
+    const warning = [state.error, state.config_warning]
+      .filter(Boolean)
+      .join(" · ");
+    status(warning || "Comparison up to date", !!warning);
   } finally {
     loading = false;
     $("app").removeAttribute("aria-busy");
@@ -400,6 +419,8 @@ async function pick(index, focus = false, jump) {
       },
     });
     $("comment").disabled = false;
+    $("find").disabled = lines.length === 0;
+    if (!$("find-bar").hidden) updateFind();
     if (jump != null) editor.jump(jump);
     if (focus && tab === "Changes") editor.focus();
   } catch (err) {
@@ -409,11 +430,13 @@ async function pick(index, focus = false, jump) {
     }
   }
 }
-function setMode(value) {
+function setMode(value, save = false) {
+  const changed = mode !== value;
   mode = value;
   activate($("unified"), value === "unified");
   activate($("split"), value === "split");
   editor?.setMode(value);
+  if (save && changed) return savePreference("layout", { layout: value });
 }
 function newComment(selection) {
   const file = currentFile(),
@@ -642,6 +665,67 @@ async function exportReview() {
       : "Markdown preview ready",
   );
 }
+function updateFind(step = 0) {
+  const query = $("diff-search").value;
+  const result = editor?.find(query, step);
+  $("find-status").textContent = !query
+    ? ""
+    : result?.total
+      ? `${result.current} of ${result.total}`
+      : "No matches";
+  $("find-prev").disabled = $("find-next").disabled = !result?.total;
+}
+function openFind() {
+  if ($("find").disabled) return;
+  $("find-bar").hidden = false;
+  $("find").setAttribute("aria-expanded", "true");
+  $("diff-search").focus();
+  $("diff-search").select();
+  updateFind();
+}
+function closeFind() {
+  $("find-bar").hidden = true;
+  $("find").setAttribute("aria-expanded", "false");
+  editor?.find("");
+}
+on("find", openFind);
+for (const [id, step] of [
+  ["find-prev", -1],
+  ["find-next", 1],
+]) {
+  on(id, () => {
+    updateFind(step);
+    $("diff-search").focus();
+  });
+}
+on("find-close", () => {
+  closeFind();
+  editor?.focus();
+});
+$("diff-search").oninput = () => updateFind();
+$("diff-search").onkeydown = (e) => {
+  if (e.key === "Enter" && !e.isComposing) {
+    e.preventDefault();
+    updateFind(e.shiftKey ? -1 : 1);
+  }
+};
+$("changes").addEventListener(
+  "keydown",
+  (e) => {
+    if (
+      e.key === "Escape" &&
+      !$("find-bar").hidden &&
+      e.target.closest("#find-bar, #diff")
+    ) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeFind();
+      editor?.focus();
+    }
+  },
+  true,
+);
+
 for (const id of ["choose", "welcome-open"]) on(id, choose);
 on("refresh", refresh);
 on("export", exportReview);
@@ -653,8 +737,8 @@ on("edit-stack", () =>
     (refs) => changeWorkspace("set_stack", { refs }),
   ),
 );
-on("split", () => setMode("split"));
-on("unified", () => setMode("unified"));
+on("split", () => setMode("split", true));
+on("unified", () => setMode("unified", true));
 on("comment", () => editor?.comment());
 on("suggest", () => editor?.suggest());
 on("toggle-resolved", () => {
@@ -715,7 +799,7 @@ const divider = $("divider");
 const persistWidth = handle(
   () =>
     state &&
-    request("width", {
+    savePreference("width", {
       width: Math.round($("sidebar").getBoundingClientRect().width),
     }),
 );
@@ -746,13 +830,14 @@ document.addEventListener(
   handle(async (e) => {
     if ($("dialog").open) return;
     const key = e.key.toLowerCase();
-    if ((e.ctrlKey || e.metaKey) && ["o", "b", "e", "f"].includes(key)) {
+    if ((e.ctrlKey || e.metaKey) && ["o", "b", "e", "f", "p"].includes(key)) {
       e.preventDefault();
       if (key === "o") return choose();
       if (!state) return;
       if (key === "b") return $("edit-stack").click();
       if (key === "e") return exportReview();
       await navigate("Changes");
+      if (key === "f") return openFind();
       $("filter").focus();
       $("filter").select();
       return;

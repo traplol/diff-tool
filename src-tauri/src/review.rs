@@ -139,15 +139,6 @@ impl Store {
             .map_err(err)?
             .unwrap_or(320))
     }
-    pub fn set_sidebar_width(&self, width: i64) -> Result<(), String> {
-        self.db
-            .execute(
-                "INSERT OR REPLACE INTO preferences VALUES('sidebar_width',?)",
-                [width],
-            )
-            .map_err(err)?;
-        Ok(())
-    }
     pub fn saved_stack(&self, repo: &Repository) -> Result<Option<Vec<String>>, String> {
         let saved: Option<String> = self
             .db
@@ -161,23 +152,11 @@ impl Store {
         if let Some(raw) = saved {
             let refs: Vec<String> =
                 serde_json::from_str(&translate(&raw, true, true)?).map_err(err)?;
-            if refs.len() >= 2 && refs.iter().all(|s| repo.refs.contains_key(s)) {
+            if refs.len() >= 2 {
                 return Ok(Some(refs));
             }
         }
         Ok(None)
-    }
-    pub fn set_stack(&self, repo: &Repository, stack: &[String]) -> Result<(), String> {
-        self.db
-            .execute(
-                "INSERT OR REPLACE INTO stacks VALUES(?,?)",
-                params![
-                    repo_key(repo),
-                    translate(&serde_json::to_string(stack).map_err(err)?, true, false)?
-                ],
-            )
-            .map_err(err)?;
-        Ok(())
     }
     pub fn notes(&self, repo: &Repository) -> Result<Vec<Value>, String> {
         let mut stmt = self

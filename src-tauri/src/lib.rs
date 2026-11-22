@@ -1,3 +1,4 @@
+mod config;
 mod git;
 mod review;
 mod service;
@@ -74,7 +75,40 @@ async fn workspace(
 }
 
 pub fn run() {
-    tauri::Builder::default()
+    #[cfg(any(target_os = "linux", windows))]
+    let acceleration = config::hardware_acceleration().unwrap_or_else(|error| {
+        eprintln!("Could not read hardware acceleration preference: {error}");
+        true
+    });
+
+    // WebView2 enables the GPU by default. Append the opt-out before it starts.
+    #[cfg(windows)]
+    if !acceleration {
+        let key = "WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS";
+        let mut args = std::env::var_os(key).unwrap_or_default();
+        args.push(" --disable-gpu");
+        std::env::set_var(key, args);
+    }
+
+    let builder = tauri::Builder::default();
+    #[cfg(target_os = "linux")]
+    let builder = builder.setup(move |app| {
+        use webkit2gtk::{HardwareAccelerationPolicy, SettingsExt, WebViewExt};
+        if let Some(window) = app.get_webview_window("main") {
+            window.with_webview(move |webview| {
+                if let Some(settings) = webview.inner().settings() {
+                    let policy = if acceleration {
+                        HardwareAccelerationPolicy::Always
+                    } else {
+                        HardwareAccelerationPolicy::Never
+                    };
+                    settings.set_hardware_acceleration_policy(policy);
+                }
+            })?;
+        }
+        Ok(())
+    });
+    builder
         .plugin(tauri_plugin_dialog::init())
         .manage(Mutex::new(service::Workspace::default()))
         .invoke_handler(tauri::generate_handler![

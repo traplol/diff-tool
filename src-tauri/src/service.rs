@@ -1,4 +1,5 @@
 use crate::{
+    config::{self, Layout, RepoSettings, Settings},
     git::{self, Change, Comparison, Repository, WORKTREE},
     review::{self, Store},
     suggestions, tracking,
@@ -7,7 +8,7 @@ use serde::Deserialize;
 use serde_json::{json, Value};
 use std::{
     collections::{BTreeMap, HashSet},
-    path::PathBuf,
+    path::{Path, PathBuf},
 };
 
 type Pair = [String; 2];
@@ -46,6 +47,9 @@ pub enum Request {
     Width {
         width: i64,
     },
+    Layout {
+        layout: Layout,
+    },
     Create {
         file: usize,
         rows: Vec<usize>,
@@ -78,6 +82,7 @@ pub enum Request {
 pub struct Workspace {
     snapshot: u64,
     session: Option<Session>,
+    config_path: Option<PathBuf>,
 }
 
 struct Session {
@@ -95,6 +100,107 @@ fn pairs(repo: &Repository, stack: &[String]) -> Vec<Pair> {
         .collect();
     pairs.push([repo.checkout.clone(), WORKTREE.into()]);
     pairs
+}
+
+fn repo_settings(
+    repo: &Repository,
+    store: &Store,
+    path: &Path,
+) -> Result<(Settings, Option<String>), String> {
+    let key = git::path_name(&repo.root);
+    let (existing, warning) = match config::read(path) {
+        Ok(Some(settings))
+            if settings.sidebar_width.is_some() && settings.repositories.contains_key(&key) =>
+        {
+            return Ok((settings, None))
+        }
+        Ok(existing) => (existing, None),
+        Err(e) => (None, Some(e)),
+    };
+    // Keep the user's base even if an old SQLite stack names a deleted layer.
+    let mut imported = RepoSettings::default();
+    if let Some(stack) = store.saved_stack(repo)? {
+        imported.base_branch = stack[0].clone();
+        if stack.iter().all(|r| repo.refs.contains_key(r)) {
+            imported.layers = stack[1..].to_vec();
+        }
+    } else if let Some(base) = &repo.default_branch {
+        imported.base_branch = base.clone();
+    }
+    let legacy_width = if existing.as_ref().and_then(|s| s.sidebar_width).is_none() {
+        Some(store.sidebar_width()?)
+    } else {
+        None
+    };
+    let migrate = |settings: &mut Settings| {
+        if let Some(width) = legacy_width {
+            settings.sidebar_width.get_or_insert(width.clamp(150, 800));
+        }
+        settings
+            .repositories
+            .entry(key.clone())
+            .or_insert_with(|| imported.clone());
+    };
+    let warning = match warning {
+        Some(e) => e,
+        None => match config::update(path, migrate) {
+            Ok(settings) => return Ok((settings, None)),
+            Err(e) => e,
+        },
+    };
+    // A malformed or unwritable config should still allow reading the review.
+    let mut fallback = existing.unwrap_or_default();
+    migrate(&mut fallback);
+    Ok((fallback, Some(warning)))
+}
+
+fn open_stack(repo: &Repository, saved: &RepoSettings) -> Result<Vec<String>, String> {
+    if repo.initial.len() < 2 {
+        return Ok(repo.initial.clone());
+    }
+    let resolve = |name: &str| {
+        [
+            name.to_owned(),
+            format!("refs/heads/{name}"),
+            format!("refs/remotes/{name}"),
+        ]
+        .into_iter()
+        .find(|r| repo.refs.contains_key(r))
+    };
+    let preferred = resolve(&saved.base_branch);
+    if let Some(base) = &preferred {
+        let mut stack = vec![base.clone()];
+        for layer in &saved.layers {
+            let Some(r) = resolve(layer) else {
+                break;
+            };
+            if r == git::EMPTY || stack.contains(&r) {
+                break;
+            }
+            stack.push(r);
+        }
+        if stack.len() >= 2 && stack.len() == saved.layers.len() + 1 {
+            return Ok(stack);
+        }
+    }
+    let base = preferred
+        .as_ref()
+        .or(repo.default_branch.as_ref())
+        .unwrap_or(&repo.initial[0]);
+    let head = &repo.initial[1];
+    let (mut refs, _) = git::discover_stack(repo, base, head)?;
+    if preferred.is_some() && base != head && !refs.contains(base) {
+        refs.insert(0, base.clone());
+    }
+    // A chosen base can outlive every layer. Keep it in the stack editor and
+    // offer the working tree while the base itself is checked out.
+    let chosen_base_only = preferred.as_ref() == Some(head)
+        && (!saved.layers.is_empty() || preferred != repo.default_branch);
+    Ok(if refs.len() >= 2 || chosen_base_only {
+        refs
+    } else {
+        repo.initial.clone()
+    })
 }
 
 impl Session {
@@ -164,7 +270,7 @@ impl Session {
             .unwrap_or_default();
         let response = json!({"snapshot":token,"repo":next.repo,"stack":next.stack,"pair":pair,
             "comparison":next.current,"notes":next.notes,"locations":next.locations,"viewed":viewed,
-            "width":store.sidebar_width()?,"error":error});
+            "error":error});
         Ok((next, response))
     }
     fn export(&self, store: Option<&Store>, entire: bool) -> Result<Value, String> {
@@ -232,7 +338,26 @@ impl Session {
 }
 
 impl Workspace {
+    fn settings_file(&self) -> Result<PathBuf, String> {
+        self.config_path.clone().map_or_else(config::path, Ok)
+    }
+
     pub fn execute(&mut self, request: Request, snapshot: Option<u64>) -> Result<Value, String> {
+        match request {
+            Request::Layout { layout } => {
+                config::update(&self.settings_file()?, |settings| {
+                    settings.diff_layout = layout
+                })?;
+                return Ok(Value::Null);
+            }
+            Request::Width { width } => {
+                config::update(&self.settings_file()?, |settings| {
+                    settings.sidebar_width = Some(width.clamp(150, 800))
+                })?;
+                return Ok(Value::Null);
+            }
+            _ => {}
+        }
         let mut store = match Store::open() {
             Ok(store) => store,
             Err(e) => {
@@ -255,19 +380,8 @@ impl Workspace {
     ) -> Result<Value, String> {
         if let Request::Open { path, pair } = request {
             let repo = git::open_repo(PathBuf::from(git::path_arg(&path)?).as_path())?;
-            let stack = match store.saved_stack(&repo)? {
-                Some(refs) => refs,
-                None if repo.initial.len() >= 2 => {
-                    let base = repo.default_branch.as_ref().unwrap_or(&repo.initial[0]);
-                    let (refs, _) = git::discover_stack(&repo, base, &repo.initial[1])?;
-                    if refs.len() >= 2 {
-                        refs
-                    } else {
-                        repo.initial.clone()
-                    }
-                }
-                None => repo.initial.clone(),
-            };
+            let (settings, warning) = repo_settings(&repo, store, &self.settings_file()?)?;
+            let stack = open_stack(&repo, &settings.repositories[&git::path_name(&repo.root)])?;
             let choices = pairs(&repo, &stack);
             let pair = match pair {
                 Some(previous) if previous[1] == WORKTREE => {
@@ -277,7 +391,10 @@ impl Workspace {
                 _ => choices[0].clone(),
             };
             let token = self.snapshot + 1;
-            let (session, data) = Session::load(repo, stack, pair, store, token)?;
+            let (session, mut data) = Session::load(repo, stack, pair, store, token)?;
+            data["width"] = json!(settings.sidebar_width.unwrap_or(320));
+            data["diff_layout"] = json!(settings.diff_layout);
+            data["config_warning"] = json!(warning);
             self.snapshot = token;
             self.session = Some(session);
             return Ok(data);
@@ -285,6 +402,7 @@ impl Workspace {
         if snapshot != Some(self.snapshot) {
             return Err("The review changed. Open the file again.".into());
         }
+        let config_path = self.config_path.as_deref();
         let s = self
             .session
             .as_mut()
@@ -316,7 +434,17 @@ impl Workspace {
                 let pair = pairs(&s.repo, &refs)[0].clone();
                 let (next, data) =
                     Session::load(s.repo.clone(), refs, pair, store, self.snapshot + 1)?;
-                store.set_stack(&next.repo, &next.stack)?;
+                let path = config_path
+                    .map(PathBuf::from)
+                    .map_or_else(config::path, Ok)?;
+                config::update(&path, |settings| {
+                    let repo = settings
+                        .repositories
+                        .entry(git::path_name(&next.repo.root))
+                        .or_default();
+                    repo.base_branch = next.stack[0].clone();
+                    repo.layers = next.stack[1..].to_vec();
+                })?;
                 *s = next;
                 self.snapshot += 1;
                 return Ok(data);
@@ -334,10 +462,6 @@ impl Workspace {
             }
             Request::Commits => return Ok(json!(git::commits(&s.repo, s.comparison()?)?)),
             Request::Details { sha } => return Ok(json!(git::commit_details(&s.repo, &sha)?)),
-            Request::Width { width } => {
-                store.set_sidebar_width(width.clamp(150, 800))?;
-                return Ok(Value::Null);
-            }
             Request::Viewed { file, value } => {
                 let (c, f) = s.file(file)?;
                 store.set_viewed(&s.repo, c, f, value)?;
@@ -451,7 +575,7 @@ impl Workspace {
                 anchor["old"] = dest["old"].clone();
                 suggestions::apply(store, &s.repo, c, f, saved, &anchor)?;
             }
-            Request::Open { .. } => unreachable!(),
+            Request::Open { .. } | Request::Width { .. } | Request::Layout { .. } => unreachable!(),
         }
         s.reload_notes(store)
     }
@@ -461,6 +585,133 @@ impl Workspace {
 mod tests {
     use super::*;
     use std::{fs, process::Command};
+
+    fn workspace_in(dir: &Path) -> Workspace {
+        Workspace {
+            config_path: Some(dir.join("config/branchline/config.json")),
+            ..Workspace::default()
+        }
+    }
+
+    #[test]
+    fn migrates_preferences_and_keeps_the_selected_base_after_a_layer_is_deleted() {
+        let dir = tempfile::tempdir().unwrap();
+        let repo = dir.path().join("repo");
+        fs::create_dir(&repo).unwrap();
+        let git = |args: &[&str]| {
+            let result = Command::new("git")
+                .arg("-C")
+                .arg(&repo)
+                .args(args)
+                .output()
+                .unwrap();
+            assert!(
+                result.status.success(),
+                "{}",
+                String::from_utf8_lossy(&result.stderr)
+            );
+        };
+        git(&["init", "-b", "main"]);
+        git(&[
+            "-c",
+            "user.name=Test",
+            "-c",
+            "user.email=test@example.invalid",
+            "-c",
+            "commit.gpgSign=false",
+            "commit",
+            "--allow-empty",
+            "-m",
+            "Base",
+        ]);
+        git(&["branch", "integration"]);
+        git(&["switch", "-c", "feature"]);
+        let root = git::path_name(&git::open_repo(&repo).unwrap().root);
+        let open = || Request::Open {
+            path: root.clone(),
+            pair: None,
+        };
+        let data = dir.path().join("data");
+        let mut store = Store::at(&data).unwrap();
+        let db = rusqlite::Connection::open(data.join("reviews.sqlite3")).unwrap();
+        db.execute("INSERT INTO preferences VALUES('sidebar_width', 366)", [])
+            .unwrap();
+        let old_stack = json!(["refs/heads/main", "refs/heads/feature"]);
+        db.execute(
+            "INSERT INTO stacks VALUES(?,?)",
+            rusqlite::params![root.as_bytes(), old_stack.to_string()],
+        )
+        .unwrap();
+        let mut first = workspace_in(dir.path());
+        let path = first.settings_file().unwrap();
+        fs::create_dir_all(path.parent().unwrap()).unwrap();
+        fs::write(&path, r#"{"hardware_acceleration":false}"#).unwrap();
+        let state = first.with_store(open(), None, &mut store).unwrap();
+        assert_eq!(state["stack"], old_stack);
+        assert_eq!(state["width"], 366);
+        assert!(!config::read(&path).unwrap().unwrap().hardware_acceleration);
+        let stack = vec![
+            String::from("refs/heads/integration"),
+            String::from("refs/heads/feature"),
+        ];
+        first
+            .with_store(
+                Request::SetStack {
+                    refs: stack.clone(),
+                },
+                state["snapshot"].as_u64(),
+                &mut store,
+            )
+            .unwrap();
+        first
+            .execute(
+                Request::Layout {
+                    layout: Layout::Split,
+                },
+                None,
+            )
+            .unwrap();
+        first.execute(Request::Width { width: 401 }, None).unwrap();
+        let mut next = workspace_in(dir.path());
+        let reopened = next.with_store(open(), None, &mut store).unwrap();
+        assert_eq!(reopened["stack"], json!(stack));
+        assert_eq!(reopened["width"], 401);
+        assert_eq!(reopened["diff_layout"], "split");
+        git(&["switch", "-c", "next-feature"]);
+        git(&["branch", "-d", "feature"]);
+        let reloaded = next.with_store(open(), None, &mut store).unwrap();
+        assert_eq!(
+            reloaded["stack"],
+            json!(["refs/heads/integration", "refs/heads/next-feature"])
+        );
+        git(&["switch", "integration"]);
+        git(&["branch", "-d", "next-feature"]);
+        let base_only = next.with_store(open(), None, &mut store).unwrap();
+        assert_eq!(base_only["stack"], json!(["refs/heads/integration"]));
+        assert_eq!(
+            base_only["pair"],
+            json!(["refs/heads/integration", WORKTREE])
+        );
+        git(&["switch", "-c", "next-feature"]);
+        let path = next.settings_file().unwrap();
+        let mut manual: Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
+        manual["repositories"][&root]["base_branch"] = json!("main");
+        fs::write(&path, manual.to_string()).unwrap();
+        let edited = next.with_store(open(), None, &mut store).unwrap();
+        assert_eq!(edited["stack"][0], "refs/heads/main");
+        fs::write(&path, r#"{"sidebar_width":320}"#).unwrap();
+        let explicit = next.with_store(open(), None, &mut store).unwrap();
+        assert_eq!(explicit["width"], 320);
+        fs::write(&path, b"unclosed {").unwrap();
+        let fallback = next.with_store(open(), None, &mut store).unwrap();
+        assert!(fallback["config_warning"]
+            .as_str()
+            .unwrap()
+            .contains("config.json"));
+        assert!(fallback["comparison"].is_object());
+        assert!(next.execute(Request::Width { width: 350 }, None).is_err());
+        assert_eq!(fs::read(path).unwrap(), b"unclosed {");
+    }
 
     #[test]
     fn rejects_edits_from_old_views_and_keeps_worktree_on_checkout_switch() {
@@ -493,7 +744,7 @@ mod tests {
         ]);
         fs::write(repo.join("code"), "two\n").unwrap();
         let mut store = Store::at(&dir.path().join("reviews")).unwrap();
-        let mut workspace = Workspace::default();
+        let mut workspace = workspace_in(dir.path());
         let open = |pair| Request::Open {
             path: git::path_name(&repo),
             pair,
@@ -560,7 +811,7 @@ mod tests {
         fs::write(repo.join("new.txt"), "working file").unwrap();
         let data = dir.path().join("data");
         let mut store = Store::at(&data).unwrap();
-        let mut workspace = Workspace::default();
+        let mut workspace = workspace_in(dir.path());
         let reply = workspace
             .with_store(
                 Request::Open {
@@ -585,9 +836,9 @@ mod tests {
                 &mut store,
             )
             .unwrap();
-        // A broken preferences table fails after Git and note loading finished.
+        // A broken viewed table fails after Git and note loading finished.
         let db = rusqlite::Connection::open(data.join("reviews.sqlite3")).unwrap();
-        db.execute("ALTER TABLE preferences RENAME TO missing_preferences", [])
+        db.execute("ALTER TABLE viewed RENAME TO missing_viewed", [])
             .unwrap();
         let pair = ["refs/heads/main".into(), WORKTREE.into()];
         assert!(workspace
@@ -627,7 +878,7 @@ mod tests {
             .status
             .success());
         let mut store = Store::at(&dir.path().join("data")).unwrap();
-        let mut workspace = Workspace::default();
+        let mut workspace = workspace_in(dir.path());
         let path = git::path_name(&repo);
         let result = workspace
             .with_store(
