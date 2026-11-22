@@ -1,0 +1,12 @@
+{
+  "native_binary_sha256": "94fa21213db987a786d771388a27152fcdcb331eee12e3d260ce37e7100099e8",
+  "python_package_sha256": "e7545f67c6460a923cb5cc716095f814afaad90b433422ceb6b272836fec4193",
+  "webdriver_sha256": "0e6fa75933a1328356740e6f13a415c53fd74f93f87a87d56e501fb18639096f",
+  "python": "3.14.4",
+  "tk": "8.6.17",
+  "kernel": "7.0.0-43-generic",
+  "cpu": "AMD Ryzen 9 7900X 12-Core Processor",
+  "git": "git version 2.53.0",
+  "display": "1920x1080 pixels (508x286 millimeters)",
+  "webkit_runtime_package": "2.52.6-0ubuntu0.26.04.1"
+}

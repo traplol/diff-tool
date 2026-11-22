@@ -1,0 +1,112 @@
+{
+  "valid_measurement": true,
+  "contract": "7529ee913390e226da3c376a84ae923b2a52ad1d93584325b14fe57f8ca4ecbb",
+  "binary_sha256": "94fa21213db987a786d771388a27152fcdcb331eee12e3d260ce37e7100099e8",
+  "wins": 5,
+  "total": 20,
+  "all_faster": false,
+  "worst_ratio": 4.0303,
+  "metrics": {
+    "radeon/40k-mixed/open_ms": {
+      "rust_ms": 178.39,
+      "python_ms": 132.37,
+      "faster_pairs": 0
+    },
+    "radeon/40k-mixed/to_split_ms": {
+      "rust_ms": 46.94,
+      "python_ms": 58.69,
+      "faster_pairs": 9
+    },
+    "radeon/40k-mixed/to_unified_ms": {
+      "rust_ms": 48.53,
+      "python_ms": 18.16,
+      "faster_pairs": 0
+    },
+    "radeon/40k-mixed/repeat_split_ms": {
+      "rust_ms": 49.5,
+      "python_ms": 15.97,
+      "faster_pairs": 0
+    },
+    "radeon/40k-mixed/sequence_ms": {
+      "rust_ms": 319.79,
+      "python_ms": 231.51,
+      "faster_pairs": 0
+    },
+    "radeon/4k-annotated/open_ms": {
+      "rust_ms": 88.43,
+      "python_ms": 98.01,
+      "faster_pairs": 9
+    },
+    "radeon/4k-annotated/to_split_ms": {
+      "rust_ms": 41.83,
+      "python_ms": 73.57,
+      "faster_pairs": 9
+    },
+    "radeon/4k-annotated/to_unified_ms": {
+      "rust_ms": 41.93,
+      "python_ms": 19.07,
+      "faster_pairs": 0
+    },
+    "radeon/4k-annotated/repeat_split_ms": {
+      "rust_ms": 49.34,
+      "python_ms": 15.54,
+      "faster_pairs": 0
+    },
+    "radeon/4k-annotated/sequence_ms": {
+      "rust_ms": 221.89,
+      "python_ms": 207.21,
+      "faster_pairs": 0
+    },
+    "xvfb/40k-mixed/open_ms": {
+      "rust_ms": 186.84,
+      "python_ms": 134.57,
+      "faster_pairs": 0
+    },
+    "xvfb/40k-mixed/to_split_ms": {
+      "rust_ms": 50.74,
+      "python_ms": 61.77,
+      "faster_pairs": 9
+    },
+    "xvfb/40k-mixed/to_unified_ms": {
+      "rust_ms": 48.19,
+      "python_ms": 16.37,
+      "faster_pairs": 0
+    },
+    "xvfb/40k-mixed/repeat_split_ms": {
+      "rust_ms": 47.55,
+      "python_ms": 11.89,
+      "faster_pairs": 0
+    },
+    "xvfb/40k-mixed/sequence_ms": {
+      "rust_ms": 325.42,
+      "python_ms": 223.83,
+      "faster_pairs": 0
+    },
+    "xvfb/4k-annotated/open_ms": {
+      "rust_ms": 97.08,
+      "python_ms": 95.33,
+      "faster_pairs": 3
+    },
+    "xvfb/4k-annotated/to_split_ms": {
+      "rust_ms": 44.16,
+      "python_ms": 70.06,
+      "faster_pairs": 9
+    },
+    "xvfb/4k-annotated/to_unified_ms": {
+      "rust_ms": 41.29,
+      "python_ms": 16.64,
+      "faster_pairs": 0
+    },
+    "xvfb/4k-annotated/repeat_split_ms": {
+      "rust_ms": 47.88,
+      "python_ms": 11.88,
+      "faster_pairs": 0
+    },
+    "xvfb/4k-annotated/sequence_ms": {
+      "rust_ms": 229.66,
+      "python_ms": 194.7,
+      "faster_pairs": 0
+    }
+  },
+  "v1_contract": "37a59da4d55d2cecefb1412a3d9c9d9be2234f678e6afae77ab2f441d6505b0a"
+}

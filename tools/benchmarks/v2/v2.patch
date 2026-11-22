@@ -1,0 +1,226 @@
+--- native_layout.py
++++ native_layout.py
+@@ -11,9 +11,9 @@
+ 
+ from display import capture_click
+ 
+-TOOLS = Path(__file__).resolve().parent.parent
++TOOLS = Path(__file__).resolve().parent
+ Driver = runpy.run_path(str(TOOLS / "smoke_native.py"))["Driver"]
+-PROBE = Path(__file__).with_name("native_layout_probe.js").read_text(encoding="utf-8")
++PROBE = (TOOLS.parent / "active_surface.js").read_text() + "\n" + Path(__file__).with_name("native_layout_probe.js").read_text(encoding="utf-8")
+ 
+ 
+ def evaluate(driver, script, *args):
+@@ -36,7 +36,7 @@
+ 
+ def select(driver, text, label, *, extend=False):
+     # Normal WebDriver mouse input selects the first line. Shift+Down extends it.
+-    driver.click("#diff .bl-pane:last-child .cm-line", text, False)
++    driver.click("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .bl-pane:last-child .cm-line", text, False)
+     if extend:
+         driver.script("""
+             document.activeElement.dispatchEvent(new KeyboardEvent("keydown", {
+--- native_layout_probe.js
++++ native_layout_probe.js
+@@ -1,7 +1,7 @@
+ // Injected by WebDriver into the packaged app. Elapsed times use WebKit's clock.
+ window.layoutProbe = (() => {
+   const $ = (selector) => document.querySelector(selector);
+-  const panes = () => [...document.querySelectorAll("#diff .cm-scroller")];
++  const panes = () => window.reviewSurface();
+   const rows = (pane) => [...pane.querySelectorAll(".cm-line")];
+   const frames = async (n = 2) => {
+     for (let i = 0; i < n; i++) await new Promise(requestAnimationFrame);
+@@ -90,7 +90,7 @@
+           try {
+             const ready = await new Promise((mounted) => {
+               function checkMounted() {
+-                const editors = container.querySelectorAll(".cm-content");
++                const editors = container.querySelectorAll(".cm-content:not([inert] *, [hidden] *)");
+                 if (
+                   editors.length !== expected.panes ||
+                   $("#comment").disabled ||
+@@ -101,7 +101,7 @@
+                   mounted(performance.now());
+               }
+               observer = new MutationObserver(checkMounted);
+-              observer.observe(container, { childList: true, subtree: true });
++              observer.observe(container, { childList: true, subtree: true, attributes: true, attributeFilter: ["inert", "hidden"] });
+             });
+             observer.disconnect();
+             // Two frames allow CodeMirror's deferred measurement and scroll restoration.
+--- smoke_native.py
++++ smoke_native.py
+@@ -199,7 +199,7 @@
+ 
+ def check_rapid_switch_scroll(d):
+     d.click("#file-list button", "history.txt", False)
+-    d.expect_text("#diff", "entry 0")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)", "entry 0")
+     d.click("#split")
+     d.click("#unified")
+     before, after = d.call(
+@@ -209,7 +209,7 @@
+             "script": """
+                 const done = arguments[0];
+                 const frame = () => new Promise(requestAnimationFrame);
+-                const scroller = () => document.querySelector('#diff .cm-scroller');
++                const scroller = () => document.querySelector('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .cm-scroller');
+                 (async () => {
+                     await frame();
+                     await frame();
+@@ -234,48 +234,51 @@
+ 
+ def exercise(d, repo, screenshot):
+     d.expect_text("#repo-name", "relay")
++    d.script((Path(__file__).resolve().parent.parent / "active_surface.js").read_text())
+     d.expect_text("#stack", "feature/policy")
+     d.expect_text("#stack", "feature/metrics")
+     d.click("[data-tab=Changes]")
+-    d.expect_text("#diff", "capacity = three")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)", "capacity = three")
+     check_layouts(d)
+-    d.script("window.originalUnified = document.querySelector('#diff .cm-content')")
++    d.script("window.originalUnified = document.querySelector('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .cm-content')")
+     d.click("#split")
+-    d.wait("document.querySelectorAll('#diff .cm-content').length === 2")
++    d.wait("document.querySelectorAll('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .cm-content').length === 2")
++    d.script("window.reviewSurface(2)")
+     d.script(
+-        "window.originalSplit = [...document.querySelectorAll('#diff .cm-content')]"
+-    )
+-    d.click("#diff .cm-line", "capacity = three", False)
++        "window.originalSplit = [...document.querySelectorAll('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .cm-content')]"
++    )
++    d.click("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .cm-line", "capacity = three", False)
+     d.wait("document.querySelector('#suggest').disabled === false")
+     d.click("#unified")
+-    d.wait("document.querySelectorAll('#diff .cm-content').length === 1")
++    d.wait("document.querySelectorAll('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .cm-content').length === 1")
++    d.script("window.reviewSurface(1)")
+     assert d.script(
+-        "return document.querySelector('#diff .cm-content') === window.originalUnified"
++        "return document.querySelector('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .cm-content') === window.originalUnified"
+     ), "Returning to unified recreated its editor"
+-    d.expect_text("#diff .bl-row-picked", "capacity = three")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .bl-row-picked", "capacity = three")
+     d.wait("document.querySelector('#suggest').disabled === false")
+     d.click("#viewed")
+     d.wait("document.querySelector('#viewed').checked")
+     d.click("#comment")
+     d.fill("dialog textarea", "Confirm the metrics capacity")
+     d.click("#dialog-actions button", "Save", False)
+-    d.expect_text("#diff", "Confirm the metrics capacity")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)", "Confirm the metrics capacity")
+     if screenshot:
+         screenshot.parent.mkdir(parents=True, exist_ok=True)
+         screenshot.write_bytes(base64.b64decode(d.call("GET", "/screenshot")))
+-    d.click("#diff .bl-row-del")
++    d.click("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .bl-row-del")
+     d.click("#split")
+     assert d.script("""
+-        const panes = document.querySelectorAll('#diff .cm-content');
++        const panes = document.querySelectorAll('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .cm-content');
+         return panes.length === 2 && window.originalSplit.every((pane, i) => pane === panes[i]);
+     """), "Returning to split recreated an editor"
+-    d.find("#diff .bl-row-del.bl-row-picked")
+-    d.wait("!document.querySelector('#diff .bl-row-add.bl-row-picked')")
+-    d.expect_text("#diff [data-note] .bl-body", "Confirm the metrics capacity")
+-    d.click("#diff [data-note] .bl-disclosure")
++    d.find("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .bl-row-del.bl-row-picked")
++    d.wait("!document.querySelector('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .bl-row-add.bl-row-picked')")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) [data-note] .bl-body", "Confirm the metrics capacity")
++    d.click("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) [data-note] .bl-disclosure")
+     d.click("#unified")
+     d.wait(
+-        "document.querySelector('#diff [data-note] .bl-disclosure')?.getAttribute('aria-expanded') === 'false'"
++        "document.querySelector('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) [data-note] .bl-disclosure')?.getAttribute('aria-expanded') === 'false'"
+     )
+     check_rapid_switch_scroll(d)
+     d.click("[data-tab='Comments']")
+@@ -289,10 +292,10 @@
+     d.expect_text("#note-table", "Use the documented metrics capacity")
+     d.click("#note-table tbody td", "Use the documented metrics capacity", False)
+     d.click("#show-diff")
+-    d.expect_text("#diff", "Use the documented metrics capacity")
+-    d.click("#diff [data-note] button", "Resolve")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)", "Use the documented metrics capacity")
++    d.click("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) [data-note] button", "Resolve")
+     d.wait(
+-        "document.querySelector('#diff [data-note] .bl-disclosure')?.getAttribute('aria-expanded') === 'false'"
++        "document.querySelector('#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) [data-note] .bl-disclosure')?.getAttribute('aria-expanded') === 'false'"
+     )
+     d.click("[data-tab='Comments']")
+     d.wait(
+@@ -319,28 +322,28 @@
+     for group in ("Staged", "Unstaged", "Untracked"):
+         d.expect_text("#file-list", group)
+     d.click("#file-list button", "new.txt", False)
+-    d.expect_text("#diff", "review this line")
+-    d.click("#diff .cm-line", "review this line", False)
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)", "review this line")
++    d.click("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) .cm-line", "review this line", False)
+     d.click("#suggest")
+     d.wait("document.querySelectorAll('dialog[open] textarea').length === 2")
+     d.fill("#dialog-body label:first-of-type textarea", "revised suggestion")
+     d.fill("#dialog-body label:last-of-type textarea", "A suggestion to follow")
+     d.click("#dialog-actions button", "Save suggestion")
+-    d.expect_text("#diff", "revised suggestion")
+-    d.click("#diff [data-note] button", "Apply to working file")
+-    d.expect_text("#diff", "Applied to working file")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)", "revised suggestion")
++    d.click("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *) [data-note] button", "Apply to working file")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)", "Applied to working file")
+     assert (repo / "new.txt").read_text(encoding="utf-8") == "revised suggestion\n"
+     git(repo, "add", "new.txt")
+     d.click("#refresh")
+     d.wait("!document.querySelector('#file-list').innerText.includes('Untracked')")
+     d.click("#file-list button", "new.txt", False)
+-    d.expect_text("#diff", "Applied to working file")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)", "Applied to working file")
+     git(repo, "commit", "-qm", "Apply reviewed suggestion")
+     d.click("#refresh")
+     d.wait("!document.querySelector('#file-list').innerText.includes('new.txt')")
+     d.click("#pair option", "Full stack", False)
+     d.click("#file-list button", "new.txt", False)
+-    d.expect_text("#diff", "A suggestion to follow")
++    d.expect_text("#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)", "A suggestion to follow")
+     d.click("#export")
+     d.preview(includes=["A suggestion to follow", "Committed in", "revised suggestion"])
+     d.click("dialog input[type=checkbox]")
+--- compare_layouts.py
++++ compare_layouts.py
+@@ -13,11 +13,15 @@
+ import zipfile
+ from pathlib import Path
+ 
++sys.path.insert(1, str(Path(__file__).resolve().parent.parent))
++import prepare as retained
++sys.path.insert(2, str(retained.BENCH))
++
+ from native_layout import sample as native_sample
+ from python_layout import prepare
+ from python_layout import sample as python_sample
+ 
+-ROOT = Path(__file__).resolve().parents[2]
++ROOT = retained.ROOT
+ PHASES = ("open_ms", "to_split_ms", "to_unified_ms", "repeat_split_ms")
+ 
+ 
+@@ -119,6 +123,7 @@
+         help="Measured pairs per fixture, after one warmup pair",
+     )
+     args = p.parse_args()
++    contract = retained.verify_generated()
+     if args.iterations < 1:
+         p.error("--iterations must be positive")
+     output, binary, driver = (
+@@ -181,6 +186,7 @@
+                     print(json.dumps(row), file=stream, flush=True)
+     summary = summarize(rows)
+     (output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
++    (output / "series.json").write_text(json.dumps({"contract": contract, "samples_sha256": digest(output / "samples.jsonl")}) + "\n")
+     print(json.dumps(summary, indent=2))
+ 
+ 

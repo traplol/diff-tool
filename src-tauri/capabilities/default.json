@@ -1,0 +1,6 @@
+{
+  "identifier": "main",
+  "description": "Local Branchline review window",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

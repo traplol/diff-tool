@@ -1,0 +1,111 @@
+{
+  "valid_measurement": true,
+  "contract": "37a59da4d55d2cecefb1412a3d9c9d9be2234f678e6afae77ab2f441d6505b0a",
+  "binary_sha256": "960db2608b4b47c09f7b7bb62192bd22c3800a0b2a9f9b2454933b798c5a34dd",
+  "wins": 14,
+  "total": 20,
+  "all_faster": false,
+  "worst_ratio": 1.4124,
+  "metrics": {
+    "radeon/40k-mixed/open_ms": {
+      "rust_ms": 81.94,
+      "python_ms": 135.8,
+      "faster_pairs": 9
+    },
+    "radeon/40k-mixed/to_split_ms": {
+      "rust_ms": 38.78,
+      "python_ms": 60.64,
+      "faster_pairs": 9
+    },
+    "radeon/40k-mixed/to_unified_ms": {
+      "rust_ms": 18.41,
+      "python_ms": 19.53,
+      "faster_pairs": 3
+    },
+    "radeon/40k-mixed/repeat_split_ms": {
+      "rust_ms": 16.86,
+      "python_ms": 16.53,
+      "faster_pairs": 3
+    },
+    "radeon/40k-mixed/sequence_ms": {
+      "rust_ms": 154.42,
+      "python_ms": 234.63,
+      "faster_pairs": 9
+    },
+    "radeon/4k-annotated/open_ms": {
+      "rust_ms": 41.42,
+      "python_ms": 97.29,
+      "faster_pairs": 9
+    },
+    "radeon/4k-annotated/to_split_ms": {
+      "rust_ms": 32.54,
+      "python_ms": 73.4,
+      "faster_pairs": 9
+    },
+    "radeon/4k-annotated/to_unified_ms": {
+      "rust_ms": 15.53,
+      "python_ms": 19.54,
+      "faster_pairs": 5
+    },
+    "radeon/4k-annotated/repeat_split_ms": {
+      "rust_ms": 16.18,
+      "python_ms": 15.43,
+      "faster_pairs": 2
+    },
+    "radeon/4k-annotated/sequence_ms": {
+      "rust_ms": 109.15,
+      "python_ms": 205.82,
+      "faster_pairs": 9
+    },
+    "xvfb/40k-mixed/open_ms": {
+      "rust_ms": 79.84,
+      "python_ms": 131.42,
+      "faster_pairs": 9
+    },
+    "xvfb/40k-mixed/to_split_ms": {
+      "rust_ms": 37.6,
+      "python_ms": 56.12,
+      "faster_pairs": 9
+    },
+    "xvfb/40k-mixed/to_unified_ms": {
+      "rust_ms": 21.66,
+      "python_ms": 15.4,
+      "faster_pairs": 1
+    },
+    "xvfb/40k-mixed/repeat_split_ms": {
+      "rust_ms": 16.23,
+      "python_ms": 11.81,
+      "faster_pairs": 0
+    },
+    "xvfb/40k-mixed/sequence_ms": {
+      "rust_ms": 156.61,
+      "python_ms": 216.8,
+      "faster_pairs": 9
+    },
+    "xvfb/4k-annotated/open_ms": {
+      "rust_ms": 41.55,
+      "python_ms": 61.44,
+      "faster_pairs": 9
+    },
+    "xvfb/4k-annotated/to_split_ms": {
+      "rust_ms": 32.62,
+      "python_ms": 66.84,
+      "faster_pairs": 9
+    },
+    "xvfb/4k-annotated/to_unified_ms": {
+      "rust_ms": 22.74,
+      "python_ms": 16.1,
+      "faster_pairs": 1
+    },
+    "xvfb/4k-annotated/repeat_split_ms": {
+      "rust_ms": 16.02,
+      "python_ms": 11.68,
+      "faster_pairs": 0
+    },
+    "xvfb/4k-annotated/sequence_ms": {
+      "rust_ms": 113.73,
+      "python_ms": 154.82,
+      "faster_pairs": 9
+    }
+  }
+}

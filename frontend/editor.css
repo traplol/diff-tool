@@ -1,0 +1,262 @@
+.bl-diff {
+  --diff-rule: #d9e1da;
+  --diff-add: #e6f5e8;
+  --diff-del: #fbecea;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #fff;
+  color: #25352b;
+}
+.bl-diff:not([inert]) {
+  z-index: 1;
+}
+.bl-diff.bl-split {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.bl-pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  container-type: inline-size;
+}
+.bl-pane + .bl-pane {
+  border-left: 1px solid var(--diff-rule);
+}
+.bl-pane-heading {
+  padding: 5px 12px;
+  background: #f5f7f3;
+  color: #526757;
+  border-bottom: 1px solid var(--diff-rule);
+  font:
+    600 0.72rem/1.5 "IBM Plex Mono",
+    Consolas,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.bl-diff .cm-editor {
+  flex: 1 1 0;
+  min-height: 0;
+  min-width: 0;
+}
+.bl-diff .cm-editor.cm-focused {
+  outline: none;
+}
+.bl-diff .cm-scroller {
+  overflow: auto;
+  scrollbar-gutter: stable;
+  font:
+    13px/21px "IBM Plex Mono",
+    "Cascadia Mono",
+    Consolas,
+    "DejaVu Sans Mono",
+    monospace;
+  overscroll-behavior: contain;
+}
+.bl-diff .cm-content {
+  padding: 0;
+  caret-color: transparent;
+}
+.bl-diff .cm-line {
+  padding: 0 9px;
+}
+.bl-diff .cm-gutters {
+  background: #f6f8f4;
+  color: #607368;
+  border-right: 1px solid var(--diff-rule);
+}
+.bl-diff .cm-gutterElement {
+  padding: 0 6px;
+  white-space: pre;
+  cursor: pointer;
+}
+.bl-row-add {
+  background: var(--diff-add);
+}
+.bl-row-del {
+  background: var(--diff-del);
+}
+.bl-row-gap {
+  background: repeating-linear-gradient(135deg, #f6f7f5 0 4px, #f0f2ef 4px 5px);
+}
+.bl-row-hunk,
+.bl-row-meta {
+  color: #66796c;
+  background: #eff3f0;
+}
+.bl-diff .bl-row-picked {
+  background: #d7eaf7;
+  box-shadow: inset 2px 0 #4e839f;
+}
+.bl-token-keyword {
+  color: #76467d;
+}
+.bl-token-string {
+  color: #236347;
+}
+.bl-token-comment {
+  color: #677a6b;
+}
+.bl-comments {
+  box-sizing: border-box;
+  width: min(44rem, 100%);
+  max-width: calc(100cqw - 10ch - 30px);
+  padding: 4px 6px;
+  color: #26392e;
+  font:
+    13px/1.45 Inter,
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+  white-space: normal;
+}
+.bl-split .bl-comments {
+  max-width: calc(100cqw - 6ch - 30px);
+}
+.bl-spacer {
+  visibility: hidden;
+  pointer-events: none;
+}
+.bl-card {
+  padding: 6px 10px;
+  border: 1px solid #cbdbce;
+  border-left: 3px solid #76a882;
+  background: #f5f9f4;
+  border-radius: 5px;
+}
+.bl-card + .bl-card {
+  margin-top: 4px;
+}
+.bl-card-head,
+.bl-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 9px;
+}
+.bl-location,
+.bl-applied {
+  color: #526858;
+  font-size: 12px;
+}
+.bl-card button,
+.bl-diff-empty button {
+  width: auto;
+  height: auto;
+  min-height: 24px;
+  padding: 2px 5px;
+  background: transparent;
+  color: #265b3b;
+  border: 0;
+  border-radius: 3px;
+  font: inherit;
+  cursor: pointer;
+}
+.bl-card button:hover,
+.bl-diff-empty button:hover {
+  background: #e2eddf;
+}
+.bl-card button:focus-visible,
+.bl-diff-menu button:focus-visible {
+  outline: 2px solid #34774a;
+  outline-offset: -2px;
+}
+.bl-card .bl-disclosure {
+  padding-left: 0;
+  font-weight: 650;
+}
+.bl-disclosure::before {
+  content: "";
+  display: inline-block;
+  margin-right: 5px;
+  border-block: 0.31em solid transparent;
+  border-inline-start: 0.47em solid currentColor;
+  vertical-align: 0.04em;
+}
+.bl-disclosure[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+.bl-body,
+.bl-before,
+.bl-after {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 4px 0;
+}
+.bl-before,
+.bl-after {
+  padding: 4px 7px;
+  font:
+    12px/1.5 "IBM Plex Mono",
+    Consolas,
+    monospace;
+}
+.bl-before {
+  color: #853d3d;
+  background: var(--diff-del);
+  border-inline-start: 2px solid #cf8985;
+}
+.bl-after {
+  color: #285a39;
+  background: var(--diff-add);
+  border-inline-start: 2px solid #78a87e;
+}
+.bl-card-actions {
+  border-top: 1px solid #dde7db;
+  padding-top: 4px;
+  margin-top: 5px;
+}
+.bl-diff-menu {
+  position: fixed;
+  z-index: 200;
+  min-width: 155px;
+  display: grid;
+  padding: 4px;
+  border: 1px solid #c7d4c9;
+  border-radius: 6px;
+  background: white;
+  color: #24362a;
+  box-shadow: 0 8px 25px #2139292b;
+}
+.bl-diff-menu button {
+  background: transparent;
+  border: 0;
+  text-align: left;
+  border-radius: 3px;
+  padding: 5px 8px;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+.bl-diff-menu button:hover:enabled,
+.bl-diff-menu button:focus-visible {
+  background: #e4f0e0;
+}
+.bl-diff-menu button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.bl-diff-empty {
+  padding: 18px;
+  overflow: auto;
+}
+.bl-diff-empty h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+.bl-diff-empty p {
+  margin: 5px 0 10px;
+}
+.bl-diff-empty .bl-comments {
+  max-width: 100%;
+  padding-left: 0;
+}

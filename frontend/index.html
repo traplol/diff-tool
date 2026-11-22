@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Branchline</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <aside id="sidebar">
+        <div class="brand">
+          <span class="logomark" aria-hidden="true">⑂</span>Branchline
+        </div>
+        <section>
+          <h2>Repository</h2>
+          <button
+            id="choose"
+            class="repo-button"
+            title="Open a Git repository (Ctrl+O)"
+          >
+            <span id="repo-name">Open repository</span
+            ><span aria-hidden="true">⌄</span>
+          </button>
+        </section>
+        <nav id="nav" aria-label="Review">
+          <h2>Review</h2>
+          <button data-tab="Changes">
+            <span aria-hidden="true">▤</span> Changes <small></small>
+          </button>
+          <button data-tab="Commits">
+            <span aria-hidden="true">⑂</span> Commits
+          </button>
+          <button data-tab="Comments">
+            <span aria-hidden="true">▢</span> Comments <small></small>
+          </button>
+        </nav>
+        <section class="stack-area">
+          <h2>Branch stack</h2>
+          <ol id="stack"></ol>
+          <button id="edit-stack" class="side-tool">Edit stack…</button>
+        </section>
+        <button id="refresh" class="side-tool bottom">↻ &nbsp; Refresh</button>
+      </aside>
+      <div
+        id="divider"
+        role="separator"
+        tabindex="0"
+        aria-label="Resize sidebar"
+        aria-orientation="vertical"
+      ></div>
+      <main>
+        <header>
+          <div>
+            Workspace <span class="slash">/</span>
+            <strong id="crumb">Local review</strong>
+          </div>
+          <button id="export" class="primary">Export Markdown</button>
+        </header>
+        <div id="welcome">
+          <h1>Open a repository</h1>
+          <p>Review a branch stack or the changes in your working tree.</p>
+          <button class="primary" id="welcome-open">Choose directory…</button>
+        </div>
+        <div id="workspace" hidden>
+          <section class="title">
+            <h1 id="page-title">Changes</h1>
+            <div class="comparison-bar">
+              <select id="pair" aria-label="Comparison"></select
+              ><span id="range"></span>
+            </div>
+          </section>
+          <div id="changes" class="page" hidden>
+            <section class="files">
+              <div class="files-heading">
+                <strong>Changed files</strong><span id="progress"></span>
+              </div>
+              <input
+                id="filter"
+                type="search"
+                aria-label="Filter changed files"
+                placeholder="Filter files…"
+              />
+              <div id="file-list" role="group" aria-label="Changed files"></div>
+            </section>
+            <section class="patch">
+              <div class="file-toolbar">
+                <strong id="filename">Select a file</strong
+                ><span id="file-stats"></span>
+                <div class="segment">
+                  <button id="unified">Unified</button
+                  ><button id="split">Split</button>
+                </div>
+                <label><input type="checkbox" id="viewed" /> Viewed</label>
+              </div>
+              <div id="diff"></div>
+              <div class="diff-actions">
+                <span id="selection">Whole file</span
+                ><button id="comment">Comment</button
+                ><button id="suggest">Suggest change</button>
+              </div>
+            </section>
+          </div>
+          <section id="commits" class="page panel" hidden>
+            <div class="panel-tools">
+              <strong id="commits-title">Commits</strong
+              ><button id="fit">Fit columns to content</button>
+            </div>
+            <div class="table-wrap">
+              <table id="commit-table">
+                <thead>
+                  <tr>
+                    <th>Commit message</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                    <th>Commit</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+          <section id="comments" class="page panel" hidden>
+            <div class="panel-tools">
+              <strong id="comments-title">Comments</strong>
+              <div class="segment" id="filters">
+                <button>Open</button><button>Resolved</button
+                ><button>All</button>
+              </div>
+              <select id="scope" aria-label="Comment scope">
+                <option value="current">Current stack</option>
+                <option value="all">Entire repository</option>
+              </select>
+            </div>
+            <div class="table-wrap">
+              <table id="note-table">
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th id="comparison-column" hidden>Comparison</th>
+                    <th>Lines</th>
+                    <th>Status</th>
+                    <th>Comment</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="panel-footer">
+              <button id="open-comment">Open comment</button
+              ><button id="show-diff">Show in diff</button
+              ><button id="toggle-resolved">Resolve</button>
+            </div>
+          </section>
+        </div>
+        <footer>
+          <span class="local"><i></i>Local Git</span
+          ><span id="status" role="status"></span>
+        </footer>
+      </main>
+    </div>
+    <dialog id="dialog">
+      <form method="dialog" class="dialog-top">
+        <h2></h2>
+        <button aria-label="Close" title="Close">×</button>
+      </form>
+      <div id="dialog-body"></div>
+      <div id="dialog-error" role="alert"></div>
+      <div id="dialog-actions"></div>
+    </dialog>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

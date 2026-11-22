@@ -1,0 +1,223 @@
+{
+  "contract": "7529ee913390e226da3c376a84ae923b2a52ad1d93584325b14fe57f8ca4ecbb",
+  "binary_sha256": {
+    "software": "d0892b279f70886429c144baff4e4cacef53c3b33ba6808e25c79c74198f45d1",
+    "accelerated": "550aa22b5fe3dca253a354c8ba6aecf909c2293e5b6d2b0535a77aeb4b2526fb"
+  },
+  "paired_repetitions": 9,
+  "warmup_pairs": 1,
+  "display": "60 Hz Gamescope with a private Xwayland display on AMD Radeon RX 7900 XT",
+  "webkitgtk": "2.52.6",
+  "comparison": "Packaged X11 software path versus the same source with the WebKit policy setter changed from Never to Always. The existing idle paint hook runs only when WebKit reports Never.",
+  "wall_clock": "Real mouse click to stable sampled pixels. Both builds use the v2 native probe. Each pair uses the same Git fixture. Order alternates by fixture and repetition.",
+  "medians_ms": {
+    "4k-annotated": {
+      "open_ms": {
+        "software": 45.31,
+        "accelerated": 73.1,
+        "software_faster_pairs": 9
+      },
+      "to_split_ms": {
+        "software": 33.98,
+        "accelerated": 49.83,
+        "software_faster_pairs": 9
+      },
+      "to_unified_ms": {
+        "software": 16.83,
+        "accelerated": 36.96,
+        "software_faster_pairs": 9
+      },
+      "repeat_split_ms": {
+        "software": 13.17,
+        "accelerated": 47.17,
+        "software_faster_pairs": 9
+      },
+      "sequence_ms": {
+        "software": 106.91,
+        "accelerated": 207.16,
+        "software_faster_pairs": 9
+      }
+    },
+    "40k-mixed": {
+      "open_ms": {
+        "software": 83.74,
+        "accelerated": 116.73,
+        "software_faster_pairs": 9
+      },
+      "to_split_ms": {
+        "software": 36.67,
+        "accelerated": 43.93,
+        "software_faster_pairs": 9
+      },
+      "to_unified_ms": {
+        "software": 11.41,
+        "accelerated": 47.46,
+        "software_faster_pairs": 9
+      },
+      "repeat_split_ms": {
+        "software": 15.03,
+        "accelerated": 46.18,
+        "software_faster_pairs": 9
+      },
+      "sequence_ms": {
+        "software": 146.77,
+        "accelerated": 251.06,
+        "software_faster_pairs": 9
+      }
+    }
+  },
+  "warmup_drm_counters": {
+    "40k-mixed-accelerated": {
+      "root_pid": 1452776,
+      "webkit_processes": {
+        "1454359": "WebKitWebProces"
+      },
+      "clients": [
+        {
+          "pid": 1454359,
+          "process": "WebKitWebProces",
+          "node": "/dev/dri/renderD128",
+          "pci": "0000:03:00.0",
+          "driver": "amdgpu",
+          "client": "18845",
+          "first_monotonic_ns": 427754453926613,
+          "first_gfx_ns": 185029,
+          "samples": 18,
+          "last_monotonic_ns": 427756195655975,
+          "last_gfx_ns": 16500881,
+          "delta_gfx_ns": 16315852
+        }
+      ],
+      "errors": []
+    },
+    "40k-mixed-software": {
+      "root_pid": 1452776,
+      "webkit_processes": {
+        "1454145": "WebKitWebProces",
+        "1454238": "WebKitWebProces"
+      },
+      "clients": [
+        {
+          "pid": 1454145,
+          "process": "WebKitWebProces",
+          "node": "/dev/dri/renderD128",
+          "pci": "0000:03:00.0",
+          "driver": "amdgpu",
+          "client": "18810",
+          "first_monotonic_ns": 427751843572051,
+          "first_gfx_ns": 0,
+          "samples": 18,
+          "last_monotonic_ns": 427753582280142,
+          "last_gfx_ns": 0,
+          "delta_gfx_ns": 0
+        }
+      ],
+      "errors": []
+    },
+    "4k-annotated-accelerated": {
+      "root_pid": 1452776,
+      "webkit_processes": {
+        "1453032": "WebKitWebProces"
+      },
+      "clients": [
+        {
+          "pid": 1453032,
+          "process": "WebKitWebProces",
+          "node": "/dev/dri/renderD128",
+          "pci": "0000:03:00.0",
+          "driver": "amdgpu",
+          "client": "18740",
+          "first_monotonic_ns": 427745544079486,
+          "first_gfx_ns": 40958,
+          "samples": 24,
+          "last_monotonic_ns": 427747899650407,
+          "last_gfx_ns": 17884171,
+          "delta_gfx_ns": 17843213
+        }
+      ],
+      "errors": []
+    },
+    "4k-annotated-software": {
+      "root_pid": 1452776,
+      "webkit_processes": {
+        "1453616": "WebKitWebProces"
+      },
+      "clients": [
+        {
+          "pid": 1453616,
+          "process": "WebKitWebProces",
+          "node": "/dev/dri/renderD128",
+          "pci": "0000:03:00.0",
+          "driver": "amdgpu",
+          "client": "18775",
+          "first_monotonic_ns": 427748723344439,
+          "first_gfx_ns": 0,
+          "samples": 23,
+          "last_monotonic_ns": 427750972490931,
+          "last_gfx_ns": 0,
+          "delta_gfx_ns": 0
+        }
+      ],
+      "errors": []
+    }
+  },
+  "previous_run": {
+    "medians_ms": {
+      "4k-annotated": {
+        "open_ms": {
+          "software": 43.2,
+          "accelerated": 74.85,
+          "software_faster_pairs": 9
+        },
+        "to_split_ms": {
+          "software": 35.42,
+          "accelerated": 51.54,
+          "software_faster_pairs": 9
+        },
+        "to_unified_ms": {
+          "software": 12.98,
+          "accelerated": 38.0,
+          "software_faster_pairs": 9
+        },
+        "repeat_split_ms": {
+          "software": 11.97,
+          "accelerated": 47.13,
+          "software_faster_pairs": 9
+        },
+        "sequence_ms": {
+          "software": 105.76,
+          "accelerated": 210.09,
+          "software_faster_pairs": 9
+        }
+      },
+      "40k-mixed": {
+        "open_ms": {
+          "software": 83.72,
+          "accelerated": 117.15,
+          "software_faster_pairs": 9
+        },
+        "to_split_ms": {
+          "software": 36.39,
+          "accelerated": 46.94,
+          "software_faster_pairs": 8
+        },
+        "to_unified_ms": {
+          "software": 12.0,
+          "accelerated": 45.89,
+          "software_faster_pairs": 9
+        },
+        "repeat_split_ms": {
+          "software": 12.52,
+          "accelerated": 44.59,
+          "software_faster_pairs": 9
+        },
+        "sequence_ms": {
+          "software": 144.94,
+          "accelerated": 252.33,
+          "software_faster_pairs": 9
+        }
+      }
+    },
+    "status": "All timed samples and checks completed. The wrapper failed during removal of the temporary desktop portal mount. The primary results above come from the clean confirmation."
+  }
+}

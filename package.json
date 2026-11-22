@@ -1,0 +1,21 @@
+{
+  "name": "branchline",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite frontend --host 127.0.0.1 --port 1420 --strictPort",
+    "build": "vite build frontend --outDir ../dist/web --emptyOutDir",
+    "tauri": "tauri",
+    "test": "node --test frontend/*.test.js"
+  },
+  "dependencies": {
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.38.0",
+    "@tauri-apps/api": "2.11.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "vite": "^6.4.1"
+  }
+}
