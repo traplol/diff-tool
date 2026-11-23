@@ -6,9 +6,11 @@ use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 use std::ffi::{OsStr, OsString};
 use std::fs;
-use std::io::Write;
+use std::io::{self, BufRead, Read, Write};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
+use std::sync::mpsc::{self, Receiver, RecvTimeoutError};
+use std::time::Duration;
 
 pub const EMPTY: &str = ":empty:";
 pub const WORKTREE: &str = ":worktree:";
@@ -514,9 +516,10 @@ fn valid_oid(oid: &str) -> bool {
     matches!(oid.len(), 40 | 64) && oid.bytes().all(|b| b.is_ascii_hexdigit())
 }
 
-fn parse_changes(data: &[u8], skip_stale_stats: bool) -> Result<Vec<Change>> {
+fn parse_raw_changes<'a>(
+    it: &mut std::iter::Peekable<impl Iterator<Item = &'a [u8]>>,
+) -> Result<Vec<Change>> {
     let bad = "Git returned incomplete file summary data. Refresh the review.";
-    let mut it = data.split(|&b| b == 0).peekable();
     let mut files = Vec::new();
     while it.peek().is_some_and(|p| p.starts_with(b":")) {
         let meta = std::str::from_utf8(&it.next().unwrap()[1..]).map_err(|_| bad)?;
@@ -545,6 +548,13 @@ fn parse_changes(data: &[u8], skip_stale_stats: bool) -> Result<Vec<Change>> {
             local_sections: vec![],
         });
     }
+    Ok(files)
+}
+
+fn parse_changes(data: &[u8], skip_stale_stats: bool) -> Result<Vec<Change>> {
+    let bad = "Git returned incomplete file summary data. Refresh the review.";
+    let mut it = data.split(|&b| b == 0).peekable();
+    let files = parse_raw_changes(&mut it)?;
     let mut counts = HashMap::new();
     while let Some(entry) = it.next() {
         if entry.is_empty() {
@@ -951,6 +961,254 @@ fn patch_lines(chunks: &[&[u8]]) -> Vec<Line> {
 
 pub fn patch(repo: &Repository, c: &Comparison, file: &Change) -> Result<Vec<Line>> {
     with_patch_sections(repo, c, file, patch_lines)
+}
+
+struct PatchReader<'a> {
+    receiver: Receiver<io::Result<Vec<u8>>>,
+    bytes: Vec<u8>,
+    offset: usize,
+    cancelled: &'a dyn Fn() -> bool,
+}
+
+impl BufRead for PatchReader<'_> {
+    fn fill_buf(&mut self) -> io::Result<&[u8]> {
+        loop {
+            if (self.cancelled)() {
+                return Err(io::Error::other("Search superseded."));
+            }
+            if self.offset < self.bytes.len() {
+                return Ok(&self.bytes[self.offset..]);
+            }
+            match self.receiver.recv_timeout(Duration::from_millis(20)) {
+                Ok(bytes) => {
+                    self.bytes = bytes?;
+                    self.offset = 0;
+                }
+                Err(RecvTimeoutError::Timeout) => {}
+                Err(RecvTimeoutError::Disconnected) => return Ok(&[]),
+            }
+        }
+    }
+
+    fn consume(&mut self, amount: usize) {
+        self.offset = (self.offset + amount).min(self.bytes.len());
+    }
+}
+
+impl Read for PatchReader<'_> {
+    fn read(&mut self, output: &mut [u8]) -> io::Result<usize> {
+        let bytes = self.fill_buf()?;
+        let count = bytes.len().min(output.len());
+        output[..count].copy_from_slice(&bytes[..count]);
+        self.consume(count);
+        Ok(count)
+    }
+}
+
+fn visit_patch_line(
+    file: &Change,
+    row: &mut usize,
+    decoder: &mut patch_data::Decoder,
+    bytes: &[u8],
+    visit: &mut impl FnMut(&Change, usize, &Line) -> Result<bool>,
+) -> Result<bool> {
+    let mut result = Ok(true);
+    decoder.line(
+        &String::from_utf8_lossy(bytes),
+        |kind, text, old, new, hunk| {
+            result = visit(
+                file,
+                *row,
+                &Line {
+                    kind: kind.into(),
+                    text: text.into(),
+                    old: matches!(kind, "-" | " ").then_some(old),
+                    new: matches!(kind, "+" | " ").then_some(new),
+                    hunk,
+                },
+            );
+            *row += 1;
+        },
+    );
+    result
+}
+
+fn read_branch_patches(
+    output: &mut impl BufRead,
+    c: &Comparison,
+    visit: &mut impl FnMut(&Change, usize, &Line) -> Result<bool>,
+) -> Result<bool> {
+    let bad = "Git returned inconsistent review patches. Refresh the review.";
+    let mut header = Vec::new();
+    loop {
+        let start = header.len();
+        if output
+            .read_until(0, &mut header)
+            .map_err(|e| e.to_string())?
+            == 0
+        {
+            return Err(bad.into());
+        }
+        if header.len() == start + 1 {
+            break;
+        }
+    }
+    let files = parse_raw_changes(&mut header[..header.len() - 1].split(|&b| b == 0).peekable())?;
+    let mut expected: HashMap<_, _> = c
+        .files
+        .iter()
+        .map(|file| ((file.old.as_str(), file.path.as_str()), file))
+        .collect();
+    let mut ordered = Vec::new();
+    for file in &files {
+        let original = expected
+            .remove(&(file.old.as_str(), file.path.as_str()))
+            .ok_or(bad)?;
+        if file.status != original.status
+            || file.old_mode != original.old_mode
+            || file.mode != original.mode
+            || file.old_oid != original.old_oid
+            || file.oid != original.oid
+        {
+            return Err(bad.into());
+        }
+        ordered.push(original);
+    }
+    if !expected.is_empty() || ordered.len() != c.files.len() {
+        return Err(bad.into());
+    }
+    drop(files);
+    drop(header);
+    let mut next = 0;
+    let mut remaining = 0;
+    let mut row = 0;
+    let mut decoder = patch_data::Decoder::default();
+    let mut line = Vec::new();
+    loop {
+        line.clear();
+        if output
+            .read_until(b'\n', &mut line)
+            .map_err(|e| e.to_string())?
+            == 0
+        {
+            break;
+        }
+        let bytes = line.strip_suffix(b"\n").unwrap_or(&line);
+        if bytes.starts_with(b"diff --git ") {
+            if remaining == 0 {
+                let file = ordered.get(next).ok_or(bad)?;
+                next += 1;
+                remaining = if file.status == "T" { 2 } else { 1 };
+                row = 0;
+                decoder = patch_data::Decoder::default();
+            }
+            remaining -= 1;
+            decoder.section();
+        }
+        let file = next
+            .checked_sub(1)
+            .and_then(|i| ordered.get(i))
+            .ok_or(bad)?;
+        if file.added.is_some()
+            && file.removed.is_some()
+            && !visit_patch_line(file, &mut row, &mut decoder, bytes, visit)?
+        {
+            return Ok(false);
+        }
+    }
+    if next != ordered.len() || remaining != 0 {
+        return Err(bad.into());
+    }
+    Ok(true)
+}
+
+// Stream a branch with one Git process. Keep at most a few read buffers and one
+// physical line, so an early hit never materializes the rest of a large patch.
+// Working-tree sections already belong to the frozen comparison.
+pub fn visit_patches(
+    repo: &Repository,
+    c: &Comparison,
+    cancelled: &dyn Fn() -> bool,
+    mut visit: impl FnMut(&Change, usize, &Line) -> Result<bool>,
+) -> Result<()> {
+    if cancelled() {
+        return Err("Search superseded.".into());
+    }
+    if c.files.is_empty() {
+        return Ok(());
+    }
+    if c.right == WORKTREE {
+        for file in &c.files {
+            if file.added.is_none() || file.removed.is_none() {
+                continue;
+            }
+            let mut decoder = patch_data::Decoder::default();
+            let mut row = 0;
+            for section in &file.local_sections {
+                decoder.section();
+                for bytes in section.split(|&b| b == b'\n') {
+                    if cancelled() {
+                        return Err("Search superseded.".into());
+                    }
+                    if !visit_patch_line(file, &mut row, &mut decoder, bytes, &mut visit)? {
+                        return Ok(());
+                    }
+                }
+            }
+        }
+        return Ok(());
+    }
+    let child = command(&repo.root)?
+        .args(PATCH_ARGS)
+        .args(["--raw", "--no-abbrev", "-z", &c.base, &c.head, "--"])
+        .stdout(Stdio::piped())
+        .spawn()
+        .map_err(|e| format!("Could not start Git: {e}"))?;
+    read_patch_process(child, c, cancelled, &mut visit)
+}
+
+fn read_patch_process(
+    mut child: std::process::Child,
+    c: &Comparison,
+    cancelled: &dyn Fn() -> bool,
+    visit: &mut impl FnMut(&Change, usize, &Line) -> Result<bool>,
+) -> Result<()> {
+    let mut stdout = child.stdout.take().expect("piped Git patch output");
+    std::thread::scope(|scope| {
+        let (sender, receiver) = mpsc::sync_channel(2);
+        scope.spawn(move || loop {
+            let mut bytes = vec![0; 64 * 1024];
+            let read = stdout.read(&mut bytes);
+            if matches!(read, Ok(0)) {
+                break;
+            }
+            let result = read.map(|count| {
+                bytes.truncate(count);
+                bytes
+            });
+            let failed = result.is_err();
+            if sender.send(result).is_err() || failed {
+                break;
+            }
+        });
+        let mut output = PatchReader {
+            receiver,
+            bytes: Vec::new(),
+            offset: 0,
+            cancelled,
+        };
+        let read = read_branch_patches(&mut output, c, visit);
+        drop(output);
+        if !matches!(read, Ok(true)) {
+            let _ = child.kill();
+        }
+        let status = child.wait().map_err(|e| e.to_string())?;
+        if !read? || status.success() {
+            Ok(())
+        } else {
+            Err("Git could not read review patches.".into())
+        }
+    })
 }
 
 fn blob_lines(repo: &Repository, object: &OsStr) -> Result<Vec<String>> {

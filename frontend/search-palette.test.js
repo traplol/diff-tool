@@ -1,6 +1,96 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { fileMatches, localPaletteHits, paletteRows } from "./search-palette.js";
+import { fileMatches, localPaletteHits, metadataHits, paletteRows } from "./search-palette.js";
+import { WORKTREE } from "./review-ui.js";
+
+test("review metadata excludes comments from other stacks and checkout branches", () => {
+  const stack = ["main", "first", "last"];
+  const notes = [
+    { id: 1, left: "main", right: "last", body: "Needle" },
+    { id: 2, left: "main", right: "first", body: "needle" },
+    { id: 3, left: "first", right: WORKTREE, body: "needle" },
+    { id: 4, left: "other-base", right: "other-head" },
+    { id: 5, left: "checkout", right: WORKTREE },
+  ];
+  for (const note of notes.slice(3)) Object.defineProperty(note, "body", {
+    get() { throw Error("Searched a comment outside the review"); },
+  });
+  const state = { stack, pair: ["main", "last"], repo: { checkout: "checkout" }, notes };
+  assert.deepEqual(metadataHits("needle", state).hits.map((hit) => hit.id), [1, 2, 3]);
+});
+
+test("off-stack working-tree metadata searches only its local comments", () => {
+  const stack = ["refs/heads/main", "refs/heads/needle-topic"];
+  const local = { id: 1, left: "checkout", right: WORKTREE, body: "needle" };
+  const state = {
+    stack, pair: ["checkout", WORKTREE], repo: { checkout: "checkout" },
+    notes: [local, { id: 2, left: stack[0], right: stack[1], body: "needle" }],
+  };
+  const { hits } = metadataHits("needle", state);
+  assert.deepEqual(hits.map((hit) => [hit.kind, hit.id, hit.pair]), [
+    ["comment", 1, ["checkout", WORKTREE]],
+  ]);
+});
+
+test("stack branch matches keep their existing comparison destinations", () => {
+  const stack = ["refs/heads/needle-base", "refs/heads/needle-first", "refs/heads/needle-last"];
+  for (const pair of [[stack[0], stack[2]], [stack[1], WORKTREE]]) {
+    const state = { stack, pair, repo: { checkout: stack[1] }, notes: [] };
+    assert.deepEqual(metadataHits("needle", state).hits.map((hit) => hit.pair), [
+      [stack[0], stack[2]], [stack[0], stack[1]], [stack[1], stack[2]],
+    ]);
+  }
+});
+
+test("metadata stops at one overflow match and enriches only retained comments", () => {
+  for (const count of [100, 101, 102]) {
+    let read = 0, enriched = 0;
+    const notes = Array.from({ length: count }, (_, id) => ({
+      id, left: "main", right: "topic",
+      get body() {
+        if (++read > 101) throw Error("Read past the metadata budget");
+        return "needle needle";
+      },
+      get path() { enriched++; return "file.js"; },
+    }));
+    const state = { stack: ["main", "topic"], pair: ["main", "topic"], repo: { checkout: "topic" }, notes };
+    const { hits, truncated } = metadataHits("needle", state);
+    assert.equal(hits.length, 100);
+    assert.equal(truncated, count > 100);
+    assert.equal(read, Math.min(count, 101));
+    assert.equal(enriched, 100);
+    assert.deepEqual(hits.map((hit) => hit.id), Array.from({ length: 100 }, (_, id) => id));
+  }
+});
+
+test("a matching branch after 100 comments reports metadata overflow", () => {
+  const stack = ["main", "needle-topic"];
+  const notes = Array.from({ length: 100 }, (_, id) => ({ id, left: stack[0], right: stack[1], body: "needle" }));
+  const state = { stack, pair: stack, repo: { checkout: stack[1] }, notes };
+  const { hits, truncated } = metadataHits("needle", state);
+  assert.equal(hits.length, 100);
+  assert.equal(truncated, true);
+  assert.ok(hits.every((hit) => hit.kind === "comment"));
+});
+
+test("metadata previews bound Unicode text and preserve literal match highlights", () => {
+  const body = "😀".repeat(10000) + "\r\nNeedle.[x]\n" + "😀".repeat(10000);
+  const stack = ["main", "topic"];
+  const state = {
+    stack, pair: stack, repo: { checkout: "topic" },
+    notes: [{ id: 1, left: "main", right: "topic", body }],
+  };
+  const { hits, truncated } = metadataHits("needle.[x]", state);
+  assert.equal(truncated, false);
+  assert.equal(hits.length, 1);
+  const hit = hits[0];
+  assert.ok(hit.text.length <= 324);
+  assert.ok(hit.text.startsWith("…") && hit.text.endsWith("…"));
+  assert.ok(hit.text.isWellFormed());
+  assert.equal(hit.text.slice(hit.snippet_from, hit.snippet_to), "Needle.[x]");
+  assert.equal(hit.id, 1);
+  assert.deepEqual(hit.pair, stack);
+});
 
 test("full-file search visits hidden, removed and added occurrences in diff order", () => {
   const contents = ["🛠 Hit", "new hit", "middle", "inserted", "last HiT"];

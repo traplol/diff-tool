@@ -6,7 +6,7 @@ use crate::{
 use regex::{Regex, RegexBuilder};
 use serde::{Deserialize, Serialize};
 use std::{
-    collections::HashSet,
+    collections::{HashMap, HashSet},
     fmt::Write,
     io::{BufRead, BufReader},
     process::Stdio,
@@ -29,10 +29,13 @@ pub enum Scope {
     All,
 }
 
+pub type PreparedComparisons = Arc<Mutex<HashMap<[String; 2], Arc<Comparison>>>>;
+
 pub struct Source {
     pub repo: Repository,
     pub stack: Vec<String>,
     pub current: Arc<Comparison>,
+    pub comparisons: PreparedComparisons,
 }
 
 #[derive(Default, Serialize)]
@@ -187,20 +190,15 @@ impl Search<'_> {
         Ok(())
     }
 
-    fn tracked_paths(
-        &mut self,
-        repo: &Repository,
-        c: &Comparison,
-        shown: &HashSet<String>,
-    ) -> Result<(), String> {
+    fn tracked_paths(&mut self, repo: &Repository, c: &Comparison) -> Result<(), String> {
         let tip = c.branch_tip();
-        let output = git::git(&repo.root, &["ls-tree", "-r", "-z", "--name-only", tip, "--"])?;
+        let output = git::git(
+            &repo.root,
+            &["ls-tree", "-r", "-z", "--name-only", tip, "--"],
+        )?;
         for bytes in output.split(|&b| b == 0).filter(|path| !path.is_empty()) {
             self.check()?;
             let path = git::name(bytes);
-            if shown.contains(&path) {
-                continue;
-            }
             self.add_matches(
                 c,
                 Location {
@@ -245,33 +243,41 @@ impl Search<'_> {
     }
 
     fn patch(&mut self, repo: &Repository, c: &Comparison) -> Result<(), String> {
-        for file in &c.files {
+        self.check()?;
+        let cancelled = self.cancelled;
+        let start = self.result.hits.len();
+        git::visit_patches(repo, c, cancelled, |file, row, line| {
             self.check()?;
-            if file.added.is_none() || file.removed.is_none() {
-                continue;
+            if line.old.is_none() && line.new.is_none() {
+                return Ok(true);
             }
-            for (row, line) in git::patch(repo, c, file)?.iter().enumerate() {
-                self.check()?;
-                if line.old.is_none() && line.new.is_none() {
-                    continue;
-                }
-                self.add_matches(
-                    c,
-                    Location {
-                        path: &file.path,
-                        group: &file.group,
-                        row: Some(row),
-                        old: line.old,
-                        new: line.new,
-                        ..Location::default()
-                    },
-                    &line.text,
-                );
-                if self.result.truncated {
-                    return Ok(());
-                }
-            }
-        }
+            self.add_matches(
+                c,
+                Location {
+                    path: &file.path,
+                    group: &file.group,
+                    row: Some(row),
+                    old: line.old,
+                    new: line.new,
+                    ..Location::default()
+                },
+                &line.text,
+            );
+            Ok(!self.result.truncated)
+        })?;
+        let order: HashMap<_, _> = c
+            .files
+            .iter()
+            .enumerate()
+            .map(|(i, file)| ((file.path.as_str(), file.group.as_str()), i))
+            .collect();
+        self.result.hits[start..].sort_by_key(|hit| {
+            (
+                order[&(hit.path.as_str(), hit.group.as_str())],
+                hit.row,
+                hit.from,
+            )
+        });
         Ok(())
     }
 
@@ -394,12 +400,32 @@ fn display_path(bytes: &[u8]) -> String {
 }
 
 impl Source {
-    fn comparison(&self, left: &str, right: &str) -> Result<Arc<Comparison>, String> {
+    fn comparison(
+        &self,
+        left: &str,
+        right: &str,
+        cancelled: &dyn Fn() -> bool,
+    ) -> Result<Arc<Comparison>, String> {
         if left == self.current.left && right == self.current.right {
-            Ok(self.current.clone())
-        } else {
-            git::compare(&self.repo, left, right).map(Arc::new)
+            return Ok(self.current.clone());
         }
+        let key = [left.to_owned(), right.to_owned()];
+        let lock_error = |_| "Reopen the review to search again.";
+        if let Some(comparison) = self
+            .comparisons
+            .lock()
+            .map_err(lock_error)?
+            .get(&key)
+            .cloned()
+        {
+            return Ok(comparison);
+        }
+        let comparison = Arc::new(git::compare(&self.repo, left, right)?);
+        let mut comparisons = self.comparisons.lock().map_err(lock_error)?;
+        if cancelled() {
+            return Err("Search superseded.".into());
+        }
+        Ok(comparisons.entry(key).or_insert(comparison).clone())
     }
 
     fn search(
@@ -424,7 +450,7 @@ impl Source {
         let c = &self.current;
         match scope {
             Scope::Branch => {
-                search.tracked_paths(&self.repo, c, &HashSet::new())?;
+                search.tracked_paths(&self.repo, c)?;
                 if !search.result.truncated {
                     search.tree(&self.repo, c, query)?;
                 }
@@ -437,44 +463,34 @@ impl Source {
             }
             Scope::Stack | Scope::All => {
                 let all = matches!(scope, Scope::All);
-                let local = all
-                    || c.right == WORKTREE
-                    || self.stack.iter().any(|branch| {
-                        branch == &self.repo.checkout
-                            || (branch == "HEAD" && self.repo.checkout.starts_with("HEAD@"))
-                    });
+                let includes_checkout = self.stack.iter().any(|branch| {
+                    branch == &self.repo.checkout
+                        || (branch == "HEAD" && self.repo.checkout.starts_with("HEAD@"))
+                });
+                let local = c.right == WORKTREE || includes_checkout;
+                let local_only = all && c.right == WORKTREE && !includes_checkout;
                 let layers = self
                     .stack
                     .windows(2)
+                    .filter(|_| !local_only)
                     .map(|pair| (pair[0].as_str(), pair[1].as_str()));
                 let mut comparisons = Vec::new();
                 for (left, right) in
                     layers.chain(local.then_some((self.repo.checkout.as_str(), WORKTREE)))
                 {
                     search.check()?;
-                    let layer = self.comparison(left, right)?;
+                    let layer = self.comparison(left, right, cancelled)?;
                     search.changed_paths(&layer)?;
                     comparisons.push(layer);
                     if search.result.truncated {
                         return Ok(search.result);
                     }
                 }
-                if all {
-                    let shown = search
-                        .result
-                        .hits
-                        .iter()
-                        .map(|hit| hit.path.clone())
-                        .collect();
-                    search.tracked_paths(&self.repo, c, &shown)?;
-                    if search.result.truncated {
-                        return Ok(search.result);
-                    }
-
+                if all && !local_only {
                     let mut seen = HashSet::new();
                     if let (Some(left), Some(right)) = (self.stack.first(), self.stack.last()) {
                         if left != right && (left != &c.left || right != &c.right) {
-                            let full = self.comparison(left, right)?;
+                            let full = self.comparison(left, right, cancelled)?;
                             search.commits(&self.repo, &full, &mut seen)?;
                         }
                     }
@@ -490,6 +506,7 @@ impl Source {
                 }
             }
         }
+        search.check()?;
         Ok(search.result)
     }
 }
@@ -511,9 +528,7 @@ pub async fn search_review(
             .lock()
             .map_err(|_| "Reopen the review to search again.")?
             .search_source(snapshot)?;
-        source.search(scope, &query, &|| {
-            LATEST.load(Ordering::Relaxed) != ticket
-        })
+        source.search(scope, &query, &|| LATEST.load(Ordering::Relaxed) != ticket)
     })
     .await
     .map_err(|e| e.to_string())?
@@ -524,6 +539,331 @@ mod tests {
     use super::*;
     use std::fs;
     use tempfile::tempdir;
+
+    #[test]
+    fn repeated_queries_keep_local_snapshot_until_the_review_is_refreshed() {
+        let dir = tempdir().unwrap();
+        let root = dir.path();
+        let git = |args: &[&str]| git::git(root, args).unwrap();
+        git(&["init", "-qb", "main"]);
+        git(&["config", "user.name", "Reviewer"]);
+        git(&["config", "user.email", "review@example.test"]);
+        git(&["config", "commit.gpgsign", "false"]);
+        fs::write(root.join("code"), "base\n").unwrap();
+        git(&["add", "-A"]);
+        git(&["commit", "-qm", "base"]);
+        git(&["switch", "-qc", "review"]);
+        fs::write(root.join("code"), "review\n").unwrap();
+        git(&["commit", "-qam", "review"]);
+        let source = || {
+            let repo = git::open_repo(root).unwrap();
+            Source {
+                current: Arc::new(git::compare(&repo, "refs/heads/main", &repo.checkout).unwrap()),
+                stack: vec!["refs/heads/main".into(), repo.checkout.clone()],
+                repo,
+                comparisons: Default::default(),
+            }
+        };
+        let first = source();
+        fs::write(root.join("code"), "frozen-marker staged\n").unwrap();
+        git(&["add", "code"]);
+        fs::write(root.join("code"), "frozen-marker local\n").unwrap();
+        fs::write(root.join("draft"), "frozen-marker draft\n").unwrap();
+        let hits = first
+            .search(Scope::All, "frozen-marker", &|| false)
+            .unwrap();
+        assert_eq!(hits.hits.len(), 4);
+        let local = first
+            .comparison(&first.repo.checkout, WORKTREE, &|| false)
+            .unwrap();
+        fs::write(root.join("code"), "new commit\n").unwrap();
+        git(&["add", "code"]);
+        git(&["commit", "-qm", "advance review"]);
+        fs::write(root.join("code"), "fresh-marker staged\n").unwrap();
+        git(&["add", "code"]);
+        fs::write(root.join("code"), "fresh-marker local\n").unwrap();
+        fs::write(root.join("draft"), "fresh-marker draft\n").unwrap();
+        let next_query = Source {
+            repo: first.repo.clone(),
+            stack: first.stack.clone(),
+            current: first.current.clone(),
+            comparisons: first.comparisons.clone(),
+        };
+        let same = next_query
+            .comparison(&first.repo.checkout, WORKTREE, &|| false)
+            .unwrap();
+        assert!(Arc::ptr_eq(&local, &same));
+        let frozen = next_query
+            .search(Scope::All, "frozen-marker", &|| false)
+            .unwrap();
+        assert_eq!(frozen.hits.len(), 4);
+        assert!(frozen.hits.iter().all(|hit| hit.head == local.head));
+        assert!(next_query
+            .search(Scope::All, "fresh-marker", &|| false)
+            .unwrap()
+            .hits
+            .is_empty());
+        let refreshed = source();
+        assert_ne!(refreshed.current.head, first.current.head);
+        let fresh = refreshed
+            .search(Scope::All, "fresh-marker", &|| false)
+            .unwrap();
+        assert_eq!(fresh.hits.len(), 4);
+        assert!(fresh
+            .hits
+            .iter()
+            .all(|hit| hit.base == refreshed.current.head && hit.head != local.head));
+    }
+
+    #[test]
+    fn cancelled_and_failed_comparison_preparation_can_be_retried() {
+        let dir = tempdir().unwrap();
+        let root = dir.path();
+        let git = |args: &[&str]| git::git(root, args).unwrap();
+        git(&["init", "-qb", "main"]);
+        git(&["config", "user.name", "Reviewer"]);
+        git(&["config", "user.email", "review@example.test"]);
+        git(&["config", "commit.gpgsign", "false"]);
+        fs::write(root.join("code"), "base\n").unwrap();
+        git(&["add", "-A"]);
+        git(&["commit", "-qm", "base"]);
+        git(&["switch", "-qc", "review"]);
+        fs::write(root.join("code"), "review\n").unwrap();
+        git(&["commit", "-qam", "review"]);
+        let repo = git::open_repo(root).unwrap();
+        let mut source = Source {
+            current: Arc::new(git::compare(&repo, "refs/heads/main", &repo.checkout).unwrap()),
+            repo,
+            stack: vec![],
+            comparisons: Default::default(),
+        };
+        assert!(Arc::ptr_eq(
+            &source.current,
+            &source
+                .comparison("refs/heads/main", "refs/heads/review", &|| false)
+                .unwrap()
+        ));
+        let pair = [source.repo.checkout.clone(), WORKTREE.into()];
+        assert_eq!(
+            source.comparison(&pair[0], &pair[1], &|| true).unwrap_err(),
+            "Search superseded."
+        );
+        assert!(source.comparisons.lock().unwrap().is_empty());
+        source.repo.root = root.join("missing");
+        assert!(source.comparison(&pair[0], &pair[1], &|| false).is_err());
+        assert!(source.comparisons.lock().unwrap().is_empty());
+        source.repo.root = root.into();
+        fs::write(root.join("draft"), "retry marker\n").unwrap();
+        let prepared = source.comparison(&pair[0], &pair[1], &|| false).unwrap();
+        assert_eq!(prepared.files[0].path, "draft");
+        assert!(Arc::ptr_eq(
+            &prepared,
+            &source.comparison(&pair[0], &pair[1], &|| false).unwrap()
+        ));
+    }
+
+    #[test]
+    fn patch_search_keeps_review_rows_for_renames_literal_paths_and_frozen_local_edits() {
+        let dir = tempdir().unwrap();
+        let root = dir.path();
+        let git = |args: &[&str]| git::git(root, args).unwrap();
+        let record = || {
+            git(&["add", "-A"]);
+            git(&["commit", "-qm", "snapshot"]);
+        };
+        git(&["init", "-qb", "main"]);
+        git(&["config", "user.name", "Reviewer"]);
+        git(&["config", "user.email", "review@example.test"]);
+        git(&["config", "commit.gpgsign", "false"]);
+        git(&["config", "core.autocrlf", "false"]);
+        let original = (1..=40).map(|i| format!("line {i}\n")).collect::<String>();
+        let literal = "literal[1]\n\té";
+        fs::write(root.join("before"), &original).unwrap();
+        fs::write(root.join(literal), &original).unwrap();
+        fs::write(root.join("removed"), "needle removed\n").unwrap();
+        fs::write(root.join("type"), "needle regular\n").unwrap();
+        #[cfg(unix)]
+        let raw = {
+            use std::os::unix::ffi::OsStrExt;
+            std::ffi::OsStr::from_bytes(b"raw-\xff")
+        };
+        #[cfg(unix)]
+        fs::write(root.join(raw), "before\n").unwrap();
+        record();
+        git(&["mv", "before", "after"]);
+        fs::write(
+            root.join("after"),
+            original.replace("line 3\n", "😀 NEEDLE renamed\n"),
+        )
+        .unwrap();
+        fs::write(
+            root.join(literal),
+            original
+                .replace("line 3\n", "needle first\ninserted\n")
+                .replace("line 37\n", "needle last"),
+        )
+        .unwrap();
+        fs::remove_file(root.join("removed")).unwrap();
+        fs::write(root.join("binary"), b"needle\0binary").unwrap();
+        fs::write(root.join("empty"), b"").unwrap();
+        #[cfg(unix)]
+        {
+            std::os::unix::fs::symlink("needle target", root.join("link")).unwrap();
+            fs::remove_file(root.join("type")).unwrap();
+            std::os::unix::fs::symlink("needle replacement", root.join("type")).unwrap();
+            fs::write(root.join(raw), "needle raw path\n").unwrap();
+        }
+        record();
+        let repo = git::open_repo(root).unwrap();
+        let branch = git::compare(&repo, "HEAD^", &repo.checkout).unwrap();
+        fs::write(root.join("after"), "needle staged\n").unwrap();
+        git(&["add", "after"]);
+        fs::write(root.join("after"), "needle unstaged\n").unwrap();
+        fs::write(root.join("draft"), "needle untracked\n").unwrap();
+        let local = git::compare(&repo, &repo.checkout, WORKTREE).unwrap();
+        fs::write(root.join("after"), "replacement\n").unwrap();
+        fs::write(root.join("draft"), "different draft\n").unwrap();
+        record();
+        fs::write(root.join(".git/search-order"), "type\nremoved\n*\n").unwrap();
+        git(&["config", "diff.orderFile", ".git/search-order"]);
+        for current in [branch, local] {
+            let mut expected = Vec::new();
+            for file in &current.files {
+                if file.added.is_none() || file.removed.is_none() {
+                    continue;
+                }
+                for (row, line) in git::patch(&repo, &current, file)
+                    .unwrap()
+                    .iter()
+                    .enumerate()
+                {
+                    if (line.old.is_some() || line.new.is_some())
+                        && line.text.to_lowercase().contains("needle")
+                    {
+                        expected.push((
+                            file.path.clone(),
+                            file.group.clone(),
+                            row,
+                            line.old,
+                            line.new,
+                            line.text.clone(),
+                        ));
+                    }
+                }
+            }
+            assert!(!expected.is_empty());
+            let source = Source {
+                comparisons: Default::default(),
+                current: Arc::new(current),
+                repo: repo.clone(),
+                stack: vec![],
+            };
+            let result = source
+                .search(Scope::Comparison, "needle", &|| false)
+                .unwrap();
+            assert!(!result.truncated);
+            let actual = result
+                .hits
+                .iter()
+                .map(|hit| {
+                    assert!(matches!(hit.kind, Kind::Text));
+                    assert_eq!(hit.base, source.current.base);
+                    assert_eq!(hit.head, source.current.head);
+                    (
+                        hit.path.clone(),
+                        hit.group.clone(),
+                        hit.row.unwrap(),
+                        hit.side,
+                        hit.line,
+                        hit.text.clone(),
+                    )
+                })
+                .collect::<Vec<_>>();
+            let expected = expected
+                .into_iter()
+                .map(|(path, group, row, old, new, text)| {
+                    (
+                        path,
+                        group,
+                        row,
+                        if new.is_none() && old.is_some() {
+                            "old"
+                        } else {
+                            "new"
+                        },
+                        new.or(old),
+                        text,
+                    )
+                })
+                .collect::<Vec<_>>();
+            assert_eq!(actual, expected);
+        }
+    }
+
+    #[test]
+    fn all_scope_stays_within_review_stack_changes() {
+        let dir = tempdir().unwrap();
+        let root = dir.path();
+        let git = |args: &[&str]| git::git(root, args).unwrap();
+        git(&["init", "-qb", "main"]);
+        git(&["config", "user.name", "Reviewer"]);
+        git(&["config", "user.email", "review@example.test"]);
+        git(&["config", "commit.gpgsign", "false"]);
+        fs::write(root.join("needle unchanged"), "needle unchanged content\n").unwrap();
+        fs::write(root.join("outside"), "base\n").unwrap();
+        git(&["add", "-A"]);
+        git(&["commit", "-qm", "base"]);
+        git(&["switch", "-qc", "review"]);
+        fs::write(root.join("needle changed"), "needle review content\n").unwrap();
+        git(&["add", "-A"]);
+        git(&["commit", "-qm", "review change"]);
+        git(&["switch", "-qc", "unrelated", "main"]);
+        fs::write(root.join("outside"), "needle staged\n").unwrap();
+        git(&["add", "outside"]);
+        fs::write(root.join("outside"), "needle unstaged\n").unwrap();
+        fs::write(root.join("needle untracked"), "needle untracked content\n").unwrap();
+        let repo = git::open_repo(root).unwrap();
+        let mut source = Source {
+            comparisons: Default::default(),
+            current: Arc::new(git::compare(&repo, "refs/heads/main", "refs/heads/review").unwrap()),
+            repo,
+            stack: vec!["refs/heads/main".into(), "refs/heads/review".into()],
+        };
+        let all = source.search(Scope::All, "needle", &|| false).unwrap();
+        assert!(
+            all.hits.iter().all(|hit| hit.path == "needle changed"),
+            "default search escaped the review stack: {}",
+            serde_json::to_string(&all).unwrap()
+        );
+        assert_eq!(all.hits.len(), 2);
+        let branch = source.search(Scope::Branch, "needle", &|| false).unwrap();
+        assert!(branch.hits.iter().any(|hit| hit.path == "needle unchanged"));
+        assert!(branch
+            .hits
+            .iter()
+            .any(|hit| hit.text == "needle unchanged content"));
+        assert!(branch
+            .hits
+            .iter()
+            .all(|hit| hit.path != "outside" && hit.path != "needle untracked"));
+        source.current =
+            Arc::new(git::compare(&source.repo, &source.repo.checkout, WORKTREE).unwrap());
+        let local = source.search(Scope::All, "needle", &|| false).unwrap();
+        assert!(
+            local
+                .hits
+                .iter()
+                .all(|hit| hit.path == "outside" || hit.path == "needle untracked"),
+            "an off-stack working-tree review searched the saved stack: {}",
+            serde_json::to_string(&local).unwrap()
+        );
+        assert_eq!(local.hits.len(), 5);
+        assert!(source
+            .search(Scope::All, "review change", &|| false)
+            .unwrap()
+            .hits
+            .is_empty());
+    }
 
     #[test]
     fn searches_branch_blobs_layer_patches_and_frozen_working_tree() {
@@ -541,7 +881,11 @@ mod tests {
         git(&["config", "commit.gpgsign", "false"]);
         write(
             "unchanged file",
-            format!("😀 NEE[D]LE nee[d]le\nſample\n{}🧭 needle end\n", "😀".repeat(170)).as_bytes(),
+            format!(
+                "😀 NEE[D]LE nee[d]le\nſample\n{}🧭 needle end\n",
+                "😀".repeat(170)
+            )
+            .as_bytes(),
         );
         write("binary", b"\0nee[d]le");
         write("changed", b"before\n");
@@ -555,13 +899,13 @@ mod tests {
         let repo = git::open_repo(root).unwrap();
         let stack = ["refs/heads/main", "refs/heads/one", "refs/heads/two"];
         let mut source = Source {
+            comparisons: Default::default(),
             current: Arc::new(git::compare(&repo, stack[0], stack[2]).unwrap()),
             repo,
             stack: stack.map(String::from).into(),
         };
-        let find = |source: &Source, scope, query| {
-            source.search(scope, query, &|| false).unwrap().hits
-        };
+        let find =
+            |source: &Source, scope, query| source.search(scope, query, &|| false).unwrap().hits;
         let hits = find(&source, Scope::Branch, "nee[d]le");
         assert_eq!(hits.len(), 2);
         for hit in &hits {
@@ -602,6 +946,7 @@ mod tests {
         git(&["add", "changed"]);
         write("changed", b"local marker\n");
         write("draft", b"draft marker\n");
+        source.comparisons = Default::default(); // Refresh the review after local edits.
         let hits = find(&source, Scope::Stack, "marker");
         assert!(hits.iter().all(|hit| hit.pair == [stack[2], WORKTREE]));
         assert_eq!(hits.len(), 4); // staged also appears on the old side of the unstaged patch
@@ -659,13 +1004,13 @@ mod tests {
         let repo = git::open_repo(root).unwrap();
         let branches = ["refs/heads/main", "refs/heads/one", "refs/heads/two"];
         let mut source = Source {
+            comparisons: Default::default(),
             current: Arc::new(git::compare(&repo, branches[0], branches[2]).unwrap()),
             repo,
             stack: branches.map(String::from).into(),
         };
-        let find = |source: &Source, scope, query: &str| {
-            source.search(scope, query, &|| false).unwrap()
-        };
+        let find =
+            |source: &Source, scope, query: &str| source.search(scope, query, &|| false).unwrap();
         let all = find(&source, Scope::All, "needle");
         assert!(!all.truncated);
         let (paths, rest) = all.hits.split_at(
@@ -674,40 +1019,23 @@ mod tests {
                 .position(|hit| !matches!(hit.kind, Kind::Path))
                 .unwrap(),
         );
-        assert_eq!(paths.len(), 6);
+        assert_eq!(paths.len(), 2);
         assert_eq!(paths[0].pair, branches[..2]);
         assert_eq!(paths[1].pair, branches[1..]);
-        assert_eq!(paths[2].group, "Staged");
-        assert_eq!(paths[3].group, "Unstaged");
-        assert_eq!(paths[4].group, "Untracked");
-        assert!(paths[2..5].iter().all(|hit| {
-            hit.pair == [source.repo.checkout.as_str(), WORKTREE]
-                && hit.revision.is_none()
-                && hit.line.is_none()
-                && hit.row.is_none()
-        }));
-        let unchanged = &paths[5];
-        assert_eq!(unchanged.path, "😀 needle docs");
-        assert_eq!(
-            unchanged.revision.as_deref(),
-            Some(source.current.head.as_str())
-        );
-        assert_eq!((unchanged.from, unchanged.to), (3, 9));
-        assert_eq!((unchanged.snippet_from, unchanged.snippet_to), (3, 9));
         assert_eq!(rest[0].sha.as_deref(), Some(source.current.head.as_str()));
         assert!(matches!(rest[0].kind, Kind::Commit));
         assert_eq!(rest[0].text, "needle second commit");
         assert_eq!(
-            rest.iter().filter(|h| matches!(h.kind, Kind::Commit)).count(),
+            rest.iter()
+                .filter(|h| matches!(h.kind, Kind::Commit))
+                .count(),
             2
         );
-        assert!(rest.iter().all(|h| !h.text.contains("only in unchanged file")));
-        for group in ["Staged", "Unstaged", "Untracked"] {
-            assert!(rest
-                .iter()
-                .any(|h| h.group == group && matches!(h.kind, Kind::Text)));
-        }
-        let serialized = serde_json::to_value(&paths[5]).unwrap();
+        assert!(rest
+            .iter()
+            .all(|h| !h.text.contains("only in unchanged file")));
+        assert!(rest.iter().all(|h| h.group.is_empty()));
+        let serialized = serde_json::to_value(&paths[0]).unwrap();
         assert_eq!(serialized["kind"], "path");
         assert!(serialized["line"].is_null());
 
@@ -722,15 +1050,13 @@ mod tests {
         assert_eq!(old.hits.len(), 1);
         assert_eq!(old.hits[0].path, "new-name");
         assert_eq!(old.hits[0].text, "prior-name");
-        assert!(find(&source, Scope::Stack, "needle draft")
-            .hits
-            .is_empty());
+        assert!(find(&source, Scope::Stack, "needle draft").hits.is_empty());
 
         let branch = find(&source, Scope::Branch, "needle");
         assert!(branch
             .hits
             .iter()
-            .any(|h| h.path == unchanged.path && matches!(h.kind, Kind::Path)));
+            .any(|h| h.path == "😀 needle docs" && matches!(h.kind, Kind::Path)));
         assert!(branch
             .hits
             .iter()
@@ -754,6 +1080,7 @@ mod tests {
         fs::write(root.join("z-x"), "no match here").unwrap();
         let repo = git::open_repo(root).unwrap();
         let source = Source {
+            comparisons: Default::default(),
             current: Arc::new(git::compare(&repo, &repo.checkout, WORKTREE).unwrap()),
             repo,
             stack: vec![],
@@ -775,6 +1102,7 @@ mod tests {
         let compare = |count| {
             fs::write(dir.path().join("draft"), "x".repeat(count)).unwrap();
             Source {
+                comparisons: Default::default(),
                 current: Arc::new(git::compare(&repo, &repo.checkout, WORKTREE).unwrap()),
                 repo: repo.clone(),
                 stack: vec![],

@@ -9,28 +9,48 @@ fn hunk_start(line: &str) -> Option<(usize, usize)> {
     ))
 }
 
-pub(super) fn visit(chunks: &[&[u8]], mut emit: impl FnMut(&str, &str, usize, usize, usize)) {
-    let mut hunk = 0;
-    for chunk in chunks {
-        let mut at = None;
-        for line in String::from_utf8_lossy(chunk).split('\n') {
-            if let Some((old, new)) = hunk_start(line) {
-                hunk += 1;
-                at = Some((old, new));
-                emit("@", line, old, new, hunk);
-            } else if let Some((old, new)) = at.as_mut() {
-                let Some(&kind) = line.as_bytes().first() else {
-                    continue;
-                };
-                if matches!(kind, b'+' | b'-' | b' ') {
-                    let text = line[1..].strip_suffix('\r').unwrap_or(&line[1..]);
-                    emit(&line[..1], text, *old, *new, hunk);
-                    *old += usize::from(kind != b'+');
-                    *new += usize::from(kind != b'-');
-                } else if kind == b'\\' {
-                    emit("\\", line, *old, *new, hunk);
-                }
+#[derive(Default)]
+pub(super) struct Decoder {
+    hunk: usize,
+    at: Option<(usize, usize)>,
+}
+
+impl Decoder {
+    pub(super) fn section(&mut self) {
+        self.at = None;
+    }
+
+    pub(super) fn line(
+        &mut self,
+        line: &str,
+        mut emit: impl FnMut(&str, &str, usize, usize, usize),
+    ) {
+        if let Some((old, new)) = hunk_start(line) {
+            self.hunk += 1;
+            self.at = Some((old, new));
+            emit("@", line, old, new, self.hunk);
+        } else if let Some((old, new)) = self.at.as_mut() {
+            let Some(&kind) = line.as_bytes().first() else {
+                return;
+            };
+            if matches!(kind, b'+' | b'-' | b' ') {
+                let text = line[1..].strip_suffix('\r').unwrap_or(&line[1..]);
+                emit(&line[..1], text, *old, *new, self.hunk);
+                *old += usize::from(kind != b'+');
+                *new += usize::from(kind != b'-');
+            } else if kind == b'\\' {
+                emit("\\", line, *old, *new, self.hunk);
             }
+        }
+    }
+}
+
+pub(super) fn visit(chunks: &[&[u8]], mut emit: impl FnMut(&str, &str, usize, usize, usize)) {
+    let mut decoder = Decoder::default();
+    for chunk in chunks {
+        decoder.section();
+        for line in String::from_utf8_lossy(chunk).split('\n') {
+            decoder.line(line, &mut emit);
         }
     }
 }

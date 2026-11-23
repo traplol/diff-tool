@@ -21,6 +21,11 @@ def fixture(repo):
     reference.write_text("reference heading\n🧭 branch reference\n", encoding="utf-8")
     git(repo, "add", ".")
     git(repo, "commit", "-qm", "Add review documents")
+    git(repo, "switch", "-qc", "outside-review")
+    (repo / "outside.txt").write_text("outside stack content\n", encoding="utf-8")
+    git(repo, "add", "outside.txt")
+    git(repo, "commit", "-qm", "Outside stack commit")
+    git(repo, "switch", "-q", "main")
     git(repo, "switch", "-qc", "feature/first")
     lines[12] = "intermediate wording\n"
     document.write_text("".join(lines), encoding="utf-8")
@@ -356,13 +361,10 @@ def check_literal_search(d):
     print("Passed literal surrounding-space and whitespace-only palette queries.")
 
 
-def check_stale_search_response(d):
-    d.click("#stack-review")
-    d.expect_text("#range", "feature/final")
-    # Delay delivery of an actual search_review result after native Git has
-    # answered. Other IPC callbacks, including cancel and refresh, stay live.
-    hold = """const callbacks = window.__TAURI_INTERNALS__.callbacks;
-        const original = callbacks.set;
+def hold_search_response(d, preview):
+    # Hold delivery after native Git answers, leaving other IPC callbacks live.
+    d.script("""const callbacks = window.__TAURI_INTERNALS__.callbacks;
+        const original = callbacks.set, preview = arguments[0];
         window.restorePaletteDelivery = () => {
             delete callbacks.set;
             window.releasePaletteResponse?.();
@@ -371,21 +373,25 @@ def check_stale_search_response(d):
         callbacks.set = function(id, callback) {
             return original.call(this, id, result => {
                 if (!window.releasePaletteResponse &&
-                    result?.hits?.length === 2 &&
-                    result.hits.every(hit => hit.text.includes('zz zz'))) {
+                    result?.hits?.some(hit => hit.text.includes(preview))) {
                     window.releasePaletteResponse = () => callback(result);
                     return;
                 }
                 callback(result);
             });
         };
-    """
+    """, preview)
+
+
+def check_stale_search_response(d):
+    d.click("#stack-review")
+    d.expect_text("#range", "feature/final")
     presented = """const list = document.getElementById('palette-results');
         return [list.innerHTML, document.getElementById('palette-status').textContent,
                 document.getElementById('palette-query').getAttribute('aria-activedescendant')];
     """
     for dismiss in (None, "close", "refresh"):
-        d.script(hold)
+        hold_search_response(d, "zz zz")
         try:
             search_palette(d, "zz", "comparison")
             d.wait("typeof window.releasePaletteResponse === 'function'")
@@ -412,7 +418,7 @@ def check_stale_search_response(d):
     print("Passed delayed native response invalidation on input replacement, close/reopen, and refresh.")
 
 
-def check_worktree_group_search(d):
+def check_worktree_group_search(d, scope="comparison", marker="working identity"):
     d.click("#local-review")
     d.expect_text("#range", "Working tree")
     for (width, height), layout in [((1280, 720), "unified"), ((720, 460), "split")]:
@@ -423,8 +429,8 @@ def check_worktree_group_search(d):
             ("Unstaged", "groups.txt"),
             ("Untracked", "draft.txt"),
         ):
-            line = "value = working identity " + group.lower()
-            search_palette(d, "working identity", "comparison")
+            line = f"value = {marker} {group.lower()}"
+            search_palette(d, marker, scope)
             option = d.wait("""[...document.querySelectorAll(arguments[0])].find(option =>
                 option.dataset.searchKind === 'text' &&
                 option.querySelector('.palette-meta')?.textContent.startsWith(arguments[1] + ' ·') &&
@@ -439,10 +445,150 @@ def check_worktree_group_search(d):
                 return selected?.getAttribute('aria-label') === arguments[0] &&
                     selected.closest('details')?.querySelector('summary').textContent.trim() === arguments[1];
             })()""", path, group)
-            expect_hit(d, "working identity")
+            expect_hit(d, marker)
             d.wait("""document.querySelector(arguments[0] + ' .bl-find-current')
                 ?.closest('.cm-line')?.textContent === arguments[1]""", ACTIVE, line)
         print(f"Passed staged, same-path unstaged, and untracked palette jumps at {width}×{height}.")
+
+
+def check_current_review_scope(d, repo):
+    def no_matches(query):
+        search_palette(d, query)
+        assert d.script("return document.querySelector('#palette-scope').selectedOptions[0].textContent") == "Current review"
+        d.expect_text("#palette-status", "No matches")
+        assert d.script("return document.querySelectorAll(arguments[0]).length", OPTIONS) == 0
+        press(d, "\ue00c")
+        d.wait("!document.getElementById('search-palette').open")
+
+    def save_comment(path, line, body):
+        d.click("#file-list button", path, False)
+        d.expect_text(ACTIVE, line)
+        click_visible(d, ACTIVE + " .cm-line", line, scroll=True)
+        d.click("#comment")
+        d.fill("#dialog textarea", body)
+        d.click("#dialog-actions button", "Save", False)
+        d.expect_text(ACTIVE, body)
+
+    def select_stack(branch):
+        d.click("#edit-stack")
+        d.fill("[aria-label='Filter available refs']", branch)
+        d.click("#dialog-body button", "Find stack", False)
+        d.expect_text("#dialog-body", "Found the branch order")
+        d.click("#dialog-actions button", "Review stack", False)
+        d.wait("!document.getElementById('dialog').open")
+        d.expect_text("#range", branch)
+
+    # Make a genuine comment in another stack and restore the saved review.
+    resize(d, 1280, 720)
+    d.click("#unified")
+    select_stack("outside-review")
+    save_comment("outside.txt", "outside stack content", "Scope note from a different stack")
+    select_stack("feature/final")
+
+    # The working changes carry over because these files are identical at both HEADs.
+    git(repo, "switch", "-q", "outside-review")
+    d.click("#refresh")
+    d.wait("!document.getElementById('app').hasAttribute('aria-busy')")
+    d.click("#local-review")
+    d.expect_text("#range", "outside-review")
+    save_comment("draft.txt", "untracked draft", "Scope note from unrelated checkout")
+
+    # Current review while viewing an off-stack checkout stays local.
+    for query in (
+        "appendix.txt", "searchable appendix", "Revise the document", "feature/first",
+        "Check the final wording", "Scope note from a different stack",
+    ):
+        no_matches(query)
+    search_palette(d, "Scope note from unrelated checkout")
+    pick_palette(d, "Scope note from unrelated checkout", "comment")
+    d.expect_text(ACTIVE, "Scope note from unrelated checkout")
+    check_worktree_group_search(d, "all")
+
+    # The saved review scope excludes the unrelated checkout and unchanged files.
+    resize(d, 1280, 720)
+    d.click("#stack-review")
+    d.expect_text("#range", "feature/final")
+    for query in (
+        "working identity", "groups.txt", "draft.txt", "reference.txt", "outside-review",
+        "Scope note from unrelated checkout", "Scope note from a different stack",
+    ):
+        no_matches(query)
+    search_palette(d, "Check the final wording")
+    pick_palette(d, "Check the final wording", "comment")
+    d.expect_text(ACTIVE, "Check the final wording")
+    search_palette(d, "reference.txt", "branch")
+    pick_palette(d, "reference.txt", "path")
+    d.expect_text("#dialog[open] h2", "reference.txt")
+    d.click("#dialog [aria-label=Close]")
+    print("Passed Current review isolation, explicit Branch files, and related comment jumps.")
+
+
+def check_search_worktree_snapshot(d, repo):
+    old_marker, fresh_marker = "working identity", "refreshed identity"
+
+    def refresh():
+        d.click("#refresh")
+        d.wait("!document.getElementById('app').hasAttribute('aria-busy')")
+        d.expect_text("#range", "feature/final")
+
+    def expect_groups(marker):
+        for group in ("Staged", "Unstaged", "Untracked"):
+            d.wait("""[...document.querySelectorAll(arguments[0])].some(option =>
+                option.dataset.searchKind === 'text' &&
+                option.querySelector('.palette-meta')?.textContent.startsWith(arguments[1] + ' ·') &&
+                option.querySelector('.palette-preview')?.textContent === arguments[2]
+            )""", OPTIONS, group, f"value = {marker} {group.lower()}")
+
+    def close_palette():
+        press(d, "\ue00c")
+        d.wait("!document.getElementById('search-palette').open")
+
+    def expect_absent(marker):
+        search_palette(d, marker)
+        d.expect_text("#palette-status", "No matches")
+        close_palette()
+
+    # Keep the committed comparison open so the first search prepares a
+    # noncurrent working-tree snapshot only after the query is entered.
+    git(repo, "switch", "-q", "feature/final")
+    refresh()
+    hold_search_response(d, f"value = {old_marker} untracked")
+    try:
+        search_palette(d, old_marker)
+        d.wait("typeof window.releasePaletteResponse === 'function'")
+        d.expect_text("#palette-status", "Searching")
+        d.fill(QUERY, "searchable appendix")
+        d.expect_text(OPTIONS, "searchable appendix")
+    finally:
+        d.script("window.restorePaletteDelivery()")
+    after_layout(d)
+    assert d.script("""return [...document.querySelectorAll(arguments[0])].every(option =>
+        !option.textContent.includes(arguments[1]))""", OPTIONS, old_marker)
+    d.expect_text(OPTIONS, "searchable appendix")
+    close_palette()
+
+    search_palette(d, old_marker)
+    expect_groups(old_marker)
+    close_palette()
+    grouped = repo / "groups.txt"
+    grouped.write_text(f"value = {fresh_marker} staged\n", encoding="utf-8")
+    git(repo, "add", "groups.txt")
+    grouped.write_text(f"value = {fresh_marker} unstaged\n", encoding="utf-8")
+    (repo / "draft.txt").write_text(
+        f"untracked draft\nvalue = {fresh_marker} untracked\n", encoding="utf-8"
+    )
+
+    search_palette(d, old_marker)
+    expect_groups(old_marker)
+    close_palette()
+    expect_absent(fresh_marker)
+    refresh()
+    expect_absent(old_marker)
+    search_palette(d, fresh_marker)
+    expect_groups(fresh_marker)
+    close_palette()
+    check_worktree_group_search(d, "all", fresh_marker)
+    print("Passed cold query replacement and frozen working-tree search until Refresh.")
 
 
 def check_keyboard_comment_controls(d):
@@ -524,6 +670,8 @@ def exercise(d, _repo, _screenshot):
     check_literal_search(d)
     check_stale_search_response(d)
     check_worktree_group_search(d)
+    check_current_review_scope(d, _repo)
+    check_search_worktree_snapshot(d, _repo)
     print("Passed context expansion, comment anchors, scoped palette jumps, and occurrence offsets.")
 
 

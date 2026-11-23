@@ -53,18 +53,20 @@ Use the tabs beneath the branch names to switch between **Changes**, **Commits**
 
 ### Search a review
 
-Press **Ctrl+F**, **Ctrl+Shift+F**, or **Ctrl+P** to open the search palette. File paths appear first. Choose a narrower scope from the dropdown if needed.
+Press **Ctrl+F**, **Ctrl+Shift+F**, or **Ctrl+P** to open the search palette. File paths appear first. Search defaults to **Current review**. Choose **Entire branch** to include unchanged tracked files.
 
 | Scope | Search contents |
 | --- | --- |
-| All scopes | File paths, stack diffs, working-tree changes, comments, commits, and review branches. |
+| Current review | Changed paths and patches, comments, commits, and branches in the current stack. Local changes are included when the checked-out branch belongs to the stack. In an off-stack Working tree, only that checkout's changes and comments are searched. |
 | This patch | The selected file’s patch, including additions, deletions, and the context Git included. |
 | Full file | The selected file, including hidden context and removed lines. A match in hidden context expands that part of the diff. |
 | Whole diff | Patches for every changed file in the active comparison. In Working tree this includes staged, unstaged, and untracked files. |
-| Branch files | Tracked paths and text at the selected branch tip, including unchanged files. In Working tree this uses the checked-out commit. Text opens at its matching line, while binary files and submodules open revision details. |
+| Entire branch | Tracked paths and text at the selected branch tip, including unchanged files. In Working tree this uses the checked-out commit. Text opens at its matching line, while binary files and submodules open revision details. |
 | Stack changes | Each adjacent pair in the stack, including intermediate edits. Local changes are included when the checked-out branch belongs to the stack or Working tree is active. |
 
 Search is literal and case-insensitive. Use **Up** and **Down** to select a result, then press **Enter** or click it to open its location. **Escape** closes the palette and restores focus. If results are capped, narrow the query to see more specific matches.
+
+Search uses the current review snapshot. Press **Refresh** to pick up new staged, unstaged, or untracked changes.
 
 ## Review before committing
 

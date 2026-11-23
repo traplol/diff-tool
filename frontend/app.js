@@ -3,10 +3,9 @@ import {
   canExpandFile,
   contextMenu,
   createDiff,
-  findDiffMatches,
   isContextMenuKey,
 } from "./editor.js";
-import { localPaletteHits, setupSearchPalette } from "./search-palette.js";
+import { localPaletteHits, metadataHits, setupSearchPalette } from "./search-palette.js";
 import { icon } from "./icons.js";
 import "./editor.css";
 import {
@@ -859,26 +858,6 @@ async function openSearchHit(hit, valid) {
   if (!revealed) throw Error("This match is no longer in the displayed diff.");
 }
 
-function metadataHits(query, state) {
-  const match = (text) => findDiffMatches([{ text }], query, 1).matches[0];
-  const noteHits = state.notes.flatMap((note) => {
-    const text = (note.body ?? "").replace(/\r?\n/g, " ");
-    const found = match(text);
-    return found ? [{
-      kind: "comment", id: note.id, text, path: note.path,
-      pair: [note.left, note.right], snippet_from: found.from, snippet_to: found.to,
-    }] : [];
-  });
-  const choices = pairs(state.stack, state.repo.checkout);
-  return noteHits.concat(state.stack.flatMap((ref, i) => {
-    const text = refName(ref);
-    const found = match(text);
-    if (!found) return [];
-    const pair = choices[i === 0 || state.stack.length === 2 ? 0 : i]?.[1];
-    return pair ? [{ kind: "branch", text, pair, snippet_from: found.from, snippet_to: found.to }] : [];
-  }));
-}
-
 async function searchPalette(scope, query) {
   const captured = state;
   const file = currentFile();
@@ -901,8 +880,8 @@ async function searchPalette(scope, query) {
   if (state !== captured) throw Error("The review changed. Open search again.");
   if (scope === "all") {
     const metadata = metadataHits(query, captured);
-    result.hits.push(...metadata.slice(0, 100));
-    result.truncated ||= metadata.length > 100;
+    result.hits.push(...metadata.hits);
+    result.truncated ||= metadata.truncated;
   }
   for (const hit of result.hits) hit.snapshot = captured.snapshot;
   return result;

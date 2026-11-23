@@ -1,6 +1,6 @@
 import { $, el } from "./dialogs.js";
 import { findDiffMatches } from "./editor.js";
-import { labelPath, refName } from "./review-ui.js";
+import { labelPath, refName, pairs, scopeNotes, localScope } from "./review-ui.js";
 
 // Use diff order so Next passes removed lines just before their replacements.
 export function fileMatches(contents, patch, query, limit = Infinity) {
@@ -70,6 +70,34 @@ export function localPaletteHits(scope, query, contents, patch, source) {
     return { ...source, ...hit, kind: "text", ...localSnippet(text, hit.from, hit.to) };
   });
   return { hits, truncated: matches.length > 200 };
+}
+
+export function metadataHits(query, state) {
+  const hits = [];
+  const match = (text) => findDiffMatches([{ text }], query, 1).matches[0];
+  for (const note of scopeNotes(state, false)) {
+    const text = (note.body ?? "").replace(/\r?\n/g, " ");
+    const found = match(text);
+    if (!found) continue;
+    if (hits.length === 100) return { hits, truncated: true };
+    hits.push({
+      kind: "comment", id: note.id, path: note.path, pair: [note.left, note.right],
+      ...localSnippet(text, found.from, found.to),
+    });
+  }
+  if (!localScope(state)) {
+    const choices = pairs(state.stack, state.repo.checkout);
+    for (const [i, ref] of state.stack.entries()) {
+      const text = refName(ref);
+      const found = match(text);
+      if (!found) continue;
+      const pair = choices[i === 0 || state.stack.length === 2 ? 0 : i]?.[1];
+      if (!pair) continue;
+      if (hits.length === 100) return { hits, truncated: true };
+      hits.push({ kind: "branch", pair, ...localSnippet(text, found.from, found.to) });
+    }
+  }
+  return { hits, truncated: false };
 }
 
 const groups = { path: "Files", text: "Diff and source", comment: "Comments", commit: "Commits", branch: "Branches" };
@@ -226,6 +254,7 @@ export function setupSearchPalette({ search, cancel, openHit, onError }) {
     select(-1);
     status.textContent = query ? "Searching…" : "Search files, diffs, comments, commits, and branches";
     if (!query) return;
+    const delay = kind === "file" || kind === "patch" ? 0 : kind === "branch" ? 130 : 40;
     timer = setTimeout(async () => {
       await cancellation;
       if (token !== generation || !dialog.open) return;
@@ -243,7 +272,7 @@ export function setupSearchPalette({ search, cancel, openHit, onError }) {
       } finally {
         if (token === generation) pending = false;
       }
-    }, 130);
+    }, delay);
   }
 
   input.oninput = refresh;

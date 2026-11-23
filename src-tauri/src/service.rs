@@ -97,6 +97,7 @@ struct Session {
     repo: Repository,
     stack: Vec<String>,
     current: Option<Arc<Comparison>>,
+    search_comparisons: crate::search::PreparedComparisons,
     notes: Vec<Value>,
     locations: BTreeMap<i64, Vec<Value>>,
 }
@@ -267,6 +268,7 @@ impl Session {
             repo,
             stack,
             current: None,
+            search_comparisons: Default::default(),
             notes: vec![],
             locations: BTreeMap::new(),
         };
@@ -365,6 +367,7 @@ impl Workspace {
                 .current
                 .clone()
                 .ok_or("Choose a comparison first.")?,
+            comparisons: session.search_comparisons.clone(),
         })
     }
 
@@ -633,6 +636,88 @@ mod tests {
         }
     }
 
+    #[test]
+    fn search_preparation_is_shared_only_within_the_loaded_session() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path().join("repo");
+        fs::create_dir(&root).unwrap();
+        let git = |args: &[&str]| git::git(&root, args).unwrap();
+        git(&["init", "-qb", "main"]);
+        git(&["config", "user.name", "Reviewer"]);
+        git(&["config", "user.email", "review@example.test"]);
+        git(&["config", "commit.gpgsign", "false"]);
+        fs::write(root.join("code"), "base\n").unwrap();
+        git(&["add", "-A"]);
+        git(&["commit", "-qm", "base"]);
+        git(&["switch", "-qc", "review"]);
+        fs::write(root.join("code"), "review\n").unwrap();
+        git(&["commit", "-qam", "review"]);
+        let refs = ["refs/heads/main".into(), "refs/heads/review".into()];
+        let open = || Request::Open {
+            path: git::path_name(&root),
+            pair: Some(refs.clone()),
+        };
+        let mut store = Store::at(&dir.path().join("reviews")).unwrap();
+        let mut workspace = workspace_in(dir.path());
+        let first = workspace.with_store(open(), None, &mut store).unwrap();
+        let first_token = first["snapshot"].as_u64().unwrap();
+        let before = workspace.search_source(first_token).unwrap();
+        let next_query = workspace.search_source(first_token).unwrap();
+        assert!(Arc::ptr_eq(&before.comparisons, &next_query.comparisons));
+        fs::write(root.join("code"), "new commit\n").unwrap();
+        git(&["commit", "-qam", "advance review"]);
+        fs::write(root.join("code"), "new staged\n").unwrap();
+        git(&["add", "code"]);
+        fs::write(root.join("code"), "new local\n").unwrap();
+        let refresh = workspace.with_store(open(), None, &mut store).unwrap();
+        let fresh_token = refresh["snapshot"].as_u64().unwrap();
+        let refreshed = workspace.search_source(fresh_token).unwrap();
+        assert!(!Arc::ptr_eq(&before.comparisons, &refreshed.comparisons));
+        assert_ne!(before.current.head, refreshed.current.head);
+        before
+            .comparisons
+            .lock()
+            .unwrap()
+            .insert(refs.clone(), before.current.clone());
+        assert!(refreshed.comparisons.lock().unwrap().is_empty());
+        let local = workspace
+            .with_store(
+                Request::Compare {
+                    pair: ["refs/heads/review".into(), WORKTREE.into()],
+                },
+                Some(fresh_token),
+                &mut store,
+            )
+            .unwrap();
+        let local_token = local["snapshot"].as_u64().unwrap();
+        let selected = workspace.search_source(local_token).unwrap();
+        assert!(!Arc::ptr_eq(&refreshed.comparisons, &selected.comparisons));
+        assert_eq!(selected.current.base, refreshed.current.head);
+        for (group, text) in [("Staged", "new staged"), ("Unstaged", "new local")] {
+            let file = selected
+                .current
+                .files
+                .iter()
+                .find(|f| f.group == group)
+                .unwrap();
+            assert!(git::patch(&selected.repo, &selected.current, file)
+                .unwrap()
+                .iter()
+                .any(|line| line.text == text));
+        }
+        let stack = workspace
+            .with_store(
+                Request::SetStack { refs: refs.into() },
+                Some(local_token),
+                &mut store,
+            )
+            .unwrap();
+        let reset = workspace
+            .search_source(stack["snapshot"].as_u64().unwrap())
+            .unwrap();
+        assert!(!Arc::ptr_eq(&selected.comparisons, &reset.comparisons));
+        assert!(reset.comparisons.lock().unwrap().is_empty());
+    }
     #[test]
     fn migrates_preferences_and_keeps_the_selected_base_after_a_layer_is_deleted() {
         let dir = tempfile::tempdir().unwrap();

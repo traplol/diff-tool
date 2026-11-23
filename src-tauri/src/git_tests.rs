@@ -40,6 +40,282 @@ fn content(repo: &Repository, c: &Comparison, group: &str, path: &str) -> Vec<St
         .collect()
 }
 
+fn assert_streamed_rows(repo: &Repository, c: &Comparison) {
+    let expected: Vec<_> = c
+        .files
+        .iter()
+        .filter(|f| f.added.is_some() && f.removed.is_some())
+        .flat_map(|file| {
+            patch(repo, c, file)
+                .unwrap()
+                .into_iter()
+                .enumerate()
+                .map(|(row, line)| {
+                    (
+                        file.old.clone(),
+                        file.path.clone(),
+                        file.group.clone(),
+                        row,
+                        serde_json::to_value(line).unwrap(),
+                    )
+                })
+        })
+        .collect();
+    let mut actual = Vec::new();
+    visit_patches(repo, c, &|| false, |file, row, line| {
+        actual.push((
+            file.old.clone(),
+            file.path.clone(),
+            file.group.clone(),
+            row,
+            serde_json::to_value(line).unwrap(),
+        ));
+        Ok(true)
+    })
+    .unwrap();
+    assert_eq!(actual, expected);
+}
+
+#[test]
+fn raw_and_numstat_parsers_keep_counts_errors_and_stat_only_changes() {
+    let old = "1".repeat(40);
+    let new = "2".repeat(40);
+    let mut raw = format!(":100644 100644 {old} {new} M\0").into_bytes();
+    raw.extend_from_slice(b"literal\t\n\xff\0");
+    let files = parse_raw_changes(&mut raw.split(|&b| b == 0).peekable()).unwrap();
+    assert_eq!(files.len(), 1);
+    assert_eq!(files[0].path, name(b"literal\t\n\xff"));
+    assert_eq!((files[0].added, files[0].removed), (None, None));
+    let mut summary = raw.clone();
+    summary.extend_from_slice(b"2\t1\tliteral\t\n\xff\0");
+    let files = parse_changes(&summary, false).unwrap();
+    assert_eq!((files[0].added, files[0].removed), (Some(2), Some(1)));
+    assert_eq!(
+        (files[0].old_oid.as_str(), files[0].oid.as_str()),
+        (old.as_str(), new.as_str())
+    );
+    assert!(parse_changes(&raw, false).is_err());
+    for broken in [b":100644 M\0path\0".as_slice(), b":100644 100644 a b M"] {
+        assert!(parse_raw_changes(&mut broken.split(|&b| b == 0).peekable()).is_err());
+    }
+    for count in [b"invalid\t1\tpath\0".as_slice(), b"2\0"] {
+        let mut broken = raw.clone();
+        broken.extend_from_slice(count);
+        assert!(parse_changes(&broken, false).is_err());
+    }
+    let stale = format!(":100644 100644 {old} {} M\0path\0", "0".repeat(40));
+    assert!(parse_changes(stale.as_bytes(), false).is_err());
+    assert!(parse_changes(stale.as_bytes(), true).unwrap().is_empty());
+}
+
+#[test]
+fn streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes() {
+    let dir = history();
+    write(&dir, "a-normal", b"one\r\ntwo\r\nlast");
+    write(
+        &dir,
+        "b-before",
+        b"one\ntwo\nthree\nfour\nfive\nsix\nseven\neight\nnine\nten\n",
+    );
+    write(&dir, "binary", b"before\0binary");
+    write(&dir, "removed", b"removed without newline");
+    record(&dir, "Base");
+    write(&dir, "a-normal", b"one\r\nchanged \xff\r\nlast");
+    git(dir.path(), &["mv", "b-before", "b-after"]).unwrap();
+    write(
+        &dir,
+        "b-after",
+        b"one\ntwo\nchanged\nfour\nfive\nsix\nseven\neight\nnine\nten\n",
+    );
+    write(&dir, "binary", b"after\0binary");
+    fs::remove_file(dir.path().join("removed")).unwrap();
+    write(&dir, "literal[1]\tline\nname", b"new\r\nlast");
+    record(&dir, "Change");
+    let repo = open_repo(dir.path()).unwrap();
+    let branch = compare(&repo, "HEAD^", &repo.checkout).unwrap();
+    assert!(branch.files.iter().any(|file| file.status == "R"));
+    assert_streamed_rows(&repo, &branch);
+
+    write(&dir, "a-normal", b"staged\n");
+    git(dir.path(), &["add", "a-normal"]).unwrap();
+    write(&dir, "a-normal", b"unstaged\n");
+    write(&dir, "draft", b"untracked\r\nno newline");
+    let frozen = work(&repo);
+    write(&dir, "a-normal", b"later bytes\n");
+    fs::remove_file(dir.path().join("draft")).unwrap();
+    record(&dir, "Move refs and index");
+    assert_streamed_rows(&repo, &branch);
+    assert_streamed_rows(&repo, &frozen);
+}
+
+#[cfg(unix)]
+#[test]
+fn streamed_patches_keep_type_change_sections_and_byte_paths() {
+    use std::os::unix::{ffi::OsStrExt, fs::symlink};
+    let dir = history();
+    let bad = OsStr::from_bytes(b"invalid\xff\t\n");
+    fs::write(dir.path().join(bad), b"before\n").unwrap();
+    write(&dir, "type", b"regular\n");
+    record(&dir, "Base");
+    fs::write(dir.path().join(bad), b"after\r\nlast").unwrap();
+    fs::remove_file(dir.path().join("type")).unwrap();
+    symlink("target", dir.path().join("type")).unwrap();
+    record(&dir, "Change");
+    let repo = open_repo(dir.path()).unwrap();
+    let c = compare(&repo, "HEAD^", &repo.checkout).unwrap();
+    assert!(c.files.iter().any(|file| file.status == "T"));
+    assert_streamed_rows(&repo, &c);
+}
+
+#[test]
+fn patch_stream_stops_at_201_matches_inside_the_first_file() {
+    let dir = history();
+    write(&dir, "first", b"before\n");
+    record(&dir, "Base");
+    write(
+        &dir,
+        "first",
+        format!("{}tail that must not be read\n", "needle\n".repeat(300)).as_bytes(),
+    );
+    record(&dir, "Change");
+    let repo = open_repo(dir.path()).unwrap();
+    let c = compare(&repo, "HEAD^", &repo.checkout).unwrap();
+    let mut args = PATCH_ARGS.to_vec();
+    args.extend(["--raw", "--no-abbrev", "-z", &c.base, &c.head, "--"]);
+    let data = git(&repo.root, &args).unwrap();
+    let mut end = 0;
+    let mut hits = 0;
+    for line in data.split_inclusive(|&b| b == b'\n') {
+        end += line.len();
+        if line == b"+needle\n" {
+            hits += 1;
+        }
+        if hits == 201 {
+            break;
+        }
+    }
+    struct StopAfterPrefix<'a>(io::Cursor<&'a [u8]>);
+    impl Read for StopAfterPrefix<'_> {
+        fn read(&mut self, out: &mut [u8]) -> io::Result<usize> {
+            self.0.read(out)
+        }
+    }
+    impl BufRead for StopAfterPrefix<'_> {
+        fn fill_buf(&mut self) -> io::Result<&[u8]> {
+            let bytes = self.0.fill_buf()?;
+            assert!(!bytes.is_empty(), "search read beyond the 201st hit");
+            Ok(bytes)
+        }
+        fn consume(&mut self, amount: usize) {
+            self.0.consume(amount);
+        }
+    }
+    let mut output = StopAfterPrefix(io::Cursor::new(&data[..end]));
+    let mut found = 0;
+    let complete = read_branch_patches(&mut output, &c, &mut |file, row, line| {
+        assert_eq!(file.path, "first");
+        if line.text == "needle" {
+            found += 1;
+        }
+        if found == 201 {
+            assert_eq!(row, 202);
+        }
+        Ok(found < 201)
+    })
+    .unwrap();
+    assert!(!complete);
+    assert_eq!(found, 201);
+    #[cfg(unix)]
+    {
+        let prefix = dir.path().join(".git/patch-prefix");
+        fs::write(&prefix, &data[..end]).unwrap();
+        let child = Command::new("sh")
+            .args(["-c", "cat \"$1\"; exec sleep 5", "sh"])
+            .arg(prefix)
+            .stdout(Stdio::piped())
+            .spawn()
+            .unwrap();
+        let pid = child.id();
+        let start = std::time::Instant::now();
+        found = 0;
+        read_patch_process(child, &c, &|| false, &mut |_, _, line| {
+            found += usize::from(line.text == "needle");
+            Ok(found < 201)
+        })
+        .unwrap();
+        assert_eq!(found, 201);
+        assert!(start.elapsed() < Duration::from_secs(1));
+        assert_eq!(unsafe { libc::kill(pid as i32, 0) }, -1);
+    }
+}
+
+#[test]
+fn patch_reader_checks_cancellation_while_git_is_silent() {
+    use std::sync::atomic::{AtomicBool, Ordering};
+    let cancelled = AtomicBool::new(false);
+    std::thread::scope(|scope| {
+        let (_sender, receiver) = mpsc::sync_channel(2);
+        let check = || cancelled.load(Ordering::Relaxed);
+        let mut reader = PatchReader {
+            receiver,
+            bytes: Vec::new(),
+            offset: 0,
+            cancelled: &check,
+        };
+        scope.spawn(|| {
+            std::thread::sleep(Duration::from_millis(5));
+            cancelled.store(true, Ordering::Relaxed);
+        });
+        assert_eq!(
+            reader.fill_buf().unwrap_err().to_string(),
+            "Search superseded."
+        );
+    });
+}
+
+#[cfg(unix)]
+#[test]
+fn patch_process_is_reaped_when_a_silent_search_is_superseded() {
+    use std::sync::atomic::{AtomicBool, Ordering};
+    let dir = history();
+    write(&dir, "code", b"before\n");
+    record(&dir, "Base");
+    write(&dir, "code", b"after\n");
+    record(&dir, "Change");
+    let repo = open_repo(dir.path()).unwrap();
+    let c = compare(&repo, "HEAD^", &repo.checkout).unwrap();
+    let child = Command::new("sh")
+        .args(["-c", "exec sleep 5"])
+        .stdout(Stdio::piped())
+        .spawn()
+        .unwrap();
+    let pid = child.id();
+    let cancelled = AtomicBool::new(false);
+    let start = std::time::Instant::now();
+    std::thread::scope(|scope| {
+        scope.spawn(|| {
+            std::thread::sleep(Duration::from_millis(5));
+            cancelled.store(true, Ordering::Relaxed);
+        });
+        let result = read_patch_process(
+            child,
+            &c,
+            &|| cancelled.load(Ordering::Relaxed),
+            &mut |_, _, _| panic!("a silent child emitted a patch row"),
+        );
+        assert_eq!(result.unwrap_err(), "Search superseded.");
+    });
+    assert!(
+        start.elapsed() < Duration::from_secs(1),
+        "reader did not stop with the canceled child"
+    );
+    assert_eq!(
+        unsafe { libc::kill(pid as i32, 0) },
+        -1,
+        "child was not reaped"
+    );
+}
+
 #[test]
 fn whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move() {
     let dir = history();

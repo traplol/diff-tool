@@ -32,11 +32,11 @@ def fixture(repo):
     assert SUBMODULE.encode() in entry
 
 
-def open_source(driver, query, scope):
+def open_source(driver, query):
     driver.click("#search-review")
     driver.wait("document.querySelector('#search-palette').open")
-    if scope != "all":
-        driver.click(f"#palette-scope option[value={scope}]")
+    driver.click("#palette-scope option[value=branch]")
+    driver.wait("document.querySelector('#palette-scope').selectedOptions[0].textContent === 'Entire branch'")
     driver.fill(QUERY, query)
     driver.click(OPTIONS + "[data-search-kind=path]", query, False)
     driver.wait("!document.querySelector('#search-palette').open")
@@ -49,19 +49,28 @@ def exercise(driver, _repo, _screenshot):
     driver.wait("!document.querySelector('#app').hasAttribute('aria-busy')")
     for width, height in ((1280, 720), (720, 460)):
         resize(driver, width, height)
-        for scope in ("all", "branch"):
-            open_source(driver, "baseline-logo.png", scope)
-            driver.expect_text("#dialog-body", "Binary file · 12 bytes")
-            assert not driver.script("return document.querySelector('#dialog .cm-editor')")
-            driver.click("#dialog-actions button", "Close")
-            open_source(driver, "vendor/module", scope)
-            driver.expect_text("#dialog-body", "Git submodule")
-            driver.expect_text("#dialog-body pre", SUBMODULE)
-            driver.click("#dialog-actions button", "Close")
-        open_source(driver, "empty-source.txt", "all")
+        # Unchanged paths are available only through an explicit broad scope.
+        for query in ("baseline-logo.png", "vendor/module", "empty-source.txt", "guide.txt"):
+            driver.click("#search-review")
+            driver.wait("document.querySelector('#search-palette').open")
+            driver.wait("document.querySelector('#palette-scope').value === 'all'")
+            driver.wait("document.querySelector('#palette-scope').selectedOptions[0].textContent === 'Current review'")
+            driver.fill(QUERY, query)
+            driver.expect_text("#palette-status", "No matches")
+            assert not driver.script("return document.querySelector(arguments[0])", OPTIONS)
+            driver.click("#palette-close")
+        open_source(driver, "baseline-logo.png")
+        driver.expect_text("#dialog-body", "Binary file · 12 bytes")
+        assert not driver.script("return document.querySelector('#dialog .cm-editor')")
+        driver.click("#dialog-actions button", "Close")
+        open_source(driver, "vendor/module")
+        driver.expect_text("#dialog-body", "Git submodule")
+        driver.expect_text("#dialog-body pre", SUBMODULE)
+        driver.click("#dialog-actions button", "Close")
+        open_source(driver, "empty-source.txt")
         driver.wait("!!document.querySelector('#dialog .cm-editor')")
         driver.click("#dialog-actions button", "Close")
-        open_source(driver, "guide.txt", "all")
+        open_source(driver, "guide.txt")
         driver.expect_text("#dialog .cm-content", "Source destination text")
         driver.click("#dialog-actions button", "Close")
         print(f"Text, empty, binary and submodule destinations passed at {width}×{height}.",
