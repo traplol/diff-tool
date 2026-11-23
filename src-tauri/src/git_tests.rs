@@ -63,9 +63,11 @@ fn whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move() {
     assert_eq!(created, ["new text", ""]);
     let removed = file_contents(&repo, file(&c, "", "removed")).unwrap();
     assert!(removed.is_empty());
-    assert_eq!(revision_lines(&repo, &c.head, "after").unwrap(), renamed);
-    assert!(revision_lines(&repo, &c.head, "before").is_err());
-    assert!(revision_lines(&repo, &c.head, "image").is_err());
+    assert!(matches!(revision_file(&repo, &c.head, "after").unwrap(),
+        RevisionFile::Text { lines } if lines == renamed));
+    assert!(revision_file(&repo, &c.head, "before").is_err());
+    assert!(matches!(revision_file(&repo, &c.head, "image").unwrap(),
+        RevisionFile::Binary { bytes: 11 }));
 }
 
 #[test]
@@ -214,6 +216,37 @@ fn partially_staged_snapshot_survives_file_and_index_changes() {
 }
 
 #[test]
+fn working_tree_snapshot_does_not_rewrite_stat_stale_index() {
+    let dir = history();
+    let root = dir.path();
+    write(&dir, "unchanged", b"same content\n");
+    write(&dir, "staged", b"base\n");
+    write(&dir, "unstaged", b"base\n");
+    record(&dir, "Base");
+
+    write(&dir, "staged", b"staged\n");
+    git(root, &["add", "staged"]).unwrap();
+    write(&dir, "unstaged", b"unstaged\n");
+    write(&dir, "untracked", b"untracked\n");
+    // A copied checkout can have stale file metadata without a content change.
+    fs::OpenOptions::new()
+        .write(true)
+        .open(root.join("unchanged"))
+        .unwrap()
+        .set_modified(std::time::UNIX_EPOCH + std::time::Duration::from_secs(1_000_000_000))
+        .unwrap();
+
+    let index = fs::read(root.join(".git/index")).unwrap();
+    let repo = open_repo(root).unwrap();
+    let c = work(&repo);
+    assert_eq!(c.files.len(), 3);
+    assert_eq!(content(&repo, &c, "Staged", "staged"), ["base", "staged"]);
+    assert_eq!(content(&repo, &c, "Unstaged", "unstaged"), ["base", "unstaged"]);
+    assert_eq!(content(&repo, &c, "Untracked", "untracked"), ["untracked"]);
+    assert_eq!(index, fs::read(root.join(".git/index")).unwrap());
+}
+
+#[test]
 fn literal_names_binary_rename_line_numbers_and_scoped_untracked() {
     let dir = history();
     let root = dir.path();
@@ -327,12 +360,37 @@ fn symlinks_type_changes_nested_repo_and_non_utf8_names() {
     record(&dir, "Links and names");
     let repo = open_repo(root).unwrap();
     let c = compare(&repo, "HEAD^", &repo.checkout).unwrap();
-    assert_eq!(
-        revision_lines(&repo, &c.head, &name(bad.as_bytes())).unwrap(),
-        ["unusual name"]
-    );
+    assert!(matches!(
+        revision_file(&repo, &c.head, &name(bad.as_bytes())).unwrap(),
+        RevisionFile::Text { lines } if lines == ["unusual name"]
+    ));
     assert_eq!(
         content(&repo, &c, "", &name(bad.as_bytes())),
         ["unusual name"]
     );
+}
+
+#[test]
+fn revision_file_distinguishes_text_binary_and_missing_submodule_objects() {
+    let dir = history();
+    write(&dir, "text", b"first\r\nlast\n");
+    write(&dir, "empty", b"");
+    write(&dir, "asset.png", b"binary\0data");
+    record(&dir, "Source files");
+    // Gitlinks need not have their target commit in the superproject database.
+    let target = "1234567890123456789012345678901234567890";
+    git(dir.path(), &["update-index", "--add", "--cacheinfo",
+        &format!("160000,{target},vendor/module")]).unwrap();
+    git(dir.path(), &["commit", "-qm", "Submodule pointer"]).unwrap();
+    let repo = open_repo(dir.path()).unwrap();
+    let revision = &repo.refs["refs/heads/main"];
+    assert!(matches!(revision_file(&repo, revision, "text").unwrap(),
+        RevisionFile::Text { lines } if lines == ["first", "last"]));
+    assert!(matches!(revision_file(&repo, revision, "empty").unwrap(),
+        RevisionFile::Text { lines } if lines.is_empty()));
+    assert!(matches!(revision_file(&repo, revision, "asset.png").unwrap(),
+        RevisionFile::Binary { bytes: 11 }));
+    assert!(matches!(revision_file(&repo, revision, "vendor/module").unwrap(),
+        RevisionFile::Submodule { oid } if oid == target));
+    assert!(revision_file(&repo, revision, "absent").is_err());
 }

@@ -1,6 +1,19 @@
 import { setFold, spans, suggestionSource } from "./review-ui.js";
-import { contextGaps, displayContext, gapLength } from "./context.js";
-import { Compartment, EditorState, StateEffect, Text } from "@codemirror/state";
+import { icon } from "./icons.js";
+import {
+  CONTEXT_STEP,
+  contextGaps,
+  displayContext,
+  expandGap,
+  gapLength,
+} from "./context.js";
+import {
+  Compartment,
+  EditorSelection,
+  EditorState,
+  StateEffect,
+  Text,
+} from "@codemirror/state";
 import {
   Decoration,
   EditorView,
@@ -57,20 +70,26 @@ export function diffRows(lines, split) {
 }
 
 // Keep matches on patch lines so a shared context line counts once in Split.
-export function findDiffMatches(lines, query) {
+export function findDiffMatches(lines, query, limit = Infinity) {
   const matches = [],
     firstByLine = new Map();
   if (query) {
     const literal = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const pattern = new RegExp(literal, "giu");
-    lines.forEach(({ text, contextOnly }, line) => {
-      if (contextOnly) return;
+    let line = -1;
+    for (const { text, contextOnly, kind } of lines) {
+      line++;
+      if (contextOnly || kind === "@" || kind === "\\") continue;
       const first = matches.length;
       for (const hit of text.matchAll(pattern)) {
         matches.push({ line, from: hit.index, to: hit.index + hit[0].length });
+        if (matches.length === limit) {
+          firstByLine.set(line, first);
+          return { matches, firstByLine };
+        }
       }
       if (matches.length > first) firstByLine.set(line, first);
-    });
+    }
   }
   return { matches, firstByLine };
 }
@@ -101,6 +120,16 @@ export function selectedLines(lines, selection) {
     if (includesLine(selection, i, lines[i])) result.push(lines[i]);
   }
   return result;
+}
+
+function commentDisabledReason(selected, hasSelection) {
+  if (!hasSelection) return "";
+  if (!selected.length) return "Select a code line to add a line comment.";
+  if (selected.some((line) => line.contextOnly))
+    return "Select lines within a diff hunk to add a line comment.";
+  if (selected[0].hunk !== selected[selected.length - 1].hunk)
+    return "Select lines within one hunk to comment.";
+  return "";
 }
 
 export function canSuggest(file, side, selected) {
@@ -136,17 +165,96 @@ class ContextBlock extends WidgetType {
     this.hidden = hidden;
     this.toggle = toggle;
   }
-  toDOM() {
-    const { gap, count, open } = this.control;
-    const label =
-      count === null
-        ? "Show remaining context"
-        : `${open ? "Hide" : "Show"} ${count.toLocaleString()} unchanged ${count === 1 ? "line" : "lines"}`;
+  get canStep() {
+    const { remaining } = this.control;
+    return remaining === null || remaining > CONTEXT_STEP;
+  }
+
+  eq(other) {
+    const { gap, count, remaining, open } = this.control;
+    const next = other.control;
+    return (
+      this.hidden === other.hidden &&
+      gap === next.gap &&
+      count === next.count &&
+      remaining === next.remaining &&
+      open === next.open
+    );
+  }
+
+  get estimatedHeight() {
+    return 28;
+  }
+
+  addButton(box, action, glyph, label, title) {
+    const { gap } = this.control;
+    const control = button(label, () => this.toggle(gap, action, box));
+    control.className = "bl-expand";
+    control.prepend(icon(glyph));
+    control.title = title;
+    if (!label) control.setAttribute("aria-label", title);
+    if (!this.hidden) {
+      control.dataset.contextAt = gap.at;
+      control.dataset.contextAction = action;
+    }
+    box.append(control);
+  }
+
+  arrows() {
+    const box = element("span", "bl-gap-arrows");
+    const { remaining } = this.control;
+    box.setAttribute("role", "group");
+    box.setAttribute(
+      "aria-label",
+      remaining === null ? "Unchanged lines" : `${remaining} hidden lines`,
+    );
+    this.addButton(
+      box,
+      "top",
+      "expand-down",
+      "",
+      `Show the first ${CONTEXT_STEP} hidden lines`,
+    );
+    this.addButton(
+      box,
+      "bottom",
+      "expand-up",
+      "",
+      `Show the last ${CONTEXT_STEP} hidden lines`,
+    );
+    return box;
+  }
+
+  toDOM(view) {
+    const { count, remaining, open } = this.control;
     const box = element("div", "bl-context");
-    const toggle = button(label, () => this.toggle(gap));
-    toggle.setAttribute("aria-expanded", String(open));
-    if (!this.hidden) toggle.dataset.contextAt = gap.at;
-    box.append(toggle);
+    function lineCount(n) {
+      return `${n.toLocaleString()} ${n === 1 ? "line" : "lines"}`;
+    }
+    // An empty patch (e.g. a rename) has no editor or line-number gutter.
+    if (!view && this.canStep) box.append(this.arrows());
+    if (!open) {
+      const label =
+        remaining === null
+          ? "Show remaining lines"
+          : `${lineCount(remaining)} hidden`;
+      this.addButton(
+        box,
+        "all",
+        "expand",
+        label,
+        "Show all remaining lines in this gap",
+      );
+    }
+    if (open || (remaining !== null && remaining < count)) {
+      this.addButton(
+        box,
+        "collapse",
+        "collapse",
+        open ? `Collapse ${lineCount(count)}` : "",
+        "Collapse this gap",
+      );
+    }
     if (this.hidden) {
       box.classList.add("bl-spacer");
       box.inert = true;
@@ -154,6 +262,79 @@ class ContextBlock extends WidgetType {
     }
     return box;
   }
+}
+
+class GapArrows extends GutterMarker {
+  constructor(widget) {
+    super();
+    this.widget = widget;
+    this.elementClass = "bl-gutter-hunk bl-gutter-arrows";
+  }
+  eq(other) {
+    return this.widget.eq(other.widget);
+  }
+  toDOM() {
+    return this.widget.arrows();
+  }
+}
+
+function gapFocusBounds(button) {
+  const scroller = button.closest(".cm-scroller, .bl-diff-empty");
+  if (!scroller) return;
+  const bounds = scroller.getBoundingClientRect();
+  const gutter = button.closest(".bl-gap-arrows")
+    ? null
+    : scroller.querySelector(".cm-gutters")?.getBoundingClientRect();
+  return {
+    scroller,
+    top: bounds.top,
+    bottom: bounds.top + scroller.clientHeight,
+    left: Math.max(bounds.left, gutter?.right ?? 0),
+    right: bounds.left + scroller.clientWidth,
+  };
+}
+
+function revealGapFocus(button) {
+  const bounds = gapFocusBounds(button);
+  if (!bounds) return;
+  const { scroller, top, bottom, left, right } = bounds;
+  const box = button.getBoundingClientRect();
+  // Scrolling the editor explicitly avoids scrolling the whole window and
+  // keeps the sticky line numbers from covering the focused label.
+  if (box.top < top) scroller.scrollTop += box.top - top;
+  else if (box.bottom > bottom) scroller.scrollTop += box.bottom - bottom;
+  if (box.left < left) scroller.scrollLeft += box.left - left;
+  else if (box.right > right) scroller.scrollLeft += box.right - right;
+}
+
+function focusGapAction(root, at, action, fallback) {
+  if (
+    !root.isConnected ||
+    root.closest("[inert]") ||
+    document.activeElement !== document.body
+  )
+    return;
+  const gap = `[data-context-at="${at}"]`;
+  const visible = (button) => {
+    if (!button || button.closest("[inert]")) return false;
+    const box = button.getBoundingClientRect();
+    const bounds = gapFocusBounds(button);
+    if (!bounds || box.height <= 0) return false;
+    const x = (box.left + box.right) / 2;
+    const y = (box.top + box.bottom) / 2;
+    return (
+      box.top >= bounds.top &&
+      box.bottom <= bounds.bottom &&
+      x >= bounds.left &&
+      x < bounds.right &&
+      button.contains(document.elementFromPoint(x, y))
+    );
+  };
+  const matching = root.querySelector(`${gap}[data-context-action="${action}"]`);
+  const target = visible(matching)
+    ? matching
+    : [...root.querySelectorAll(gap)].find(visible) ?? fallback;
+  target?.focus({ preventScroll: true });
 }
 
 function numberRange(lines, side) {
@@ -165,17 +346,24 @@ function numberRange(lines, side) {
 }
 
 class NumberMarker extends GutterMarker {
-  constructor(value) {
+  constructor(value, elementClass = "") {
     super();
     this.value = value;
+    this.elementClass = elementClass;
   }
   eq(other) {
-    return other.value === this.value;
+    return (
+      other.value === this.value && other.elementClass === this.elementClass
+    );
   }
   toDOM() {
-    return document.createTextNode(this.value);
+    const label = element("span", "", this.value);
+    label.setAttribute("aria-hidden", "true");
+    return label;
   }
 }
+
+const gapGutter = new NumberMarker("", "bl-gutter-hunk");
 
 class CommentBlock extends WidgetType {
   constructor(notes, hidden, controller) {
@@ -196,7 +384,10 @@ class CommentBlock extends WidgetType {
       box.setAttribute("aria-hidden", "true");
     }
     this.notes.forEach((note, i) => {
-      const card = element("article", "bl-card");
+      const card = element(
+        "article",
+        note.resolved ? "bl-card bl-resolved" : "bl-card",
+      );
       const isSuggestion = typeof note.suggestion === "string";
       const title =
         (note.resolved ? "Resolved " : "Open ") +
@@ -249,8 +440,15 @@ class CommentBlock extends WidgetType {
   }
 }
 
+export function isContextMenuKey(e) {
+  return e.key === "ContextMenu" || (e.shiftKey && e.key === "F10");
+}
+
 export function contextMenu(event, items) {
   const returnFocus = event.target.closest(".cm-content,button,[tabindex]");
+  const restoreFocus = () => {
+    if (returnFocus?.isConnected) returnFocus.focus({ preventScroll: true });
+  };
   const popup = element("div", "bl-diff-menu");
   popup.setAttribute("role", "menu");
   const close = () => {
@@ -264,6 +462,7 @@ export function contextMenu(event, items) {
   for (const [label, run, enabled = true] of items) {
     const entry = button(label, () => {
       close();
+      restoreFocus();
       run();
     });
     entry.setAttribute("role", "menuitem");
@@ -272,17 +471,17 @@ export function contextMenu(event, items) {
   }
   popup.addEventListener("keydown", (e) => {
     const entries = [...popup.querySelectorAll("button:enabled")];
-    if (e.key === "Escape" || e.key === "Tab") {
+    if (e.key === "Escape" || e.key === "Tab" || e.code === "Tab") {
       close();
-      if (e.key === "Escape") {
-        e.preventDefault();
-        returnFocus?.focus({ preventScroll: true });
-      }
+      restoreFocus();
+      if (e.key === "Escape") e.preventDefault();
+      e.stopPropagation();
       return;
     }
     const direction = { ArrowDown: 1, ArrowUp: -1 }[e.key];
     if (direction) {
       e.preventDefault();
+      e.stopPropagation();
       entries[
         (entries.indexOf(document.activeElement) + entries.length + direction) %
           entries.length
@@ -336,7 +535,7 @@ export function createDiff(parent, options) {
   const { lines: patch, file, folds = new Map() } = options;
   const gaps =
     canExpandFile(file) && options.loadContents ? contextGaps(patch, file) : [];
-  const expanded = new Set();
+  const expanded = new Map();
   let { lines, controls } = displayContext(patch, gaps, expanded);
   let contents,
     loadingContents,
@@ -350,9 +549,6 @@ export function createDiff(parent, options) {
     activeCol = 0;
   const layouts = new Map();
   let layout, closeMenu, paintFrame, restoreFrame, pendingPosition;
-  let findQuery = "",
-    found,
-    currentMatch = 0;
   let notesVersion = 0;
   const isCode = codeFiles.test(file.path);
   const numbered = { old: new Map(), new: new Map() };
@@ -371,6 +567,7 @@ export function createDiff(parent, options) {
   }
   indexLines();
 
+  let resumeFromGap = false;
   const controller = {
     folded: (n) => folds.get(n.id) ?? !!n.resolved,
     canApply: (n) => !!options.canApply?.(n),
@@ -378,12 +575,6 @@ export function createDiff(parent, options) {
     toggle(note) {
       setFold(folds, note, !controller.folded(note));
       refreshNotes();
-      // The widget is replaced when its fold state changes. Keep its disclosure
-      // focused so keyboard review can continue at the same comment.
-      for (const card of layout.root.querySelectorAll("[data-note]")) {
-        if (card.dataset.note === String(note.id))
-          card.querySelector(".bl-disclosure")?.focus({ preventScroll: true });
-      }
     },
   };
 
@@ -399,6 +590,7 @@ export function createDiff(parent, options) {
   }
 
   function changedSelection(next) {
+    resumeFromGap = false;
     selection = next;
     if (!paintFrame)
       paintFrame = requestAnimationFrame(() => {
@@ -418,11 +610,11 @@ export function createDiff(parent, options) {
             old: side === "new" ? [] : numberRange(selected, "old"),
             new: side === "old" ? [] : numberRange(selected, "new"),
           });
+    const reason = commentDisabledReason(selected, !!selection);
     options.onSelection?.({
       label,
-      canComment:
-        !selection ||
-        (selected.length > 0 && !selected.some((line) => line.contextOnly)),
+      canComment: !reason,
+      commentDisabledReason: reason,
       canSuggest: canSuggest(file, side, selected),
     });
   }
@@ -430,23 +622,12 @@ export function createDiff(parent, options) {
   function compose(suggestion = false, wholeFile = false) {
     const selected = wholeFile ? [] : selectedLines(lines, selection);
     const side = selection?.side ?? "both";
-    if (selected.some((line) => line.contextOnly))
-      return options.onStatus?.(
-        "Select lines within a diff hunk to add a line comment.",
-      );
-    if (suggestion && !canSuggest(file, side, selected)) {
+    const reason = commentDisabledReason(selected, !wholeFile && !!selection);
+    if (reason) return options.onStatus?.(reason);
+    if (suggestion && !canSuggest(file, side, selected))
       return options.onStatus?.(
         "Select consecutive lines on the new side to suggest a change.",
       );
-    }
-    if (selection && !wholeFile && !selected.length)
-      return options.onStatus?.("Select a code line to add a line comment.");
-    if (
-      selected.length &&
-      selected[0].hunk !== selected[selected.length - 1].hunk
-    ) {
-      return options.onStatus?.("Select lines within one hunk to comment.");
-    }
     options.onCompose?.({
       lines: selected,
       side: suggestion ? "new" : wholeFile ? "both" : side,
@@ -498,21 +679,21 @@ export function createDiff(parent, options) {
   }
 
   function menuAt(event, col, row) {
-    event.preventDefault();
     const index = layout.rows[row]?.[col];
     if (index >= 0 && !includesLine(selection, index, lines[index]))
       selectRow(col, row, false);
+    const selected = selectedLines(lines, selection);
     closeMenu?.();
     closeMenu = contextMenu(event, [
       [
         "Add comment",
         () => compose(),
-        !selectedLines(lines, selection).some((line) => line.contextOnly),
+        !commentDisabledReason(selected, !!selection),
       ],
       [
         "Suggest change",
         () => compose(true),
-        canSuggest(file, selection?.side, selectedLines(lines, selection)),
+        canSuggest(file, selection?.side, selected),
       ],
       [
         "Comment on file",
@@ -521,31 +702,45 @@ export function createDiff(parent, options) {
           compose(false, true);
         },
       ],
-      [
-        "Copy selected lines",
-        copySelected,
-        selectedLines(lines, selection).length > 0,
-      ],
+      ["Copy selected lines", copySelected, selected.length > 0],
     ]);
   }
 
   function arrow(view, col, delta, extend) {
     const { rows, rowForLine } = layout;
-    let row = selection ? rowForLine[selection.head] + delta : 0;
+    const doc = view.state.doc;
+    const top = view.scrollDOM.scrollTop;
+    const head = selection && rowForLine[selection.head];
+    const block =
+      Number.isInteger(head) && view.lineBlockAt(doc.line(head + 1).from);
+    const continueFromHead =
+      block &&
+      (!resumeFromGap ||
+        (block.bottom > top && block.top < top + view.scrollDOM.clientHeight));
+    const visible = () => doc.lineAt(view.lineBlockAtHeight(top).from).number - 1;
+    let row = continueFromHead ? head + delta : visible();
+    const fromGap = resumeFromGap && !continueFromHead;
+    resumeFromGap = false;
     row = Math.max(0, Math.min(rows.length - 1, row));
-    while (row >= 0 && row < rows.length && rows[row][col] < 0) row += delta;
+    const direction = continueFromHead ? delta : 1;
+    while (
+      row >= 0 &&
+      row < rows.length &&
+      (rows[row][col] < 0 || (fromGap && !codeLine(lines[rows[row][col]])))
+    )
+      row += direction;
     if (!rows[row]) return;
     selectRow(col, row, extend);
     view.dispatch({
-      effects: EditorView.scrollIntoView(view.state.doc.line(row + 1).from),
+      effects: EditorView.scrollIntoView(doc.line(row + 1).from),
     });
   }
 
-  function collectAnchors() {
-    const { rowForLine } = layout;
-    layout.anchorRows = new Map();
-    layout.pinned = [];
-    layout.notesVersion = notesVersion;
+  function collectAnchors(owner) {
+    const { rowForLine } = owner;
+    owner.anchorRows = new Map();
+    owner.pinned = [];
+    owner.notesVersion = notesVersion;
     const groups = new Map();
     for (const note of notes) {
       const ends = [];
@@ -557,22 +752,22 @@ export function createDiff(parent, options) {
         if (end == null) continue;
         ends.push(end);
         for (let i = start ?? end; i <= end; i++)
-          layout.pinned[i] = (layout.pinned[i] ?? 0) | (side === "old" ? 1 : 2);
+          owner.pinned[i] = (owner.pinned[i] ?? 0) | (side === "old" ? 1 : 2);
       }
       if (!ends.length && (note.old?.length || note.new?.length)) continue;
       const row = ends.length ? Math.max(...ends) : -1;
-      layout.anchorRows.set(note.id, row);
+      owner.anchorRows.set(note.id, row);
       if (!groups.has(row)) groups.set(row, []);
       groups.get(row).push(note);
     }
     return groups;
   }
 
-  function noteDecorations(doc, groups, col) {
+  function noteDecorations(owner, doc, groups, col) {
     const ranges = [];
     for (const control of controls) {
       const atEnd = control.before === lines.length;
-      const row = layout.rowForLine[control.before];
+      const row = owner.rowForLine[control.before];
       const pos = atEnd ? doc.length : doc.line(row + 1).from;
       ranges.push(
         Decoration.widget({
@@ -583,11 +778,11 @@ export function createDiff(parent, options) {
       );
     }
     for (const [row, group] of groups) {
-      const owner = layout.split && group.some((n) => n.new?.length) ? 1 : 0;
+      const visibleCol = owner.split && group.some((n) => n.new?.length) ? 1 : 0;
       const pos = row < 0 ? 0 : doc.line(row + 1).to;
       ranges.push(
         Decoration.widget({
-          widget: new CommentBlock(group, col !== owner, controller),
+          widget: new CommentBlock(group, col !== visibleCol, controller),
           block: true,
           side: row < 0 ? -1 : 1,
         }).range(pos),
@@ -599,14 +794,16 @@ export function createDiff(parent, options) {
   function marks(view, col, owner, side) {
     const ranges = [];
     const { rows, drawnSelection } = owner;
+    const current = owner.controls === controls;
     for (const range of view.visibleRanges) {
       let row = view.state.doc.lineAt(range.from);
       while (true) {
         const index = rows[row.number - 1]?.[col];
-        const line = lines[index];
+        const line = owner.lines[index];
         let cls = line ? rowClasses[line.kind] : "gap";
         let attrs = cls ? "bl-row-" + cls : "";
         if (
+          current &&
           (drawnSelection?.side === "both" ||
             side === "both" ||
             drawnSelection?.side === side) &&
@@ -629,18 +826,8 @@ export function createDiff(parent, options) {
             );
           }
         }
-        const first = found?.firstByLine.get(index);
-        if (first !== undefined) {
-          for (let i = first; found.matches[i]?.line === index; i++) {
-            const hit = found.matches[i];
-            ranges.push(
-              Decoration.mark({
-                class: i === currentMatch ? "bl-find-current" : "bl-find-match",
-              }).range(row.from + hit.from, row.from + hit.to),
-            );
-          }
-        }
         if (
+          current &&
           line &&
           explicitHit?.line === line &&
           sideMatches(side, explicitHit.side)
@@ -700,6 +887,18 @@ export function createDiff(parent, options) {
           this.decorations = marks(view, col, owner, side);
         }
         update(update) {
+          // The gutter plugin can detach its entire DOM during this update.
+          // Only recover focus if it was actually on an arrow in this pane.
+          const active = document.activeElement;
+          if (
+            active?.matches(".bl-gap-arrows button") &&
+            update.view.dom.contains(active)
+          ) {
+            const { contextAt, contextAction } = active.dataset;
+            queueMicrotask(() =>
+              focusGapAction(update.view.dom, contextAt, contextAction),
+            );
+          }
           if (
             update.viewportChanged ||
             update.transactions.some((tr) =>
@@ -725,13 +924,25 @@ export function createDiff(parent, options) {
             spellcheck: "false",
           }),
           render,
-          cardConfig.of(noteDecorations(doc, groups, col)),
+          cardConfig.of(noteDecorations(owner, doc, groups, col)),
           gutter({
             class: "bl-line-numbers",
             initialSpacer: () => new NumberMarker(numberText(null, -1)),
+            updateSpacer: () => new NumberMarker(numberText(null, -1)),
             lineMarker: (view, block) => {
               const n = view.state.doc.lineAt(block.from).number - 1;
-              return new NumberMarker(numberText(lines[rows[n]?.[col]], n));
+              const line = owner.lines[owner.rows[n]?.[col]];
+              const kind = line && rowClasses[line.kind];
+              return new NumberMarker(
+                numberText(line, n),
+                kind ? "bl-gutter-" + kind : "",
+              );
+            },
+            widgetMarker: (_view, widget) => {
+              if (!(widget instanceof ContextBlock)) return null;
+              return !widget.hidden && widget.canStep
+                ? new GapArrows(widget)
+                : gapGutter;
             },
             lineMarkerChange: (update) =>
               update.transactions.some((tr) =>
@@ -739,7 +950,11 @@ export function createDiff(parent, options) {
               ),
             domEventHandlers: {
               mousedown(view, block, event) {
-                if (event.button !== 0) return false;
+                if (
+                  event.button !== 0 ||
+                  event.target.closest(".bl-gap-arrows")
+                )
+                  return false;
                 view.focus();
                 selectRow(
                   col,
@@ -750,8 +965,15 @@ export function createDiff(parent, options) {
                 return true;
               },
               contextmenu(view, block, event) {
+                if (event.target.closest(".bl-gap-arrows")) return false;
+                event.preventDefault();
+                view.focus();
                 menuAt(
-                  event,
+                  {
+                    target: view.contentDOM,
+                    clientX: event.clientX,
+                    clientY: event.clientY,
+                  },
                   col,
                   view.state.doc.lineAt(block.from).number - 1,
                 );
@@ -787,6 +1009,23 @@ export function createDiff(parent, options) {
             },
             keydown(e, view) {
               if (e.metaKey || e.ctrlKey || e.altKey) return false;
+              if (isContextMenuKey(e)) {
+                e.preventDefault();
+                const rect = view.scrollDOM.getBoundingClientRect();
+                const row = selection && owner.rowForLine[selection.head];
+                const point =
+                  Number.isInteger(row) &&
+                  view.coordsAtPos(view.state.doc.line(row + 1).from);
+                menuAt({
+                  target: view.contentDOM,
+                  clientX: Math.max(rect.left, point?.left ?? rect.left) + 8,
+                  clientY:
+                    point && point.bottom >= rect.top && point.bottom <= rect.bottom
+                      ? point.bottom
+                      : rect.top + 12,
+                });
+                return true;
+              }
               if (e.key === "ArrowDown" || e.key === "ArrowUp")
                 arrow(view, col, e.key === "ArrowDown" ? 1 : -1, e.shiftKey);
               else if (e.key === "Escape") changedSelection(null);
@@ -807,6 +1046,7 @@ export function createDiff(parent, options) {
               return true;
             },
             contextmenu(e, view) {
+              e.preventDefault();
               const pos = view.posAtCoords(
                 { x: e.clientX, y: e.clientY },
                 false,
@@ -822,8 +1062,14 @@ export function createDiff(parent, options) {
         ],
       }),
     });
+    // CodeMirror hides its gutters from assistive technology by default.
+    // The directional buttons belong in the tab order. The numbers are visual.
+    if (col === 0 && gaps.length)
+      view.scrollDOM
+        .querySelector(".cm-gutters")
+        ?.removeAttribute("aria-hidden");
     view.scrollDOM.addEventListener("scroll", () => {
-      if (layout !== owner) return;
+      if (layout !== owner || pendingPosition) return;
       const other = owner.panes[1 - col]?.view;
       if (
         other &&
@@ -852,18 +1098,31 @@ export function createDiff(parent, options) {
   }
 
   function refreshNotes() {
+    const active = document.activeElement;
+    const note = active?.closest("[data-note]");
+    const focusedId = note && layout.root.contains(note) ? note.dataset.note : null;
     notesVersion++;
     drawNotes();
+    if (!focusedId || document.activeElement !== document.body) return;
+    const replacement = layout.root.querySelector(
+      `[data-note="${focusedId}"] .bl-disclosure`,
+    );
+    const fallback =
+      layout.panes[activeCol]?.view.contentDOM ??
+      layout.root.querySelector(".bl-diff-empty > button");
+    (replacement ?? fallback)?.focus({ preventScroll: true });
   }
 
   function drawNotes() {
-    const groups = collectAnchors();
+    const groups = collectAnchors(layout);
     layout.drawnSelection = selection;
     if (!layout.rows.length) return empty(groups);
     layout.panes.forEach(({ view, cardConfig }, col) => {
       view.dispatch({
         effects: [
-          cardConfig.reconfigure(noteDecorations(view.state.doc, groups, col)),
+          cardConfig.reconfigure(
+            noteDecorations(layout, view.state.doc, groups, col),
+          ),
           repaint.of(null),
         ],
       });
@@ -952,22 +1211,28 @@ export function createDiff(parent, options) {
     };
   }
 
-  function rebuildContext(opening) {
+  function rebuildContext(anchor, restored) {
     const split = layout.split,
       previous = lines,
       saved = position();
     const next = displayContext(patch, gaps, expanded, contents);
     const restore = remapPosition(saved, previous, next.lines);
-    if (
-      opening &&
-      (restore.top < 0 || previous[saved.top] === patch[opening.at])
-    ) {
-      restore.top = next.controls.find(
-        (control) => control.gap === opening,
-      )?.before;
-      restore.offset = 0;
+    if (anchor) {
+      const control = next.controls.find((c) => c.gap === anchor.gap);
+      if (control) {
+        // When the last hidden lines appear, stay where the gap used to be.
+        const at = control.before + (control.open ? anchor.previousTop : 0);
+        restore.top = Math.min(at, next.lines.length - 1);
+        restore.offset = -anchor.y;
+      }
     }
-    dropLayouts();
+    // Only an empty patch, such as a pure rename, changes the editor surface.
+    const retainsPanes = previous.length > 0 && next.lines.length > 0;
+    if (!retainsPanes) dropLayouts();
+    else {
+      cancelRestore();
+      closeMenu?.();
+    }
     ({ lines, controls } = next);
     selection = restore.selection;
     indexLines();
@@ -975,29 +1240,119 @@ export function createDiff(parent, options) {
       const current = lines[numbered.new.get(explicitHit.line.new)];
       explicitHit = current ? { ...explicitHit, line: current } : undefined;
     }
-    if (findQuery) found = findDiffMatches(lines, findQuery);
-    showLayout(split, restore);
+    if (retainsPanes) {
+      // Catch the other layout up when opened, outside expansion's hot path.
+      updateContextRows(layout);
+      restorePosition(restore, { restored });
+      announceSelection();
+    } else showLayout(split, restore, restored);
+    if (controls.length) full = controls.every((control) => control.open);
     options.onContextChange?.({ full, expanded: expanded.size > 0 });
   }
 
-  async function toggleGap(gap) {
+  function indexLayout(owner) {
+    owner.root.style.setProperty("--bl-line-number-digits", digits);
+    owner.lines = lines;
+    owner.controls = controls;
+    owner.rows = diffRows(lines, owner.split);
+    owner.rowForLine = Array(lines.length);
+    owner.rows.forEach((cells, i) => {
+      for (const cell of cells) if (cell >= 0) owner.rowForLine[cell] = i;
+    });
+  }
+
+  function updateContextRows(owner) {
+    const { rows: oldRows, lines: previous } = owner;
+    indexLayout(owner);
+    owner.drawnSelection = selection;
+    const { rows } = owner;
+    const sameRow = (a, b) =>
+      rows[b].every((index, col) => {
+        const before = previous[oldRows[a][col]];
+        const after = lines[index];
+        return (
+          before === after ||
+          (before?.contextOnly &&
+            after?.contextOnly &&
+            before.old === after.old &&
+            before.new === after.new)
+        );
+      });
+    let start = 0,
+      oldEnd = oldRows.length,
+      end = rows.length;
+    while (start < oldEnd && start < end && sameRow(start, start)) start++;
+    while (oldEnd > start && end > start && sameRow(oldEnd - 1, end - 1)) {
+      oldEnd--;
+      end--;
+    }
+    const groups = collectAnchors(owner);
+    owner.panes.forEach(({ view, cardConfig }, col) => {
+      const doc = view.state.doc;
+      let changes;
+      // Keep all matching rows before and after the reveal in CodeMirror.
+      if (start !== oldEnd || start !== end) {
+        const offset = (row) =>
+          row < oldRows.length ? doc.line(row + 1).from : doc.length;
+        let from = offset(start);
+        const insert = rows
+          .slice(start, end)
+          .map((row) => lines[row[col]]?.text ?? "");
+        if (oldEnd < oldRows.length) insert.push("");
+        else if (start > 0) {
+          if (start < oldRows.length) from--;
+          insert.unshift("");
+        }
+        changes = view.state.changes({
+          from,
+          to: offset(oldEnd),
+          insert: Text.of(insert),
+        });
+      }
+      view.dispatch({
+        changes,
+        effects: [
+          cardConfig.reconfigure(
+            noteDecorations(owner, changes?.apply(doc) ?? doc, groups, col),
+          ),
+          repaint.of(null),
+        ],
+      });
+    });
+  }
+
+  async function toggleGap(gap, action, box) {
     const turn = ++contextVersion;
+    const fromFocus = box.contains(document.activeElement);
     searchVersion++;
     try {
       await loadContents();
       if (disposed || turn !== contextVersion) return;
-      const opening = !expanded.has(gap.at);
-      if (opening && gapLength(gap, contents)) expanded.add(gap.at);
-      else expanded.delete(gap.at);
-      full = gaps.every(
-        (g) => gapLength(g, contents) === 0 || expanded.has(g.at),
-      );
-      rebuildContext(opening ? gap : null);
-      if (!gapLength(gap, contents))
-        options.onStatus?.("This hunk reaches the end of the file.");
-      const toggle = layout.root.querySelector(`[data-context-at="${gap.at}"]`);
-      if (toggle) toggle.focus({ preventScroll: true });
-      else layout.panes[activeCol]?.view.focus();
+      const scroller = box.closest(".cm-scroller");
+      let y = scroller
+        ? box.getBoundingClientRect().top - scroller.getBoundingClientRect().top
+        : 0;
+      // Leave space to read the newly revealed rows on the side that grew.
+      if (scroller && action === "top")
+        y = Math.max(y, scroller.clientHeight / 3);
+      if (scroller && action === "bottom")
+        y = Math.min(y, (scroller.clientHeight * 2) / 3);
+      const previousTop = expanded.get(gap.at)?.top ?? 0;
+      const count = gapLength(gap, contents);
+      expandGap(expanded, gap, count, action);
+      rebuildContext({ gap, y, previousTop }, () => {
+        if (disposed || turn !== contextVersion) return;
+        if (fromFocus && document.activeElement === document.body)
+          resumeFromGap = true;
+        focusGapAction(
+          layout.root,
+          gap.at,
+          action,
+          layout.panes[0]?.view.contentDOM ??
+            layout.root.querySelector(".bl-diff-empty button"),
+        );
+      });
+      if (!count) options.onStatus?.("This hunk reaches the end of the file.");
     } catch (error) {
       if (!disposed) options.onStatus?.(String(error));
     }
@@ -1007,40 +1362,104 @@ export function createDiff(parent, options) {
     return column === "both" || side === "both" || column === side;
   }
   function paintFind() {
-    for (const { panes } of layouts.values()) {
-      for (const { view } of panes)
+    for (const owner of layouts.values()) {
+      if (owner.controls !== controls) continue;
+      for (const { view } of owner.panes)
         view.dispatch({ effects: repaint.of(null) });
     }
   }
-  function scrollToMatch(index, from, side) {
+  function scrollToMatch(index, side, from, to) {
     cancelRestore();
     const row = layout.rowForLine[index],
       cells = layout.rows[row];
     if (layout.split && side !== "both") activeCol = side === "new" ? 1 : 0;
     if (cells[activeCol] !== index) activeCol = cells.indexOf(index);
     const view = layout.panes[activeCol].view;
-    const start = view.state.doc.line(row + 1).from + from;
+    const start = view.state.doc.line(row + 1).from;
+    const match = EditorSelection.range(start + from, start + to);
+    if (layout.split) {
+      restorePosition(
+        {
+          top: index,
+          offset: (view.defaultLineHeight - view.scrollDOM.clientHeight) / 2,
+          x: view.scrollDOM.scrollLeft,
+          side: colSide(activeCol),
+          selection,
+        },
+        { match },
+      );
+      return;
+    }
     view.dispatch({
-      effects: EditorView.scrollIntoView(start, { y: "center" }),
+      effects: EditorView.scrollIntoView(match, { y: "center" }),
     });
   }
   function reveal(index, side, from, to) {
     const line = lines[index];
     if (!line) return false;
-    explicitHit = {
-      line,
-      side,
-      from: Math.max(0, Math.min(from ?? 0, line.text.length)),
-      to: Math.min(to ?? line.text.length, line.text.length),
-    };
-    found = undefined;
-    findQuery = "";
+    const start = Math.max(0, Math.min(from ?? 0, line.text.length));
+    const end = Math.max(start, Math.min(to ?? line.text.length, line.text.length));
+    explicitHit = { line, side, from: start, to: end };
     paintFind();
-    scrollToMatch(index, explicitHit.from, side);
+    scrollToMatch(index, side, start, end);
     return true;
   }
 
-  function showLayout(split, saved) {
+  function restorePosition(saved, { measured, restored, match } = {}) {
+    const row = layout.rowForLine[saved?.top];
+    if (row == null) return restored?.();
+    const views = layout.panes.map(({ view }) => view);
+    const source = views[activeCol];
+    const sourcePos = source.state.doc.line(row + 1).from;
+    const offset = saved.offset || 0;
+    const horizontal = views.map((view) =>
+      view === source ? saved.x || 0 : view.scrollDOM.scrollLeft,
+    );
+
+    function align() {
+      const top = source.lineBlockAt(sourcePos).top + offset;
+      for (const [i, view] of views.entries()) {
+        if (view.scrollDOM.scrollTop !== top) view.scrollDOM.scrollTop = top;
+        // Keep the horizontal reveal of the matching text in its source pane.
+        if (view === source && match) continue;
+        if (view.scrollDOM.scrollLeft !== horizontal[i])
+          view.scrollDOM.scrollLeft = horizontal[i];
+      }
+    }
+
+    // Reopening a measured pane can stay synchronous when its anchor is visible.
+    if (
+      measured &&
+      sourcePos >= source.viewport.from &&
+      sourcePos <= source.viewport.to
+    ) {
+      align();
+      return restored?.();
+    }
+
+    // Each pane needs to measure this row before either can drive scroll sync.
+    // Otherwise one pane can clamp a copied offset to zero during its update.
+    pendingPosition = saved;
+    for (const view of views) {
+      const pos = view.state.doc.line(row + 1).from;
+      const target = view === source && match ? match : pos;
+      view.dispatch({
+        effects: EditorView.scrollIntoView(target, {
+          y: "start",
+          yMargin: -offset,
+        }),
+      });
+    }
+    restoreFrame = requestAnimationFrame(() => {
+      align();
+      restoreFrame = requestAnimationFrame(() => {
+        pendingPosition = null;
+        restored?.();
+      });
+    });
+  }
+
+  function showLayout(split, saved, restored) {
     cancelRestore();
     closeMenu?.();
     const width = parent.clientWidth,
@@ -1052,9 +1471,11 @@ export function createDiff(parent, options) {
       layout.root.inert = true;
     }
     layout = layouts.get(split);
+    const staleContext = layout && layout.controls !== controls;
     // A resize can wrap a comment and change every row position below it.
     const measured =
       layout &&
+      !staleContext &&
       layout.notesVersion === notesVersion &&
       width > 0 &&
       height > 0 &&
@@ -1063,30 +1484,49 @@ export function createDiff(parent, options) {
       layout.scale === window.devicePixelRatio;
     if (layout) {
       layout.root.inert = false;
-      if (layout.notesVersion !== notesVersion) drawNotes();
+      if (staleContext) updateContextRows(layout);
+      else if (layout.notesVersion !== notesVersion) drawNotes();
       else paintSelection();
     } else {
       const root = element("div", "bl-diff");
+      root.addEventListener("focusin", (event) => {
+        const action = event.target.closest("[data-context-action]");
+        if (!action) return;
+        requestAnimationFrame(() => {
+          if (document.activeElement === action) revealGapFocus(action);
+        });
+      });
+      root.addEventListener("keydown", (event) => {
+        if (
+          !event.target.closest("[data-context-action]") ||
+          !["ArrowDown", "ArrowUp"].includes(event.key) ||
+          event.altKey ||
+          event.ctrlKey ||
+          event.metaKey
+        )
+          return;
+        const pane = layout.panes[activeCol];
+        if (!pane) return;
+        event.preventDefault();
+        event.stopPropagation();
+        pane.view.focus();
+        resumeFromGap = true;
+        arrow(pane.view, activeCol, event.key === "ArrowDown" ? 1 : -1, event.shiftKey);
+      }, true);
       root.classList.toggle("bl-split", split && lines.length > 0);
       root.setAttribute("role", "region");
       root.setAttribute("aria-label", split ? "Split diff" : "Unified diff");
       parent.append(root);
-      const rows = diffRows(lines, split);
-      const rowForLine = Array(lines.length);
-      rows.forEach((cells, i) => {
-        for (const cell of cells) if (cell >= 0) rowForLine[cell] = i;
-      });
       layout = {
         root,
         split,
-        rows,
-        rowForLine,
         panes: [],
         drawnSelection: selection,
       };
+      indexLayout(layout);
       layouts.set(split, layout);
-      const groups = collectAnchors();
-      if (rows.length) {
+      const groups = collectAnchors(layout);
+      if (layout.rows.length) {
         layout.panes.push(makePane(0, groups));
         if (split) layout.panes.push(makePane(1, groups));
       } else empty(groups);
@@ -1099,33 +1539,7 @@ export function createDiff(parent, options) {
           lines[selection.head]?.new != null))
         ? 1
         : 0;
-    const row = layout.rowForLine[saved?.top];
-    if (row != null) {
-      const view = layout.panes[activeCol].view,
-        pos = view.state.doc.line(row + 1).from;
-      function align() {
-        const top = view.lineBlockAt(pos).top + (saved.offset || 0);
-        for (const { view: pane } of layout.panes) {
-          if (pane.scrollDOM.scrollTop !== top) pane.scrollDOM.scrollTop = top;
-        }
-        const x = saved.x || 0;
-        if (view.scrollDOM.scrollLeft !== x) view.scrollDOM.scrollLeft = x;
-      }
-      // A hidden panel retains its dimensions and CodeMirror viewport. A row
-      // already measured there can be restored during the same switch.
-      if (measured && pos >= view.viewport.from && pos <= view.viewport.to) {
-        align();
-      } else {
-        pendingPosition = saved;
-        view.dispatch({
-          effects: EditorView.scrollIntoView(pos, { y: "start", yMargin: 0 }),
-        });
-        restoreFrame = requestAnimationFrame(() => {
-          align();
-          pendingPosition = null;
-        });
-      }
-    }
+    restorePosition(saved, { measured, restored });
     announceSelection();
   }
 
@@ -1141,7 +1555,7 @@ export function createDiff(parent, options) {
       if (!gaps.length)
         return options.onContextChange?.({ full, expanded: false });
       for (const gap of gaps)
-        if (gapLength(gap, contents)) expanded.add(gap.at);
+        expandGap(expanded, gap, gapLength(gap, contents), "all");
       rebuildContext();
     },
     collapseContext() {
@@ -1162,11 +1576,8 @@ export function createDiff(parent, options) {
           (g) => number >= g[side] && number < g[side] + gapLength(g, contents),
         );
         if (!gap) return false;
-        expanded.add(gap.at);
-        full = gaps.every(
-          (g) => gapLength(g, contents) === 0 || expanded.has(g.at),
-        );
-        rebuildContext(gap);
+        expandGap(expanded, gap, gapLength(gap, contents), "all");
+        rebuildContext();
       }
       return reveal(numbered[side].get(number), side, from, to);
     },
@@ -1179,26 +1590,6 @@ export function createDiff(parent, options) {
         from,
         to,
       );
-    },
-    find(query, step = 0) {
-      searchVersion++;
-      explicitHit = undefined;
-      if (query !== findQuery) {
-        findQuery = query;
-        found = query ? findDiffMatches(lines, query) : undefined;
-        currentMatch = 0;
-      } else if (found?.matches.length) {
-        currentMatch =
-          (currentMatch + step + found.matches.length) % found.matches.length;
-      }
-      // A retained pane may become visible again before the query changes.
-      paintFind();
-      const hit = found?.matches[currentMatch];
-      if (hit) scrollToMatch(hit.line, hit.from, "both");
-      return {
-        current: hit ? currentMatch + 1 : 0,
-        total: found?.matches.length ?? 0,
-      };
     },
     setMode(value) {
       const split = value.toLowerCase() === "split";

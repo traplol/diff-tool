@@ -35,13 +35,22 @@ jobs:
         run: npm run tauri -- build --bundles ${{ matrix.bundle }}
       - name: Exercise the packaged Linux application
         if: runner.os == 'Linux'
-        run: xvfb-run -a -s '-screen 0 3840x2160x24' dbus-run-session -- python3 tools/smoke_current.py --binary src-tauri/target/release/branchline
+        run: xvfb-run -a -s '-screen 0 3840x2160x24' dbus-run-session -- python3 tools/smoke_native.py --binary src-tauri/target/release/branchline
       - name: Check diff search and saved settings
         if: runner.os == 'Linux'
-        run: xvfb-run -a -s '-screen 0 1920x1080x24' dbus-run-session -- python3 tools/check_review_controls.py --binary src-tauri/target/release/branchline
+        run: xvfb-run -a -s '-screen 0 1280x720x24' dbus-run-session -- python3 tools/check_review_controls.py --binary src-tauri/target/release/branchline
       - name: Check diff context and scoped search
         if: runner.os == 'Linux'
-        run: xvfb-run -a -s '-screen 0 1920x1080x24' dbus-run-session -- python3 tools/check_review_context.py --binary src-tauri/target/release/branchline
+        run: xvfb-run -a -s '-screen 0 1280x720x24' dbus-run-session -- python3 tools/check_review_context.py --binary src-tauri/target/release/branchline
+      - name: Check review at the minimum window size
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 1280x720x24' dbus-run-session -- python3 tools/check_review_compact.py --binary src-tauri/target/release/branchline
+      - name: Check review draft recovery
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 1280x720x24' dbus-run-session -- python3 tools/check_review_drafts.py --binary src-tauri/target/release/branchline
+      - name: Check search result destinations
+        if: runner.os == 'Linux'
+        run: xvfb-run -a -s '-screen 0 1280x720x24' dbus-run-session -- python3 tools/check_review_sources.py --binary src-tauri/target/release/branchline
       - uses: actions/upload-artifact@v4
         with:
           name: branchline-${{ runner.os }}

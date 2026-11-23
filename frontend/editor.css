@@ -1,7 +1,9 @@
 .bl-diff {
-  --diff-rule: #d9e1da;
-  --diff-add: #e6f5e8;
-  --diff-del: #fbecea;
+  --diff-rule: #dcdcde;
+  --diff-add: #e5f6e9;
+  --diff-del: #fce8e6;
+  --diff-hunk: #edf2f7;
+  --diff-ink: #333238;
   position: absolute;
   inset: 0;
   display: grid;
@@ -13,7 +15,7 @@
   min-height: 0;
   overflow: hidden;
   background: #fff;
-  color: #25352b;
+  color: var(--diff-ink);
 }
 .bl-diff:not([inert]) {
   z-index: 1;
@@ -33,15 +35,13 @@
 }
 .bl-pane-heading {
   padding: 5px 12px;
-  background: #f5f7f3;
-  color: #526757;
+  background: #fbfafd;
+  color: #626168;
   border-bottom: 1px solid var(--diff-rule);
   font:
-    600 0.72rem/1.5 "IBM Plex Mono",
-    Consolas,
-    monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+    600 12px/1.5 Inter,
+    "Segoe UI",
+    sans-serif;
 }
 .bl-diff .cm-editor {
   flex: 1 1 0;
@@ -55,29 +55,57 @@
   overflow: auto;
   scrollbar-gutter: stable;
   font:
-    13px/21px "IBM Plex Mono",
+    13px/20px "IBM Plex Mono",
     "Cascadia Mono",
     Consolas,
     "DejaVu Sans Mono",
     monospace;
   overscroll-behavior: contain;
 }
+.bl-diff .cm-scroller::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.bl-diff .cm-scroller::-webkit-scrollbar-track,
+.bl-diff .cm-scroller::-webkit-scrollbar-corner {
+  background: #f7f7f8;
+}
+.bl-diff .cm-scroller::-webkit-scrollbar-thumb {
+  border: 2px solid #f7f7f8;
+  border-radius: 9px;
+  background: #96929f;
+}
 .bl-diff .cm-content {
   padding: 0;
   caret-color: transparent;
 }
 .bl-diff .cm-line {
-  padding: 0 9px;
+  padding: 0 10px;
 }
 .bl-diff .cm-gutters {
-  background: #f6f8f4;
-  color: #607368;
+  background: #fafafa;
+  color: #626168;
   border-right: 1px solid var(--diff-rule);
 }
 .bl-diff .cm-gutterElement {
-  padding: 0 6px;
+  padding: 0 7px;
   white-space: pre;
   cursor: pointer;
+}
+.bl-line-numbers {
+  min-width: 52px;
+}
+.bl-diff .cm-gutterElement.bl-gutter-arrows {
+  display: grid;
+  place-items: center;
+  padding: 0 1px;
+  cursor: default;
+}
+.bl-gap-arrows {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #42566d;
 }
 .bl-row-add {
   background: var(--diff-add);
@@ -86,28 +114,38 @@
   background: var(--diff-del);
 }
 .bl-row-gap {
-  background: repeating-linear-gradient(135deg, #f6f7f5 0 4px, #f0f2ef 4px 5px);
+  background: repeating-linear-gradient(135deg, #f7f7f8 0 4px, #f0f0f2 4px 5px);
 }
 .bl-row-hunk,
 .bl-row-meta {
-  color: #66796c;
-  background: #eff3f0;
+  color: #516477;
+  background: var(--diff-hunk);
+}
+.bl-gutter-add {
+  color: #24663b;
+  background: #c9ebd2;
+}
+.bl-gutter-del {
+  color: #a22c2c;
+  background: #f9d3cf;
+}
+.bl-gutter-hunk,
+.bl-gutter-meta {
+  color: #53667a;
+  background: #e1e9f1;
 }
 .bl-diff .bl-row-picked {
-  background: #d7eaf7;
-  box-shadow: inset 2px 0 #4e839f;
+  background: #cbe2f9;
+  box-shadow: inset 2px 0 #1f75cb;
 }
 .bl-token-keyword {
-  color: #76467d;
+  color: #694cc0;
 }
 .bl-token-string {
-  color: #236347;
+  color: #1c6250;
 }
 .bl-token-comment {
-  color: #677a6b;
-}
-.bl-find-match {
-  background: #ffedaa;
+  color: #626168;
 }
 .bl-find-current {
   background: #ffbd54;
@@ -115,33 +153,61 @@
   outline: 1px solid #855817;
 }
 .bl-context {
-  width: fit-content;
-  padding: 2px 6px;
-  line-height: 22px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  box-sizing: border-box;
+  min-height: 28px;
+  padding: 1px 6px;
+  background: var(--diff-hunk);
+  color: #42566d;
+  white-space: nowrap;
 }
-.bl-context button {
-  min-height: 22px;
-  padding: 1px 7px;
-  color: #285b40;
-  background: #edf4ed;
-  border: 1px solid #cad8cc;
+.bl-context.bl-spacer {
+  visibility: visible;
+}
+.bl-context.bl-spacer button {
+  visibility: hidden;
+}
+.bl-context .bl-expand,
+.bl-gap-arrows .bl-expand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 5px;
+  color: inherit;
+  background: transparent;
+  border: 0;
   border-radius: 4px;
+  box-shadow: none;
   font:
-    12px/18px system-ui,
+    12px/16px Inter,
+    "Segoe UI",
     sans-serif;
 }
-.bl-context button::before {
-  content: "▸ ";
+.bl-gap-arrows .bl-expand {
+  width: 24px;
+  padding: 0;
 }
-.bl-context button[aria-expanded="true"]::before {
-  content: "▾ ";
+.bl-context .bl-expand:hover:not(:disabled),
+.bl-gap-arrows .bl-expand:hover:not(:disabled) {
+  color: #0b559f;
+  background: #d5e3f2;
+}
+.bl-context .bl-expand:focus-visible,
+.bl-gap-arrows .bl-expand:focus-visible {
+  outline: 2px solid #1f75cb;
+  outline-offset: -2px;
 }
 .bl-comments {
   box-sizing: border-box;
   width: min(44rem, 100%);
   max-width: calc(100cqw - 10ch - 30px);
-  padding: 4px 6px;
-  color: #26392e;
+  padding: 8px;
+  color: var(--diff-ink);
   font:
     13px/1.45 Inter,
     "Segoe UI",
@@ -157,57 +223,73 @@
   pointer-events: none;
 }
 .bl-card {
-  padding: 6px 10px;
-  border: 1px solid #cbdbce;
-  border-left: 3px solid #76a882;
-  background: #f5f9f4;
-  border-radius: 5px;
+  border: 1px solid var(--diff-rule);
+  overflow: hidden;
+  background: #fff;
+  border-radius: 6px;
 }
 .bl-card + .bl-card {
-  margin-top: 4px;
+  margin-top: 6px;
 }
 .bl-card-head,
 .bl-card-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px 9px;
+  gap: 4px 8px;
+  padding: 5px 10px;
+}
+.bl-card-head {
+  background: #f7f7f8;
+}
+.bl-card-head:has([aria-expanded="true"]) {
+  border-bottom: 1px solid var(--diff-rule);
 }
 .bl-location,
 .bl-applied {
-  color: #526858;
+  color: #626168;
   font-size: 12px;
+}
+.bl-applied {
+  color: #24663b;
 }
 .bl-card button,
 .bl-diff-empty button {
   width: auto;
   height: auto;
   min-height: 24px;
-  padding: 2px 5px;
-  background: transparent;
-  color: #265b3b;
-  border: 0;
-  border-radius: 3px;
+  padding: 2px 8px;
+  background: #fff;
+  color: var(--diff-ink);
+  border: 1px solid #bfbfc3;
+  border-radius: 4px;
   font: inherit;
   cursor: pointer;
 }
-.bl-card button:hover,
-.bl-diff-empty button:hover {
-  background: #e2eddf;
+.bl-card button:hover:not(:disabled),
+.bl-diff-empty button:hover:not(:disabled) {
+  border-color: #8b8a91;
+  background: #f2f1f4;
 }
 .bl-card button:focus-visible,
 .bl-diff-menu button:focus-visible {
-  outline: 2px solid #34774a;
+  outline: 2px solid #1f75cb;
   outline-offset: -2px;
 }
 .bl-card .bl-disclosure {
-  padding-left: 0;
+  color: #333238;
+  border: 0;
+  background: transparent;
+  padding: 1px 4px;
   font-weight: 650;
+}
+.bl-resolved .bl-disclosure {
+  color: #24663b;
 }
 .bl-disclosure::before {
   content: "";
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 8px;
   border-block: 0.31em solid transparent;
   border-inline-start: 0.47em solid currentColor;
   vertical-align: 0.04em;
@@ -220,56 +302,57 @@
 .bl-after {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  margin: 4px 0;
+  margin: 8px 12px;
 }
 .bl-before,
 .bl-after {
-  padding: 4px 7px;
+  padding: 5px 8px;
   font:
     12px/1.5 "IBM Plex Mono",
     Consolas,
     monospace;
 }
 .bl-before {
-  color: #853d3d;
+  color: #8d2929;
   background: var(--diff-del);
-  border-inline-start: 2px solid #cf8985;
+  border-inline-start: 2px solid #dd7773;
 }
 .bl-after {
-  color: #285a39;
+  color: #24663b;
   background: var(--diff-add);
-  border-inline-start: 2px solid #78a87e;
+  border-inline-start: 2px solid #75bf8b;
 }
 .bl-card-actions {
-  border-top: 1px solid #dde7db;
-  padding-top: 4px;
-  margin-top: 5px;
+  border-top: 1px solid var(--diff-rule);
+  padding-block: 6px;
 }
 .bl-diff-menu {
   position: fixed;
   z-index: 200;
-  min-width: 155px;
+  min-width: 176px;
   display: grid;
   padding: 4px;
-  border: 1px solid #c7d4c9;
+  border: 1px solid #dcdcde;
   border-radius: 6px;
   background: white;
-  color: #24362a;
-  box-shadow: 0 8px 25px #2139292b;
+  color: #333238;
+  box-shadow:
+    0 1px 4px #1f1e241f,
+    0 8px 20px #1f1e2421;
 }
 .bl-diff-menu button {
   background: transparent;
   border: 0;
   text-align: left;
   border-radius: 3px;
-  padding: 5px 8px;
+  padding: 6px 10px;
   color: inherit;
   cursor: pointer;
   font: inherit;
 }
 .bl-diff-menu button:hover:enabled,
 .bl-diff-menu button:focus-visible {
-  background: #e4f0e0;
+  background: #ededf1;
 }
 .bl-diff-menu button:disabled {
   opacity: 0.45;
@@ -289,4 +372,69 @@
 .bl-diff-empty .bl-comments {
   max-width: 100%;
   padding-left: 0;
+}
+
+@media (max-width: 900px) {
+  .bl-diff .cm-line {
+    padding-inline: 6px;
+  }
+  .bl-diff .cm-gutterElement {
+    padding-inline: 4px;
+  }
+  .bl-diff .cm-gutterElement.bl-gutter-arrows {
+    padding-inline: 1px;
+  }
+  .bl-line-numbers {
+    min-width: 48px;
+  }
+  .bl-split .bl-pane {
+    --compact-gutter-width: max(
+      50px,
+      calc((var(--bl-line-number-digits, 3) + 4) * 8px + 8px)
+    );
+  }
+  .bl-split .bl-line-numbers {
+    width: var(--compact-gutter-width);
+    min-width: 0;
+  }
+  .bl-split .bl-context {
+    max-width: calc(100cqw - var(--compact-gutter-width) - 12px);
+    padding-inline: 2px;
+  }
+  .bl-split .bl-context .bl-expand {
+    min-width: 22px;
+    padding-inline: 3px;
+    gap: 3px;
+  }
+  .bl-split .bl-context .bl-expand:first-child {
+    min-height: 24px;
+    height: auto;
+    white-space: normal;
+    text-align: start;
+  }
+  .bl-split .bl-context .ui-icon {
+    flex-shrink: 0;
+  }
+  .bl-split .bl-comments {
+    /* A widget row has no line number. Use its gutter and stay in view while
+       the reader scrolls a long line horizontally. */
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 201;
+    width: min(44rem, calc(100cqw - 11px));
+    max-width: none;
+    margin-inline-start: calc(-1px - var(--compact-gutter-width));
+    padding: 4px;
+  }
+  .bl-split .bl-card-head,
+  .bl-split .bl-card-actions {
+    padding-inline: 6px;
+    column-gap: 4px;
+  }
+  .bl-split :is(.bl-body, .bl-before, .bl-after) {
+    margin-inline: 8px;
+  }
+  .bl-split .bl-card button {
+    max-width: 100%;
+  }
 }

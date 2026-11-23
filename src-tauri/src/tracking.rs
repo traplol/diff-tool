@@ -156,6 +156,7 @@ struct Lookup<'a> {
     comparisons: HashMap<(String, String), Rc<Comparison>>,
     patches: HashMap<(String, String, String, String), Vec<Line>>,
     common: HashMap<(String, String), String>,
+    ancestry: HashMap<(String, String), bool>,
 }
 impl Lookup<'_> {
     fn comparison(&mut self, left: &str, right: &str) -> Result<Rc<Comparison>, String> {
@@ -209,12 +210,74 @@ impl Lookup<'_> {
         if !oid(origin) || !oid(head) {
             return Err("Invalid saved revision.".into());
         }
+        let key = (origin.into(), head.into());
+        if let Some(hit) = self.ancestry.get(&key) {
+            return Ok(*hit);
+        }
         let range = format!("{origin}..{head}");
-        Ok(!git::git(
+        let descends = !git::git(
             &self.repo.root,
             &["rev-list", "--ancestry-path", "--max-count=1", &range, "--"],
         )?
-        .is_empty())
+        .is_empty();
+        self.ancestry.insert(key, descends);
+        Ok(descends)
+    }
+    fn patch(&mut self, c: &Comparison, f: &Change) -> Result<&[Line], String> {
+        let key = (
+            c.base.clone(),
+            c.head.clone(),
+            f.group.clone(),
+            f.path.clone(),
+        );
+        let lines = match self.patches.entry(key) {
+            std::collections::hash_map::Entry::Occupied(entry) => entry.into_mut(),
+            std::collections::hash_map::Entry::Vacant(entry) => {
+                entry.insert(git::patch(self.repo, c, f)?)
+            }
+        };
+        Ok(lines)
+    }
+    fn unchanged_branch_location(
+        &mut self,
+        c: &Comparison,
+        n: &Value,
+    ) -> Result<Option<Value>, String> {
+        let previous_head = s(n, "head");
+        if n["base"] != c.base || !self.descends(previous_head, &c.head)? {
+            return Ok(None);
+        }
+
+        // Older branch comments did not store blob IDs. Read the original
+        // comparison and require exact identities on both sides of the diff.
+        let previous = self.introduced(&c.base, previous_head)?;
+        let matches_path = |f: &&Change| n["path"] == f.path && n["old_path"] == f.old;
+        let mut original_files = previous.files.iter().filter(matches_path);
+        let mut current_files = c.files.iter().filter(matches_path);
+        let (Some(original), None, Some(current), None) = (
+            original_files.next(),
+            original_files.next(),
+            current_files.next(),
+            current_files.next(),
+        ) else {
+            return Ok(None);
+        };
+        let version = file_version(current);
+        if original.status != current.status || file_version(original) != version {
+            return Ok(None);
+        }
+
+        if span(n, "old").is_some() || span(n, "new").is_some() {
+            let mut anchored = n.clone();
+            anchored["file_version"] = version;
+            let lines = self.patch(c, current)?;
+            if !project(current, lines, &anchored)
+                .is_some_and(|n2| n2["old"] == n["old"] && n2["new"] == n["new"])
+            {
+                return Ok(None);
+            }
+        }
+        Ok(Some(location_for(c, current, n)))
     }
     fn matching<'b>(
         &mut self,
@@ -230,19 +293,7 @@ impl Lookup<'_> {
             .iter()
             .filter(|f| n["path"] == f.path || (f.status == "R" && n["path"] == f.old))
         {
-            let key = (
-                c.base.clone(),
-                c.head.clone(),
-                f.group.clone(),
-                f.path.clone(),
-            );
-            let lines = match self.patches.entry(key) {
-                std::collections::hash_map::Entry::Occupied(entry) => entry.into_mut(),
-                std::collections::hash_map::Entry::Vacant(entry) => {
-                    entry.insert(git::patch(self.repo, c, f)?)
-                }
-            };
-            if let Some(anchor) = project(f, lines, n) {
+            if let Some(anchor) = project(f, self.patch(c, f)?, n) {
                 let idx = usize::from(span(n, "new").is_some());
                 let rank = (
                     n["file_version"][idx] == file_version(f)[idx],
@@ -347,6 +398,7 @@ pub fn locate_notes(
         comparisons: HashMap::new(),
         patches: HashMap::new(),
         common: HashMap::new(),
+        ancestry: HashMap::new(),
     };
     if let Some(c) = primary {
         look.comparisons
@@ -359,19 +411,32 @@ pub fn locate_notes(
         let Some(id) = n["id"].as_i64() else {
             continue;
         };
-        if pairs.contains(&(left, right))
-            && repo.refs.get(right).is_some_and(|h| n["head"] == *h)
-            && repo.refs.get(left).is_some_and(|h| n["left_tip"] != *h)
-        {
-            match look.comparison(left, right) {
-                Ok(c) => {
-                    if let Some(f) = c.files.iter().find(|f| note_matches_file(&c, f, n)) {
-                        found.entry(id).or_default().push(location_for(&c, f, n));
-                    }
-                }
-                Err(_) => {
-                    unavailable.insert(id);
-                }
+        if !pairs.contains(&(left, right)) {
+            continue;
+        }
+        let Some(head) = repo.refs.get(right) else {
+            continue;
+        };
+        let head_unchanged = n["head"] == *head;
+        if head_unchanged && repo.refs.get(left).is_none_or(|h| n["left_tip"] == *h) {
+            continue;
+        }
+        let location = (|| {
+            let c = look.comparison(left, right)?;
+            if head_unchanged {
+                Ok(c.files
+                    .iter()
+                    .find(|f| note_matches_file(&c, f, n))
+                    .map(|f| location_for(&c, f, n)))
+            } else {
+                look.unchanged_branch_location(&c, n)
+            }
+        })();
+        match location {
+            Ok(Some(location)) => found.entry(id).or_default().push(location),
+            Ok(None) => {}
+            Err(_) => {
+                unavailable.insert(id);
             }
         }
     }

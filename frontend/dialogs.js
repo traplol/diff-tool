@@ -21,16 +21,63 @@ export function button(label, fn, cls) {
   node.onclick = fn;
   return node;
 }
+export function commentStatus(resolved) {
+  return el(
+    "span",
+    resolved ? "Resolved" : "Open",
+    "status-chip" + (resolved ? " resolved" : ""),
+  );
+}
 const dlg = () => $("dialog");
+const memoryDrafts = new Map();
+
+function draftStorage(kind, key) {
+  const id = "branchline:draft:v1:" + kind + ":" + key;
+  return {
+    load() {
+      if (memoryDrafts.has(id)) return memoryDrafts.get(id);
+      try {
+        return JSON.parse(localStorage.getItem(id));
+      } catch {
+        return null;
+      }
+    },
+    write(value) {
+      try {
+        if (value == null) localStorage.removeItem(id);
+        else localStorage.setItem(id, JSON.stringify(value));
+        memoryDrafts.delete(id);
+        return true;
+      } catch {
+        memoryDrafts.set(id, value);
+        return false;
+      }
+    },
+  };
+}
+
+function draftNotice(body) {
+  const notice = el("p");
+  notice.setAttribute("role", "status");
+  notice.hidden = true;
+  body.append(notice);
+  return (text) => {
+    if (notice.textContent !== text) notice.textContent = text;
+    notice.hidden = !text;
+  };
+}
 
 function dialog(title, style = "") {
   if (dlg().open) dlg().close();
   dlg().className = style;
+  dlg().setAttribute("aria-label", title);
   dlg().querySelector("h2").textContent = title;
   $("dialog-body").replaceChildren();
   $("dialog-actions").replaceChildren();
   $("dialog-error").textContent = "";
   dlg().onkeydown = null;
+  dlg().oncancel = null;
+  dlg().querySelector(".dialog-top button").disabled = false;
   dlg().showModal();
   return $("dialog-body");
 }
@@ -69,18 +116,26 @@ export function details(title, content) {
   dialog(title).append(el("pre", content));
   action("Close", close);
 }
-export function showBranchFile(hit, lines, branch) {
-  const doc = Text.of(lines);
-  const line = doc.line(hit.line);
-  const from = line.from + hit.from,
-    to = line.from + hit.to;
+export function showBranchFile(hit, file, branch) {
   const body = dialog(labelPath(hit.path), "branch-source");
   body.append(
     el(
       "p",
-      `${refName(branch)} · ${hit.revision.slice(0, 10)} · Line ${hit.line}`,
+      `${refName(branch)} · ${hit.revision.slice(0, 10)}${hit.line ? ` · Line ${hit.line}` : ""}`,
     ),
   );
+  if (file.kind !== "text") {
+    body.append(el("p", file.kind === "binary"
+      ? `Binary file · ${file.bytes} bytes`
+      : "Git submodule"));
+    if (file.kind === "submodule") body.append(el("pre", file.oid));
+    action("Close", close);
+    return;
+  }
+  const doc = file.lines.length ? Text.of(file.lines) : Text.empty;
+  const line = hit.line ? doc.line(hit.line) : null;
+  const from = line ? line.from + hit.from : 0,
+    to = line ? line.from + hit.to : 0;
   const view = new EditorView({
     parent: body,
     state: EditorState.create({
@@ -90,9 +145,9 @@ export function showBranchFile(hit, lines, branch) {
         EditorView.editable.of(false),
         lineNumbers(),
         EditorView.decorations.of(
-          Decoration.set([
+          Decoration.set(from < to ? [
             Decoration.mark({ class: "bl-find-current" }).range(from, to),
-          ]),
+          ] : []),
         ),
       ],
     }),
@@ -101,31 +156,27 @@ export function showBranchFile(hit, lines, branch) {
   dlg().addEventListener("close", () => view.destroy(), { once: true });
   action("Close", close);
 }
-export function compose(note, callbacks) {
+export function compose(note, callbacks, draftKey) {
   const existing = note.id != null;
   const suggestion = Object.hasOwn(note, "suggestion");
   const body = dialog(
     (existing ? "Edit " : "New ") + (suggestion ? "suggestion" : "comment"),
     "popover",
   );
-  body.append(
-    el("strong", labelPath(note.path)),
-    el(
-      "div",
-      [
-        note.group,
-        spans(note),
-        existing ? (note.resolved ? "Resolved" : "Open") : "",
-      ]
-        .filter(Boolean)
-        .join(" · "),
-    ),
+  const location = el("div", null, "comment-location");
+  location.append(
+    el("code", labelPath(note.path)),
+    el("span", [note.group, spans(note)].filter(Boolean).join(" · ")),
   );
+  if (existing) location.append(commentStatus(note.resolved));
+  body.append(location);
   if (note.excerpt) body.append(el("pre", note.excerpt));
   const code = suggestion
     ? inputArea(body, "Proposed replacement", note.suggestion, 4)
     : null;
-  if (code && note.applied_location) {
+  const applied = Boolean(note.applied_location);
+  if (code) code.className = "replacement";
+  if (code && applied) {
     code.readOnly = true;
     body.append(el("p", "Applied to working file"));
   }
@@ -135,8 +186,40 @@ export function compose(note, callbacks) {
     note.body || "",
     3,
   );
-  if (existing)
-    action(
+  const originalBody = message.value;
+  const originalReplacement = code?.value;
+  const showNotice = draftNotice(body);
+  const storage = draftStorage("compose", draftKey);
+  const recovered = storage.load();
+  if (typeof recovered?.body === "string") message.value = recovered.body;
+  if (code && !applied && typeof recovered?.replacement === "string")
+    code.value = recovered.replacement;
+
+  let pending = false;
+  const topClose = dlg().querySelector(".dialog-top button");
+  async function finish(commit) {
+    pending = true;
+    const controls = [
+      ...$("dialog-actions").querySelectorAll("button:not(:disabled)"),
+      topClose,
+    ];
+    for (const control of controls) control.disabled = true;
+    message.readOnly = true;
+    if (code) code.readOnly = true;
+    try {
+      await commit();
+      storage.write(null);
+      if (message.isConnected) close();
+    } finally {
+      pending = false;
+      for (const control of controls) control.disabled = false;
+      message.readOnly = false;
+      if (code) code.readOnly = applied;
+    }
+  }
+
+  if (existing) {
+    const deleteButton = action(
       "Delete",
       async () => {
         const label = "Confirm delete";
@@ -144,13 +227,38 @@ export function compose(note, callbacks) {
           deleteButton.textContent = label;
           return;
         }
-        await callbacks.remove();
-        close();
+        await finish(callbacks.remove);
       },
       "danger",
     );
-  const deleteButton = $("dialog-actions").firstElementChild;
-  action("Cancel", close);
+  }
+  const dismiss = action("Cancel", close);
+  const discard = action("Discard draft", () => {
+    storage.write(null);
+    close();
+  });
+  function refreshDraft(restored = false) {
+    const replacement = code && !applied ? code.value : undefined;
+    const dirty =
+      message.value !== originalBody ||
+      (replacement !== undefined && replacement !== originalReplacement);
+    const persisted =
+      restored ||
+      storage.write(dirty ? { body: message.value, replacement } : null);
+    discard.hidden = !dirty;
+    dismiss.textContent = dirty ? "Keep draft" : "Cancel";
+    showNotice(
+      dirty
+        ? restored
+          ? "Draft restored."
+          : persisted
+            ? "Draft saved on this device."
+            : "Draft kept while Branchline stays open."
+        : "",
+    );
+  }
+  message.oninput = () => refreshDraft();
+  if (code && !applied) code.oninput = message.oninput;
   const save = action(
     suggestion ? "Save suggestion" : "Save comment",
     async () => {
@@ -164,34 +272,88 @@ export function compose(note, callbacks) {
         throw Error(
           "Edit the replacement or clear it to propose deleting the lines.",
         );
-      await callbacks.save(message.value, code?.value);
-      close();
+      await finish(() => callbacks.save(message.value, code?.value));
     },
     "primary",
   );
+  dlg().oncancel = (e) => {
+    if (pending) e.preventDefault();
+  };
   dlg().onkeydown = (e) => {
     if (e.ctrlKey && e.key === "Enter") {
       e.preventDefault();
       save.click();
     }
   };
-  (code && !code.readOnly ? code : message).focus();
+  refreshDraft(true);
+  (code && !applied ? code : message).focus();
 }
-export function preview(drafts, copy, save) {
+export function preview(drafts, copy, save, draftKey) {
   const body = dialog("Markdown preview", "preview");
-  const label = el("label"),
+  const label = el("label", null, "preview-filter"),
     only = el("input");
   only.type = "checkbox";
   label.append(only, " Open comments only");
   body.append(label);
-  const field = inputArea(body, "Review Markdown", drafts.full, 18);
-  let key = "full";
-  only.onchange = () => {
-    drafts[key] = field.value;
-    key = only.checked ? "open" : "full";
-    field.value = drafts[key];
+  const showNotice = draftNotice(body);
+  const field = inputArea(body, "Review Markdown", "", 18);
+  function markdownVersion(version) {
+    const storage = draftStorage("markdown-" + version, draftKey);
+    const saved = storage.load();
+    return {
+      storage,
+      generated: drafts[version].replace(/\r\n?/g, "\n"),
+      edited: typeof saved === "string" ? saved : undefined,
+    };
+  }
+  const versions = {
+    full: markdownVersion("full"),
+    open: markdownVersion("open"),
   };
-  action("Close", close);
+  let key = "full";
+  const dismiss = action("Close", close);
+  const reset = action("Reset this version", () => {
+    const version = versions[key];
+    version.edited = undefined;
+    version.storage.write(null);
+    showDraft();
+    field.focus();
+  });
+  function refreshActions(notice) {
+    reset.hidden = versions[key].edited === undefined;
+    const hasEdits = Object.values(versions).some(
+      (version) => version.edited !== undefined,
+    );
+    dismiss.textContent = hasEdits ? "Keep drafts" : "Close";
+    showNotice(notice);
+  }
+  function showDraft() {
+    const { edited, generated } = versions[key];
+    field.value = edited ?? generated;
+    field.setSelectionRange(0, 0);
+    field.scrollTop = 0;
+    refreshActions(
+      edited === undefined
+        ? ""
+        : "Edited draft. Reset this version to regenerate it from the review.",
+    );
+  }
+  field.oninput = () => {
+    const version = versions[key];
+    version.edited = field.value === version.generated ? undefined : field.value;
+    const persisted = version.storage.write(version.edited);
+    refreshActions(
+      version.edited === undefined
+        ? ""
+        : persisted
+          ? "Draft saved on this device."
+          : "Draft kept while Branchline stays open.",
+    );
+  };
+  only.onchange = () => {
+    key = only.checked ? "open" : "full";
+    showDraft();
+  };
   action("Copy Markdown", () => copy(field.value));
   const saveButton = action("Save as…", () => save(field.value), "primary");
   dlg().onkeydown = (e) => {
@@ -201,9 +363,10 @@ export function preview(drafts, copy, save) {
     }
   };
   field.focus();
+  showDraft();
 }
 export function stackDialog(state, discover, apply) {
-  const body = dialog("Edit branch stack");
+  const body = dialog("Edit branch stack", "stack-editor");
   let refs = [...state.stack];
   const grid = el("div", null, "stack-columns");
   body.append(grid);
@@ -223,6 +386,7 @@ export function stackDialog(state, discover, apply) {
   const filter = el("input");
   filter.type = "search";
   filter.placeholder = "Filter refs…";
+  filter.setAttribute("aria-label", "Filter available refs");
   left.panel.insertBefore(filter, left.select);
   const hint = el("p");
   body.append(hint);

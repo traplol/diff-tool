@@ -8,39 +8,74 @@
   </head>
   <body>
     <div id="app">
-      <aside id="sidebar">
+      <header class="topbar">
         <div class="brand">
-          <span class="logomark" aria-hidden="true">⑂</span>Branchline
+          <span class="logomark"><span data-icon="branch"></span></span
+          >Branchline
         </div>
-        <section>
-          <h2>Repository</h2>
+        <button
+          id="sidebar-toggle"
+          class="icon-button"
+          aria-controls="sidebar"
+          aria-expanded="true"
+          aria-label="Hide project sidebar"
+          title="Hide project sidebar"
+        >
+          <span data-icon="sidebar"></span>
+        </button>
+        <button
+          id="search-review"
+          aria-haspopup="dialog"
+          aria-controls="search-palette"
+          disabled
+          title="Search across this review (Ctrl+Shift+F)"
+        >
+          <span data-icon="find"></span>Search this review<kbd
+            >Ctrl Shift F</kbd
+          >
+        </button>
+      </header>
+      <aside id="sidebar" aria-label="Project navigation">
+        <section class="project">
+          <h2>Project</h2>
           <button
             id="choose"
             class="repo-button"
             title="Open a Git repository (Ctrl+O)"
           >
+            <span class="project-avatar" aria-hidden="true" id="project-initial"
+              ><span data-icon="folder"></span
+            ></span>
             <span id="repo-name">Open repository</span
-            ><span aria-hidden="true">⌄</span>
+            ><span data-icon="down"></span>
           </button>
         </section>
-        <nav id="nav" aria-label="Review">
+        <section class="review-links">
           <h2>Review</h2>
-          <button data-tab="Changes">
-            <span aria-hidden="true">▤</span> Changes <small></small>
+          <button id="stack-review" disabled>
+            <span data-icon="review"></span>Branch stack
           </button>
-          <button data-tab="Commits">
-            <span aria-hidden="true">⑂</span> Commits
+          <button id="local-review" disabled>
+            <span data-icon="worktree"></span>Working tree
           </button>
-          <button data-tab="Comments">
-            <span aria-hidden="true">▢</span> Comments <small></small>
-          </button>
-        </nav>
-        <section class="stack-area">
-          <h2>Branch stack</h2>
-          <ol id="stack"></ol>
-          <button id="edit-stack" class="side-tool">Edit stack…</button>
         </section>
-        <button id="refresh" class="side-tool bottom">↻ &nbsp; Refresh</button>
+        <section class="stack-area">
+          <div class="side-heading">
+            <h2>Stack branches</h2>
+            <button
+              id="edit-stack"
+              class="icon-button"
+              title="Edit stack (Ctrl+B)"
+              aria-label="Edit stack"
+            >
+              <span data-icon="edit"></span>
+            </button>
+          </div>
+          <ol id="stack"></ol>
+        </section>
+        <button id="refresh" class="side-tool bottom">
+          <span data-icon="refresh"></span>Refresh<kbd>F5</kbd>
+        </button>
       </aside>
       <div
         id="divider"
@@ -50,116 +85,139 @@
         aria-orientation="vertical"
       ></div>
       <main>
-        <header>
-          <div>
-            Workspace <span class="slash">/</span>
-            <strong id="crumb">Local review</strong>
-          </div>
-          <button id="export" class="primary">Export Markdown</button>
-        </header>
         <div id="welcome">
+          <div class="welcome-icon"><span data-icon="review"></span></div>
           <h1>Open a repository</h1>
           <p>Review a branch stack or the changes in your working tree.</p>
           <button class="primary" id="welcome-open">Choose directory…</button>
         </div>
         <div id="workspace" hidden>
           <section class="title">
-            <h1 id="page-title">Changes</h1>
+            <div class="breadcrumbs" aria-label="Review location">
+              <span>Workspace</span><span class="slash">/</span
+              ><span id="crumb"></span><span class="slash">/</span
+              ><strong>Code review</strong>
+            </div>
+            <div class="title-line">
+              <h1 id="page-title">Branch stack review</h1>
+              <button id="export" class="primary">
+                <span data-icon="export"></span>Export Markdown
+              </button>
+            </div>
             <div class="comparison-bar">
-              <select id="pair" aria-label="Comparison"></select
-              ><span id="range"></span>
+              <select id="pair" aria-label="Comparison"></select>
+              <span id="range" aria-label="Compared revisions"></span>
             </div>
           </section>
-          <div id="changes" class="page" hidden>
+          <div id="nav" role="tablist" aria-label="Review views">
+            <button
+              id="tab-changes"
+              role="tab"
+              data-tab="Changes"
+              aria-controls="changes"
+            >
+              Changes <small></small>
+            </button>
+            <button
+              id="tab-commits"
+              role="tab"
+              data-tab="Commits"
+              aria-controls="commits"
+            >
+              Commits
+            </button>
+            <button
+              id="tab-comments"
+              role="tab"
+              data-tab="Comments"
+              aria-controls="comments"
+            >
+              Comments <small></small>
+            </button>
+          </div>
+          <div
+            id="changes"
+            class="page"
+            role="tabpanel"
+            aria-labelledby="tab-changes"
+            hidden
+          >
+            <div class="changes-tools">
+              <div class="view-progress">
+                <progress
+                  id="viewed-meter"
+                  max="1"
+                  value="0"
+                  aria-label="Files viewed"
+                ></progress
+                ><span id="progress"></span>
+              </div>
+              <div class="segment" role="group" aria-label="Diff layout">
+                <button id="unified">Unified</button
+                ><button id="split">Split</button>
+              </div>
+              <button id="full-file" aria-pressed="false" disabled>
+                Full file
+              </button>
+              <button id="collapse-context" hidden>Changes only</button>
+              <button
+                id="find"
+                aria-label="Open review search"
+                aria-haspopup="dialog"
+                aria-controls="search-palette"
+                title="Search this review (Ctrl+F)"
+                disabled
+              >
+                <span data-icon="find"></span>Find
+              </button>
+            </div>
             <section class="files">
               <div class="files-heading">
-                <strong>Changed files</strong><span id="progress"></span>
+                <span data-icon="files"></span><strong>Changed files</strong>
               </div>
-              <input
-                id="filter"
-                type="search"
-                aria-label="Filter changed files"
-                placeholder="Filter files…"
-                title="Filter files (Ctrl+P)"
-              />
+              <div class="file-filter">
+                <span data-icon="find"></span>
+                <input
+                  id="filter"
+                  type="search"
+                  aria-label="Filter changed files"
+                  placeholder="Filter files…"
+                  title="Filter displayed files"
+                />
+              </div>
               <div id="file-list" role="group" aria-label="Changed files"></div>
             </section>
             <section class="patch">
               <div class="file-toolbar">
-                <strong id="filename">Select a file</strong
-                ><span id="file-stats"></span>
-                <div class="segment">
-                  <button id="unified">Unified</button
-                  ><button id="split">Split</button>
-                </div>
-                <button id="full-file" aria-pressed="false" disabled>
-                  Full file
-                </button>
-                <button id="collapse-context" hidden>Changes only</button>
-                <button
-                  id="find"
-                  aria-label="Open review search"
-                  aria-controls="find-bar"
-                  aria-expanded="false"
-                  title="Find in diff (Ctrl+F)"
-                  disabled
-                >
-                  Find
-                </button>
+                <span data-icon="file"></span
+                ><strong id="filename">Select a file</strong>
+                <span id="file-stats"></span>
                 <label><input type="checkbox" id="viewed" /> Viewed</label>
               </div>
-              <div id="find-bar" role="search" aria-label="Find in diff" hidden>
-                <select id="find-scope" aria-label="Search scope">
-                  <option value="patch">This patch</option>
-                  <option value="file">Full file</option>
-                  <option value="comparison">Whole diff</option>
-                  <option value="branch">Branch files</option>
-                  <option value="stack">Stack changes</option>
-                </select>
-                <input
-                  id="diff-search"
-                  type="search"
-                  aria-label="Find in diff"
-                  placeholder="Find in diff…"
-                />
-                <span id="find-status" role="status"></span>
-                <button
-                  id="find-prev"
-                  aria-label="Previous match"
-                  title="Previous match (Shift+Enter)"
-                >
-                  ↑
-                </button>
-                <button
-                  id="find-next"
-                  aria-label="Next match"
-                  title="Next match (Enter)"
-                >
-                  ↓
-                </button>
-                <button
-                  id="find-close"
-                  aria-label="Close find"
-                  title="Close find (Esc)"
-                >
-                  ×
-                </button>
-              </div>
-              <div
-                id="find-results"
-                role="group"
-                aria-label="Search results"
-                hidden
-              ></div>
               <div id="diff"></div>
               <div class="diff-actions">
-                <span id="selection">Whole file</span
-                ><button id="comment">Comment</button
-                ><button id="suggest">Suggest change</button>
+                <div>
+                  <div id="selection">Whole file</div>
+                  <div id="selection-help" role="status"></div>
+                </div>
+                <div class="diff-buttons">
+                  <button id="comment">
+                    <span data-icon="comment"></span>Comment
+                  </button>
+                  <button id="suggest">
+                    <span data-icon="suggest"></span>Suggest change
+                  </button>
+                </div>
               </div>
             </section>
           </div>
-          <section id="commits" class="page panel" hidden>
+          <section
+            id="commits"
+            class="page panel"
+            role="tabpanel"
+            aria-labelledby="tab-commits"
+            hidden
+          >
             <div class="panel-tools">
               <strong id="commits-title">Commits</strong
               ><button id="fit">Fit columns to content</button>
@@ -178,7 +236,13 @@
               </table>
             </div>
           </section>
-          <section id="comments" class="page panel" hidden>
+          <section
+            id="comments"
+            class="page panel"
+            role="tabpanel"
+            aria-labelledby="tab-comments"
+            hidden
+          >
             <div class="panel-tools">
               <strong id="comments-title">Comments</strong>
               <div class="segment" id="filters">
@@ -217,6 +281,52 @@
         </footer>
       </main>
     </div>
+    <dialog id="search-palette" aria-labelledby="palette-heading">
+      <header class="palette-heading">
+        <h2 id="palette-heading">Search this review</h2>
+        <button
+          id="palette-close"
+          type="button"
+          class="icon-button"
+          aria-label="Close search"
+          title="Close search (Esc)"
+        >×</button>
+      </header>
+      <div class="palette-inputs">
+        <div class="palette-input">
+          <span data-icon="find"></span>
+          <input
+            id="palette-query"
+            type="search"
+            role="combobox"
+            aria-label="Search this review"
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-controls="palette-results"
+            placeholder="Search this review…"
+            autocomplete="off"
+            spellcheck="false"
+            autofocus
+          />
+        </div>
+        <select id="palette-scope" aria-label="Search scope">
+          <option value="all" selected>All scopes</option>
+          <option value="patch">This patch</option>
+          <option value="file">Full file</option>
+          <option value="comparison">Whole diff</option>
+          <option value="branch">Branch files</option>
+          <option value="stack">Stack changes</option>
+        </select>
+      </div>
+      <div id="palette-results" role="listbox" aria-label="Search results"></div>
+      <div class="palette-footer">
+        <span id="palette-status" role="status" aria-atomic="true"></span>
+        <span class="palette-shortcuts" aria-hidden="true">
+          <span><kbd>↑</kbd> <kbd>↓</kbd> Select</span>
+          <span><kbd>Enter</kbd> Open</span>
+        </span>
+      </div>
+    </dialog>
     <dialog id="dialog">
       <form method="dialog" class="dialog-top">
         <h2></h2>

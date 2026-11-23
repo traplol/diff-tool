@@ -506,7 +506,7 @@ pub fn compare_trees(
         left_tip: tip.into(),
         base: base.into(),
         head: head.into(),
-        files: parse_changes(&data)?,
+        files: parse_changes(&data, false)?,
     })
 }
 
@@ -514,7 +514,7 @@ fn valid_oid(oid: &str) -> bool {
     matches!(oid.len(), 40 | 64) && oid.bytes().all(|b| b.is_ascii_hexdigit())
 }
 
-fn parse_changes(data: &[u8]) -> Result<Vec<Change>> {
+fn parse_changes(data: &[u8], skip_stale_stats: bool) -> Result<Vec<Change>> {
     let bad = "Git returned incomplete file summary data. Refresh the review.";
     let mut it = data.split(|&b| b == 0).peekable();
     let mut files = Vec::new();
@@ -571,10 +571,25 @@ fn parse_changes(data: &[u8]) -> Result<Vec<Change>> {
         };
         counts.insert(name(path), (number(a)?, number(b)?));
     }
-    for f in &mut files {
-        (f.added, f.removed) = counts.remove(&f.path).ok_or(bad)?;
-    }
-    Ok(files)
+    files
+        .into_iter()
+        .filter_map(|mut f| {
+            if let Some(count) = counts.remove(&f.path) {
+                (f.added, f.removed) = count;
+                return Some(Ok(f));
+            }
+            // With index auto-refresh disabled, Git's raw output can include
+            // stat-only changes that its content-based numstat omits.
+            if skip_stale_stats
+                && f.status == "M"
+                && f.old_mode == f.mode
+                && f.oid.bytes().all(|b| b == b'0')
+            {
+                return None;
+            }
+            Some(Err(bad.into()))
+        })
+        .collect()
 }
 
 const PATCH_ARGS: &[&str] = &[
@@ -599,7 +614,12 @@ const PATCH_ARGS: &[&str] = &[
 ];
 
 fn diff_patch(repo: &Repository, args: &[&OsStr], local: bool, no_index: bool) -> Result<Vec<u8>> {
-    let mut cmd: Vec<&OsStr> = PATCH_ARGS.iter().map(OsStr::new).collect();
+    let mut cmd = Vec::new();
+    if local && !no_index {
+        // Git diff can refresh the real index even with GIT_OPTIONAL_LOCKS=0.
+        cmd.extend(["-c", "diff.autoRefreshIndex=false"].map(OsStr::new));
+    }
+    cmd.extend(PATCH_ARGS.iter().map(OsStr::new));
     if local {
         cmd.extend(["--raw", "--numstat", "--no-abbrev", "-z"].map(OsStr::new));
     }
@@ -636,7 +656,7 @@ fn local_changes(
         .ok_or("Git returned an incomplete working tree diff.")?;
     let chunks = sections(&data[boundary + 2..]);
     let mut chunks = chunks.into_iter();
-    let mut files = parse_changes(&data[..=boundary])?;
+    let mut files = parse_changes(&data[..=boundary], group == "Unstaged")?;
     for f in &mut files {
         f.group = group.into();
         for _ in 0..if f.status == "T" { 2 } else { 1 } {
@@ -939,20 +959,56 @@ fn blob_lines(repo: &Repository, object: &OsStr) -> Result<Vec<String>> {
         &["cat-file".as_ref(), "blob".as_ref(), object],
         false,
     )?;
+    text_lines(&data)
+}
+
+fn text_lines(data: &[u8]) -> Result<Vec<String>> {
     if data.contains(&0) {
         return Err("This file contains binary data.".into());
     }
-    Ok(String::from_utf8_lossy(&data)
+    Ok(String::from_utf8_lossy(data)
         .split_terminator('\n')
         .map(|line| line.strip_suffix('\r').unwrap_or(line).to_owned())
         .collect())
 }
 
-pub fn revision_lines(repo: &Repository, revision: &str, path: &str) -> Result<Vec<String>> {
-    let mut object = OsString::from(format!("{revision}:"));
-    object.push(path_arg(path)?);
-    blob_lines(repo, &object)
+#[derive(Debug, Serialize)]
+#[serde(tag = "kind", rename_all = "lowercase")]
+pub enum RevisionFile {
+    Text { lines: Vec<String> },
+    Binary { bytes: usize },
+    Submodule { oid: String },
 }
+
+pub fn revision_file(repo: &Repository, revision: &str, path: &str) -> Result<RevisionFile> {
+    let path = path_arg(path)?;
+    let entry = run_git(
+        &repo.root,
+        &["ls-tree".as_ref(), "-z".as_ref(), revision.as_ref(), "--".as_ref(), path.as_os_str()],
+        false,
+    )?;
+    let header = entry.split(|&b| b == b'\t').next().unwrap_or_default();
+    let fields: Vec<_> = header.split(|&b| b == b' ').collect();
+    if fields.len() != 3 || !entry.ends_with(&[0]) {
+        return Err("This path is no longer available at this revision.".into());
+    }
+    if fields[0] == b"160000" {
+        return Ok(RevisionFile::Submodule { oid: String::from_utf8_lossy(fields[2]).into_owned() });
+    }
+    let mut object = OsString::from(format!("{revision}:"));
+    object.push(path);
+    let data = run_git(
+        &repo.root,
+        &["cat-file".as_ref(), "blob".as_ref(), object.as_os_str()],
+        false,
+    )?;
+    if data.contains(&0) {
+        Ok(RevisionFile::Binary { bytes: data.len() })
+    } else {
+        Ok(RevisionFile::Text { lines: text_lines(&data)? })
+    }
+}
+
 
 pub fn file_contents(repo: &Repository, file: &Change) -> Result<Vec<String>> {
     if file.added.is_none() || file.removed.is_none() {

@@ -1,11 +1,19 @@
 import { invoke } from "@tauri-apps/api/core";
-import { canExpandFile, contextMenu, createDiff } from "./editor.js";
-import { setupFind } from "./find.js";
+import {
+  canExpandFile,
+  contextMenu,
+  createDiff,
+  findDiffMatches,
+  isContextMenuKey,
+} from "./editor.js";
+import { localPaletteHits, setupSearchPalette } from "./search-palette.js";
+import { icon } from "./icons.js";
 import "./editor.css";
 import {
   $,
   el,
   button,
+  commentStatus,
   compose,
   details,
   preview,
@@ -40,11 +48,14 @@ let lines = [],
   editLock = false,
   loading = false,
   sequence = 0;
+let fileTree;
 const positions = new Map(),
   folds = new Map();
 const files = () => state?.comparison?.files ?? [];
 const currentFile = () => files()[fileIndex];
 const names = ["Changes", "Commits", "Comments"];
+for (const node of document.querySelectorAll("[data-icon]"))
+  node.replaceWith(icon(node.dataset.icon));
 const closedFolders = new Set(),
   closedSearchFolders = new Set();
 const basename = (path) => path.split(/[\\/]/).filter(Boolean).at(-1) || path;
@@ -133,7 +144,6 @@ function leaveFile() {
   sequence++;
   $("full-file").disabled = true;
   contextButton({ full: false, expanded: false });
-  find.fileChanged();
 }
 function choiceIndex() {
   return pairs(state.stack, state.repo.checkout).findIndex(
@@ -141,7 +151,7 @@ function choiceIndex() {
   );
 }
 
-async function changeWorkspace(op, args, keepFind = false) {
+async function changeWorkspace(op, args) {
   if (loading || editLock) return;
   loading = true;
   $("app").setAttribute("aria-busy", "true");
@@ -161,6 +171,7 @@ async function changeWorkspace(op, args, keepFind = false) {
       closedFolders.clear();
       closedSearchFolders.clear();
     }
+    palette.reset(previousRoot !== next.repo.root);
     state = next;
     for (const n of state.notes)
       if (folds.get(n.id) === !!n.resolved) folds.delete(n.id);
@@ -171,8 +182,6 @@ async function changeWorkspace(op, args, keepFind = false) {
       tab = "Changes";
       openFilter = "Open";
       $("filter").value = "";
-      find.close();
-      $("diff-search").value = "";
       $("scope").value = "current";
     }
     fileIndex = -1;
@@ -184,6 +193,8 @@ async function changeWorkspace(op, args, keepFind = false) {
     document.title = name + " · Branchline";
     $("crumb").textContent = name;
     $("repo-name").textContent = name;
+    $("project-initial").textContent =
+      Array.from(name)[0]?.toUpperCase() || "•";
     $("choose").title = state.repo.root;
     if (op === "open" && pending === preferenceWrite) {
       setWidth(state.width);
@@ -193,8 +204,29 @@ async function changeWorkspace(op, args, keepFind = false) {
     $("pair").replaceChildren(
       ...choices.map(([label], i) => new Option(label, String(i))),
     );
-    $("pair").selectedIndex = choiceIndex();
-    $("range").textContent = state.pair.map(refName).join("  →  ");
+    const activePair = choiceIndex();
+    $("pair").selectedIndex = activePair;
+    const local = state.pair[1] === WORKTREE;
+    $("page-title").textContent = local
+      ? "Working tree review"
+      : activePair === 0
+        ? "Branch stack review"
+        : "Branch comparison";
+    const refs = state.pair.map((ref) => {
+      const chip = el("span", "", "ref-chip");
+      chip.title = refName(ref);
+      chip.append(
+        icon(ref === WORKTREE ? "worktree" : "branch"),
+        el("span", chip.title),
+      );
+      return chip;
+    });
+    $("range").replaceChildren(refs[0], icon("arrow"), refs[1]);
+    $("stack-review").disabled = state.stack.length < 2;
+    $("local-review").disabled = false;
+    $("search-review").disabled = false;
+    activate($("stack-review"), !local);
+    activate($("local-review"), local);
     $("stack").replaceChildren(
       ...state.stack.map((ref, i) => {
         const li = el("li"),
@@ -216,6 +248,8 @@ async function changeWorkspace(op, args, keepFind = false) {
           el("span", refName(ref)),
         );
         b.title = refName(ref);
+        if (activePair === i && i > 0 && !local)
+          b.setAttribute("aria-current", "true");
         li.append(b);
         return li;
       }),
@@ -227,7 +261,6 @@ async function changeWorkspace(op, args, keepFind = false) {
     $("export").disabled = false;
     $("refresh").disabled = false;
     for (const b of $("nav").querySelectorAll("button")) b.disabled = false;
-    renderFiles();
     const ids = visibleFiles();
     const keep = ids.find(
       (i) =>
@@ -237,8 +270,7 @@ async function changeWorkspace(op, args, keepFind = false) {
         files()[i].group === previous.group,
     );
     fileIndex = keep ?? ids[0] ?? -1;
-    await navigate(tab);
-    if (!keepFind) find.refresh();
+    await navigate(local && tab === "Commits" ? "Changes" : tab);
     const warning = [state.error, state.config_warning]
       .filter(Boolean)
       .join(" · ");
@@ -269,17 +301,32 @@ function setWidth(width) {
       "px",
   );
 }
+function showSidebar(show) {
+  $("app").classList.toggle("without-sidebar", !show);
+  $("sidebar").hidden = $("divider").hidden = !show;
+  const toggle = $("sidebar-toggle");
+  toggle.title = show ? "Hide project sidebar" : "Show project sidebar";
+  toggle.setAttribute("aria-label", toggle.title);
+  toggle.setAttribute("aria-expanded", String(show));
+}
+const compact = matchMedia("(max-width: 900px)");
+let sidebarChoice;
+const layoutSidebar = () => showSidebar(sidebarChoice ?? !compact.matches);
+layoutSidebar();
+compact.addEventListener("change", layoutSidebar);
+on("sidebar-toggle", () => {
+  sidebarChoice = $("sidebar").hidden;
+  layoutSidebar();
+});
 async function navigate(name) {
   if (!state) return;
   tab = name;
   for (const n of names) $(n.toLowerCase()).hidden = n !== tab;
-  for (const b of $("nav").querySelectorAll("button"))
-    activate(b, b.dataset.tab === tab);
-  $("page-title").textContent = {
-    Changes: "Changes",
-    Commits: "Commits",
-    Comments: "Review comments",
-  }[tab];
+  for (const b of $("nav").querySelectorAll("button")) {
+    const current = b.dataset.tab === tab;
+    b.setAttribute("aria-selected", String(current));
+    b.tabIndex = current ? 0 : -1;
+  }
   chromeCounts();
   if (tab === "Changes") {
     if (!editor) await pick(fileIndex);
@@ -292,27 +339,52 @@ function chromeCounts() {
     files().length;
   $("nav").querySelector('[data-tab="Comments"] small').textContent =
     scopeNotes(state, tab === "Comments" && $("scope").value === "all").length;
-  $("progress").textContent = state.viewed.length + "/" + files().length;
+  const viewed = state.viewed.length;
+  const total = files().length;
+  $("viewed-meter").max = Math.max(1, total);
+  $("viewed-meter").value = viewed;
+  $("progress").textContent =
+    `${viewed} of ${total} ${total === 1 ? "file" : "files"} viewed`;
 }
-function visibleFiles() {
-  const q = $("filter").value.trim().toLowerCase();
-  return files().flatMap((f, i) =>
-    labelPath(f.path).toLowerCase().includes(q) ||
-    labelPath(f.old).toLowerCase().includes(q)
-      ? [i]
-      : [],
-  );
+const fileFilter = () => $("filter").value.trim().toLowerCase();
+function visibleFiles(q = fileFilter()) {
+  return files().flatMap((file, i) => {
+    const matches =
+      !q ||
+      labelPath(file.path).toLowerCase().includes(q) ||
+      labelPath(file.old).toLowerCase().includes(q);
+    return matches ? [i] : [];
+  });
 }
-function renderFiles() {
+function buildFileTree(source) {
+  const rows = (source ?? []).map((f, i) => {
+    const path = labelPath(f.path),
+      parts = path.split("/");
+    const b = button("", handle(() => pick(i, true)), "file-item");
+    b.dataset.file = i;
+    b.title = f.old !== f.path ? labelPath(f.old) + " → " + path : path;
+    b.setAttribute("aria-label", b.title);
+    activate(b, false);
+    const badge = el("span", f.status, "badge"),
+      viewed = el("span", "✓");
+    badge.dataset.status = f.status;
+    viewed.hidden = true;
+    b.append(icon("file"), el("span", parts.at(-1), "path"), badge, viewed);
+    return { button: b, viewed, directories: parts.slice(0, -1), group: f.group };
+  });
+  return { source, rows, selected: -1 };
+}
+function filterFileTree(rows, query) {
   const list = $("file-list"),
-    frag = document.createDocumentFragment();
-  const containers = new Map();
-  const closed = $("filter").value.trim() ? closedSearchFolders : closedFolders;
+    frag = document.createDocumentFragment(),
+    closed = query ? closedSearchFolders : closedFolders;
+  const folders = new Map();
   function folder(parent, group, directory, label) {
     const key = JSON.stringify([group, directory]);
-    if (!containers.has(key)) {
+    if (!folders.has(key)) {
       const details = el("details"),
-        summary = el("summary", label, "file-group");
+        summary = el("summary", "", "file-group");
+      summary.append(icon("folder"), document.createTextNode(label));
       details.open = !closed.has(key);
       details.ontoggle = () => {
         if (!list.contains(details)) return;
@@ -321,36 +393,48 @@ function renderFiles() {
       };
       details.append(summary);
       parent.append(details);
-      containers.set(key, details);
+      folders.set(key, details);
     }
-    return containers.get(key);
+    return folders.get(key);
   }
-  for (const i of visibleFiles()) {
-    const f = files()[i],
-      path = labelPath(f.path),
-      parts = path.split("/");
-    let parent = f.group ? folder(frag, f.group, null, f.group) : frag;
+  // Move cached buttons off the live tree so WebKit can lay out the new list once.
+  list.replaceChildren();
+  for (const i of visibleFiles(query)) {
+    const { button, directories, group } = rows[i];
+    let parent = group ? folder(frag, group, null, group) : frag;
     let directory = "";
-    for (const part of parts.slice(0, -1)) {
+    for (const part of directories) {
       directory += part + "/";
-      parent = folder(parent, f.group, directory, part + "/");
+      parent = folder(parent, group, directory, part + "/");
     }
-    const b = button(
-      "",
-      handle(() => pick(i, true)),
-      "file-item",
-    );
-    b.dataset.file = i;
-    b.title = f.old !== f.path ? labelPath(f.old) + " → " + path : path;
-    b.setAttribute("aria-label", b.title);
-    activate(b, fileIndex === i);
-    b.append(el("span", f.status, "badge"), el("span", parts.at(-1), "path"));
-    if (state.viewed.includes(i)) b.append(el("span", "✓"));
-    parent.append(b);
+    parent.append(button);
   }
-  list.replaceChildren(frag);
+  list.append(frag);
   if (!list.firstChild)
-    empty(list, files().length ? "No matching files" : "No changed files");
+    empty(list, rows.length ? "No matching files" : "No changed files");
+}
+function renderFiles() {
+  const source = state.comparison?.files;
+  if (!fileTree || fileTree.source !== source) fileTree = buildFileTree(source);
+  const { rows, selected } = fileTree;
+  const query = fileFilter();
+  if (fileTree.query !== query) {
+    filterFileTree(rows, query);
+    fileTree.query = query;
+  }
+  if (selected !== fileIndex) {
+    if (rows[selected]) activate(rows[selected].button, false);
+    if (rows[fileIndex]) activate(rows[fileIndex].button, true);
+    fileTree.selected = fileIndex;
+  }
+  if (fileTree.viewed !== state.viewed) {
+    const viewed = new Set(state.viewed);
+    rows.forEach((row, i) => {
+      const hidden = !viewed.has(i);
+      if (row.viewed.hidden !== hidden) row.viewed.hidden = hidden;
+    });
+    fileTree.viewed = state.viewed;
+  }
   chromeCounts();
 }
 function canApply(note) {
@@ -385,19 +469,27 @@ async function pick(index, focus = false, jump) {
     f && f.old !== f.path
       ? labelPath(f.old) + " → " + labelPath(f.path)
       : labelPath(f?.path || "");
-  $("file-stats").textContent =
-    f && f.added != null ? "+" + f.added + "  −" + f.removed : "";
+  $("file-stats").replaceChildren();
+  if (f?.added != null)
+    $("file-stats").append(
+      el("span", "+" + f.added, "added"),
+      "  ",
+      el("span", "−" + f.removed, "removed"),
+    );
   $("viewed").checked = state.viewed.includes(index);
   $("viewed").disabled = !f;
   $("comment").disabled = true;
   $("suggest").disabled = true;
   $("selection").textContent = "Whole file";
+  $("selection-help").textContent = "";
   $("diff").replaceChildren();
   if (!f) {
     empty(
       $("diff"),
       state.error ||
-        (files().length ? "Choose a file" : "No changes in this comparison"),
+        (files().length && fileFilter()
+          ? "No changed files match the filter."
+          : files().length ? "Choose a file" : "No changes in this comparison"),
     );
     return;
   }
@@ -420,15 +512,17 @@ async function pick(index, focus = false, jump) {
       onStatus: status,
       canApply,
       onCopy: copy,
-      onSelection: ({ label, canSuggest, canComment = true }) => {
+      onSelection: ({ label, canSuggest, canComment, commentDisabledReason }) => {
         $("comment").disabled = !canComment;
         if ($("selection").textContent !== label)
           $("selection").textContent = label;
+        const help = $("selection-help");
+        const reason = commentDisabledReason ?? "";
+        if (help.textContent !== reason) help.textContent = reason;
         $("suggest").disabled = !canSuggest;
       },
     });
     $("full-file").disabled = !canExpandFile(f);
-    find.fileChanged();
     if (jump != null) editor.jump(jump);
     if (focus && tab === "Changes") editor.focus();
   } catch (err) {
@@ -465,14 +559,22 @@ function newComment(selection) {
     excerpt: selection.lines.map((l) => l.kind + l.text).join("\n"),
   };
   if (selection.suggestion) n.suggestion = suggestionSource(n);
-  compose(n, {
-    save: (body, suggestion) =>
-      update(
-        "create",
-        { file: index, rows, side: selection.side, body, suggestion },
-        snapshot,
-      ),
-  });
+  const draftKey = JSON.stringify([
+    state.repo.root, "new", state.pair, n.path, n.group,
+    selection.side, n.old, n.new, n.excerpt, selection.suggestion,
+  ]);
+  compose(
+    n,
+    {
+      save: (body, suggestion) =>
+        update(
+          "create",
+          { file: index, rows, side: selection.side, body, suggestion },
+          snapshot,
+        ),
+    },
+    draftKey,
+  );
 }
 async function update(op, args, snapshot = state.snapshot) {
   if (editLock || loading)
@@ -493,11 +595,16 @@ async function update(op, args, snapshot = state.snapshot) {
 }
 function editNote(note) {
   const snapshot = state.snapshot;
-  compose(note, {
-    save: (body, suggestion) =>
-      update("edit", { original: note, body, suggestion }, snapshot),
-    remove: () => update("delete", { id: note.id }, snapshot),
-  });
+  const draftKey = JSON.stringify([state.repo.root, "edit", note.id]);
+  compose(
+    note,
+    {
+      save: (body, suggestion) =>
+        update("edit", { original: note, body, suggestion }, snapshot),
+      remove: () => update("delete", { id: note.id }, snapshot),
+    },
+    draftKey,
+  );
 }
 async function noteAction(action, projected) {
   const note = state.notes.find((n) => n.id === projected.id);
@@ -531,15 +638,19 @@ async function jumpToNote(note) {
   revealFileInTree(index);
 }
 function revealFileInTree(index) {
-  for (
-    let node = $("file-list").querySelector(
-      '[data-file="' + index + '"]',
-    )?.parentElement;
-    node && node !== $("file-list");
-    node = node.parentElement
-  ) {
+  const list = $("file-list");
+  const row = fileTree?.rows[index]?.button;
+  if (!row || !list.contains(row)) return;
+  for (let node = row.parentElement; node && node !== list; node = node.parentElement) {
     if (node.tagName === "DETAILS") node.open = true;
   }
+  if (getComputedStyle(list).visibility !== "visible") return;
+  const bounds = list.getBoundingClientRect();
+  const rect = row.getBoundingClientRect();
+  if (rect.top < bounds.top)
+    list.scrollTop -= Math.ceil(bounds.top - rect.top);
+  else if (rect.bottom > bounds.bottom)
+    list.scrollTop += Math.ceil(rect.bottom - bounds.bottom);
 }
 function renderComments() {
   chromeCounts();
@@ -580,17 +691,16 @@ function renderComments() {
       row.dataset.id = n.id;
       row.tabIndex = 0;
       const chip = el("td");
-      chip.append(
-        el(
-          "span",
-          n.resolved ? "Resolved" : "Open",
-          "status-chip" + (n.resolved ? " resolved" : ""),
-        ),
-      );
-      const shown = commentRow(n, noteDestination(state, n));
-      row.append(el("td", shown.path));
-      if (entire) row.append(el("td", shown.comparison));
-      row.append(el("td", shown.lines), chip, el("td", shown.summary));
+      chip.append(commentStatus(n.resolved));
+      const destination = noteDestination(state, n);
+      if (!destination)
+        chip.append(el("div", "Original snapshot", "comment-range"));
+      const shown = commentRow(n, destination);
+      row.append(el("td", shown.path, "comment-path"));
+      if (entire) row.append(el("td", shown.comparison, "comment-range"));
+      const summary = el("td", shown.summary, "comment-summary");
+      summary.title = shown.summary;
+      row.append(el("td", shown.lines, "comment-range"), chip, summary);
       row.onclick = row.onfocus = () => select(n.id);
       row.ondblclick = () => editNote(n);
       row.onkeydown = (e) => {
@@ -633,20 +743,27 @@ async function renderCommits() {
         details("Commit details", await request("details", { sha: c.sha })),
       );
       row.ondblclick = show;
-      row.onkeydown = (e) => {
-        if (e.key === "Enter") show();
+      const openMenu = (position, value = values[0]) =>
+        contextMenu(position, [
+          ["Copy value", handle(() => copy(value))],
+          ["Copy row", handle(() => copy(values.join("\t")))],
+          ["Copy full SHA", handle(() => copy(c.sha))],
+          ["Commit details…", show],
+          ["Fit columns to content", fitColumns],
+        ]);
+      row.onkeydown = (event) => {
+        if (event.key === "Enter") show();
+        if (!isContextMenuKey(event)) return;
+        event.preventDefault();
+        const { left, bottom } = row.getBoundingClientRect();
+        openMenu({ target: row, clientX: left + 12, clientY: bottom });
       };
-      values.forEach((value) => {
+      values.forEach((value, column) => {
         const cell = el("td", value);
-        cell.oncontextmenu = (e) => {
-          e.preventDefault();
-          contextMenu(e, [
-            ["Copy value", handle(() => copy(value))],
-            ["Copy row", handle(() => copy(values.join("\t")))],
-            ["Copy full SHA", handle(() => copy(c.sha))],
-            ["Commit details…", show],
-            ["Fit columns to content", fitColumns],
-          ]);
+        if (column === 3) cell.replaceChildren(el("code", value, "commit-sha"));
+        cell.oncontextmenu = (event) => {
+          event.preventDefault();
+          openMenu(event, value);
         };
         row.append(cell);
       });
@@ -662,13 +779,23 @@ async function exportReview() {
   if (!state) return;
   const token = state.snapshot;
   status("Checking current comment locations…");
-  const drafts = await request("export", {
-    entire: tab === "Comments" && $("scope").value === "all",
-  });
+  const entire = tab === "Comments" && $("scope").value === "all";
+  const scope = entire
+    ? ["repository"]
+    : localScope(state)
+      ? ["working-tree", state.repo.checkout]
+      : ["stack", state.stack];
+  const draftKey = JSON.stringify([state.repo.root, "markdown", scope]);
+  const drafts = await request("export", { entire });
   if (state.snapshot !== token) return;
-  preview(drafts, copy, async (content) => {
-    if (await invoke("save_markdown", { content })) status("Markdown saved");
-  });
+  preview(
+    drafts,
+    copy,
+    async (content) => {
+      if (await invoke("save_markdown", { content })) status("Markdown saved");
+    },
+    draftKey,
+  );
   status(
     drafts.cached
       ? "Markdown preview uses the displayed comments. Git could not refresh their locations."
@@ -687,22 +814,19 @@ on("full-file", () =>
 );
 on("collapse-context", () => editor?.collapseContext());
 
-async function openSearchHit(hit, scope, valid) {
-  if (scope === "branch") {
+async function openSearchHit(hit, valid) {
+  if (hit.revision) {
+    const snapshot = state.snapshot;
     const contents = await request("branch_file", {
       path: hit.path,
       revision: hit.revision,
     });
-    if (valid())
-      showBranchFile(
-        hit,
-        contents,
-        state.pair[1] === WORKTREE ? state.repo.checkout : state.pair[1],
-      );
+    if (valid() && state.snapshot === snapshot)
+      showBranchFile(hit, contents, hit.pair[1] === WORKTREE ? hit.pair[0] : hit.pair[1]);
     return;
   }
   if (state.pair[0] !== hit.pair[0] || state.pair[1] !== hit.pair[1]) {
-    await changeWorkspace("compare", { pair: hit.pair }, true);
+    await changeWorkspace("compare", { pair: hit.pair });
   }
   if (!valid()) return;
   const c = state.comparison;
@@ -721,24 +845,109 @@ async function openSearchHit(hit, scope, valid) {
     (f) => f.path === hit.path && f.group === hit.group,
   );
   if (i < 0) throw Error("This file changed. Refresh the search.");
-  $("filter").value = "";
-  renderFiles();
-  await pick(i);
-  if (valid() && fileIndex === i && editor) {
-    revealFileInTree(i);
-    editor.revealPatchRow(hit.row, hit.from, hit.to);
-  }
+  if (fileIndex !== i) $("filter").value = "";
+  const snapshot = state.snapshot;
+  await navigate("Changes");
+  if (!valid() || snapshot !== state.snapshot) return;
+  await pick(i, true);
+  if (!valid() || snapshot !== state.snapshot || fileIndex !== i) return;
+  revealFileInTree(i);
+  if (hit.kind === "path") return;
+  const revealed = hit.localFile
+    ? await editor?.revealLine(hit.side, hit.line, hit.from, hit.to)
+    : editor?.revealPatchRow(hit.row, hit.from, hit.to);
+  if (!revealed) throw Error("This match is no longer in the displayed diff.");
 }
-const find = setupFind({
-  activeEditor: () => editor,
-  patchLines: () => lines,
-  searchReview: (scope, query) =>
-    invoke("search_review", { snapshot: state.snapshot, scope, query }),
-  openHit: openSearchHit,
-});
 
+function metadataHits(query, state) {
+  const match = (text) => findDiffMatches([{ text }], query, 1).matches[0];
+  const noteHits = state.notes.flatMap((note) => {
+    const text = (note.body ?? "").replace(/\r?\n/g, " ");
+    const found = match(text);
+    return found ? [{
+      kind: "comment", id: note.id, text, path: note.path,
+      pair: [note.left, note.right], snippet_from: found.from, snippet_to: found.to,
+    }] : [];
+  });
+  const choices = pairs(state.stack, state.repo.checkout);
+  return noteHits.concat(state.stack.flatMap((ref, i) => {
+    const text = refName(ref);
+    const found = match(text);
+    if (!found) return [];
+    const pair = choices[i === 0 || state.stack.length === 2 ? 0 : i]?.[1];
+    return pair ? [{ kind: "branch", text, pair, snippet_from: found.from, snippet_to: found.to }] : [];
+  }));
+}
+
+async function searchPalette(scope, query) {
+  const captured = state;
+  const file = currentFile();
+  const capturedEditor = editor;
+  let result;
+  if (scope === "file" || scope === "patch") {
+    if (!capturedEditor || !file || !captured.comparison)
+      throw Error("Choose a text file for this scope.");
+    const contents = scope === "file" ? await capturedEditor.contents() : null;
+    if (captured !== state || editor !== capturedEditor) throw Error("The displayed file changed.");
+    const { base, head } = captured.comparison;
+    result = localPaletteHits(scope, query, contents, lines, {
+      pair: captured.pair, base, head, path: file.path, group: file.group,
+    });
+  } else {
+    result = await invoke("search_review", {
+      snapshot: captured.snapshot, scope, query,
+    });
+  }
+  if (state !== captured) throw Error("The review changed. Open search again.");
+  if (scope === "all") {
+    const metadata = metadataHits(query, captured);
+    result.hits.push(...metadata.slice(0, 100));
+    result.truncated ||= metadata.length > 100;
+  }
+  for (const hit of result.hits) hit.snapshot = captured.snapshot;
+  return result;
+}
+
+const palette = setupSearchPalette({
+  search: searchPalette,
+  cancel: () => invoke("search_review", { snapshot: state.snapshot, scope: "all", query: "" }).catch(() => {}),
+  onError: (message) => status(message, true),
+  async openHit(hit) {
+    if (loading || editLock || hit.snapshot !== state.snapshot)
+      throw Error("The review changed. Open search again.");
+    const root = state.repo.root;
+    const valid = () => root === state.repo.root && !$("dialog").open;
+    if (hit.kind === "comment") {
+      const note = state.notes.find((note) => note.id === hit.id);
+      if (note) await jumpToNote(note);
+    } else if (hit.kind === "commit" || hit.kind === "branch") {
+      if (!state.pair.every((ref, i) => ref === hit.pair[i]))
+        await changeWorkspace("compare", { pair: hit.pair });
+      if (!valid() || !state.pair.every((ref, i) => ref === hit.pair[i]))
+        throw Error("This comparison is no longer available.");
+      if (hit.kind === "commit") {
+        await navigate("Commits");
+        const token = state.snapshot;
+        const data = await request("details", { sha: hit.sha });
+        if (valid() && state.snapshot === token) details("Commit details", data);
+      } else {
+        await navigate("Changes");
+        $("pair").focus();
+      }
+    } else {
+      await openSearchHit(hit, valid);
+    }
+  },
+});
+function openPalette(opener) {
+  if (state && !loading && !editLock && !$("dialog").open) palette.open(opener);
+}
+on("find", () => openPalette($("find")));
 for (const id of ["choose", "welcome-open"]) on(id, choose);
 on("refresh", refresh);
+on("search-review", () => openPalette($("search-review")));
+on("stack-review", () => selectPair(0));
+on("local-review", () => selectPair($("pair").options.length - 1));
 on("export", exportReview);
 on("fit", fitColumns);
 on("edit-stack", () =>
@@ -774,6 +983,20 @@ for (const b of $("filters").children)
 for (const b of $("nav").querySelectorAll("button")) {
   b.disabled = true;
   b.onclick = handle(() => navigate(b.dataset.tab));
+  b.onkeydown = (event) => {
+    const i = names.indexOf(b.dataset.tab);
+    const next = {
+      ArrowRight: (i + 1) % names.length,
+      ArrowLeft: (i + names.length - 1) % names.length,
+      Home: 0,
+      End: names.length - 1,
+    }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    const target = $("nav").querySelector(`[data-tab="${names[next]}"]`);
+    target.focus();
+    target.click();
+  };
 }
 $("viewed").onchange = handle(async () => {
   const file = fileIndex,
@@ -796,6 +1019,7 @@ $("filter").oninput = handle(async () => {
   const ids = visibleFiles();
   if (!ids.includes(fileIndex)) await pick(ids[0] ?? -1);
   else renderFiles();
+  if (fileFilter()) revealFileInTree(fileIndex);
 });
 $("filter").onkeydown = (e) => {
   if (e.key === "Enter") editor?.focus();
@@ -841,23 +1065,30 @@ document.addEventListener(
   handle(async (e) => {
     if ($("dialog").open) return;
     const key = e.key.toLowerCase();
-    if ((e.ctrlKey || e.metaKey) && ["o", "b", "e", "f", "p"].includes(key)) {
+    if ((e.ctrlKey || e.metaKey) && ["f", "p"].includes(key)) {
+      e.preventDefault();
+      return openPalette();
+    }
+    if (palette.openDialog) return;
+    if ((e.ctrlKey || e.metaKey) && ["o", "b", "e"].includes(key)) {
       e.preventDefault();
       if (key === "o") return choose();
       if (!state) return;
       if (key === "b") return $("edit-stack").click();
       if (key === "e") return exportReview();
-      await navigate("Changes");
-      if (key === "f") return find.open(e.shiftKey ? "comparison" : undefined);
-      $("filter").focus();
-      $("filter").select();
       return;
     }
     if (e.key === "F5") {
       e.preventDefault();
       return refresh();
     }
-    if (state && e.altKey && ["ArrowDown", "ArrowUp"].includes(e.key)) {
+    if (
+      state &&
+      !e.defaultPrevented &&
+      e.altKey &&
+      ["ArrowDown", "ArrowUp"].includes(e.key) &&
+      !e.target.closest("input, select, textarea, [role=menu]")
+    ) {
       e.preventDefault();
       await navigate("Changes");
       const ids = Array.from(

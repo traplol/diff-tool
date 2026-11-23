@@ -17,6 +17,9 @@ from pathlib import Path
 from urllib import error, request
 
 ELEMENT = "element-6066-11e4-a52e-4f735466cecf"
+ACTIVE = "#diff .bl-diff:not([inert], [hidden], [inert] *, [hidden] *)"
+PANES = f"{ACTIVE} .cm-content"
+NOTES = f"{ACTIVE} [data-note]"
 
 
 def git(repo, *args):
@@ -60,6 +63,20 @@ class Driver:
     def __init__(self, port):
         self.url = f"http://127.0.0.1:{port}"
         self.session = ""
+
+    def start_session(self, options):
+        info = self.call("POST", "/session", {"capabilities": {"alwaysMatch": options}})
+        self.session = "/session/" + info["sessionId"]
+        self.options = options
+
+    def close_session(self):
+        if self.session:
+            self.call("DELETE", "")
+            self.session = ""
+
+    def restart_session(self):
+        self.close_session()
+        self.start_session(self.options)
 
     def call(self, method, path, data=None):
         body = json.dumps(data).encode() if data is not None else None
@@ -199,7 +216,7 @@ def check_layouts(d):
 
 def check_rapid_switch_scroll(d):
     d.click("#file-list button", "history.txt", False)
-    d.expect_text("#diff", "entry 0")
+    d.expect_text(ACTIVE, "entry 0")
     d.click("#split")
     d.click("#unified")
     before, after = d.call(
@@ -207,9 +224,9 @@ def check_rapid_switch_scroll(d):
         "/execute/async",
         {
             "script": """
-                const done = arguments[0];
+                const [active, done] = arguments;
                 const frame = () => new Promise(requestAnimationFrame);
-                const scroller = () => document.querySelector('#diff .cm-scroller');
+                const scroller = () => document.querySelector(active + " .cm-scroller");
                 (async () => {
                     await frame();
                     await frame();
@@ -224,7 +241,7 @@ def check_rapid_switch_scroll(d):
                     done([before, scroller().scrollTop]);
                 })();
             """,
-            "args": [],
+            "args": [ACTIVE],
         },
     )
     assert before >= 3199 and abs(before - after) <= 2, (
@@ -234,48 +251,53 @@ def check_rapid_switch_scroll(d):
 
 def exercise(d, repo, screenshot):
     d.expect_text("#repo-name", "relay")
+    surface = Path(__file__).with_name("benchmarks") / "v2" / "active_surface.js"
+    d.script(surface.read_text(encoding="utf-8"))
     d.expect_text("#stack", "feature/policy")
     d.expect_text("#stack", "feature/metrics")
     d.click("[data-tab=Changes]")
-    d.expect_text("#diff", "capacity = three")
+    d.expect_text(ACTIVE, "capacity = three")
     check_layouts(d)
-    d.script("window.originalUnified = document.querySelector('#diff .cm-content')")
+    d.script("window.originalUnified = document.querySelector(arguments[0])", PANES)
     d.click("#split")
-    d.wait("document.querySelectorAll('#diff .cm-content').length === 2")
+    d.wait("document.querySelectorAll(arguments[0]).length === 2", PANES)
+    d.script("window.reviewSurface(2)")
     d.script(
-        "window.originalSplit = [...document.querySelectorAll('#diff .cm-content')]"
+        "window.originalSplit = [...document.querySelectorAll(arguments[0])]", PANES
     )
-    d.click("#diff .cm-line", "capacity = three", False)
+    d.click(f"{ACTIVE} .cm-line", "capacity = three", False)
     d.wait("document.querySelector('#suggest').disabled === false")
     d.click("#unified")
-    d.wait("document.querySelectorAll('#diff .cm-content').length === 1")
+    d.wait("document.querySelectorAll(arguments[0]).length === 1", PANES)
+    d.script("window.reviewSurface(1)")
     assert d.script(
-        "return document.querySelector('#diff .cm-content') === window.originalUnified"
+        "return document.querySelector(arguments[0]) === window.originalUnified", PANES
     ), "Returning to unified recreated its editor"
-    d.expect_text("#diff .bl-row-picked", "capacity = three")
+    d.expect_text(f"{ACTIVE} .bl-row-picked", "capacity = three")
     d.wait("document.querySelector('#suggest').disabled === false")
     d.click("#viewed")
     d.wait("document.querySelector('#viewed').checked")
     d.click("#comment")
     d.fill("dialog textarea", "Confirm the metrics capacity")
     d.click("#dialog-actions button", "Save", False)
-    d.expect_text("#diff", "Confirm the metrics capacity")
+    d.expect_text(ACTIVE, "Confirm the metrics capacity")
     if screenshot:
         screenshot.parent.mkdir(parents=True, exist_ok=True)
         screenshot.write_bytes(base64.b64decode(d.call("GET", "/screenshot")))
-    d.click("#diff .bl-row-del")
+    d.click(f"{ACTIVE} .bl-row-del")
     d.click("#split")
     assert d.script("""
-        const panes = document.querySelectorAll('#diff .cm-content');
+        const panes = document.querySelectorAll(arguments[0]);
         return panes.length === 2 && window.originalSplit.every((pane, i) => pane === panes[i]);
-    """), "Returning to split recreated an editor"
-    d.find("#diff .bl-row-del.bl-row-picked")
-    d.wait("!document.querySelector('#diff .bl-row-add.bl-row-picked')")
-    d.expect_text("#diff [data-note] .bl-body", "Confirm the metrics capacity")
-    d.click("#diff [data-note] .bl-disclosure")
+    """, PANES), "Returning to split recreated an editor"
+    d.find(f"{ACTIVE} .bl-row-del.bl-row-picked")
+    d.wait("!document.querySelector(arguments[0])", f"{ACTIVE} .bl-row-add.bl-row-picked")
+    d.expect_text(f"{NOTES} .bl-body", "Confirm the metrics capacity")
+    d.click(f"{NOTES} .bl-disclosure")
     d.click("#unified")
     d.wait(
-        "document.querySelector('#diff [data-note] .bl-disclosure')?.getAttribute('aria-expanded') === 'false'"
+        "document.querySelector(arguments[0])?.getAttribute('aria-expanded') === 'false'",
+        f"{NOTES} .bl-disclosure",
     )
     check_rapid_switch_scroll(d)
     d.click("[data-tab='Comments']")
@@ -289,10 +311,11 @@ def exercise(d, repo, screenshot):
     d.expect_text("#note-table", "Use the documented metrics capacity")
     d.click("#note-table tbody td", "Use the documented metrics capacity", False)
     d.click("#show-diff")
-    d.expect_text("#diff", "Use the documented metrics capacity")
-    d.click("#diff [data-note] button", "Resolve")
+    d.expect_text(ACTIVE, "Use the documented metrics capacity")
+    d.click(f"{NOTES} button", "Resolve")
     d.wait(
-        "document.querySelector('#diff [data-note] .bl-disclosure')?.getAttribute('aria-expanded') === 'false'"
+        "document.querySelector(arguments[0])?.getAttribute('aria-expanded') === 'false'",
+        f"{NOTES} .bl-disclosure",
     )
     d.click("[data-tab='Comments']")
     d.wait(
@@ -319,28 +342,28 @@ def exercise(d, repo, screenshot):
     for group in ("Staged", "Unstaged", "Untracked"):
         d.expect_text("#file-list", group)
     d.click("#file-list button", "new.txt", False)
-    d.expect_text("#diff", "review this line")
-    d.click("#diff .cm-line", "review this line", False)
+    d.expect_text(ACTIVE, "review this line")
+    d.click(f"{ACTIVE} .cm-line", "review this line", False)
     d.click("#suggest")
     d.wait("document.querySelectorAll('dialog[open] textarea').length === 2")
     d.fill("#dialog-body label:first-of-type textarea", "revised suggestion")
     d.fill("#dialog-body label:last-of-type textarea", "A suggestion to follow")
     d.click("#dialog-actions button", "Save suggestion")
-    d.expect_text("#diff", "revised suggestion")
-    d.click("#diff [data-note] button", "Apply to working file")
-    d.expect_text("#diff", "Applied to working file")
+    d.expect_text(ACTIVE, "revised suggestion")
+    d.click(f"{NOTES} button", "Apply to working file")
+    d.expect_text(ACTIVE, "Applied to working file")
     assert (repo / "new.txt").read_text(encoding="utf-8") == "revised suggestion\n"
     git(repo, "add", "new.txt")
     d.click("#refresh")
     d.wait("!document.querySelector('#file-list').innerText.includes('Untracked')")
     d.click("#file-list button", "new.txt", False)
-    d.expect_text("#diff", "Applied to working file")
+    d.expect_text(ACTIVE, "Applied to working file")
     git(repo, "commit", "-qm", "Apply reviewed suggestion")
     d.click("#refresh")
     d.wait("!document.querySelector('#file-list').innerText.includes('new.txt')")
     d.click("#pair option", "Full stack", False)
     d.click("#file-list button", "new.txt", False)
-    d.expect_text("#diff", "A suggestion to follow")
+    d.expect_text(ACTIVE, "A suggestion to follow")
     d.click("#export")
     d.preview(includes=["A suggestion to follow", "Committed in", "revised suggestion"])
     d.click("dialog input[type=checkbox]")
@@ -405,15 +428,11 @@ def main():
                         "args": [str(repo)],
                     }
                 }
-                info = d.call(
-                    "POST", "/session", {"capabilities": {"alwaysMatch": options}}
-                )
-                d.session = "/session/" + info["sessionId"]
+                d.start_session(options)
                 exercise(d, repo, args.screenshot)
             finally:
                 try:
-                    if d.session:
-                        d.call("DELETE", "")
+                    d.close_session()
                 finally:
                     process.terminate()
 

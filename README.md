@@ -42,28 +42,29 @@ The Rust build uses the same SQLite database as the previous Python release. Exi
 1. Open a repository or any directory inside it. Branchline reads local branches and remote-tracking refs already present in the checkout.
 2. On first open, Branchline follows branch tips in Git history to suggest a stack around the checked-out branch. To start from another ref, open **Edit stack**, select the ref, and choose **Find stack**. At a fork, choose the path you want. You can also use **Add** and **Replace** to arrange the stack manually. The first ref is the base. Choose **Review stack** to save the order.
 3. Use **Full stack** to compare the base with the final branch. Select a layer to compare adjacent refs. Each comparison starts at the Git merge base, as in a pull request.
-4. Use **Ctrl+P** to filter changed files by path. In **Unified** or **Split**, click a gap to see the unchanged lines there, or choose **Full file** to expand every gap. **Changes only** restores the patch. Drag or Shift-click to select patch lines, press **C** to comment, then **Ctrl+Enter** to save. Press **Escape** to clear the selection before commenting on the whole file. **Viewed** tracks your progress for this snapshot.
+4. Use **Ctrl+P** to search by path, or type in **Filter files** to narrow the displayed comparison. In **Unified** or **Split**, use the down or up arrow in a gap to reveal 20 lines from its start or end. Click the hidden-line count to open the rest of the gap. **Full file** opens every gap, and **Changes only** restores the patch. Drag or Shift-click to select patch lines, press **C** to comment, then **Ctrl+Enter** to save. Closing a draft keeps it on this device so you can reopen it on the same lines. Use **Discard draft** to remove it. Press **Escape** in the diff to clear the selection before commenting on the whole file. **Viewed** tracks your progress for this snapshot.
 5. Comments appear below their lines, or above the diff for whole-file comments. **Resolve** folds a comment. Expand it to read it again or choose **Reopen** to return it to active review. Open comments on the same line stay visible.
 6. The **Comments** panel starts on **Open**. Select **Resolved** to revisit completed items or **All** to see both. Choose **Entire repository** to include other comparisons. **Show in diff** expands the selected comment at its current lines. **Open comment** shows the saved excerpt.
-7. Choose **Export Markdown** to open an editable preview. Select **Open comments only** to send the agent outstanding feedback. The preview starts with the full review, including resolved history. From **Comments**, it uses the selected scope. From other panels, it uses the current stack or working-tree review. Each version keeps its own edits while the preview is open. **Copy Markdown** and **Save as…** use the text you see.
+7. Choose **Export Markdown** to open an editable preview. Select **Open comments only** to send the agent outstanding feedback. The preview starts with the full review, including resolved history. From **Comments**, it uses the selected scope. From other panels, it uses the current stack or working-tree review. Full and open-only versions keep independent local drafts for the selected review scope. Use **Reset this version** to regenerate the active version from the review. **Copy Markdown** and **Save as…** use the text you see.
 
-In **Commits**, choose **Fit columns to content** to size columns to their values. Right-click a cell to copy its value, the row, or the full SHA. **Commit details…** shows the message, author, committer, and change statistics. Drag the right edge of the green sidebar to resize it. Branchline remembers the width.
+Use the tabs beneath the branch names to switch between **Changes**, **Commits**, and **Comments**. In **Commits**, choose **Fit columns to content** to size columns to their values. Right-click a cell to copy its value, the row, or the full SHA. With the row focused, press **Shift+F10** or the **Menu** key to open the same commands. **Commit details…** shows the message, author, committer, and change statistics. Drag the project sidebar’s right edge to resize it, or use the sidebar button beside **Branchline** to hide it. Branchline remembers the width.
 
 **Refresh** rereads branch tips after a fetch, commit, or rebase. For an initial commit, use **Empty tree** as the base.
 
-### Find text in a review
+### Search a review
 
-Press **Ctrl+F** in Changes to open Find, or **Ctrl+Shift+F** to search the whole comparison. Choose how much to search in the dropdown.
+Press **Ctrl+F**, **Ctrl+Shift+F**, or **Ctrl+P** to open the search palette. File paths appear first. Choose a narrower scope from the dropdown if needed.
 
 | Scope | Search contents |
 | --- | --- |
+| All scopes | File paths, stack diffs, working-tree changes, comments, commits, and review branches. |
 | This patch | The selected file’s patch, including additions, deletions, and the context Git included. |
 | Full file | The selected file, including hidden context and removed lines. A match in hidden context expands that part of the diff. |
 | Whole diff | Patches for every changed file in the active comparison. In Working tree this includes staged, unstaged, and untracked files. |
-| Branch files | Tracked text files at the selected branch tip, including unchanged files. In Working tree this uses the checked-out commit. Selecting a match opens the file at that revision. |
+| Branch files | Tracked paths and text at the selected branch tip, including unchanged files. In Working tree this uses the checked-out commit. Text opens at its matching line, while binary files and submodules open revision details. |
 | Stack changes | Each adjacent pair in the stack, including intermediate edits. Local changes are included when the checked-out branch belongs to the stack or Working tree is active. |
 
-Search is literal and case-insensitive. Click a result to open its location. **Enter** and **Shift+Enter** step through matches from the search field. **Escape** returns to the diff. Searches across files show up to 200 results. Narrow the query to see more specific matches.
+Search is literal and case-insensitive. Use **Up** and **Down** to select a result, then press **Enter** or click it to open its location. **Escape** closes the palette and restores focus. If results are capped, narrow the query to see more specific matches.
 
 ## Review before committing
 
@@ -117,11 +118,9 @@ Hardware acceleration is enabled by default. The system graphics libraries choos
 | --- | --- |
 | Ctrl+O | Open a repository |
 | Ctrl+B | Edit the stack |
-| Ctrl+F | Open Find in Changes |
-| Ctrl+Shift+F | Find text across all files in the active diff |
-| Enter / Shift+Enter in diff search | Next / previous match |
-| Escape in diff search | Close search and focus the diff |
-| Ctrl+P | Filter changed files by path |
+| Ctrl+F / Ctrl+Shift+F / Ctrl+P | Open the search palette |
+| Up / Down in search | Select the previous / next result |
+| Enter / Escape in search | Open the selected result / dismiss search |
 | Enter / Escape in the file filter | Open the match / clear the filter |
 | Alt+Down / Alt+Up | Next / previous visible file |
 | Up / Down in the diff | Select a line |
@@ -149,7 +148,7 @@ On Linux, run the packaged desktop workflow using WebKitWebDriver and a virtual 
 
 ```sh
 npm run tauri -- build --no-bundle
-xvfb-run -a -s '-screen 0 3840x2160x24' dbus-run-session -- python3 tools/smoke_current.py --binary src-tauri/target/release/branchline
+xvfb-run -a -s '-screen 0 3840x2160x24' dbus-run-session -- python3 tools/smoke_native.py --binary src-tauri/target/release/branchline
 ```
 
 The smoke test opens a temporary branch stack, checks which diff panes receive pointer and keyboard input, comments through the UI, applies a suggestion, stages and commits the edit with Git, and verifies its location in the Markdown preview. It uses an isolated review database. The previous Python regression suite runs with `python3 -m unittest discover -s tests` on a desktop display.
@@ -165,12 +164,14 @@ python3 tools/benchmarks/cpu_layout.py
 
 The Rust port uses Rust to prepare the compact patch and JavaScript to decode it and build rows. The headless runner uses Node for the JavaScript stages. Once both layouts exist, the desktop app keeps them for the open file. WebKitGTK and GTK handle drawing on Linux and WSLg. [CPU timings and measurement details](tools/benchmarks/large-diffs.md)
 
-To measure the whole desktop interaction on Linux, build the release and run the click-to-visible probe on a private X11 display. This includes Git, widget construction and presentation. It needs Xvfb, xauth, D-Bus, WebKitWebDriver, Python with Tk, Git, GNU patch and the X11 test libraries. Use a fresh output directory.
+To measure the whole desktop interaction on Linux, build the release and run the click-to-visible probe on a private X11 display. This includes Git, widget construction and presentation. It needs Xvfb, xauth, D-Bus, WebKitWebDriver, Python with Tk, Git, GNU patch and the X11 test libraries. Use a fresh output directory and a Git checkout containing the original benchmark revision. The launcher materializes that revision in a temporary directory and runs its checksum-verified driver against the executable passed with `--binary`.
 
 ```sh
 xvfb-run -a -s '-screen 0 1920x1080x24 -dpi 96' dbus-run-session -- \
   python3 tools/benchmarks/current.py xvfb build/benchmarks/my-run/xvfb \
   --binary src-tauri/target/release/branchline
 ```
+
+The frozen contract describes the original benchmark revision. It rejects the current feature tree because its source and tests have changed. Use the packaged smoke workflow above to verify the current app.
 
 The desktop probe writes `samples.jsonl` and `summary.json`. The archived Radeon and Xvfb campaign records timings for earlier Linux builds with explicit X11 rendering settings. [Historical campaign](tools/autoresearch/rust-layout/state.md)

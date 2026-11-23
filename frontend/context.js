@@ -41,31 +41,57 @@ export function gapLength(gap, contents) {
   return Math.max(0, contents.length - gap.new + 1);
 }
 
+export const CONTEXT_STEP = 20;
+
+export function expandGap(expanded, gap, count, action) {
+  if (action === "collapse" || !count) {
+    expanded.delete(gap.at);
+    return;
+  }
+  if (action === "all") {
+    expanded.set(gap.at, { top: count, bottom: 0 });
+    return;
+  }
+  const shown = expanded.get(gap.at) ?? { top: 0, bottom: 0 };
+  shown[action] += Math.min(CONTEXT_STEP, count - shown.top - shown.bottom);
+  expanded.set(gap.at, shown);
+}
+
 export function displayContext(patch, gaps, expanded, contents) {
   const controls = [];
   const lines = expanded.size ? [] : patch;
+  function appendContext(gap, start, end) {
+    for (let i = start; i < end; i++) {
+      lines.push({
+        kind: " ",
+        text: contents[gap.new - 1 + i],
+        old: gap.old + i,
+        new: gap.new + i,
+        contextOnly: true,
+      });
+    }
+  }
   let cursor = 0;
   for (const gap of gaps) {
     const count = gapLength(gap, contents);
     if (count === 0) continue;
     if (lines !== patch) while (cursor < gap.at) lines.push(patch[cursor++]);
-    const open = expanded.has(gap.at);
+    const shown = expanded.get(gap.at);
+    const top = shown?.top ?? 0,
+      bottom = shown?.bottom ?? 0;
+    const remaining = count === null ? null : count - top - bottom;
+    const open = remaining === 0;
+    const start = lines === patch ? gap.at : lines.length;
     controls.push({
       gap,
       count,
+      remaining,
       open,
-      before: lines === patch ? gap.at : lines.length,
+      before: start + (open ? 0 : top),
     });
-    if (open) {
-      for (let i = 0; i < count; i++) {
-        lines.push({
-          kind: " ",
-          text: contents[gap.new - 1 + i],
-          old: gap.old + i,
-          new: gap.new + i,
-          contextOnly: true,
-        });
-      }
+    if (shown) {
+      appendContext(gap, 0, top);
+      appendContext(gap, count - bottom, count);
     }
   }
   if (lines !== patch)

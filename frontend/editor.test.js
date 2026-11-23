@@ -76,6 +76,25 @@ test("find counts literal matches across the patch and preserves editor offsets"
   assert.deepEqual(findDiffMatches(lines, "missing").matches, []);
 });
 
+test("a find limit stops reading matches while the default remains unlimited", () => {
+  let visited = 0;
+  class CountedText extends String {
+    *matchAll(pattern) {
+      for (const hit of super.matchAll(pattern)) {
+        visited++;
+        yield hit;
+      }
+    }
+  }
+  const text = new CountedText("🛠 hit ".repeat(500));
+  const { matches, firstByLine } = findDiffMatches([{ text }], "hit", 201);
+  assert.equal(visited, 201);
+  assert.equal(matches.length, 201);
+  assert.deepEqual(matches.at(-1), { line: 0, from: 1403, to: 1406 });
+  assert.deepEqual([...firstByLine], [[0, 0]]);
+  assert.equal(findDiffMatches([{ text }], "hit").matches.length, 500);
+});
+
 test("suggestions require consecutive new-side lines of one hunk in a regular file", () => {
   const file = { mode: "100644" },
     replacement = [lines[4], lines[5]];

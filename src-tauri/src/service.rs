@@ -498,7 +498,7 @@ impl Workspace {
                 if revision != s.comparison()?.branch_tip() {
                     return Err("The branch changed. Search again.".into());
                 }
-                return Ok(json!(git::revision_lines(&s.repo, &revision, &path)?));
+                return Ok(json!(git::revision_file(&s.repo, &revision, &path)?));
             }
             Request::Commits => return Ok(json!(git::commits(&s.repo, s.comparison()?)?)),
             Request::Details { sha } => return Ok(json!(git::commit_details(&s.repo, &sha)?)),

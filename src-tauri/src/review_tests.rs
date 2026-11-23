@@ -174,6 +174,60 @@ fn local_comment_follows_index_and_commit_without_matching_stale_duplicates() {
 }
 
 #[test]
+fn branch_comment_follows_an_unrelated_commit_only_at_exact_anchors() {
+    let t = Checkout::new();
+    t.write("settings", "top\nlimit = 2\nbottom\n");
+    t.commit("Increase limit");
+    let repo = t.repo();
+    let stack = ["refs/heads/main", "refs/heads/feature"].map(String::from);
+    let before = git::compare(&repo, &stack[0], &stack[1]).unwrap();
+    let file = &before.files[0];
+    let lines = git::patch(&repo, &before, file).unwrap();
+    let selected: Vec<_> = lines
+        .iter()
+        .filter(|l| l.kind == "+" || l.kind == "-")
+        .cloned()
+        .collect();
+    let mut notes: Vec<_> = ["old", "new", "both"]
+        .into_iter()
+        .map(|side| make_note(&before, file, &selected, side, "Review this", &lines))
+        .collect();
+    notes.push(make_note(&before, file, &[], "both", "Review file", &lines));
+    for (idx, n) in notes.iter_mut().enumerate() {
+        n["id"] = json!(idx as i64 + 1);
+        assert!(n["file_version"].is_null());
+    }
+
+    t.write("README", "Unrelated docs\n");
+    t.commit("Document usage");
+    let current = t.repo();
+    let loc = tracking::locate_notes(&current, &stack, None, &notes);
+    for n in &notes {
+        let location = &loc[&n["id"].as_i64().unwrap()];
+        assert_eq!(location.len(), 1);
+        let d = &location[0];
+        assert_eq!(d["path"], "settings");
+        assert_eq!(d["right"], stack[1]);
+        assert_eq!(d["head"], current.refs[&stack[1]]);
+        assert_eq!(d["old"], n["old"]);
+        assert_eq!(d["new"], n["new"]);
+    }
+
+    let mut stale = notes[1].clone();
+    stale["excerpt"] = json!("+different line");
+    assert!(tracking::locate_notes(&current, &stack, None, &[stale]).is_empty());
+
+    t.write("settings", "top\nlimit = 2\nbottom\nchanged blob\n");
+    t.commit("Change the reviewed file");
+    assert!(tracking::locate_notes(&t.repo(), &stack, None, &notes).is_empty());
+
+    t.git(&["reset", "--hard", "main"]);
+    t.write("settings", "top\nlimit = 2\nbottom\n");
+    t.commit("Unrelated history with the same file bytes");
+    assert!(tracking::locate_notes(&t.repo(), &stack, None, &notes).is_empty());
+}
+
+#[test]
 fn committed_change_on_sibling_branch_cannot_take_a_local_note() {
     let t = Checkout::new();
     t.git(&["switch", "-qc", "top"]);
