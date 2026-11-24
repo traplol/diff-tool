@@ -30,6 +30,17 @@ export function commentStatus(resolved) {
   );
 }
 const dlg = () => $("dialog");
+let openComment;
+
+export function refreshOpenComment(notes) {
+  if (!dlg().open || !openComment) return;
+  const note = notes.find((item) => item.id === openComment.id);
+  if (!note) return;
+  openComment.status.replaceWith(commentStatus(note.resolved));
+  openComment.status = openComment.location.querySelector(".status-chip");
+  openComment.replies.replaceChildren();
+  appendReplies(openComment.replies, note);
+}
 const memoryDrafts = new Map();
 
 function draftStorage(kind, key) {
@@ -164,6 +175,7 @@ export function showBranchFile(hit, file, branch, note) {
   action("Close", close);
 }
 export function compose(note, callbacks, draftKey) {
+  openComment = null;
   const existing = note.id != null;
   const suggestion = Object.hasOwn(note, "suggestion");
   const body = dialog(
@@ -195,7 +207,15 @@ export function compose(note, callbacks, draftKey) {
   );
   const originalBody = message.value;
   const originalReplacement = code?.value;
-  appendReplies(body, note);
+  const replies = el("div");
+  appendReplies(replies, note);
+  body.append(replies);
+  if (existing) {
+    openComment = { id: note.id, location, replies, status: location.querySelector(".status-chip") };
+    dlg().addEventListener("close", () => {
+      if (openComment?.location === location) openComment = null;
+    }, { once: true });
+  }
   const showNotice = draftNotice(body);
   const storage = draftStorage("compose", draftKey);
   const recovered = storage.load();

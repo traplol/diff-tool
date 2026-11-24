@@ -16,6 +16,7 @@ import {
   compose,
   details,
   preview,
+  refreshOpenComment,
   stackDialog,
   showBranchFile,
 } from "./dialogs.js";
@@ -49,6 +50,7 @@ let lines = [],
   loading = false,
   sequence = 0;
 let fileTree;
+let notesPollInFlight = false;
 const positions = new Map(),
   folds = new Map();
 const files = () => state?.comparison?.files ?? [];
@@ -615,6 +617,29 @@ async function update(op, args, snapshot = state.snapshot) {
     editLock = false;
   }
 }
+async function refreshNotes() {
+  if (!state || loading || editLock || notesPollInFlight) return;
+  notesPollInFlight = true;
+  const current = state;
+  const previousNotes = state.notes;
+  try {
+    const result = await request("refresh_notes", {}, current.snapshot);
+    if (state !== current || loading || editLock || state.notes !== previousNotes) return;
+    if (JSON.stringify(result.notes) === JSON.stringify(previousNotes)) return;
+    for (const note of result.notes) {
+      if (folds.get(note.id) === !!note.resolved) folds.delete(note.id);
+    }
+    Object.assign(state, result);
+    editor?.setNotes(fileNotes(state, currentFile()));
+    refreshOpenComment(state.notes);
+    chromeCounts();
+    if (tab === "Comments") renderComments();
+  } catch {
+    // Opening or switching reviews can invalidate an in-flight snapshot.
+  } finally {
+    notesPollInFlight = false;
+  }
+}
 function editNote(note) {
   const snapshot = state.snapshot;
   const draftKey = JSON.stringify([state.repo.root, "edit", note.id]);
@@ -1159,6 +1184,7 @@ document.addEventListener(
   }),
 );
 setMode("unified");
+setInterval(refreshNotes, 1000);
 for (const id of ["export", "edit-stack", "refresh"]) $(id).disabled = true;
 handle(async () =>
   changeWorkspace("open", { path: await invoke("startup_path") }),

@@ -78,7 +78,7 @@ Pass `--port`, set `BRANCHLINE_MCP_PORT`, or add `"mcp_port": 8765` to Branchlin
 1. The agent calls `list_repositories` to choose the checkout, then calls `list_comments` with `{"status":"open","repoId":"api"}`, using the ID returned for that checkout. When only one checkout is configured, `repoId` is optional. If `nextAfterId` is present and non-null, pass it back as `afterId` to read the next page.
 2. The agent uses `get_comment` with the comment ID to read the thread, saved excerpt, and any current match. It can use `get_repository`, `list_changes`, and `get_patch` to inspect the checkout before making edits with its coding tools.
 3. The agent calls `reply_to_comment` with `id`, `author`, and `body` to record what changed and how it was verified. Add `"resolved":true` to resolve in the same operation. Omit it to keep the thread's current status. Use `set_comment_resolved` to resolve or reopen separately.
-4. In Branchline, choose **Refresh** to see replies and status changes. Resolved threads are under **Comments → Resolved** or **All**. Replies also appear in Markdown exports.
+4. Branchline updates replies and status changes automatically. Resolved threads are under **Comments → Resolved** or **All**. Replies also appear in Markdown exports.
 
 ## Review a stack
 

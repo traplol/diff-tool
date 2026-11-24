@@ -48,6 +48,7 @@ pub enum Request {
         id: i64,
     },
     Commits,
+    RefreshNotes,
     Details {
         sha: String,
     },
@@ -231,7 +232,10 @@ impl Session {
         ))
     }
     fn reload_notes(&mut self, store: &Store) -> Result<Value, String> {
-        self.notes = store.notes(&self.repo)?;
+        self.update_notes(store.notes(&self.repo)?)
+    }
+    fn update_notes(&mut self, notes: Vec<Value>) -> Result<Value, String> {
+        self.notes = notes;
         self.locations = tracking::locate_notes(
             &self.repo,
             &self.stack,
@@ -444,6 +448,13 @@ impl Workspace {
             .as_mut()
             .ok_or("Open a Git repository first.")?;
         match request {
+            Request::RefreshNotes => {
+                let notes = store.notes(&s.repo)?;
+                if notes != s.notes {
+                    return s.update_notes(notes);
+                }
+                return Ok(json!({"notes": s.notes, "locations": s.locations}));
+            }
             Request::Compare { pair } => {
                 if !pairs(&s.repo, &s.stack).contains(&pair) {
                     return Err("Choose a comparison in the current stack.".into());
@@ -656,6 +667,68 @@ mod tests {
             config_path: Some(dir.join("config/branchline/config.json")),
             ..Workspace::default()
         }
+    }
+
+    #[test]
+    fn refresh_notes_reads_external_replies_and_resolution_without_changing_snapshot() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path().join("repo");
+        fs::create_dir(&root).unwrap();
+        let git = |args: &[&str]| git::git(&root, args).unwrap();
+        git(&["init", "-qb", "main"]);
+        fs::write(root.join("file.txt"), "working change\n").unwrap();
+        let mut desktop_store = Store::at(&dir.path().join("reviews")).unwrap();
+        let mut agent_store = Store::at(&dir.path().join("reviews")).unwrap();
+        let mut workspace = workspace_in(dir.path());
+        let initial = workspace
+            .with_store(
+                Request::Open {
+                    path: git::path_name(&root),
+                    pair: None,
+                },
+                None,
+                &mut desktop_store,
+            )
+            .unwrap();
+        let snapshot = initial["snapshot"].as_u64();
+        let created = workspace
+            .with_store(
+                Request::Create {
+                    file: 0,
+                    rows: vec![],
+                    side: "both".into(),
+                    body: "Please review".into(),
+                    suggestion: None,
+                },
+                snapshot,
+                &mut desktop_store,
+            )
+            .unwrap();
+        let id = created["notes"][0]["id"].as_i64().unwrap();
+        let repo = git::open_repo(&root).unwrap();
+        agent_store
+            .reply(&repo, id, "Agent", "Done", Some(true))
+            .unwrap();
+        let result = workspace
+            .with_store(Request::RefreshNotes, snapshot, &mut desktop_store)
+            .unwrap();
+        assert_eq!(result["notes"][0]["resolved"], true);
+        assert_eq!(result["notes"][0]["replies"][0]["body"], "Done");
+        assert!(!result["locations"][id.to_string()]
+            .as_array()
+            .unwrap()
+            .is_empty());
+        let repeated = workspace
+            .with_store(Request::RefreshNotes, snapshot, &mut desktop_store)
+            .unwrap();
+        assert_eq!(repeated, result);
+        assert!(workspace
+            .with_store(
+                Request::RefreshNotes,
+                Some(snapshot.unwrap() + 1),
+                &mut desktop_store
+            )
+            .is_err());
     }
 
     #[test]
