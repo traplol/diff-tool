@@ -218,6 +218,17 @@ pub fn markdown(
             if !s(note, "body").is_empty() {
                 writeln!(out, "**Reviewer comment**\n\n{}\n", s(note, "body")).unwrap();
             }
+            if let Some(replies) = note["replies"].as_array() {
+                for reply in replies {
+                    writeln!(
+                        out,
+                        "**Reply from {}**\n\n{}\n",
+                        label(s(reply, "author")),
+                        s(reply, "body")
+                    )
+                    .unwrap();
+                }
+            }
         }
     }
     out

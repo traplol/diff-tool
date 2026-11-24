@@ -304,6 +304,20 @@
   overflow-wrap: anywhere;
   margin: 8px 12px;
 }
+.comment-replies {
+  list-style: none;
+  padding: 0 0 0 12px;
+  border-inline-start: 2px solid var(--line);
+  margin: 8px 12px;
+  overflow-wrap: anywhere;
+}
+.comment-replies li + li {
+  margin-top: 8px;
+}
+.comment-replies p {
+  margin: 2px 0 0;
+  white-space: pre-wrap;
+}
 .bl-before,
 .bl-after {
   padding: 5px 8px;

@@ -7,6 +7,8 @@ use std::{
     path::{Path, PathBuf},
 };
 
+pub const DEFAULT_MCP_PORT: u16 = 8765;
+
 #[derive(Clone, Copy, Debug, Default, Deserialize, PartialEq, Serialize)]
 #[serde(rename_all = "lowercase")]
 pub enum Layout {
@@ -27,6 +29,11 @@ pub struct RepoSettings {
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 #[serde(default)]
 pub struct Settings {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub mcp_port: Option<u16>,
+    pub mcp_auto_start: bool,
+    #[serde(skip_serializing_if = "BTreeMap::is_empty")]
+    pub mcp_repositories: BTreeMap<String, PathBuf>,
     pub hardware_acceleration: bool,
     pub diff_layout: Layout,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -39,6 +46,9 @@ pub struct Settings {
 impl Default for Settings {
     fn default() -> Self {
         Self {
+            mcp_port: None,
+            mcp_auto_start: true,
+            mcp_repositories: BTreeMap::new(),
             hardware_acceleration: true,
             diff_layout: Layout::Unified,
             sidebar_width: None,

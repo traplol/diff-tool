@@ -1,4 +1,4 @@
-import { setFold, spans, suggestionSource } from "./review-ui.js";
+import { appendReplies, setFold, spans, suggestionSource } from "./review-ui.js";
 import { icon } from "./icons.js";
 import {
   CONTEXT_STEP,
@@ -412,6 +412,7 @@ class CommentBlock extends WidgetType {
           proposed.setAttribute("aria-label", "Suggested change");
           card.append(original, proposed);
         }
+        appendReplies(card, note);
         const actions = element("div", "bl-card-actions");
         actions.append(
           button("Edit", () => this.controller.action("edit", note)),

@@ -44,6 +44,9 @@ pub enum Request {
         path: String,
         revision: String,
     },
+    CommentFile {
+        id: i64,
+    },
     Commits,
     Details {
         sha: String,
@@ -163,7 +166,7 @@ fn repo_settings(
     Ok((fallback, Some(warning)))
 }
 
-fn open_stack(repo: &Repository, saved: &RepoSettings) -> Result<Vec<String>, String> {
+pub(crate) fn open_stack(repo: &Repository, saved: &RepoSettings) -> Result<Vec<String>, String> {
     if repo.initial.len() < 2 {
         return Ok(repo.initial.clone());
     }
@@ -502,6 +505,25 @@ impl Workspace {
                     return Err("The branch changed. Search again.".into());
                 }
                 return Ok(json!(git::revision_file(&s.repo, &revision, &path)?));
+            }
+            Request::CommentFile { id } => {
+                let note = s.notes.iter().find(|note| note["id"] == id)
+                    .ok_or("This comment has been removed.")?;
+                let branch = if review::s(note, "right") == WORKTREE {
+                    review::s(note, "left")
+                } else {
+                    review::s(note, "right")
+                };
+                let reference = if branch == s.repo.checkout && branch.starts_with("HEAD@") {
+                    "HEAD"
+                } else {
+                    branch
+                };
+                let current = s.repo.refs.get(reference).and_then(|revision| {
+                    let file = git::revision_file(&s.repo, revision, review::s(note, "path")).ok()?;
+                    Some(json!({"revision":revision,"branch":branch,"file":file}))
+                });
+                return Ok(json!(current));
             }
             Request::Commits => return Ok(json!(git::commits(&s.repo, s.comparison()?)?)),
             Request::Details { sha } => return Ok(json!(git::commit_details(&s.repo, &sha)?)),

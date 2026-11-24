@@ -1,5 +1,6 @@
 mod config;
 mod git;
+mod mcp;
 mod review;
 mod search;
 mod service;
@@ -9,6 +10,8 @@ mod tracking;
 use std::{path::PathBuf, sync::Mutex};
 use tauri::{AppHandle, Manager};
 use tauri_plugin_dialog::DialogExt;
+
+pub use mcp::run as run_mcp;
 
 #[tauri::command]
 fn startup_path() -> Result<String, String> {
@@ -65,11 +68,20 @@ async fn workspace(
     snapshot: Option<u64>,
 ) -> Result<serde_json::Value, String> {
     tauri::async_runtime::spawn_blocking(move || {
+        let opening = matches!(&request, service::Request::Open { .. });
         let state = app.state::<Mutex<service::Workspace>>();
-        let mut state = state
+        let mut result = state
             .lock()
-            .map_err(|_| "Reopen Branchline to reload the review.")?;
-        state.execute(request, snapshot)
+            .map_err(|_| "Reopen Branchline to reload the review.")?
+            .execute(request, snapshot)?;
+        if opening {
+            if let Some(root) = result["repo"]["root"].as_str() {
+                if let Err(error) = mcp::desktop::ensure_running(root) {
+                    result["mcp_warning"] = serde_json::json!(error);
+                }
+            }
+        }
+        Ok(result)
     })
     .await
     .map_err(|e| e.to_string())?

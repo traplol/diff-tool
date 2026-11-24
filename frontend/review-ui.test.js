@@ -7,9 +7,21 @@ import {
   scopeNotes,
   commentRow,
   noteDestination,
+  noteFileIndex,
   labelPath,
   setFold,
 } from "./review-ui.js";
+
+test("comment file fallback prefers the current working file, including a rename", () => {
+  const note = { path: "old.rs" };
+  const staged = { path: "old.rs", group: "Staged" };
+  const unstaged = { path: "old.rs", group: "Unstaged" };
+  const moved = { path: "new.rs", old: "old.rs", status: "R", group: "Unstaged" };
+  assert.equal(noteFileIndex([staged, unstaged], note), 1);
+  assert.equal(noteFileIndex([staged, moved], note), 1);
+  assert.equal(noteFileIndex([staged], note), 0);
+  assert.equal(noteFileIndex([{ path: "unrelated.rs" }], note), -1);
+});
 
 test("working tree outside the stack has a local scope until the user selects the whole repository", () => {
   const notes = [

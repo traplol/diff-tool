@@ -18,6 +18,8 @@ rusqlite = { version = "0.37", features = ["bundled"] }
 sha1 = "0.10"
 sha2 = "0.10"
 tempfile = "3"
+axum = { version = "0.8.8", default-features = false, features = ["http1", "tokio"] }
+tokio = { version = "1", features = ["rt-multi-thread", "net", "sync"] }
 
 [target.'cfg(target_os = "linux")'.dependencies]
 webkit2gtk = { version = "2", features = ["v2_16"] }
@@ -27,7 +29,7 @@ xattr = "1"
 libc = "0.2"
 
 [target.'cfg(windows)'.dependencies]
-windows-sys = { version = "0.61", features = ["Win32_Storage_FileSystem", "Win32_Foundation"] }
+windows-sys = { version = "0.61", features = ["Win32_Storage_FileSystem", "Win32_Foundation", "Win32_System_Console"] }
 
 [profile.dev]
 debug = 0

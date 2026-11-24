@@ -310,7 +310,17 @@ def exercise(d, repo, screenshot):
     d.click("#dialog-actions button", "Save", False)
     d.expect_text("#note-table", "Use the documented metrics capacity")
     d.click("#note-table tbody td", "Use the documented metrics capacity", False)
+    (repo / "cache.txt").write_text("capacity = six\n", encoding="utf-8")
     d.click("#show-diff")
+    d.expect_text("#page-title", "Working tree review")
+    d.expect_text(ACTIVE, "capacity = six")
+    d.click("#jump-open-original")
+    d.wait(
+        "document.querySelector('dialog[open] textarea')?.value === 'Use the documented metrics capacity'"
+    )
+    d.click("dialog [aria-label=Close]")
+    d.click("#stack-review")
+    d.click("#file-list button", "cache.txt", False)
     d.expect_text(ACTIVE, "Use the documented metrics capacity")
     d.click(f"{NOTES} button", "Resolve")
     d.wait(

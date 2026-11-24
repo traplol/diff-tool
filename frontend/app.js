@@ -26,6 +26,7 @@ import {
   decodePatch,
   labelPath,
   noteDestination,
+  noteFileIndex,
   setFold,
   refName,
   pairs,
@@ -141,6 +142,7 @@ function leaveFile() {
   }
   lines = [];
   sequence++;
+  $("comment-jump-context").hidden = true;
   $("full-file").disabled = true;
   contextButton({ full: false, expanded: false });
 }
@@ -221,6 +223,7 @@ async function changeWorkspace(op, args) {
       return chip;
     });
     $("range").replaceChildren(refs[0], icon("arrow"), refs[1]);
+    renderComparisonStats();
     $("stack-review").disabled = state.stack.length < 2;
     $("local-review").disabled = false;
     $("search-review").disabled = false;
@@ -270,7 +273,7 @@ async function changeWorkspace(op, args) {
     );
     fileIndex = keep ?? ids[0] ?? -1;
     await navigate(local && tab === "Commits" ? "Changes" : tab);
-    const warning = [state.error, state.config_warning]
+    const warning = [state.error, state.config_warning, state.mcp_warning]
       .filter(Boolean)
       .join(" · ");
     status(warning || "Comparison up to date", !!warning);
@@ -344,6 +347,23 @@ function chromeCounts() {
   $("viewed-meter").value = viewed;
   $("progress").textContent =
     `${viewed} of ${total} ${total === 1 ? "file" : "files"} viewed`;
+}
+function renderComparisonStats() {
+  $("comparison-stats").hidden = !state.comparison;
+  if (!state.comparison) return;
+  const paths = new Set();
+  let added = 0;
+  let removed = 0;
+  for (const file of files()) {
+    paths.add(file.path);
+    added += file.added ?? 0;
+    removed += file.removed ?? 0;
+  }
+  const count = paths.size;
+  $("comparison-files").textContent =
+    `${count.toLocaleString()} ${count === 1 ? "file" : "files"} changed`;
+  $("comparison-added").textContent = "+" + added.toLocaleString();
+  $("comparison-removed").textContent = "−" + removed.toLocaleString();
 }
 const fileFilter = () => $("filter").value.trim().toLowerCase();
 function visibleFiles(q = fileFilter()) {
@@ -618,23 +638,68 @@ async function noteAction(action, projected) {
     await update("resolve", { id: note.id, value: action === "resolve" });
 }
 async function jumpToNote(note) {
+  if (loading || editLock) return;
+  await refresh();
+  note = state.notes.find((current) => current.id === note.id);
+  if (!note) throw Error("This comment has been removed.");
   const dest = noteDestination(state, note);
-  if (!dest) return editNote(note);
-  if (dest.left !== state.pair[0] || dest.right !== state.pair[1])
-    await changeWorkspace("compare", { pair: [dest.left, dest.right] });
-  const index = files().findIndex(
-    (f) =>
-      f.path === dest.path &&
-      f.group === dest.group &&
-      fileNotes(state, f).some((n) => n.id === note.id),
-  );
-  if (index < 0) return editNote(note);
-  setFold(folds, note, false);
-  $("filter").value = "";
-  await navigate("Changes");
-  editor?.setNotes(fileNotes(state, currentFile()));
-  await pick(index, true, note.id);
-  revealFileInTree(index);
+  const branch = note.right === WORKTREE ? note.left : note.right;
+  const checkout = state.repo.checkout;
+  const isCheckout = branch === checkout || (branch === "HEAD" && checkout.startsWith("HEAD@"));
+  const choices = pairs(state.stack, checkout).map(([, pair]) => pair);
+  const samePair = (a, b) => a[0] === b[0] && a[1] === b[1];
+  const candidates = [
+    isCheckout ? [checkout, WORKTREE] : null,
+    dest ? [dest.left, dest.right] : null,
+    choices.find((pair) => samePair(pair, [note.left, note.right])),
+    choices.find((pair) => pair[1] === branch),
+  ].filter(Boolean);
+  const visited = new Set();
+  for (const pair of candidates) {
+    const key = JSON.stringify(pair);
+    if (visited.has(key)) continue;
+    visited.add(key);
+    if (!samePair(pair, state.pair)) await changeWorkspace("compare", { pair });
+    if (!samePair(pair, state.pair)) return;
+    const anchor = state.locations[note.id]?.find((d) => samePair(pair, [d.left, d.right]));
+    const exact = anchor
+      ? files().findIndex((file) => file.path === anchor.path && file.group === anchor.group)
+      : -1;
+    const latest = noteFileIndex(files(), note);
+    // A partially staged file can have newer edits than its verified staged anchor.
+    const newer = exact >= 0 && files()[exact].group === "Staged" &&
+      latest >= 0 && files()[latest].group === "Unstaged" &&
+      (files()[latest].path === files()[exact].path || files()[latest].old === files()[exact].path);
+    const index = exact >= 0 && !newer ? exact : latest;
+    if (index < 0) continue;
+    const anchored = index === exact;
+    if (anchored) setFold(folds, note, false);
+    $("filter").value = "";
+    const snapshot = state.snapshot;
+    await navigate("Changes");
+    if (state.snapshot !== snapshot) return;
+    editor?.setNotes(fileNotes(state, currentFile()));
+    await pick(index, true, anchored ? note.id : undefined);
+    if (state.snapshot !== snapshot || index !== fileIndex) return;
+    revealFileInTree(index);
+    $("comment-jump-context").hidden = anchored || !editor;
+    if (!anchored && editor) {
+      $("jump-open-original").onclick = handle(() => {
+        const original = state.notes.find((current) => current.id === note.id);
+        if (original) editNote(original);
+      });
+    }
+    return;
+  }
+  const snapshot = state.snapshot;
+  const current = await request("comment_file", { id: note.id }, snapshot);
+  if (state.snapshot !== snapshot) return;
+  if (current) {
+    showBranchFile({ path: note.path, revision: current.revision }, current.file, current.branch, note);
+  } else {
+    status("The current file is unavailable. Showing the original comment.");
+    editNote(note);
+  }
 }
 function revealFileInTree(index) {
   const list = $("file-list");
@@ -680,7 +745,7 @@ function renderComments() {
       row.classList.toggle("selected", Number(row.dataset.id) === id);
     const n = rows.find((n) => n.id === id);
     $("open-comment").disabled = !n;
-    $("show-diff").disabled = !n || !noteDestination(state, n);
+    $("show-diff").disabled = !n;
     $("toggle-resolved").disabled = !n;
     $("toggle-resolved").textContent = n?.resolved ? "Reopen" : "Resolve";
   };

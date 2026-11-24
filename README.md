@@ -47,6 +47,39 @@ The output is `src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe`. 
 
 The Rust build uses the same SQLite database as the previous Python release. Existing comments, suggestions, resolution status, viewed files, and saved stacks load when you open the same checkout. The Python/Tk sources and their regression tests remain available for compatibility checks.
 
+## Agent review over MCP
+
+Open the checkout in Branchline and leave comments on the agent's changes. Start the MCP server against that same checkout, then add its Streamable HTTP URL to your agent's MCP configuration.
+
+```sh
+branchline --mcp /path/to/checkout --port 8765
+```
+
+The endpoint is `http://127.0.0.1:8765/mcp`. On Windows, run `branchline.exe --mcp C:\code\my-repository --port 8765`. Run the desktop and MCP server as the same user and on the same platform so they share the review database.
+
+When you open a checkout in the desktop app, Branchline checks the configured port. It reuses an existing Branchline MCP server or starts one in the background. The server stays running when you close the desktop windows. On first start it serves the configured checkout list, or the opened checkout if no list is configured. Set `"mcp_auto_start": false` in Branchline's `config.json` to start the server manually.
+
+One endpoint can serve multiple checkouts and agents. Pass checkout paths as separate arguments, or configure names in Branchline's `config.json` and start with `branchline --mcp`.
+
+```json
+{
+  "mcp_port": 8765,
+  "mcp_repositories": {
+    "api": "/path/to/api",
+    "web": "/path/to/web"
+  }
+}
+```
+
+Command-line checkout paths override the configured list and use their absolute paths as IDs. With neither, the server serves the current checkout. Agents can call `list_repositories` to see each ID and its checkout path. With multiple checkouts, every repository tool requires the exact `repoId`, including calls to read, reply to, or resolve a comment. Worktrees have their own checkout entries and review state. Desktop window focus has no effect on which checkout an agent targets. Restart the MCP server after changing the configured checkout list.
+
+Pass `--port`, set `BRANCHLINE_MCP_PORT`, or add `"mcp_port": 8765` to Branchline's `config.json`, in that order of precedence. The default is `8765`. The config file is under `$XDG_CONFIG_HOME/branchline` or `~/.config/branchline` on Linux, and `%APPDATA%\Branchline` on Windows. The server runs offline and listens only on IPv4 loopback. By default, local clients can connect without credentials. To require a token, set `BRANCHLINE_MCP_TOKEN` before starting Branchline and configure the client to send `Authorization: Bearer <token>`.
+
+1. The agent calls `list_repositories` to choose the checkout, then calls `list_comments` with `{"status":"open","repoId":"api"}`, using the ID returned for that checkout. When only one checkout is configured, `repoId` is optional. If `nextAfterId` is present and non-null, pass it back as `afterId` to read the next page.
+2. The agent uses `get_comment` with the comment ID to read the thread, saved excerpt, and any current match. It can use `get_repository`, `list_changes`, and `get_patch` to inspect the checkout before making edits with its coding tools.
+3. The agent calls `reply_to_comment` with `id`, `author`, and `body` to record what changed and how it was verified. Add `"resolved":true` to resolve in the same operation. Omit it to keep the thread's current status. Use `set_comment_resolved` to resolve or reopen separately.
+4. In Branchline, choose **Refresh** to see replies and status changes. Resolved threads are under **Comments → Resolved** or **All**. Replies also appear in Markdown exports.
+
 ## Review a stack
 
 1. Open a repository or any directory inside it. Branchline reads local branches and remote-tracking refs already present in the checkout.
@@ -54,7 +87,7 @@ The Rust build uses the same SQLite database as the previous Python release. Exi
 3. Use **Full stack** to compare the base with the final branch. Select a layer to compare adjacent refs. Each comparison starts at the Git merge base, as in a pull request.
 4. Use **Ctrl+P** to search by path, or type in **Filter files** to narrow the displayed comparison. In **Unified** or **Split**, use the down or up arrow in a gap to reveal 20 lines from its start or end. Click the hidden-line count to open the rest of the gap. **Full file** opens every gap, and **Changes only** restores the patch. Drag or Shift-click to select patch lines, press **C** to comment, then **Ctrl+Enter** to save. Closing a draft keeps it on this device so you can reopen it on the same lines. Use **Discard draft** to remove it. Press **Escape** in the diff to clear the selection before commenting on the whole file. **Viewed** tracks your progress for this snapshot.
 5. Comments appear below their lines, or above the diff for whole-file comments. **Resolve** folds a comment. Expand it to read it again or choose **Reopen** to return it to active review. Open comments on the same line stay visible.
-6. The **Comments** panel starts on **Open**. Select **Resolved** to revisit completed items or **All** to see both. Choose **Entire repository** to include other comparisons. **Show in diff** expands the selected comment at its current lines. **Open comment** shows the saved excerpt.
+6. The **Comments** panel starts on **Open**. Select **Resolved** to revisit completed items or **All** to see both. Choose **Entire repository** to include other comparisons. **Jump to comment** refreshes the review and opens the verified line or the current file if those lines changed. **Open comment** shows the saved excerpt.
 7. Choose **Export Markdown** to open an editable preview. Select **Open comments only** to send the agent outstanding feedback. The preview starts with the full review, including resolved history. From **Comments**, it uses the selected scope. From other panels, it uses the current stack or working-tree review. Full and open-only versions keep independent local drafts for the selected review scope. Use **Reset this version** to regenerate the active version from the review. **Copy Markdown** and **Save as…** use the text you see.
 
 Use the tabs beneath the branch names to switch between **Changes**, **Commits**, and **Comments**. In **Commits**, choose **Fit columns to content** to size columns to their values. Right-click a cell to copy its value, the row, or the full SHA. With the row focused, press **Shift+F10** or the **Menu** key to open the same commands. **Commit details…** shows the message, author, committer, and change statistics. Drag the project sidebar’s right edge to resize it, or use the sidebar button beside **Branchline** to hide it. Branchline remembers the width.
@@ -86,7 +119,7 @@ Choose **Working tree** from the comparison menu beside the branch names. It fol
 - **Unstaged** compares the index with your edits to tracked files.
 - **Untracked** shows new files outside the index. Git's ignore rules apply.
 
-A partially staged file appears in both groups. Select either entry to comment on the version you see. Press **F5** after editing, staging, or committing. When the reviewed lines move into the index or a commit, the same comment follows them into the matching stack diffs. **Comments → Show in diff** jumps to a verified match. If the lines disappear or multiple locations fit equally well, **Open comment** still shows the original excerpt.
+A partially staged file appears in both groups. Select either entry to comment on the version you see. Press **F5** after editing, staging, or committing. When the reviewed lines move into the index or a commit, the same comment follows them into the matching stack diffs. **Comments → Jump to comment** opens a verified match when available. If the lines disappear or multiple locations fit equally well, it opens the current file when available and keeps the original comment accessible.
 
 The **Comments** panel and Markdown export include local notes from branches in the selected stack alongside branch-review notes. If you review a working tree on a branch outside that stack, its default scope is just that checkout branch. Reviewing changes does not stage files or create commits.
 

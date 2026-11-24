@@ -2,6 +2,7 @@ import { EditorState, Text } from "@codemirror/state";
 import { Decoration, EditorView, lineNumbers } from "@codemirror/view";
 import {
   EMPTY,
+  appendReplies,
   labelPath,
   refName,
   spans,
@@ -116,7 +117,7 @@ export function details(title, content) {
   dialog(title).append(el("pre", content));
   action("Close", close);
 }
-export function showBranchFile(hit, file, branch) {
+export function showBranchFile(hit, file, branch, note) {
   const body = dialog(labelPath(hit.path), "branch-source");
   body.append(
     el(
@@ -124,6 +125,12 @@ export function showBranchFile(hit, file, branch) {
       `${refName(branch)} · ${hit.revision.slice(0, 10)}${hit.line ? ` · Line ${hit.line}` : ""}`,
     ),
   );
+  if (note) {
+    const original = el("details");
+    original.append(el("summary", "Original comment"), el("p", note.body));
+    if (note.excerpt) original.append(el("pre", note.excerpt));
+    body.append(original);
+  }
   if (file.kind !== "text") {
     body.append(el("p", file.kind === "binary"
       ? `Binary file · ${file.bytes} bytes`
@@ -188,6 +195,7 @@ export function compose(note, callbacks, draftKey) {
   );
   const originalBody = message.value;
   const originalReplacement = code?.value;
+  appendReplies(body, note);
   const showNotice = draftNotice(body);
   const storage = draftStorage("compose", draftKey);
   const recovered = storage.load();

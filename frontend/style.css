@@ -436,6 +436,19 @@ h1 {
   margin-top: 9px;
   gap: 10px;
 }
+#comparison-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+#comparison-stats :is(.added, .removed) {
+  font-weight: 600;
+}
 .comparison-bar select,
 #scope {
   font-size: 13px;
@@ -713,6 +726,19 @@ h1 {
   display: inline-flex;
   gap: 6px;
   font: 12px/1.4 var(--mono);
+  white-space: nowrap;
+}
+#comment-jump-context {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+#jump-open-original {
   white-space: nowrap;
 }
 .added {

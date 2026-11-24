@@ -159,11 +159,35 @@ impl Store {
         Ok(None)
     }
     pub fn notes(&self, repo: &Repository) -> Result<Vec<Value>, String> {
+        self.notes_after(repo, 0, None, -1)
+    }
+    pub fn note(&self, repo: &Repository, id: i64) -> Result<Option<Value>, String> {
+        if id <= 0 {
+            return Ok(None);
+        }
+        Ok(self
+            .notes_after(repo, id - 1, None, 1)?
+            .pop()
+            .filter(|note| note["id"] == id))
+    }
+    pub fn notes_after(
+        &self,
+        repo: &Repository,
+        after: i64,
+        resolved: Option<bool>,
+        limit: i64,
+    ) -> Result<Vec<Value>, String> {
         let mut stmt = self
             .db
-            .prepare("SELECT id,data,resolved FROM notes WHERE repo=? ORDER BY id")
+            .prepare(
+                "SELECT id,data,resolved FROM notes
+                WHERE repo=?1 AND id>?2 AND (?3 IS NULL OR resolved=?3)
+                ORDER BY id LIMIT ?4",
+            )
             .map_err(err)?;
-        let mut rows = stmt.query([repo_key(repo)]).map_err(err)?;
+        let mut rows = stmt
+            .query(params![repo_key(repo), after, resolved, limit])
+            .map_err(err)?;
         let mut notes = Vec::new();
         while let Some(r) = rows.next().map_err(err)? {
             let mut n: Value = serde_json::from_str(&translate(
@@ -183,6 +207,18 @@ impl Store {
     }
     /// Keep the latest body, replacement, resolution and application receipt independent across windows.
     pub(crate) fn edit<F>(&mut self, repo: &Repository, id: i64, change: F) -> Result<(), String>
+    where
+        F: FnOnce(&mut Value, bool) -> Result<(), String>,
+    {
+        self.edit_note(repo, id, None, change)
+    }
+    fn edit_note<F>(
+        &mut self,
+        repo: &Repository,
+        id: i64,
+        resolution: Option<bool>,
+        change: F,
+    ) -> Result<(), String>
     where
         F: FnOnce(&mut Value, bool) -> Result<(), String>,
     {
@@ -207,8 +243,13 @@ impl Store {
         restore_receipt(repo, id, &mut note);
         change(&mut note, resolved)?;
         tx.execute(
-            "UPDATE notes SET data=? WHERE repo=? AND id=?",
-            params![translate(&note.to_string(), false, false)?, key, id],
+            "UPDATE notes SET data=?,resolved=? WHERE repo=? AND id=?",
+            params![
+                translate(&note.to_string(), false, false)?,
+                resolution.unwrap_or(resolved),
+                key,
+                id
+            ],
         )
         .map_err(err)?;
         tx.commit().map_err(err)?;
@@ -217,6 +258,34 @@ impl Store {
             .unwrap_or_else(|e| e.into_inner())
             .remove(&(repo.root.clone(), id));
         Ok(())
+    }
+    pub fn reply(
+        &mut self,
+        repo: &Repository,
+        id: i64,
+        author: &str,
+        body: &str,
+        resolution: Option<bool>,
+    ) -> Result<(), String> {
+        let author = author.trim();
+        let body = body.trim();
+        if author.is_empty() || author.len() > 120 || body.is_empty() || body.len() > 32_768 {
+            return Err(
+                "Supply a reply of up to 32768 bytes and an author of up to 120 bytes.".into(),
+            );
+        }
+        self.edit_note(repo, id, resolution, |note, _| {
+            let replies = note
+                .as_object_mut()
+                .ok_or("Invalid saved review record.")?
+                .entry("replies")
+                .or_insert_with(|| json!([]));
+            replies
+                .as_array_mut()
+                .ok_or("Invalid saved comment replies.")?
+                .push(json!({"author": author, "body": body}));
+            Ok(())
+        })
     }
     pub fn save(
         &mut self,

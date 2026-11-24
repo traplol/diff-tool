@@ -154,6 +154,17 @@ export function noteDestination(state, note) {
   return null;
 }
 
+export function noteFileIndex(files, note) {
+  const atPath = (file) => file.path === note.path;
+  const renamed = (file) => file.status === "R" && file.old === note.path;
+  const current = files.findIndex((file) => file.group !== "Staged" && atPath(file));
+  if (current >= 0) return current;
+  const moved = files.findIndex((file) => file.group !== "Staged" && renamed(file));
+  if (moved >= 0) return moved;
+  const staged = files.findIndex(atPath);
+  return staged >= 0 ? staged : files.findIndex(renamed);
+}
+
 export function commentRow(note, destination) {
   const shown = destination || note;
   const source =
@@ -179,4 +190,21 @@ export function commentRow(note, destination) {
 export function setFold(folds, note, collapsed) {
   if (!!note.resolved === collapsed) folds.delete(note.id);
   else folds.set(note.id, collapsed);
+}
+
+export function appendReplies(container, note) {
+  if (!Array.isArray(note.replies) || !note.replies.length) return;
+  const replies = document.createElement("ul");
+  replies.className = "comment-replies";
+  replies.setAttribute("aria-label", "Replies");
+  for (const reply of note.replies) {
+    const item = document.createElement("li");
+    const author = document.createElement("strong");
+    const body = document.createElement("p");
+    author.textContent = reply.author;
+    body.textContent = reply.body;
+    item.append(author, body);
+    replies.append(item);
+  }
+  container.append(replies);
 }

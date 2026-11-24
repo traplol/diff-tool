@@ -63,6 +63,52 @@ fn changed_note(repo: &Repository, c: &Comparison, file: &Change) -> Value {
 }
 
 #[test]
+fn replies_preserve_desktop_edits_and_can_resolve_the_same_thread() {
+    let t = Checkout::new();
+    t.write("settings", "top\nlimit = 2\nbottom\n");
+    let repo = t.repo();
+    let comparison = t.diff(&repo);
+    let mut desktop = t.store();
+    let mut agent = t.store();
+    let note = changed_note(&repo, &comparison, &comparison.files[0]);
+    let id = desktop.save(&repo, &note, None).unwrap();
+    let original = desktop.note(&repo, id).unwrap().unwrap();
+    agent
+        .reply(&repo, id, "Agent", "Changed the limit.", Some(true))
+        .unwrap();
+    let mut edited = original.clone();
+    edited["body"] = json!("Clarified the review request");
+    desktop.save(&repo, &edited, Some(&original)).unwrap();
+    agent
+        .reply(&repo, id, "Agent", "Checked the tests.", None)
+        .unwrap();
+    assert!(desktop
+        .notes_after(&repo, 0, Some(false), 10)
+        .unwrap()
+        .is_empty());
+    let saved = desktop.note(&repo, id).unwrap().unwrap();
+    assert_eq!(saved["body"], edited["body"]);
+    assert_eq!(saved["resolved"], true);
+    assert_eq!(
+        saved["replies"],
+        json!([
+            {"author": "Agent", "body": "Changed the limit."},
+            {"author": "Agent", "body": "Checked the tests."}
+        ])
+    );
+    assert!(agent.reply(&repo, id, "Agent", "   ", Some(false)).is_err());
+    assert_eq!(desktop.note(&repo, id).unwrap().unwrap(), saved);
+    assert!(desktop.set_resolved(&repo, id, false).unwrap());
+    assert_eq!(
+        agent.notes_after(&repo, 0, Some(false), 10).unwrap()[0]["id"],
+        id
+    );
+    let report = markdown(&repo, None, &[saved], &Locations::new(), false);
+    assert!(report.contains("Reply from Agent"));
+    assert!(report.contains("Checked the tests."));
+}
+
+#[test]
 fn migrates_existing_json_notes_and_merges_concurrent_edits() {
     let t = Checkout::new();
     let repo = t.repo();

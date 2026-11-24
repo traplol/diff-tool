@@ -3,8 +3,21 @@
 fn main() {
     let mut args = std::env::args_os().skip(1);
     match args.next().as_deref().and_then(|arg| arg.to_str()) {
+        Some("--mcp") => {
+            // The release desktop binary uses the Windows GUI subsystem.
+            #[cfg(windows)]
+            unsafe {
+                use windows_sys::Win32::System::Console::{AttachConsole, ATTACH_PARENT_PROCESS};
+                AttachConsole(ATTACH_PARENT_PROCESS);
+            }
+            if let Err(error) = branchline::run_mcp(args) {
+                eprintln!("{error}");
+                std::process::exit(1);
+            }
+            return;
+        }
         Some("--help" | "-h") => {
-            println!("Usage: branchline [DIRECTORY]\nOpen the selected Git checkout in a desktop review window.");
+            println!("Usage: branchline [DIRECTORY]\n       branchline --mcp [DIRECTORY ...] [--port PORT]\nOpen a desktop review or serve the selected checkouts over MCP.");
             return;
         }
         Some("--version" | "-V") => {

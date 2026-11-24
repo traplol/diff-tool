@@ -107,6 +107,11 @@
             <div class="comparison-bar">
               <select id="pair" aria-label="Comparison"></select>
               <span id="range" aria-label="Compared revisions"></span>
+              <div id="comparison-stats" role="status" hidden>
+                <span id="comparison-files"></span>
+                <span id="comparison-added" class="added"></span>
+                <span id="comparison-removed" class="removed"></span>
+              </div>
             </div>
           </section>
           <div id="nav" role="tablist" aria-label="Review views">
@@ -194,6 +199,10 @@
                 <span id="file-stats"></span>
                 <label><input type="checkbox" id="viewed" /> Viewed</label>
               </div>
+              <div id="comment-jump-context" hidden>
+                <span>Showing the current diff. The comment has no verified line here.</span>
+                <button id="jump-open-original">Open comment</button>
+              </div>
               <div id="diff"></div>
               <div class="diff-actions">
                 <div>
@@ -270,7 +279,7 @@
             </div>
             <div class="panel-footer">
               <button id="open-comment">Open comment</button
-              ><button id="show-diff">Show in diff</button
+              ><button id="show-diff">Jump to comment</button
               ><button id="toggle-resolved">Resolve</button>
             </div>
           </section>
