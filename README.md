@@ -57,7 +57,7 @@ branchline --mcp /path/to/checkout --port 8765
 
 The endpoint is `http://127.0.0.1:8765/mcp`. On Windows, run `branchline.exe --mcp C:\code\my-repository --port 8765`. Run the desktop and MCP server as the same user and on the same platform so they share the review database.
 
-When you open a checkout in the desktop app, Branchline checks the configured port. It reuses an existing Branchline MCP server or starts one in the background. The server stays running when you close the desktop windows. On first start it serves the configured checkout list, or the opened checkout if no list is configured. Set `"mcp_auto_start": false` in Branchline's `config.json` to start the server manually.
+When you open a checkout in the desktop app, Branchline checks the configured port. It reuses an existing Branchline MCP server or starts one in the background. The server stays running when you close the desktop windows. Every checkout you open is added to the running server and appears in `list_repositories` immediately. This works with native Windows paths, WSL UNC paths in the Windows app, and Linux paths (including `/mnt/c/...`) in the WSL app. Automatically added checkouts stay available until the server stops. Set `"mcp_auto_start": false` in Branchline's `config.json` to start the server manually.
 
 One endpoint can serve multiple checkouts and agents. Pass checkout paths as separate arguments, or configure names in Branchline's `config.json` and start with `branchline --mcp`.
 
@@ -71,7 +71,7 @@ One endpoint can serve multiple checkouts and agents. Pass checkout paths as sep
 }
 ```
 
-Command-line checkout paths override the configured list and use their absolute paths as IDs. With neither, the server serves the current checkout. Agents can call `list_repositories` to see each ID and its checkout path. With multiple checkouts, every repository tool requires the exact `repoId`, including calls to read, reply to, or resolve a comment. Worktrees have their own checkout entries and review state. Desktop window focus has no effect on which checkout an agent targets. Restart the MCP server after changing the configured checkout list.
+Command-line checkout paths override the configured list and use their absolute paths as IDs. With neither, the server serves the current checkout. Agents can call `list_repositories` to see each ID and its checkout path. With multiple checkouts, every repository tool requires the exact `repoId`, including calls to read, reply to, or resolve a comment. Worktrees have their own checkout entries and review state. Desktop window focus has no effect on which checkout an agent targets. Restart the MCP server to reload the startup list after editing `mcp_repositories`.
 
 Pass `--port`, set `BRANCHLINE_MCP_PORT`, or add `"mcp_port": 8765` to Branchline's `config.json`, in that order of precedence. The default is `8765`. The config file is under `$XDG_CONFIG_HOME/branchline` or `~/.config/branchline` on Linux, and `%APPDATA%\Branchline` on Windows. The server runs offline and listens only on IPv4 loopback. By default, local clients can connect without credentials. To require a token, set `BRANCHLINE_MCP_TOKEN` before starting Branchline and configure the client to send `Authorization: Bearer <token>`.
 

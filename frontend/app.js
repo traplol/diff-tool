@@ -191,6 +191,9 @@ async function changeWorkspace(op, args) {
     $("workspace").hidden = false;
     $("find").disabled = false;
     const name = basename(state.repo.root);
+    const repoPath = $("repo-path");
+    repoPath.textContent = repoPath.title = labelPath(state.repo.root);
+    repoPath.hidden = false;
     document.title = name + " · Branchline";
     $("crumb").textContent = name;
     $("repo-name").textContent = name;

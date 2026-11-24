@@ -1,5 +1,5 @@
 //! Ensure desktop windows share a local MCP listener.
-use super::{configured_port, IDENTITY_HEADER};
+use super::{configured_port, configured_token, IDENTITY_HEADER, REGISTER_PATH};
 use crate::{config, git};
 use serde_json::Value;
 use std::{
@@ -13,12 +13,12 @@ use std::{
 
 enum Listener {
     Free,
-    Branchline(Option<bool>),
+    Branchline,
 }
 
-fn probe(addr: SocketAddr, root: &str, before_launch: bool) -> Result<Listener, String> {
+fn probe(addr: SocketAddr, before_launch: bool) -> Result<Listener, String> {
     let timeout = Duration::from_millis(350);
-    let mut stream = match TcpStream::connect_timeout(&addr, timeout) {
+    let stream = match TcpStream::connect_timeout(&addr, timeout) {
         Ok(stream) => stream,
         Err(error) if error.kind() == io::ErrorKind::ConnectionRefused => {
             return Ok(Listener::Free)
@@ -33,27 +33,14 @@ fn probe(addr: SocketAddr, root: &str, before_launch: bool) -> Result<Listener, 
         }
         Err(error) => return Err(format!("Could not check MCP at {addr}: {error}")),
     };
-    let request =
-        r#"{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"list_repositories"}}"#;
-    let exchange = || -> io::Result<Vec<u8>> {
-        stream.set_read_timeout(Some(timeout))?;
-        stream.set_write_timeout(Some(timeout))?;
-        write!(
-            stream,
-            "POST /mcp HTTP/1.1\r\nHost: {addr}\r\nConnection: close\r\nContent-Type: application/json\r\nAccept: application/json, text/event-stream\r\nContent-Length: {}\r\n\r\n{request}",
-            request.len()
-        )?;
-        let mut response = Vec::new();
-        stream.take(256 * 1024).read_to_end(&mut response)?;
-        Ok(response)
-    };
+    let request = r#"{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25"}}"#;
     let occupied = || {
         format!(
             "Port {} is in use. Choose another Branchline MCP port.",
             addr.port()
         )
     };
-    let response = exchange().map_err(|_| occupied())?;
+    let response = exchange(stream, addr, "/mcp", "", request, timeout).map_err(|_| occupied())?;
     let response = std::str::from_utf8(&response).map_err(|_| occupied())?;
     let (headers, body) = response.split_once("\r\n\r\n").ok_or_else(occupied)?;
     if headers.starts_with("HTTP/1.1 401 ")
@@ -63,18 +50,96 @@ fn probe(addr: SocketAddr, root: &str, before_launch: bool) -> Result<Listener, 
             })
         })
     {
-        return Ok(Listener::Branchline(None));
+        return Ok(Listener::Branchline);
     }
     if !headers.starts_with("HTTP/1.1 200 ") {
         return Err(occupied());
     }
     let message: Value = serde_json::from_str(body).map_err(|_| occupied())?;
-    let repositories = message["result"]["structuredContent"]["repositories"]
-        .as_array()
-        .ok_or_else(occupied)?;
-    Ok(Listener::Branchline(Some(
-        repositories.iter().any(|repo| repo["path"] == root),
-    )))
+    if message["result"]["serverInfo"]["name"] != "branchline" {
+        return Err(occupied());
+    }
+    Ok(Listener::Branchline)
+}
+
+fn exchange(
+    mut stream: TcpStream,
+    addr: SocketAddr,
+    path: &str,
+    headers: &str,
+    request: &str,
+    timeout: Duration,
+) -> io::Result<Vec<u8>> {
+    stream.set_read_timeout(Some(timeout))?;
+    stream.set_write_timeout(Some(timeout))?;
+    write!(
+        stream,
+        "POST {path} HTTP/1.1\r\nHost: {addr}\r\nConnection: close\r\nContent-Type: application/json\r\nAccept: application/json, text/event-stream\r\n{headers}Content-Length: {}\r\n\r\n{request}",
+        request.len()
+    )?;
+    let mut response = Vec::new();
+    stream.take(256 * 1024).read_to_end(&mut response)?;
+    Ok(response)
+}
+
+fn register(addr: SocketAddr, root: &str) -> Result<(), String> {
+    let token = configured_token()?;
+    let mut headers = format!("{IDENTITY_HEADER}: 1\r\n");
+    if let Some(token) = &token {
+        let token = token.to_str().map_err(|e| e.to_string())?;
+        headers.push_str(&format!("Authorization: {token}\r\n"));
+    }
+    let request = serde_json::json!({"path": root}).to_string();
+    let mut attempts = 0;
+    let response = loop {
+        let stream = TcpStream::connect_timeout(&addr, Duration::from_millis(350))
+            .map_err(|e| format!("Could not connect to Branchline MCP at {addr}: {e}"))?;
+        let response = exchange(
+            stream,
+            addr,
+            REGISTER_PATH,
+            &headers,
+            &request,
+            Duration::from_secs(15),
+        )
+        .map_err(|e| format!("Could not register the checkout with Branchline MCP: {e}"))?;
+        if response.starts_with(b"HTTP/1.1 503 ") && attempts < 3 {
+            attempts += 1;
+            thread::sleep(Duration::from_millis(100));
+            continue;
+        }
+        break response;
+    };
+    if response.starts_with(b"HTTP/1.1 401 ") {
+        return Err(
+            "Branchline MCP requires the desktop and server to use the same BRANCHLINE_MCP_TOKEN."
+                .into(),
+        );
+    }
+    if response.starts_with(b"HTTP/1.1 404 ") {
+        return Err("Restart the running Branchline MCP server with the updated executable to enable checkout registration.".into());
+    }
+    if response.starts_with(b"HTTP/1.1 200 ") {
+        if let Some((_, body)) = std::str::from_utf8(&response)
+            .ok()
+            .and_then(|s| s.split_once("\r\n\r\n"))
+        {
+            if let Ok(message) = serde_json::from_str::<Value>(body) {
+                if message["repoId"].is_string() {
+                    return Ok(());
+                }
+                if let Some(error) = message["error"].as_str() {
+                    return Err(format!(
+                        "Could not register the checkout with Branchline MCP: {error}"
+                    ));
+                }
+            }
+        }
+    }
+    Err(format!(
+        "Branchline MCP on port {} did not accept the checkout.",
+        addr.port()
+    ))
 }
 
 pub fn ensure_running(root: &str) -> Result<(), String> {
@@ -84,17 +149,8 @@ pub fn ensure_running(root: &str) -> Result<(), String> {
     }
     let port = configured_port(&settings)?;
     let addr = SocketAddr::from((Ipv4Addr::LOCALHOST, port));
-    let served = |covered| {
-        if covered == Some(false) {
-            Err(format!(
-                "Branchline MCP on port {port} serves other checkouts. Add this checkout to mcp_repositories and restart the server."
-            ))
-        } else {
-            Ok(())
-        }
-    };
-    if let Listener::Branchline(covered) = probe(addr, root, true)? {
-        return served(covered);
+    if let Listener::Branchline = probe(addr, true)? {
+        return register(addr, root);
     }
 
     let executable = std::env::current_exe().map_err(|e| e.to_string())?;
@@ -118,10 +174,10 @@ pub fn ensure_running(root: &str) -> Result<(), String> {
     let mut child = command
         .spawn()
         .map_err(|e| format!("Could not start Branchline MCP: {e}"))?;
-    let deadline = Instant::now() + Duration::from_secs(2);
+    let deadline = Instant::now() + Duration::from_secs(10);
     let result = loop {
-        match probe(addr, root, false) {
-            Ok(Listener::Branchline(covered)) => break served(covered),
+        match probe(addr, false) {
+            Ok(Listener::Branchline) => break register(addr, root),
             Ok(Listener::Free) if Instant::now() < deadline => {
                 thread::sleep(Duration::from_millis(60));
             }

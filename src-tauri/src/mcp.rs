@@ -17,7 +17,7 @@ use std::{
     ffi::OsString,
     net::{Ipv4Addr, SocketAddrV4},
     path::PathBuf,
-    sync::Arc,
+    sync::{Arc, Mutex},
 };
 use tokio::sync::Semaphore;
 
@@ -25,8 +25,10 @@ const VERSIONS: &[&str] = &["2025-11-25", "2025-06-18", "2025-03-26"];
 const PROTOCOL_HEADER: &str = "mcp-protocol-version";
 const IDENTITY_HEADER: &str = "x-branchline-mcp";
 
+const REGISTER_PATH: &str = "/desktop/repositories";
+
 struct Server {
-    repositories: BTreeMap<String, PathBuf>,
+    repositories: Mutex<BTreeMap<String, PathBuf>>,
     port: u16,
     token: Option<HeaderValue>,
     workers: Arc<Semaphore>,
@@ -71,16 +73,7 @@ pub fn run(args: impl Iterator<Item = OsString>) -> Result<(), String> {
         Some(port) => port,
         None => configured_port(&settings)?,
     };
-    let token = match std::env::var("BRANCHLINE_MCP_TOKEN") {
-        Ok(token) if !token.is_empty() && token.bytes().all(|b| b.is_ascii_graphic()) => {
-            Some(HeaderValue::from_str(&format!("Bearer {token}")).map_err(|e| e.to_string())?)
-        }
-        Ok(_) => {
-            return Err("BRANCHLINE_MCP_TOKEN must contain visible ASCII without spaces.".into())
-        }
-        Err(std::env::VarError::NotPresent) => None,
-        Err(e) => return Err(format!("Invalid BRANCHLINE_MCP_TOKEN: {e}")),
-    };
+    let token = configured_token()?;
     let mut repositories = BTreeMap::new();
     if paths.is_empty() && !settings.mcp_repositories.is_empty() {
         for (id, path) in settings.mcp_repositories {
@@ -116,18 +109,34 @@ pub fn run(args: impl Iterator<Item = OsString>) -> Result<(), String> {
                 .map_err(|e| format!("Could not bind Branchline MCP to {addr}: {e}"))?;
             eprintln!("Branchline MCP is listening at http://{addr}/mcp");
             let state = Arc::new(Server {
-                repositories,
+                repositories: Mutex::new(repositories),
                 port,
                 token,
                 workers: Arc::new(Semaphore::new(8)),
             });
             axum::serve(
                 listener,
-                Router::new().route("/mcp", any(endpoint)).with_state(state),
+                Router::new()
+                    .route("/mcp", any(endpoint))
+                    .route(REGISTER_PATH, any(endpoint))
+                    .with_state(state),
             )
             .await
             .map_err(|e| e.to_string())
         })
+}
+
+fn configured_token() -> Result<Option<HeaderValue>, String> {
+    match std::env::var("BRANCHLINE_MCP_TOKEN") {
+        Ok(token) if !token.is_empty() && token.bytes().all(|b| b.is_ascii_graphic()) => {
+            HeaderValue::from_str(&format!("Bearer {token}"))
+                .map(Some)
+                .map_err(|e| e.to_string())
+        }
+        Ok(_) => Err("BRANCHLINE_MCP_TOKEN must contain visible ASCII without spaces.".into()),
+        Err(std::env::VarError::NotPresent) => Ok(None),
+        Err(e) => Err(format!("Invalid BRANCHLINE_MCP_TOKEN: {e}")),
+    }
 }
 
 fn parse_port(raw: &str) -> Result<u16, String> {
@@ -160,6 +169,7 @@ fn single_header<'a>(headers: &'a HeaderMap, name: &str) -> Option<Option<&'a st
 }
 
 async fn endpoint(State(server): State<Arc<Server>>, request: axum::extract::Request) -> Response {
+    let registration = request.uri().path() == REGISTER_PATH;
     let headers = request.headers();
     let ip = format!("127.0.0.1:{}", server.port);
     let localhost = format!("localhost:{}", server.port);
@@ -174,6 +184,12 @@ async fn endpoint(State(server): State<Arc<Server>>, request: axum::extract::Req
         || !single_header(headers, "origin").is_some_and(|origin| {
             origin.is_none_or(|origin| origin.strip_prefix("http://").is_some_and(host_allowed))
         })
+    {
+        return StatusCode::FORBIDDEN.into_response();
+    }
+    if registration
+        && (headers.contains_key(header::ORIGIN)
+            || single_header(headers, IDENTITY_HEADER) != Some(Some("1")))
     {
         return StatusCode::FORBIDDEN.into_response();
     }
@@ -226,7 +242,14 @@ async fn endpoint(State(server): State<Arc<Server>>, request: axum::extract::Req
     };
     let result = tokio::task::spawn_blocking(move || {
         let _permit = permit;
-        dispatch(&server.repositories, message)
+        if registration {
+            return Some(match register_repository(&server, &message) {
+                Ok(repo_id) => json!({"repoId": repo_id}),
+                Err(message) => json!({"error": message}),
+            });
+        }
+        let repositories = server.repositories.lock().unwrap().clone();
+        dispatch(&repositories, message)
     })
     .await;
     match result {
@@ -234,6 +257,39 @@ async fn endpoint(State(server): State<Arc<Server>>, request: axum::extract::Req
         Ok(None) => StatusCode::ACCEPTED.into_response(),
         Err(_) => StatusCode::INTERNAL_SERVER_ERROR.into_response(),
     }
+}
+
+fn register_repository(server: &Server, message: &Value) -> Result<String, String> {
+    let path = message["path"]
+        .as_str()
+        .ok_or("Expected a checkout path.")?;
+    let path = PathBuf::from(git::path_arg(path)?);
+    if !path.is_absolute() {
+        return Err("Expected an absolute checkout path.".into());
+    }
+    if let Some((id, _)) = server
+        .repositories
+        .lock()
+        .unwrap()
+        .iter()
+        .find(|(_, root)| **root == path)
+    {
+        return Ok(id.clone());
+    }
+    let root = git::open_repo(&path)?.root;
+    let mut repositories = server.repositories.lock().unwrap();
+    if let Some((id, _)) = repositories.iter().find(|(_, path)| **path == root) {
+        return Ok(id.clone());
+    }
+    let path_id = git::path_name(&root);
+    let mut id = path_id.clone();
+    let mut suffix = 2;
+    while repositories.contains_key(&id) {
+        id = format!("{path_id}#{suffix}");
+        suffix += 1;
+    }
+    repositories.insert(id.clone(), root);
+    Ok(id)
 }
 
 fn json_response(status: StatusCode, message: Value) -> Response {
