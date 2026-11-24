@@ -40,6 +40,38 @@ fn content(repo: &Repository, c: &Comparison, group: &str, path: &str) -> Vec<St
         .collect()
 }
 
+#[test]
+fn libgit2_reads_normal_review_changes_without_the_compatibility_backend() {
+    let checkout = history();
+    write(&checkout, "tracked", b"committed\n");
+    record(&checkout, "Base");
+    write(&checkout, "tracked", b"staged\n");
+    git(checkout.path(), &["add", "tracked"]).unwrap();
+    write(&checkout, "tracked", b"working\n");
+    write(&checkout, "untracked", b"new\n");
+    let repo = native::open(checkout.path()).unwrap();
+    let metadata = native::metadata(&repo).unwrap();
+    let base = metadata.head.as_deref().unwrap();
+    let files = native::working_changes(&repo, base, &metadata.empty, None).unwrap();
+    assert_eq!(
+        files
+            .iter()
+            .map(|f| (f.group.as_str(), f.path.as_str()))
+            .collect::<Vec<_>>(),
+        [
+            ("Staged", "tracked"),
+            ("Unstaged", "tracked"),
+            ("Untracked", "untracked")
+        ]
+    );
+    assert_eq!(files[0].oid, files[1].old_oid);
+    assert!(files.iter().all(|f| !f.local_sections.is_empty()));
+    assert_eq!(
+        native::branch_changes(&repo, &metadata.empty, base, &metadata.empty).unwrap()[0].path,
+        "tracked"
+    );
+}
+
 fn assert_streamed_rows(repo: &Repository, c: &Comparison) {
     let expected: Vec<_> = c
         .files
@@ -347,8 +379,10 @@ fn whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move() {
     assert!(matches!(revision_file(&repo, &c.head, "after").unwrap(),
         RevisionFile::Text { lines } if lines == renamed));
     assert!(revision_file(&repo, &c.head, "before").is_err());
-    assert!(matches!(revision_file(&repo, &c.head, "image").unwrap(),
-        RevisionFile::Binary { bytes: 11 }));
+    assert!(matches!(
+        revision_file(&repo, &c.head, "image").unwrap(),
+        RevisionFile::Binary { bytes: 11 }
+    ));
 }
 
 #[test]
@@ -522,7 +556,10 @@ fn working_tree_snapshot_does_not_rewrite_stat_stale_index() {
     let c = work(&repo);
     assert_eq!(c.files.len(), 3);
     assert_eq!(content(&repo, &c, "Staged", "staged"), ["base", "staged"]);
-    assert_eq!(content(&repo, &c, "Unstaged", "unstaged"), ["base", "unstaged"]);
+    assert_eq!(
+        content(&repo, &c, "Unstaged", "unstaged"),
+        ["base", "unstaged"]
+    );
     assert_eq!(content(&repo, &c, "Untracked", "untracked"), ["untracked"]);
     assert_eq!(index, fs::read(root.join(".git/index")).unwrap());
 }
@@ -660,8 +697,16 @@ fn revision_file_distinguishes_text_binary_and_missing_submodule_objects() {
     record(&dir, "Source files");
     // Gitlinks need not have their target commit in the superproject database.
     let target = "1234567890123456789012345678901234567890";
-    git(dir.path(), &["update-index", "--add", "--cacheinfo",
-        &format!("160000,{target},vendor/module")]).unwrap();
+    git(
+        dir.path(),
+        &[
+            "update-index",
+            "--add",
+            "--cacheinfo",
+            &format!("160000,{target},vendor/module"),
+        ],
+    )
+    .unwrap();
     git(dir.path(), &["commit", "-qm", "Submodule pointer"]).unwrap();
     let repo = open_repo(dir.path()).unwrap();
     let revision = &repo.refs["refs/heads/main"];
@@ -669,9 +714,13 @@ fn revision_file_distinguishes_text_binary_and_missing_submodule_objects() {
         RevisionFile::Text { lines } if lines == ["first", "last"]));
     assert!(matches!(revision_file(&repo, revision, "empty").unwrap(),
         RevisionFile::Text { lines } if lines.is_empty()));
-    assert!(matches!(revision_file(&repo, revision, "asset.png").unwrap(),
-        RevisionFile::Binary { bytes: 11 }));
-    assert!(matches!(revision_file(&repo, revision, "vendor/module").unwrap(),
-        RevisionFile::Submodule { oid } if oid == target));
+    assert!(matches!(
+        revision_file(&repo, revision, "asset.png").unwrap(),
+        RevisionFile::Binary { bytes: 11 }
+    ));
+    assert!(
+        matches!(revision_file(&repo, revision, "vendor/module").unwrap(),
+        RevisionFile::Submodule { oid } if oid == target)
+    );
     assert!(revision_file(&repo, revision, "absent").is_err());
 }

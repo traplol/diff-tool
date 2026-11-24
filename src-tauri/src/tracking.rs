@@ -191,12 +191,7 @@ impl Lookup<'_> {
         if let Some(hit) = self.common.get(&key) {
             return Ok(hit.clone());
         }
-        // Untrusted or historical Git object identifiers are never interpreted as options.
-        let hash = git::git(&self.repo.root, &["merge-base", "--", a, b])?;
-        let hash = String::from_utf8(hash)
-            .map_err(|e| e.to_string())?
-            .trim()
-            .to_owned();
+        let hash = git::merge_base(self.repo, a, b)?;
         self.common.insert(key, hash.clone());
         Ok(hash)
     }
@@ -214,12 +209,7 @@ impl Lookup<'_> {
         if let Some(hit) = self.ancestry.get(&key) {
             return Ok(*hit);
         }
-        let range = format!("{origin}..{head}");
-        let descends = !git::git(
-            &self.repo.root,
-            &["rev-list", "--ancestry-path", "--max-count=1", &range, "--"],
-        )?
-        .is_empty();
+        let descends = git::descends(self.repo, origin, head)?;
         self.ancestry.insert(key, descends);
         Ok(descends)
     }

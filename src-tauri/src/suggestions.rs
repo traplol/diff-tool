@@ -124,7 +124,7 @@ fn verify(
         };
     }
     let original =
-        git::git(root, &["cat-file", "blob", reference]).map_err(|_| STALE.to_string())?;
+        git::blob_bytes(root, reference).map_err(|_| STALE.to_string())?;
     if blob(&original, reference) != reference {
         return Err(STALE.into());
     }

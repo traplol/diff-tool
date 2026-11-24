@@ -1,4 +1,5 @@
 //! Local Git plumbing for immutable branch and working-tree review snapshots.
+mod native;
 mod patch_data;
 #[cfg(windows)]
 mod windows;
@@ -18,6 +19,11 @@ pub const EMPTY: &str = ":empty:";
 pub const WORKTREE: &str = ":worktree:";
 type Result<T> = std::result::Result<T, String>;
 
+#[cfg(windows)]
+pub(crate) fn configure_native() -> Option<tempfile::TempDir> {
+    native::configure().ok()
+}
+
 #[derive(Clone, Debug, Serialize)]
 pub struct Repository {
     #[serde(serialize_with = "serialize_root")]
@@ -26,6 +32,14 @@ pub struct Repository {
     pub initial: Vec<String>,
     pub default_branch: Option<String>,
     pub checkout: String,
+    #[serde(skip)]
+    native: Option<native::Handle>,
+}
+
+impl Repository {
+    fn native(&self) -> Option<native::Access<'_>> {
+        self.native.as_ref()?.access(&self.root)
+    }
 }
 
 #[derive(Clone, Debug, Serialize)]
@@ -208,6 +222,9 @@ pub fn ref_name(s: &str) -> String {
 }
 
 pub fn checkout_state(root: &Path) -> (String, Option<String>) {
+    if let Ok(state) = native::open(root).and_then(|repo| native::checkout(&repo)) {
+        return state;
+    }
     let head = git_text(root, &["rev-parse", "--verify", "HEAD"]).ok();
     let branch = git(root, &["symbolic-ref", "--quiet", "HEAD"])
         .ok()
@@ -220,8 +237,20 @@ pub fn checkout_state(root: &Path) -> (String, Option<String>) {
 }
 
 pub fn open_repo(path: &Path) -> Result<Repository> {
+    if let Ok(repo) = native::open(path) {
+        if let (Some(root), Ok(metadata)) = (repo.workdir(), native::metadata(&repo)) {
+            #[cfg(unix)]
+            let root = fs::canonicalize(root).map_err(|e| e.to_string())?;
+            #[cfg(windows)]
+            let root: PathBuf = root.components().collect();
+            let native = native::Handle::new(root.clone(), repo);
+            return Ok(finish_repository(root, metadata, Some(native)));
+        }
+    }
     let answer = git(path, &["rev-parse", "--show-toplevel"])?;
-    let top = PathBuf::from(path_arg(&name(answer.strip_suffix(b"\n").unwrap_or(&answer)))?);
+    let top = PathBuf::from(path_arg(&name(
+        answer.strip_suffix(b"\n").unwrap_or(&answer),
+    ))?);
     #[cfg(windows)]
     let root = match windows::WslCheckout::from_path(path) {
         Some(wsl) => wsl.host_path(&top)?,
@@ -257,6 +286,37 @@ pub fn open_repo(path: &Path) -> Result<Repository> {
         }
     }
     let (checkout, head) = checkout_state(&root);
+    let empty = git_text(&root, &["hash-object", "-t", "tree", "--stdin"])?;
+    let parent = head
+        .as_ref()
+        .and_then(|head| git_text(&root, &["rev-parse", "--verify", &format!("{head}^")]).ok());
+    Ok(finish_repository(
+        root,
+        native::Metadata {
+            refs,
+            remotes: advertised,
+            checkout,
+            head,
+            parent,
+            empty,
+        },
+        None,
+    ))
+}
+
+fn finish_repository(
+    root: PathBuf,
+    metadata: native::Metadata,
+    native: Option<native::Handle>,
+) -> Repository {
+    let native::Metadata {
+        mut refs,
+        remotes: advertised,
+        checkout,
+        head,
+        parent,
+        empty,
+    } = metadata;
     let mut branch = if checkout.starts_with("HEAD@") {
         "HEAD".to_owned()
     } else {
@@ -268,10 +328,7 @@ pub fn open_repo(path: &Path) -> Result<Repository> {
         branch = first.clone();
     }
     let has_refs = !refs.is_empty();
-    refs.insert(
-        EMPTY.into(),
-        git_text(&root, &["hash-object", "-t", "tree", "--stdin"])?,
-    );
+    refs.insert(EMPTY.into(), empty);
     let mut candidates = Vec::new();
     let mut remotes: Vec<_> = advertised.into_iter().collect();
     remotes.sort_by_key(|(r, _)| (r != "refs/remotes/origin/", r.clone()));
@@ -298,10 +355,8 @@ pub fn open_repo(path: &Path) -> Result<Repository> {
         .map(str::to_owned),
     );
     let default_branch = candidates.into_iter().find(|r| refs.contains_key(r));
-    if let Some(head) = &head {
-        if let Ok(parent) = git_text(&root, &["rev-parse", "--verify", &format!("{head}^")]) {
-            refs.insert("HEAD^".into(), parent);
-        }
+    if let Some(parent) = parent {
+        refs.insert("HEAD^".into(), parent);
     }
     let mut initial = Vec::new();
     if has_refs {
@@ -317,13 +372,14 @@ pub fn open_repo(path: &Path) -> Result<Repository> {
             );
         initial = vec![base.into(), branch];
     }
-    Ok(Repository {
+    Repository {
         root,
         refs,
         initial,
         default_branch,
         checkout,
-    })
+        native,
+    }
 }
 
 fn revision<'a>(repo: &'a Repository, r: &str) -> Result<&'a str> {
@@ -350,10 +406,17 @@ pub fn discover_stack(
         }
     }
     names.insert(start.into(), branch.into());
+    let native_repo = repo.native();
     let mut cache = HashMap::new();
     let mut tips = |filter: String| -> Result<BTreeSet<String>> {
         if let Some(found) = cache.get(&filter) {
             return Ok(BTreeSet::clone(found));
+        }
+        if let Some(repo) = &native_repo {
+            if let Ok(found) = native::tips(repo, &filter, &names) {
+                cache.insert(filter, found.clone());
+                return Ok(found);
+            }
         }
         let data = git_text(
             &repo.root,
@@ -445,11 +508,43 @@ pub fn compare(repo: &Repository, left: &str, right: &str) -> Result<Comparison>
     let base = if left == EMPTY {
         tip.to_string()
     } else {
-        git_text(&repo.root, &["merge-base", tip, head]).map_err(|_| {
+        merge_base(repo, tip, head).map_err(|_| {
             "These branches have no common ancestor. Choose another base or use Empty tree."
         })?
     };
     compare_trees(repo, left, right, tip, &base, head)
+}
+
+pub fn merge_base(repo: &Repository, a: &str, b: &str) -> Result<String> {
+    if let Some(base) = repo
+        .native()
+        .and_then(|repo| native::merge_base(&repo, a, b).ok())
+    {
+        return Ok(base);
+    }
+    git_text(&repo.root, &["merge-base", "--", a, b])
+}
+
+pub fn descends(repo: &Repository, origin: &str, head: &str) -> Result<bool> {
+    if let Some(result) = repo
+        .native()
+        .and_then(|repo| native::descends(&repo, origin, head).ok())
+    {
+        return Ok(result);
+    }
+    let range = format!("{origin}..{head}");
+    Ok(!git(
+        &repo.root,
+        &["rev-list", "--ancestry-path", "--max-count=1", &range, "--"],
+    )?
+    .is_empty())
+}
+
+pub fn blob_bytes(root: &Path, object: &str) -> Result<Vec<u8>> {
+    if let Ok(data) = native::open(root).and_then(|repo| native::blob(&repo, object)) {
+        return Ok(data);
+    }
+    git(root, &["cat-file", "blob", object])
 }
 
 pub fn compare_trees(
@@ -463,30 +558,41 @@ pub fn compare_trees(
     if !valid_oid(base) || !valid_oid(head) {
         return Err("Invalid Git object ID.".into());
     }
-    let data = git(
-        &repo.root,
-        &[
-            "diff",
-            "--no-ext-diff",
-            "--no-textconv",
-            "--find-renames",
-            "--ignore-submodules=none",
-            "--raw",
-            "--no-abbrev",
-            "--numstat",
-            "-z",
-            base,
-            head,
-            "--",
-        ],
-    )?;
+    let files = match repo
+        .native()
+        .filter(|repo| native::supports_diff(repo))
+        .and_then(|native| {
+            native::branch_changes(&native, base, head, native::empty_oid(repo)).ok()
+        }) {
+        Some(files) => files,
+        None => {
+            let data = git(
+                &repo.root,
+                &[
+                    "diff",
+                    "--no-ext-diff",
+                    "--no-textconv",
+                    "--find-renames",
+                    "--ignore-submodules=none",
+                    "--raw",
+                    "--no-abbrev",
+                    "--numstat",
+                    "-z",
+                    base,
+                    head,
+                    "--",
+                ],
+            )?;
+            parse_changes(&data, false)?
+        }
+    };
     Ok(Comparison {
         left: left.into(),
         right: right.into(),
         left_tip: tip.into(),
         base: base.into(),
         head: head.into(),
-        files: parse_changes(&data, false)?,
+        files,
     })
 }
 
@@ -694,16 +800,25 @@ pub fn working_tree(
         checkout
     });
     let base = head.unwrap_or(&repo.refs[EMPTY]);
-    let index_data = git(&repo.root, &["rev-parse", "--git-path", "index"])?;
-    let index = PathBuf::from(path_arg(&name(
-        index_data.strip_suffix(b"\n").unwrap_or(&index_data),
-    ))?);
-    #[cfg(windows)]
-    let index = match windows::WslCheckout::from_path(&repo.root) {
-        Some(wsl) if index_data.starts_with(b"/") => wsl.host_path(&index)?,
-        _ => index,
+    let native_repo = repo.native().filter(|repo| native::supports_diff(repo));
+    let native_index = native_repo
+        .as_ref()
+        .and_then(|repo| repo.index().ok())
+        .and_then(|index| index.path().map(Path::to_path_buf));
+    let index_path = if let Some(path) = native_index {
+        path
+    } else {
+        let index_data = git(&repo.root, &["rev-parse", "--git-path", "index"])?;
+        let index = PathBuf::from(path_arg(&name(
+            index_data.strip_suffix(b"\n").unwrap_or(&index_data),
+        ))?);
+        #[cfg(windows)]
+        let index = match windows::WslCheckout::from_path(&repo.root) {
+            Some(wsl) if index_data.starts_with(b"/") => wsl.host_path(&index)?,
+            _ => index,
+        };
+        repo.root.join(index)
     };
-    let index_path = repo.root.join(index);
     let index_state = || -> Result<_> {
         match fs::metadata(&index_path) {
             Ok(m) => {
@@ -725,6 +840,53 @@ pub fn working_tree(
         }
     };
     let initial_index = index_state()?;
+    let files = if let Some(files) = native_repo.as_ref().and_then(|native| {
+        native::working_changes(native, base, native::empty_oid(repo), untracked_paths).ok()
+    }) {
+        files
+    } else {
+        working_changes_cli(repo, base, untracked_paths)?
+    };
+    let current = native_repo
+        .as_ref()
+        .and_then(|repo| native::checkout(repo).ok())
+        .unwrap_or_else(|| checkout_state(&repo.root));
+    if current != (checkout.to_string(), head.cloned()) || index_state()? != initial_index {
+        return Err("The checkout or index changed. Refresh to review its current changes.".into());
+    }
+    let mut digest = Sha256::new();
+    for f in &files {
+        let old = path_arg(&f.old)?;
+        let path = path_arg(&f.path)?;
+        for value in [
+            f.group.as_bytes(),
+            f.status.as_bytes(),
+            old.as_encoded_bytes(),
+            path.as_encoded_bytes(),
+            f.old_mode.as_bytes(),
+            f.mode.as_bytes(),
+            f.old_oid.as_bytes(),
+            f.oid.as_bytes(),
+        ] {
+            digest.update(value);
+            digest.update([0]);
+        }
+    }
+    Ok(Comparison {
+        left: checkout.into(),
+        right: WORKTREE.into(),
+        left_tip: base.clone(),
+        base: base.clone(),
+        head: format!("{:x}", digest.finalize()),
+        files,
+    })
+}
+
+fn working_changes_cli(
+    repo: &Repository,
+    base: &str,
+    untracked_paths: Option<&HashSet<String>>,
+) -> Result<Vec<Change>> {
     let mut files = local_changes(
         repo,
         "Staged",
@@ -891,37 +1053,7 @@ pub fn working_tree(
             }
         }
     }
-    if checkout_state(&repo.root) != (checkout.to_string(), head.cloned())
-        || index_state()? != initial_index
-    {
-        return Err("The checkout or index changed. Refresh to review its current changes.".into());
-    }
-    let mut digest = Sha256::new();
-    for f in &files {
-        let old = path_arg(&f.old)?;
-        let path = path_arg(&f.path)?;
-        for value in [
-            f.group.as_bytes(),
-            f.status.as_bytes(),
-            old.as_encoded_bytes(),
-            path.as_encoded_bytes(),
-            f.old_mode.as_bytes(),
-            f.mode.as_bytes(),
-            f.old_oid.as_bytes(),
-            f.oid.as_bytes(),
-        ] {
-            digest.update(value);
-            digest.update([0]);
-        }
-    }
-    Ok(Comparison {
-        left: checkout.into(),
-        right: WORKTREE.into(),
-        left_tip: base.clone(),
-        base: base.clone(),
-        head: format!("{:x}", digest.finalize()),
-        files,
-    })
+    Ok(files)
 }
 
 fn with_patch_sections<T>(
@@ -930,6 +1062,17 @@ fn with_patch_sections<T>(
     file: &Change,
     read: impl FnOnce(&[&[u8]]) -> T,
 ) -> Result<T> {
+    if file.group.is_empty() {
+        if let Some(data) = repo
+            .native()
+            .filter(|repo| native::supports_diff(repo))
+            .and_then(|native| {
+                native::branch_patch(&native, &c.base, &c.head, native::empty_oid(repo), file).ok()
+            })
+        {
+            return Ok(read(&[&data]));
+        }
+    }
     let data;
     let mut chunks: Vec<&[u8]> = if file.group.is_empty() {
         let path = path_arg(&file.path)?;
@@ -1171,6 +1314,9 @@ pub fn visit_patches(
         }
         return Ok(());
     }
+    if let Some(result) = visit_native_patches(repo, c, cancelled, &mut visit) {
+        return result;
+    }
     let child = command(&repo.root)?
         .args(PATCH_ARGS)
         .args(["--raw", "--no-abbrev", "-z", &c.base, &c.head, "--"])
@@ -1178,6 +1324,68 @@ pub fn visit_patches(
         .spawn()
         .map_err(|e| format!("Could not start Git: {e}"))?;
     read_patch_process(child, c, cancelled, &mut visit)
+}
+
+fn visit_native_patches(
+    repo: &Repository,
+    c: &Comparison,
+    cancelled: &dyn Fn() -> bool,
+    visit: &mut impl FnMut(&Change, usize, &Line) -> Result<bool>,
+) -> Option<Result<()>> {
+    let native = repo.native().filter(|repo| native::supports_diff(repo))?;
+    let diff = native::branch_diff(&native, &c.base, &c.head, native::empty_oid(repo)).ok()?;
+    let positions: HashMap<_, _> = diff
+        .deltas()
+        .enumerate()
+        .map(|(index, delta)| {
+            let old = delta.old_file();
+            let new = delta.new_file();
+            (
+                (
+                    name(old.path_bytes().unwrap_or_default()),
+                    name(new.path_bytes().unwrap_or_default()),
+                ),
+                index,
+            )
+        })
+        .collect();
+    let ordered: Option<Vec<_>> = c
+        .files
+        .iter()
+        .map(|file| {
+            if file.status == "T" || file.mode == "160000" || file.old_mode == "160000" {
+                return None;
+            }
+            let index = *positions.get(&(file.old.clone(), file.path.clone()))?;
+            let delta = diff.get_delta(index)?;
+            (delta.old_file().id().to_string() == file.old_oid
+                && delta.new_file().id().to_string() == file.oid)
+                .then_some((file, index))
+        })
+        .collect();
+    let ordered = ordered?;
+    Some((|| {
+        for (file, index) in ordered {
+            if cancelled() {
+                return Err("Search superseded.".into());
+            }
+            if file.added.is_none() || file.removed.is_none() {
+                continue;
+            }
+            let patch = native::patch_at(&diff, index).map_err(|error| error.to_string())?;
+            let mut decoder = patch_data::Decoder::default();
+            let mut row = 0;
+            for bytes in patch.split(|&byte| byte == b'\n') {
+                if cancelled() {
+                    return Err("Search superseded.".into());
+                }
+                if !visit_patch_line(file, &mut row, &mut decoder, bytes, visit)? {
+                    return Ok(());
+                }
+            }
+        }
+        Ok(())
+    })())
 }
 
 fn read_patch_process(
@@ -1225,11 +1433,14 @@ fn read_patch_process(
 }
 
 fn blob_lines(repo: &Repository, object: &OsStr) -> Result<Vec<String>> {
-    let data = run_git(
-        &repo.root,
-        &["cat-file".as_ref(), "blob".as_ref(), object],
-        false,
-    )?;
+    let object = object.to_str().ok_or("Invalid blob ID.")?;
+    let data = match repo
+        .native()
+        .and_then(|repo| native::blob(&repo, object).ok())
+    {
+        Some(bytes) => bytes,
+        None => git(&repo.root, &["cat-file", "blob", object])?,
+    };
     text_lines(&data)
 }
 
@@ -1253,9 +1464,20 @@ pub enum RevisionFile {
 
 pub fn revision_file(repo: &Repository, revision: &str, path: &str) -> Result<RevisionFile> {
     let path = path_arg(path)?;
+    if let Some(native) = repo.native() {
+        if let Ok(file) = native::revision_file(&native, revision, Path::new(&path)) {
+            return Ok(file);
+        }
+    }
     let entry = run_git(
         &repo.root,
-        &["ls-tree".as_ref(), "-z".as_ref(), revision.as_ref(), "--".as_ref(), path.as_os_str()],
+        &[
+            "ls-tree".as_ref(),
+            "-z".as_ref(),
+            revision.as_ref(),
+            "--".as_ref(),
+            path.as_os_str(),
+        ],
         false,
     )?;
     let header = entry.split(|&b| b == b'\t').next().unwrap_or_default();
@@ -1264,7 +1486,9 @@ pub fn revision_file(repo: &Repository, revision: &str, path: &str) -> Result<Re
         return Err("This path is no longer available at this revision.".into());
     }
     if fields[0] == b"160000" {
-        return Ok(RevisionFile::Submodule { oid: String::from_utf8_lossy(fields[2]).into_owned() });
+        return Ok(RevisionFile::Submodule {
+            oid: String::from_utf8_lossy(fields[2]).into_owned(),
+        });
     }
     let mut object = OsString::from(format!("{revision}:"));
     object.push(path);
@@ -1276,10 +1500,11 @@ pub fn revision_file(repo: &Repository, revision: &str, path: &str) -> Result<Re
     if data.contains(&0) {
         Ok(RevisionFile::Binary { bytes: data.len() })
     } else {
-        Ok(RevisionFile::Text { lines: text_lines(&data)? })
+        Ok(RevisionFile::Text {
+            lines: text_lines(&data)?,
+        })
     }
 }
-
 
 pub fn file_contents(repo: &Repository, file: &Change) -> Result<Vec<String>> {
     if file.added.is_none() || file.removed.is_none() {
@@ -1343,6 +1568,11 @@ pub fn commits(repo: &Repository, c: &Comparison) -> Result<Vec<Commit>> {
     if c.right == WORKTREE {
         return Ok(vec![]);
     }
+    if let Some(commits) = repo.native().and_then(|repo| {
+        native::commits(&repo, &c.head, (c.left != EMPTY).then_some(c.base.as_str())).ok()
+    }) {
+        return Ok(commits);
+    }
     let exclude = format!("^{}", c.base);
     let mut args = vec![
         "log",
@@ -1372,9 +1602,31 @@ pub fn commits(repo: &Repository, c: &Comparison) -> Result<Vec<Commit>> {
         .collect())
 }
 
+pub fn visit_revision(
+    repo: &Repository,
+    revision: &str,
+    contents: bool,
+    mut visit: impl FnMut(&[u8], Option<&[u8]>) -> Result<bool>,
+) -> Option<Result<()>> {
+    let opened = repo.native()?;
+    Some(native::visit_tree(
+        &opened,
+        revision,
+        native::empty_oid(repo),
+        contents,
+        &mut visit,
+    ))
+}
+
 pub fn commit_details(repo: &Repository, sha: &str) -> Result<String> {
     if !valid_oid(sha) {
         return Err("Choose a commit from the comparison.".into());
+    }
+    if let Some(details) = repo
+        .native()
+        .and_then(|repo| native::commit_details(&repo, sha).ok())
+    {
+        return Ok(details);
     }
     git_text(
         &repo.root,

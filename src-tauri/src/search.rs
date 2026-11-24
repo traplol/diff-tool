@@ -192,6 +192,22 @@ impl Search<'_> {
 
     fn tracked_paths(&mut self, repo: &Repository, c: &Comparison) -> Result<(), String> {
         let tip = c.branch_tip();
+        if let Some(result) = git::visit_revision(repo, tip, false, |bytes, _| {
+            self.check()?;
+            self.add_matches(
+                c,
+                Location {
+                    kind: Kind::Path,
+                    path: &git::name(bytes),
+                    revision: Some(tip),
+                    ..Location::default()
+                },
+                &display_path(bytes),
+            );
+            Ok(!self.result.truncated)
+        }) {
+            return result;
+        }
         let output = git::git(
             &repo.root,
             &["ls-tree", "-r", "-z", "--name-only", tip, "--"],
@@ -282,6 +298,32 @@ impl Search<'_> {
     }
 
     fn tree(&mut self, repo: &Repository, c: &Comparison, query: &str) -> Result<(), String> {
+        if let Some(result) = git::visit_revision(repo, c.branch_tip(), true, |path, bytes| {
+            self.check()?;
+            let Some(bytes) = bytes else { return Ok(true) };
+            let path = git::name(path);
+            for (index, line) in bytes.split_inclusive(|&byte| byte == b'\n').enumerate() {
+                self.check()?;
+                let line = line.strip_suffix(b"\n").unwrap_or(line);
+                let text = String::from_utf8_lossy(line.strip_suffix(b"\r").unwrap_or(line));
+                self.add_matches(
+                    c,
+                    Location {
+                        path: &path,
+                        revision: Some(c.branch_tip()),
+                        new: Some(index + 1),
+                        ..Location::default()
+                    },
+                    &text,
+                );
+                if self.result.truncated {
+                    return Ok(false);
+                }
+            }
+            Ok(true)
+        }) {
+            return result;
+        }
         // Skip irrelevant ASCII lines in Git. Keep all non-ASCII lines for Rust's
         // Unicode case folding (e.g. "s" also matches "ſ"), regardless of locale.
         let fragment = query

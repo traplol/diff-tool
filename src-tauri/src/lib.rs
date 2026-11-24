@@ -13,6 +13,11 @@ use tauri_plugin_dialog::DialogExt;
 
 pub use mcp::run as run_mcp;
 
+#[cfg(windows)]
+pub fn configure_git_backend() -> Option<tempfile::TempDir> {
+    git::configure_native()
+}
+
 #[tauri::command]
 fn startup_path() -> Result<String, String> {
     std::env::args_os()

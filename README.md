@@ -4,7 +4,7 @@ Branchline is a native desktop app for reviewing Git changes. Open a checkout to
 
 ## Run Branchline
 
-Branchline runs as a local desktop application. The native executable contains the interface and uses Git from your PATH. Start it inside a repository or pass the directory you want to review.
+Branchline runs as a local desktop application. It reads repositories and computes common review diffs in-process with libgit2. It uses the Git executable for repository formats and operations that require compatibility handling. Start it inside a repository or pass the directory you want to review.
 
 **Linux and WSLg.** On a Debian-based distribution, install the release package and open a checkout:
 
@@ -25,7 +25,7 @@ C:\Tools\Branchline\branchline.exe .
 
 Add the executable’s directory to PATH to use `branchline .` from any checkout. You can also open Branchline from your desktop and choose a directory.
 
-The Windows app uses Git for Windows for Windows paths. For a path like `\\wsl.localhost\Ubuntu\home\you\project` or `\\wsl$\Ubuntu\home\you\project`, it uses Linux Git inside the named WSL distribution. Install Git in each distribution you open this way.
+The Windows app can open Windows paths and WSL paths such as `\\wsl.localhost\Ubuntu\home\you\project` or `\\wsl$\Ubuntu\home\you\project`. When Windows cannot verify ownership of a WSL checkout, Branchline checks it with Linux Git and keeps that checkout's validation in a temporary configuration for the life of the process. For compatibility operations, Branchline uses Git for Windows for Windows paths and Linux Git inside the named distribution for WSL paths.
 
 ### Build from source
 
