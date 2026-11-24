@@ -16,7 +16,7 @@ branchline .
 
 You can also run the Linux executable directly with GTK 3, WebKitGTK 4.1, and Git installed. Under WSL2, use the Linux build and the Git executable inside the distribution. Desktop windows use WSLg.
 
-**Windows.** Extract the Windows x64 portable bundle to a folder such as `C:\Tools\Branchline`. Keep `branchline.exe` and `WebView2Loader.dll` together. Install the Microsoft Edge WebView2 Runtime and Git for Windows if needed. From PowerShell:
+**Windows.** Put the portable `branchline.exe` in a folder such as `C:\Tools\Branchline`. Install the Microsoft Edge WebView2 Runtime and Git for Windows if needed. From PowerShell:
 
 ```powershell
 Set-Location C:\code\my-repository
@@ -34,6 +34,14 @@ Install stable Rust, Node.js 22 with npm, Git, and the [Tauri build prerequisite
 ```
 
 The executable is in `src-tauri/target/release/` and the platform installer is under `src-tauri/target/release/bundle/`. Use `./build.sh --no-bundle` to build just the executable. From PowerShell, run `npm ci` followed by `npm run tauri -- build`. For a development window with live UI updates, run `npm run tauri -- dev` and open a repository from the sidebar.
+
+To build a single portable Windows x64 executable, run:
+
+```sh
+./build.sh --windows
+```
+
+The output is `src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe`. Install the Rust target with `rustup target add x86_64-pc-windows-msvc`. Cross-compiling from Linux or WSL also requires Clang, LLVM (including `llvm-rc`), LLD, and `cargo-xwin` (`cargo install --locked cargo-xwin`). On Git Bash, use the native MSVC toolchain. Windows still needs the WebView2 Runtime and Git to run Branchline.
 
 The Rust build uses the same SQLite database as the previous Python release. Existing comments, suggestions, resolution status, viewed files, and saved stacks load when you open the same checkout. The Python/Tk sources and their regression tests remain available for compatibility checks.
 
