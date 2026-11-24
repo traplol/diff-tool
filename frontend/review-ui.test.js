@@ -6,11 +6,25 @@ import {
   pairs,
   scopeNotes,
   commentRow,
+  commentJumpPairs,
   noteDestination,
   noteFileIndex,
   labelPath,
   setFold,
 } from "./review-ui.js";
+
+test("comment jumps select the current working tree before the saved branch", () => {
+  const state = {
+    repo: { checkout: "refs/heads/topic", refs: { "refs/heads/main": "a", "refs/heads/topic": "b" } },
+    stack: ["refs/heads/main", "refs/heads/topic"],
+    pair: ["refs/heads/main", "refs/heads/topic"],
+    locations: {},
+  };
+  const note = { id: 1, left: "refs/heads/main", right: "refs/heads/topic", left_tip: "a", head: "b" };
+  assert.deepEqual(commentJumpPairs(state, note)[0], ["refs/heads/topic", WORKTREE]);
+  state.repo.checkout = "refs/heads/other";
+  assert.deepEqual(commentJumpPairs(state, note)[0], ["refs/heads/main", "refs/heads/topic"]);
+});
 
 test("comment file fallback prefers the current working file, including a rename", () => {
   const note = { path: "old.rs" };

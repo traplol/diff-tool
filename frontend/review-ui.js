@@ -154,6 +154,21 @@ export function noteDestination(state, note) {
   return null;
 }
 
+export function commentJumpPairs(state, note) {
+  const branch = note.right === WORKTREE ? note.left : note.right;
+  const checkout = state.repo.checkout;
+  const isCheckout = branch === checkout || (branch === "HEAD" && checkout.startsWith("HEAD@"));
+  const choices = pairs(state.stack, checkout).map(([, pair]) => pair);
+  const destination = noteDestination(state, note);
+  const samePair = (a, b) => a[0] === b[0] && a[1] === b[1];
+  return [
+    isCheckout ? [checkout, WORKTREE] : null,
+    destination ? [destination.left, destination.right] : null,
+    choices.find((pair) => samePair(pair, [note.left, note.right])),
+    choices.find((pair) => pair[1] === branch),
+  ].filter(Boolean);
+}
+
 export function noteFileIndex(files, note) {
   const atPath = (file) => file.path === note.path;
   const renamed = (file) => file.status === "R" && file.old === note.path;

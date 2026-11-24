@@ -24,6 +24,7 @@ import {
   WORKTREE,
   EMPTY,
   commentRow,
+  commentJumpPairs,
   decodePatch,
   labelPath,
   noteDestination,
@@ -154,7 +155,7 @@ function choiceIndex() {
   );
 }
 
-async function changeWorkspace(op, args) {
+async function changeWorkspace(op, args, { deferFile = false } = {}) {
   if (loading || editLock) return;
   loading = true;
   $("app").setAttribute("aria-busy", "true");
@@ -277,7 +278,7 @@ async function changeWorkspace(op, args) {
         files()[i].group === previous.group,
     );
     fileIndex = keep ?? ids[0] ?? -1;
-    await navigate(local && tab === "Commits" ? "Changes" : tab);
+    await navigate(local && tab === "Commits" ? "Changes" : tab, { deferFile });
     const warning = [state.error, state.config_warning, state.mcp_warning]
       .filter(Boolean)
       .join(" · ");
@@ -325,7 +326,7 @@ on("sidebar-toggle", () => {
   sidebarChoice = $("sidebar").hidden;
   layoutSidebar();
 });
-async function navigate(name) {
+async function navigate(name, { deferFile = false } = {}) {
   if (!state) return;
   tab = name;
   for (const n of names) $(n.toLowerCase()).hidden = n !== tab;
@@ -336,7 +337,7 @@ async function navigate(name) {
   }
   chromeCounts();
   if (tab === "Changes") {
-    if (!editor) await pick(fileIndex);
+    if (!editor && !deferFile) await pick(fileIndex);
     else renderFiles();
   } else if (tab === "Comments") renderComments();
   else await renderCommits();
@@ -667,27 +668,18 @@ async function noteAction(action, projected) {
 }
 async function jumpToNote(note) {
   if (loading || editLock) return;
-  await refresh();
+  const preferred = commentJumpPairs(state, note)[0];
+  await changeWorkspace("open", { path: state.repo.root, pair: preferred }, { deferFile: true });
   note = state.notes.find((current) => current.id === note.id);
   if (!note) throw Error("This comment has been removed.");
-  const dest = noteDestination(state, note);
-  const branch = note.right === WORKTREE ? note.left : note.right;
-  const checkout = state.repo.checkout;
-  const isCheckout = branch === checkout || (branch === "HEAD" && checkout.startsWith("HEAD@"));
-  const choices = pairs(state.stack, checkout).map(([, pair]) => pair);
   const samePair = (a, b) => a[0] === b[0] && a[1] === b[1];
-  const candidates = [
-    isCheckout ? [checkout, WORKTREE] : null,
-    dest ? [dest.left, dest.right] : null,
-    choices.find((pair) => samePair(pair, [note.left, note.right])),
-    choices.find((pair) => pair[1] === branch),
-  ].filter(Boolean);
   const visited = new Set();
-  for (const pair of candidates) {
+  for (const pair of commentJumpPairs(state, note)) {
     const key = JSON.stringify(pair);
     if (visited.has(key)) continue;
     visited.add(key);
-    if (!samePair(pair, state.pair)) await changeWorkspace("compare", { pair });
+    if (!samePair(pair, state.pair))
+      await changeWorkspace("compare", { pair }, { deferFile: true });
     if (!samePair(pair, state.pair)) return;
     const anchor = state.locations[note.id]?.find((d) => samePair(pair, [d.left, d.right]));
     const exact = anchor
@@ -704,6 +696,7 @@ async function jumpToNote(note) {
     if (anchored) setFold(folds, note, false);
     $("filter").value = "";
     const snapshot = state.snapshot;
+    if (!editor) fileIndex = index;
     await navigate("Changes");
     if (state.snapshot !== snapshot) return;
     editor?.setNotes(fileNotes(state, currentFile()));
@@ -719,6 +712,7 @@ async function jumpToNote(note) {
     }
     return;
   }
+  if (tab === "Changes" && !editor) await pick(fileIndex);
   const snapshot = state.snapshot;
   const current = await request("comment_file", { id: note.id }, snapshot);
   if (state.snapshot !== snapshot) return;
