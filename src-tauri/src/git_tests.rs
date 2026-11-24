@@ -129,7 +129,12 @@ fn streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes() {
     );
     write(&dir, "binary", b"after\0binary");
     fs::remove_file(dir.path().join("removed")).unwrap();
-    write(&dir, "literal[1]\tline\nname", b"new\r\nlast");
+    let literal_name = if cfg!(windows) {
+        "literal[1] line name"
+    } else {
+        "literal[1]\tline\nname"
+    };
+    write(&dir, literal_name, b"new\r\nlast");
     record(&dir, "Change");
     let repo = open_repo(dir.path()).unwrap();
     let branch = compare(&repo, "HEAD^", &repo.checkout).unwrap();

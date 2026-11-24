@@ -1,12 +1,14 @@
 //! Local Git plumbing for immutable branch and working-tree review snapshots.
 mod patch_data;
+#[cfg(windows)]
+mod windows;
 
 use serde::Serialize;
 use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 use std::ffi::{OsStr, OsString};
 use std::fs;
-use std::io::{self, BufRead, Read, Write};
+use std::io::{self, BufRead, Read};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 use std::sync::mpsc::{self, Receiver, RecvTimeoutError};
@@ -147,39 +149,12 @@ pub fn working_path(root: &Path, s: &str) -> Result<PathBuf> {
 }
 
 #[cfg(windows)]
-fn git_executable(directory: &Path) -> Result<PathBuf> {
-    let dirs: Vec<_> = [std::env::current_dir().ok(), directory.canonicalize().ok()]
-        .into_iter()
-        .flatten()
-        .filter_map(|p| p.canonicalize().ok())
-        .collect();
-    let checkouts: Vec<_> = dirs
-        .iter()
-        .flat_map(|p| p.ancestors())
-        .filter(|p| p.join(".git").is_file() || p.join(".git/HEAD").is_file())
-        .collect();
-    std::env::split_paths(&std::env::var_os("PATH").unwrap_or_default())
-        .filter(|p| p.is_absolute())
-        .filter_map(|p| p.join("git.exe").canonicalize().ok())
-        .find(|p| {
-            p.is_file()
-                && !dirs.iter().any(|d| Some(d.as_path()) == p.parent())
-                && !checkouts.iter().any(|d| p.starts_with(d))
-        })
-        .ok_or_else(|| {
-            "Install Git and add its installation directory to PATH, then reopen Branchline.".into()
-        })
+pub(crate) fn command(root: &Path) -> Result<Command> {
+    windows::command(root)
 }
 
+#[cfg(not(windows))]
 pub(crate) fn command(root: &Path) -> Result<Command> {
-    #[cfg(windows)]
-    let mut cmd = {
-        use std::os::windows::process::CommandExt;
-        let mut cmd = Command::new(git_executable(root)?);
-        cmd.creation_flags(0x08000000);
-        cmd
-    };
-    #[cfg(not(windows))]
     let mut cmd = Command::new("git");
     cmd.args(["--no-pager", "--literal-pathspecs", "-C"])
         .arg(root)
@@ -246,9 +221,12 @@ pub fn checkout_state(root: &Path) -> (String, Option<String>) {
 
 pub fn open_repo(path: &Path) -> Result<Repository> {
     let answer = git(path, &["rev-parse", "--show-toplevel"])?;
-    let top = path_arg(&name(answer.strip_suffix(b"\n").unwrap_or(&answer)))?;
+    let top = PathBuf::from(path_arg(&name(answer.strip_suffix(b"\n").unwrap_or(&answer)))?);
     #[cfg(windows)]
-    let root: PathBuf = PathBuf::from(top).components().collect();
+    let root = match windows::WslCheckout::from_path(path) {
+        Some(wsl) => wsl.host_path(&top)?,
+        None => top.components().collect(),
+    };
     #[cfg(not(windows))]
     let root = fs::canonicalize(top).map_err(|e| e.to_string())?;
     let mut refs = BTreeMap::new();
@@ -717,10 +695,15 @@ pub fn working_tree(
     });
     let base = head.unwrap_or(&repo.refs[EMPTY]);
     let index_data = git(&repo.root, &["rev-parse", "--git-path", "index"])?;
-    let index_path = working_path(
-        &repo.root,
-        &name(index_data.strip_suffix(b"\n").unwrap_or(&index_data)),
-    )?;
+    let index = PathBuf::from(path_arg(&name(
+        index_data.strip_suffix(b"\n").unwrap_or(&index_data),
+    ))?);
+    #[cfg(windows)]
+    let index = match windows::WslCheckout::from_path(&repo.root) {
+        Some(wsl) if index_data.starts_with(b"/") => wsl.host_path(&index)?,
+        _ => index,
+    };
+    let index_path = repo.root.join(index);
     let index_state = || -> Result<_> {
         match fs::metadata(&index_path) {
             Ok(m) => {
@@ -846,15 +829,45 @@ pub fn working_tree(
                 // link to a directory or FIFO when the link is a command argument.
                 let temp;
                 let source = if kind.is_symlink() {
-                    temp = tempfile::tempdir().map_err(|e| e.to_string())?;
-                    let target_name = fs::read_link(&target).map_err(|e| e.to_string())?;
+                    #[cfg(windows)]
+                    let wsl = windows::WslCheckout::from_path(&repo.root);
+                    #[cfg(windows)]
+                    let scratch = if let Some(wsl) = &wsl {
+                        tempfile::tempdir_in(wsl.host_path(Path::new("/tmp"))?)
+                    } else {
+                        tempfile::tempdir()
+                    };
+                    #[cfg(not(windows))]
+                    let scratch = tempfile::tempdir();
+                    temp = scratch.map_err(|e| e.to_string())?;
+                    let native_link = || {
+                        fs::read_link(&target)
+                            .map(|path| path.as_os_str().as_encoded_bytes().to_vec())
+                            .map_err(|e| e.to_string())
+                    };
+                    #[cfg(windows)]
+                    let link = match &wsl {
+                        Some(wsl) => wsl.link_target(&arg)?,
+                        None => native_link()?,
+                    };
+                    #[cfg(not(windows))]
+                    let link = native_link()?;
                     let source = temp.path().join("link");
-                    fs::File::create(&source)
-                        .and_then(|mut f| f.write_all(target_name.as_os_str().as_encoded_bytes()))
-                        .map_err(|e| e.to_string())?;
-                    source
+                    fs::write(&source, link).map_err(|e| e.to_string())?;
+                    #[cfg(windows)]
+                    if wsl.is_some() {
+                        windows::WslCheckout::from_path(&source)
+                            .ok_or("Could not resolve the WSL temporary file.")?
+                            .directory
+                    } else {
+                        source.into_os_string()
+                    }
+                    #[cfg(not(windows))]
+                    source.into_os_string()
                 } else {
-                    Path::new(".").join(&arg)
+                    let mut source = OsString::from("./");
+                    source.push(&arg);
+                    source
                 };
                 let mut added = local_changes(
                     repo,
@@ -863,7 +876,7 @@ pub fn working_tree(
                         "--no-index".as_ref(),
                         "--".as_ref(),
                         "/dev/null".as_ref(),
-                        source.as_os_str(),
+                        &source,
                     ],
                     true,
                 )?;

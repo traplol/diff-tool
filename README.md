@@ -25,6 +25,8 @@ C:\Tools\Branchline\branchline.exe .
 
 Add the executable’s directory to PATH to use `branchline .` from any checkout. You can also open Branchline from your desktop and choose a directory.
 
+The Windows app uses Git for Windows for Windows paths. For a path like `\\wsl.localhost\Ubuntu\home\you\project` or `\\wsl$\Ubuntu\home\you\project`, it uses Linux Git inside the named WSL distribution. Install Git in each distribution you open this way.
+
 ### Build from source
 
 Install stable Rust, Node.js 22 with npm, Git, and the [Tauri build prerequisites](https://v2.tauri.app/start/prerequisites/) for your operating system. From Linux, WSL, or Git Bash on Windows, run the release build with one command.
