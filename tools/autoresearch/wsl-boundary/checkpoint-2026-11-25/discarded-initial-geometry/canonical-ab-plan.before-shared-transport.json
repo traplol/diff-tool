@@ -1,0 +1,62 @@
+{
+  "case": "wsl_linux",
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "execution_gate": "VM GEOMETRY PILOT RELEASED",
+  "files_sha256": {
+    "build/autoresearch/wsl-boundary/pane-reuse-gui-ab.py": "535a81d1dfa531410b95f56320e8eb20515871ee257d5aefca0131e746d561e6",
+    "build/autoresearch/wsl-boundary/status-gui-ab.py": "2caebee7d2aef52e4d6ef90b89f410acf7966ee8d083f69e6dcae3fe3c103527",
+    "build/experiments/initial-editor-geometry/canonical-ab.py": "c9fb6f18edc00ee8ee4dcf9287cb26a596857ca276767564e54f7983bf630590",
+    "build/experiments/ui-phase-probe/run.py": "0e7702c4837c507d5650a160fdfefb1d1250550f9c0722a6c120b63b566d611a"
+  },
+  "native_gate_reports": [
+    {
+      "path": "/home/max/workspace/merge-viewer-native/build/experiments/initial-editor-geometry/aux-pointer-r2/20261125T222210699089Z-baseline/evidence/result.json",
+      "sha256": "108dda3f5fc942e00a91fe427aa407a2dab51394609b42a5ac0658f8cce24242",
+      "status": "complete-correct-stopped"
+    },
+    {
+      "path": "/home/max/workspace/merge-viewer-native/build/experiments/initial-editor-geometry/aux-pointer-r2/20261125T222411302734Z-candidate-infraretry/evidence/result.json",
+      "sha256": "f3b3b0aa55b1eb0430d8b0b86a4e4ba4092b0e604567f2a51648db581335217f",
+      "status": "complete-correct-stopped"
+    },
+    {
+      "path": "/home/max/workspace/merge-viewer-native/build/experiments/initial-editor-geometry/context-smoke-20261125T222502768424Z/evidence/result.json",
+      "sha256": "d355e26f1cce137280a7820b822a6ad530faeaaf2d50beafc77fe9d0363e329f",
+      "status": "complete-correct-stopped"
+    }
+  ],
+  "order": [
+    "A1:3",
+    "B1:3",
+    "A2:3",
+    "B2:3",
+    "pilot gate",
+    "A3:20",
+    "B3:20"
+  ],
+  "pilot_gate": "All runs correct, WT pooled median ratio\u22640.9, inherited worst pooled p95 ratio\u22641.1",
+  "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+  "status": "prepared-host-only",
+  "tunnel": "Owned foreground SSH loopback19225\u2192Windows29225; MCP28867; never replace another owner",
+  "variants": {
+    "A": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json",
+      "build_record_sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384",
+      "label": "geometry-baseline",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+      "binary_sha256": "149c9d32326fd4d6d8fc1f673c21b5e77ac56120f16db38d2f8971e1616f1889",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/experiments/initial-editor-geometry/native-build-proof.json",
+      "build_record_sha256": "a2df4f22bd1aa5d4d8564809b5cd1dd4ba24ee0f97feafd608c69cea99de0f4d",
+      "label": "initial-editor-geometry",
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/initial-editor-geometry/source",
+      "source_hash": "071ee12ca22b855f5cdfdd6e3c40951755369e1bd3d4834b551139f9964788ca"
+    }
+  },
+  "work": "Unchanged canonical scorer, seeded profile, all seven actions, native helper6a, normal renderer/MCP and two completion frames"
+}

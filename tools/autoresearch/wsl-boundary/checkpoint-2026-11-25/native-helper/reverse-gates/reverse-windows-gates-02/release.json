@@ -1,0 +1,27 @@
+{
+  "primary_gates_passed": true,
+  "linux": {
+    "live_owned_linux_workers": []
+  },
+  "windows": {
+    "live_owned_windows_apps": [],
+    "ports": [
+      {
+        "free": true,
+        "port": 29371
+      },
+      {
+        "free": true,
+        "port": 28971
+      }
+    ]
+  },
+  "host_controller_exited": true,
+  "tunnel_stopped": true,
+  "remaining": [
+    "reverse raw EOF/invalid-request recovery",
+    "reverse GUI/MCP abrupt idle/busy death",
+    "actual malformed-response client injection unproved"
+  ],
+  "vm_released_for_ui_diagnostic": true
+}

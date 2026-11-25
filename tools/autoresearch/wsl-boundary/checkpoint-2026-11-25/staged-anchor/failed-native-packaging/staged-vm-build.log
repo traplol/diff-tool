@@ -1,0 +1,23 @@
+{"supervisor_pid": 162933, "record": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-native/supervisor.json"}
+fatal: not a git repository (or any of the parent directories): .git
+Traceback (most recent call last):
+  File "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-input/vm-build-supervisor.py", line 341, in <module>
+    main()
+    ~~~~^^
+  File "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-input/vm-build-supervisor.py", line 335, in main
+    raise failure
+  File "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-input/vm-build-supervisor.py", line 249, in main
+    verify_source()
+    ~~~~~~~~~~~~~^^
+  File "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-input/vm-build-supervisor.py", line 99, in verify_source
+    head = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 473, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', '-C', '/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-input/source', 'rev-parse', 'HEAD']' returned non-zero exit status 128.

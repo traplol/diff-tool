@@ -1,0 +1,25 @@
+   Compiling branchline-git-worker v0.2.0 (/home/max/workspace/merge-viewer-native/build/experiments/parallel-untracked/source/src-tauri/git-worker)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.24s
+     Running unittests src/main.rs (src-tauri/target/git-worker/debug/deps/branchline_git_worker-ec14863b7131678d)
+
+running 2 tests
+test git::tests::parallel_untracked_keeps_git_order_raw_patches_and_frozen_content ... FAILED
+test git::tests::parallel_untracked_preserves_first_error_with_multiple_failed_reads ... ok
+
+failures:
+
+---- git::tests::parallel_untracked_keeps_git_order_raw_patches_and_frozen_content stdout ----
+
+thread 'git::tests::parallel_untracked_keeps_git_order_raw_patches_and_frozen_content' panicked at src/../../src/git_tests.rs:1119:9:
+assertion `left == right` failed
+  left: Object {"added": Number(0), "group": String("Untracked"), "mode": String("100644"), "oid": String("e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"), "old": String("a-empty"), "old_mode": String("000000"), "old_oid": String("0000000000000000000000000000000000000000"), "path": String("a-empty"), "removed": Number(0), "status": String("A")}
+ right: Object {"added": Number(0), "group": String("Untracked"), "mode": String("100644"), "oid": String("e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"), "old": String("./a-empty"), "old_mode": String("000000"), "old_oid": String("0000000000000000000000000000000000000000"), "path": String("./a-empty"), "removed": Number(0), "status": String("A")}
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    git::tests::parallel_untracked_keeps_git_order_raw_patches_and_frozen_content
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 30 filtered out; finished in 0.06s
+
+error: test failed, to rerun pass `--bin branchline-git-worker`

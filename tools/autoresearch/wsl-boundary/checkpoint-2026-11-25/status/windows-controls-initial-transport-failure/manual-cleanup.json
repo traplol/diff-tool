@@ -1,0 +1,41 @@
+{
+  "started_unix": 1795643776.6505697,
+  "launch": {
+    "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+    "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+    "cdp_port": 29223,
+    "created": "2026-11-25T16:54:46.0307550-05:00",
+    "mcp_port": 28865,
+    "pid": 4504,
+    "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+    "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+    "session": 1,
+    "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+  },
+  "purpose": "Exact owner cleanup after retained SSH banner failure; no measurement retry",
+  "cleanup": {
+    "canonical_stop": {
+      "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+      "stopped_pids": [
+        4504,
+        3448
+      ]
+    },
+    "observed_children": [
+      {
+        "created": "2026-11-25T16:54:46.1532090-05:00",
+        "pid": 9620,
+        "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe"
+      },
+      {
+        "created": "2026-11-25T16:54:48.0552570-05:00",
+        "pid": 3448,
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe"
+      }
+    ],
+    "ports_free": true,
+    "exact_owned_processes_absent": true
+  },
+  "status": "exact-owned-actors-stopped-and-ports-free",
+  "finished_unix": 1795643779.3913496
+}

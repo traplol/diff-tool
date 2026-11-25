@@ -1,0 +1,72 @@
+{
+  "app_file_count": 181,
+  "app_files_unchanged": true,
+  "archive_sha256": "c13e2858b232dab788674f517c861d34624c3e919751911da622751861419c02",
+  "bootstrap_python_syntax": "Both generated remote Python programs parse successfully",
+  "build_sh_executable": true,
+  "bundle_sha256": "e7b7d43e9147b2d72fdb64e49e6bbc23cb11dcddadd8f12d70a99d44c8ad6248",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "--quiet",
+        "/tmp/staged-bundle-roundtrip-ax40m3jj/source"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "git",
+        "bundle",
+        "verify",
+        "/tmp/staged-bundle-roundtrip-ax40m3jj/source-1135a59.bundle"
+      ],
+      "exit": 0,
+      "stderr": "/tmp/staged-bundle-roundtrip-ax40m3jj/source-1135a59.bundle is okay\n",
+      "stdout": "The bundle contains this ref:\n1135a59f3a51253709d652d1e4ec82fa8b32ce09 HEAD\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "/tmp/staged-bundle-roundtrip-ax40m3jj/source-1135a59.bundle",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stderr": "From /tmp/staged-bundle-roundtrip-ax40m3jj/source-1135a59.bundle\n * branch            HEAD       -> FETCH_HEAD\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "git",
+        "update-ref",
+        "--no-deref",
+        "HEAD",
+        "1135a59f3a51253709d652d1e4ec82fa8b32ce09"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "git",
+        "read-tree",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "external_alternates": false,
+  "git_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+  "git_tree": "473206ad67cbd478e9f2385718f17fe519bc67e6",
+  "real_commit_tree_present": true,
+  "scope": "Host packaging round-trip only; no app/test reruns and no VM calls",
+  "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404"
+}

@@ -1,0 +1,72 @@
+{
+  "correct": true,
+  "source_hash": "071ee12ca22b855f5cdfdd6e3c40951755369e1bd3d4834b551139f9964788ca",
+  "baseline_binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+  "candidate_binary_sha256": "149c9d32326fd4d6d8fc1f673c21b5e77ac56120f16db38d2f8971e1616f1889",
+  "reports": [
+    "build/experiments/initial-editor-geometry/aux-pointer-r2/20261125T222210699089Z-baseline/evidence/result.json",
+    "build/experiments/initial-editor-geometry/aux-pointer-r2/20261125T222411302734Z-candidate-infraretry/evidence/result.json",
+    "build/experiments/initial-editor-geometry/context-smoke-20261125T222502768424Z/evidence/result.json"
+  ],
+  "assertions": "All five original assertion statements unchanged; all original waits and semantic checks retained",
+  "auxiliary_only_repairs": "Stable geometry, separate visibility scroll and stable refind before canonical native pointer; native rapid transitions; stdin payload and canonical reuseaddr preflight",
+  "release": {
+    "exact_controller_mcp_absent": [
+      {
+        "pid": 148007,
+        "start_ticks": "14962545",
+        "binary": "/usr/bin/python3.14"
+      },
+      {
+        "pid": 148274,
+        "start_ticks": "14974606",
+        "binary": "/usr/bin/python3.14"
+      },
+      {
+        "pid": 148515,
+        "start_ticks": "14979759",
+        "binary": "/usr/bin/python3.14"
+      },
+      {
+        "pid": 148182,
+        "start_ticks": "14962889",
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "args": [
+          "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "--mcp",
+          "--port",
+          "28869",
+          "--",
+          "/tmp/branchline-native-smoke-xdkfkfqz/relay"
+        ]
+      },
+      {
+        "pid": 148443,
+        "start_ticks": "14974812",
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+        "args": [
+          "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+          "--mcp",
+          "--port",
+          "28869",
+          "--",
+          "/tmp/branchline-native-smoke-my97oji4/relay"
+        ]
+      },
+      {
+        "pid": 148688,
+        "start_ticks": "14979956",
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+        "args": [
+          "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+          "--mcp",
+          "--port",
+          "28869",
+          "--",
+          "/tmp/branchline-native-smoke-_kqryj2u/relay"
+        ]
+      }
+    ],
+    "port28869_free": true
+  }
+}

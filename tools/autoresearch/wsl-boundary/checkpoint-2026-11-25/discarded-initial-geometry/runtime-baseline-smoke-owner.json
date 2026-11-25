@@ -1,0 +1,7 @@
+{
+  "host_controller_pid": 57029,
+  "stamp": "20261125T220635535536Z",
+  "log": "build/experiments/initial-editor-geometry/runtime-baseline-smoke.log",
+  "remote_program": "build/experiments/initial-editor-geometry/runtime-baseline-smoke-remote.py",
+  "exit_code": 1
+}

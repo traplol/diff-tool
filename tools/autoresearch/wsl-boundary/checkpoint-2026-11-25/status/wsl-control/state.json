@@ -1,0 +1,2937 @@
+{
+  "case": "wsl_linux",
+  "comments": [
+    {
+      "anchor": [
+        3434,
+        3434
+      ],
+      "body": "Boundary benchmark branch comment",
+      "id": 1,
+      "path": "kernel/fork.c"
+    },
+    {
+      "anchor": [
+        3438,
+        3438
+      ],
+      "body": "Boundary benchmark working-tree comment",
+      "id": 2,
+      "path": "kernel/fork.c"
+    }
+  ],
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "control": "Measure the 10% regression guard; inactive opposite-OS helpers do not establish no-regression.",
+  "control_socket_absent": true,
+  "existing_runner_sha256": "2caebee7d2aef52e4d6ef90b89f410acf7966ee8d083f69e6dcae3fe3c103527",
+  "final20": {
+    "A": {
+      "branch_final": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 8,
+            "max_ms": 11,
+            "median_ms": 9.000000000001819,
+            "p95_ms": 11,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          356
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 125,
+            "median_ms": 84.49999999999636,
+            "p95_ms": 108,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 16.000000000003638,
+            "median_ms": 12.0,
+            "p95_ms": 15,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 400,
+        "median_ms": 365.9999999999982,
+        "p95_ms": 395,
+        "pending_count": 0
+      },
+      "branch_first": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 6,
+            "max_ms": 14.000000000007276,
+            "median_ms": 9.5,
+            "p95_ms": 14.000000000007276,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          360
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 158.00000000000728,
+            "median_ms": 140.0,
+            "p95_ms": 157.99999999999272,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 48,
+            "median_ms": 45.0,
+            "p95_ms": 47.999999999992724,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 480,
+        "median_ms": 440.0,
+        "p95_ms": 469.9999999999927,
+        "pending_count": 0
+      },
+      "comment_branch": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 10,
+            "max_ms": 58.99999999999636,
+            "median_ms": 10.999999999996362,
+            "p95_ms": 58.99999999999636,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          488
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 49.00000000000364,
+            "median_ms": 44.49999999999636,
+            "p95_ms": 49,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 20,
+            "max_ms": 178,
+            "median_ms": 151.99999999999636,
+            "p95_ms": 173,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 519,
+        "median_ms": 478.5,
+        "p95_ms": 504,
+        "pending_count": 0
+      },
+      "comment_worktree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 8,
+            "max_ms": 10,
+            "median_ms": 9,
+            "p95_ms": 10,
+            "pending_count": 1
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          487
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 47.000000000007276,
+            "median_ms": 39.5,
+            "p95_ms": 46,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 20,
+            "max_ms": 203,
+            "median_ms": 176.0,
+            "p95_ms": 200,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 537.0000000000073,
+        "median_ms": 481.5000000000073,
+        "p95_ms": 536,
+        "pending_count": 0
+      },
+      "open": {
+        "background_ipc_by_command_and_op": {},
+        "count": 1,
+        "first_use_ms": [
+          713
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 1,
+            "max_ms": 175.9999999999999,
+            "median_ms": 175.9999999999999,
+            "p95_ms": 175.9999999999999,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 1,
+            "max_ms": 245,
+            "median_ms": 245,
+            "p95_ms": 245,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 713,
+        "median_ms": 713,
+        "p95_ms": 713,
+        "pending_count": 0
+      },
+      "stack": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 7,
+            "max_ms": 11,
+            "median_ms": 9,
+            "p95_ms": 11,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          432.99999999999955
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 161,
+            "median_ms": 89.49999999999818,
+            "p95_ms": 112,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 70.99999999999909,
+            "median_ms": 64.0,
+            "p95_ms": 70.99999999999636,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 523,
+        "median_ms": 445.0,
+        "p95_ms": 505,
+        "pending_count": 0
+      },
+      "working_tree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 5,
+            "max_ms": 14.000000000014552,
+            "median_ms": 9,
+            "p95_ms": 14.000000000014552,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          472.00000000000045
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 206.0000000000009,
+            "median_ms": 163.0,
+            "p95_ms": 191,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 49,
+            "median_ms": 35.0,
+            "p95_ms": 45,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 527,
+        "median_ms": 446.5,
+        "p95_ms": 517.9999999999927,
+        "pending_count": 0
+      }
+    },
+    "B": {
+      "branch_final": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 2,
+            "max_ms": 10,
+            "median_ms": 9.500000000003638,
+            "p95_ms": 10,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          384.9999999999998
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 98,
+            "median_ms": 83.49999999999272,
+            "p95_ms": 96,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 13,
+            "median_ms": 11.000000000007276,
+            "p95_ms": 13,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 396,
+        "median_ms": 361.0,
+        "p95_ms": 384.9999999999998,
+        "pending_count": 0
+      },
+      "branch_first": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 6,
+            "max_ms": 11,
+            "median_ms": 9.000000000001819,
+            "p95_ms": 11,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          404
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 159,
+            "median_ms": 142.5,
+            "p95_ms": 159,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 50,
+            "median_ms": 44.99999999999636,
+            "p95_ms": 49.99999999999636,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 544,
+        "median_ms": 443.5,
+        "p95_ms": 483,
+        "pending_count": 0
+      },
+      "comment_branch": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 3,
+            "max_ms": 11.999999999985448,
+            "median_ms": 10.000000000007276,
+            "p95_ms": 11.999999999985448,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          511
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 52,
+            "median_ms": 45.0,
+            "p95_ms": 50,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 20,
+            "max_ms": 177.9999999999991,
+            "median_ms": 156.0,
+            "p95_ms": 173,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 520,
+        "median_ms": 485.00000000000546,
+        "p95_ms": 511,
+        "pending_count": 0
+      },
+      "comment_worktree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 3,
+            "max_ms": 10.999999999992724,
+            "median_ms": 8,
+            "p95_ms": 10.999999999992724,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          477
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 46.00000000001455,
+            "median_ms": 38.0,
+            "p95_ms": 45,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 20,
+            "max_ms": 194,
+            "median_ms": 174.50000000000182,
+            "p95_ms": 194,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 520,
+        "median_ms": 476.99999999999636,
+        "p95_ms": 516,
+        "pending_count": 0
+      },
+      "open": {
+        "background_ipc_by_command_and_op": {},
+        "count": 1,
+        "first_use_ms": [
+          721
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 1,
+            "max_ms": 176,
+            "median_ms": 176,
+            "p95_ms": 176,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 1,
+            "max_ms": 255.99999999999994,
+            "median_ms": 255.99999999999994,
+            "p95_ms": 255.99999999999994,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 721,
+        "median_ms": 721,
+        "p95_ms": 721,
+        "pending_count": 0
+      },
+      "stack": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 2,
+            "max_ms": 9,
+            "median_ms": 8.0,
+            "p95_ms": 9,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          484
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 115.99999999999636,
+            "median_ms": 85.50000000000182,
+            "p95_ms": 110,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 75,
+            "median_ms": 67.5,
+            "p95_ms": 74,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 484,
+        "median_ms": 446.5000000000018,
+        "p95_ms": 474,
+        "pending_count": 0
+      },
+      "working_tree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 6,
+            "max_ms": 17,
+            "median_ms": 9.5,
+            "p95_ms": 17,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          506
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 177,
+            "median_ms": 156.5,
+            "p95_ms": 176,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 44.00000000001455,
+            "median_ms": 33.49999999999454,
+            "p95_ms": 44,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 506,
+        "median_ms": 446.0,
+        "p95_ms": 499,
+        "pending_count": 0
+      }
+    }
+  },
+  "finished_unix": 1795646536.4270694,
+  "fixture_after": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_before": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "host_port_free": true,
+  "host_wrapper": {
+    "path": "/tmp/status-wsl-kxr6m68b/bin/ssh",
+    "sha256": "ded9bd71fea06c2046d9ea9bd1af498dcc19f5c5be4d09b8bd289e4413bec287"
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "master": {
+    "argv": [
+      "/usr/bin/ssh",
+      "-F",
+      "/home/max/.ssh/config",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=10",
+      "-M",
+      "-S",
+      "/tmp/status-wsl-kxr6m68b/ssh.sock",
+      "-o",
+      "ControlPersist=no",
+      "-N",
+      "-o",
+      "ExitOnForwardFailure=yes",
+      "-L",
+      "127.0.0.1:19227:127.0.0.1:29225",
+      "windows-vm"
+    ],
+    "pid": 70208,
+    "socket": "/tmp/status-wsl-kxr6m68b/ssh.sock",
+    "start_ticks": "76861836"
+  },
+  "master_check": {
+    "exit": 0,
+    "stderr": "Master running (pid=70208)\n",
+    "stdout": ""
+  },
+  "master_exit": 255,
+  "master_exit_request": {
+    "exit": 0,
+    "stderr": "Exit request sent.\n",
+    "stdout": ""
+  },
+  "measurement": "Canonical welcome async-error readiness, measured Open, all six actions, strict native content and two frames.",
+  "order": [
+    "A1:3",
+    "B1:3",
+    "A2:3",
+    "B2:3",
+    "A3:20",
+    "B3:20"
+  ],
+  "performance_early_gate": false,
+  "pid": 70204,
+  "ports": {
+    "driver": 29225,
+    "host": 19227,
+    "mcp": 28867
+  },
+  "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+  "renderer_and_mcp": "Unchanged canonical Linux launcher; no app environment or renderer overrides.",
+  "runner_sha256": "4a253a7a50595aeabd755be55c16c024634882567c48235b6cb07e7714ed1d42",
+  "runs": [
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            425
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 141,
+              "median_ms": 82,
+              "p95_ms": 141,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 19,
+              "median_ms": 12.00000000000091,
+              "p95_ms": 19,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 425,
+          "median_ms": 364.0000000000009,
+          "p95_ms": 425,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            571
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 265,
+              "median_ms": 152,
+              "p95_ms": 265,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 45,
+              "median_ms": 43,
+              "p95_ms": 45,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 571,
+          "median_ms": 444,
+          "p95_ms": 571,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            656
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 49,
+              "median_ms": 37.00000000000182,
+              "p95_ms": 49,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 309,
+              "median_ms": 160,
+              "p95_ms": 309,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 656,
+          "median_ms": 479,
+          "p95_ms": 656,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            511
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 44,
+              "median_ms": 41.99999999999818,
+              "p95_ms": 44,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 212,
+              "median_ms": 204,
+              "p95_ms": 212,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 519,
+          "median_ms": 511,
+          "p95_ms": 519,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 8,
+              "median_ms": 8,
+              "p95_ms": 8,
+              "pending_count": 0
+            }
+          },
+          "count": 1,
+          "first_use_ms": [
+            1591
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 222.00000000000023,
+              "median_ms": 222.00000000000023,
+              "p95_ms": 222.00000000000023,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 1043.0000000000002,
+              "median_ms": 1043.0000000000002,
+              "p95_ms": 1043.0000000000002,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1591,
+          "median_ms": 1591,
+          "p95_ms": 1591,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 9,
+              "median_ms": 9,
+              "p95_ms": 9,
+              "pending_count": 1
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            485
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 117,
+              "median_ms": 86,
+              "p95_ms": 117,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 68,
+              "median_ms": 67.99999999999818,
+              "p95_ms": 68,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 485,
+          "median_ms": 435,
+          "p95_ms": 485,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 10.99999999999909,
+              "median_ms": 10.99999999999909,
+              "p95_ms": 10.99999999999909,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            538
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 178,
+              "median_ms": 168.99999999999818,
+              "p95_ms": 178,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 68.00000000000045,
+              "median_ms": 42,
+              "p95_ms": 68.00000000000045,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 538,
+          "median_ms": 468,
+          "p95_ms": 538,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 425,
+          "max_ms": 425,
+          "p50_ms": 364.0000000000009,
+          "p95_ms": 425
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 571,
+          "max_ms": 571,
+          "p50_ms": 444,
+          "p95_ms": 571
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 656,
+          "max_ms": 656,
+          "p50_ms": 479,
+          "p95_ms": 656
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 511,
+          "max_ms": 519,
+          "p50_ms": 511,
+          "p95_ms": 519
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 1591,
+          "max_ms": 1591,
+          "p50_ms": 1591,
+          "p95_ms": 1591
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 485,
+          "max_ms": 485,
+          "p50_ms": 435,
+          "p95_ms": 485
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 538,
+          "max_ms": 538,
+          "p50_ms": 468,
+          "p95_ms": 538
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01.cleanup.log",
+      "finished_unix": 1795646302.1239986,
+      "host_supervisor_pid": 70364,
+      "label": "checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 152115,
+          "start_ticks": "15057781"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "15057781",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 152113,
+          "start_ticks": "15057763"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 152115,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "1db32bab-3fa8-4b1c-ba26-72ee12f4637a",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 152112
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01.log",
+      "number": 1,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01.json",
+      "repetitions": 3,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01",
+        "--label",
+        "checkpoint-b2de070",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_linux",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "1db32bab-3fa8-4b1c-ba26-72ee12f4637a",
+        "--repetitions",
+        "3"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01.json"
+      ],
+      "started_unix": 1795646282.7908998,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 9,
+              "median_ms": 9.0,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            359
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 87,
+              "median_ms": 78,
+              "p95_ms": 87,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 18,
+              "median_ms": 12,
+              "p95_ms": 18,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 378,
+          "median_ms": 364,
+          "p95_ms": 378,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            393
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 142.0000000000009,
+              "median_ms": 134.00000000000182,
+              "p95_ms": 142.0000000000009,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 44,
+              "median_ms": 19.000000000000227,
+              "p95_ms": 44,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 422,
+          "median_ms": 393,
+          "p95_ms": 422,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            643
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 41,
+              "median_ms": 41,
+              "p95_ms": 41,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 296,
+              "median_ms": 195.0000000000009,
+              "p95_ms": 296,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 643,
+          "median_ms": 531,
+          "p95_ms": 643,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 3,
+              "max_ms": 11.000000000001819,
+              "median_ms": 8,
+              "p95_ms": 11.000000000001819,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            528
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 35,
+              "median_ms": 29.00000000000182,
+              "p95_ms": 35,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 218,
+              "median_ms": 197,
+              "p95_ms": 218,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 528,
+          "median_ms": 497,
+          "p95_ms": 528,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {},
+          "count": 1,
+          "first_use_ms": [
+            690
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 136,
+              "median_ms": 136,
+              "p95_ms": 136,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 236,
+              "median_ms": 236,
+              "p95_ms": 236,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 690,
+          "median_ms": 690,
+          "p95_ms": 690,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 9,
+              "median_ms": 9,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            437.99999999999955
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 113,
+              "median_ms": 87.99999999999818,
+              "p95_ms": 113,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 70,
+              "median_ms": 63,
+              "p95_ms": 70,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 475,
+          "median_ms": 444.9999999999982,
+          "p95_ms": 475,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            454.99999999999955
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 167,
+              "median_ms": 155,
+              "p95_ms": 167,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 53,
+              "median_ms": 40,
+              "p95_ms": 53,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 454.99999999999955,
+          "median_ms": 438.0000000000018,
+          "p95_ms": 454.99999999999955,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 359,
+          "max_ms": 378,
+          "p50_ms": 364,
+          "p95_ms": 378
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 393,
+          "max_ms": 422,
+          "p50_ms": 393,
+          "p95_ms": 422
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 643,
+          "max_ms": 643,
+          "p50_ms": 531,
+          "p95_ms": 643
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 528,
+          "max_ms": 528,
+          "p50_ms": 497,
+          "p95_ms": 528
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 690,
+          "max_ms": 690,
+          "p50_ms": 690,
+          "p95_ms": 690
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 437.99999999999955,
+          "max_ms": 475,
+          "p50_ms": 444.9999999999982,
+          "p95_ms": 475
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 454.99999999999955,
+          "max_ms": 454.99999999999955,
+          "p50_ms": 438.0000000000018,
+          "p95_ms": 454.99999999999955
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01.cleanup.log",
+      "finished_unix": 1795646317.4882808,
+      "host_supervisor_pid": 70625,
+      "label": "stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+          "pid": 152870,
+          "start_ticks": "15059685"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+        "created": "15059685",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 152868,
+          "start_ticks": "15059684"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 152870,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "a5a59fcc-96ad-4971-ab5f-93f2993eb278",
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "supervisor_pid": 152867
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01.log",
+      "number": 1,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01.json",
+      "repetitions": 3,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01",
+        "--label",
+        "stateless-status-b2de070",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_linux",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "a5a59fcc-96ad-4971-ab5f-93f2993eb278",
+        "--repetitions",
+        "3"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01.json"
+      ],
+      "started_unix": 1795646302.1376185,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 9,
+              "median_ms": 9,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            364
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 87.99999999999977,
+              "median_ms": 75,
+              "p95_ms": 87.99999999999977,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 14,
+              "median_ms": 13,
+              "p95_ms": 14,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 364,
+          "median_ms": 347,
+          "p95_ms": 364,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            379
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 144,
+              "median_ms": 141,
+              "p95_ms": 144,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 49,
+              "median_ms": 18,
+              "p95_ms": 49,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 435,
+          "median_ms": 379,
+          "p95_ms": 435,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 10,
+              "median_ms": 10.0,
+              "p95_ms": 10,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            589.9999999999995
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 47,
+              "median_ms": 46,
+              "p95_ms": 47,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 257,
+              "median_ms": 167.0000000000009,
+              "p95_ms": 257,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 589.9999999999995,
+          "median_ms": 499,
+          "p95_ms": 589.9999999999995,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 9,
+              "median_ms": 9,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            487
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 47,
+              "median_ms": 45,
+              "p95_ms": 47,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 216,
+              "median_ms": 185,
+              "p95_ms": 216,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 532,
+          "median_ms": 487,
+          "p95_ms": 532,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {},
+          "count": 1,
+          "first_use_ms": [
+            692
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 169,
+              "median_ms": 169,
+              "p95_ms": 169,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 236,
+              "median_ms": 236,
+              "p95_ms": 236,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 692,
+          "median_ms": 692,
+          "p95_ms": 692,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 3,
+              "max_ms": 11,
+              "median_ms": 8.999999999999545,
+              "p95_ms": 11,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            442
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 97.00000000000091,
+              "median_ms": 89,
+              "p95_ms": 97.00000000000091,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 69,
+              "median_ms": 66,
+              "p95_ms": 69,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 458,
+          "median_ms": 448.0000000000009,
+          "p95_ms": 458,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            452.99999999999955
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 167.99999999999955,
+              "median_ms": 153.9999999999991,
+              "p95_ms": 167.99999999999955,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 47,
+              "median_ms": 40.99999999999818,
+              "p95_ms": 47,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 452.99999999999955,
+          "median_ms": 436.9999999999991,
+          "p95_ms": 452.99999999999955,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 364,
+          "max_ms": 364,
+          "p50_ms": 347,
+          "p95_ms": 364
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 379,
+          "max_ms": 435,
+          "p50_ms": 379,
+          "p95_ms": 435
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 589.9999999999995,
+          "max_ms": 589.9999999999995,
+          "p50_ms": 499,
+          "p95_ms": 589.9999999999995
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 487,
+          "max_ms": 532,
+          "p50_ms": 487,
+          "p95_ms": 532
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 692,
+          "max_ms": 692,
+          "p50_ms": 692,
+          "p95_ms": 692
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 442,
+          "max_ms": 458,
+          "p50_ms": 448.0000000000009,
+          "p95_ms": 458
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 452.99999999999955,
+          "max_ms": 452.99999999999955,
+          "p50_ms": 436.9999999999991,
+          "p95_ms": 452.99999999999955
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02.cleanup.log",
+      "finished_unix": 1795646332.5929828,
+      "host_supervisor_pid": 70769,
+      "label": "checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 153618,
+          "start_ticks": "15061223"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "15061223",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 153616,
+          "start_ticks": "15061222"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 153618,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "8fe2a8fd-a244-4793-b228-c41857c7d95a",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 153615
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02.log",
+      "number": 2,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02.json",
+      "repetitions": 3,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02",
+        "--label",
+        "checkpoint-b2de070",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_linux",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "8fe2a8fd-a244-4793-b228-c41857c7d95a",
+        "--repetitions",
+        "3"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02.json"
+      ],
+      "started_unix": 1795646317.529312,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 9.000000000000455,
+              "median_ms": 8.500000000000227,
+              "p95_ms": 9.000000000000455,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            377.00000000000045
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 91,
+              "median_ms": 87,
+              "p95_ms": 91,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 12.000000000000227,
+              "median_ms": 11.999999999998181,
+              "p95_ms": 12.000000000000227,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 390,
+          "median_ms": 377.00000000000045,
+          "p95_ms": 390,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            378.0000000000002
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 145.00000000000182,
+              "median_ms": 129,
+              "p95_ms": 145.00000000000182,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 46,
+              "median_ms": 45,
+              "p95_ms": 46,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 458,
+          "median_ms": 436,
+          "p95_ms": 458,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            483
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 44.99999999999909,
+              "median_ms": 30,
+              "p95_ms": 44.99999999999909,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 158.9999999999991,
+              "median_ms": 158.99999999999818,
+              "p95_ms": 158.9999999999991,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 489.0000000000009,
+          "median_ms": 483,
+          "p95_ms": 489.0000000000009,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 3,
+              "max_ms": 9,
+              "median_ms": 8,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            518.0000000000009
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 34,
+              "median_ms": 29,
+              "p95_ms": 34,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 220.0000000000009,
+              "median_ms": 168,
+              "p95_ms": 220.0000000000009,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 518.0000000000009,
+          "median_ms": 468,
+          "p95_ms": 518.0000000000009,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 10,
+              "median_ms": 10,
+              "p95_ms": 10,
+              "pending_count": 0
+            }
+          },
+          "count": 1,
+          "first_use_ms": [
+            722
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 167,
+              "median_ms": 167,
+              "p95_ms": 167,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 249,
+              "median_ms": 249,
+              "p95_ms": 249,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 722,
+          "median_ms": 722,
+          "p95_ms": 722,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            426
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 80,
+              "median_ms": 79.00000000000091,
+              "p95_ms": 80,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 73,
+              "median_ms": 62,
+              "p95_ms": 73,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 436,
+          "median_ms": 435,
+          "p95_ms": 436,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            510
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 181,
+              "median_ms": 175,
+              "p95_ms": 181,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 43,
+              "median_ms": 29.99999999999818,
+              "p95_ms": 43,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 510,
+          "median_ms": 493.9999999999982,
+          "p95_ms": 510,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 377.00000000000045,
+          "max_ms": 390,
+          "p50_ms": 377.00000000000045,
+          "p95_ms": 390
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 378.0000000000002,
+          "max_ms": 458,
+          "p50_ms": 436,
+          "p95_ms": 458
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 483,
+          "max_ms": 489.0000000000009,
+          "p50_ms": 483,
+          "p95_ms": 489.0000000000009
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 518.0000000000009,
+          "max_ms": 518.0000000000009,
+          "p50_ms": 468,
+          "p95_ms": 518.0000000000009
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 722,
+          "max_ms": 722,
+          "p50_ms": 722,
+          "p95_ms": 722
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 426,
+          "max_ms": 436,
+          "p50_ms": 435,
+          "p95_ms": 436
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 510,
+          "max_ms": 510,
+          "p50_ms": 493.9999999999982,
+          "p95_ms": 510
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02.cleanup.log",
+      "finished_unix": 1795646347.8960912,
+      "host_supervisor_pid": 70877,
+      "label": "stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+          "pid": 154375,
+          "start_ticks": "15062734"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+        "created": "15062734",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 154373,
+          "start_ticks": "15062733"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 154375,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "f1fe4552-d78a-4056-90cf-036fcabd053a",
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "supervisor_pid": 154372
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02.log",
+      "number": 2,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02.json",
+      "repetitions": 3,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02",
+        "--label",
+        "stateless-status-b2de070",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_linux",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "f1fe4552-d78a-4056-90cf-036fcabd053a",
+        "--repetitions",
+        "3"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02.json"
+      ],
+      "started_unix": 1795646332.6065416,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 8,
+              "max_ms": 11,
+              "median_ms": 9.000000000001819,
+              "p95_ms": 11,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            356
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 125,
+              "median_ms": 84.49999999999636,
+              "p95_ms": 108,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 16.000000000003638,
+              "median_ms": 12.0,
+              "p95_ms": 15,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 400,
+          "median_ms": 365.9999999999982,
+          "p95_ms": 395,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 6,
+              "max_ms": 14.000000000007276,
+              "median_ms": 9.5,
+              "p95_ms": 14.000000000007276,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            360
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 158.00000000000728,
+              "median_ms": 140.0,
+              "p95_ms": 157.99999999999272,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 48,
+              "median_ms": 45.0,
+              "p95_ms": 47.999999999992724,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 480,
+          "median_ms": 440.0,
+          "p95_ms": 469.9999999999927,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 10,
+              "max_ms": 58.99999999999636,
+              "median_ms": 10.999999999996362,
+              "p95_ms": 58.99999999999636,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            488
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 49.00000000000364,
+              "median_ms": 44.49999999999636,
+              "p95_ms": 49,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 20,
+              "max_ms": 178,
+              "median_ms": 151.99999999999636,
+              "p95_ms": 173,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 519,
+          "median_ms": 478.5,
+          "p95_ms": 504,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 8,
+              "max_ms": 10,
+              "median_ms": 9,
+              "p95_ms": 10,
+              "pending_count": 1
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            487
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 47.000000000007276,
+              "median_ms": 39.5,
+              "p95_ms": 46,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 20,
+              "max_ms": 203,
+              "median_ms": 176.0,
+              "p95_ms": 200,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 537.0000000000073,
+          "median_ms": 481.5000000000073,
+          "p95_ms": 536,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {},
+          "count": 1,
+          "first_use_ms": [
+            713
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 175.9999999999999,
+              "median_ms": 175.9999999999999,
+              "p95_ms": 175.9999999999999,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 245,
+              "median_ms": 245,
+              "p95_ms": 245,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 713,
+          "median_ms": 713,
+          "p95_ms": 713,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 7,
+              "max_ms": 11,
+              "median_ms": 9,
+              "p95_ms": 11,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            432.99999999999955
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 161,
+              "median_ms": 89.49999999999818,
+              "p95_ms": 112,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 70.99999999999909,
+              "median_ms": 64.0,
+              "p95_ms": 70.99999999999636,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 523,
+          "median_ms": 445.0,
+          "p95_ms": 505,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 5,
+              "max_ms": 14.000000000014552,
+              "median_ms": 9,
+              "p95_ms": 14.000000000014552,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            472.00000000000045
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 206.0000000000009,
+              "median_ms": 163.0,
+              "p95_ms": 191,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 49,
+              "median_ms": 35.0,
+              "p95_ms": 45,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 527,
+          "median_ms": 446.5,
+          "p95_ms": 517.9999999999927,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 20,
+          "first_use_ms": 356,
+          "max_ms": 400,
+          "p50_ms": 364,
+          "p95_ms": 395
+        },
+        "branch_first": {
+          "count": 20,
+          "first_use_ms": 360,
+          "max_ms": 480,
+          "p50_ms": 439.9999999999927,
+          "p95_ms": 469.9999999999927
+        },
+        "comment_branch": {
+          "count": 20,
+          "first_use_ms": 488,
+          "max_ms": 519,
+          "p50_ms": 477,
+          "p95_ms": 504
+        },
+        "comment_worktree": {
+          "count": 20,
+          "first_use_ms": 487,
+          "max_ms": 537.0000000000073,
+          "p50_ms": 481.00000000001455,
+          "p95_ms": 536
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 713,
+          "max_ms": 713,
+          "p50_ms": 713,
+          "p95_ms": 713
+        },
+        "stack": {
+          "count": 20,
+          "first_use_ms": 432.99999999999955,
+          "max_ms": 523,
+          "p50_ms": 443,
+          "p95_ms": 505
+        },
+        "working_tree": {
+          "count": 20,
+          "first_use_ms": 472.00000000000045,
+          "max_ms": 527,
+          "p50_ms": 441,
+          "p95_ms": 517.9999999999927
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03.cleanup.log",
+      "finished_unix": 1795646431.2371836,
+      "host_supervisor_pid": 71070,
+      "label": "checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 155125,
+          "start_ticks": "15064269"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "15064269",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 155123,
+          "start_ticks": "15064263"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 155125,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "877df3a8-4073-4a7f-a4d3-643fbaa38ff5",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 155122
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03.log",
+      "number": 3,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03.json",
+      "repetitions": 20,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03",
+        "--label",
+        "checkpoint-b2de070",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_linux",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "877df3a8-4073-4a7f-a4d3-643fbaa38ff5",
+        "--repetitions",
+        "20"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03.json"
+      ],
+      "started_unix": 1795646347.9096181,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 10,
+              "median_ms": 9.500000000003638,
+              "p95_ms": 10,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            384.9999999999998
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 98,
+              "median_ms": 83.49999999999272,
+              "p95_ms": 96,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 13,
+              "median_ms": 11.000000000007276,
+              "p95_ms": 13,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 396,
+          "median_ms": 361.0,
+          "p95_ms": 384.9999999999998,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 6,
+              "max_ms": 11,
+              "median_ms": 9.000000000001819,
+              "p95_ms": 11,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            404
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 159,
+              "median_ms": 142.5,
+              "p95_ms": 159,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 50,
+              "median_ms": 44.99999999999636,
+              "p95_ms": 49.99999999999636,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 544,
+          "median_ms": 443.5,
+          "p95_ms": 483,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 3,
+              "max_ms": 11.999999999985448,
+              "median_ms": 10.000000000007276,
+              "p95_ms": 11.999999999985448,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            511
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 52,
+              "median_ms": 45.0,
+              "p95_ms": 50,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 20,
+              "max_ms": 177.9999999999991,
+              "median_ms": 156.0,
+              "p95_ms": 173,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 520,
+          "median_ms": 485.00000000000546,
+          "p95_ms": 511,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 3,
+              "max_ms": 10.999999999992724,
+              "median_ms": 8,
+              "p95_ms": 10.999999999992724,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            477
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 46.00000000001455,
+              "median_ms": 38.0,
+              "p95_ms": 45,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 20,
+              "max_ms": 194,
+              "median_ms": 174.50000000000182,
+              "p95_ms": 194,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 520,
+          "median_ms": 476.99999999999636,
+          "p95_ms": 516,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {},
+          "count": 1,
+          "first_use_ms": [
+            721
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 176,
+              "median_ms": 176,
+              "p95_ms": 176,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 255.99999999999994,
+              "median_ms": 255.99999999999994,
+              "p95_ms": 255.99999999999994,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 721,
+          "median_ms": 721,
+          "p95_ms": 721,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 9,
+              "median_ms": 8.0,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            484
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 115.99999999999636,
+              "median_ms": 85.50000000000182,
+              "p95_ms": 110,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 75,
+              "median_ms": 67.5,
+              "p95_ms": 74,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 484,
+          "median_ms": 446.5000000000018,
+          "p95_ms": 474,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 6,
+              "max_ms": 17,
+              "median_ms": 9.5,
+              "p95_ms": 17,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            506
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 177,
+              "median_ms": 156.5,
+              "p95_ms": 176,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 44.00000000001455,
+              "median_ms": 33.49999999999454,
+              "p95_ms": 44,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 506,
+          "median_ms": 446.0,
+          "p95_ms": 499,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 20,
+          "first_use_ms": 384.9999999999998,
+          "max_ms": 396,
+          "p50_ms": 360,
+          "p95_ms": 384.9999999999998
+        },
+        "branch_first": {
+          "count": 20,
+          "first_use_ms": 404,
+          "max_ms": 544,
+          "p50_ms": 443,
+          "p95_ms": 483
+        },
+        "comment_branch": {
+          "count": 20,
+          "first_use_ms": 511,
+          "max_ms": 520,
+          "p50_ms": 483.00000000000364,
+          "p95_ms": 511
+        },
+        "comment_worktree": {
+          "count": 20,
+          "first_use_ms": 477,
+          "max_ms": 520,
+          "p50_ms": 476.9999999999927,
+          "p95_ms": 516
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 721,
+          "max_ms": 721,
+          "p50_ms": 721,
+          "p95_ms": 721
+        },
+        "stack": {
+          "count": 20,
+          "first_use_ms": 484,
+          "max_ms": 484,
+          "p50_ms": 446.00000000000364,
+          "p95_ms": 474
+        },
+        "working_tree": {
+          "count": 20,
+          "first_use_ms": 506,
+          "max_ms": 506,
+          "p50_ms": 439,
+          "p95_ms": 499
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03.cleanup.log",
+      "finished_unix": 1795646514.4665344,
+      "host_supervisor_pid": 71640,
+      "label": "stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+          "pid": 159001,
+          "start_ticks": "15072602"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+        "created": "15072602",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 158999,
+          "start_ticks": "15072596"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 159001,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "e35aecea-228c-4e92-83a9-4fed283ddacd",
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "supervisor_pid": 158998
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03.log",
+      "number": 3,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03.json",
+      "repetitions": 20,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03",
+        "--label",
+        "stateless-status-b2de070",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_linux",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "e35aecea-228c-4e92-83a9-4fed283ddacd",
+        "--repetitions",
+        "20"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03.json"
+      ],
+      "started_unix": 1795646431.2503078,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/verdict.json"
+    }
+  ],
+  "runtime_release": "VM WSL STATUS CONTROL RELEASED",
+  "seed_sha256": "80f06f8a1d1b26802d70202b5cbc27c00393a5fa1e8573cf3b968b3c297278c1",
+  "seed_verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/seed-baseline-compat-wsl-linux/verdict.json",
+  "start_ticks": "76861829",
+  "started_unix": 1795646259.2271624,
+  "status": "complete-valid-awaiting-10percent-review",
+  "transport": "One private master/forward; task-local host ssh wrapper selects it, forbids fresh TCP fallback and never exports host PATH.",
+  "transport_helper_sha256": "a9587333c5dd330c6fc2f830d6d9d0ae74042c45edc6a47e3ad173b210d49052",
+  "variants": {
+    "A": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json",
+      "build_record_sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384",
+      "embedded_helper": {
+        "bytes": 2720768,
+        "path": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline-git-worker.exe",
+        "preserved_from": "/home/max/benchmarks/branchline-boundary/helper-placement/placement-v3-01/windows/foreign/branchline-git-worker.exe",
+        "sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2"
+      },
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+      "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-build.json",
+      "build_record_sha256": "98ed2a83f25dc30e82deba3b521c6327cc3ee1d65beb0a162c7d8122088b7da1",
+      "embedded_helper": {
+        "bytes": 2726400,
+        "imports": [
+          "bcryptprimitives.dll",
+          "KERNEL32.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "WS2_32.dll",
+          "ntdll.dll",
+          "ADVAPI32.dll",
+          "Secur32.dll"
+        ],
+        "path": "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+        "recipe": {
+          "CARGO_BUILD_JOBS": "1",
+          "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+          "RUSTFLAGS": "-C target-feature=+crt-static",
+          "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+          "XWIN_CROSS_COMPILER": "clang",
+          "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+          "target": "x86_64-pc-windows-msvc"
+        },
+        "sha256": "8fafdb059c64cf88d7ab5815f3ca20af8b80e16aa7eed52be691813dcc8f16c3",
+        "source_binary": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+        "static_crt_import_check": true
+      },
+      "label": "stateless-status-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source",
+      "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+    }
+  }
+}

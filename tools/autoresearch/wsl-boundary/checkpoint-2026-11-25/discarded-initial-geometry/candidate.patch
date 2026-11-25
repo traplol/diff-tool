@@ -1,0 +1,22 @@
+--- a/frontend/editor.js
++++ b/frontend/editor.js
+@@ -1472,6 +1472,7 @@
+       layout.root.inert = true;
+     }
+     layout = layouts.get(split);
++    const created = !layout;
+     const staleContext = layout && layout.controls !== controls;
+     // A resize can wrap a comment and change every row position below it.
+     const measured =
+@@ -1542,6 +1543,11 @@
+         : 0;
+     restorePosition(saved, { measured, restored });
+     announceSelection();
++    if (created) {
++      // Resolve the mounted editor's initial geometry before its first paint,
++      // rather than presenting a provisional viewport and measuring it later.
++      for (const { view } of layout.panes) view.lineBlockAtHeight(0);
++    }
+   }
+ 
+   showLayout(options.mode?.toLowerCase() === "split", options.position);

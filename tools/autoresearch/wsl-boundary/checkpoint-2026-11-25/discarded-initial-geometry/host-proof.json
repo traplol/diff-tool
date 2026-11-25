@@ -1,0 +1,13 @@
+{
+  "source_hash": "071ee12ca22b855f5cdfdd6e3c40951755369e1bd3d4834b551139f9964788ca",
+  "baseline_source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "recorded_at_unix": 1795643559.3592656,
+  "command": "npm test && npm run build",
+  "tool_session": 48700,
+  "test_suites_passed": 5,
+  "test_suites_failed": 0,
+  "build": "passed",
+  "raw_stdout": "tool session48700; no separate stdout file was captured",
+  "scope": "host frontend checks only; no native correctness, performance or promotion",
+  "promoted": false
+}

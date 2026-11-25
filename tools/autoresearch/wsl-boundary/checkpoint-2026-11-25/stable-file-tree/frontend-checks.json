@@ -1,0 +1,53 @@
+{
+  "started_utc": "2026-11-25T21:52:30.291728+00:00",
+  "source_hash": "69589c0283e3560c6c1edc160064c47f7794068f7a0bdfa824329ab158e73d73",
+  "stages": [
+    {
+      "name": "focused-tests",
+      "argv": [
+        "node",
+        "--test",
+        "frontend/review-ui.test.js"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "started_utc": "2026-11-25T21:52:30.291754+00:00",
+      "finished_utc": "2026-11-25T21:52:30.355562+00:00",
+      "log": "focused-tests.log",
+      "log_sha256": "5302f9086c7786d3e0e551a5508adb1d77d52eb3e6e5680f58e28da514950cf8"
+    },
+    {
+      "name": "frontend-tests",
+      "argv": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "started_utc": "2026-11-25T21:52:30.355793+00:00",
+      "finished_utc": "2026-11-25T21:52:30.519937+00:00",
+      "log": "frontend-tests.log",
+      "log_sha256": "ea97538ca2db64aa0d1bab5f50036595e2bacf7ed3a1ecfbb20c68f9a3cbedf2"
+    },
+    {
+      "name": "vite-build",
+      "argv": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "started_utc": "2026-11-25T21:52:30.520267+00:00",
+      "finished_utc": "2026-11-25T21:52:31.335550+00:00",
+      "log": "vite-build.log",
+      "log_sha256": "39bb549a45d61a01e338f3f3d0b61fb47320be8a398aba1d665bea7c6f574067"
+    }
+  ],
+  "host_checks_released": true,
+  "native_checks_run": false,
+  "rust_or_native_builds_run": false,
+  "finished_utc": "2026-11-25T21:52:31.335791+00:00",
+  "source_identity_preserved": true,
+  "all_passed": true
+}

@@ -1,0 +1,23 @@
+{
+  "canonical_stop": {
+    "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+    "stopped_pids": [
+      11856,
+      5816
+    ]
+  },
+  "exact_owned_processes_absent": true,
+  "observed_children": [
+    {
+      "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+      "created": "2026-11-25T17:10:00.1312330-05:00",
+      "pid": 14080
+    },
+    {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+      "created": "2026-11-25T17:10:01.9961900-05:00",
+      "pid": 5816
+    }
+  ],
+  "ports_free": true
+}

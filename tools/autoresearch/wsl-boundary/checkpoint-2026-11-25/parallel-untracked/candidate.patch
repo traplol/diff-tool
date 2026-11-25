@@ -1,0 +1,380 @@
+--- a/src-tauri/src/git.rs
++++ b/src-tauri/src/git.rs
+@@ -1309,98 +1309,120 @@
+     }
+     if untracked_paths.is_none_or(|p| !p.is_empty()) {
+         let others = others.map_err(|_| "The untracked Git read panicked.")??;
+-        for raw in others.split(|&b| b == 0).filter(|p| !p.is_empty()) {
+-            let path = name(raw.strip_suffix(b"/").unwrap_or(raw));
+-            if untracked_paths.is_some_and(|p| !p.contains(&path)) {
+-                continue;
+-            }
+-            let arg = path_arg(&path)?;
+-            let target = repo.root.join(&arg);
+-            let kind = fs::symlink_metadata(&target)
+-                .map_err(|e| e.to_string())?
+-                .file_type();
+-            if kind.is_dir() && target.join(".git").exists() {
+-                let oid = git_text(&target, &["rev-parse", "--verify", "HEAD"])
+-                    .unwrap_or_else(|_| "0".repeat(base.len()));
+-                files.push(Change {
+-                    status: "A".into(),
+-                    old: path.clone(),
+-                    path,
+-                    added: Some(0),
+-                    removed: Some(0),
+-                    old_mode: "000000".into(),
+-                    mode: "160000".into(),
+-                    old_oid: "0".repeat(oid.len()),
+-                    oid,
+-                    group: "Untracked".into(),
+-                    local_sections: vec![],
+-                });
+-            } else if kind.is_symlink() || kind.is_file() {
+-                // Pass a regular copy of link text. Git's --no-index can follow a
+-                // link to a directory or FIFO when the link is a command argument.
+-                let temp;
+-                let source = if kind.is_symlink() {
+-                    #[cfg(windows)]
+-                    let wsl = windows::WslCheckout::from_path(&repo.root);
+-                    #[cfg(windows)]
+-                    let scratch = if let Some(wsl) = &wsl {
+-                        tempfile::tempdir_in(wsl.host_path(Path::new("/tmp"))?)
+-                    } else {
+-                        tempfile::tempdir()
+-                    };
+-                    #[cfg(not(windows))]
+-                    let scratch = tempfile::tempdir();
+-                    temp = scratch.map_err(|e| e.to_string())?;
+-                    let native_link = || {
+-                        fs::read_link(&target)
+-                            .map(|path| path.as_os_str().as_encoded_bytes().to_vec())
+-                            .map_err(|e| e.to_string())
+-                    };
+-                    #[cfg(windows)]
+-                    let link = match &wsl {
+-                        Some(wsl) => wsl.link_target(&arg)?,
+-                        None => native_link()?,
+-                    };
+-                    #[cfg(not(windows))]
+-                    let link = native_link()?;
+-                    let source = temp.path().join("link");
+-                    fs::write(&source, link).map_err(|e| e.to_string())?;
+-                    #[cfg(windows)]
+-                    if wsl.is_some() {
+-                        windows::WslCheckout::from_path(&source)
+-                            .ok_or("Could not resolve the WSL temporary file.")?
+-                            .directory
+-                    } else {
+-                        source.into_os_string()
+-                    }
+-                    #[cfg(not(windows))]
+-                    source.into_os_string()
+-                } else {
+-                    let mut source = OsString::from("./");
+-                    source.push(&arg);
+-                    source
+-                };
+-                let mut added = local_changes(
+-                    repo,
+-                    "Untracked",
+-                    &[
+-                        "--no-index".as_ref(),
+-                        "--".as_ref(),
+-                        "/dev/null".as_ref(),
+-                        &source,
+-                    ],
+-                    true,
+-                )?;
+-                for f in &mut added {
+-                    f.old = path.clone();
+-                    f.path = path.clone();
+-                    if kind.is_symlink() {
+-                        f.mode = "120000".into();
+-                    }
+-                }
+-                files.extend(added);
+-            }
+-        }
++        let paths = others
++            .split(|&byte| byte == 0)
++            .filter(|path| !path.is_empty())
++            .map(|raw| name(raw.strip_suffix(b"/").unwrap_or(raw)))
++            .filter(|path| untracked_paths.is_none_or(|paths| paths.contains(path)))
++            .collect::<Vec<_>>();
++        // Bound child processes and preserve Git's listing/error order. Join
++        // every capture before returning, including when an earlier read fails.
++        for paths in paths.chunks(4) {
++            let captures = std::thread::scope(|scope| {
++                let reads = paths
++                    .iter()
++                    .map(|path| scope.spawn(|| untracked_changes(repo, base, path)))
++                    .collect::<Vec<_>>();
++                reads
++                    .into_iter()
++                    .map(|read| read.join())
++                    .collect::<Vec<_>>()
++            });
++            for capture in captures {
++                files.extend(capture.map_err(|_| "The untracked Git capture panicked.")??);
++            }
++        }
++    }
++    Ok(files)
++}
++
++fn untracked_changes(repo: &Repository, base: &str, path: &str) -> Result<Vec<Change>> {
++    let mut files = Vec::new();
++    let arg = path_arg(path)?;
++    let target = repo.root.join(&arg);
++    let kind = fs::symlink_metadata(&target)
++        .map_err(|e| e.to_string())?
++        .file_type();
++    if kind.is_dir() && target.join(".git").exists() {
++        let oid = git_text(&target, &["rev-parse", "--verify", "HEAD"])
++            .unwrap_or_else(|_| "0".repeat(base.len()));
++        files.push(Change {
++            status: "A".into(),
++            old: path.to_owned(),
++            path: path.to_owned(),
++            added: Some(0),
++            removed: Some(0),
++            old_mode: "000000".into(),
++            mode: "160000".into(),
++            old_oid: "0".repeat(oid.len()),
++            oid,
++            group: "Untracked".into(),
++            local_sections: vec![],
++        });
++    } else if kind.is_symlink() || kind.is_file() {
++        // Pass a regular copy of link text. Git's --no-index can follow a
++        // link to a directory or FIFO when the link is a command argument.
++        let temp;
++        let source = if kind.is_symlink() {
++            #[cfg(windows)]
++            let wsl = windows::WslCheckout::from_path(&repo.root);
++            #[cfg(windows)]
++            let scratch = if let Some(wsl) = &wsl {
++                tempfile::tempdir_in(wsl.host_path(Path::new("/tmp"))?)
++            } else {
++                tempfile::tempdir()
++            };
++            #[cfg(not(windows))]
++            let scratch = tempfile::tempdir();
++            temp = scratch.map_err(|e| e.to_string())?;
++            let native_link = || {
++                fs::read_link(&target)
++                    .map(|path| path.as_os_str().as_encoded_bytes().to_vec())
++                    .map_err(|e| e.to_string())
++            };
++            #[cfg(windows)]
++            let link = match &wsl {
++                Some(wsl) => wsl.link_target(&arg)?,
++                None => native_link()?,
++            };
++            #[cfg(not(windows))]
++            let link = native_link()?;
++            let source = temp.path().join("link");
++            fs::write(&source, link).map_err(|e| e.to_string())?;
++            #[cfg(windows)]
++            if wsl.is_some() {
++                windows::WslCheckout::from_path(&source)
++                    .ok_or("Could not resolve the WSL temporary file.")?
++                    .directory
++            } else {
++                source.into_os_string()
++            }
++            #[cfg(not(windows))]
++            source.into_os_string()
++        } else {
++            let mut source = OsString::from("./");
++            source.push(&arg);
++            source
++        };
++        let mut added = local_changes(
++            repo,
++            "Untracked",
++            &[
++                "--no-index".as_ref(),
++                "--".as_ref(),
++                "/dev/null".as_ref(),
++                &source,
++            ],
++            true,
++        )?;
++        for f in &mut added {
++            f.old = path.to_owned();
++            f.path = path.to_owned();
++            if kind.is_symlink() {
++                f.mode = "120000".into();
++            }
++        }
++        files.extend(added);
+     }
+     Ok(files)
+ }
+--- a/src-tauri/src/git_tests.rs
++++ b/src-tauri/src/git_tests.rs
+@@ -1031,3 +1031,162 @@
+     assert!(names.split(|byte| *byte == 0).any(|path| path == b"invalid\xff\t\n"));
+     assert!(marker.exists(), "the existing configured Git hook must remain effective");
+ }
++
++#[test]
++fn parallel_untracked_keeps_git_order_raw_patches_and_frozen_content() {
++    let dir = history();
++    let root = dir.path();
++    write(&dir, "tracked", b"base\n");
++    write(&dir, ".gitignore", b"ignored\n");
++    record(&dir, "Base");
++    for (path, bytes) in [
++        ("a-empty", b"".as_slice()),
++        ("b-text", b"first\nsecond\n"),
++        ("c-binary", b"binary\0bytes"),
++        ("d space", b"space\n"),
++        ("e[1]", b"literal\n"),
++        ("g-last", b"last\n"),
++        ("ignored", b"hidden\n"),
++    ] {
++        write(&dir, path, bytes);
++    }
++    let nested = root.join("f-nested");
++    fs::create_dir(&nested).unwrap();
++    git(&nested, &["init", "-qb", "main"]).unwrap();
++    git(&nested, &["config", "user.name", "Nested"]).unwrap();
++    git(&nested, &["config", "user.email", "nested@example.test"]).unwrap();
++    git(&nested, &["config", "commit.gpgsign", "false"]).unwrap();
++    fs::write(nested.join("inside"), b"nested\n").unwrap();
++    git(&nested, &["add", "."]).unwrap();
++    git(&nested, &["commit", "-qm", "Nested"]).unwrap();
++    #[cfg(unix)]
++    std::os::unix::fs::symlink(".", root.join("h-dirlink")).unwrap();
++    let before = status_guard_files(root);
++    let mut repo = open_repo(root).unwrap();
++    repo.native = None;
++    let snapshot = work(&repo);
++    let listed = git(
++        root,
++        &["ls-files", "--others", "--exclude-standard", "-z", "--"],
++    )
++    .unwrap();
++    let expected = listed
++        .split(|&byte| byte == 0)
++        .filter(|path| !path.is_empty())
++        .map(|path| name(path.strip_suffix(b"/").unwrap_or(path)))
++        .collect::<Vec<_>>();
++    assert_eq!(
++        snapshot
++            .files
++            .iter()
++            .map(|file| file.path.clone())
++            .collect::<Vec<_>>(),
++        expected
++    );
++    assert!(snapshot.files.len() > 4, "exercise multiple batches");
++    assert!(snapshot.files.iter().all(|file| file.group == "Untracked"));
++    assert_eq!(file(&snapshot, "Untracked", "c-binary").added, None);
++    assert_eq!(file(&snapshot, "Untracked", "a-empty").added, Some(0));
++    assert_eq!(file(&snapshot, "Untracked", "f-nested").mode, "160000");
++    assert_eq!(
++        file(&snapshot, "Untracked", "f-nested").oid,
++        git_text(&nested, &["rev-parse", "HEAD"]).unwrap()
++    );
++    #[cfg(unix)]
++    {
++        assert_eq!(file(&snapshot, "Untracked", "h-dirlink").mode, "120000");
++        assert_eq!(content(&repo, &snapshot, "Untracked", "h-dirlink"), ["."]);
++    }
++    // Compare regular-file captures with the original one-at-a-time Git reads.
++    for change in &snapshot.files {
++        if change.mode == "160000" || change.mode == "120000" {
++            continue;
++        }
++        let mut source = OsString::from("./");
++        source.push(path_arg(&change.path).unwrap());
++        let mut expected = local_changes(
++            &repo,
++            "Untracked",
++            &[
++                "--no-index".as_ref(),
++                "--".as_ref(),
++                "/dev/null".as_ref(),
++                &source,
++            ],
++            true,
++        )
++        .unwrap();
++        expected[0].old = change.old.clone();
++        expected[0].path = change.path.clone();
++        assert_eq!(
++            serde_json::to_value(change).unwrap(),
++            serde_json::to_value(&expected[0]).unwrap()
++        );
++        assert_eq!(change.local_sections, expected[0].local_sections);
++    }
++    let frozen = snapshot
++        .files
++        .iter()
++        .map(|change| {
++            (
++                patch(&repo, &snapshot, change).unwrap(),
++                file_contents(&repo, change),
++            )
++        })
++        .collect::<Vec<_>>();
++    assert_eq!(status_guard_files(root), before);
++    for path in ["a-empty", "b-text", "c-binary", "d space", "e[1]", "g-last"] {
++        fs::remove_file(root.join(path)).unwrap();
++    }
++    #[cfg(unix)]
++    fs::remove_file(root.join("h-dirlink")).unwrap();
++    write(&dir, "tracked", b"new staged content\n");
++    git(root, &["add", "tracked"]).unwrap();
++    for (change, (rows, contents)) in snapshot.files.iter().zip(frozen) {
++        assert_eq!(patch(&repo, &snapshot, change).unwrap(), rows);
++        assert_eq!(file_contents(&repo, change), contents);
++    }
++}
++
++#[cfg(unix)]
++#[test]
++fn parallel_untracked_preserves_first_error_with_multiple_failed_reads() {
++    use std::os::unix::fs::PermissionsExt;
++    let dir = history();
++    let root = dir.path();
++    write(&dir, "tracked", b"base\n");
++    record(&dir, "Base");
++    for path in ["a-denied", "b-denied", "c-valid", "d-valid", "e-valid"] {
++        write(&dir, path, b"untracked\n");
++    }
++    let mut repo = open_repo(root).unwrap();
++    repo.native = None;
++    for path in ["a-denied", "b-denied"] {
++        fs::set_permissions(root.join(path), fs::Permissions::from_mode(0)).unwrap();
++    }
++    let before = status_guard_files(root);
++    let expected = local_changes(
++        &repo,
++        "Untracked",
++        &[
++            "--no-index".as_ref(),
++            "--".as_ref(),
++            "/dev/null".as_ref(),
++            "./a-denied".as_ref(),
++        ],
++        true,
++    )
++    .unwrap_err();
++    let actual = working_changes_cli(&repo, &repo.refs[&repo.checkout], None, None).unwrap_err();
++    for path in ["a-denied", "b-denied"] {
++        fs::set_permissions(root.join(path), fs::Permissions::from_mode(0o600)).unwrap();
++    }
++    assert!(expected.contains("a-denied"), "{expected}");
++    assert_eq!(actual, expected);
++    assert_eq!(status_guard_files(root), before);
++    assert_eq!(
++        work(&repo).files.len(),
++        5,
++        "subsequent reads still complete after the error"
++    );
++}

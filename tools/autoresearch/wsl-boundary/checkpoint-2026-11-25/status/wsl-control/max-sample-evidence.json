@@ -1,0 +1,212 @@
+{
+  "B_max_minus_A_max": {
+    "elapsed_ms": 64,
+    "foreground_ipc_union_ms": -4.000000000007276,
+    "non_foreground_ipc_ms": 68.00000000000728
+  },
+  "guard": "Repeated branch-first max544vs480 exceeds10%; retained without waiver.",
+  "interpretation": "The extra64ms is outside the recorded foreground IPC intervals: foreground coverage is4ms lower and the remainder68ms higher. B has no recorded background IPC; A max has a14ms refresh_notes. The remainder includes UI handling, rendering, frames/waits and other unrecorded work; its cause is unproved.",
+  "samples": {
+    "A_max": {
+      "background_intervals": [
+        {
+          "command": "workspace",
+          "elapsed_ms": 14.000000000007276,
+          "end_ms": 353.0000000000073,
+          "error": null,
+          "op": "refresh_notes",
+          "pending": false,
+          "start_ms": 339
+        }
+      ],
+      "foreground_intervals": [
+        {
+          "command": "workspace",
+          "elapsed_ms": 158.00000000000728,
+          "end_ms": 158.00000000000728,
+          "op": "compare",
+          "start_ms": 0
+        },
+        {
+          "command": "workspace",
+          "elapsed_ms": 47.999999999992724,
+          "end_ms": 212.0,
+          "op": "display_patch",
+          "start_ms": 164.00000000000728
+        }
+      ],
+      "foreground_ipc_union_ms": 206.0,
+      "non_foreground_ipc_ms": 274.0,
+      "post_last_foreground_ipc_ms": 268.0,
+      "raw": {
+        "action": "branch_first",
+        "background_ipc": [
+          {
+            "command": "workspace",
+            "elapsed_ms": 14.000000000007276,
+            "error": null,
+            "op": "refresh_notes",
+            "pending": false,
+            "start_ms": 339
+          }
+        ],
+        "correct": true,
+        "elapsed_ms": 480,
+        "expected": {
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16",
+          "right": "refs/heads/feature/boundary-first",
+          "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+        },
+        "file": "arch/parisc/include/asm/extable.h",
+        "file_count": 30,
+        "ipc": [
+          {
+            "command": "workspace",
+            "elapsed_ms": 158.00000000000728,
+            "op": "compare",
+            "start_ms": 0
+          },
+          {
+            "command": "workspace",
+            "elapsed_ms": 47.999999999992724,
+            "op": "display_patch",
+            "start_ms": 164.00000000000728
+          }
+        ],
+        "left": "refs/heads/main",
+        "phase": "repeated",
+        "repetition": 14,
+        "right": "refs/heads/feature/boundary-first"
+      },
+      "run_finished_utc": "2026-11-25T22:40:30.809041+00:00",
+      "run_started_utc": "2026-11-25T22:39:09.052818+00:00",
+      "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/014-branch_first.png",
+      "screenshot_written_utc": "2026-11-25T22:40:07.292602+00:00"
+    },
+    "A_near_p50": {
+      "background_intervals": [],
+      "foreground_intervals": [
+        {
+          "command": "workspace",
+          "elapsed_ms": 137,
+          "end_ms": 137,
+          "op": "compare",
+          "start_ms": 0
+        },
+        {
+          "command": "workspace",
+          "elapsed_ms": 46,
+          "end_ms": 187.99999999999272,
+          "op": "display_patch",
+          "start_ms": 141.99999999999272
+        }
+      ],
+      "foreground_ipc_union_ms": 183.0,
+      "non_foreground_ipc_ms": 256.9999999999927,
+      "post_last_foreground_ipc_ms": 252.0,
+      "raw": {
+        "action": "branch_first",
+        "background_ipc": [],
+        "correct": true,
+        "elapsed_ms": 439.9999999999927,
+        "expected": {
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16",
+          "right": "refs/heads/feature/boundary-first",
+          "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+        },
+        "file": "arch/parisc/include/asm/extable.h",
+        "file_count": 30,
+        "ipc": [
+          {
+            "command": "workspace",
+            "elapsed_ms": 137,
+            "op": "compare",
+            "start_ms": 0
+          },
+          {
+            "command": "workspace",
+            "elapsed_ms": 46,
+            "op": "display_patch",
+            "start_ms": 141.99999999999272
+          }
+        ],
+        "left": "refs/heads/main",
+        "phase": "repeated",
+        "repetition": 15,
+        "right": "refs/heads/feature/boundary-first"
+      },
+      "run_finished_utc": "2026-11-25T22:40:30.809041+00:00",
+      "run_started_utc": "2026-11-25T22:39:09.052818+00:00",
+      "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/015-branch_first.png",
+      "screenshot_written_utc": "2026-11-25T22:40:11.524693+00:00"
+    },
+    "B_max": {
+      "background_intervals": [],
+      "foreground_intervals": [
+        {
+          "command": "workspace",
+          "elapsed_ms": 155,
+          "end_ms": 156,
+          "op": "compare",
+          "start_ms": 1
+        },
+        {
+          "command": "workspace",
+          "elapsed_ms": 46.999999999992724,
+          "end_ms": 208.0,
+          "op": "display_patch",
+          "start_ms": 161.00000000000728
+        }
+      ],
+      "foreground_ipc_union_ms": 201.99999999999272,
+      "non_foreground_ipc_ms": 342.0000000000073,
+      "post_last_foreground_ipc_ms": 336.0,
+      "raw": {
+        "action": "branch_first",
+        "background_ipc": [],
+        "correct": true,
+        "elapsed_ms": 544,
+        "expected": {
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16",
+          "right": "refs/heads/feature/boundary-first",
+          "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+        },
+        "file": "arch/parisc/include/asm/extable.h",
+        "file_count": 30,
+        "ipc": [
+          {
+            "command": "workspace",
+            "elapsed_ms": 155,
+            "op": "compare",
+            "start_ms": 1
+          },
+          {
+            "command": "workspace",
+            "elapsed_ms": 46.999999999992724,
+            "op": "display_patch",
+            "start_ms": 161.00000000000728
+          }
+        ],
+        "left": "refs/heads/main",
+        "phase": "repeated",
+        "repetition": 11,
+        "right": "refs/heads/feature/boundary-first"
+      },
+      "run_finished_utc": "2026-11-25T22:41:54.039313+00:00",
+      "run_started_utc": "2026-11-25T22:40:32.297975+00:00",
+      "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/011-branch_first.png",
+      "screenshot_written_utc": "2026-11-25T22:41:19.002492+00:00"
+    }
+  },
+  "status": "descriptive-saved-sample-comparison-no-causality-claim",
+  "timestamp_scope": "IPC starts/ends are relative to action start0. Canonical rows have no absolute action timestamp. Screenshot write times are wall-clock context after sample completion."
+}

@@ -1,0 +1,62 @@
+{
+  "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "windows_gui_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+  "primary_result": "reverse-windows-gates-02/primary-result.json",
+  "passed": [
+    "reverse-native-cache-install-public-root-pinned-refs-content",
+    "reverse-cache-hit-no-rewrite-and-normal-connection-drop",
+    "reverse-corrupt-cache-repair",
+    "reverse-unavailable-cache-verified-source-fallback",
+    "real-native-worker-idle-eof",
+    "real-native-worker-busy-eof",
+    "real-server-invalid-request-recovery",
+    "abrupt-windows-gui-idle",
+    "abrupt-windows-gui-busy-real-read",
+    "abrupt-windows-mcp-idle-after-completed-real-read-and-request-drop",
+    "abrupt-windows-mcp-busy-real-read",
+    "actual-client-wrong-response-id-invalidation-and-native-child-cleanup-before-connection-drop-both-OS"
+  ],
+  "unproved": [],
+  "preserved_failures": [
+    {
+      "result": "reverse-windows-gates-01/primary-result.json",
+      "type": "controller tunnel argv and ownership-sidecar UTF8 decoding; before repoOpen; repaired only in isolated controller"
+    },
+    {
+      "result": "reverse-windows-lifecycle-03/primary-result.json",
+      "type": "new SSH banner exchange timeout while Git paused; watchdog resumed child; cleanup passed"
+    },
+    {
+      "result": "reverse-windows-lifecycle-04/primary-result.json",
+      "type": "MCP request rejected403 due forwarded URL48971 Host header differing from native server28971; request never created native MCP worker"
+    }
+  ],
+  "remaining_controller_fix": "Resolved in isolated controller05 with explicit native Host header; original04 expected security rejection preserved.",
+  "release": {
+    "vm_released": true,
+    "result": "reverse-windows-lifecycle-05/primary-result.json",
+    "owned_native_windows_actors": [],
+    "owned_linux_workers": [],
+    "paused_git_identities": [],
+    "guest_ports_free": [
+      29371,
+      28971
+    ],
+    "controller_exec": 58485,
+    "controller_exit": 0,
+    "controller_host_pid": 49935,
+    "tunnel_pid": 49936,
+    "tunnel_stopped": true,
+    "control_socket_absent": true,
+    "fixture_fingerprints_unchanged": true
+  },
+  "not_a_score": true,
+  "product_changes": false,
+  "lifecycle_results": [
+    "reverse-windows-lifecycle-03/primary-result.json",
+    "reverse-windows-lifecycle-04/primary-result.json",
+    "reverse-windows-lifecycle-05/primary-result.json"
+  ],
+  "lifecycle_limit": "Actual wrong-responseID cleanup now proved on both native clients with retained Connection pipes; no performance claim.",
+  "malformed_client_gate": "../malformed-client-gate/summary.json"
+}

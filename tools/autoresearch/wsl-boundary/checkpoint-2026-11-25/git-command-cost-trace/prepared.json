@@ -1,0 +1,53 @@
+{
+  "time_utc": "2026-11-25T21:31:00.666261+00:00",
+  "baseline_source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+  "instrumented_source_hash": "e72a63dcb70773427a836cc4d68f7e153f08e39c0641a2dd6c01da75be0e9b68",
+  "changed_files": [
+    "src-tauri/src/git.rs"
+  ],
+  "changed_function": "run_git",
+  "scope": "Temporary command(root) construction and child.output timings only. No command cache or optimization.",
+  "log_prefix": "BRANCHLINE_PHASE",
+  "phases": [
+    "git.command",
+    "git.child_output"
+  ],
+  "log_fields": [
+    "pid",
+    "phase",
+    "tag",
+    "elapsed_us"
+  ],
+  "fixed_tags": [
+    "diff.no_index",
+    "diff.cached",
+    "diff.ours",
+    "diff.other",
+    "status",
+    "ls_files.unmerged",
+    "ls_files.others",
+    "rev_parse.git_path",
+    "rev_parse.other",
+    "symbolic_ref",
+    "other"
+  ],
+  "logged_values_excluded": [
+    "paths",
+    "argv",
+    "environment",
+    "stdout",
+    "stderr from child",
+    "Git errors",
+    "revision names"
+  ],
+  "behavior": "Original command(root), args(args), output(), startup-error mapping and exit/output handling retained. Logging is stderr only and ignores write errors. Failed construction emits command phase, then returns the original error; failed spawn emits both phases, then returns original mapped error.",
+  "timing_boundary": "command phase times command(root) only; child_output phase times Command::output only; args insertion, tag selection and diagnostic stderr writes are outside both spans.",
+  "instrumentation": "Always enabled in this isolated diagnostic copy; no new environment variable, config, protocol or runtime product setting. Do not package or score this source.",
+  "tests_run": false,
+  "syntax_or_compile_check": false,
+  "builds_run": false,
+  "vm_calls": false,
+  "commit": false,
+  "main_source_changed": false,
+  "canonical_controls_changed": false
+}

@@ -1,0 +1,272 @@
+{
+  "diagnostic_only": true,
+  "optimization_score_valid": false,
+  "run": "build/experiments/ui-phase-probe/run-20261125T213031571855Z",
+  "rows": [
+    {
+      "action": "branch_final",
+      "repetition": 0,
+      "canonical_elapsed_ms": 571,
+      "last_foreground_ipc_end_ms": 200.00000000000045,
+      "post_ipc_interval_ms": 370.99999999999955,
+      "cm_inclusive_union_ms": 5,
+      "measure_durations_ms": [
+        5,
+        0
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 8.0,
+      "first_measure_callback_lag_ms": 138.99999999999955,
+      "first_measure_start_ms": 347,
+      "second_measure_start_ms": 516,
+      "max_raf_callback_body_ms": 5,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "branch_first",
+      "repetition": 0,
+      "canonical_elapsed_ms": 696,
+      "last_foreground_ipc_end_ms": 394,
+      "post_ipc_interval_ms": 302,
+      "cm_inclusive_union_ms": 7.999999999999545,
+      "measure_durations_ms": [
+        6.999999999999545,
+        1
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 10,
+      "first_measure_callback_lag_ms": 135.00000000000045,
+      "first_measure_start_ms": 539.0000000000005,
+      "second_measure_start_ms": 693,
+      "max_raf_callback_body_ms": 6.999999999999545,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "comment_branch",
+      "repetition": 0,
+      "canonical_elapsed_ms": 628,
+      "last_foreground_ipc_end_ms": 365,
+      "post_ipc_interval_ms": 263,
+      "cm_inclusive_union_ms": 12.000000000001819,
+      "measure_durations_ms": [
+        3,
+        0
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 5,
+      "first_measure_callback_lag_ms": 76,
+      "first_measure_start_ms": 446,
+      "second_measure_start_ms": 598,
+      "max_raf_callback_body_ms": 3,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "comment_worktree",
+      "repetition": 0,
+      "canonical_elapsed_ms": 479,
+      "last_foreground_ipc_end_ms": 248,
+      "post_ipc_interval_ms": 231,
+      "cm_inclusive_union_ms": 11.999999999998181,
+      "measure_durations_ms": [
+        4,
+        0.999999999998181
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 4,
+      "first_measure_callback_lag_ms": 11,
+      "first_measure_start_ms": 263,
+      "second_measure_start_ms": 442.0000000000018,
+      "max_raf_callback_body_ms": 4,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "stack",
+      "repetition": 0,
+      "canonical_elapsed_ms": 406.0000000000009,
+      "last_foreground_ipc_end_ms": 125,
+      "post_ipc_interval_ms": 281.0000000000009,
+      "cm_inclusive_union_ms": 11,
+      "measure_durations_ms": [
+        8,
+        1
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 11,
+      "first_measure_callback_lag_ms": 116.00000000000091,
+      "first_measure_start_ms": 252.0000000000009,
+      "second_measure_start_ms": 380,
+      "max_raf_callback_body_ms": 8,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "working_tree",
+      "repetition": 0,
+      "canonical_elapsed_ms": 1653,
+      "last_foreground_ipc_end_ms": 1359,
+      "post_ipc_interval_ms": 294,
+      "cm_inclusive_union_ms": 2.9999999999990905,
+      "measure_durations_ms": [
+        2.9999999999990905,
+        0
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 8,
+      "first_measure_callback_lag_ms": 86.00000000000091,
+      "first_measure_start_ms": 1453.000000000001,
+      "second_measure_start_ms": 1613,
+      "max_raf_callback_body_ms": 3.9999999999990905,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "branch_final",
+      "repetition": 1,
+      "canonical_elapsed_ms": 450,
+      "last_foreground_ipc_end_ms": 162.00000000000182,
+      "post_ipc_interval_ms": 287.9999999999982,
+      "cm_inclusive_union_ms": 7.000000000001819,
+      "measure_durations_ms": [
+        5,
+        1.000000000001819
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 2.999999999998181,
+      "first_measure_callback_lag_ms": 148,
+      "first_measure_start_ms": 313,
+      "second_measure_start_ms": 443,
+      "max_raf_callback_body_ms": 5,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "branch_first",
+      "repetition": 1,
+      "canonical_elapsed_ms": 451,
+      "last_foreground_ipc_end_ms": 194,
+      "post_ipc_interval_ms": 257,
+      "cm_inclusive_union_ms": 8,
+      "measure_durations_ms": [
+        6,
+        1
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 4,
+      "first_measure_callback_lag_ms": 111,
+      "first_measure_start_ms": 309,
+      "second_measure_start_ms": 444,
+      "max_raf_callback_body_ms": 6,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "comment_branch",
+      "repetition": 1,
+      "canonical_elapsed_ms": 498,
+      "last_foreground_ipc_end_ms": 214.0,
+      "post_ipc_interval_ms": 284.0,
+      "cm_inclusive_union_ms": 14.999999999998181,
+      "measure_durations_ms": [
+        5,
+        0
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 6.000000000001819,
+      "first_measure_callback_lag_ms": 83.99999999999818,
+      "first_measure_start_ms": 304,
+      "second_measure_start_ms": 464,
+      "max_raf_callback_body_ms": 5,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "comment_worktree",
+      "repetition": 1,
+      "canonical_elapsed_ms": 483,
+      "last_foreground_ipc_end_ms": 216,
+      "post_ipc_interval_ms": 267,
+      "cm_inclusive_union_ms": 7.000000000001819,
+      "measure_durations_ms": [
+        4,
+        0
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 7.000000000001819,
+      "first_measure_callback_lag_ms": 110.99999999999818,
+      "first_measure_start_ms": 334,
+      "second_measure_start_ms": 477,
+      "max_raf_callback_body_ms": 4,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "stack",
+      "repetition": 1,
+      "canonical_elapsed_ms": 440,
+      "last_foreground_ipc_end_ms": 153,
+      "post_ipc_interval_ms": 287,
+      "cm_inclusive_union_ms": 3,
+      "measure_durations_ms": [
+        3,
+        0
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 6,
+      "first_measure_callback_lag_ms": 93,
+      "first_measure_start_ms": 252,
+      "second_measure_start_ms": 402,
+      "max_raf_callback_body_ms": 3,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    },
+    {
+      "action": "working_tree",
+      "repetition": 1,
+      "canonical_elapsed_ms": 457,
+      "last_foreground_ipc_end_ms": 217,
+      "post_ipc_interval_ms": 240,
+      "cm_inclusive_union_ms": 5.000000000001819,
+      "measure_durations_ms": [
+        5.000000000001819,
+        0
+      ],
+      "new_view_initial_measure_request_after_ipc_ms": 4,
+      "first_measure_callback_lag_ms": 95,
+      "first_measure_start_ms": 316,
+      "second_measure_start_ms": 453,
+      "max_raf_callback_body_ms": 5.000000000001819,
+      "position_save_durations_ms": [
+        0
+      ],
+      "dropped_events": 0
+    }
+  ],
+  "findings": [
+    "Initial new-view measurement request is3\u201311ms after final patch IPC, bounding decoding/initial constructor/pre-construction size reads together in this workload.",
+    "Every position-save lineBlockAtHeight is0ms at browser clock precision; no synchronous measure appears nested in it.",
+    "Initial CM measure is3\u20138ms, subsequent measure0\u20131ms; maximum recorded rAF callback body is8ms.",
+    "Long intervals before rAF callback entry remain. This trace does not establish pure paint, compositor, GPU or CPU cause.",
+    "Small repeated comment-decoration updates are source-proven and measured, but their total CM time is at most15ms and does not explain the250ms target gap."
+  ],
+  "limitations": [
+    "Only two repetitions; no comparative optimization claim.",
+    "Source and diagnostic capture listeners run sequentially; cross-probe relative boundaries have small observer/clock-resolution uncertainty.",
+    "Native work outside hooked methods remains unmeasured; no required completion frames are subtracted."
+  ],
+  "next_diagnostic": "External exact-GUI-descendant CPU ticks and WebKit main-thread state during the same actions; prepared only."
+}

@@ -1,0 +1,62 @@
+{
+  "pid": 74815,
+  "started": 1795646682.8525755,
+  "status": "failed; inspect remote supervisor ownership before retry",
+  "release": "VM STAGED BUILD RELEASED",
+  "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+  "archive": {
+    "build_plan_sha256": "d2b3b25fc2ecb16dfebc5f94fa97348e25767f47513b1b43dd4b75f6118eb8e5",
+    "bytes": 6225920,
+    "host_launcher_sha256": "071baf89d134b574797c78822d97394b93c6de4ae5730433a82c5c8d24209255",
+    "name": "staged-anchor-metadata-aba80d920269-input.tar",
+    "path": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/staged-anchor-metadata-aba80d920269-input.tar",
+    "sha256": "16e1e18a368acf505c89a1c402f3b101c4b13d688496fedfae60201ea92ca56e",
+    "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+    "status": "prepared only; no VM commands run",
+    "vm_supervisor_sha256": "1eed4e65cc9178d5a79fce38b9ce84c99182e082598d28fc931ed56f6f0a0dfd"
+  },
+  "phases": [
+    {
+      "name": "staged-upload-input",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "cat > /c/Users/max/branchline-bench/staged-anchor-metadata-aba80d920269-input.tar"
+      ],
+      "started": 1795646682.8550851,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/staged-upload-input.log",
+      "pid": 74816,
+      "exit": 0,
+      "finished": 1795646683.1779597
+    },
+    {
+      "name": "staged-vm-build",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "MSYS_NO_PATHCONV=1 wsl.exe --distribution Ubuntu-26.04 --user max --exec /bin/sh -lc 'export PATH=\"$HOME/.cargo/bin:$PATH\"; exec /usr/bin/python3 -u -c '\"'\"'import hashlib, os, pathlib, tarfile; a=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'/mnt/c/Users/max/branchline-bench/staged-anchor-metadata-aba80d920269-input.tar'\"'\"'\"'\"'\"'\"'\"'\"'); assert hashlib.sha256(a.read_bytes()).hexdigest() == '\"'\"'\"'\"'\"'\"'\"'\"'16e1e18a368acf505c89a1c402f3b101c4b13d688496fedfae60201ea92ca56e'\"'\"'\"'\"'\"'\"'\"'\"'; p=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-input'\"'\"'\"'\"'\"'\"'\"'\"'); p.mkdir(exist_ok=False); tarfile.open(a).extractall(p, filter=\"data\"); os.execv(\"/usr/bin/python3\", [\"/usr/bin/python3\", \"-u\", str(p/\"vm-build-supervisor.py\"), '\"'\"'\"'\"'\"'\"'\"'\"'--release'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'VM STAGED BUILD RELEASED'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'--input'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-input'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'--windows-gui'\"'\"'\"'\"'\"'\"'\"'\"'])'\"'\"''"
+      ],
+      "started": 1795646683.1783147,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/staged-vm-build.log",
+      "pid": 74817,
+      "exit": 1,
+      "finished": 1795646685.1234224
+    }
+  ],
+  "host_checks": "reused unchanged successful 78 GUI + 30 worker + 1 stdio proof",
+  "windows_gui_requested": true,
+  "error": "staged-vm-build failed; inspect /home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/staged-vm-build.log",
+  "finished": 1795646685.1237185
+}

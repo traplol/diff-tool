@@ -1,0 +1,19 @@
+{
+  "bundle_heads": "1135a59f3a51253709d652d1e4ec82fa8b32ce09 HEAD",
+  "bytes": 576663,
+  "git_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+  "git_tree": "473206ad67cbd478e9f2385718f17fe519bc67e6",
+  "host_proof_files_before": {
+    "alternate-index-after-guard.log": "b12d449ef1c36a6bf2dd7dc22cead6689141c73a7a38ed87628d4453f1ba3aa8",
+    "alternate-index-before-guard.log": "e3ccc8428895a9945a2863f6dab08bec552856b8fba15d6371e23f8a64df784c",
+    "candidate.patch": "53d3f02b0e49c3dc968ea7b0ce455702cd87109a8fbf82ef225bf8c4e973929a",
+    "gui-rust-tests-index-guard.log": "1aecbadc523f37ae6b65270574e85397361fba8a9336b211bc8746b1fdedd51a",
+    "proof.json": "b3df7a91a293f7dc5ba84c7efec73f51caff4912b758eb907d4f47c2b82f6955",
+    "source.json": "27f9a557b837feadb805789adb13a66c6632be4aab98d272d421b7f87a5dc53a",
+    "worker-tests-index-guard.log": "537a36de7faad2cbee0c3d4bfbe4392f5441953b1e80e866d7a8dd1d6a77a376"
+  },
+  "name": "source-1135a59.bundle",
+  "self_contained": true,
+  "sha256": "e7b7d43e9147b2d72fdb64e49e6bbc23cb11dcddadd8f12d70a99d44c8ad6248",
+  "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404"
+}

@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "finished": {
+    "duration_s": 1.405218135972973,
+    "error": null,
+    "kind": "finished",
+    "observer_cpu_s": 0.36667099999999997,
+    "reason": "root_gone",
+    "samples": 70
+  },
+  "host_controller_pid": 49152
+}

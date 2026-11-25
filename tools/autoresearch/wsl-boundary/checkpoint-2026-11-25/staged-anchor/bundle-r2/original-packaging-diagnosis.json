@@ -1,0 +1,9 @@
+{
+  "tar_sha256": "16e1e18a368acf505c89a1c402f3b101c4b13d688496fedfae60201ea92ca56e",
+  "has_dotgit": true,
+  "has_refs_directory": false,
+  "before_exit": 128,
+  "before_stderr": "fatal: not a git repository (or any parent up to mount point /)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n",
+  "after_adding_empty_refs_exit": 0,
+  "after_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09"
+}

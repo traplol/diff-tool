@@ -1,0 +1,1039 @@
+{
+  "diagnostic_only": true,
+  "optimization_score_valid": false,
+  "clock": {
+    "performance_ms": 4434,
+    "time_origin_ms": 1795642761492,
+    "wall_ms": 1795642765927
+  },
+  "alignment_offset_ms": 1795642761493,
+  "time_origin_offset_difference_ms": 1,
+  "ticks_per_second": 100,
+  "quantization_ms": 10.0,
+  "sampler": {
+    "kind": "finished",
+    "reason": "root_identity_changed",
+    "error": null,
+    "samples": 488,
+    "duration_s": 9.781930169992847,
+    "webkit_seen": [
+      {
+        "pid": 134470,
+        "start_ticks": "14705627",
+        "binary": "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitWebProcess",
+        "comm": "WebKitWebProces"
+      },
+      {
+        "pid": 134410,
+        "start_ticks": "14705584",
+        "binary": "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitNetworkProcess",
+        "comm": "WebKitNetworkPr"
+      }
+    ],
+    "observer_cpu_s": 0.9799599999999999
+  },
+  "sampling": {
+    "count": 488,
+    "mean_period_ms": 19.99372540041068,
+    "mean_read_ms": 1.1286112479508197,
+    "max_read_ms": 15.0874,
+    "read_errors": 0
+  },
+  "cpu_gap_summary": {
+    "intervals_at_least50ms": 21,
+    "webkit_cpu_equivalent_cores_min": 1.8368156449670472,
+    "webkit_cpu_equivalent_cores_median": 2.000908998665887,
+    "webkit_cpu_equivalent_cores_max": 2.246975037942358,
+    "webkit_main_thread_equivalent_cores_median": 0.12506699291642437
+  },
+  "rows": [
+    {
+      "action": "branch_final",
+      "repetition": 0,
+      "canonical_elapsed_ms": 513,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 93,
+          "trace_start_relative_input_ms": 233,
+          "samples": 5,
+          "sampled_span_ms": 80.107699,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 5
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 180.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "S": 4,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 5
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 147,
+          "trace_start_relative_input_ms": 329,
+          "samples": 7,
+          "sampled_span_ms": 119.772499,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 7
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 220.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "S": 6,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 7
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "branch_first",
+      "repetition": 0,
+      "canonical_elapsed_ms": 816,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 123,
+          "trace_start_relative_input_ms": 506,
+          "samples": 6,
+          "sampled_span_ms": 100.057699,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "R": 2,
+                "S": 4
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 210.0,
+              "main_thread_cpu_ms": 20.0,
+              "sampled_states": {
+                "S": 5,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 6
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 149,
+          "trace_start_relative_input_ms": 634,
+          "samples": 8,
+          "sampled_span_ms": 139.936399,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 20.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "R": 3,
+                "S": 5
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 280.0,
+              "main_thread_cpu_ms": 30.0,
+              "sampled_states": {
+                "R": 5,
+                "S": 3
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "comment_branch",
+      "repetition": 0,
+      "canonical_elapsed_ms": 609,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 93.0,
+          "trace_start_relative_input_ms": 329.0000000000018,
+          "samples": 4,
+          "sampled_span_ms": 60.137698,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "R": 2,
+                "S": 2
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 130.0,
+              "main_thread_cpu_ms": 20.0,
+              "sampled_states": {
+                "R": 1,
+                "S": 3
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 4
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 152.0,
+          "trace_start_relative_input_ms": 425.0,
+          "samples": 7,
+          "sampled_span_ms": 120.217396,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 7
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 240.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "S": 6,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 7
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "comment_worktree",
+      "repetition": 0,
+      "canonical_elapsed_ms": 440,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 13,
+          "trace_start_relative_input_ms": 230,
+          "samples": 1
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 164.00000000000182,
+          "trace_start_relative_input_ms": 248,
+          "samples": 9,
+          "sampled_span_ms": 159.914295,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 9
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 330.0,
+              "main_thread_cpu_ms": 20.0,
+              "sampled_states": {
+                "R": 3,
+                "S": 6
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 9
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "stack",
+      "repetition": 0,
+      "canonical_elapsed_ms": 396,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 126,
+          "trace_start_relative_input_ms": 118,
+          "samples": 7,
+          "sampled_span_ms": 120.208897,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 7
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 240.0,
+              "main_thread_cpu_ms": 20.0,
+              "sampled_states": {
+                "R": 2,
+                "S": 5
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 7
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 125.99999999999818,
+          "trace_start_relative_input_ms": 254.00000000000182,
+          "samples": 6,
+          "sampled_span_ms": 100.343097,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 6
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 190.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "S": 5,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 6
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "working_tree",
+      "repetition": 0,
+      "canonical_elapsed_ms": 761,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 74,
+          "trace_start_relative_input_ms": 492,
+          "samples": 3,
+          "sampled_span_ms": 40.2311,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 3
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 80.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "S": 3
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 3
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 165,
+          "trace_start_relative_input_ms": 570,
+          "samples": 8,
+          "sampled_span_ms": 140.075198,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 7,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 290.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "S": 7,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "branch_final",
+      "repetition": 1,
+      "canonical_elapsed_ms": 366,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 118.99999999999818,
+          "trace_start_relative_input_ms": 111.00000000000182,
+          "samples": 6,
+          "sampled_span_ms": 99.905297,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 6
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 190.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "S": 6
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 6
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 126,
+          "trace_start_relative_input_ms": 233,
+          "samples": 6,
+          "sampled_span_ms": 100.216297,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 5,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 200.0,
+              "main_thread_cpu_ms": 20.0,
+              "sampled_states": {
+                "S": 5,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 6
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "branch_first",
+      "repetition": 1,
+      "canonical_elapsed_ms": 432,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 108,
+          "trace_start_relative_input_ms": 185,
+          "samples": 5,
+          "sampled_span_ms": 80.152097,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 5
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 150.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "R": 1,
+                "S": 4
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 5
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 118.99999999999818,
+          "trace_start_relative_input_ms": 299.0000000000018,
+          "samples": 6,
+          "sampled_span_ms": 99.884897,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "R": 2,
+                "S": 4
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 200.0,
+              "main_thread_cpu_ms": 20.0,
+              "sampled_states": {
+                "R": 3,
+                "S": 3
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 6
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "comment_branch",
+      "repetition": 1,
+      "canonical_elapsed_ms": 476.9999999999982,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 83,
+          "trace_start_relative_input_ms": 210.99999999999818,
+          "samples": 4,
+          "sampled_span_ms": 60.111098,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "R": 1,
+                "S": 3
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 120.0,
+              "main_thread_cpu_ms": 20.0,
+              "sampled_states": {
+                "R": 3,
+                "S": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 4
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 149,
+          "trace_start_relative_input_ms": 295.9999999999982,
+          "samples": 8,
+          "sampled_span_ms": 140.331896,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 20.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "R": 2,
+                "S": 6
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 290.0,
+              "main_thread_cpu_ms": 20.0,
+              "sampled_states": {
+                "R": 2,
+                "S": 6
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "comment_worktree",
+      "repetition": 1,
+      "canonical_elapsed_ms": 413,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 9.999999999998181,
+          "trace_start_relative_input_ms": 201.00000000000182,
+          "samples": 1
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 167.99999999999818,
+          "trace_start_relative_input_ms": 214.00000000000182,
+          "samples": 9,
+          "sampled_span_ms": 159.931495,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 9
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 320.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 8,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 9
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "stack",
+      "repetition": 1,
+      "canonical_elapsed_ms": 444,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 99,
+          "trace_start_relative_input_ms": 154,
+          "samples": 5,
+          "sampled_span_ms": 79.861797,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "S": 5
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 160.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "S": 4,
+                "R": 1
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 5
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 147,
+          "trace_start_relative_input_ms": 257,
+          "samples": 8,
+          "sampled_span_ms": 139.969795,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "R": 1,
+                "S": 7
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 290.0,
+              "main_thread_cpu_ms": 20.0,
+              "sampled_states": {
+                "S": 4,
+                "R": 4
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "working_tree",
+      "repetition": 1,
+      "canonical_elapsed_ms": 439,
+      "intervals": [
+        {
+          "kind": "initial_measure_wait",
+          "trace_duration_ms": 110.00000000000182,
+          "trace_start_relative_input_ms": 184,
+          "samples": 6,
+          "sampled_span_ms": 99.904897,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 10.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "R": 1,
+                "S": 5
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 200.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "R": 2,
+                "S": 4
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 6
+              }
+            }
+          ]
+        },
+        {
+          "kind": "following_frame_wait",
+          "trace_duration_ms": 133.00000000000182,
+          "trace_start_relative_input_ms": 299.0,
+          "samples": 7,
+          "sampled_span_ms": 119.911597,
+          "processes": [
+            {
+              "pid": 134392,
+              "start_ticks": "14705503",
+              "comm": "branchline",
+              "process_cpu_ms": 20.0,
+              "main_thread_cpu_ms": null,
+              "sampled_states": {
+                "R": 1,
+                "S": 6
+              }
+            },
+            {
+              "pid": 134470,
+              "start_ticks": "14705627",
+              "comm": "WebKitWebProces",
+              "process_cpu_ms": 230.0,
+              "main_thread_cpu_ms": 10.0,
+              "sampled_states": {
+                "R": 2,
+                "S": 5
+              }
+            },
+            {
+              "pid": 134410,
+              "start_ticks": "14705584",
+              "comm": "WebKitNetworkPr",
+              "process_cpu_ms": 0.0,
+              "main_thread_cpu_ms": 0.0,
+              "sampled_states": {
+                "S": 7
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "postcondition_failure": "run-cpu.py required root_gone; sampler returned terminal root_identity_changed during exact GUI cleanup. No retry; all completion data retained. Final exact absence check proves GUI/driver/WebKit/sampler processes absent.",
+  "conclusion": "Substantial parallel native CPU work inside WebKitWebProcess occupies long frame-entry gaps. Main-thread CPU alone does not explain the waits. No renderer-library or thread-name attribution was captured.",
+  "next_hypothesis": "Identify which exact WebKit worker threads consume CPU during one repeated branch-final action, with one read of renderer-library paths. No renderer change."
+}

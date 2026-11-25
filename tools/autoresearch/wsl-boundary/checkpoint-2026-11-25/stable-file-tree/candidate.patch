@@ -1,0 +1,116 @@
+--- a/frontend/app.js
++++ b/frontend/app.js
+@@ -26,6 +26,7 @@
+   commentRow,
+   commentJumpPairs,
+   decodePatch,
++  canReuseFileTree,
+   labelPath,
+   noteDestination,
+   noteFileIndex,
+@@ -172,6 +173,7 @@
+       state?.pair[0] !== next.pair[0] ||
+       state?.pair[1] !== next.pair[1]
+     ) {
++      if (closedFolders.size || closedSearchFolders.size) fileTree = undefined;
+       closedFolders.clear();
+       closedSearchFolders.clear();
+     }
+@@ -397,7 +399,7 @@
+     b.append(icon("file"), el("span", parts.at(-1), "path"), badge, viewed);
+     return { button: b, viewed, directories: parts.slice(0, -1), group: f.group };
+   });
+-  return { source, rows, selected: -1 };
++  return { root: state.repo.root, source, rows, selected: -1 };
+ }
+ function filterFileTree(rows, query) {
+   const list = $("file-list"),
+@@ -440,7 +442,9 @@
+ }
+ function renderFiles() {
+   const source = state.comparison?.files;
+-  if (!fileTree || fileTree.source !== source) fileTree = buildFileTree(source);
++  if (!canReuseFileTree(fileTree, state.repo.root, source))
++    fileTree = buildFileTree(source);
++  else fileTree.source = source;
+   const { rows, selected } = fileTree;
+   const query = fileFilter();
+   if (fileTree.query !== query) {
+--- a/frontend/review-ui.js
++++ b/frontend/review-ui.js
+@@ -78,6 +78,20 @@
+   );
+ }
+ 
++// Tree buttons capture an index; their labels depend only on these fields.
++export function canReuseFileTree(tree, root, source) {
++  if (!tree || tree.root !== root) return false;
++  const previous = tree.source ?? [],
++    next = source ?? [];
++  return previous === next || (
++    previous.length === next.length &&
++    previous.every((file, i) =>
++      file.path === next[i].path && file.old === next[i].old &&
++      file.status === next[i].status && file.group === next[i].group,
++    )
++  );
++}
++
+ export function fileNotes(state, file) {
+   if (!file) return [];
+   return state.notes.flatMap((note) => {
+--- a/frontend/review-ui.test.js
++++ b/frontend/review-ui.test.js
+@@ -3,6 +3,7 @@
+ import {
+   WORKTREE,
+   fileNotes,
++  canReuseFileTree,
+   pairs,
+   scopeNotes,
+   commentRow,
+@@ -158,3 +159,44 @@
+   setFold(folds, n, false);
+   assert.equal(folds.has(7), false);
+ });
++
++
++test("file-tree reuse follows visual entries while editor snapshots change", () => {
++  const source = [
++    { path: "src/a.rs", old: "src/a.rs", status: "M", group: "", oid: "old-head", old_oid: "old-base", mode: "100644", added: 1, local_sections: ["old patch"] },
++    { path: "src/b.rs", old: "before/b.rs", status: "R", group: "", oid: "old-rename" },
++  ];
++  const fresh = source.map((file) => ({
++    ...file, oid: "new-head", old_oid: "new-base", mode: "100755", added: 9,
++    local_sections: ["new patch"],
++  }));
++  const tree = { root: "/repo", source };
++  assert.equal(canReuseFileTree(tree, "/repo", fresh), true);
++  assert.notEqual(fresh[0].oid, source[0].oid);
++  assert.notDeepEqual(fresh[0].local_sections, source[0].local_sections);
++  assert.equal(canReuseFileTree(tree, "/another-repo", fresh), false);
++});
++
++test("file-tree labels, grouping and indices invalidate reuse when they change", () => {
++  const source = [
++    { path: "src/new.rs", old: "src/old.rs", status: "R", group: "Staged" },
++    { path: "src/new.rs", old: "src/new.rs", status: "M", group: "Unstaged" },
++  ];
++  const tree = { root: "/repo", source };
++  assert.equal(canReuseFileTree(tree, "/repo", source.map((file) => ({ ...file }))), true);
++  for (const changed of [
++    { path: "src/other.rs" }, { old: "before/old.rs" }, { status: "M" }, { group: "Unstaged" },
++  ]) {
++    assert.equal(canReuseFileTree(tree, "/repo", [{ ...source[0], ...changed }, source[1]]), false);
++  }
++  assert.equal(canReuseFileTree(tree, "/repo", [...source].reverse()), false);
++  assert.equal(canReuseFileTree(tree, "/repo", source.slice(1)), false);
++  assert.equal(canReuseFileTree(tree, "/repo", [...source, { ...source[1], path: "added.rs" }]), false);
++});
++
++test("empty file trees can persist only in the same repository", () => {
++  assert.equal(canReuseFileTree(undefined, "/repo", []), false);
++  assert.equal(canReuseFileTree({ root: "/repo", source: [] }, "/repo", undefined), true);
++  assert.equal(canReuseFileTree({ root: "/repo" }, "/repo", []), true);
++  assert.equal(canReuseFileTree({ root: "/repo", source: [] }, "/other", []), false);
++});

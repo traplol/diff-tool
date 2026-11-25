@@ -1,0 +1,310 @@
+{
+  "action": "branch_final",
+  "diagnostic_only": true,
+  "expected": {
+    "file": "arch/parisc/include/asm/extable.h",
+    "file_count": 30,
+    "left": "refs/heads/feature/boundary-first",
+    "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16",
+    "right": "refs/heads/feature/boundary-final",
+    "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+  },
+  "phase": "first_action_use",
+  "repetition": 0,
+  "sample": {
+    "background_ipc": [],
+    "correct": true,
+    "elapsed_ms": 513,
+    "file": "arch/parisc/include/asm/extable.h",
+    "file_count": 30,
+    "ipc": [
+      {
+        "command": "workspace",
+        "elapsed_ms": 152,
+        "op": "compare",
+        "start_ms": 1
+      },
+      {
+        "command": "workspace",
+        "elapsed_ms": 62,
+        "op": "display_patch",
+        "start_ms": 164
+      }
+    ],
+    "left": "refs/heads/feature/boundary-first",
+    "right": "refs/heads/feature/boundary-final"
+  },
+  "trace": {
+    "action": 2,
+    "action_start_ms": 6469,
+    "active": false,
+    "capacity": 4096,
+    "clock": "performance.now",
+    "diagnostic_only": true,
+    "dropped_events": 0,
+    "events": [
+      {
+        "duration_ms": 0,
+        "event": "change",
+        "event_timestamp_ms": 6468,
+        "id": 31,
+        "kind": "input",
+        "parent": null,
+        "start_ms": 6469
+      },
+      {
+        "duration_ms": 0,
+        "id": 32,
+        "kind": "raf.request",
+        "native_id": 155,
+        "parent": null,
+        "start_ms": 6469,
+        "threw": false
+      },
+      {
+        "callback_timestamp_ms": 6487,
+        "duration_ms": 0,
+        "id": 33,
+        "kind": "raf.callback",
+        "lag_ms": 18,
+        "native_id": 155,
+        "parent": null,
+        "request": 32,
+        "request_action": 2,
+        "request_parent": null,
+        "requested_ms": 6469,
+        "start_ms": 6487,
+        "threw": false
+      },
+      {
+        "duration_ms": 0,
+        "id": 34,
+        "kind": "raf.request",
+        "native_id": 156,
+        "parent": null,
+        "start_ms": 6487,
+        "threw": false
+      },
+      {
+        "callback_timestamp_ms": 6552,
+        "duration_ms": 0,
+        "id": 35,
+        "kind": "raf.callback",
+        "lag_ms": 65.00000000000091,
+        "native_id": 156,
+        "parent": null,
+        "request": 34,
+        "request_action": 2,
+        "request_parent": null,
+        "requested_ms": 6487,
+        "start_ms": 6552.000000000001,
+        "threw": false
+      },
+      {
+        "duration_ms": 0,
+        "id": 36,
+        "kind": "raf.request",
+        "native_id": 157,
+        "parent": null,
+        "start_ms": 6552.000000000001,
+        "threw": false
+      },
+      {
+        "callback_timestamp_ms": 6591,
+        "duration_ms": 0,
+        "id": 37,
+        "kind": "raf.callback",
+        "lag_ms": 38.99999999999909,
+        "native_id": 157,
+        "parent": null,
+        "request": 36,
+        "request_action": 2,
+        "request_parent": null,
+        "requested_ms": 6552.000000000001,
+        "start_ms": 6591,
+        "threw": false
+      },
+      {
+        "duration_ms": 0,
+        "id": 38,
+        "kind": "raf.request",
+        "native_id": 158,
+        "parent": null,
+        "start_ms": 6591,
+        "threw": false
+      },
+      {
+        "duration_ms": 0,
+        "height": 0,
+        "id": 39,
+        "kind": "cm.lineBlockAtHeight",
+        "parent": null,
+        "start_ms": 6622,
+        "threw": false,
+        "view": 2
+      },
+      {
+        "callback_timestamp_ms": 6643,
+        "duration_ms": 0,
+        "id": 40,
+        "kind": "raf.callback",
+        "lag_ms": 53,
+        "native_id": 158,
+        "parent": null,
+        "request": 38,
+        "request_action": 2,
+        "request_parent": null,
+        "requested_ms": 6591,
+        "start_ms": 6644,
+        "threw": false
+      },
+      {
+        "duration_ms": 0,
+        "id": 41,
+        "kind": "raf.request",
+        "native_id": 159,
+        "parent": null,
+        "start_ms": 6644,
+        "threw": false
+      },
+      {
+        "duration_ms": 0,
+        "id": 42,
+        "kind": "raf.request",
+        "native_id": 160,
+        "parent": null,
+        "start_ms": 6702,
+        "threw": false
+      },
+      {
+        "callback_timestamp_ms": 6794,
+        "duration_ms": 0.9999999999990905,
+        "id": 43,
+        "kind": "raf.callback",
+        "lag_ms": 150.0000000000009,
+        "native_id": 159,
+        "parent": null,
+        "request": 41,
+        "request_action": 2,
+        "request_parent": null,
+        "requested_ms": 6644,
+        "start_ms": 6794.000000000001,
+        "threw": false
+      },
+      {
+        "duration_ms": 0,
+        "id": 44,
+        "kind": "raf.request",
+        "native_id": 161,
+        "parent": null,
+        "start_ms": 6795,
+        "threw": false
+      },
+      {
+        "duration_ms": 3,
+        "id": 46,
+        "kind": "cm.measure",
+        "parent": 45,
+        "start_ms": 6795,
+        "threw": false,
+        "view": 3
+      },
+      {
+        "callback_timestamp_ms": 6794,
+        "duration_ms": 4,
+        "id": 45,
+        "kind": "raf.callback",
+        "lag_ms": 93,
+        "native_id": 160,
+        "parent": null,
+        "request": 42,
+        "request_action": 2,
+        "request_parent": null,
+        "requested_ms": 6702,
+        "start_ms": 6795,
+        "threw": false
+      },
+      {
+        "duration_ms": 0,
+        "id": 47,
+        "kind": "raf.request",
+        "native_id": 162,
+        "parent": null,
+        "start_ms": 6856,
+        "threw": false
+      },
+      {
+        "callback_timestamp_ms": 6945,
+        "duration_ms": 0,
+        "id": 48,
+        "kind": "raf.callback",
+        "lag_ms": 150,
+        "native_id": 161,
+        "parent": null,
+        "request": 44,
+        "request_action": 2,
+        "request_parent": null,
+        "requested_ms": 6795,
+        "start_ms": 6945,
+        "threw": false
+      },
+      {
+        "duration_ms": 0,
+        "id": 49,
+        "kind": "raf.request",
+        "native_id": 163,
+        "parent": null,
+        "start_ms": 6945,
+        "threw": false
+      },
+      {
+        "duration_ms": 1,
+        "id": 51,
+        "kind": "cm.measure",
+        "parent": 50,
+        "start_ms": 6945,
+        "threw": false,
+        "view": 3
+      },
+      {
+        "callback_timestamp_ms": 6945,
+        "duration_ms": 1,
+        "id": 50,
+        "kind": "raf.callback",
+        "lag_ms": 89,
+        "native_id": 162,
+        "parent": null,
+        "request": 47,
+        "request_action": 2,
+        "request_parent": null,
+        "requested_ms": 6856,
+        "start_ms": 6945,
+        "threw": false
+      },
+      {
+        "callback_timestamp_ms": 6982,
+        "duration_ms": 0,
+        "id": 52,
+        "kind": "raf.callback",
+        "lag_ms": 37,
+        "native_id": 163,
+        "parent": null,
+        "request": 49,
+        "request_action": 2,
+        "request_parent": null,
+        "requested_ms": 6945,
+        "start_ms": 6982,
+        "threw": false
+      }
+    ],
+    "label": "00-branch_final",
+    "stopped_ms": 6982,
+    "unmeasured": [
+      "EditorView constructor, app closures, patch decoding and widget construction outside the hooked methods",
+      "Native compositor, rasterization, GPU, presentation and the reason for a delayed frame callback",
+      "The purpose of opaque frame callbacks, including scorer readiness versus its required completion frames",
+      "Callbacks requested before installation or while the probe was inactive",
+      "Native IPC; use the unchanged boundaryProbe records"
+    ]
+  }
+}

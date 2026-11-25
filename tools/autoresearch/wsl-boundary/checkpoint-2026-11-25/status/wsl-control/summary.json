@@ -1,0 +1,729 @@
+{
+  "case": "wsl_linux",
+  "cleanup": {
+    "all6_exact_actor_cleanups_passed": true,
+    "all6_host_supervisors_exited0": true,
+    "control_socket_absent": true,
+    "host_port_free": true,
+    "host_wrapper_absent_from_all_vm_environments": true,
+    "master": {
+      "argv": [
+        "/usr/bin/ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "-M",
+        "-S",
+        "/tmp/status-wsl-kxr6m68b/ssh.sock",
+        "-o",
+        "ControlPersist=no",
+        "-N",
+        "-o",
+        "ExitOnForwardFailure=yes",
+        "-L",
+        "127.0.0.1:19227:127.0.0.1:29225",
+        "windows-vm"
+      ],
+      "pid": 70208,
+      "socket": "/tmp/status-wsl-kxr6m68b/ssh.sock",
+      "start_ticks": "76861836"
+    },
+    "master_exit": 255,
+    "master_exit_request": {
+      "exit": 0,
+      "stderr": "Exit request sent.\n",
+      "stdout": ""
+    },
+    "own_host_port": 19227,
+    "pid": 70204,
+    "shared_forward19225_untouched": true,
+    "start_ticks": "76861829"
+  },
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "fixture_after": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_before": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "guard10percent": {
+    "all_fresh_max_pass": true,
+    "limit_ratio": 1.1,
+    "p95_pass": true,
+    "per_action": {
+      "branch_final": {
+        "all_fresh_max_guard_pass": true,
+        "max_change_percent": -1.0000000000000009,
+        "max_guard_pass": true,
+        "p50_change_percent": -1.098901098901095,
+        "p95_change_percent": -2.531645569620311,
+        "p95_guard_pass": true
+      },
+      "branch_first": {
+        "all_fresh_max_guard_pass": true,
+        "max_change_percent": 13.33333333333333,
+        "max_guard_pass": false,
+        "p50_change_percent": 0.6818181818198488,
+        "p95_change_percent": 2.7659574468100967,
+        "p95_guard_pass": true
+      },
+      "comment_branch": {
+        "all_fresh_max_guard_pass": true,
+        "max_change_percent": 0.19267822736031004,
+        "max_guard_pass": true,
+        "p50_change_percent": 1.2578616352208805,
+        "p95_change_percent": 1.388888888888884,
+        "p95_guard_pass": true
+      },
+      "comment_worktree": {
+        "all_fresh_max_guard_pass": true,
+        "max_change_percent": -3.165735567971517,
+        "max_guard_pass": true,
+        "p50_change_percent": -0.8316008316053392,
+        "p95_change_percent": -3.731343283582089,
+        "p95_guard_pass": true
+      },
+      "open": {
+        "all_fresh_max_guard_pass": true,
+        "max_change_percent": -54.619736015084854,
+        "max_guard_pass": true,
+        "p50_change_percent": 1.1220196353436185,
+        "p95_change_percent": -54.619736015084854,
+        "p95_guard_pass": true
+      },
+      "stack": {
+        "all_fresh_max_guard_pass": true,
+        "max_change_percent": -7.45697896749522,
+        "max_guard_pass": true,
+        "p50_change_percent": 0.6772009029353487,
+        "p95_change_percent": -6.138613861386144,
+        "p95_guard_pass": true
+      },
+      "working_tree": {
+        "all_fresh_max_guard_pass": true,
+        "max_change_percent": -3.984819734345346,
+        "max_guard_pass": true,
+        "p50_change_percent": -0.45351473922902175,
+        "p95_change_percent": -3.6679536679523173,
+        "p95_guard_pass": true
+      }
+    },
+    "repeated_max_pass": false
+  },
+  "interpretation": "Inactive opposite-OS helper/cfg does not establish no-regression. Repeated p95 passes; the repeated branch-first max exceeds10%. No causality inferred, promotion or commit.",
+  "measurement": "Open stats use three fresh-process values. Action stats use final20 samples. All first-use values and maxima across3/3/20 retained; OS caches were not flushed.",
+  "raw_runs": [
+    {
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01.cleanup.log",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 152115,
+          "start_ticks": "15057781"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "15057781",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 152113,
+          "start_ticks": "15057763"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 152115,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "1db32bab-3fa8-4b1c-ba26-72ee12f4637a",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 152112
+      },
+      "number": 1,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01.json",
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/verdict.json"
+    },
+    {
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01.cleanup.log",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+          "pid": 152870,
+          "start_ticks": "15059685"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+        "created": "15059685",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 152868,
+          "start_ticks": "15059684"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 152870,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "a5a59fcc-96ad-4971-ab5f-93f2993eb278",
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "supervisor_pid": 152867
+      },
+      "number": 1,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01.json",
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/verdict.json"
+    },
+    {
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02.cleanup.log",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 153618,
+          "start_ticks": "15061223"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "15061223",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 153616,
+          "start_ticks": "15061222"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 153618,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "8fe2a8fd-a244-4793-b228-c41857c7d95a",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 153615
+      },
+      "number": 2,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02.json",
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/verdict.json"
+    },
+    {
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02.cleanup.log",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+          "pid": 154375,
+          "start_ticks": "15062734"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+        "created": "15062734",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 154373,
+          "start_ticks": "15062733"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 154375,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "f1fe4552-d78a-4056-90cf-036fcabd053a",
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "supervisor_pid": 154372
+      },
+      "number": 2,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02.json",
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/verdict.json"
+    },
+    {
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03.cleanup.log",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 155125,
+          "start_ticks": "15064269"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "15064269",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 155123,
+          "start_ticks": "15064263"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 155125,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "877df3a8-4073-4a7f-a4d3-643fbaa38ff5",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 155122
+      },
+      "number": 3,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03.json",
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/verdict.json"
+    },
+    {
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03.cleanup.log",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+          "pid": 159001,
+          "start_ticks": "15072602"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+        "created": "15072602",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 158999,
+          "start_ticks": "15072596"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 159001,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "e35aecea-228c-4e92-83a9-4fed283ddacd",
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "supervisor_pid": 158998
+      },
+      "number": 3,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03.json",
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/verdict.json"
+    }
+  ],
+  "sample_count": 318,
+  "state": "/home/max/workspace/merge-viewer-native/build/experiments/status-wsl-control/run-20261125T223739227075Z/state.json",
+  "status": "valid-control-p95-pass-repeated-branch-first-max-needs-review",
+  "variants": {
+    "A": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json",
+      "build_record_sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384",
+      "embedded_helper": {
+        "bytes": 2720768,
+        "path": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline-git-worker.exe",
+        "preserved_from": "/home/max/benchmarks/branchline-boundary/helper-placement/placement-v3-01/windows/foreign/branchline-git-worker.exe",
+        "sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2"
+      },
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+      "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-build.json",
+      "build_record_sha256": "98ed2a83f25dc30e82deba3b521c6327cc3ee1d65beb0a162c7d8122088b7da1",
+      "embedded_helper": {
+        "bytes": 2726400,
+        "imports": [
+          "bcryptprimitives.dll",
+          "KERNEL32.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "WS2_32.dll",
+          "ntdll.dll",
+          "ADVAPI32.dll",
+          "Secur32.dll"
+        ],
+        "path": "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+        "recipe": {
+          "CARGO_BUILD_JOBS": "1",
+          "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+          "RUSTFLAGS": "-C target-feature=+crt-static",
+          "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+          "XWIN_CROSS_COMPILER": "clang",
+          "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+          "target": "x86_64-pc-windows-msvc"
+        },
+        "sha256": "8fafdb059c64cf88d7ab5815f3ca20af8b80e16aa7eed52be691813dcc8f16c3",
+        "source_binary": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+        "static_crt_import_check": true
+      },
+      "label": "stateless-status-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source",
+      "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+    }
+  },
+  "variants_metrics": {
+    "A": {
+      "branch_final": {
+        "all26_max_ms": 425,
+        "count": 20,
+        "first_use_by_process_ms": [
+          425,
+          364,
+          356
+        ],
+        "max_ms": 400,
+        "p50_ms": 364,
+        "p95_ms": 395
+      },
+      "branch_first": {
+        "all26_max_ms": 571,
+        "count": 20,
+        "first_use_by_process_ms": [
+          571,
+          379,
+          360
+        ],
+        "max_ms": 480,
+        "p50_ms": 439.9999999999927,
+        "p95_ms": 469.9999999999927
+      },
+      "comment_branch": {
+        "all26_max_ms": 656,
+        "count": 20,
+        "first_use_by_process_ms": [
+          656,
+          589.9999999999995,
+          488
+        ],
+        "max_ms": 519,
+        "p50_ms": 477,
+        "p95_ms": 504
+      },
+      "comment_worktree": {
+        "all26_max_ms": 537.0000000000073,
+        "count": 20,
+        "first_use_by_process_ms": [
+          511,
+          487,
+          487
+        ],
+        "max_ms": 537.0000000000073,
+        "p50_ms": 481.00000000001455,
+        "p95_ms": 536
+      },
+      "open": {
+        "all26_max_ms": 1591,
+        "count": 3,
+        "first_use_by_process_ms": [
+          1591,
+          692,
+          713
+        ],
+        "max_ms": 1591,
+        "p50_ms": 713,
+        "p95_ms": 1591
+      },
+      "stack": {
+        "all26_max_ms": 523,
+        "count": 20,
+        "first_use_by_process_ms": [
+          485,
+          442,
+          432.99999999999955
+        ],
+        "max_ms": 523,
+        "p50_ms": 443,
+        "p95_ms": 505
+      },
+      "working_tree": {
+        "all26_max_ms": 538,
+        "count": 20,
+        "first_use_by_process_ms": [
+          538,
+          452.99999999999955,
+          472.00000000000045
+        ],
+        "max_ms": 527,
+        "p50_ms": 441,
+        "p95_ms": 517.9999999999927
+      }
+    },
+    "B": {
+      "branch_final": {
+        "all26_max_ms": 396,
+        "count": 20,
+        "first_use_by_process_ms": [
+          359,
+          377.00000000000045,
+          384.9999999999998
+        ],
+        "max_ms": 396,
+        "p50_ms": 360,
+        "p95_ms": 384.9999999999998
+      },
+      "branch_first": {
+        "all26_max_ms": 544,
+        "count": 20,
+        "first_use_by_process_ms": [
+          393,
+          378.0000000000002,
+          404
+        ],
+        "max_ms": 544,
+        "p50_ms": 443,
+        "p95_ms": 483
+      },
+      "comment_branch": {
+        "all26_max_ms": 643,
+        "count": 20,
+        "first_use_by_process_ms": [
+          643,
+          483,
+          511
+        ],
+        "max_ms": 520,
+        "p50_ms": 483.00000000000364,
+        "p95_ms": 511
+      },
+      "comment_worktree": {
+        "all26_max_ms": 528,
+        "count": 20,
+        "first_use_by_process_ms": [
+          528,
+          518.0000000000009,
+          477
+        ],
+        "max_ms": 520,
+        "p50_ms": 476.9999999999927,
+        "p95_ms": 516
+      },
+      "open": {
+        "all26_max_ms": 722,
+        "count": 3,
+        "first_use_by_process_ms": [
+          690,
+          722,
+          721
+        ],
+        "max_ms": 722,
+        "p50_ms": 721,
+        "p95_ms": 722
+      },
+      "stack": {
+        "all26_max_ms": 484,
+        "count": 20,
+        "first_use_by_process_ms": [
+          437.99999999999955,
+          426,
+          484
+        ],
+        "max_ms": 484,
+        "p50_ms": 446.00000000000364,
+        "p95_ms": 474
+      },
+      "working_tree": {
+        "all26_max_ms": 510,
+        "count": 20,
+        "first_use_by_process_ms": [
+          454.99999999999955,
+          510,
+          506
+        ],
+        "max_ms": 506,
+        "p50_ms": 439,
+        "p95_ms": 499
+      }
+    }
+  },
+  "viewports": [
+    [
+      1280,
+      800
+    ],
+    [
+      1280,
+      800
+    ],
+    [
+      1280,
+      800
+    ],
+    [
+      1280,
+      800
+    ],
+    [
+      1280,
+      800
+    ],
+    [
+      1280,
+      800
+    ]
+  ]
+}

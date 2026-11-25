@@ -1,0 +1,28 @@
+{
+  "app_process": {
+    "args": [
+      "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+    ],
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+    "pid": 148997,
+    "start_ticks": "15031476"
+  },
+  "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+  "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+  "created": "15031476",
+  "display": ":0",
+  "driver_process": {
+    "binary": "/usr/bin/WebKitWebDriver",
+    "pid": 148994,
+    "start_ticks": "15031469"
+  },
+  "gdk_backend": "x11",
+  "mcp_port": 28867,
+  "pid": 148997,
+  "port": 29225,
+  "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+  "session": "3d51daf9-3ec2-4af3-a0f4-08f2e70f705a",
+  "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "supervisor_pid": 148993
+}

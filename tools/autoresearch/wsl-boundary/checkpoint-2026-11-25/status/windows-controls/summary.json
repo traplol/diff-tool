@@ -1,0 +1,2373 @@
+{
+  "build_state": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/windows-controls-b2de070-20261125T213427886542Z/remote-evidence/state.json",
+  "build_state_sha256": "69e86cbf34f1dc355ff557e3e9a9b81829c8e022a6974a05801df7956d7ea9b5",
+  "cases": {
+    "windows_linux": {
+      "relative_changes": {
+        "branch_final": {
+          "candidate_max_ratio": 1.074428886977939,
+          "candidate_p95_ratio": 1.0384900073068941,
+          "max_change_percent": 7.4428886977939035,
+          "p50_reduction_percent": 7.413010577157564,
+          "p95_reduction_percent": -3.8490007306894114,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "branch_first": {
+          "candidate_max_ratio": 0.9385052034075995,
+          "candidate_p95_ratio": 1.009683995953496,
+          "max_change_percent": -6.149479659240054,
+          "p50_reduction_percent": -0.9939259977259196,
+          "p95_reduction_percent": -0.9683995953496005,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "comment_branch": {
+          "candidate_max_ratio": 0.9981255857265732,
+          "candidate_p95_ratio": 0.9953139645252606,
+          "max_change_percent": -0.18744142734268276,
+          "p50_reduction_percent": 0.0,
+          "p95_reduction_percent": 0.4686035474739447,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "comment_worktree": {
+          "candidate_max_ratio": 0.9982532750831421,
+          "candidate_p95_ratio": 0.9432967034015026,
+          "max_change_percent": -0.17467249168579002,
+          "p50_reduction_percent": 0.046970405841584295,
+          "p95_reduction_percent": 5.670329659849738,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "open": {
+          "candidate_max_ratio": 0.4354949587651679,
+          "candidate_p95_ratio": 0.4354949587651679,
+          "causal_candidate_gain_claimed": false,
+          "max_change_percent": -56.4505041234832,
+          "p50_reduction_percent": -2.341887535832421,
+          "p95_reduction_percent": 56.4505041234832,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "stack": {
+          "candidate_max_ratio": 0.9985496735469707,
+          "candidate_p95_ratio": 1.0058651025079446,
+          "max_change_percent": -0.1450326453029338,
+          "p50_reduction_percent": -1.4539580062581603,
+          "p95_reduction_percent": -0.5865102507944586,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "working_tree": {
+          "candidate_max_ratio": 1.059401080140157,
+          "candidate_p95_ratio": 1.0192687747324387,
+          "max_change_percent": 5.940108014015699,
+          "p50_reduction_percent": -2.294557087503657,
+          "p95_reduction_percent": -1.926877473243871,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        }
+      },
+      "variants": {
+        "A": {
+          "actions": {
+            "branch_final": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                199.09999999403954,
+                137.60000002384186,
+                131
+              ],
+              "max_across_all_fresh_processes_ms": 199.09999999403954,
+              "max_ms": 135.7000000178814,
+              "p50_ms": 132.19999998807907,
+              "p95_ms": 135.10000002384186
+            },
+            "branch_first": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                302.59999999403954,
+                128.5,
+                127.5
+              ],
+              "max_across_all_fresh_processes_ms": 302.59999999403954,
+              "max_ms": 211.40000000596046,
+              "p50_ms": 181.10000002384186,
+              "p95_ms": 196.19999998807907
+            },
+            "comment_branch": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                244.30000001192093,
+                198.30000001192093,
+                197.90000000596046
+              ],
+              "max_across_all_fresh_processes_ms": 244.30000001192093,
+              "max_ms": 213.40000000596046,
+              "p50_ms": 197.90000000596046,
+              "p95_ms": 213.39999997615814
+            },
+            "comment_worktree": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                213.7999999821186,
+                213.2999999821186,
+                197.5
+              ],
+              "max_across_all_fresh_processes_ms": 229,
+              "max_ms": 229,
+              "p50_ms": 212.90000000596046,
+              "p95_ms": 227.5
+            },
+            "open": {
+              "all_samples_count": 3,
+              "count": 3,
+              "first_use_by_process_ms": [
+                1745.5999999940395,
+                712.4000000059605,
+                713.0999999940395
+              ],
+              "max_across_all_fresh_processes_ms": 1745.5999999940395,
+              "max_ms": 1745.5999999940395,
+              "p50_ms": 713.0999999940395,
+              "p95_ms": 1745.5999999940395
+            },
+            "stack": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                126.5,
+                126.30000001192093,
+                122.59999999403954
+              ],
+              "max_across_all_fresh_processes_ms": 137.90000000596046,
+              "max_ms": 137.90000000596046,
+              "p50_ms": 123.80000001192093,
+              "p95_ms": 136.40000000596046
+            },
+            "working_tree": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                1267.5,
+                220.40000000596046,
+                203.69999998807907
+              ],
+              "max_across_all_fresh_processes_ms": 1267.5,
+              "max_ms": 203.69999998807907,
+              "p50_ms": 187.40000000596046,
+              "p95_ms": 202.40000000596046
+            }
+          },
+          "final20_ipc_summary": {
+            "branch_final": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                131
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 90.5,
+                  "median_ms": 76.04999999701977,
+                  "p95_ms": 80.7000000178814,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 13.099999994039536,
+                  "median_ms": 10.399999991059303,
+                  "p95_ms": 12.199999988079071,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 135.7000000178814,
+              "median_ms": 132.34999999403954,
+              "p95_ms": 135.10000002384186,
+              "pending_count": 0
+            },
+            "branch_first": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                127.5
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 156.09999999403954,
+                  "median_ms": 131.94999998807907,
+                  "p95_ms": 139.69999998807907,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 15.700000017881393,
+                  "median_ms": 11.600000008940697,
+                  "p95_ms": 13.900000005960464,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 211.40000000596046,
+              "median_ms": 181.15000002086163,
+              "p95_ms": 196.19999998807907,
+              "pending_count": 0
+            },
+            "comment_branch": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 1,
+                  "max_ms": null,
+                  "median_ms": null,
+                  "p95_ms": null,
+                  "pending_count": 1
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                197.90000000596046
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 13.5,
+                  "median_ms": 12.750000014901161,
+                  "p95_ms": 13.400000005960464,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 20,
+                  "max_ms": 159.30000001192093,
+                  "median_ms": 145.09999999403954,
+                  "p95_ms": 156,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 213.40000000596046,
+              "median_ms": 197.95000000298023,
+              "p95_ms": 213.39999997615814,
+              "pending_count": 0
+            },
+            "comment_worktree": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                197.5
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 11.400000005960464,
+                  "median_ms": 9.249999985098839,
+                  "p95_ms": 10.699999988079071,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 20,
+                  "max_ms": 178.69999998807907,
+                  "median_ms": 160.05000001192093,
+                  "p95_ms": 172.09999999403954,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 229,
+              "median_ms": 212.95000000298023,
+              "p95_ms": 227.5,
+              "pending_count": 0
+            },
+            "open": {
+              "background_ipc_by_command_and_op": {},
+              "count": 1,
+              "first_use_ms": [
+                713.0999999940395
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 1,
+                  "max_ms": 37.19999998807907,
+                  "median_ms": 37.19999998807907,
+                  "p95_ms": 37.19999998807907,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 1,
+                  "max_ms": 608.4000000059605,
+                  "median_ms": 608.4000000059605,
+                  "p95_ms": 608.4000000059605,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 713.0999999940395,
+              "median_ms": 713.0999999940395,
+              "p95_ms": 713.0999999940395,
+              "pending_count": 0
+            },
+            "stack": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                122.59999999403954
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 81.5,
+                  "median_ms": 73.5,
+                  "p95_ms": 77.7999999821186,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 14,
+                  "median_ms": 11.850000008940697,
+                  "p95_ms": 12.799999982118607,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 137.90000000596046,
+              "median_ms": 124.00000001490116,
+              "p95_ms": 136.40000000596046,
+              "pending_count": 0
+            },
+            "working_tree": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                203.69999998807907
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 160.19999998807907,
+                  "median_ms": 142.90000000596046,
+                  "p95_ms": 155.59999999403954,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 10.099999994039536,
+                  "median_ms": 8.099999994039536,
+                  "p95_ms": 9.5,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 203.69999998807907,
+              "median_ms": 187.55000001192093,
+              "p95_ms": 202.40000000596046,
+              "pending_count": 0
+            }
+          }
+        },
+        "B": {
+          "actions": {
+            "branch_final": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                141.7000000178814,
+                137.5,
+                140.30000001192093
+              ],
+              "max_across_all_fresh_processes_ms": 166.10000002384186,
+              "max_ms": 145.7999999821186,
+              "p50_ms": 122.40000000596046,
+              "p95_ms": 140.30000001192093
+            },
+            "branch_first": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                146.5,
+                130.80000001192093,
+                131.80000001192093
+              ],
+              "max_across_all_fresh_processes_ms": 198.40000000596046,
+              "max_ms": 198.40000000596046,
+              "p50_ms": 182.90000000596046,
+              "p95_ms": 198.09999999403954
+            },
+            "comment_branch": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                244.59999999403954,
+                197.19999998807907,
+                198.09999999403954
+              ],
+              "max_across_all_fresh_processes_ms": 244.59999999403954,
+              "max_ms": 213,
+              "p50_ms": 197.90000000596046,
+              "p95_ms": 212.40000000596046
+            },
+            "comment_worktree": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                213.19999998807907,
+                212.90000000596046,
+                212.69999998807907
+              ],
+              "max_across_all_fresh_processes_ms": 229.60000002384186,
+              "max_ms": 228.59999999403954,
+              "p50_ms": 212.80000001192093,
+              "p95_ms": 214.60000002384186
+            },
+            "open": {
+              "all_samples_count": 3,
+              "count": 3,
+              "first_use_by_process_ms": [
+                760.2000000178814,
+                697.2999999821186,
+                729.8000000119209
+              ],
+              "max_across_all_fresh_processes_ms": 760.2000000178814,
+              "max_ms": 760.2000000178814,
+              "p50_ms": 729.8000000119209,
+              "p95_ms": 760.2000000178814
+            },
+            "stack": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                138.69999998807907,
+                126.90000000596046,
+                137.19999998807907
+              ],
+              "max_across_all_fresh_processes_ms": 142.5,
+              "max_ms": 137.69999998807907,
+              "p50_ms": 125.60000002384186,
+              "p95_ms": 137.19999998807907
+            },
+            "working_tree": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                205,
+                190.09999999403954,
+                190.40000000596046
+              ],
+              "max_across_all_fresh_processes_ms": 215.80000001192093,
+              "max_ms": 215.80000001192093,
+              "p50_ms": 191.69999998807907,
+              "p95_ms": 206.30000001192093
+            }
+          },
+          "final20_ipc_summary": {
+            "branch_final": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                140.30000001192093
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 84.60000002384186,
+                  "median_ms": 75.49999998509884,
+                  "p95_ms": 82.30000001192093,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 13.699999988079071,
+                  "median_ms": 11.050000011920929,
+                  "p95_ms": 13.5,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 145.7999999821186,
+              "median_ms": 123.5,
+              "p95_ms": 140.30000001192093,
+              "pending_count": 0
+            },
+            "branch_first": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 1,
+                  "max_ms": 10.799999982118607,
+                  "median_ms": 10.799999982118607,
+                  "p95_ms": 10.799999982118607,
+                  "pending_count": 0
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                131.80000001192093
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 143.80000001192093,
+                  "median_ms": 132.59999999403954,
+                  "p95_ms": 139.2999999821186,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 14.200000017881393,
+                  "median_ms": 11.450000002980232,
+                  "p95_ms": 13.700000017881393,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 198.40000000596046,
+              "median_ms": 183.1000000089407,
+              "p95_ms": 198.09999999403954,
+              "pending_count": 0
+            },
+            "comment_branch": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 2,
+                  "max_ms": 21.899999976158142,
+                  "median_ms": 21.899999976158142,
+                  "p95_ms": 21.899999976158142,
+                  "pending_count": 1
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                198.09999999403954
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 15.400000005960464,
+                  "median_ms": 12.600000008940697,
+                  "p95_ms": 14,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 20,
+                  "max_ms": 164,
+                  "median_ms": 146.59999999403954,
+                  "p95_ms": 163.2000000178814,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 213,
+              "median_ms": 197.95000000298023,
+              "p95_ms": 212.40000000596046,
+              "pending_count": 0
+            },
+            "comment_worktree": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 2,
+                  "max_ms": 21.30000001192093,
+                  "median_ms": 15.600000008940697,
+                  "p95_ms": 21.30000001192093,
+                  "pending_count": 0
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                212.69999998807907
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 11,
+                  "median_ms": 9.0,
+                  "p95_ms": 10.800000011920929,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 20,
+                  "max_ms": 173,
+                  "median_ms": 160.5,
+                  "p95_ms": 169.90000000596046,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 228.59999999403954,
+              "median_ms": 212.95000000298023,
+              "p95_ms": 214.60000002384186,
+              "pending_count": 0
+            },
+            "open": {
+              "background_ipc_by_command_and_op": {},
+              "count": 1,
+              "first_use_ms": [
+                729.8000000119209
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 1,
+                  "max_ms": 38.599999994039536,
+                  "median_ms": 38.599999994039536,
+                  "p95_ms": 38.599999994039536,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 1,
+                  "max_ms": 626.1000000238419,
+                  "median_ms": 626.1000000238419,
+                  "p95_ms": 626.1000000238419,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 729.8000000119209,
+              "median_ms": 729.8000000119209,
+              "p95_ms": 729.8000000119209,
+              "pending_count": 0
+            },
+            "stack": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                137.19999998807907
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 81.09999999403954,
+                  "median_ms": 73.70000000298023,
+                  "p95_ms": 79.7000000178814,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 13.700000017881393,
+                  "median_ms": 12.149999991059303,
+                  "p95_ms": 13.100000023841858,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 137.69999998807907,
+              "median_ms": 125.90000000596046,
+              "p95_ms": 137.19999998807907,
+              "pending_count": 0
+            },
+            "working_tree": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                190.40000000596046
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 161.2999999821186,
+                  "median_ms": 146.59999999403954,
+                  "p95_ms": 159.2000000178814,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 11.399999976158142,
+                  "median_ms": 8.0,
+                  "p95_ms": 10.5,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 215.80000001192093,
+              "median_ms": 191.75,
+              "p95_ms": 206.30000001192093,
+              "pending_count": 0
+            }
+          }
+        }
+      }
+    },
+    "windows_windows": {
+      "relative_changes": {
+        "branch_final": {
+          "candidate_max_ratio": 1.0090634441690582,
+          "candidate_p95_ratio": 0.9909537348153371,
+          "max_change_percent": 0.9063444169058243,
+          "p50_reduction_percent": 0.0,
+          "p95_reduction_percent": 0.9046265184662894,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "branch_first": {
+          "candidate_max_ratio": 0.9630536389419064,
+          "candidate_p95_ratio": 0.9958448753189136,
+          "max_change_percent": -3.694636105809357,
+          "p50_reduction_percent": 0.09955200999899327,
+          "p95_reduction_percent": 0.4155124681086364,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "comment_branch": {
+          "candidate_max_ratio": 1.0011185682326622,
+          "candidate_p95_ratio": 1.0314160314018301,
+          "max_change_percent": 0.11185682326622093,
+          "p50_reduction_percent": 0.16798655821912423,
+          "p95_reduction_percent": -3.1416031401830136,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "comment_worktree": {
+          "candidate_max_ratio": 0.6352131870843873,
+          "candidate_p95_ratio": 0.631979528916507,
+          "max_change_percent": -36.478681291561266,
+          "p50_reduction_percent": 36.78795829515272,
+          "p95_reduction_percent": 36.8020471083493,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "open": {
+          "candidate_max_ratio": 1.0573281907218397,
+          "candidate_p95_ratio": 1.0573281907218397,
+          "max_change_percent": 5.73281907218397,
+          "p50_reduction_percent": -0.22803017223900213,
+          "p95_reduction_percent": -5.73281907218397,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "stack": {
+          "candidate_max_ratio": 1.0417747046967705,
+          "candidate_p95_ratio": 1.0398038649593506,
+          "max_change_percent": 4.177470469677047,
+          "p50_reduction_percent": 0.48352976549129734,
+          "p95_reduction_percent": -3.980386495935062,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        },
+        "working_tree": {
+          "candidate_max_ratio": 0.6655786167248738,
+          "candidate_p95_ratio": 0.6372111606809391,
+          "max_change_percent": -33.442138327512616,
+          "p50_reduction_percent": 36.637594837596986,
+          "p95_reduction_percent": 36.278883931906094,
+          "within10percent_max": true,
+          "within10percent_p95": true
+        }
+      },
+      "variants": {
+        "A": {
+          "actions": {
+            "branch_final": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                353.7999999821186,
+                337.7999999821186,
+                372.5
+              ],
+              "max_across_all_fresh_processes_ms": 397.19999998807907,
+              "max_ms": 397.19999998807907,
+              "p50_ms": 355.90000000596046,
+              "p95_ms": 386.90000000596046
+            },
+            "branch_first": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                379.69999998807907,
+                332.60000002384186,
+                362.80000001192093
+              ],
+              "max_across_all_fresh_processes_ms": 449.30000001192093,
+              "max_ms": 449.30000001192093,
+              "p50_ms": 401.7999999821186,
+              "p95_ms": 433.2000000178814
+            },
+            "comment_branch": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                447.09999999403954,
+                431.09999999403954,
+                416.2000000178814
+              ],
+              "max_across_all_fresh_processes_ms": 447.09999999403954,
+              "max_ms": 447,
+              "p50_ms": 416.69999998807907,
+              "p95_ms": 432.90000000596046
+            },
+            "comment_worktree": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                1526,
+                1572.199999988079,
+                1432.699999988079
+              ],
+              "max_across_all_fresh_processes_ms": 1572.199999988079,
+              "max_ms": 1540.9000000059605,
+              "p50_ms": 1448.2999999821186,
+              "p95_ms": 1524.0999999940395
+            },
+            "open": {
+              "all_samples_count": 3,
+              "count": 3,
+              "first_use_by_process_ms": [
+                570.4000000059605,
+                559,
+                570.0999999940395
+              ],
+              "max_across_all_fresh_processes_ms": 570.4000000059605,
+              "max_ms": 570.4000000059605,
+              "p50_ms": 570.0999999940395,
+              "p95_ms": 570.4000000059605
+            },
+            "stack": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                355.09999999403954,
+                345.40000000596046,
+                343.80000001192093
+              ],
+              "max_across_all_fresh_processes_ms": 355.09999999403954,
+              "max_ms": 347.09999999403954,
+              "p50_ms": 330.90000000596046,
+              "p95_ms": 346.7000000178814
+            },
+            "working_tree": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                1514.7000000178814,
+                1442.7999999821186,
+                1410
+              ],
+              "max_across_all_fresh_processes_ms": 1623.7000000178814,
+              "max_ms": 1623.7000000178814,
+              "p50_ms": 1410.2999999821186,
+              "p95_ms": 1501.7000000178814
+            }
+          },
+          "final20_ipc_summary": {
+            "branch_final": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 1,
+                  "max_ms": 6.0999999940395355,
+                  "median_ms": 6.0999999940395355,
+                  "p95_ms": 6.0999999940395355,
+                  "pending_count": 0
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                372.5
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 333.2000000178814,
+                  "median_ms": 303.9500000178814,
+                  "p95_ms": 327.69999998807907,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 15.900000005960464,
+                  "median_ms": 13.100000023841858,
+                  "p95_ms": 15.700000017881393,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 397.19999998807907,
+              "median_ms": 355.95000000298023,
+              "p95_ms": 386.90000000596046,
+              "pending_count": 0
+            },
+            "branch_first": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 1,
+                  "max_ms": 7.700000017881393,
+                  "median_ms": 7.700000017881393,
+                  "p95_ms": 7.700000017881393,
+                  "pending_count": 0
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                362.80000001192093
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 381.09999999403954,
+                  "median_ms": 345.2000000178814,
+                  "p95_ms": 375.90000000596046,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 24.19999998807907,
+                  "median_ms": 15.949999988079071,
+                  "p95_ms": 20.400000005960464,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 449.30000001192093,
+              "median_ms": 402.2999999821186,
+              "p95_ms": 433.2000000178814,
+              "pending_count": 0
+            },
+            "comment_branch": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 2,
+                  "max_ms": 19,
+                  "median_ms": 19,
+                  "p95_ms": 19,
+                  "pending_count": 1
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                416.2000000178814
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 15.5,
+                  "median_ms": 13.349999994039536,
+                  "p95_ms": 14.900000005960464,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 20,
+                  "max_ms": 385.90000000596046,
+                  "median_ms": 364.79999999701977,
+                  "p95_ms": 384.90000000596046,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 447,
+              "median_ms": 416.69999998807907,
+              "p95_ms": 432.90000000596046,
+              "pending_count": 0
+            },
+            "comment_worktree": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 1,
+                  "max_ms": 17.799999982118607,
+                  "median_ms": 17.799999982118607,
+                  "p95_ms": 17.799999982118607,
+                  "pending_count": 0
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                1432.699999988079
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 16.400000005960464,
+                  "median_ms": 8.700000002980232,
+                  "p95_ms": 14.099999994039536,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 20,
+                  "max_ms": 1493.4000000059605,
+                  "median_ms": 1399.9000000059605,
+                  "p95_ms": 1477.800000011921,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 1540.9000000059605,
+              "median_ms": 1455.3999999910593,
+              "p95_ms": 1524.0999999940395,
+              "pending_count": 0
+            },
+            "open": {
+              "background_ipc_by_command_and_op": {},
+              "count": 1,
+              "first_use_ms": [
+                570.0999999940395
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 1,
+                  "max_ms": 36.39999997615814,
+                  "median_ms": 36.39999997615814,
+                  "p95_ms": 36.39999997615814,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 1,
+                  "max_ms": 475.09999999403954,
+                  "median_ms": 475.09999999403954,
+                  "p95_ms": 475.09999999403954,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 570.0999999940395,
+              "median_ms": 570.0999999940395,
+              "p95_ms": 570.0999999940395,
+              "pending_count": 0
+            },
+            "stack": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                343.80000001192093
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 291.40000000596046,
+                  "median_ms": 275.95000000298023,
+                  "p95_ms": 286.59999999403954,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 21.399999976158142,
+                  "median_ms": 12.500000014901161,
+                  "p95_ms": 20,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 347.09999999403954,
+              "median_ms": 330.90000000596046,
+              "p95_ms": 346.7000000178814,
+              "pending_count": 0
+            },
+            "working_tree": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 1,
+                  "max_ms": 6.5,
+                  "median_ms": 6.5,
+                  "p95_ms": 6.5,
+                  "pending_count": 0
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                1410
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 1574.5,
+                  "median_ms": 1366.0499999970198,
+                  "p95_ms": 1454.800000011921,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 9.300000011920929,
+                  "median_ms": 7.600000008940697,
+                  "p95_ms": 8.900000005960464,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 1623.7000000178814,
+              "median_ms": 1410.6499999910593,
+              "p95_ms": 1501.7000000178814,
+              "pending_count": 0
+            }
+          }
+        },
+        "B": {
+          "actions": {
+            "branch_final": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                369.30000001192093,
+                341.30000001192093,
+                352
+              ],
+              "max_across_all_fresh_processes_ms": 400.80000001192093,
+              "max_ms": 400.80000001192093,
+              "p50_ms": 355.90000000596046,
+              "p95_ms": 383.40000000596046
+            },
+            "branch_first": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                387.39999997615814,
+                349.39999997615814,
+                364.19999998807907
+              ],
+              "max_across_all_fresh_processes_ms": 432.69999998807907,
+              "max_ms": 432.69999998807907,
+              "p50_ms": 401.40000000596046,
+              "p95_ms": 431.40000000596046
+            },
+            "comment_branch": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                460.09999999403954,
+                431.40000000596046,
+                447.5
+              ],
+              "max_across_all_fresh_processes_ms": 460.09999999403954,
+              "max_ms": 447.5,
+              "p50_ms": 416,
+              "p95_ms": 446.5
+            },
+            "comment_worktree": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                869.4000000059605,
+                931.2999999821186,
+                931.3999999761581
+              ],
+              "max_across_all_fresh_processes_ms": 979,
+              "max_ms": 978.7999999821186,
+              "p50_ms": 915.5,
+              "p95_ms": 963.2000000178814
+            },
+            "open": {
+              "all_samples_count": 3,
+              "count": 3,
+              "first_use_by_process_ms": [
+                603.0999999940395,
+                558.6999999880791,
+                571.4000000059605
+              ],
+              "max_across_all_fresh_processes_ms": 603.0999999940395,
+              "max_ms": 603.0999999940395,
+              "p50_ms": 571.4000000059605,
+              "p95_ms": 603.0999999940395
+            },
+            "stack": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                328.89999997615814,
+                345.5,
+                360.5
+              ],
+              "max_across_all_fresh_processes_ms": 376.80000001192093,
+              "max_ms": 361.59999999403954,
+              "p50_ms": 329.30000001192093,
+              "p95_ms": 360.5
+            },
+            "working_tree": {
+              "all_samples_count": 26,
+              "count": 20,
+              "first_use_by_process_ms": [
+                921.7000000178814,
+                879.9000000059605,
+                893.5999999940395
+              ],
+              "max_across_all_fresh_processes_ms": 1080.699999988079,
+              "max_ms": 1080.699999988079,
+              "p50_ms": 893.5999999940395,
+              "p95_ms": 956.9000000059605
+            }
+          },
+          "final20_ipc_summary": {
+            "branch_final": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                352
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 346.39999997615814,
+                  "median_ms": 301.70000000298023,
+                  "p95_ms": 323.7000000178814,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 17.900000005960464,
+                  "median_ms": 12.349999994039536,
+                  "p95_ms": 14.099999994039536,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 400.80000001192093,
+              "median_ms": 356.1000000089407,
+              "p95_ms": 383.40000000596046,
+              "pending_count": 0
+            },
+            "branch_first": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                364.19999998807907
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 372.19999998807907,
+                  "median_ms": 346.70000000298023,
+                  "p95_ms": 371.09999999403954,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 25.19999998807907,
+                  "median_ms": 16.25,
+                  "p95_ms": 21.099999994039536,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 432.69999998807907,
+              "median_ms": 401.90000000596046,
+              "p95_ms": 431.40000000596046,
+              "pending_count": 0
+            },
+            "comment_branch": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                447.5
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 18.80000001192093,
+                  "median_ms": 13.349999994039536,
+                  "p95_ms": 15.400000005960464,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 20,
+                  "max_ms": 386.5,
+                  "median_ms": 360.24999998509884,
+                  "p95_ms": 378.40000000596046,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 447.5,
+              "median_ms": 416.04999999701977,
+              "p95_ms": 446.5,
+              "pending_count": 0
+            },
+            "comment_worktree": {
+              "background_ipc_by_command_and_op": {},
+              "count": 20,
+              "first_use_ms": [
+                931.3999999761581
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 12.300000011920929,
+                  "median_ms": 8.800000011920929,
+                  "p95_ms": 10.300000011920929,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 20,
+                  "max_ms": 927.5999999940395,
+                  "median_ms": 867.7999999970198,
+                  "p95_ms": 918,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 978.7999999821186,
+              "median_ms": 915.6000000089407,
+              "p95_ms": 963.2000000178814,
+              "pending_count": 0
+            },
+            "open": {
+              "background_ipc_by_command_and_op": {},
+              "count": 1,
+              "first_use_ms": [
+                571.4000000059605
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/display_patch": {
+                  "count": 1,
+                  "max_ms": 37.30000001192093,
+                  "median_ms": 37.30000001192093,
+                  "p95_ms": 37.30000001192093,
+                  "pending_count": 0
+                },
+                "workspace/open": {
+                  "count": 1,
+                  "max_ms": 472.19999998807907,
+                  "median_ms": 472.19999998807907,
+                  "p95_ms": 472.19999998807907,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 571.4000000059605,
+              "median_ms": 571.4000000059605,
+              "p95_ms": 571.4000000059605,
+              "pending_count": 0
+            },
+            "stack": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 1,
+                  "max_ms": null,
+                  "median_ms": null,
+                  "p95_ms": null,
+                  "pending_count": 1
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                360.5
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 309.30000001192093,
+                  "median_ms": 275.70000000298023,
+                  "p95_ms": 302.2999999821186,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 15.099999994039536,
+                  "median_ms": 11.900000005960464,
+                  "p95_ms": 13.899999976158142,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 361.59999999403954,
+              "median_ms": 329.65000000596046,
+              "p95_ms": 360.5,
+              "pending_count": 0
+            },
+            "working_tree": {
+              "background_ipc_by_command_and_op": {
+                "workspace/refresh_notes": {
+                  "count": 1,
+                  "max_ms": null,
+                  "median_ms": null,
+                  "p95_ms": null,
+                  "pending_count": 1
+                }
+              },
+              "count": 20,
+              "first_use_ms": [
+                893.5999999940395
+              ],
+              "ipc_by_command_and_op": {
+                "workspace/compare": {
+                  "count": 20,
+                  "max_ms": 1027.4000000059605,
+                  "median_ms": 839.8000000119209,
+                  "p95_ms": 913.4000000059605,
+                  "pending_count": 0
+                },
+                "workspace/display_patch": {
+                  "count": 20,
+                  "max_ms": 9.099999994039536,
+                  "median_ms": 7.549999997019768,
+                  "p95_ms": 8.900000005960464,
+                  "pending_count": 0
+                }
+              },
+              "max_ms": 1080.699999988079,
+              "median_ms": 893.6999999880791,
+              "p95_ms": 956.9000000059605,
+              "pending_count": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "cleanup": {
+    "all12_windows_exact_actor_cleanups_passed": true,
+    "control_socket_absent": true,
+    "host_loopback_port_free": true,
+    "last_launch": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+      "binary_sha256": "bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3",
+      "cdp_port": 29223,
+      "created": "2026-11-25T17:15:45.4122450-05:00",
+      "mcp_port": 28865,
+      "pid": 6612,
+      "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+      "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+      "session": 1,
+      "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+    },
+    "master_exit_request": {
+      "exit": 0,
+      "stderr": "Exit request sent.\n",
+      "stdout": ""
+    },
+    "owned_host_processes_remaining": [],
+    "pid": 58301,
+    "start_ticks": "76690937",
+    "tunnel": {
+      "argv": [
+        "/usr/bin/ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "-M",
+        "-S",
+        "/tmp/status-win-ev7eskeg/ssh.sock",
+        "-o",
+        "ControlPersist=no",
+        "-N",
+        "-o",
+        "ExitOnForwardFailure=yes",
+        "-L",
+        "127.0.0.1:19223:127.0.0.1:29223",
+        "windows-vm"
+      ],
+      "control_socket": "/tmp/status-win-ev7eskeg/ssh.sock",
+      "pid": 58304,
+      "start_ticks": "76690944"
+    },
+    "tunnel_exit": 255
+  },
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "cross_case250ms_target": {
+    "case": "windows_linux",
+    "pass": false,
+    "per_action": {
+      "branch_final": true,
+      "branch_first": true,
+      "comment_branch": true,
+      "comment_worktree": true,
+      "open": false,
+      "stack": true,
+      "working_tree": true
+    },
+    "target_ms": 250
+  },
+  "decision": "No promotion or commit. Compare against remaining charter and matrix gates.",
+  "fixture_after": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_before": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "fresh_process_open_and_first_working_tree": {
+    "windows_linux": {
+      "A": {
+        "first_working_tree_ms": [
+          1267.5,
+          220.40000000596046,
+          203.69999998807907
+        ],
+        "open_ms": [
+          1745.5999999940395,
+          712.4000000059605,
+          713.0999999940395
+        ]
+      },
+      "B": {
+        "first_working_tree_ms": [
+          205,
+          190.09999999403954,
+          190.40000000596046
+        ],
+        "open_ms": [
+          760.2000000178814,
+          697.2999999821186,
+          729.8000000119209
+        ]
+      }
+    },
+    "windows_windows": {
+      "A": {
+        "first_working_tree_ms": [
+          1514.7000000178814,
+          1442.7999999821186,
+          1410
+        ],
+        "open_ms": [
+          570.4000000059605,
+          559,
+          570.0999999940395
+        ]
+      },
+      "B": {
+        "first_working_tree_ms": [
+          921.7000000178814,
+          879.9000000059605,
+          893.5999999940395
+        ],
+        "open_ms": [
+          603.0999999940395,
+          558.6999999880791,
+          571.4000000059605
+        ]
+      }
+    }
+  },
+  "interpretation": {
+    "fresh_process_values": "A1 Open 1745.6 ms and first WT 1267.5 ms remain in the record. Later Opens were about 713 ms and first WT about 200 ms. These are fresh-process and first-use observations; no OS cache flushing occurred.",
+    "remaining_gates": "WSL/ext4 same-side status control and the exact delivered-source four-cell matrix remain pending. The 250 ms target is not met; no promotion or commit.",
+    "windows_linux": "Both GUIs embed the identical Linux worker 328c0680. The status cfg(windows) path is inactive inside that Linux worker. First-process Open and WT differences are not attributed to the status candidate.",
+    "windows_windows": "Stateless status reduced working-tree and working-tree-comment repeated latency on NTFS. This is a measured same-side result, consistent with the earlier measured WSL GUI to NTFS improvement."
+  },
+  "measurement": "Open statistics use three fresh-process Opens. Repeated-action statistics use the final 20 samples. All three first-use values and maxima across 3/3/20 are retained; OS caches were not flushed.",
+  "raw_runs": [
+    {
+      "case": "windows_windows",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+          "stopped_pids": [
+            8228,
+            9460
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:09:35.4672630-05:00",
+            "pid": 4364
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:09:37.4235420-05:00",
+            "pid": 9460
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A1",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+        "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:09:35.3549410-05:00",
+        "mcp_port": 28865,
+        "pid": 8228,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "number": 1,
+      "repetitions": 3,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A1/score/samples.jsonl",
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A1/score/verdict.json"
+    },
+    {
+      "case": "windows_windows",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+          "stopped_pids": [
+            11856,
+            5816
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:10:00.1312330-05:00",
+            "pid": 14080
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:10:01.9961900-05:00",
+            "pid": 5816
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B1",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+        "binary_sha256": "bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:10:00.0163540-05:00",
+        "mcp_port": 28865,
+        "pid": 11856,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+      },
+      "number": 1,
+      "repetitions": 3,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B1/score/samples.jsonl",
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B1/score/verdict.json"
+    },
+    {
+      "case": "windows_windows",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+          "stopped_pids": [
+            1620,
+            408
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:10:19.1682030-05:00",
+            "pid": 8792
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:10:20.9628470-05:00",
+            "pid": 408
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A2",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+        "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:10:19.0595850-05:00",
+        "mcp_port": 28865,
+        "pid": 1620,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "number": 2,
+      "repetitions": 3,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A2/score/samples.jsonl",
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A2/score/verdict.json"
+    },
+    {
+      "case": "windows_windows",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+          "stopped_pids": [
+            7192,
+            9708
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:10:41.3250440-05:00",
+            "pid": 2260
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:10:43.2239330-05:00",
+            "pid": 9708
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B2",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+        "binary_sha256": "bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:10:41.2123180-05:00",
+        "mcp_port": 28865,
+        "pid": 7192,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+      },
+      "number": 2,
+      "repetitions": 3,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B2/score/samples.jsonl",
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B2/score/verdict.json"
+    },
+    {
+      "case": "windows_windows",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+          "stopped_pids": [
+            4796,
+            11388
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:11:00.5149850-05:00",
+            "pid": 9048
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:11:02.3117340-05:00",
+            "pid": 11388
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A3",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+        "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:11:00.4005840-05:00",
+        "mcp_port": 28865,
+        "pid": 4796,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "number": 3,
+      "repetitions": 20,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A3/score/samples.jsonl",
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A3/score/verdict.json"
+    },
+    {
+      "case": "windows_windows",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+          "stopped_pids": [
+            10836,
+            3388
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:12:47.0647070-05:00",
+            "pid": 7240
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:12:48.8490360-05:00",
+            "pid": 3388
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B3",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+        "binary_sha256": "bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:12:46.9527020-05:00",
+        "mcp_port": 28865,
+        "pid": 10836,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+      },
+      "number": 3,
+      "repetitions": 20,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B3/score/samples.jsonl",
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B3/score/verdict.json"
+    },
+    {
+      "case": "windows_linux",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            1496,
+            10960
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:14:12.2224000-05:00",
+            "pid": 5168
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T17:14:13.7579660-05:00",
+            "pid": 12240
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:14:15.1758250-05:00",
+            "pid": 10960
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A1",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+        "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:14:12.1137560-05:00",
+        "mcp_port": 28865,
+        "pid": 1496,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "number": 1,
+      "repetitions": 3,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A1/score/samples.jsonl",
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A1/score/verdict.json"
+    },
+    {
+      "case": "windows_linux",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            9888,
+            6600
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:14:27.6189480-05:00",
+            "pid": 2820
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T17:14:29.1078380-05:00",
+            "pid": 684
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:14:29.5355860-05:00",
+            "pid": 6600
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B1",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+        "binary_sha256": "bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:14:27.5035640-05:00",
+        "mcp_port": 28865,
+        "pid": 9888,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+      },
+      "number": 1,
+      "repetitions": 3,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B1/score/samples.jsonl",
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B1/score/verdict.json"
+    },
+    {
+      "case": "windows_linux",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            10568,
+            7344
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:14:40.4700330-05:00",
+            "pid": 5064
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T17:14:41.9206780-05:00",
+            "pid": 12424
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:14:42.3198470-05:00",
+            "pid": 7344
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A2",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+        "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:14:40.3577280-05:00",
+        "mcp_port": 28865,
+        "pid": 10568,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "number": 2,
+      "repetitions": 3,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A2/score/samples.jsonl",
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A2/score/verdict.json"
+    },
+    {
+      "case": "windows_linux",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            6628,
+            5648
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:14:53.3710570-05:00",
+            "pid": 8360
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T17:14:54.7794760-05:00",
+            "pid": 4796
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:14:55.1702320-05:00",
+            "pid": 5648
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B2",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+        "binary_sha256": "bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:14:53.2616300-05:00",
+        "mcp_port": 28865,
+        "pid": 6628,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+      },
+      "number": 2,
+      "repetitions": 3,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B2/score/samples.jsonl",
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B2/score/verdict.json"
+    },
+    {
+      "case": "windows_linux",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            5564,
+            6296
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:15:05.9710620-05:00",
+            "pid": 3796
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T17:15:07.3885790-05:00",
+            "pid": 2216
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:15:07.7775930-05:00",
+            "pid": 6296
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A3",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+        "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:15:05.8602060-05:00",
+        "mcp_port": 28865,
+        "pid": 5564,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "number": 3,
+      "repetitions": 20,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A3/score/samples.jsonl",
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A3/score/verdict.json"
+    },
+    {
+      "case": "windows_linux",
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            6612,
+            684
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T17:15:45.5278740-05:00",
+            "pid": 2016
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T17:15:46.9513410-05:00",
+            "pid": 10896
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+            "created": "2026-11-25T17:15:47.3627060-05:00",
+            "pid": 684
+          }
+        ],
+        "ports_free": true
+      },
+      "directory": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B3",
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+        "binary_sha256": "bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3",
+        "cdp_port": 29223,
+        "created": "2026-11-25T17:15:45.4122450-05:00",
+        "mcp_port": 28865,
+        "pid": 6612,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+      },
+      "number": 3,
+      "repetitions": 20,
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B3/score/samples.jsonl",
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B3/score/verdict.json"
+    }
+  ],
+  "remaining_gates": [
+    "WSL/ext4 same-side status control",
+    "exact delivered-source four-cell matrix",
+    "Open p95 below 250 ms; target remains unmet"
+  ],
+  "retained_previous_attempt": {
+    "included_in_new_samples": false,
+    "next_authorization": "Start a complete new twelve-process A/B series; no measurement retry within a series.",
+    "sha256": "f42ec2824101efec94c7ccd8ba77705ab0671037b780e66d26bd36cbd7d4429d",
+    "summary": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T215420528806Z/summary.json",
+    "valid_A1_kept_separate": true
+  },
+  "same_side10percent_guard": {
+    "action_ratios": {
+      "branch_final": {
+        "candidate_max_ratio": 1.0090634441690582,
+        "candidate_p95_ratio": 0.9909537348153371,
+        "max_change_percent": 0.9063444169058243,
+        "p50_reduction_percent": 0.0,
+        "p95_reduction_percent": 0.9046265184662894,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "branch_first": {
+        "candidate_max_ratio": 0.9630536389419064,
+        "candidate_p95_ratio": 0.9958448753189136,
+        "max_change_percent": -3.694636105809357,
+        "p50_reduction_percent": 0.09955200999899327,
+        "p95_reduction_percent": 0.4155124681086364,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "comment_branch": {
+        "candidate_max_ratio": 1.0011185682326622,
+        "candidate_p95_ratio": 1.0314160314018301,
+        "max_change_percent": 0.11185682326622093,
+        "p50_reduction_percent": 0.16798655821912423,
+        "p95_reduction_percent": -3.1416031401830136,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "comment_worktree": {
+        "candidate_max_ratio": 0.6352131870843873,
+        "candidate_p95_ratio": 0.631979528916507,
+        "max_change_percent": -36.478681291561266,
+        "p50_reduction_percent": 36.78795829515272,
+        "p95_reduction_percent": 36.8020471083493,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "open": {
+        "candidate_max_ratio": 1.0573281907218397,
+        "candidate_p95_ratio": 1.0573281907218397,
+        "max_change_percent": 5.73281907218397,
+        "p50_reduction_percent": -0.22803017223900213,
+        "p95_reduction_percent": -5.73281907218397,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "stack": {
+        "candidate_max_ratio": 1.0417747046967705,
+        "candidate_p95_ratio": 1.0398038649593506,
+        "max_change_percent": 4.177470469677047,
+        "p50_reduction_percent": 0.48352976549129734,
+        "p95_reduction_percent": -3.980386495935062,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "working_tree": {
+        "candidate_max_ratio": 0.6655786167248738,
+        "candidate_p95_ratio": 0.6372111606809391,
+        "max_change_percent": -33.442138327512616,
+        "p50_reduction_percent": 36.637594837596986,
+        "p95_reduction_percent": 36.278883931906094,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      }
+    },
+    "case": "windows_windows",
+    "limit_ratio": 1.1,
+    "max_pass": true,
+    "open_sample_count": 3,
+    "pass": true
+  },
+  "samples": 636,
+  "state": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T220910302670Z/state.json",
+  "status": "valid-two-Windows-cell-comparison-not-promotion",
+  "variants": {
+    "A": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+      "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+      "helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe",
+      "binary_sha256": "bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3",
+      "helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "label": "candidate-stateless-status-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source",
+      "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+    }
+  },
+  "viewports": {
+    "all_match": true,
+    "pixels": [
+      1280,
+      781
+    ],
+    "runs": 12
+  },
+  "windows_linux_repeated10percent_guard": {
+    "actions": {
+      "branch_final": {
+        "candidate_max_ratio": 1.074428886977939,
+        "candidate_p95_ratio": 1.0384900073068941,
+        "max_change_percent": 7.4428886977939035,
+        "p50_reduction_percent": 7.413010577157564,
+        "p95_reduction_percent": -3.8490007306894114,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "branch_first": {
+        "candidate_max_ratio": 0.9385052034075995,
+        "candidate_p95_ratio": 1.009683995953496,
+        "max_change_percent": -6.149479659240054,
+        "p50_reduction_percent": -0.9939259977259196,
+        "p95_reduction_percent": -0.9683995953496005,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "comment_branch": {
+        "candidate_max_ratio": 0.9981255857265732,
+        "candidate_p95_ratio": 0.9953139645252606,
+        "max_change_percent": -0.18744142734268276,
+        "p50_reduction_percent": 0.0,
+        "p95_reduction_percent": 0.4686035474739447,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "comment_worktree": {
+        "candidate_max_ratio": 0.9982532750831421,
+        "candidate_p95_ratio": 0.9432967034015026,
+        "max_change_percent": -0.17467249168579002,
+        "p50_reduction_percent": 0.046970405841584295,
+        "p95_reduction_percent": 5.670329659849738,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "stack": {
+        "candidate_max_ratio": 0.9985496735469707,
+        "candidate_p95_ratio": 1.0058651025079446,
+        "max_change_percent": -0.1450326453029338,
+        "p50_reduction_percent": -1.4539580062581603,
+        "p95_reduction_percent": -0.5865102507944586,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      },
+      "working_tree": {
+        "candidate_max_ratio": 1.059401080140157,
+        "candidate_p95_ratio": 1.0192687747324387,
+        "max_change_percent": 5.940108014015699,
+        "p50_reduction_percent": -2.294557087503657,
+        "p95_reduction_percent": -1.926877473243871,
+        "within10percent_max": true,
+        "within10percent_p95": true
+      }
+    },
+    "limit_ratio": 1.1,
+    "max_pass": true,
+    "p95_pass": true,
+    "sample_count_per_action_per_variant": 20
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "capacity": 4096,
+  "diagnostic_only": true,
+  "methods": [
+    "measure",
+    "update",
+    "lineBlockAtHeight"
+  ],
+  "mounted_views": 1,
+  "unmeasured": [
+    "EditorView constructor, app closures, patch decoding and widget construction outside the hooked methods",
+    "Native compositor, rasterization, GPU, presentation and the reason for a delayed frame callback",
+    "The purpose of opaque frame callbacks, including scorer readiness versus its required completion frames",
+    "Callbacks requested before installation or while the probe was inactive",
+    "Native IPC; use the unchanged boundaryProbe records"
+  ]
+}

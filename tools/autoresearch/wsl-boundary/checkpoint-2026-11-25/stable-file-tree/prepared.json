@@ -1,0 +1,41 @@
+{
+  "time_utc": "2026-11-25T21:48:44.455157+00:00",
+  "baseline_source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "candidate_source_hash": "69589c0283e3560c6c1edc160064c47f7794068f7a0bdfa824329ab158e73d73",
+  "changed_files": [
+    "frontend/app.js",
+    "frontend/review-ui.js",
+    "frontend/review-ui.test.js"
+  ],
+  "hypothesis": "Preserve file-tree DOM across fresh comparison arrays with unchanged ordered visual metadata.",
+  "visual_fields": [
+    "path",
+    "old",
+    "status",
+    "group"
+  ],
+  "root_guard": true,
+  "fresh_source_reference_on_reuse": true,
+  "closed_folder_reset_guard": "Invalidate cached tree before clearing either nonempty closed-folder set on pair/root change.",
+  "unchanged_behavior": [
+    "Editor teardown and reconstruction after comparison refresh",
+    "Fresh state/comparison used by index-only button handlers",
+    "Filtering and selection update paths",
+    "Viewed indices update path",
+    "Git backend and worker protocol",
+    "Renderer and default hardware acceleration",
+    "Canonical measurement controls"
+  ],
+  "prepared_tests": [
+    "Same visual entries across different OIDs/modes/counts/patch bytes reuse tree",
+    "New/old path, status/group, reorder, add/remove invalidate",
+    "Root change or missing tree invalidates; empty same-root comparison may reuse"
+  ],
+  "tests_run": false,
+  "syntax_checks_run": false,
+  "builds_run": false,
+  "vm_calls": false,
+  "commit": false,
+  "main_source_changed": false,
+  "host_check_gate": "Wait for exact HOST CHECKS RELEASED before running tests or builds."
+}

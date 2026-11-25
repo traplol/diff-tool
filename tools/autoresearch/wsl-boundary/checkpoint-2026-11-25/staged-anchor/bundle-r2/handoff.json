@@ -1,0 +1,52 @@
+{
+  "archive": {
+    "build_plan_sha256": "24cf5c843d65a37194257e580626d65afcbf936a0c4a4f40cb2cbf348c495feb",
+    "bundle_sha256": "e7b7d43e9147b2d72fdb64e49e6bbc23cb11dcddadd8f12d70a99d44c8ad6248",
+    "bytes": 3164160,
+    "host_launcher_sha256": "f3b831f96374a0b7c367d12b93f22366e9fe1e91c8b41decda21b21e0d1e7096",
+    "name": "staged-anchor-metadata-aba80d920269-bundle-r2-input.tar",
+    "path": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/staged-anchor-metadata-aba80d920269-bundle-r2-input.tar",
+    "sha256": "c13e2858b232dab788674f517c861d34624c3e919751911da622751861419c02",
+    "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+    "status": "host-verified only; no VM retry executed",
+    "vm_supervisor_sha256": "7378aa16cb3f4ce969b725e873e73bf097e9f835a6c5b876b54fcabc400fadce"
+  },
+  "bundle": {
+    "bundle_heads": "1135a59f3a51253709d652d1e4ec82fa8b32ce09 HEAD",
+    "bytes": 576663,
+    "git_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+    "git_tree": "473206ad67cbd478e9f2385718f17fe519bc67e6",
+    "name": "source-1135a59.bundle",
+    "self_contained": true,
+    "sha256": "e7b7d43e9147b2d72fdb64e49e6bbc23cb11dcddadd8f12d70a99d44c8ad6248"
+  },
+  "failed_host_controls_preserved": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1",
+  "git_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+  "git_tree": "473206ad67cbd478e9f2385718f17fe519bc67e6",
+  "goal_status_changed": false,
+  "host_proofs_unchanged": true,
+  "host_roundtrip": "build/experiments/staged-anchor-metadata/bundle-r2/roundtrip-verification.json",
+  "native_gate_status": "First attempt failed before build/fixture phases; bundle-r2 has not executed on VM.",
+  "pending_confirmation": {
+    "runnable_caller": "not yet prepared; packaging repair took priority",
+    "sample_evidence": "build/experiments/status-wsl-control/run-20261125T223739227075Z/max-sample-evidence.json",
+    "scope": "A4/B4 with20 repetitions each, same frozen WSL control runner/builds/profile/contract; separate pair; no pooling or measurement authorized."
+  },
+  "previous_attempt": {
+    "host_record": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/native-build-supervisor.json",
+    "validation": "Read saved start ticks and refuse while the exact original supervisor is live; check before upload.",
+    "vm_input_directory": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-input",
+    "vm_supervisor_pid": 162933,
+    "vm_supervisor_record": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-native/supervisor.json"
+  },
+  "promotion_or_commit": false,
+  "retry_command": "python3 -u build/experiments/staged-anchor-metadata/bundle-r2/build-after-release.py --release 'VM STAGED BUILD RELEASED' --windows-gui",
+  "retry_paths": {
+    "artifact_directory": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native",
+    "linux_binary": "/home/max/benchmarks/branchline-boundary/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline",
+    "source_input_directory": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input",
+    "windows_binary": "C:/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline.exe"
+  },
+  "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+  "status": "prepared-host-only-execution-stopped-for-user-checkpoint"
+}

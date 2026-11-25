@@ -1,12 +1,12 @@
 {
-  "artifact_count": 101,
+  "artifact_count": 368,
   "artifacts": [
     {
-      "bytes": 4760,
+      "bytes": 4237,
       "kind": "generated",
       "origins": [],
       "path": "README.md",
-      "sha256": "93e06e7fbc1d4bad1ef58534ad186ddaf3f3858c3cd6bfc905e49209239bf60c"
+      "sha256": "7330022c881dd677b1a6e6a37c0fabfb7d87521ad2151ba4937a4d4a79ecb45e"
     },
     {
       "bytes": 2735,
@@ -45,6 +45,486 @@
       "sha256": "9882674a9f0444c2c4c1641430b64f1c6c4a1de6ab84725cda75c221b851e4df"
     },
     {
+      "bytes": 1201,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/README.md",
+          "sha256": "fe8431ffccdb7206cf35229f87eeef800c66e17d1a0a1444c41997175747eeee"
+        }
+      ],
+      "path": "discarded-initial-geometry/README.md",
+      "sha256": "fe8431ffccdb7206cf35229f87eeef800c66e17d1a0a1444c41997175747eeee"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/baseline.json",
+          "sha256": "ae2fa3d8e46d50ca4921a10351988e0af6da492e47a7605f4be00594521ef7cd"
+        }
+      ],
+      "path": "discarded-initial-geometry/baseline.json",
+      "sha256": "ae2fa3d8e46d50ca4921a10351988e0af6da492e47a7605f4be00594521ef7cd"
+    },
+    {
+      "bytes": 1120,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/build-controller.log",
+          "sha256": "dee6d6dc4166f7eedc4726bf2cd279c4cdafb9040a7444334cf53af5cba9322a"
+        }
+      ],
+      "path": "discarded-initial-geometry/build-controller.log",
+      "sha256": "dee6d6dc4166f7eedc4726bf2cd279c4cdafb9040a7444334cf53af5cba9322a"
+    },
+    {
+      "bytes": 29218,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/build-plan.json",
+          "sha256": "614834e96459a6411c7f2a674135f5b5b14779a1c9d9f300a2f07b9a02698262"
+        }
+      ],
+      "path": "discarded-initial-geometry/build-plan.json",
+      "sha256": "614834e96459a6411c7f2a674135f5b5b14779a1c9d9f300a2f07b9a02698262"
+    },
+    {
+      "bytes": 795,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/candidate.patch",
+          "sha256": "cd17d77a969ab539fb59be44e3e19520c5c1e604de7a8761fbeda6022bd8dda0"
+        }
+      ],
+      "path": "discarded-initial-geometry/candidate.patch",
+      "sha256": "cd17d77a969ab539fb59be44e3e19520c5c1e604de7a8761fbeda6022bd8dda0"
+    },
+    {
+      "bytes": 161414,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/geometry-ab-20261125T223339740730Z-pilot-summary.json",
+          "sha256": "effba0243707c5ea548c85f056c116874149013502dc1f7bf75ce4b860f4514c"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/geometry-ab-20261125T223339740730Z-pilot-summary.json",
+      "sha256": "effba0243707c5ea548c85f056c116874149013502dc1f7bf75ce4b860f4514c"
+    },
+    {
+      "bytes": 67368,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/geometry-ab-20261125T223339740730Z.json",
+          "sha256": "46503b79bd36b569279ea941558bf55e43761840542e6a7997fc773ac4ee87e1"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/geometry-ab-20261125T223339740730Z.json",
+      "sha256": "46503b79bd36b569279ea941558bf55e43761840542e6a7997fc773ac4ee87e1"
+    },
+    {
+      "bytes": 14326,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/geometry-baseline-wsl-linux-20261125T223339740730Z-01/samples.jsonl",
+          "sha256": "69d44ca5b8ad5dc40f3f17bd9790859f1d49c82679dd2abc4a3a3b11e011b5ee"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/geometry-baseline-wsl-linux-20261125T223339740730Z-01/samples.jsonl",
+      "sha256": "69d44ca5b8ad5dc40f3f17bd9790859f1d49c82679dd2abc4a3a3b11e011b5ee"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/geometry-baseline-wsl-linux-20261125T223339740730Z-01/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/geometry-baseline-wsl-linux-20261125T223339740730Z-01/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 14104,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/geometry-baseline-wsl-linux-20261125T223339740730Z-02/samples.jsonl",
+          "sha256": "3c29fea1fb5b752e44245209e25d26aded2fd9275de9dd0a537da2f7f4a9aa71"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/geometry-baseline-wsl-linux-20261125T223339740730Z-02/samples.jsonl",
+      "sha256": "3c29fea1fb5b752e44245209e25d26aded2fd9275de9dd0a537da2f7f4a9aa71"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/geometry-baseline-wsl-linux-20261125T223339740730Z-02/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/geometry-baseline-wsl-linux-20261125T223339740730Z-02/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 13715,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/initial-editor-geometry-wsl-linux-20261125T223339740730Z-01/samples.jsonl",
+          "sha256": "eed9778b5d69e76d3637037e1d7782540eaccba5a15d4d267845ef722910da42"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/initial-editor-geometry-wsl-linux-20261125T223339740730Z-01/samples.jsonl",
+      "sha256": "eed9778b5d69e76d3637037e1d7782540eaccba5a15d4d267845ef722910da42"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/initial-editor-geometry-wsl-linux-20261125T223339740730Z-01/source.json",
+          "sha256": "07036a33a3a464cb11db8f0ad7cb203b22d3d6024c19488cb7616c0de7e873a1"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/initial-editor-geometry-wsl-linux-20261125T223339740730Z-01/source.json",
+      "sha256": "07036a33a3a464cb11db8f0ad7cb203b22d3d6024c19488cb7616c0de7e873a1"
+    },
+    {
+      "bytes": 13890,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/initial-editor-geometry-wsl-linux-20261125T223339740730Z-02/samples.jsonl",
+          "sha256": "a242c67014b2f4aa905938bf0d687b2cb461f543bfce6432b94e5a48884cde13"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/initial-editor-geometry-wsl-linux-20261125T223339740730Z-02/samples.jsonl",
+      "sha256": "a242c67014b2f4aa905938bf0d687b2cb461f543bfce6432b94e5a48884cde13"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/initial-editor-geometry-wsl-linux-20261125T223339740730Z-02/source.json",
+          "sha256": "07036a33a3a464cb11db8f0ad7cb203b22d3d6024c19488cb7616c0de7e873a1"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/initial-editor-geometry-wsl-linux-20261125T223339740730Z-02/source.json",
+      "sha256": "07036a33a3a464cb11db8f0ad7cb203b22d3d6024c19488cb7616c0de7e873a1"
+    },
+    {
+      "bytes": 1056,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/launch-geometry-baseline-wsl-linux-20261125T223339740730Z-01.json",
+          "sha256": "fc9be17e3fe07ef31926581bee63d9f49cef06ae445bc6b3a3abbb12253145f7"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/launch-geometry-baseline-wsl-linux-20261125T223339740730Z-01.json",
+      "sha256": "fc9be17e3fe07ef31926581bee63d9f49cef06ae445bc6b3a3abbb12253145f7"
+    },
+    {
+      "bytes": 1056,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/launch-geometry-baseline-wsl-linux-20261125T223339740730Z-02.json",
+          "sha256": "b1e0e4333cda9f588a7d6dbce4130e0caf79d1e96bd24a66219919217df00d06"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/launch-geometry-baseline-wsl-linux-20261125T223339740730Z-02.json",
+      "sha256": "b1e0e4333cda9f588a7d6dbce4130e0caf79d1e96bd24a66219919217df00d06"
+    },
+    {
+      "bytes": 1134,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/launch-initial-editor-geometry-wsl-linux-20261125T223339740730Z-01.json",
+          "sha256": "7c9db794007317c4b53dfa0c0632ca33c3e093a0fcdfcf38b96d4d18e0603714"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/launch-initial-editor-geometry-wsl-linux-20261125T223339740730Z-01.json",
+      "sha256": "7c9db794007317c4b53dfa0c0632ca33c3e093a0fcdfcf38b96d4d18e0603714"
+    },
+    {
+      "bytes": 1134,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-runs/launch-initial-editor-geometry-wsl-linux-20261125T223339740730Z-02.json",
+          "sha256": "7af43662b826cfc84a3ba12cc58c4a8bf79bcea13102728c6bc3cc5214c67fae"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical/launch-initial-editor-geometry-wsl-linux-20261125T223339740730Z-02.json",
+      "sha256": "7af43662b826cfc84a3ba12cc58c4a8bf79bcea13102728c6bc3cc5214c67fae"
+    },
+    {
+      "bytes": 3629,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-ab-plan.before-shared-transport.json",
+          "sha256": "b3d7be9d863a00d6c27fecef3dbfcf40a7d23ee918b0bf6f1f1477e07267024f"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical-ab-plan.before-shared-transport.json",
+      "sha256": "b3d7be9d863a00d6c27fecef3dbfcf40a7d23ee918b0bf6f1f1477e07267024f"
+    },
+    {
+      "bytes": 4225,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-ab-plan.json",
+          "sha256": "b1e7d88d4981bdf02afcef6c8b45dcfde051ba3cdb65b99caa5d918d584ad916"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical-ab-plan.json",
+      "sha256": "b1e7d88d4981bdf02afcef6c8b45dcfde051ba3cdb65b99caa5d918d584ad916"
+    },
+    {
+      "bytes": 4225,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-ab-plan.stdout.json",
+          "sha256": "62883fcd15f3e1650d0bc36ad7ca202ff4dd78a06c05fa337dc705c2ce41e10b"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical-ab-plan.stdout.json",
+      "sha256": "62883fcd15f3e1650d0bc36ad7ca202ff4dd78a06c05fa337dc705c2ce41e10b"
+    },
+    {
+      "bytes": 6352,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-ab.before-shared-transport.py",
+          "sha256": "c9fb6f18edc00ee8ee4dcf9287cb26a596857ca276767564e54f7983bf630590"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical-ab.before-shared-transport.py",
+      "sha256": "c9fb6f18edc00ee8ee4dcf9287cb26a596857ca276767564e54f7983bf630590"
+    },
+    {
+      "bytes": 6844,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-ab.py",
+          "sha256": "1fb22ab42c7c816f7b8bb37fd7754fc8896f1fd62165d08f45dbb22068aafbf9"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical-ab.py",
+      "sha256": "1fb22ab42c7c816f7b8bb37fd7754fc8896f1fd62165d08f45dbb22068aafbf9"
+    },
+    {
+      "bytes": 556,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/canonical-manifest-wiring-proof.json",
+          "sha256": "fecca787e48487d88b6a95c68811ba10390a09827670034372d08b69186a026b"
+        }
+      ],
+      "path": "discarded-initial-geometry/canonical-manifest-wiring-proof.json",
+      "sha256": "fecca787e48487d88b6a95c68811ba10390a09827670034372d08b69186a026b"
+    },
+    {
+      "bytes": 551,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/host-proof.json",
+          "sha256": "2904a82324ee5178d56d6488ec2c88bc2e3e80695764716a5cd5e41996624868"
+        }
+      ],
+      "path": "discarded-initial-geometry/host-proof.json",
+      "sha256": "2904a82324ee5178d56d6488ec2c88bc2e3e80695764716a5cd5e41996624868"
+    },
+    {
+      "bytes": 8378,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/native-build-proof.json",
+          "sha256": "a2df4f22bd1aa5d4d8564809b5cd1dd4ba24ee0f97feafd608c69cea99de0f4d"
+        }
+      ],
+      "path": "discarded-initial-geometry/native-build-proof.json",
+      "sha256": "a2df4f22bd1aa5d4d8564809b5cd1dd4ba24ee0f97feafd608c69cea99de0f4d"
+    },
+    {
+      "bytes": 6723,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/run-build.py",
+          "sha256": "5bb37af990aaee3d1d8431e881e9ec0112bcf422027230f8a0f90f3962bf5697"
+        }
+      ],
+      "path": "discarded-initial-geometry/run-build.py",
+      "sha256": "5bb37af990aaee3d1d8431e881e9ec0112bcf422027230f8a0f90f3962bf5697"
+    },
+    {
+      "bytes": 269,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/runtime-baseline-smoke-owner.json",
+          "sha256": "6ab5f97afcaa10d5379265f6e7c9a1f92b574ac6c39e6ff55dabdf6d02b6ee5e"
+        }
+      ],
+      "path": "discarded-initial-geometry/runtime-baseline-smoke-owner.json",
+      "sha256": "6ab5f97afcaa10d5379265f6e7c9a1f92b574ac6c39e6ff55dabdf6d02b6ee5e"
+    },
+    {
+      "bytes": 4186,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/runtime-baseline-smoke-remote.py",
+          "sha256": "b21138d3c75ce39a3645f7e46f3fac9176b06b801d45ed5340d3b91f76561fc7"
+        }
+      ],
+      "path": "discarded-initial-geometry/runtime-baseline-smoke-remote.py",
+      "sha256": "b21138d3c75ce39a3645f7e46f3fac9176b06b801d45ed5340d3b91f76561fc7"
+    },
+    {
+      "bytes": 5788,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/runtime-baseline-smoke.log",
+          "sha256": "f03168abcf1e3fa7b2a994155047f079d0200fb5e0e560b3697cccf0777fc4f0"
+        }
+      ],
+      "path": "discarded-initial-geometry/runtime-baseline-smoke.log",
+      "sha256": "f03168abcf1e3fa7b2a994155047f079d0200fb5e0e560b3697cccf0777fc4f0"
+    },
+    {
+      "bytes": 4302,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/runtime-context-smoke-remote.py",
+          "sha256": "c9842fc1ef9f3d40fe0a95d1407c0b88332232fe703c1c0466cf23d6b7338697"
+        }
+      ],
+      "path": "discarded-initial-geometry/runtime-context-smoke-remote.py",
+      "sha256": "c9842fc1ef9f3d40fe0a95d1407c0b88332232fe703c1c0466cf23d6b7338697"
+    },
+    {
+      "bytes": 2809,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/runtime-gate-proof.json",
+          "sha256": "39d418402ec9be8be9d5a2e3cc28a42c5eb74be11140e0505fd05638b46c4767"
+        }
+      ],
+      "path": "discarded-initial-geometry/runtime-gate-proof.json",
+      "sha256": "39d418402ec9be8be9d5a2e3cc28a42c5eb74be11140e0505fd05638b46c4767"
+    },
+    {
+      "bytes": 1690,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/runtime-gate-release.json",
+          "sha256": "b101015fcf59aa465df4342e944a02ece2a51eddca165104a381517b0460f02e"
+        }
+      ],
+      "path": "discarded-initial-geometry/runtime-gate-release.json",
+      "sha256": "b101015fcf59aa465df4342e944a02ece2a51eddca165104a381517b0460f02e"
+    },
+    {
+      "bytes": 251,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/runtime-smoke-owner.json",
+          "sha256": "484bf6db31447c8a745447d310b2e750e5ef1128af560aecc781782497ca9fe3"
+        }
+      ],
+      "path": "discarded-initial-geometry/runtime-smoke-owner.json",
+      "sha256": "484bf6db31447c8a745447d310b2e750e5ef1128af560aecc781782497ca9fe3"
+    },
+    {
+      "bytes": 4264,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/runtime-smoke-remote.py",
+          "sha256": "1b0aabb1f5034e787bdfc0125e1a6a15255e08a22e4057813c5fdde80033448e"
+        }
+      ],
+      "path": "discarded-initial-geometry/runtime-smoke-remote.py",
+      "sha256": "1b0aabb1f5034e787bdfc0125e1a6a15255e08a22e4057813c5fdde80033448e"
+    },
+    {
+      "bytes": 2241,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/runtime-smoke.log",
+          "sha256": "d7db5974c340c7e465c4d607660d1425cb3fbdbe9d00bad0043f39fc81a3f1d4"
+        }
+      ],
+      "path": "discarded-initial-geometry/runtime-smoke.log",
+      "sha256": "d7db5974c340c7e465c4d607660d1425cb3fbdbe9d00bad0043f39fc81a3f1d4"
+    },
+    {
+      "bytes": 404,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/shared-transport.json",
+          "sha256": "923417d4f160fd59046134c11528940c9f96ca2879ced6c20580f5f2d43cb12c"
+        }
+      ],
+      "path": "discarded-initial-geometry/shared-transport.json",
+      "sha256": "923417d4f160fd59046134c11528940c9f96ca2879ced6c20580f5f2d43cb12c"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/source.json",
+          "sha256": "6502b7297bbbbabe21e189d2b8035055673d4a7f28d7d18c79deb3c219caad15"
+        }
+      ],
+      "path": "discarded-initial-geometry/source.json",
+      "sha256": "6502b7297bbbbabe21e189d2b8035055673d4a7f28d7d18c79deb3c219caad15"
+    },
+    {
+      "bytes": 9780,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/initial-editor-geometry/vm-build-supervisor.py",
+          "sha256": "c87006c9abee5c8370f2ee4e567eb7bc65972e26e50ed941522176e30c811472"
+        }
+      ],
+      "path": "discarded-initial-geometry/vm-build-supervisor.py",
+      "sha256": "c87006c9abee5c8370f2ee4e567eb7bc65972e26e50ed941522176e30c811472"
+    },
+    {
       "bytes": 36954,
       "kind": "copied",
       "origins": [
@@ -79,6 +559,73 @@
       ],
       "path": "discarded-pane-reuse/pilot-summary.json",
       "sha256": "4ab28c10d68f99e46234c0ccb67d727898556d5c8eacc50a1471defbe3ff08d7"
+    },
+    {
+      "bytes": 1690,
+      "kind": "generated",
+      "origins": [],
+      "path": "followup-patch-checks.json",
+      "sha256": "5a8bff78bed002a045a71c4f1e609a404993a2fe90a32a4e048c22fccb73e9d1"
+    },
+    {
+      "bytes": 4400,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/git-command-cost-trace/README.md",
+          "sha256": "8e3be6c1db60276046ef98a638028204e9c6eef3741890e128c4b37053a605fd"
+        }
+      ],
+      "path": "git-command-cost-trace/README.md",
+      "sha256": "8e3be6c1db60276046ef98a638028204e9c6eef3741890e128c4b37053a605fd"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/git-command-cost-trace/baseline-source.json",
+          "sha256": "90b47f28804dd7020b7f32ed996bc629549b627886d99cce34f13d9d9e6245fc"
+        }
+      ],
+      "path": "git-command-cost-trace/baseline-source.json",
+      "sha256": "90b47f28804dd7020b7f32ed996bc629549b627886d99cce34f13d9d9e6245fc"
+    },
+    {
+      "bytes": 1898,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/git-command-cost-trace/prepared.json",
+          "sha256": "2db0dd191c2c6c53d69d1d2dbc3172bc9e312ce31b4f6f5b4f80af89751bfcdd"
+        }
+      ],
+      "path": "git-command-cost-trace/prepared.json",
+      "sha256": "2db0dd191c2c6c53d69d1d2dbc3172bc9e312ce31b4f6f5b4f80af89751bfcdd"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/git-command-cost-trace/source.json",
+          "sha256": "1fbfbf3dfd78951cbfc342d09f2ceb3ed3e829d99cd0646a21f472cf4f83d34a"
+        }
+      ],
+      "path": "git-command-cost-trace/source.json",
+      "sha256": "1fbfbf3dfd78951cbfc342d09f2ceb3ed3e829d99cd0646a21f472cf4f83d34a"
+    },
+    {
+      "bytes": 2153,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/git-command-cost-trace/trace-overlay.patch",
+          "sha256": "b4fd4730d0ba5306b4efea2d31d8ebc03bf8df7208d41ce1c5d38b78f80c09c6"
+        }
+      ],
+      "path": "git-command-cost-trace/trace-overlay.patch",
+      "sha256": "b4fd4730d0ba5306b4efea2d31d8ebc03bf8df7208d41ce1c5d38b78f80c09c6"
     },
     {
       "bytes": 4940,
@@ -1389,6 +1936,150 @@
       "sha256": "ca60e3d605aa0ff469e674af523eca0fe0b1ec1e2084d445fa52ef52ea482a71"
     },
     {
+      "bytes": 9374,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/execution-plan.json",
+          "sha256": "7b734df61cf85e4f157560a44e078201d0d9aa620ec42c46f17fc06e3ece2b88"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/execution-plan.json",
+      "sha256": "7b734df61cf85e4f157560a44e078201d0d9aa620ec42c46f17fc06e3ece2b88"
+    },
+    {
+      "bytes": 105,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/host-evidence/release.json",
+          "sha256": "c51502efddb6e1a2fb2274f92565c6f4fc54b42fbd9377d7eabc7e8664697bb1"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/host-evidence/release.json",
+      "sha256": "c51502efddb6e1a2fb2274f92565c6f4fc54b42fbd9377d7eabc7e8664697bb1"
+    },
+    {
+      "bytes": 2040,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/host-evidence/vm/evidence/linux-native-client.log",
+          "sha256": "f9ec566f9873de590b20daf70f501f47fe62f9aeadcf1a9bb7bb697cc1b7579b"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/host-evidence/vm/evidence/linux-native-client.log",
+      "sha256": "f9ec566f9873de590b20daf70f501f47fe62f9aeadcf1a9bb7bb697cc1b7579b"
+    },
+    {
+      "bytes": 21988,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/host-evidence/vm/evidence/supervisor.json",
+          "sha256": "06fd4548fbe57d49a703bd96036810b7b610e46925cabfb0a63900f6208cfbe4"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/host-evidence/vm/evidence/supervisor.json",
+      "sha256": "06fd4548fbe57d49a703bd96036810b7b610e46925cabfb0a63900f6208cfbe4"
+    },
+    {
+      "bytes": 2832,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/host-evidence/vm/evidence/windows-native-client.log",
+          "sha256": "f41e514fefaff3f036a8007694f8c3b26f3bbda3a13f8dccf5677a088a3cf28f"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/host-evidence/vm/evidence/windows-native-client.log",
+      "sha256": "f41e514fefaff3f036a8007694f8c3b26f3bbda3a13f8dccf5677a088a3cf28f"
+    },
+    {
+      "bytes": 358,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/source/src-tauri/src/git/fixtures/malformed-linux.py",
+          "sha256": "a559d2358addd9c8acde727e5c4e76bc539dd6f28f81e2f4e05e5484f382e4c7"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/source/src-tauri/src/git/fixtures/malformed-linux.py",
+      "sha256": "a559d2358addd9c8acde727e5c4e76bc539dd6f28f81e2f4e05e5484f382e4c7"
+    },
+    {
+      "bytes": 8266,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/source/src-tauri/src/git/malformed_response_test.rs",
+          "sha256": "d8b453173fc2b01e9b3af90de5236dd9f1794a56a90bd8581f6c2fa73dea9c60"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/source/src-tauri/src/git/malformed_response_test.rs",
+      "sha256": "d8b453173fc2b01e9b3af90de5236dd9f1794a56a90bd8581f6c2fa73dea9c60"
+    },
+    {
+      "bytes": 6117,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/summary.json",
+          "sha256": "2a724514b12d7ac0408b8fc6f7b11a370081fca8f2017e22fa0c9a9540d8bf79"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/summary.json",
+      "sha256": "2a724514b12d7ac0408b8fc6f7b11a370081fca8f2017e22fa0c9a9540d8bf79"
+    },
+    {
+      "bytes": 82,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/test-module-delta.txt",
+          "sha256": "eb50683579fa51644266230ca36f9d072a07bfedf4f41dd548de073cecf60528"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/test-module-delta.txt",
+      "sha256": "eb50683579fa51644266230ca36f9d072a07bfedf4f41dd548de073cecf60528"
+    },
+    {
+      "bytes": 90,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/windows-fixture/Cargo.lock",
+          "sha256": "67c56b8c96735b7731614ff5c8874dabbbcc7daf95272af4a830291bc78cffca"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/windows-fixture/Cargo.lock",
+      "sha256": "67c56b8c96735b7731614ff5c8874dabbbcc7daf95272af4a830291bc78cffca"
+    },
+    {
+      "bytes": 92,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/windows-fixture/Cargo.toml",
+          "sha256": "fff6d4ca8359f79d03de3e20121bcd54618680db0dfd28d6ecdaa1defe536020"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/windows-fixture/Cargo.toml",
+      "sha256": "fff6d4ca8359f79d03de3e20121bcd54618680db0dfd28d6ecdaa1defe536020"
+    },
+    {
+      "bytes": 661,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/windows-fixture/src/main.rs",
+          "sha256": "fb8ec3cd658105225207945636bf862c2d2d048cba47273e3a0f0dd9d2977488"
+        }
+      ],
+      "path": "native-helper/malformed-client-gate/windows-fixture/src/main.rs",
+      "sha256": "fb8ec3cd658105225207945636bf862c2d2d048cba47273e3a0f0dd9d2977488"
+    },
+    {
       "bytes": 941,
       "kind": "copied",
       "origins": [
@@ -1507,6 +2198,126 @@
       ],
       "path": "native-helper/query-decision.json",
       "sha256": "9384a5432139addb7d05ec65bd6437289ccced1ff4d74b467d62c5d539b26fa9"
+    },
+    {
+      "bytes": 900,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/reverse-lifecycle-05-prepared.json",
+          "sha256": "059086b691829e9c13978fd796ea06177f022b41e4c4dd73a41897f56d8223d9"
+        }
+      ],
+      "path": "native-helper/reverse-gates/reverse-lifecycle-05-prepared.json",
+      "sha256": "059086b691829e9c13978fd796ea06177f022b41e4c4dd73a41897f56d8223d9"
+    },
+    {
+      "bytes": 126,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/reverse-windows-gates-01/cleanup-utf8.json",
+          "sha256": "cc94f2cbd68331d3d0d59b31be3d2a988e7cfeff3773ac5e7189ad231f1adc8f"
+        }
+      ],
+      "path": "native-helper/reverse-gates/reverse-windows-gates-01/cleanup-utf8.json",
+      "sha256": "cc94f2cbd68331d3d0d59b31be3d2a988e7cfeff3773ac5e7189ad231f1adc8f"
+    },
+    {
+      "bytes": 660,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/reverse-windows-gates-01/preflight.json",
+          "sha256": "a0802f66795561fbb3f74791e9e9132fe5cbdc7212cf0e8f953d3eb4baaf8975"
+        }
+      ],
+      "path": "native-helper/reverse-gates/reverse-windows-gates-01/preflight.json",
+      "sha256": "a0802f66795561fbb3f74791e9e9132fe5cbdc7212cf0e8f953d3eb4baaf8975"
+    },
+    {
+      "bytes": 10642,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/reverse-windows-gates-01/primary-result.json",
+          "sha256": "9d051012226dac8c86c1f0e90d30659b210b81f781221b43d1a9593ebc690346"
+        }
+      ],
+      "path": "native-helper/reverse-gates/reverse-windows-gates-01/primary-result.json",
+      "sha256": "9d051012226dac8c86c1f0e90d30659b210b81f781221b43d1a9593ebc690346"
+    },
+    {
+      "bytes": 7911,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/reverse-windows-gates-02/primary-result.json",
+          "sha256": "5d8e8f1e71c5056d41579364d7ca60f4c9f783c52b60f3755349eb2b8b27a4e0"
+        }
+      ],
+      "path": "native-helper/reverse-gates/reverse-windows-gates-02/primary-result.json",
+      "sha256": "5d8e8f1e71c5056d41579364d7ca60f4c9f783c52b60f3755349eb2b8b27a4e0"
+    },
+    {
+      "bytes": 560,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/reverse-windows-gates-02/release.json",
+          "sha256": "79eed759c417c789d7a6ed192f88d50040aed6f05ecc813b08d58c3f5c14ef12"
+        }
+      ],
+      "path": "native-helper/reverse-gates/reverse-windows-gates-02/release.json",
+      "sha256": "79eed759c417c789d7a6ed192f88d50040aed6f05ecc813b08d58c3f5c14ef12"
+    },
+    {
+      "bytes": 29038,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/reverse-windows-lifecycle-03/primary-result.json",
+          "sha256": "162467d1d929e9dce94ca19e88ca51b63ee8f562c25846e8cdbab543dcfbd1c3"
+        }
+      ],
+      "path": "native-helper/reverse-gates/reverse-windows-lifecycle-03/primary-result.json",
+      "sha256": "162467d1d929e9dce94ca19e88ca51b63ee8f562c25846e8cdbab543dcfbd1c3"
+    },
+    {
+      "bytes": 15225,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/reverse-windows-lifecycle-04/primary-result.json",
+          "sha256": "77f8c8ff49688ddef2133cd826297f47c740e32cf7c76c02e989c36ab0356a28"
+        }
+      ],
+      "path": "native-helper/reverse-gates/reverse-windows-lifecycle-04/primary-result.json",
+      "sha256": "77f8c8ff49688ddef2133cd826297f47c740e32cf7c76c02e989c36ab0356a28"
+    },
+    {
+      "bytes": 44221,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/reverse-windows-lifecycle-05/primary-result.json",
+          "sha256": "e0966429b151e3d9912a73f05a4977ff9f353fed2065ba64b6f3200ff207f057"
+        }
+      ],
+      "path": "native-helper/reverse-gates/reverse-windows-lifecycle-05/primary-result.json",
+      "sha256": "e0966429b151e3d9912a73f05a4977ff9f353fed2065ba64b6f3200ff207f057"
+    },
+    {
+      "bytes": 2676,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/reverse-gates/summary.json",
+          "sha256": "d6a481034a72108f5b5548c24b60a41f0020201944e7807f5403f33df1c01b64"
+        }
+      ],
+      "path": "native-helper/reverse-gates/summary.json",
+      "sha256": "d6a481034a72108f5b5548c24b60a41f0020201944e7807f5403f33df1c01b64"
     },
     {
       "bytes": 10166,
@@ -1665,11 +2476,263 @@
       "sha256": "ae8fb384b8226f11a2a37f5f0699a786d03e2788ffc6db869a609adbf1f308ad"
     },
     {
+      "bytes": 6968,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/README.md",
+          "sha256": "780fbf26383125d37109a56fd320b5cb8ecd891112b14ee37d38e849527c34a2"
+        }
+      ],
+      "path": "parallel-untracked/README.md",
+      "sha256": "780fbf26383125d37109a56fd320b5cb8ecd891112b14ee37d38e849527c34a2"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/baseline-source.json",
+          "sha256": "90b47f28804dd7020b7f32ed996bc629549b627886d99cce34f13d9d9e6245fc"
+        }
+      ],
+      "path": "parallel-untracked/baseline-source.json",
+      "sha256": "90b47f28804dd7020b7f32ed996bc629549b627886d99cce34f13d9d9e6245fc"
+    },
+    {
+      "bytes": 547,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/baseline.json",
+          "sha256": "488af191f78415c31ade6c1b6729f3f275343b2244d7853655352c631b5100e6"
+        }
+      ],
+      "path": "parallel-untracked/baseline.json",
+      "sha256": "488af191f78415c31ade6c1b6729f3f275343b2244d7853655352c631b5100e6"
+    },
+    {
+      "bytes": 14742,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/candidate.patch",
+          "sha256": "5a9c9f3c778544f7508c19e3d68c56c5a167b48c553247a6bd83d5d3dcfb8253"
+        }
+      ],
+      "path": "parallel-untracked/candidate.patch",
+      "sha256": "5a9c9f3c778544f7508c19e3d68c56c5a167b48c553247a6bd83d5d3dcfb8253"
+    },
+    {
+      "bytes": 1840,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/focused-tests-oracle-path-failure.log",
+          "sha256": "7fdc4fc03a3b171645e57a0b443db8e3b998c42285c5c07fa93452cd433790c5"
+        }
+      ],
+      "path": "parallel-untracked/focused-tests-oracle-path-failure.log",
+      "sha256": "7fdc4fc03a3b171645e57a0b443db8e3b998c42285c5c07fa93452cd433790c5"
+    },
+    {
+      "bytes": 7256,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/gui-rust-tests-loopback.log",
+          "sha256": "abde3ad0498be034735330b7c081b65ca32e8e264cf9ea2bcc93fddce2025f49"
+        }
+      ],
+      "path": "parallel-untracked/gui-rust-tests-loopback.log",
+      "sha256": "abde3ad0498be034735330b7c081b65ca32e8e264cf9ea2bcc93fddce2025f49"
+    },
+    {
+      "bytes": 9691,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/gui-rust-tests.log",
+          "sha256": "1a723ffc796b7a5d9800e8e4c3d2d31e31e20fff4d7c4080048ebd2e38f6b871"
+        }
+      ],
+      "path": "parallel-untracked/gui-rust-tests.log",
+      "sha256": "1a723ffc796b7a5d9800e8e4c3d2d31e31e20fff4d7c4080048ebd2e38f6b871"
+    },
+    {
+      "bytes": 3127,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/proof.json",
+          "sha256": "b526c63d9e001edc199ff9547def4a071bf9fcbba7463c16dc7a39ff324774c9"
+        }
+      ],
+      "path": "parallel-untracked/proof.json",
+      "sha256": "b526c63d9e001edc199ff9547def4a071bf9fcbba7463c16dc7a39ff324774c9"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/source.json",
+          "sha256": "c05b1ac831e2ed561228371bff1d13fae1d60659d31c18506547aa22a3e1acb5"
+        }
+      ],
+      "path": "parallel-untracked/source.json",
+      "sha256": "c05b1ac831e2ed561228371bff1d13fae1d60659d31c18506547aa22a3e1acb5"
+    },
+    {
+      "bytes": 3835,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/worker-tests-oracle-binary-failure.log",
+          "sha256": "010bd22bcfebf1f9df18a50dadf5d6f960c9c7e9dfd5c8327cd570e968cc98b3"
+        }
+      ],
+      "path": "parallel-untracked/worker-tests-oracle-binary-failure.log",
+      "sha256": "010bd22bcfebf1f9df18a50dadf5d6f960c9c7e9dfd5c8327cd570e968cc98b3"
+    },
+    {
+      "bytes": 3550,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/parallel-untracked/worker-tests.log",
+          "sha256": "6b983600e403034ad0aa5e92a65f6cba869d8a307b578185318f63e945aa0dff"
+        }
+      ],
+      "path": "parallel-untracked/worker-tests.log",
+      "sha256": "6b983600e403034ad0aa5e92a65f6cba869d8a307b578185318f63e945aa0dff"
+    },
+    {
       "bytes": 6723,
       "kind": "generated",
       "origins": [],
       "path": "patch-checks.json",
       "sha256": "90e514078c3d47980c79c02ea3ae4cded296e30f835651487872e6756a1eceb1"
+    },
+    {
+      "bytes": 3131,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/README.md",
+          "sha256": "7383bc8fb7d5e0037464dc2b8218331523db963e05f73bbf9c637feab2678776"
+        }
+      ],
+      "path": "stable-file-tree/README.md",
+      "sha256": "7383bc8fb7d5e0037464dc2b8218331523db963e05f73bbf9c637feab2678776"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/baseline-source.json",
+          "sha256": "ae2fa3d8e46d50ca4921a10351988e0af6da492e47a7605f4be00594521ef7cd"
+        }
+      ],
+      "path": "stable-file-tree/baseline-source.json",
+      "sha256": "ae2fa3d8e46d50ca4921a10351988e0af6da492e47a7605f4be00594521ef7cd"
+    },
+    {
+      "bytes": 4366,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/candidate.patch",
+          "sha256": "037476faab69d6ab7af5a366d648e0ce605fc400cadca16135eb2e01ff7d482e"
+        }
+      ],
+      "path": "stable-file-tree/candidate.patch",
+      "sha256": "037476faab69d6ab7af5a366d648e0ce605fc400cadca16135eb2e01ff7d482e"
+    },
+    {
+      "bytes": 242,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/focused-tests.log",
+          "sha256": "5302f9086c7786d3e0e551a5508adb1d77d52eb3e6e5680f58e28da514950cf8"
+        }
+      ],
+      "path": "stable-file-tree/focused-tests.log",
+      "sha256": "5302f9086c7786d3e0e551a5508adb1d77d52eb3e6e5680f58e28da514950cf8"
+    },
+    {
+      "bytes": 1574,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/frontend-checks.json",
+          "sha256": "e54b32c65c35a157a79c41d8495dafd93aeb80358050ed5873bc7f0d4eb8ac73"
+        }
+      ],
+      "path": "stable-file-tree/frontend-checks.json",
+      "sha256": "e54b32c65c35a157a79c41d8495dafd93aeb80358050ed5873bc7f0d4eb8ac73"
+    },
+    {
+      "bytes": 788,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/frontend-tests.log",
+          "sha256": "ea97538ca2db64aa0d1bab5f50036595e2bacf7ed3a1ecfbb20c68f9a3cbedf2"
+        }
+      ],
+      "path": "stable-file-tree/frontend-tests.log",
+      "sha256": "ea97538ca2db64aa0d1bab5f50036595e2bacf7ed3a1ecfbb20c68f9a3cbedf2"
+    },
+    {
+      "bytes": 1602,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/prepared.json",
+          "sha256": "f56cba6428869af820b83857a8f4424cb624e5f5b2f1f2a80cc635e9c5ba6a5e"
+        }
+      ],
+      "path": "stable-file-tree/prepared.json",
+      "sha256": "f56cba6428869af820b83857a8f4424cb624e5f5b2f1f2a80cc635e9c5ba6a5e"
+    },
+    {
+      "bytes": 3191,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/proof.json",
+          "sha256": "dfd61b4430ecd11a24497ca9f04142f0fdee2ef9a38cf1a258a04e9626f481ed"
+        }
+      ],
+      "path": "stable-file-tree/proof.json",
+      "sha256": "dfd61b4430ecd11a24497ca9f04142f0fdee2ef9a38cf1a258a04e9626f481ed"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/source.json",
+          "sha256": "b1ec5748cc0c983fd5d31f9ddfde7a365d3740c32b264a7af392b717e760600c"
+        }
+      ],
+      "path": "stable-file-tree/source.json",
+      "sha256": "b1ec5748cc0c983fd5d31f9ddfde7a365d3740c32b264a7af392b717e760600c"
+    },
+    {
+      "bytes": 433,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/stable-file-tree/vite-build.log",
+          "sha256": "39bb549a45d61a01e338f3f3d0b61fb47320be8a398aba1d665bea7c6f574067"
+        }
+      ],
+      "path": "stable-file-tree/vite-build.log",
+      "sha256": "39bb549a45d61a01e338f3f3d0b61fb47320be8a398aba1d665bea7c6f574067"
     },
     {
       "bytes": 6844,
@@ -1720,6 +2783,138 @@
       "sha256": "580a1347434496def9d1761a7e65912e6b2eee59be9e9b00de27fe16face0c5f"
     },
     {
+      "bytes": 7217,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/build-after-release.py",
+          "sha256": "f3b831f96374a0b7c367d12b93f22366e9fe1e91c8b41decda21b21e0d1e7096"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/build-after-release.py",
+      "sha256": "f3b831f96374a0b7c367d12b93f22366e9fe1e91c8b41decda21b21e0d1e7096"
+    },
+    {
+      "bytes": 49515,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/build-plan.json",
+          "sha256": "24cf5c843d65a37194257e580626d65afcbf936a0c4a4f40cb2cbf348c495feb"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/build-plan.json",
+      "sha256": "24cf5c843d65a37194257e580626d65afcbf936a0c4a4f40cb2cbf348c495feb"
+    },
+    {
+      "bytes": 0,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/bundle-create.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/bundle-create.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 46,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/bundle-heads.txt",
+          "sha256": "752ee7cf0e6136a21aebadea7ca98437e726219943728ea7a5a15c787f950863"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/bundle-heads.txt",
+      "sha256": "752ee7cf0e6136a21aebadea7ca98437e726219943728ea7a5a15c787f950863"
+    },
+    {
+      "bytes": 278,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/bundle-verify.log",
+          "sha256": "16d78943b58539e20213be770d4a3dc3e27d5c2dfa3dba57610b41cd26742483"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/bundle-verify.log",
+      "sha256": "16d78943b58539e20213be770d4a3dc3e27d5c2dfa3dba57610b41cd26742483"
+    },
+    {
+      "bytes": 1155,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/bundle.json",
+          "sha256": "b90e941cc85598f7d2d99658b0b673284e33f761b48094c017339664b79a0780"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/bundle.json",
+      "sha256": "b90e941cc85598f7d2d99658b0b673284e33f761b48094c017339664b79a0780"
+    },
+    {
+      "bytes": 3565,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/handoff.json",
+          "sha256": "925690283c2efb286ceee863906634f0a99ede70d92169803af1bc97a0ae145f"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/handoff.json",
+      "sha256": "925690283c2efb286ceee863906634f0a99ede70d92169803af1bc97a0ae145f"
+    },
+    {
+      "bytes": 839,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/input-tar.json",
+          "sha256": "b0e93a0c2cd2ce1cdcb3365e182e15ec82a82c833f5d667b4a3190eacfa0a2ce"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/input-tar.json",
+      "sha256": "b0e93a0c2cd2ce1cdcb3365e182e15ec82a82c833f5d667b4a3190eacfa0a2ce"
+    },
+    {
+      "bytes": 423,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/original-packaging-diagnosis.json",
+          "sha256": "ee70fdea9019dc43706c651d16b04d1651695970156d54dce26439a3383e1ea2"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/original-packaging-diagnosis.json",
+      "sha256": "ee70fdea9019dc43706c651d16b04d1651695970156d54dce26439a3383e1ea2"
+    },
+    {
+      "bytes": 2079,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/roundtrip-verification.json",
+          "sha256": "b1fa26702f7fe93a8a5dd3522fe0f7e18a70a64bea0d45756e208f112d7191d2"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/roundtrip-verification.json",
+      "sha256": "b1fa26702f7fe93a8a5dd3522fe0f7e18a70a64bea0d45756e208f112d7191d2"
+    },
+    {
+      "bytes": 21318,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/bundle-r2/vm-build-supervisor.py",
+          "sha256": "7378aa16cb3f4ce969b725e873e73bf097e9f835a6c5b876b54fcabc400fadce"
+        }
+      ],
+      "path": "staged-anchor/bundle-r2/vm-build-supervisor.py",
+      "sha256": "7378aa16cb3f4ce969b725e873e73bf097e9f835a6c5b876b54fcabc400fadce"
+    },
+    {
       "bytes": 33694,
       "kind": "copied",
       "origins": [
@@ -1730,6 +2925,90 @@
       ],
       "path": "staged-anchor/candidate.patch",
       "sha256": "53d3f02b0e49c3dc968ea7b0ce455702cd87109a8fbf82ef225bf8c4e973929a"
+    },
+    {
+      "bytes": 5199,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/build-after-release.py",
+          "sha256": "071baf89d134b574797c78822d97394b93c6de4ae5730433a82c5c8d24209255"
+        }
+      ],
+      "path": "staged-anchor/failed-native-packaging/build-after-release.py",
+      "sha256": "071baf89d134b574797c78822d97394b93c6de4ae5730433a82c5c8d24209255"
+    },
+    {
+      "bytes": 134322,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/build-plan.json",
+          "sha256": "d2b3b25fc2ecb16dfebc5f94fa97348e25767f47513b1b43dd4b75f6118eb8e5"
+        }
+      ],
+      "path": "staged-anchor/failed-native-packaging/build-plan.json",
+      "sha256": "d2b3b25fc2ecb16dfebc5f94fa97348e25767f47513b1b43dd4b75f6118eb8e5"
+    },
+    {
+      "bytes": 715,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/input-tar.json",
+          "sha256": "b192b4bf7115266e679c0ccd2c56aaa65a29de9df745c6134ca31d6daf325cac"
+        }
+      ],
+      "path": "staged-anchor/failed-native-packaging/input-tar.json",
+      "sha256": "b192b4bf7115266e679c0ccd2c56aaa65a29de9df745c6134ca31d6daf325cac"
+    },
+    {
+      "bytes": 3593,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/native-build-supervisor.json",
+          "sha256": "3abb5f46886e5e95650e847f19dcad79d94e25bbb4f50b48be42733aac80fb57"
+        }
+      ],
+      "path": "staged-anchor/failed-native-packaging/native-build-supervisor.json",
+      "sha256": "3abb5f46886e5e95650e847f19dcad79d94e25bbb4f50b48be42733aac80fb57"
+    },
+    {
+      "bytes": 0,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/staged-upload-input.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "path": "staged-anchor/failed-native-packaging/staged-upload-input.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1711,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/staged-vm-build.log",
+          "sha256": "486e6390c0a1761d197493f6836d26eaae43a45282ed90401bca785a3e46aec0"
+        }
+      ],
+      "path": "staged-anchor/failed-native-packaging/staged-vm-build.log",
+      "sha256": "486e6390c0a1761d197493f6836d26eaae43a45282ed90401bca785a3e46aec0"
+    },
+    {
+      "bytes": 18806,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/vm-build-supervisor.py",
+          "sha256": "1eed4e65cc9178d5a79fce38b9ce84c99182e082598d28fc931ed56f6f0a0dfd"
+        }
+      ],
+      "path": "staged-anchor/failed-native-packaging/vm-build-supervisor.py",
+      "sha256": "1eed4e65cc9178d5a79fce38b9ce84c99182e082598d28fc931ed56f6f0a0dfd"
     },
     {
       "bytes": 7349,
@@ -2316,6 +3595,1110 @@
       "sha256": "d9831c388eb4f77745a633445a691a06af6792da073a4f76c0fed4c3030d790d"
     },
     {
+      "bytes": 1996,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/fixture-after.json",
+          "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+        }
+      ],
+      "path": "status/windows-controls/fixture-after.json",
+      "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+    },
+    {
+      "bytes": 1996,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/fixture-before.json",
+          "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+        }
+      ],
+      "path": "status/windows-controls/fixture-before.json",
+      "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+    },
+    {
+      "bytes": 178692,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/state.json",
+          "sha256": "03372242b4314828473f9b28377d136532c5fb12b139465c68fee07c294f7c41"
+        }
+      ],
+      "path": "status/windows-controls/state.json",
+      "sha256": "03372242b4314828473f9b28377d136532c5fb12b139465c68fee07c294f7c41"
+    },
+    {
+      "bytes": 90670,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/summary.json",
+          "sha256": "2985b4879bb4c51f1a66efc2978e9a5177099a4ff1ea544f869c9ec54d3cd5ff"
+        }
+      ],
+      "path": "status/windows-controls/summary.json",
+      "sha256": "2985b4879bb4c51f1a66efc2978e9a5177099a4ff1ea544f869c9ec54d3cd5ff"
+    },
+    {
+      "bytes": 778,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A1/cleanup.json",
+          "sha256": "77e6e409e924a36bf89a9d1069cddd02fd27f15661322d1815734a0b03dd11de"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A1/cleanup.json",
+      "sha256": "77e6e409e924a36bf89a9d1069cddd02fd27f15661322d1815734a0b03dd11de"
+    },
+    {
+      "bytes": 564,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A1/launch.json",
+          "sha256": "868d28237380dfac0499eb1b3722bc642ad668a2d575a2adcbec14d596a97e02"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A1/launch.json",
+      "sha256": "868d28237380dfac0499eb1b3722bc642ad668a2d575a2adcbec14d596a97e02"
+    },
+    {
+      "bytes": 14881,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A1/score/samples.jsonl",
+          "sha256": "47a1c4e86a57fc0f52cda6a1c641182b9fffc6501902ff0886223221bdc6ad89"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A1/score/samples.jsonl",
+      "sha256": "47a1c4e86a57fc0f52cda6a1c641182b9fffc6501902ff0886223221bdc6ad89"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A1/score/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A1/score/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A1/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A1/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 777,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A2/cleanup.json",
+          "sha256": "571f6722ae26597c87b735c68e0e9b6b2f499d2639a3474b79f00e253d23b476"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A2/cleanup.json",
+      "sha256": "571f6722ae26597c87b735c68e0e9b6b2f499d2639a3474b79f00e253d23b476"
+    },
+    {
+      "bytes": 565,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A2/launch.json",
+          "sha256": "e187c836522d98080e460026566d253ed7c3165f866f1fea0f57abbd6aa38854"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A2/launch.json",
+      "sha256": "e187c836522d98080e460026566d253ed7c3165f866f1fea0f57abbd6aa38854"
+    },
+    {
+      "bytes": 14915,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A2/score/samples.jsonl",
+          "sha256": "f749086f73411f4c49f6a0ed0f2ff0661d265834b6bde8e4e91c4a2ef7d53028"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A2/score/samples.jsonl",
+      "sha256": "f749086f73411f4c49f6a0ed0f2ff0661d265834b6bde8e4e91c4a2ef7d53028"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A2/score/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A2/score/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A2/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A2/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 775,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A3/cleanup.json",
+          "sha256": "6a99cf590abeed28a4647d71af07c902aa3607110f256b01c52dfb4a12991db0"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A3/cleanup.json",
+      "sha256": "6a99cf590abeed28a4647d71af07c902aa3607110f256b01c52dfb4a12991db0"
+    },
+    {
+      "bytes": 564,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A3/launch.json",
+          "sha256": "fef4cb4e67c70cf3d02fa57d732c9bdd2d45570a11de03091902fb2f03508cd8"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A3/launch.json",
+      "sha256": "fef4cb4e67c70cf3d02fa57d732c9bdd2d45570a11de03091902fb2f03508cd8"
+    },
+    {
+      "bytes": 95358,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A3/score/samples.jsonl",
+          "sha256": "988b76d610c55bf3f36732b251585fbcc8b67c980b8785df31ed72f890a145e9"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A3/score/samples.jsonl",
+      "sha256": "988b76d610c55bf3f36732b251585fbcc8b67c980b8785df31ed72f890a145e9"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A3/score/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A3/score/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-A3/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-A3/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 790,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B1/cleanup.json",
+          "sha256": "136cd03bcf08d45d81eec160bb99e9d8612af3fb98bf386a444cd6c880552a1d"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B1/cleanup.json",
+      "sha256": "136cd03bcf08d45d81eec160bb99e9d8612af3fb98bf386a444cd6c880552a1d"
+    },
+    {
+      "bytes": 580,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B1/launch.json",
+          "sha256": "8b934c91c48ea7eb05a07e10019e89c9e90d72bd48b9b7fceb8eae96200b4a92"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B1/launch.json",
+      "sha256": "8b934c91c48ea7eb05a07e10019e89c9e90d72bd48b9b7fceb8eae96200b4a92"
+    },
+    {
+      "bytes": 15099,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B1/score/samples.jsonl",
+          "sha256": "d3ca706d60f72369694c21412a00ed11630c1068ba428a167007394b6bf40028"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B1/score/samples.jsonl",
+      "sha256": "d3ca706d60f72369694c21412a00ed11630c1068ba428a167007394b6bf40028"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B1/score/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B1/score/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B1/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B1/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 791,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B2/cleanup.json",
+          "sha256": "bbefede0ebcf1523d4e7a9d98a7a3066715d1b20b8e451185186898580a9a2e5"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B2/cleanup.json",
+      "sha256": "bbefede0ebcf1523d4e7a9d98a7a3066715d1b20b8e451185186898580a9a2e5"
+    },
+    {
+      "bytes": 580,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B2/launch.json",
+          "sha256": "ea41750971117b4f839c76eaa261fe44e7e05f33641968489e93147a16b0ca48"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B2/launch.json",
+      "sha256": "ea41750971117b4f839c76eaa261fe44e7e05f33641968489e93147a16b0ca48"
+    },
+    {
+      "bytes": 15015,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B2/score/samples.jsonl",
+          "sha256": "6c0e9b0661fac556dd2acf5a3585032ac0675fa7b1432ad16d270b97ba7c1bc1"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B2/score/samples.jsonl",
+      "sha256": "6c0e9b0661fac556dd2acf5a3585032ac0675fa7b1432ad16d270b97ba7c1bc1"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B2/score/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B2/score/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B2/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B2/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 790,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B3/cleanup.json",
+          "sha256": "63389cc91ecbf2a609858a59c4b1706d32f1b66dd705f6f1713af78421df264f"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B3/cleanup.json",
+      "sha256": "63389cc91ecbf2a609858a59c4b1706d32f1b66dd705f6f1713af78421df264f"
+    },
+    {
+      "bytes": 580,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B3/launch.json",
+          "sha256": "e20fb127855bf0ba8f2b991805d084081ee304d9310e52b11875328981e9dbf3"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B3/launch.json",
+      "sha256": "e20fb127855bf0ba8f2b991805d084081ee304d9310e52b11875328981e9dbf3"
+    },
+    {
+      "bytes": 95703,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B3/score/samples.jsonl",
+          "sha256": "0a1ae52bc60768df3d39ac94cbea3a815dea4869f6fb1813ec6129279406d316"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B3/score/samples.jsonl",
+      "sha256": "0a1ae52bc60768df3d39ac94cbea3a815dea4869f6fb1813ec6129279406d316"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B3/score/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B3/score/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_linux-B3/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_linux-B3/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 653,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A1/cleanup.json",
+          "sha256": "f1157701449361f078cce29af3a5c420a626458e478c127ec39aa98f71f54fd3"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A1/cleanup.json",
+      "sha256": "f1157701449361f078cce29af3a5c420a626458e478c127ec39aa98f71f54fd3"
+    },
+    {
+      "bytes": 577,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A1/launch.json",
+          "sha256": "0e459ef651fa02354cb21c9d42c970a08811de0c20c19d58819aefe15371a462"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A1/launch.json",
+      "sha256": "0e459ef651fa02354cb21c9d42c970a08811de0c20c19d58819aefe15371a462"
+    },
+    {
+      "bytes": 14447,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A1/score/samples.jsonl",
+          "sha256": "1403fdcad99d31dc1197be26abdc685c2e80b53676c8b207eb5934b4206c7e50"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A1/score/samples.jsonl",
+      "sha256": "1403fdcad99d31dc1197be26abdc685c2e80b53676c8b207eb5934b4206c7e50"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A1/score/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A1/score/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A1/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A1/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 651,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A2/cleanup.json",
+          "sha256": "c0227e5d276ae77e45125ad5b2e259de16a60111576956c2e3c6db1e551fcaa6"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A2/cleanup.json",
+      "sha256": "c0227e5d276ae77e45125ad5b2e259de16a60111576956c2e3c6db1e551fcaa6"
+    },
+    {
+      "bytes": 577,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A2/launch.json",
+          "sha256": "d7dc3513660a0c42430eac8920e7ad27075d2fb0a13e915aa0d1b9f2f4a3c984"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A2/launch.json",
+      "sha256": "d7dc3513660a0c42430eac8920e7ad27075d2fb0a13e915aa0d1b9f2f4a3c984"
+    },
+    {
+      "bytes": 14477,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A2/score/samples.jsonl",
+          "sha256": "4983cc9fda30845dab1d77cad1cb755c78986a6fcc1190e0448042de75d56d46"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A2/score/samples.jsonl",
+      "sha256": "4983cc9fda30845dab1d77cad1cb755c78986a6fcc1190e0448042de75d56d46"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A2/score/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A2/score/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A2/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A2/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 655,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A3/cleanup.json",
+          "sha256": "2df8fa0d8b28fa87d232ca53bda3435981b2230983225bb6a2aea6081f6cc6d4"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A3/cleanup.json",
+      "sha256": "2df8fa0d8b28fa87d232ca53bda3435981b2230983225bb6a2aea6081f6cc6d4"
+    },
+    {
+      "bytes": 577,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A3/launch.json",
+          "sha256": "c828dee74dbf1f7ee6919c16767c7a06069230744889c2055980156e57d613a4"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A3/launch.json",
+      "sha256": "c828dee74dbf1f7ee6919c16767c7a06069230744889c2055980156e57d613a4"
+    },
+    {
+      "bytes": 91445,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A3/score/samples.jsonl",
+          "sha256": "e548c507d846479b8f75189bfecb1fa37b02cfa461208c072460f315d3be4c13"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A3/score/samples.jsonl",
+      "sha256": "e548c507d846479b8f75189bfecb1fa37b02cfa461208c072460f315d3be4c13"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A3/score/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A3/score/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-A3/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-A3/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 671,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B1/cleanup.json",
+          "sha256": "8078a3c5d73826f7cc091942b41e4217da0390fe5651167c759ce0acf536cac1"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B1/cleanup.json",
+      "sha256": "8078a3c5d73826f7cc091942b41e4217da0390fe5651167c759ce0acf536cac1"
+    },
+    {
+      "bytes": 594,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B1/launch.json",
+          "sha256": "0aeab54a43897fa6c3863ca087daa6e39ee6c9199a94b3e1ad4120de80278c0d"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B1/launch.json",
+      "sha256": "0aeab54a43897fa6c3863ca087daa6e39ee6c9199a94b3e1ad4120de80278c0d"
+    },
+    {
+      "bytes": 14406,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B1/score/samples.jsonl",
+          "sha256": "cdc976b4771ea0ee05a5bbc60eb2df0bf0fd01f3ceafc5ff550b388768c263cb"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B1/score/samples.jsonl",
+      "sha256": "cdc976b4771ea0ee05a5bbc60eb2df0bf0fd01f3ceafc5ff550b388768c263cb"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B1/score/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B1/score/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B1/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B1/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 669,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B2/cleanup.json",
+          "sha256": "e771f2590a454b2b19f9960895823d9ac187e3a1a839f63ae42e841300d34de0"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B2/cleanup.json",
+      "sha256": "e771f2590a454b2b19f9960895823d9ac187e3a1a839f63ae42e841300d34de0"
+    },
+    {
+      "bytes": 593,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B2/launch.json",
+          "sha256": "39b2320c3eda17700a4c0c290362c6304a7b78ee66482e5687363de89489d208"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B2/launch.json",
+      "sha256": "39b2320c3eda17700a4c0c290362c6304a7b78ee66482e5687363de89489d208"
+    },
+    {
+      "bytes": 14328,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B2/score/samples.jsonl",
+          "sha256": "4be2f4a94a8d20fc57e3219a03ba5027f5c1150aa65b3e362baf21577199ee31"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B2/score/samples.jsonl",
+      "sha256": "4be2f4a94a8d20fc57e3219a03ba5027f5c1150aa65b3e362baf21577199ee31"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B2/score/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B2/score/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B2/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B2/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 670,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B3/cleanup.json",
+          "sha256": "c54a1357ccd62f8c545c50f5821f963c0d82dda9616d405a5fda9b187c1a4605"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B3/cleanup.json",
+      "sha256": "c54a1357ccd62f8c545c50f5821f963c0d82dda9616d405a5fda9b187c1a4605"
+    },
+    {
+      "bytes": 594,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B3/launch.json",
+          "sha256": "f3f772b1b3300daae3335a0efeae4ac53bf85290618fb4ef395537c14126e6f8"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B3/launch.json",
+      "sha256": "f3f772b1b3300daae3335a0efeae4ac53bf85290618fb4ef395537c14126e6f8"
+    },
+    {
+      "bytes": 90731,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B3/score/samples.jsonl",
+          "sha256": "73927fcc06ec85e63431a755753403ed12410182af2ca2f12b562f3d1ff97522"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B3/score/samples.jsonl",
+      "sha256": "73927fcc06ec85e63431a755753403ed12410182af2ca2f12b562f3d1ff97522"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B3/score/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B3/score/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 475,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T220910302670Z/windows_windows-B3/welcome-ready.json",
+          "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+        }
+      ],
+      "path": "status/windows-controls/windows_windows-B3/welcome-ready.json",
+      "sha256": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22"
+    },
+    {
+      "bytes": 61416,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T215420528806Z/control-build-state.json",
+          "sha256": "69e86cbf34f1dc355ff557e3e9a9b81829c8e022a6974a05801df7956d7ea9b5"
+        }
+      ],
+      "path": "status/windows-controls-initial-transport-failure/control-build-state.json",
+      "sha256": "69e86cbf34f1dc355ff557e3e9a9b81829c8e022a6974a05801df7956d7ea9b5"
+    },
+    {
+      "bytes": 1996,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T215420528806Z/fixture-after.json",
+          "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+        }
+      ],
+      "path": "status/windows-controls-initial-transport-failure/fixture-after.json",
+      "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+    },
+    {
+      "bytes": 1996,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T215420528806Z/fixture-before.json",
+          "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+        }
+      ],
+      "path": "status/windows-controls-initial-transport-failure/fixture-before.json",
+      "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+    },
+    {
+      "bytes": 1552,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T215420528806Z/manual-cleanup.json",
+          "sha256": "79522b1f99b16f316cc150fb7b2835cda08c49dd639c7f2770e4da5093b0ebab"
+        }
+      ],
+      "path": "status/windows-controls-initial-transport-failure/manual-cleanup.json",
+      "sha256": "79522b1f99b16f316cc150fb7b2835cda08c49dd639c7f2770e4da5093b0ebab"
+    },
+    {
+      "bytes": 6080,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T215420528806Z/plan.json",
+          "sha256": "68cf02dee98be012d0f7fffc549d3b1c9608ea03f457310a8c4fd0a1b4c7dbd7"
+        }
+      ],
+      "path": "status/windows-controls-initial-transport-failure/plan.json",
+      "sha256": "68cf02dee98be012d0f7fffc549d3b1c9608ea03f457310a8c4fd0a1b4c7dbd7"
+    },
+    {
+      "bytes": 17414,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T215420528806Z/runner.py",
+          "sha256": "3d582ab6e9f80afea89e0016f3408fa4be9be97003fff5c14314f7efd58d4e0a"
+        }
+      ],
+      "path": "status/windows-controls-initial-transport-failure/runner.py",
+      "sha256": "3d582ab6e9f80afea89e0016f3408fa4be9be97003fff5c14314f7efd58d4e0a"
+    },
+    {
+      "bytes": 22522,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T215420528806Z/state.json",
+          "sha256": "b6bcbeb08b5e8efe2c29ab4da4707f89d03b4ef92cfbc65ce2e4aaa01ee68c4d"
+        }
+      ],
+      "path": "status/windows-controls-initial-transport-failure/state.json",
+      "sha256": "b6bcbeb08b5e8efe2c29ab4da4707f89d03b4ef92cfbc65ce2e4aaa01ee68c4d"
+    },
+    {
+      "bytes": 3919,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-windows-controls/run-20261125T215420528806Z/summary.json",
+          "sha256": "f42ec2824101efec94c7ccd8ba77705ab0671037b780e66d26bd36cbd7d4429d"
+        }
+      ],
+      "path": "status/windows-controls-initial-transport-failure/summary.json",
+      "sha256": "f42ec2824101efec94c7ccd8ba77705ab0671037b780e66d26bd36cbd7d4429d"
+    },
+    {
+      "bytes": 1996,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/fixture-after.json",
+          "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+        }
+      ],
+      "path": "status/wsl-control/fixture-after.json",
+      "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+    },
+    {
+      "bytes": 1996,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/fixture-before.json",
+          "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+        }
+      ],
+      "path": "status/wsl-control/fixture-before.json",
+      "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+    },
+    {
+      "bytes": 12859,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/frozen-runner.py",
+          "sha256": "4a253a7a50595aeabd755be55c16c024634882567c48235b6cb07e7714ed1d42"
+        }
+      ],
+      "path": "status/wsl-control/frozen-runner.py",
+      "sha256": "4a253a7a50595aeabd755be55c16c024634882567c48235b6cb07e7714ed1d42"
+    },
+    {
+      "bytes": 7407,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/max-sample-evidence.json",
+          "sha256": "c176565732fce82c30831948cefe1a25c3914be4bf0eb2e703b67fd5b0846713"
+        }
+      ],
+      "path": "status/wsl-control/max-sample-evidence.json",
+      "sha256": "c176565732fce82c30831948cefe1a25c3914be4bf0eb2e703b67fd5b0846713"
+    },
+    {
+      "bytes": 5019,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/plan.json",
+          "sha256": "cb2cace60401972f99c29a36c16ed7c704aff7d904b6bdb6abe652ab634a41da"
+        }
+      ],
+      "path": "status/wsl-control/plan.json",
+      "sha256": "cb2cace60401972f99c29a36c16ed7c704aff7d904b6bdb6abe652ab634a41da"
+    },
+    {
+      "bytes": 13797,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+          "sha256": "1820a0e57838ad490f34f51018f96cab098a3facefd71278bc204552e28f53ab"
+        }
+      ],
+      "path": "status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "sha256": "1820a0e57838ad490f34f51018f96cab098a3facefd71278bc204552e28f53ab"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 14190,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+          "sha256": "f95da081bb9720bd5ac89e2f053c29ee0546c72ef2fa53f6671c1f1c0c5f2518"
+        }
+      ],
+      "path": "status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "sha256": "f95da081bb9720bd5ac89e2f053c29ee0546c72ef2fa53f6671c1f1c0c5f2518"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 90113,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+          "sha256": "bd35038e4f64c56e3d8db0f56fdab01eeba3f249f2e3f553f3428e9412fc90c1"
+        }
+      ],
+      "path": "status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "sha256": "bd35038e4f64c56e3d8db0f56fdab01eeba3f249f2e3f553f3428e9412fc90c1"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 14116,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+          "sha256": "36226adc3451ba7c39ab42cf4b8966863388bf0bb1ef91e72246c71496807a3d"
+        }
+      ],
+      "path": "status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "sha256": "36226adc3451ba7c39ab42cf4b8966863388bf0bb1ef91e72246c71496807a3d"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 14102,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+          "sha256": "f9cb45ea9bfe50e32e4be67ca76684f3624221159823cf586ee83bc09e2ef0cb"
+        }
+      ],
+      "path": "status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "sha256": "f9cb45ea9bfe50e32e4be67ca76684f3624221159823cf586ee83bc09e2ef0cb"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 87498,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+          "sha256": "8913849eefb210b7e52c558c798423e11b98af90f1c1fb512a80bd4771d757f9"
+        }
+      ],
+      "path": "status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "sha256": "8913849eefb210b7e52c558c798423e11b98af90f1c1fb512a80bd4771d757f9"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 95646,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/state.json",
+          "sha256": "61dea9660b233f440baa156322e5c422eaf365a8f6954ec07cc048d213a7d5a0"
+        }
+      ],
+      "path": "status/wsl-control/state.json",
+      "sha256": "61dea9660b233f440baa156322e5c422eaf365a8f6954ec07cc048d213a7d5a0"
+    },
+    {
+      "bytes": 28165,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/summary.json",
+          "sha256": "889c3ccf0b9028c6ee2bb08a29287c2c7a939313cfefea12aae460b2688a140a"
+        }
+      ],
+      "path": "status/wsl-control/summary.json",
+      "sha256": "889c3ccf0b9028c6ee2bb08a29287c2c7a939313cfefea12aae460b2688a140a"
+    },
+    {
+      "bytes": 2686,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/CPU-PLAN.md",
+          "sha256": "e0e386865d2a7e9013560e0331ad377342247b75b4e6fee22f98e5270abce4dd"
+        }
+      ],
+      "path": "ui-phase-probe/CPU-PLAN.md",
+      "sha256": "e0e386865d2a7e9013560e0331ad377342247b75b4e6fee22f98e5270abce4dd"
+    },
+    {
       "bytes": 4529,
       "kind": "copied",
       "origins": [
@@ -2328,6 +4711,18 @@
       "sha256": "4f86b1aa41cc6b3294b267915632e47cd2e216c0680cd28531ee348d21266725"
     },
     {
+      "bytes": 2296,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/THREAD-PLAN.md",
+          "sha256": "967764b6a74db1e0d931fe2792aa4461be00ae823934273a6567e93cdffa1be5"
+        }
+      ],
+      "path": "ui-phase-probe/THREAD-PLAN.md",
+      "sha256": "967764b6a74db1e0d931fe2792aa4461be00ae823934273a6567e93cdffa1be5"
+    },
+    {
       "bytes": 7185,
       "kind": "copied",
       "origins": [
@@ -2338,6 +4733,18 @@
       ],
       "path": "ui-phase-probe/check.mjs",
       "sha256": "8435e60575b2edd11732b47215dd443b320fb64b660a4bb09a55ad3dfc247fd6"
+    },
+    {
+      "bytes": 5056,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/cpu-sampler.py",
+          "sha256": "686cbaced9627190f039c6e95886b231781722df83f9692a588fad4745dd587d"
+        }
+      ],
+      "path": "ui-phase-probe/cpu-sampler.py",
+      "sha256": "686cbaced9627190f039c6e95886b231781722df83f9692a588fad4745dd587d"
     },
     {
       "bytes": 641,
@@ -2362,11 +4769,803 @@
       ],
       "path": "ui-phase-probe/inject.js",
       "sha256": "e3ffb91206c75e367a6562f4e617c8d5e458185639cb5e72fc6e9c768b0f1052"
+    },
+    {
+      "bytes": 10917,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/000-branch_final-trace.json",
+          "sha256": "9c466b4093f9afd5b2a1eea045870200f5d403dc05d9cc60da254240905c8fb5"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/000-branch_final-trace.json",
+      "sha256": "9c466b4093f9afd5b2a1eea045870200f5d403dc05d9cc60da254240905c8fb5"
+    },
+    {
+      "bytes": 15166,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/000-branch_first-trace.json",
+          "sha256": "ee191477abbd559d153ac39264ef2be1d15c2953eaaf8db5321c67b5bc9daa81"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/000-branch_first-trace.json",
+      "sha256": "ee191477abbd559d153ac39264ef2be1d15c2953eaaf8db5321c67b5bc9daa81"
+    },
+    {
+      "bytes": 17659,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/000-comment_branch-trace.json",
+          "sha256": "3014f107ca4a8cfec4593672b9606e3d0225d770e87f790376ac98a8c8c45c8e"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/000-comment_branch-trace.json",
+      "sha256": "3014f107ca4a8cfec4593672b9606e3d0225d770e87f790376ac98a8c8c45c8e"
+    },
+    {
+      "bytes": 14934,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/000-comment_worktree-trace.json",
+          "sha256": "528de474d897f48075982d3a5efe6d305a6f6064bf27c9443aa6da4867b64ab9"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/000-comment_worktree-trace.json",
+      "sha256": "528de474d897f48075982d3a5efe6d305a6f6064bf27c9443aa6da4867b64ab9"
+    },
+    {
+      "bytes": 9095,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/000-stack-trace.json",
+          "sha256": "2c09828f33f3a3a564b9e029698ecb32a58b3cc7ebdace6f6f4aa0929d0334e1"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/000-stack-trace.json",
+      "sha256": "2c09828f33f3a3a564b9e029698ecb32a58b3cc7ebdace6f6f4aa0929d0334e1"
+    },
+    {
+      "bytes": 18453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/000-working_tree-trace.json",
+          "sha256": "f095db462a305f5d08690c89587eea8522fd9f86ac8c3b24a2dc3bcaf083ae97"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/000-working_tree-trace.json",
+      "sha256": "f095db462a305f5d08690c89587eea8522fd9f86ac8c3b24a2dc3bcaf083ae97"
+    },
+    {
+      "bytes": 11698,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/001-branch_final-trace.json",
+          "sha256": "8b7da02944a8b3c614109f10a90508b4c16d99e21794c57dafa5190d24d1bec9"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/001-branch_final-trace.json",
+      "sha256": "8b7da02944a8b3c614109f10a90508b4c16d99e21794c57dafa5190d24d1bec9"
+    },
+    {
+      "bytes": 11842,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/001-branch_first-trace.json",
+          "sha256": "5b19c1d983d9da1d6f5096f0921e7e5423524e942fe11d1074276c5f25ab441c"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/001-branch_first-trace.json",
+      "sha256": "5b19c1d983d9da1d6f5096f0921e7e5423524e942fe11d1074276c5f25ab441c"
+    },
+    {
+      "bytes": 13039,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/001-comment_branch-trace.json",
+          "sha256": "0075f36e8f753fcc3278a9e94c6876fcfca8aa330e3696d6557280b3dcbe8fa9"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/001-comment_branch-trace.json",
+      "sha256": "0075f36e8f753fcc3278a9e94c6876fcfca8aa330e3696d6557280b3dcbe8fa9"
+    },
+    {
+      "bytes": 12923,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/001-comment_worktree-trace.json",
+          "sha256": "931b4d345afb76a43b17a6bba92d6ee5228420bb5ba248d158d56d7bbe3a260d"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/001-comment_worktree-trace.json",
+      "sha256": "931b4d345afb76a43b17a6bba92d6ee5228420bb5ba248d158d56d7bbe3a260d"
+    },
+    {
+      "bytes": 8364,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/001-stack-trace.json",
+          "sha256": "d3cceaf4824995dcccbdc92aeb7c4e4ebf8737a1d45abd44e679bf91c0c216e3"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/001-stack-trace.json",
+      "sha256": "d3cceaf4824995dcccbdc92aeb7c4e4ebf8737a1d45abd44e679bf91c0c216e3"
+    },
+    {
+      "bytes": 12611,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/001-working_tree-trace.json",
+          "sha256": "ce88077b3da0ef86d269bdb34fb6e0bb57aac3a4f149d9e92b4649d8db0d8611"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/001-working_tree-trace.json",
+      "sha256": "ce88077b3da0ef86d269bdb34fb6e0bb57aac3a4f149d9e92b4649d8db0d8611"
+    },
+    {
+      "bytes": 8761,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/analysis.json",
+          "sha256": "3382bfc0bfd8467c37bc50249f64be52781f29a128f71d10b0f85c750271c2a1"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/analysis.json",
+      "sha256": "3382bfc0bfd8467c37bc50249f64be52781f29a128f71d10b0f85c750271c2a1"
+    },
+    {
+      "bytes": 509,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/browser-after.json",
+          "sha256": "6ee8e243f549b417576d12b6979c9d17747186926ccd99272bc42e8cb63ce6a6"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/browser-after.json",
+      "sha256": "6ee8e243f549b417576d12b6979c9d17747186926ccd99272bc42e8cb63ce6a6"
+    },
+    {
+      "bytes": 453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/browser-before.json",
+          "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/browser-before.json",
+      "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+    },
+    {
+      "bytes": 1056,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/launch.json",
+          "sha256": "91c00348d28aa4b03bbd84e45ce85883e537feb2a1dae85653f5591ff3c8fbd7"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/launch.json",
+      "sha256": "91c00348d28aa4b03bbd84e45ce85883e537feb2a1dae85653f5591ff3c8fbd7"
+    },
+    {
+      "bytes": 630,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/probe-installed.json",
+          "sha256": "58a24474edef721e5edb912114513af5ccd98bf260333d276231deb3490c511d"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/probe-installed.json",
+      "sha256": "58a24474edef721e5edb912114513af5ccd98bf260333d276231deb3490c511d"
+    },
+    {
+      "bytes": 11009,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/restored.json",
+          "sha256": "00a0c5fa3d6e7337a0b841f92995eb661b6c21063090177a81a7f56786a3b4c9"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/restored.json",
+      "sha256": "00a0c5fa3d6e7337a0b841f92995eb661b6c21063090177a81a7f56786a3b4c9"
+    },
+    {
+      "bytes": 9330,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/samples.jsonl",
+          "sha256": "216ca0f03e15cacadde5cdfdd3758dbf82c1c7f63e067dcae47dd678cfab7b25"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/samples.jsonl",
+      "sha256": "216ca0f03e15cacadde5cdfdd3758dbf82c1c7f63e067dcae47dd678cfab7b25"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 6715,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/state.json",
+          "sha256": "6af894f7b2e5d00d54089d5a505405686a184589dcb659b09e2a5d19e9ada7b7"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/state.json",
+      "sha256": "6af894f7b2e5d00d54089d5a505405686a184589dcb659b09e2a5d19e9ada7b7"
+    },
+    {
+      "bytes": 12117,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213031571855Z/workload.json",
+          "sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213031571855Z/workload.json",
+      "sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9"
+    },
+    {
+      "bytes": 7623,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/000-branch_final-trace.json",
+          "sha256": "959f05653f5dda8fc83bbbc5ef99e98f87905130b2884f59b397920767e78da1"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/000-branch_final-trace.json",
+      "sha256": "959f05653f5dda8fc83bbbc5ef99e98f87905130b2884f59b397920767e78da1"
+    },
+    {
+      "bytes": 9857,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/000-branch_first-trace.json",
+          "sha256": "58eee0db067f6566380e74210652c4a67203ebaa40ba691da726e1898c273e63"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/000-branch_first-trace.json",
+      "sha256": "58eee0db067f6566380e74210652c4a67203ebaa40ba691da726e1898c273e63"
+    },
+    {
+      "bytes": 16638,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/000-comment_branch-trace.json",
+          "sha256": "2253fe0f73ba2317dabdc771aba960d2f9889d07084e6d99ed99beccb54d7182"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/000-comment_branch-trace.json",
+      "sha256": "2253fe0f73ba2317dabdc771aba960d2f9889d07084e6d99ed99beccb54d7182"
+    },
+    {
+      "bytes": 13977,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/000-comment_worktree-trace.json",
+          "sha256": "8aaf02844278645b9ced5281ea01203912e0d3b36b187213165c2cab055cb61a"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/000-comment_worktree-trace.json",
+      "sha256": "8aaf02844278645b9ced5281ea01203912e0d3b36b187213165c2cab055cb61a"
+    },
+    {
+      "bytes": 8952,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/000-stack-trace.json",
+          "sha256": "b81e11b23f44e12b1c8382da0d15addb4958acc992fa4b0ac0983667c50c3de1"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/000-stack-trace.json",
+      "sha256": "b81e11b23f44e12b1c8382da0d15addb4958acc992fa4b0ac0983667c50c3de1"
+    },
+    {
+      "bytes": 11413,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/000-working_tree-trace.json",
+          "sha256": "66e38fb47254f288cd0a17fe5830f49eeaf7048fe76087d6e78ac5d94424aed3"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/000-working_tree-trace.json",
+      "sha256": "66e38fb47254f288cd0a17fe5830f49eeaf7048fe76087d6e78ac5d94424aed3"
+    },
+    {
+      "bytes": 10136,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/001-branch_final-trace.json",
+          "sha256": "6dbd7b1609d3622921bbe18815c5df2dfac4730fea98cb29eabb4baa9cdbbc6d"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/001-branch_final-trace.json",
+      "sha256": "6dbd7b1609d3622921bbe18815c5df2dfac4730fea98cb29eabb4baa9cdbbc6d"
+    },
+    {
+      "bytes": 11633,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/001-branch_first-trace.json",
+          "sha256": "0652f1cc0bd4147d93bc160b6a068f01e197d9a3af7dff9cce06fe9aaf37c119"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/001-branch_first-trace.json",
+      "sha256": "0652f1cc0bd4147d93bc160b6a068f01e197d9a3af7dff9cce06fe9aaf37c119"
+    },
+    {
+      "bytes": 12433,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/001-comment_branch-trace.json",
+          "sha256": "e917c455bf2554cd7778693d9f3a655e02f173b11cc859942b82312c1a4ae7e4"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/001-comment_branch-trace.json",
+      "sha256": "e917c455bf2554cd7778693d9f3a655e02f173b11cc859942b82312c1a4ae7e4"
+    },
+    {
+      "bytes": 12102,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/001-comment_worktree-trace.json",
+          "sha256": "c54edbbb935c343d063fbb445d0d517a60a6a7f8fcccec7dd441cf4c40855390"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/001-comment_worktree-trace.json",
+      "sha256": "c54edbbb935c343d063fbb445d0d517a60a6a7f8fcccec7dd441cf4c40855390"
+    },
+    {
+      "bytes": 8366,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/001-stack-trace.json",
+          "sha256": "ba29e451b4b82a5e16438d3f5872da3836cb7cd6b0e7e25fa8bc723d7a73fde4"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/001-stack-trace.json",
+      "sha256": "ba29e451b4b82a5e16438d3f5872da3836cb7cd6b0e7e25fa8bc723d7a73fde4"
+    },
+    {
+      "bytes": 12015,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/001-working_tree-trace.json",
+          "sha256": "f53f25e8b0eca8e2ffc81cb93540b796a62ce5a8b58ea4179a0c84903eddf19c"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/001-working_tree-trace.json",
+      "sha256": "f53f25e8b0eca8e2ffc81cb93540b796a62ce5a8b58ea4179a0c84903eddf19c"
+    },
+    {
+      "bytes": 509,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/browser-after.json",
+          "sha256": "6ee8e243f549b417576d12b6979c9d17747186926ccd99272bc42e8cb63ce6a6"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/browser-after.json",
+      "sha256": "6ee8e243f549b417576d12b6979c9d17747186926ccd99272bc42e8cb63ce6a6"
+    },
+    {
+      "bytes": 453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/browser-before.json",
+          "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/browser-before.json",
+      "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+    },
+    {
+      "bytes": 29623,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/cpu-analysis.json",
+          "sha256": "131413e40fc78a59cca4acde37b99ef5fe94d13b80a6fc21209cf5d2df4e1166"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/cpu-analysis.json",
+      "sha256": "131413e40fc78a59cca4acde37b99ef5fe94d13b80a6fc21209cf5d2df4e1166"
+    },
+    {
+      "bytes": 601,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/cpu-observer.json",
+          "sha256": "2fbf49940d026507f441a8c0a5833a012f981e37a0f52512c06631119618aa2b"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/cpu-observer.json",
+      "sha256": "2fbf49940d026507f441a8c0a5833a012f981e37a0f52512c06631119618aa2b"
+    },
+    {
+      "bytes": 1198,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/cpu-sampler-finished.json",
+          "sha256": "a4768ad48d17a5b36dd965225a46c36496e3f516c7037d60e42c727792dbc3f3"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/cpu-sampler-finished.json",
+      "sha256": "a4768ad48d17a5b36dd965225a46c36496e3f516c7037d60e42c727792dbc3f3"
+    },
+    {
+      "bytes": 475490,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/cpu-sampler.jsonl",
+          "sha256": "5b1b81f595d2d11e222c2498154bb4a08a084c7976a0c40f2d28e1f4ed83ec1a"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/cpu-sampler.jsonl",
+      "sha256": "5b1b81f595d2d11e222c2498154bb4a08a084c7976a0c40f2d28e1f4ed83ec1a"
+    },
+    {
+      "bytes": 1130,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/final-absence-check.json",
+          "sha256": "eb1edc5cbb638c168c324aee78ce359611284b8ab5f89f7fedbc66fc806dc2c9"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/final-absence-check.json",
+      "sha256": "eb1edc5cbb638c168c324aee78ce359611284b8ab5f89f7fedbc66fc806dc2c9"
+    },
+    {
+      "bytes": 1056,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/launch.json",
+          "sha256": "f2e280e4e62fb797c6d27566262b7012fbec7fdc709f6f04407f3f941bdacd7b"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/launch.json",
+      "sha256": "f2e280e4e62fb797c6d27566262b7012fbec7fdc709f6f04407f3f941bdacd7b"
+    },
+    {
+      "bytes": 742,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/probe-installed.json",
+          "sha256": "8669476473f43df9eabdc20c00e2658f0649547117da36a39ad39363f3221b14"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/probe-installed.json",
+      "sha256": "8669476473f43df9eabdc20c00e2658f0649547117da36a39ad39363f3221b14"
+    },
+    {
+      "bytes": 10227,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/restored.json",
+          "sha256": "3f3808ba28e1a14c8c9e5823c0feb03d28ab7f9a739a16d1c635a1e6d272a391"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/restored.json",
+      "sha256": "3f3808ba28e1a14c8c9e5823c0feb03d28ab7f9a739a16d1c635a1e6d272a391"
+    },
+    {
+      "bytes": 9296,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/samples.jsonl",
+          "sha256": "bafe6467779b4498d86dcc0caa0f42b3364bf8356dc3a1165cbbfc6961808cec"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/samples.jsonl",
+      "sha256": "bafe6467779b4498d86dcc0caa0f42b3364bf8356dc3a1165cbbfc6961808cec"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 7544,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/state.json",
+          "sha256": "324597bf39ca51f14f42b689d63a47d1583e7a8cfbfd6cea9286bced8b22f1a2"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/state.json",
+      "sha256": "324597bf39ca51f14f42b689d63a47d1583e7a8cfbfd6cea9286bced8b22f1a2"
+    },
+    {
+      "bytes": 12117,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T213919968381Z/workload.json",
+          "sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T213919968381Z/workload.json",
+      "sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9"
+    },
+    {
+      "bytes": 8380,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/001-branch_final-trace.json",
+          "sha256": "cd5012af95ef9951cf1a6bea56cbd4356ef925b9e785cb7b6b90881c2d6b07a7"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/001-branch_final-trace.json",
+      "sha256": "cd5012af95ef9951cf1a6bea56cbd4356ef925b9e785cb7b6b90881c2d6b07a7"
+    },
+    {
+      "bytes": 539,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/browser-after.json",
+          "sha256": "909470aa001829f6ea1cf92b26495b9cd041fc24926b5cb56cca8b594accaa31"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/browser-after.json",
+      "sha256": "909470aa001829f6ea1cf92b26495b9cd041fc24926b5cb56cca8b594accaa31"
+    },
+    {
+      "bytes": 453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/browser-before.json",
+          "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/browser-before.json",
+      "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+    },
+    {
+      "bytes": 1031,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/final-absence-check.json",
+          "sha256": "0dc0b928f3258a5dfc975d0624434c508bb65bc365f36653b1441f6b371d64f8"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/final-absence-check.json",
+      "sha256": "0dc0b928f3258a5dfc975d0624434c508bb65bc365f36653b1441f6b371d64f8"
+    },
+    {
+      "bytes": 1056,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/launch.json",
+          "sha256": "4660640d3c7447de596f435ccfbe83cc09815b4f994cccaf4a773f4b70bb2229"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/launch.json",
+      "sha256": "4660640d3c7447de596f435ccfbe83cc09815b4f994cccaf4a773f4b70bb2229"
+    },
+    {
+      "bytes": 742,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/probe-installed.json",
+          "sha256": "024b3909ce0df8820fe7358d10e2f43a09e11a876bcd1e1e30c267af0335a896"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/probe-installed.json",
+      "sha256": "024b3909ce0df8820fe7358d10e2f43a09e11a876bcd1e1e30c267af0335a896"
+    },
+    {
+      "bytes": 6821,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/restored.json",
+          "sha256": "cf957baa6dfba80eb4237d5fc20cfb5c0616ed40a25efce2838846cf86274783"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/restored.json",
+      "sha256": "cf957baa6dfba80eb4237d5fc20cfb5c0616ed40a25efce2838846cf86274783"
+    },
+    {
+      "bytes": 1575,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/samples.jsonl",
+          "sha256": "f190e1d36405dd692c1eba84e0ddf43a198a87a2884047578919eab4e1d90e22"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/samples.jsonl",
+      "sha256": "f190e1d36405dd692c1eba84e0ddf43a198a87a2884047578919eab4e1d90e22"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 8664,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/state.json",
+          "sha256": "80528964f1178fd89142af158c1d6c1e68a9c3220db93c9a06d7207ec3d3b248"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/state.json",
+      "sha256": "80528964f1178fd89142af158c1d6c1e68a9c3220db93c9a06d7207ec3d3b248"
+    },
+    {
+      "bytes": 40590,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/thread-analysis.json",
+          "sha256": "71653f9bec2a3ff6a9e6d379358a6f15eec087e5c399d8d455ec5429e76d9f74"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/thread-analysis.json",
+      "sha256": "71653f9bec2a3ff6a9e6d379358a6f15eec087e5c399d8d455ec5429e76d9f74"
+    },
+    {
+      "bytes": 2161,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/thread-observer.json",
+          "sha256": "60a8cde1280d9b47dc175a000891533c4f9b4cfd48f89f1c82ef4a57cc25501c"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/thread-observer.json",
+      "sha256": "60a8cde1280d9b47dc175a000891533c4f9b4cfd48f89f1c82ef4a57cc25501c"
+    },
+    {
+      "bytes": 242,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/thread-sampler-finished.json",
+          "sha256": "6480223ab7b1dc1402997e8551839c0ed17056cd78acc96d035c40c587439085"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/thread-sampler-finished.json",
+      "sha256": "6480223ab7b1dc1402997e8551839c0ed17056cd78acc96d035c40c587439085"
+    },
+    {
+      "bytes": 435842,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/thread-sampler.jsonl",
+          "sha256": "78d00847a7741a75d7f360ac1f340530a9fbe5eba92c55dffa1e75ccfbc16208"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/thread-sampler.jsonl",
+      "sha256": "78d00847a7741a75d7f360ac1f340530a9fbe5eba92c55dffa1e75ccfbc16208"
+    },
+    {
+      "bytes": 12117,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-20261125T215016428232Z/workload.json",
+          "sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9"
+        }
+      ],
+      "path": "ui-phase-probe/native-20261125T215016428232Z/workload.json",
+      "sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9"
+    },
+    {
+      "bytes": 4795,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-cpu.py",
+          "sha256": "db4292207edcac14e4240563d8670b82c37969c6dd49cb69e1556aacb576d457"
+        }
+      ],
+      "path": "ui-phase-probe/run-cpu.py",
+      "sha256": "db4292207edcac14e4240563d8670b82c37969c6dd49cb69e1556aacb576d457"
+    },
+    {
+      "bytes": 5464,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/run-thread.py",
+          "sha256": "55e7f13a5f8c4e723c1bc7d1b7cae41171322a7bd146d66f145b783a7f9c0e5c"
+        }
+      ],
+      "path": "ui-phase-probe/run-thread.py",
+      "sha256": "55e7f13a5f8c4e723c1bc7d1b7cae41171322a7bd146d66f145b783a7f9c0e5c"
+    },
+    {
+      "bytes": 5364,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/thread-sampler.py",
+          "sha256": "e12ed8838cc3c38ab26e96eb9b75e6613bf53831e555e0460dfe82cd12f2fd7b"
+        }
+      ],
+      "path": "ui-phase-probe/thread-sampler.py",
+      "sha256": "e12ed8838cc3c38ab26e96eb9b75e6613bf53831e555e0460dfe82cd12f2fd7b"
     }
   ],
-  "base_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+  "base_head": "fd9b11117608869379de44bf209495687415e042",
   "checkpoint_date": "2026-11-25",
   "promoted": false,
   "schema_version": 1,
-  "total_artifact_bytes": 1218862
+  "total_artifact_bytes": 5003315
 }

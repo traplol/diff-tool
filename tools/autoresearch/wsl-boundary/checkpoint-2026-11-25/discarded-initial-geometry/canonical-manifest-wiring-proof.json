@@ -1,0 +1,9 @@
+{
+  "source": "build/autoresearch/wsl-boundary/workload.json",
+  "destination": "build/experiments/initial-editor-geometry/canonical-runs/workload.json",
+  "source_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "destination_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "failing_state": "build/experiments/initial-editor-geometry/canonical-runs/geometry-ab-20261125T223135171532Z.json",
+  "same_bytes": true,
+  "reason": "Existing run_one resolves manifest relative to BASE output folder"
+}

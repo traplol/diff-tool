@@ -1,0 +1,12 @@
+{
+  "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+  "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+  "cdp_port": 29223,
+  "created": "2026-11-25T17:11:00.4005840-05:00",
+  "mcp_port": 28865,
+  "pid": 4796,
+  "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+  "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+  "session": 1,
+  "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+}

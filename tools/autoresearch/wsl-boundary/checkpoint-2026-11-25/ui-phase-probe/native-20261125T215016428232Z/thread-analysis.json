@@ -1,0 +1,1814 @@
+{
+  "diagnostic_only": true,
+  "optimization_score_valid": false,
+  "canonical_sample": {
+    "background_ipc": [],
+    "correct": true,
+    "elapsed_ms": 480,
+    "file": "arch/parisc/include/asm/extable.h",
+    "file_count": 30,
+    "ipc": [
+      {
+        "command": "workspace",
+        "elapsed_ms": 123.00000000000045,
+        "op": "compare",
+        "start_ms": 0
+      },
+      {
+        "command": "workspace",
+        "elapsed_ms": 56,
+        "op": "display_patch",
+        "start_ms": 130
+      }
+    ],
+    "left": "refs/heads/feature/boundary-first",
+    "right": "refs/heads/feature/boundary-final"
+  },
+  "clock": {
+    "performance_ms": 1685,
+    "time_origin_ms": 1795643418941,
+    "wall_ms": 1795643420626
+  },
+  "tick_quantization_ms": 10,
+  "scope": {
+    "kind": "ready",
+    "diagnostic_only": true,
+    "root": {
+      "pid": 135694,
+      "start_ticks": "14771164",
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline"
+    },
+    "webkit": {
+      "pid": 135772,
+      "comm": "WebKitWebProces",
+      "state": "S",
+      "ppid": 135694,
+      "utime": 170,
+      "stime": 512,
+      "start_ticks": "14771368",
+      "binary": "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitWebProcess"
+    },
+    "observer": {
+      "pid": 135979,
+      "comm": "python3",
+      "state": "R",
+      "ppid": 135978,
+      "utime": 3,
+      "stime": 2,
+      "start_ticks": "14771820",
+      "binary": "/usr/bin/python3.14"
+    },
+    "ticks_per_second": 100,
+    "target_period_ms": 20,
+    "max_seconds": 60,
+    "max_threads": 256,
+    "loaded_graphics_library_paths": [
+      "/usr/lib/x86_64-linux-gnu/libEGL.so.1.1.0",
+      "/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libGL.so.1.7.0",
+      "/usr/lib/x86_64-linux-gnu/libGLESv2.so.2.1.0",
+      "/usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libLLVM.so.21.1",
+      "/usr/lib/x86_64-linux-gnu/libcairo-gobject.so.2.11804.4",
+      "/usr/lib/x86_64-linux-gnu/libcairo.so.2.11804.4",
+      "/usr/lib/x86_64-linux-gnu/libdrm.so.2.131.0",
+      "/usr/lib/x86_64-linux-gnu/libdrm_amdgpu.so.1.131.0",
+      "/usr/lib/x86_64-linux-gnu/libdrm_intel.so.1.131.0",
+      "/usr/lib/x86_64-linux-gnu/libepoxy.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libgallium-26.0.8-1ubuntu0.3.so",
+      "/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0",
+      "/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2420.32",
+      "/usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-4.1.so.0.10.14",
+      "/usr/lib/x86_64-linux-gnu/libpixman-1.so.0.46.4",
+      "/usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.1.so.0.21.10",
+      "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/injected-bundle/libwebkit2gtkinjectedbundle.so"
+    ],
+    "library_scope": "Presence only; active renderer is unproven"
+  },
+  "sampler": {
+    "kind": "finished",
+    "reason": "root_gone",
+    "error": null,
+    "samples": 70,
+    "duration_s": 1.405218135972973,
+    "observer_cpu_s": 0.36667099999999997
+  },
+  "sample_stats": {
+    "count": 70,
+    "mean_read_ms": 4.0334401,
+    "max_read_ms": 6.429,
+    "read_errors": 0,
+    "full_action_covered": true
+  },
+  "intervals": [
+    {
+      "kind": "entire_action",
+      "trace_span_ms": 481,
+      "sampled_span_ms": 460.152212,
+      "process_cpu_ms": 1010,
+      "llvmpipe_cpu_ms": 780,
+      "main_thread_cpu_ms": 110,
+      "thread_count": 54,
+      "threads": [
+        {
+          "tid": 135772,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 110,
+          "utime_ms": 50,
+          "stime_ms": 60,
+          "state_counts": {
+            "R": 6,
+            "S": 18
+          }
+        },
+        {
+          "tid": 135792,
+          "comm": "llvmpipe-1",
+          "cpu_ms": 90,
+          "utime_ms": 20,
+          "stime_ms": 70,
+          "state_counts": {
+            "S": 13,
+            "R": 11
+          }
+        },
+        {
+          "tid": 135802,
+          "comm": "llvmpipe-11",
+          "cpu_ms": 80,
+          "utime_ms": 10,
+          "stime_ms": 70,
+          "state_counts": {
+            "S": 19,
+            "R": 5
+          }
+        },
+        {
+          "tid": 135791,
+          "comm": "llvmpipe-0",
+          "cpu_ms": 70,
+          "utime_ms": 10,
+          "stime_ms": 60,
+          "state_counts": {
+            "R": 7,
+            "S": 17
+          }
+        },
+        {
+          "tid": 135794,
+          "comm": "llvmpipe-3",
+          "cpu_ms": 70,
+          "utime_ms": 10,
+          "stime_ms": 60,
+          "state_counts": {
+            "S": 20,
+            "R": 4
+          }
+        },
+        {
+          "tid": 135795,
+          "comm": "llvmpipe-4",
+          "cpu_ms": 70,
+          "utime_ms": 20,
+          "stime_ms": 50,
+          "state_counts": {
+            "S": 16,
+            "R": 8
+          }
+        },
+        {
+          "tid": 135800,
+          "comm": "llvmpipe-9",
+          "cpu_ms": 70,
+          "utime_ms": 10,
+          "stime_ms": 60,
+          "state_counts": {
+            "S": 18,
+            "R": 6
+          }
+        },
+        {
+          "tid": 135793,
+          "comm": "llvmpipe-2",
+          "cpu_ms": 60,
+          "utime_ms": 20,
+          "stime_ms": 40,
+          "state_counts": {
+            "S": 20,
+            "R": 4
+          }
+        },
+        {
+          "tid": 135797,
+          "comm": "llvmpipe-6",
+          "cpu_ms": 60,
+          "utime_ms": 10,
+          "stime_ms": 50,
+          "state_counts": {
+            "R": 11,
+            "S": 13
+          }
+        },
+        {
+          "tid": 135798,
+          "comm": "llvmpipe-7",
+          "cpu_ms": 60,
+          "utime_ms": 20,
+          "stime_ms": 40,
+          "state_counts": {
+            "R": 7,
+            "S": 17
+          }
+        },
+        {
+          "tid": 135796,
+          "comm": "llvmpipe-5",
+          "cpu_ms": 50,
+          "utime_ms": 20,
+          "stime_ms": 30,
+          "state_counts": {
+            "R": 4,
+            "S": 20
+          }
+        },
+        {
+          "tid": 135799,
+          "comm": "llvmpipe-8",
+          "cpu_ms": 50,
+          "utime_ms": 20,
+          "stime_ms": 30,
+          "state_counts": {
+            "S": 22,
+            "R": 2
+          }
+        },
+        {
+          "tid": 135801,
+          "comm": "llvmpipe-10",
+          "cpu_ms": 50,
+          "utime_ms": 20,
+          "stime_ms": 30,
+          "state_counts": {
+            "S": 19,
+            "R": 5
+          }
+        },
+        {
+          "tid": 135820,
+          "comm": "SkiaGPUWorker",
+          "cpu_ms": 40,
+          "utime_ms": 10,
+          "stime_ms": 30,
+          "state_counts": {
+            "S": 23,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135782,
+          "comm": "ReceiveQueue",
+          "cpu_ms": 30,
+          "utime_ms": 10,
+          "stime_ms": 20,
+          "state_counts": {
+            "S": 21,
+            "R": 3
+          }
+        },
+        {
+          "tid": 135816,
+          "comm": "eadedCompositor",
+          "cpu_ms": 20,
+          "utime_ms": 0,
+          "stime_ms": 20,
+          "state_counts": {
+            "S": 20,
+            "R": 4
+          }
+        },
+        {
+          "tid": 135819,
+          "comm": "SkiaGPUWorker",
+          "cpu_ms": 20,
+          "utime_ms": 10,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 23,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135773,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135774,
+          "comm": "EventDispatcher",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135775,
+          "comm": "rruptDispatcher",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135776,
+          "comm": "uggerDispatcher",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135786,
+          "comm": "ReceiveQueue",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135787,
+          "comm": "pool-spawner",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135788,
+          "comm": "gmain",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135789,
+          "comm": "pool-0",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135790,
+          "comm": "gdbus",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135803,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135804,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135805,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135806,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135807,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135808,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135809,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135810,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135811,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135812,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135813,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135814,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135815,
+          "comm": "WebKitW:disk$0",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135818,
+          "comm": "Core: Scrolling",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135833,
+          "comm": "dconf worker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135834,
+          "comm": "JITWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 23,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135835,
+          "comm": "JITWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135836,
+          "comm": "JITWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135837,
+          "comm": "CryptoQueue",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135884,
+          "comm": "DataURLDecoder",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135885,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135886,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135887,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135888,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135889,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135890,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135891,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        },
+        {
+          "tid": 135892,
+          "comm": "ollector Thread",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 24
+          }
+        }
+      ]
+    },
+    {
+      "kind": "initial_measure_wait",
+      "trace_span_ms": 90,
+      "sampled_span_ms": 79.980402,
+      "process_cpu_ms": 170,
+      "llvmpipe_cpu_ms": 160,
+      "main_thread_cpu_ms": 10,
+      "thread_count": 54,
+      "threads": [
+        {
+          "tid": 135794,
+          "comm": "llvmpipe-3",
+          "cpu_ms": 30,
+          "utime_ms": 0,
+          "stime_ms": 30,
+          "state_counts": {
+            "S": 4,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135797,
+          "comm": "llvmpipe-6",
+          "cpu_ms": 30,
+          "utime_ms": 10,
+          "stime_ms": 20,
+          "state_counts": {
+            "R": 3,
+            "S": 2
+          }
+        },
+        {
+          "tid": 135792,
+          "comm": "llvmpipe-1",
+          "cpu_ms": 20,
+          "utime_ms": 10,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 4,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135801,
+          "comm": "llvmpipe-10",
+          "cpu_ms": 20,
+          "utime_ms": 10,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 4,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135772,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "R": 1,
+            "S": 4
+          }
+        },
+        {
+          "tid": 135782,
+          "comm": "ReceiveQueue",
+          "cpu_ms": 10,
+          "utime_ms": 10,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135791,
+          "comm": "llvmpipe-0",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "R": 3,
+            "S": 2
+          }
+        },
+        {
+          "tid": 135793,
+          "comm": "llvmpipe-2",
+          "cpu_ms": 10,
+          "utime_ms": 10,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135795,
+          "comm": "llvmpipe-4",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "R": 2,
+            "S": 3
+          }
+        },
+        {
+          "tid": 135796,
+          "comm": "llvmpipe-5",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135800,
+          "comm": "llvmpipe-9",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 4,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135802,
+          "comm": "llvmpipe-11",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135819,
+          "comm": "SkiaGPUWorker",
+          "cpu_ms": 10,
+          "utime_ms": 10,
+          "stime_ms": 0,
+          "state_counts": {
+            "R": 1,
+            "S": 4
+          }
+        },
+        {
+          "tid": 135773,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135774,
+          "comm": "EventDispatcher",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135775,
+          "comm": "rruptDispatcher",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135776,
+          "comm": "uggerDispatcher",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135786,
+          "comm": "ReceiveQueue",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135787,
+          "comm": "pool-spawner",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135788,
+          "comm": "gmain",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135789,
+          "comm": "pool-0",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135790,
+          "comm": "gdbus",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135798,
+          "comm": "llvmpipe-7",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135799,
+          "comm": "llvmpipe-8",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135803,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135804,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135805,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135806,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135807,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135808,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135809,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135810,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135811,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135812,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135813,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135814,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135815,
+          "comm": "WebKitW:disk$0",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135816,
+          "comm": "eadedCompositor",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 4,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135818,
+          "comm": "Core: Scrolling",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135820,
+          "comm": "SkiaGPUWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 4,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135833,
+          "comm": "dconf worker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135834,
+          "comm": "JITWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 4,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135835,
+          "comm": "JITWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135836,
+          "comm": "JITWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135837,
+          "comm": "CryptoQueue",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135884,
+          "comm": "DataURLDecoder",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135885,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135886,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135887,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135888,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135889,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135890,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135891,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        },
+        {
+          "tid": 135892,
+          "comm": "ollector Thread",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 5
+          }
+        }
+      ]
+    },
+    {
+      "kind": "following_frame_wait",
+      "trace_span_ms": 147.99999999999955,
+      "sampled_span_ms": 120.041103,
+      "process_cpu_ms": 220,
+      "llvmpipe_cpu_ms": 180,
+      "main_thread_cpu_ms": 10,
+      "thread_count": 54,
+      "threads": [
+        {
+          "tid": 135792,
+          "comm": "llvmpipe-1",
+          "cpu_ms": 30,
+          "utime_ms": 0,
+          "stime_ms": 30,
+          "state_counts": {
+            "S": 2,
+            "R": 5
+          }
+        },
+        {
+          "tid": 135798,
+          "comm": "llvmpipe-7",
+          "cpu_ms": 30,
+          "utime_ms": 10,
+          "stime_ms": 20,
+          "state_counts": {
+            "S": 5,
+            "R": 2
+          }
+        },
+        {
+          "tid": 135791,
+          "comm": "llvmpipe-0",
+          "cpu_ms": 20,
+          "utime_ms": 0,
+          "stime_ms": 20,
+          "state_counts": {
+            "S": 6,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135795,
+          "comm": "llvmpipe-4",
+          "cpu_ms": 20,
+          "utime_ms": 0,
+          "stime_ms": 20,
+          "state_counts": {
+            "S": 4,
+            "R": 3
+          }
+        },
+        {
+          "tid": 135802,
+          "comm": "llvmpipe-11",
+          "cpu_ms": 20,
+          "utime_ms": 0,
+          "stime_ms": 20,
+          "state_counts": {
+            "S": 6,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135772,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135793,
+          "comm": "llvmpipe-2",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135794,
+          "comm": "llvmpipe-3",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135796,
+          "comm": "llvmpipe-5",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135799,
+          "comm": "llvmpipe-8",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135800,
+          "comm": "llvmpipe-9",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135801,
+          "comm": "llvmpipe-10",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "R": 1,
+            "S": 6
+          }
+        },
+        {
+          "tid": 135819,
+          "comm": "SkiaGPUWorker",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135820,
+          "comm": "SkiaGPUWorker",
+          "cpu_ms": 10,
+          "utime_ms": 0,
+          "stime_ms": 10,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135773,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135774,
+          "comm": "EventDispatcher",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135775,
+          "comm": "rruptDispatcher",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135776,
+          "comm": "uggerDispatcher",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135782,
+          "comm": "ReceiveQueue",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135786,
+          "comm": "ReceiveQueue",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135787,
+          "comm": "pool-spawner",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135788,
+          "comm": "gmain",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135789,
+          "comm": "pool-0",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135790,
+          "comm": "gdbus",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135797,
+          "comm": "llvmpipe-6",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 4,
+            "R": 3
+          }
+        },
+        {
+          "tid": 135803,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135804,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135805,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135806,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135807,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135808,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135809,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135810,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135811,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135812,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135813,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135814,
+          "comm": "WebKitWebProces",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135815,
+          "comm": "WebKitW:disk$0",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135816,
+          "comm": "eadedCompositor",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 6,
+            "R": 1
+          }
+        },
+        {
+          "tid": 135818,
+          "comm": "Core: Scrolling",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135833,
+          "comm": "dconf worker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135834,
+          "comm": "JITWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135835,
+          "comm": "JITWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135836,
+          "comm": "JITWorker",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135837,
+          "comm": "CryptoQueue",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135884,
+          "comm": "DataURLDecoder",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135885,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135886,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135887,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135888,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135889,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135890,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135891,
+          "comm": "HeapHelper",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        },
+        {
+          "tid": 135892,
+          "comm": "ollector Thread",
+          "cpu_ms": 0,
+          "utime_ms": 0,
+          "stime_ms": 0,
+          "state_counts": {
+            "S": 7
+          }
+        }
+      ]
+    }
+  ],
+  "finding": "Twelve active llvmpipe workers dominate CPU during both frame-entry gaps. The main thread and CM synchronous work account for a smaller share. Graphics library presence alone is not used as active-renderer proof.",
+  "limits": [
+    "One diagnostic action only; observer overhead retained, no optimization claim.",
+    "10ms per-thread tick quantization means summed thread deltas can differ from process aggregate.",
+    "CPU attribution identifies the busy driver threads, not the exact source pixels/layers or number of physical presentations."
+  ],
+  "reference": {
+    "title": "Mesa LLVMpipe documentation",
+    "url": "https://docs.mesa3d.org/drivers/llvmpipe.html",
+    "supports": "LLVMpipe is a multithreaded software rasterizer."
+  },
+  "recommended_source_experiment": {
+    "candidate": "071ee12ca22b855f5cdfdd6e3c40951755369e1bd3d4834b551139f9964788ca",
+    "path": "build/experiments/initial-editor-geometry",
+    "hypothesis": "Measure a newly constructed editor before its first frame so its provisional and measured viewport changes may be rendered together, reducing repeated raster work. Preserve all required frames and score full canonical elapsed time.",
+    "separate_next_candidate": "69589c stable-file-tree, if needed; do not combine."
+  }
+}

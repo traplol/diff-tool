@@ -1,0 +1,115 @@
+{
+  "actions": {
+    "branch_final": {
+      "count": 3,
+      "first_use_ms": 322.80000001192093,
+      "max_ms": 367.09999999403954,
+      "p50_ms": 341,
+      "p95_ms": 367.09999999403954
+    },
+    "branch_first": {
+      "count": 3,
+      "first_use_ms": 427.59999999403954,
+      "max_ms": 431.90000000596046,
+      "p50_ms": 427.59999999403954,
+      "p95_ms": 431.90000000596046
+    },
+    "comment_branch": {
+      "count": 3,
+      "first_use_ms": 431.90000000596046,
+      "max_ms": 433.5,
+      "p50_ms": 431.90000000596046,
+      "p95_ms": 433.5
+    },
+    "comment_worktree": {
+      "count": 3,
+      "first_use_ms": 1416.199999988079,
+      "max_ms": 1494.7000000178814,
+      "p50_ms": 1494,
+      "p95_ms": 1494.7000000178814
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 618.8999999761581,
+      "max_ms": 618.8999999761581,
+      "p50_ms": 618.8999999761581,
+      "p95_ms": 618.8999999761581
+    },
+    "stack": {
+      "count": 3,
+      "first_use_ms": 327.5,
+      "max_ms": 333.5,
+      "p50_ms": 327.5,
+      "p95_ms": 333.5
+    },
+    "working_tree": {
+      "count": 3,
+      "first_use_ms": 1442.6000000238419,
+      "max_ms": 1458.6000000238419,
+      "p50_ms": 1442.6000000238419,
+      "p95_ms": 1458.6000000238419
+    }
+  },
+  "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+  "case": "windows_windows",
+  "cleanup": {
+    "cleanup": {
+      "canonical_stop": {
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+        "stopped_pids": [
+          4504,
+          3448
+        ]
+      },
+      "exact_owned_processes_absent": true,
+      "observed_children": [
+        {
+          "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+          "created": "2026-11-25T16:54:46.1532090-05:00",
+          "pid": 9620
+        },
+        {
+          "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+          "created": "2026-11-25T16:54:48.0552570-05:00",
+          "pid": 3448
+        }
+      ],
+      "ports_free": true
+    },
+    "finished_unix": 1795643779.3913496,
+    "launch": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+      "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+      "cdp_port": 29223,
+      "created": "2026-11-25T16:54:46.0307550-05:00",
+      "mcp_port": 28865,
+      "pid": 4504,
+      "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+      "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+      "session": 1,
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "purpose": "Exact owner cleanup after retained SSH banner failure; no measurement retry",
+    "started_unix": 1795643776.6505697,
+    "status": "exact-owned-actors-stopped-and-ports-free"
+  },
+  "completed_scoring_runs": 1,
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "decision": "No benchmark retry, promotion or source change. Raw valid A1 and cleanup failure retained.",
+  "fixture_before_after_equal": true,
+  "host_exact_processes_remaining": [],
+  "host_port19223_free": true,
+  "repetitions": 3,
+  "runner_sha256": "3d582ab6e9f80afea89e0016f3408fa4be9be97003fff5c14314f7efd58d4e0a",
+  "scheduled_runs": 12,
+  "scorer_valid": true,
+  "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "status": "incomplete-A-B-series-stopped-after-cleanup-transport-failure",
+  "thresholds": {
+    "comparison_evaluable": false,
+    "reason": "No B or remaining fresh-process runs were started",
+    "same_side_candidate_max_p95_ratio": 1.1,
+    "target_each_cross_cell_p95_ms": 250
+  },
+  "variant": "A"
+}

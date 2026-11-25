@@ -1,0 +1,58 @@
+--- a/src-tauri/src/git.rs
++++ b/src-tauri/src/git.rs
+@@ -230,10 +230,51 @@
+ }
+ 
+ fn run_git<S: AsRef<OsStr>>(root: &Path, args: &[S], diff_exit: bool) -> Result<Vec<u8>> {
+-    let output = command(root)?
+-        .args(args)
+-        .output()
+-        .map_err(|e| format!("Could not start Git. Check your PATH. {e}"))?;
++    use std::io::Write as _;
++    // Temporary diagnostic only: fixed tags never expose paths, argv or env.
++    let has = |value: &str| args.iter().any(|arg| arg.as_ref() == OsStr::new(value));
++    let tag = if has("--no-index") {
++        "diff.no_index"
++    } else if has("diff") && has("--cached") {
++        "diff.cached"
++    } else if has("diff") && has("--ours") {
++        "diff.ours"
++    } else if has("diff") {
++        "diff.other"
++    } else if has("status") {
++        "status"
++    } else if has("ls-files") && has("--unmerged") {
++        "ls_files.unmerged"
++    } else if has("ls-files") && has("--others") {
++        "ls_files.others"
++    } else if has("rev-parse") && has("--git-path") {
++        "rev_parse.git_path"
++    } else if has("rev-parse") {
++        "rev_parse.other"
++    } else if has("symbolic-ref") {
++        "symbolic_ref"
++    } else {
++        "other"
++    };
++    let started = std::time::Instant::now();
++    let prepared = command(root);
++    let command_us = started.elapsed().as_micros();
++    let _ = writeln!(
++        std::io::stderr().lock(),
++        "BRANCHLINE_PHASE pid={} phase=git.command tag={} elapsed_us={}",
++        std::process::id(), tag, command_us
++    );
++    let mut prepared = prepared?;
++    prepared.args(args);
++    let started = std::time::Instant::now();
++    let output = prepared.output();
++    let child_us = started.elapsed().as_micros();
++    let _ = writeln!(
++        std::io::stderr().lock(),
++        "BRANCHLINE_PHASE pid={} phase=git.child_output tag={} elapsed_us={}",
++        std::process::id(), tag, child_us
++    );
++    let output = output.map_err(|e| format!("Could not start Git. Check your PATH. {e}"))?;
+     if output.status.success()
+         || (diff_exit && output.status.code() == Some(1) && !output.stdout.is_empty())
+     {

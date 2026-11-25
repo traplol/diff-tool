@@ -1,0 +1,59 @@
+{
+  "host_controller_pid": 49152,
+  "ready": {
+    "diagnostic_only": true,
+    "kind": "ready",
+    "library_scope": "Presence only; active renderer is unproven",
+    "loaded_graphics_library_paths": [
+      "/usr/lib/x86_64-linux-gnu/libEGL.so.1.1.0",
+      "/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libGL.so.1.7.0",
+      "/usr/lib/x86_64-linux-gnu/libGLESv2.so.2.1.0",
+      "/usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libLLVM.so.21.1",
+      "/usr/lib/x86_64-linux-gnu/libcairo-gobject.so.2.11804.4",
+      "/usr/lib/x86_64-linux-gnu/libcairo.so.2.11804.4",
+      "/usr/lib/x86_64-linux-gnu/libdrm.so.2.131.0",
+      "/usr/lib/x86_64-linux-gnu/libdrm_amdgpu.so.1.131.0",
+      "/usr/lib/x86_64-linux-gnu/libdrm_intel.so.1.131.0",
+      "/usr/lib/x86_64-linux-gnu/libepoxy.so.0.0.0",
+      "/usr/lib/x86_64-linux-gnu/libgallium-26.0.8-1ubuntu0.3.so",
+      "/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0",
+      "/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2420.32",
+      "/usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-4.1.so.0.10.14",
+      "/usr/lib/x86_64-linux-gnu/libpixman-1.so.0.46.4",
+      "/usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.1.so.0.21.10",
+      "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/injected-bundle/libwebkit2gtkinjectedbundle.so"
+    ],
+    "max_seconds": 60,
+    "max_threads": 256,
+    "observer": {
+      "binary": "/usr/bin/python3.14",
+      "comm": "python3",
+      "pid": 135979,
+      "ppid": 135978,
+      "start_ticks": "14771820",
+      "state": "R",
+      "stime": 2,
+      "utime": 3
+    },
+    "root": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "pid": 135694,
+      "start_ticks": "14771164"
+    },
+    "target_period_ms": 20,
+    "ticks_per_second": 100,
+    "webkit": {
+      "binary": "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitWebProcess",
+      "comm": "WebKitWebProces",
+      "pid": 135772,
+      "ppid": 135694,
+      "start_ticks": "14771368",
+      "state": "S",
+      "stime": 512,
+      "utime": 170
+    }
+  }
+}

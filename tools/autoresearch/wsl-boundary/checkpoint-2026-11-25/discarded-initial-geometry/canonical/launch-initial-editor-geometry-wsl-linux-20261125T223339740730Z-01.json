@@ -1,0 +1,28 @@
+{
+  "app_process": {
+    "args": [
+      "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+      "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+    ],
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+    "pid": 149755,
+    "start_ticks": "15033378"
+  },
+  "binary": "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+  "binary_sha256": "149c9d32326fd4d6d8fc1f673c21b5e77ac56120f16db38d2f8971e1616f1889",
+  "created": "15033378",
+  "display": ":0",
+  "driver_process": {
+    "binary": "/usr/bin/WebKitWebDriver",
+    "pid": 149753,
+    "start_ticks": "15033371"
+  },
+  "gdk_backend": "x11",
+  "mcp_port": 28867,
+  "pid": 149755,
+  "port": 29225,
+  "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+  "session": "4f058a01-ea8f-45b8-baf4-13ffe6c8c7c9",
+  "source_hash": "071ee12ca22b855f5cdfdd6e3c40951755369e1bd3d4834b551139f9964788ca",
+  "supervisor_pid": 149752
+}

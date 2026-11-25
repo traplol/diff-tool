@@ -5,36 +5,39 @@ Updated 2026-11-25 on host `ok`. Goal active; the 250 ms target is not met.
 ## Current checkpoint
 
 - Campaign branch: `codex/wsl-boundary-perf`. Application source is committed
-  through `1135a59f3a51253709d652d1e4ec82fa8b32ce09` and pushed to GitHub.
-  Both native workers and both packaged GUI builds passed GitHub CI:
+  through `1135a59f3a51253709d652d1e4ec82fa8b32ce09`. Both native workers and
+  both packaged GUIs passed CI at
   https://github.com/traplol/diff-tool/actions/runs/45692019847.
-- The original VM source checkout and its `test-repo/` are preserved. Generated
-  build caches were reused. Benchmark repositories and profiles are separate.
-- Current controls are `driver.py`, `launch.py`, `launch_linux.py`, `probe.js`,
-  `workload.py` and `score.py`. The current frozen contract is
-  `3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04`.
-  Older contracts and source versions below are historical evidence.
-- The portable checkpoint is in `checkpoint-2026-11-25/`. Its manifest records
-  copied source patches, evidence paths and checksums. Unfinished candidates
-  remain separate from the application source. Both VM-built helper-candidate
-  GUIs and their runtime evidence have also been copied to host `ok` under
-  `build/checkpoint/vm-sync-2026-11-25/`; all 36 SHA256 receipt entries pass.
-  Reverse native runtime gates were not started, and all started VM jobs exited.
-- Windows status discovery improved working-tree p95 from 1,974 to 1,283 ms
-  and working-tree comment p95 from 1,716 to 1,120 ms in WSL GUI / NTFS tests.
-  This candidate still needs Windows GUI controls and final combined validation.
-- Across-file pane reuse passed native correctness but made the performance
-  pilot slower. It is discarded. Existing unified/split pane reuse remains.
-- Native helper placement passed host and native build tests, plus Linux GUI
-  / Windows worker runtime gates. Reverse runtime gates and GUI A/B remain.
-  Both baseline and candidate fail at the same 270-UTF16-unit fallback image
-  path; the 215-unit path passes. The exact path-length failure cause is unproven.
-- Staged metadata proof passes 78 GUI tests, 30 worker unit tests and one real
-  stdio test, with one existing ignored GUI test. Native platform verification
-  and timing remain. It requires matching rebuilt protocol-2 workers.
-- All four final matrix cells, fresh/cold scenarios and the complete under-250 ms
-  requirement remain incomplete. No candidate is accepted from component timing
-  alone. Continue from the source hashes and pending gates in the checkpoint.
+- The latest VM source, patches and small runtime evidence are copied to host
+  `ok`. No VM-only changed source is missing. Generated focused test executables
+  remain on the VM with hashes recorded. Candidate GUI binaries are local under
+  `build/checkpoint/` and the native-build evidence directories.
+- The portable archive is `checkpoint-2026-11-25/`; it includes source patches,
+  identities, matched raw samples, failure records and SHA256 manifest. New
+  experimental patches remain separate from application source.
+- Stateless Windows status discovery improves WT p95 by 35% in WSL GUI/NTFS
+  and 36% in Windows GUI/NTFS. All four source-matched matrix cells have now
+  been measured separately. WSL/ext4 branch-first max 480→544 ms exceeds the
+  10% guard; its cause is unproved. Exact delivered combined-source and cold
+  acceptance remain pending.
+- Windows GUI/WSL repeated actions have p95 and maxima below 250 ms. Fresh
+  opening still takes 697–760 ms in the status candidate. Fresh process is
+  not OS-cold. The full target remains unmet.
+- Native helper placement and lifecycle gates pass in both directions. Actual
+  malformed-response client tests also prove cleanup before Connection Drop,
+  with retained pipes. Absent/hit-cache GUI A/B remains pending.
+- Initial-editor-geometry passed native correctness but failed its pilot
+  performance gate (WT median 452→469 ms); discarded. Earlier pane reuse
+  experiment is also discarded. Graphics diagnostics do not change policy.
+- Parallel-untracked and stable-file-tree pass their recorded host checks but
+  have no native score. Git-command-construction tracing remains unbuilt.
+- Staged metadata passes host tests and needs matching protocol-2 workers.
+  The first native attempt failed before building because extracted `.git`
+  omitted an empty refs directory. Real Git-bundle packaging passes a host
+  round trip; the native retry has not run.
+- Every started current VM job has exited. Final malformed-gate actor/cache
+  checks pass. No new VM work was started for this copy/push request. Existing
+  borrowed SSH forward 19225 is left untouched. Goal remains active.
 
 The sections below retain the experiment history and original observations.
 Later entries supersede earlier running-process and pending-build statements.
@@ -819,3 +822,214 @@ owner releases the UI, preserve the full canonical timing, and do not attribute
 unmeasured gaps to painting. Existing comment-jump-refresh is a separate,
 host-tested but unmeasured frontend candidate; do not recreate or promote it
 without native evidence.
+
+
+## Resumed after the copied checkpoint
+
+The preceding goal turn made progress: checkpoint fd9b111 is pushed, the exact
+VM-built Linux and Windows helper-candidate GUIs are copied to host ok, and the
+source patches and evidence are recoverable from GitHub. The goal remains active.
+
+Reverse Windows GUI / WSL repository primary runtime gates now pass for source
+252dec and immutable Windows GUI 684cbe: native ext4 helper installation, exact
+public root/refs/content, cache-hit without rewrite, normal Connection Drop,
+corrupt-cache repair, and native-cache-unavailable source fallback. The isolated
+Unicode test launcher initially misread UTF8 ownership JSON; that harness failure
+is retained and corrected without changing product or canonical controls.
+Evidence: build/experiments/native-helper-deployment/reverse-windows-gates-02/.
+Its release receipt verifies no owned Windows apps or Linux workers remain,
+ports 29371 and 28971 are free, and controller/tunnel have exited. Reverse EOF,
+abrupt GUI/MCP death and actual malformed-response client injection are not
+proved by these primary gates.
+
+A new isolated parallel-untracked candidate follows exact status source d5b05:
+source f15e85e1ec50af3bdc82e792a4d2d1189b67f4e56375679d88e0b035fe587a0f,
+under build/experiments/parallel-untracked/source. It limits per-path captures to
+four, preserves listing/error order, and joins before returning. Host 32 worker
+tests, one real stdio test and 77 GUI tests pass, with one existing ignored GUI
+test. Initial test-oracle and sandbox loopback failures are retained. A fresh
+independent KISS audit passed. No native execution or speed gain is claimed.
+
+The original UI phase injector now has exclusive VM runtime release. It will
+measure the exact b2 Linux GUI 78106ff4 against the ext4 fixture using two full
+canonical action repetitions, without changing rendering or completion frames.
+Native builds and timing remain serial; no other heavy host job is running.
+
+The original UI diagnostic completed successfully: exec95675, exact GUI132944,
+driver132942 and MCP133118 stopped, profile descendants absent, ports29225/28867
+free, owned tunnel and launcher exited0. All hooks restored. Evidence lives at
+build/experiments/ui-phase-probe/run-20261125T213031571855Z. CodeMirror measure
+spans were3–8ms, position-saving lineBlockAtHeight0ms, and the interval from patch
+IPC completion to initial measure request only3–11ms. Repeated actions still
+show two roughly130–155ms frame-entry waits. This rejects synchronous CodeMirror
+measurement and early sizing getters as the dominant remainder; it does not
+prove painting is the cause. External exact-process CPU sampling is prepared
+next, without adding browser frames or changing rendering.
+
+One root-owned Windows controls supervisor is live: exec28673, host40035,
+VM133558, run windows-controls-b2de070-20261125T213427886542Z. Baseline Windows
+GUI built successfully at C:/Users/max/branchline-bench/binaries/checkpoint-b2de070/branchline.exe,
+SHA b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481,
+with unchanged GNU328 helper and static CRT imports. Status Windows GUI is
+currently building. Re-poll this exact owner before any retry or new native work.
+Native helper lifecycle and UI CPU controllers remain host-only preparation;
+no actor may overlap this build or a later canonical timing session.
+
+
+## Latest native evidence and next source experiment
+
+Windows control builds completed with full source/helper/fixture proof. The
+status GUI SHA is bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3;
+baseline is b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481.
+Full VM build state/logs were copied to the host run directory's remote-evidence/.
+The first status Windows/Windows A1 produced19 valid samples, but cleanup SSH
+banner exchange timed out. Exact GUI4504/MCP3448/WebView9620 were subsequently
+stopped,29223/28865 and host19223 are free, and fixtures are unchanged. That
+interrupted series is retained separately; it cannot establish candidate benefit.
+A task-local single authenticated SSH master/tunnel transport repair is ready
+under build/experiments/status-windows-controls; its next complete12-process
+series requires a new root runtime release. Canonical contract remains3db.
+
+Reverse helper lifecycle gates now pass across primary02, lifecycle03/04/05:
+real idle/busy EOF, invalid-request recovery, abrupt GUI idle/busy and MCP
+idle/busy death. Busy cases paused exact read-only Git children under bounded
+watchdogs and resumed them. The SSH banner timeout and forwarded-Host403
+failures are retained; the latter correctly rejected local48971 when native
+Host28971 was required. No product changes were made for these harness defects.
+Final05 exec58485 exited0; owned actors, paused children, ports29371/28971 and
+control socket were absent; fingerprints unchanged.33 evidence files and hashes
+are copied under build/checkpoint/vm-sync-2026-11-25/reverse-gates/. Actual client
+malformed-response fault handling across the boundary remains unproved.
+
+Two further source-free UI diagnostics completed, with exact cleanup. CPU run
+run-20261125T213919968381Z recorded488 samples; its outer teardown assertion
+failed on root_identity_changed rather than root_gone, but independent final
+checks prove all owned actors stopped. No rerun hides that failure. Thread run
+run-20261125T215016428232Z exited0 and attributes roughly77% of WebKit process
+CPU during the sampled action to12 active llvmpipe workers. Main-thread CPU
+was10ms in two long frame-wait interiors; llvmpipe used160ms and180ms respectively.
+Observer overhead (0.367CPU-s over1.405s) and10ms tick quantization remain in
+the proof. These are graphics-work diagnostics, not optimization scores. Default
+renderer/acceleration and the scorer's two completion frames stay unchanged.
+
+Initial-editor-geometry candidate071ee12ca22b855f5cdfdd6e3c40951755369e1bd3d4834b551139f9964788ca
+changes only editor.js from b2. It calls the public lineBlockAtHeight API after
+restore/selection setup for newly created panes, testing whether provisional
+and measured viewport work can precede one paint. Five host frontend suites and
+Vite pass; fresh KISS said simple enough. Native Linux GUI build exec57837 exited0,
+supervisor136626 and child136719 absent; source/helper/fixture guards passed.
+GUI SHA149c9d32326fd4d6d8fc1f673c21b5e77ac56120f16db38d2f8971e1616f1889,
+with unchanged6a worker, is under binaries/initial-editor-geometry-b2de070-071ee12ca22b/.
+Full source/proof/binary evidence is copied to the host experiment directory.
+The UI agent now owns runtime for existing native resize/context smoke gates
+then isolated canonical A/B. No benefit or promotion is established yet.
+
+Stable-file-tree69589c0283e3560c6c1edc160064c47f7794068f7a0bdfa824329ab158e73d73
+is a separate source-only b2 hypothesis: retain picker DOM for unchanged ordered
+visual metadata while editor data stays fresh. Three semantic regressions, all
+five frontend files and Vite pass. Native DOM behavior/timing and fresh KISS are
+pending. Do not combine it with initial geometry before independent evidence.
+
+Queued backend work remains staged-metadata aba (protocol2 requires matching
+new workers), parallel-untracked f15 (host checks pass, no native result), and
+Git command-construction diagnostic e72 (source-only, stderr timers). No final
+four-cell or OS-cold acceptance matrix is complete;250ms remains unmet.
+
+
+Windows status controls are now complete: renewed exec97353 exited0;12 valid
+scorer runs/636 samples, all exact actor cleanups passed, both fixtures and raw
+index/config/HEAD guards unchanged. Owner58301/master58304 exited; explicit
+master-exit command succeeded (master SSH return255 retained), socket and ports
+were gone. Full result: build/experiments/status-windows-controls/run-20261125T220910302670Z/summary.json.
+Final20 Windows/NTFS WT p95 is1501.7→956.9ms (36.3%); WT-comment1524.1→963.2ms
+(36.8%). Every p95/max10% guard passes on both Windows cells. Windows/WSL
+repeated-action p95 values for B are198.1/140.3/206.3/137.2/212.4/214.6ms
+(branch-first/final/WT/stack/branch-comment/WT-comment); all repeated maxima
+are below250ms. Opening remains697–760ms for B's three fresh processes.
+A1's1745.6msOpen/1267.5msfirstWT are retained, not OS-cold and not credited to
+status because the Linux worker is unchanged. WSL/ext4 control is prepared
+host-only by staged_anchor_metadata and still needs an explicit runtime release.
+
+The first initial-geometry resize smoke failed split sync(-517px). Same original
+helper baseline failed earlier on selecting an offscreen row(newL3 vsnewL12),
+so candidate regression is not established. Auxiliary r1 then proved line11
+was outside the viewport before any gesture; it correctly refused to click.
+The original ElementClick was auto-scrolling a virtualized target. A separate
+r2 helper uses scroll→settle→refetch then canonical native-pointer input,
+preserving allfive original assertions and allmode/resize/keyboard/edit checks.
+r2 baseline now passes every assertion. Candidate preflight alone then rejected
+TIME_WAIT; it created no GUI or fixture. A candidate-only retry using canonical
+SO_REUSEADDR availability semantics is authorized after exact listener/actor
+absence. UI agent owns that runtime slot; no newsource or scoring has occurred.
+Original/r1/r2 artifacts and transport failures are retained under the geometry
+experiment. Do not mark071 correct, faster, or regressed until the valid gate.
+
+Nativehelper agent has prepared the last actual malformed-client integration
+gate host-only under native-helper-deployment/malformed-client-gate/plan.json.
+It appends one test-only module to an ignored copy of exact252 remote code, uses
+real materialize/Location.command/Connection, and holds Connection/pipes alive
+while asserting both launcher and Hello-nativePID death. Fixtures are a tiny
+std-only PE server and Python script. It has not built or run. No product edit.
+
+Next after current geometry auxiliary release: finish071context gate and pilot
+ifcorrect, or investigate a concrete candidate failure. WSL/ext4 status control,
+helper placement GUI A/B, staged protocol2 builds/timing, parallel-untracked
+native tests/timing and command-construction diagnostic remain pending. The
+full250ms opening/first-use/four-cell requirement remains unmet; goal active.
+
+Geometry native gates are now valid: repaired r2 baseline and071 both pass all
+original resize/anchor/scroll/selection/keyboard/edit assertions;071 also passes
+the full existing context-expander workflow. Every controller/MCP actor was
+verified absent and28869free. Earlier failures remain preserved. Proofs are
+initial-editor-geometry/runtime-gate-proof.json and runtime-gate-release.json.
+
+Geometry A/B is LIVE: exec45755, orchestrator67881, state
+build/experiments/initial-editor-geometry/canonical-runs/geometry-ab-20261125T223135171532Z.json.
+CallerSHA1fb22ab42c7c816f7b8bb37fd7754fc8896f1fd62165d08f45dbb22068aafbf9.
+It reuses the exact pre-existing canonical SSH forward3963124/start74036517
+(/usr/bin/ssh,19225→29225), records that identity and leaves it untouched.
+The initial new-tunnel preflight correctly stopped on occupied19225 before any
+VM call; its failed state and caller are preserved. No benchmark contract, app
+source, graphics policy, dataset or completion frames changed. Other agents are
+host-only while this serial pilot runs. Revalidate this SAME owner before any
+new runtime/build. If all four3-rep pilots pass the predefined10% WT/overall
+guard, the owner proceeds A3/B3 with20reps; otherwise it stops for review.
+
+Status WSL/ext4 last control is ready at build/experiments/status-wsl-control/run.py
+(SHAd29811f8...). It needs VM WSL STATUS CONTROL RELEASED after current owner
+cleanup. Malformed-client fixture/harness plan is ready but unbuilt; stagedaba
+protocol2 tar/build runner and parallelf15 native work remain queued.
+
+
+## Latest copy to ok and push checkpoint
+
+The valid initial-geometry pilot is geometry-ab-20261125T223339740730Z:
+four processes, 76 correct samples, WT pooled median 452→469 ms. It failed the
+predeclared continuation gate; no 20-repetition jobs ran. Native resize/context
+correctness passes in the corrected auxiliary caller. All original caller and
+transport failures remain in the local evidence. Discard source 071ee1.
+
+WSL/ext4 status control run-20261125T223739227075Z completed all six processes.
+All p95 guards pass, but branch-first maximum 544 ms versus 480 ms exceeds 10%.
+Its foreground IPC is 4 ms lower; the remainder is 68 ms higher. This does not
+prove the cause. All fixture/source/index/config/HEAD and exact cleanup guards
+pass. A separate A4/B4 confirmation remains unrun; the original outlier stands.
+
+Malformed-response native client gates completed at exec65921 with all five
+build/test phases exiting zero. Both native PIDs disappear while Connection
+and stdin remain alive, before Drop; a subsequent request reports disconnected.
+The final supervisor, child, process-group and cache checks pass with zero
+cleanup kills. Source prefix and module hashes are preserved locally and in
+native-helper/malformed-client-gate/. No production code changed for the gate.
+
+Staged metadata native exec66163 failed during verify_source before any worker
+build or fixture phase. The old archive omitted an empty .git/refs directory.
+The replacement real bundle and init/fetch/update-ref/read-tree bootstrap retain
+all181 app-file hashes, HEAD1135a59 and tree473206ad. A complete host archive
+round trip passes. Both failed controls and bundle-r2 handoff are preserved;
+no VM retry or native protocol2 claim is made.
+
+All changed VM source is present on ok. The new archive preserves portable
+patches, raw timing samples, native evidence and pending work. New four-source
+patch-chain reconstruction checks pass every recorded app-file hash. No candidate
+is promoted by this checkpoint, and the optimization goal remains unmet.

@@ -1,0 +1,27 @@
+{
+  "error": "{'host_controller_pid': 42590, 'exit_code': 0, 'finished': {'kind': 'finished', 'reason': 'root_identity_changed', 'error': None, 'samples': 488, 'duration_s': 9.781930169992847, 'webkit_seen': [{'pid': 134470, 'start_ticks': '14705627', 'binary': '/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitWebProcess', 'comm': 'WebKitWebProces'}, {'pid': 134410, 'start_ticks': '14705584', 'binary': '/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitNetworkProcess', 'comm': 'WebKitNetworkPr'}], 'observer_cpu_s': 0.9799599999999999}}",
+  "exit_code": 0,
+  "finished": {
+    "duration_s": 9.781930169992847,
+    "error": null,
+    "kind": "finished",
+    "observer_cpu_s": 0.9799599999999999,
+    "reason": "root_identity_changed",
+    "samples": 488,
+    "webkit_seen": [
+      {
+        "binary": "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitWebProcess",
+        "comm": "WebKitWebProces",
+        "pid": 134470,
+        "start_ticks": "14705627"
+      },
+      {
+        "binary": "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitNetworkProcess",
+        "comm": "WebKitNetworkPr",
+        "pid": 134410,
+        "start_ticks": "14705584"
+      }
+    ]
+  },
+  "host_controller_pid": 42590
+}

@@ -1,0 +1,41 @@
+{
+  "exact_recorded_processes_absent": [
+    {
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+      ],
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "pid": 134392,
+      "start_ticks": "14705503"
+    },
+    {
+      "binary": "/usr/bin/WebKitWebDriver",
+      "pid": 134390,
+      "start_ticks": "14705496"
+    },
+    {
+      "binary": "/usr/bin/python3.14",
+      "comm": "python3",
+      "pid": 134596,
+      "ppid": 134595,
+      "start_ticks": "14706204",
+      "state": "R",
+      "stime": 19,
+      "utime": 6
+    },
+    {
+      "binary": "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitWebProcess",
+      "comm": "WebKitWebProces",
+      "pid": 134470,
+      "start_ticks": "14705627"
+    },
+    {
+      "binary": "/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitNetworkProcess",
+      "comm": "WebKitNetworkPr",
+      "pid": 134410,
+      "start_ticks": "14705584"
+    }
+  ],
+  "ports_29225_28867_free": true
+}

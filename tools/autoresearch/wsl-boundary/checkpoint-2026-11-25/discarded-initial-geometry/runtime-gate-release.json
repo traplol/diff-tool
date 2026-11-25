@@ -1,0 +1,59 @@
+{
+  "exact_controller_mcp_absent": [
+    {
+      "pid": 148007,
+      "start_ticks": "14962545",
+      "binary": "/usr/bin/python3.14"
+    },
+    {
+      "pid": 148274,
+      "start_ticks": "14974606",
+      "binary": "/usr/bin/python3.14"
+    },
+    {
+      "pid": 148515,
+      "start_ticks": "14979759",
+      "binary": "/usr/bin/python3.14"
+    },
+    {
+      "pid": 148182,
+      "start_ticks": "14962889",
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "--mcp",
+        "--port",
+        "28869",
+        "--",
+        "/tmp/branchline-native-smoke-xdkfkfqz/relay"
+      ]
+    },
+    {
+      "pid": 148443,
+      "start_ticks": "14974812",
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+        "--mcp",
+        "--port",
+        "28869",
+        "--",
+        "/tmp/branchline-native-smoke-my97oji4/relay"
+      ]
+    },
+    {
+      "pid": 148688,
+      "start_ticks": "14979956",
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/initial-editor-geometry-b2de070-071ee12ca22b/branchline",
+        "--mcp",
+        "--port",
+        "28869",
+        "--",
+        "/tmp/branchline-native-smoke-_kqryj2u/relay"
+      ]
+    }
+  ],
+  "port28869_free": true
+}

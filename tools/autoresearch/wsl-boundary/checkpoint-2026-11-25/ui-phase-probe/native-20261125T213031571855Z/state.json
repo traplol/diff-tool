@@ -1,0 +1,168 @@
+{
+  "actions_per_repetition": [
+    "branch_first",
+    "branch_final",
+    "working_tree",
+    "stack",
+    "comment_branch",
+    "comment_worktree"
+  ],
+  "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+  "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+  "canonical_completion_summary_with_diagnostic_overhead": {
+    "actions": {
+      "branch_final": {
+        "count": 2,
+        "first_use_ms": 571,
+        "max_ms": 571,
+        "p50_ms": 450,
+        "p95_ms": 571
+      },
+      "branch_first": {
+        "count": 2,
+        "first_use_ms": 696,
+        "max_ms": 696,
+        "p50_ms": 451,
+        "p95_ms": 696
+      },
+      "comment_branch": {
+        "count": 2,
+        "first_use_ms": 628,
+        "max_ms": 628,
+        "p50_ms": 498,
+        "p95_ms": 628
+      },
+      "comment_worktree": {
+        "count": 2,
+        "first_use_ms": 479,
+        "max_ms": 483,
+        "p50_ms": 479,
+        "p95_ms": 483
+      },
+      "open": {
+        "count": 1,
+        "first_use_ms": 1871,
+        "max_ms": 1871,
+        "p50_ms": 1871,
+        "p95_ms": 1871
+      },
+      "stack": {
+        "count": 2,
+        "first_use_ms": 406.0000000000009,
+        "max_ms": 440,
+        "p50_ms": 406.0000000000009,
+        "p95_ms": 440
+      },
+      "working_tree": {
+        "count": 2,
+        "first_use_ms": 1653,
+        "max_ms": 1653,
+        "p50_ms": 457,
+        "p95_ms": 1653
+      }
+    },
+    "target_met": false,
+    "target_ms": 250.0,
+    "worst_interaction_p95_ms": 1871
+  },
+  "case": "wsl_linux",
+  "cleanup_complete": true,
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "diagnostic_only": true,
+  "execution_gate": "VM UI DIAGNOSTIC RELEASED",
+  "files_sha256": {
+    "build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384",
+    "build/experiments/ui-phase-probe/check.mjs": "8435e60575b2edd11732b47215dd443b320fb64b660a4bb09a55ad3dfc247fd6",
+    "build/experiments/ui-phase-probe/inject.js": "e3ffb91206c75e367a6562f4e617c8d5e458185639cb5e72fc6e9c768b0f1052",
+    "build/experiments/ui-phase-probe/run.py": "0e7702c4837c507d5650a160fdfefb1d1250550f9c0722a6c120b63b566d611a",
+    "tools/autoresearch/wsl-boundary/driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+    "tools/autoresearch/wsl-boundary/launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+    "tools/smoke_native.py": "abfe39e76fd79b87ac4edf644318c4ee6e2223ae20f964175abf057d6066c320"
+  },
+  "finished_unix": 1795642249.0542078,
+  "fixture_root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+  "hooks_restored": true,
+  "host_git_head": "fd9b11117608869379de44bf209495687415e042",
+  "host_launch_supervisor_pid": 38408,
+  "launch": {
+    "app_process": {
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+      ],
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "pid": 132944,
+      "start_ticks": "14652689"
+    },
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+    "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+    "created": "14652689",
+    "display": ":0",
+    "driver_process": {
+      "binary": "/usr/bin/WebKitWebDriver",
+      "pid": 132942,
+      "start_ticks": "14652671"
+    },
+    "gdk_backend": "x11",
+    "mcp_port": 28867,
+    "pid": 132944,
+    "port": 29225,
+    "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+    "session": "90e12e23-4bb6-4e93-a6b9-f6caeea126e5",
+    "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+    "supervisor_pid": 132941
+  },
+  "launch_command": [
+    "/usr/bin/python3",
+    "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+    "start",
+    "--binary",
+    "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+    "--profile",
+    "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+    "--port",
+    "29225",
+    "--mcp-port",
+    "28867",
+    "--source-hash",
+    "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+    "--record",
+    "/home/max/workspace/merge-viewer-native/build/experiments/ui-phase-probe/run-20261125T213031571855Z/launch.json"
+  ],
+  "launcher_exit": 0,
+  "limits": "One fresh process, two canonical repetitions, no retries or app source edits",
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mcp_port": 28867,
+  "open": "Canonical timed Open precedes injector installation",
+  "optimization_score_valid": false,
+  "orchestrator_pid": 38404,
+  "output": "/home/max/workspace/merge-viewer-native/build/experiments/ui-phase-probe/run-20261125T213031571855Z",
+  "owned_tunnel_exit": 0,
+  "owned_tunnel_pid": 38407,
+  "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+  "profile_data": "Reuse the two existing seeded comments; never seed or delete data",
+  "repetitions": 2,
+  "settings": "Unchanged canonical launcher, renderer, flags and MCP autostart",
+  "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+  "source_git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "started_unix": 1795642231.5719311,
+  "status": "complete-diagnostic-stopped",
+  "tunnel": {
+    "host_loopback_port": 49381,
+    "ownership": "New foreground SSH forward owned only by this runner",
+    "windows_loopback_port": 29225
+  },
+  "unmeasured": "Constructor/app closures/paint causes; opaque rAF purpose is not labeled"
+}

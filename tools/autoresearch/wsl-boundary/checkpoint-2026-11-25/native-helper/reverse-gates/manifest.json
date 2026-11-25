@@ -1,0 +1,202 @@
+{
+  "files": [
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-lifecycle-05-prepared.json",
+      "copied": "reverse-lifecycle-05-prepared.json",
+      "sha256": "059086b691829e9c13978fd796ea06177f022b41e4c4dd73a41897f56d8223d9",
+      "bytes": 900
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-01/cleanup-utf8.json",
+      "copied": "reverse-windows-gates-01/cleanup-utf8.json",
+      "sha256": "cc94f2cbd68331d3d0d59b31be3d2a988e7cfeff3773ac5e7189ad231f1adc8f",
+      "bytes": 126
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-01/controller.log",
+      "copied": "reverse-windows-gates-01/controller.log",
+      "sha256": "2e537c254c32199d1e5b3c6947a8c84e78c44c15b62765c648b05b4c62a69354",
+      "bytes": 7098
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-01/preflight.json",
+      "copied": "reverse-windows-gates-01/preflight.json",
+      "sha256": "a0802f66795561fbb3f74791e9e9132fe5cbdc7212cf0e8f953d3eb4baaf8975",
+      "bytes": 660
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-01/preflight.stderr.log",
+      "copied": "reverse-windows-gates-01/preflight.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-01/preflight.stdout.log",
+      "copied": "reverse-windows-gates-01/preflight.stdout.log",
+      "sha256": "a0802f66795561fbb3f74791e9e9132fe5cbdc7212cf0e8f953d3eb4baaf8975",
+      "bytes": 660
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-01/primary-result.json",
+      "copied": "reverse-windows-gates-01/primary-result.json",
+      "sha256": "9d051012226dac8c86c1f0e90d30659b210b81f781221b43d1a9593ebc690346",
+      "bytes": 10642
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-01/tunnel.stderr.log",
+      "copied": "reverse-windows-gates-01/tunnel.stderr.log",
+      "sha256": "3fb3d2ce97731d6e7f124bae2c44fd3354bcd91fd7a116b28a86e182afaa7872",
+      "bytes": 53
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-01/tunnel.stdout.log",
+      "copied": "reverse-windows-gates-01/tunnel.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-02/native-open.png",
+      "copied": "reverse-windows-gates-02/native-open.png",
+      "sha256": "110316968ecf323961fc6026beaff53c3cdf188ccb6d174a5247ffc143c6615f",
+      "bytes": 98565
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-02/primary-result.json",
+      "copied": "reverse-windows-gates-02/primary-result.json",
+      "sha256": "5d8e8f1e71c5056d41579364d7ca60f4c9f783c52b60f3755349eb2b8b27a4e0",
+      "bytes": 7911
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-02/release.json",
+      "copied": "reverse-windows-gates-02/release.json",
+      "sha256": "79eed759c417c789d7a6ed192f88d50040aed6f05ecc813b08d58c3f5c14ef12",
+      "bytes": 560
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-02/tunnel.stderr.log",
+      "copied": "reverse-windows-gates-02/tunnel.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-gates-02/tunnel.stdout.log",
+      "copied": "reverse-windows-gates-02/tunnel.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-03.log",
+      "copied": "reverse-windows-lifecycle-03.log",
+      "sha256": "1bb960aa238d98f91d9f45093f7477bbe1a33e7668804fb06ac29cfba8e823c0",
+      "bytes": 25237
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-03/abrupt-windows-gui-busy-real-read-failure.png",
+      "copied": "reverse-windows-lifecycle-03/abrupt-windows-gui-busy-real-read-failure.png",
+      "sha256": "b9124ba3d39b2395ceb58788c5a926c499995a6a5fb395915a07c386f2d132cf",
+      "bytes": 95495
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-03/primary-result.json",
+      "copied": "reverse-windows-lifecycle-03/primary-result.json",
+      "sha256": "162467d1d929e9dce94ca19e88ca51b63ee8f562c25846e8cdbab543dcfbd1c3",
+      "bytes": 29038
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-03/tunnel.stderr.log",
+      "copied": "reverse-windows-lifecycle-03/tunnel.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-03/tunnel.stdout.log",
+      "copied": "reverse-windows-lifecycle-03/tunnel.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.log",
+      "copied": "reverse-windows-lifecycle-04.log",
+      "sha256": "613fb99c527b387747763603e8591b7bff63eba58cac9ff7775a5c8b60dbf6c0",
+      "bytes": 8671
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py",
+      "copied": "reverse-windows-lifecycle-04.py",
+      "sha256": "fc50a55510e244d1d45bee12bf072d79a1956968c1e022e3f204141a68cd53c6",
+      "bytes": 21307
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04/abrupt-windows-mcp-idle-failure.png",
+      "copied": "reverse-windows-lifecycle-04/abrupt-windows-mcp-idle-failure.png",
+      "sha256": "110316968ecf323961fc6026beaff53c3cdf188ccb6d174a5247ffc143c6615f",
+      "bytes": 98565
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04/primary-result.json",
+      "copied": "reverse-windows-lifecycle-04/primary-result.json",
+      "sha256": "77f8c8ff49688ddef2133cd826297f47c740e32cf7c76c02e989c36ab0356a28",
+      "bytes": 15225
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04/tunnel.stderr.log",
+      "copied": "reverse-windows-lifecycle-04/tunnel.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04/tunnel.stdout.log",
+      "copied": "reverse-windows-lifecycle-04/tunnel.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-05.log",
+      "copied": "reverse-windows-lifecycle-05.log",
+      "sha256": "ab1b8a9a49714482f157f1d294d08644f4caa859abbf21cb99ebd1df00a717ed",
+      "bytes": 19262
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-05.py",
+      "copied": "reverse-windows-lifecycle-05.py",
+      "sha256": "596764ff4cdd2321f2d99e140fbf5d985256cc23797412f1e3f49102d37c0b72",
+      "bytes": 21289
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-05/primary-result.json",
+      "copied": "reverse-windows-lifecycle-05/primary-result.json",
+      "sha256": "e0966429b151e3d9912a73f05a4977ff9f353fed2065ba64b6f3200ff207f057",
+      "bytes": 44221
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-05/tunnel.stderr.log",
+      "copied": "reverse-windows-lifecycle-05/tunnel.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-05/tunnel.stdout.log",
+      "copied": "reverse-windows-lifecycle-05/tunnel.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle.py",
+      "copied": "reverse-windows-lifecycle.py",
+      "sha256": "820cc180265fc1c197f8c54849be261c191c28b4d1b21f21faab4fef5ce53f1e",
+      "bytes": 18408
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-primary-02.py",
+      "copied": "reverse-windows-primary-02.py",
+      "sha256": "99148951f9328a03e425f481eab5c63f75163b3b25bfc179b4e2644a00003a7a",
+      "bytes": 10553
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-primary.py",
+      "copied": "reverse-windows-primary.py",
+      "sha256": "0090d9aae51fa1bd4eceac36a645b07c789eef619efc3135acadfd8ef8db0ae5",
+      "bytes": 10475
+    }
+  ]
+}

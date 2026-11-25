@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "candidate": "parallel-untracked",
+      "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+      "source_hash": "f15e85e1ec50af3bdc82e792a4d2d1189b67f4e56375679d88e0b035fe587a0f",
+      "patch_chain": [
+        "status/candidate.patch",
+        "parallel-untracked/candidate.patch"
+      ],
+      "patches_apply": true,
+      "all_file_hashes_match": true,
+      "checked_files": 49
+    },
+    {
+      "candidate": "stable-file-tree",
+      "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+      "source_hash": "69589c0283e3560c6c1edc160064c47f7794068f7a0bdfa824329ab158e73d73",
+      "patch_chain": [
+        "stable-file-tree/candidate.patch"
+      ],
+      "patches_apply": true,
+      "all_file_hashes_match": true,
+      "checked_files": 49
+    },
+    {
+      "candidate": "git-command-cost-trace",
+      "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+      "source_hash": "e72a63dcb70773427a836cc4d68f7e153f08e39c0641a2dd6c01da75be0e9b68",
+      "patch_chain": [
+        "status/candidate.patch",
+        "git-command-cost-trace/trace-overlay.patch"
+      ],
+      "patches_apply": true,
+      "all_file_hashes_match": true,
+      "checked_files": 49
+    },
+    {
+      "candidate": "discarded-initial-geometry",
+      "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+      "source_hash": "071ee12ca22b855f5cdfdd6e3c40951755369e1bd3d4834b551139f9964788ca",
+      "patch_chain": [
+        "discarded-initial-geometry/candidate.patch"
+      ],
+      "patches_apply": true,
+      "all_file_hashes_match": true,
+      "checked_files": 49
+    }
+  ],
+  "scope": "Patch reconstruction only. No native runtime or performance claim."
+}

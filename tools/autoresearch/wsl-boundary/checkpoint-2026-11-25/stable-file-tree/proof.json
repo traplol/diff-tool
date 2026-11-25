@@ -1,0 +1,90 @@
+{
+  "time_utc": "2026-11-25T21:54:00.506591+00:00",
+  "baseline_source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "candidate_source_hash": "69589c0283e3560c6c1edc160064c47f7794068f7a0bdfa824329ab158e73d73",
+  "candidate_patch_sha256": "037476faab69d6ab7af5a366d648e0ce605fc400cadca16135eb2e01ff7d482e",
+  "source_identity_preserved": true,
+  "host_checks": {
+    "started_utc": "2026-11-25T21:52:30.291728+00:00",
+    "source_hash": "69589c0283e3560c6c1edc160064c47f7794068f7a0bdfa824329ab158e73d73",
+    "stages": [
+      {
+        "name": "focused-tests",
+        "argv": [
+          "node",
+          "--test",
+          "frontend/review-ui.test.js"
+        ],
+        "exit_code": 0,
+        "timed_out": false,
+        "started_utc": "2026-11-25T21:52:30.291754+00:00",
+        "finished_utc": "2026-11-25T21:52:30.355562+00:00",
+        "log": "focused-tests.log",
+        "log_sha256": "5302f9086c7786d3e0e551a5508adb1d77d52eb3e6e5680f58e28da514950cf8"
+      },
+      {
+        "name": "frontend-tests",
+        "argv": [
+          "npm",
+          "test"
+        ],
+        "exit_code": 0,
+        "timed_out": false,
+        "started_utc": "2026-11-25T21:52:30.355793+00:00",
+        "finished_utc": "2026-11-25T21:52:30.519937+00:00",
+        "log": "frontend-tests.log",
+        "log_sha256": "ea97538ca2db64aa0d1bab5f50036595e2bacf7ed3a1ecfbb20c68f9a3cbedf2"
+      },
+      {
+        "name": "vite-build",
+        "argv": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "exit_code": 0,
+        "timed_out": false,
+        "started_utc": "2026-11-25T21:52:30.520267+00:00",
+        "finished_utc": "2026-11-25T21:52:31.335550+00:00",
+        "log": "vite-build.log",
+        "log_sha256": "39bb549a45d61a01e338f3f3d0b61fb47320be8a398aba1d665bea7c6f574067"
+      }
+    ],
+    "host_checks_released": true,
+    "native_checks_run": false,
+    "rust_or_native_builds_run": false,
+    "finished_utc": "2026-11-25T21:52:31.335791+00:00",
+    "source_identity_preserved": true,
+    "all_passed": true
+  },
+  "frontend_test_file_counts": {
+    "focused": 1,
+    "full": 5
+  },
+  "new_semantic_test_cases_prepared": 3,
+  "vite_output": {
+    "dist/web/assets/index-BwaTx77s.css": {
+      "sha256": "fe8e00190be638204c55e1aaabe1c7f461f2be84e999c4d410b62ff8d195b206",
+      "bytes": 28169
+    },
+    "dist/web/assets/index-CXuFtyuB.js": {
+      "sha256": "4dd5f07f231a9bf695dd233cad652e5f5f301327bbe2ad37a557ec7cc936f2d5",
+      "bytes": 280913
+    },
+    "dist/web/index.html": {
+      "sha256": "e5e51aa163a426f9ecbecc2a9f86737ee9d36d912517fb8b30669b8f2aa86e7a",
+      "bytes": 12469
+    }
+  },
+  "failures": [],
+  "terminal_state": "All three bounded stages exited0; supervisor exited0; no retained session or running job.",
+  "kiss_independent_review": "Pending: all four live agent slots occupied when checks finished. Required before any future commit.",
+  "native_dom_identity_and_interaction_gates": "unproved",
+  "native_performance": "unmeasured",
+  "rust_tests_or_native_builds": false,
+  "vm_calls": false,
+  "commit": false,
+  "promoted": false,
+  "main_source_changed": false,
+  "canonical_controls_changed": false
+}

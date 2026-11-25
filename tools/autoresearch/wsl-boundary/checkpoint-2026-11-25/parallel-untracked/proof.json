@@ -1,0 +1,75 @@
+{
+  "time_utc": "2026-11-25T21:26:27.977975+00:00",
+  "baseline_source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+  "candidate_source_hash": "f15e85e1ec50af3bdc82e792a4d2d1189b67f4e56375679d88e0b035fe587a0f",
+  "base_commit": "b2de070becf3fcba2d47557efd375221c586f273",
+  "changed_files": [
+    "src-tauri/src/git.rs",
+    "src-tauri/src/git_tests.rs"
+  ],
+  "tests": {
+    "worker_unit": {
+      "passed": 32,
+      "failed": 0
+    },
+    "worker_real_stdio": {
+      "passed": 1,
+      "failed": 0
+    },
+    "gui_rust_library": {
+      "passed": 77,
+      "failed": 0,
+      "ignored": 1,
+      "log": "gui-rust-tests-loopback.log"
+    }
+  },
+  "retained_initial_failures": {
+    "focused-tests-oracle-path-failure.log": "Test oracle compared raw ./ path with normalized product path; normalized expected metadata. Production extraction unchanged.",
+    "worker-tests-oracle-binary-failure.log": "Test incorrectly unwrapped binary file_contents error; now compares frozen result including errors. Production extraction unchanged.",
+    "gui-rust-tests.log": "72passed/5failed/1ignored; existing TCP fixtures could not bind loopback inside sandbox; same source rerun outside that loopback restriction passed."
+  },
+  "logs": {
+    "worker-tests.log": {
+      "sha256": "6b983600e403034ad0aa5e92a65f6cba869d8a307b578185318f63e945aa0dff",
+      "bytes": 3550
+    },
+    "gui-rust-tests.log": {
+      "sha256": "1a723ffc796b7a5d9800e8e4c3d2d31e31e20fff4d7c4080048ebd2e38f6b871",
+      "bytes": 9691
+    },
+    "gui-rust-tests-loopback.log": {
+      "sha256": "abde3ad0498be034735330b7c081b65ca32e8e264cf9ea2bcc93fddce2025f49",
+      "bytes": 7256
+    },
+    "worker-tests-oracle-binary-failure.log": {
+      "sha256": "010bd22bcfebf1f9df18a50dadf5d6f960c9c7e9dfd5c8327cd570e968cc98b3",
+      "bytes": 3835
+    },
+    "focused-tests-oracle-path-failure.log": {
+      "sha256": "7fdc4fc03a3b171645e57a0b443db8e3b998c42285c5c07fa93452cd433790c5",
+      "bytes": 1840
+    }
+  },
+  "maximum_concurrent_untracked_captures": 4,
+  "result_and_error_order": "original listing order; all captures in a batch join before handling results or returning; no later batch starts after an error",
+  "scope": "Only ordered bounded concurrency of existing per-path captures; first four tracked/discovery reads, all command argv/environment/routing, worker protocol and consistency guards unchanged.",
+  "source_root_changed": false,
+  "vm_calls": false,
+  "native_builds": false,
+  "benchmarks": false,
+  "commit": false,
+  "promoted": false,
+  "kiss_independent_review": {
+    "result": "simple enough",
+    "agent": "/root/git_latency_profile_next/kiss_untracked",
+    "fork_turns": "none",
+    "scope": "KISS only; final two-file patch; read-only; no builds/tests/VM/commit"
+  },
+  "remaining": [
+    "Native Windows worker/unit/correctness checks",
+    "Native mixed-file raw wire and frozen snapshot parity",
+    "Matched canonical GUI A/B against exact status d5b05 on WSL GUI to NTFS",
+    "Same-side/reverse-direction control after pilot passes",
+    "No performance claim until scored native result"
+  ]
+}

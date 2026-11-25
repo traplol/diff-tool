@@ -1,0 +1,26 @@
+{
+  "host_controller_pid": 42590,
+  "ready": {
+    "diagnostic_only": true,
+    "kind": "ready",
+    "max_processes": 64,
+    "max_seconds": 60,
+    "observer": {
+      "binary": "/usr/bin/python3.14",
+      "comm": "python3",
+      "pid": 134596,
+      "ppid": 134595,
+      "start_ticks": "14706204",
+      "state": "R",
+      "stime": 19,
+      "utime": 6
+    },
+    "root": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "pid": 134392,
+      "start_ticks": "14705503"
+    },
+    "target_period_ms": 20,
+    "ticks_per_second": 100
+  }
+}
