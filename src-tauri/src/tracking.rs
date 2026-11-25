@@ -157,8 +157,35 @@ struct Lookup<'a> {
     patches: HashMap<(String, String, String, String), Vec<Line>>,
     common: HashMap<(String, String), String>,
     ancestry: HashMap<(String, String), bool>,
+    anchor_paths: HashSet<String>,
+    scoped_worktree: Option<Result<Rc<Comparison>, String>>,
 }
 impl Lookup<'_> {
+    fn exact_worktree_location(&mut self, note: &Value) -> Option<Value> {
+        if s(note, "old_path") != s(note, "path") || !self.anchor_paths.contains(s(note, "path")) {
+            return None;
+        }
+        let key = (self.repo.checkout.clone(), WORKTREE.to_string());
+        let comparison = if let Some(full) = self.comparisons.get(&key) {
+            full.clone()
+        } else {
+            self.scoped_worktree
+                .get_or_insert_with(|| {
+                    git::working_tree_paths(self.repo, &self.repo.checkout, &self.anchor_paths)
+                        .map(Rc::new)
+                })
+                .as_ref()
+                .ok()?
+                .clone()
+        };
+        let file = comparison
+            .files
+            .iter()
+            .find(|file| file.status == "M" && note_matches_file(&comparison, file, note))?;
+        self.descends(s(note, "left_tip"), &comparison.base)
+            .ok()?
+            .then(|| location_for(&comparison, file, note))
+    }
     fn comparison(&mut self, left: &str, right: &str) -> Result<Rc<Comparison>, String> {
         let key = (left.into(), right.into());
         if let Some(hit) = self.comparisons.get(&key) {
@@ -389,6 +416,25 @@ pub fn locate_notes(
         patches: HashMap::new(),
         common: HashMap::new(),
         ancestry: HashMap::new(),
+        anchor_paths: anchors
+            .iter()
+            .filter_map(|(_, _, note)| {
+                let path = s(note, "path");
+                (note["left"] == repo.checkout
+                    && !path.is_empty()
+                    && s(note, "old_path") == path
+                    && note["file_version"].as_array().is_some_and(|version| {
+                        version.len() == 4
+                            && version[..2].iter().all(|value| {
+                                value.as_str().is_some_and(|value| {
+                                    oid(value) && value.bytes().any(|b| b != b'0')
+                                })
+                            })
+                    }))
+                .then(|| path.to_string())
+            })
+            .collect(),
+        scoped_worktree: None,
     };
     if let Some(c) = primary {
         look.comparisons
@@ -454,6 +500,9 @@ pub fn locate_notes(
         let branch = s(n, "left");
         if branch == repo.checkout {
             record((|| {
+                if let Some(location) = look.exact_worktree_location(n) {
+                    return Ok(Some(location));
+                }
                 let c = look.comparison(branch, WORKTREE)?;
                 let Some((f, anchor)) = look.matching(&c, n)? else {
                     return Ok(None);

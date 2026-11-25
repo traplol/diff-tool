@@ -6,18 +6,77 @@ permissions:
   contents: read
 
 jobs:
+  git-workers:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+            platform: linux
+            executable: branchline-git-worker
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+            platform: windows
+            executable: branchline-git-worker.exe
+    runs-on: ${{ matrix.os }}
+    env:
+      CARGO_TARGET_DIR: src-tauri/target/git-worker
+      RUSTFLAGS: -C target-feature=+crt-static
+      LIBZ_SYS_STATIC: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - name: Install static Linux worker toolchain
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake
+      - run: cargo test --locked --manifest-path src-tauri/git-worker/Cargo.toml --target ${{ matrix.target }}
+      - run: cargo build --locked --release --manifest-path src-tauri/git-worker/Cargo.toml --target ${{ matrix.target }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: git-worker-${{ matrix.platform }}
+          path: src-tauri/target/git-worker/${{ matrix.target }}/release/${{ matrix.executable }}
+          if-no-files-found: error
+
   build:
+    needs: git-workers
     strategy:
       fail-fast: false
       matrix:
         include:
           - os: ubuntu-24.04
             bundle: deb
+            worker: windows
           - os: windows-latest
             bundle: nsis
+            worker: linux
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: git-worker-${{ matrix.worker }}
+          path: build/embedded-worker
+      - name: Select embedded storage-side worker
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          executable = "branchline-git-worker" + (".exe" if os.name != "nt" else "")
+          worker = Path("build/embedded-worker", executable).resolve(strict=True)
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as output:
+              output.write(f"BRANCHLINE_GIT_WORKER_PATH={worker}\n")
+      - name: Use the static Windows runtime
+        if: runner.os == 'Windows'
+        shell: python
+        run: |
+          import os
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as output:
+              output.write("RUSTFLAGS=-C target-feature=+crt-static\n")
       - uses: actions/setup-node@v4
         with:
           node-version: 22

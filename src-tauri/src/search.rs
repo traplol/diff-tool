@@ -442,11 +442,22 @@ fn display_path(bytes: &[u8]) -> String {
 }
 
 impl Source {
+    #[cfg(test)]
     fn comparison(
         &self,
         left: &str,
         right: &str,
         cancelled: &dyn Fn() -> bool,
+    ) -> Result<Arc<Comparison>, String> {
+        self.prepared_comparison(left, right, cancelled, &mut None)
+    }
+
+    fn prepared_comparison(
+        &self,
+        left: &str,
+        right: &str,
+        cancelled: &dyn Fn() -> bool,
+        reader: &mut Option<Repository>,
     ) -> Result<Arc<Comparison>, String> {
         if left == self.current.left && right == self.current.right {
             return Ok(self.current.clone());
@@ -462,7 +473,17 @@ impl Source {
         {
             return Ok(comparison);
         }
-        let comparison = Arc::new(git::compare(&self.repo, left, right)?);
+        if cancelled() {
+            return Err("Search superseded.".into());
+        }
+        let repo = match reader {
+            Some(repo) => repo,
+            None => reader.insert(self.repo.search_reader()?),
+        };
+        if cancelled() {
+            return Err("Search superseded.".into());
+        }
+        let comparison = Arc::new(git::compare(repo, left, right)?);
         let mut comparisons = self.comparisons.lock().map_err(lock_error)?;
         if cancelled() {
             return Err("Search superseded.".into());
@@ -479,6 +500,9 @@ impl Source {
         if query.is_empty() {
             return Ok(Results::default());
         }
+        if cancelled() {
+            return Err("Search superseded.".into());
+        }
         let pattern = RegexBuilder::new(&regex::escape(query))
             .case_insensitive(true)
             .build()
@@ -490,6 +514,9 @@ impl Source {
         };
         search.check()?;
         let c = &self.current;
+        // This is outside the workspace lock. Cached comparisons require no
+        // process; the first miss creates one private reader for this search.
+        let mut reader = None;
         match scope {
             Scope::Branch => {
                 search.tracked_paths(&self.repo, c)?;
@@ -521,7 +548,7 @@ impl Source {
                     layers.chain(local.then_some((self.repo.checkout.as_str(), WORKTREE)))
                 {
                     search.check()?;
-                    let layer = self.comparison(left, right, cancelled)?;
+                    let layer = self.prepared_comparison(left, right, cancelled, &mut reader)?;
                     search.changed_paths(&layer)?;
                     comparisons.push(layer);
                     if search.result.truncated {
@@ -530,14 +557,26 @@ impl Source {
                 }
                 if all && !local_only {
                     let mut seen = HashSet::new();
-                    if let (Some(left), Some(right)) = (self.stack.first(), self.stack.last()) {
+                    let full = if let (Some(left), Some(right)) =
+                        (self.stack.first(), self.stack.last())
+                    {
                         if left != right && (left != &c.left || right != &c.right) {
-                            let full = self.comparison(left, right, cancelled)?;
-                            search.commits(&self.repo, &full, &mut seen)?;
+                            Some(self.prepared_comparison(left, right, cancelled, &mut reader)?)
+                        } else {
+                            None
                         }
+                    } else {
+                        None
+                    };
+                    let metadata = reader
+                        .as_ref()
+                        .cloned()
+                        .unwrap_or_else(|| self.repo.search_metadata_reader());
+                    if let Some(full) = full {
+                        search.commits(&metadata, &full, &mut seen)?;
                     }
                     if !search.result.truncated {
-                        search.commits(&self.repo, c, &mut seen)?;
+                        search.commits(&metadata, c, &mut seen)?;
                     }
                 }
                 for layer in comparisons {
@@ -679,16 +718,32 @@ mod tests {
             stack: vec![],
             comparisons: Default::default(),
         };
+        let mut reader = None;
         assert!(Arc::ptr_eq(
             &source.current,
             &source
-                .comparison("refs/heads/main", "refs/heads/review", &|| false)
+                .prepared_comparison(
+                    "refs/heads/main",
+                    "refs/heads/review",
+                    &|| false,
+                    &mut reader
+                )
                 .unwrap()
         ));
+        assert!(
+            reader.is_none(),
+            "The current comparison must not start a reader"
+        );
         let pair = [source.repo.checkout.clone(), WORKTREE.into()];
         assert_eq!(
-            source.comparison(&pair[0], &pair[1], &|| true).unwrap_err(),
+            source
+                .prepared_comparison(&pair[0], &pair[1], &|| true, &mut reader)
+                .unwrap_err(),
             "Search superseded."
+        );
+        assert!(
+            reader.is_none(),
+            "Cancelled preparation must not start a reader"
         );
         assert!(source.comparisons.lock().unwrap().is_empty());
         source.repo.root = root.join("missing");
@@ -696,12 +751,25 @@ mod tests {
         assert!(source.comparisons.lock().unwrap().is_empty());
         source.repo.root = root.into();
         fs::write(root.join("draft"), "retry marker\n").unwrap();
-        let prepared = source.comparison(&pair[0], &pair[1], &|| false).unwrap();
+        let prepared = source
+            .prepared_comparison(&pair[0], &pair[1], &|| false, &mut reader)
+            .unwrap();
+        assert!(
+            reader.is_some(),
+            "The first uncached preparation must create a reader"
+        );
         assert_eq!(prepared.files[0].path, "draft");
+        let mut next_reader = None;
         assert!(Arc::ptr_eq(
             &prepared,
-            &source.comparison(&pair[0], &pair[1], &|| false).unwrap()
+            &source
+                .prepared_comparison(&pair[0], &pair[1], &|| false, &mut next_reader)
+                .unwrap()
         ));
+        assert!(
+            next_reader.is_none(),
+            "A warm query must reuse its prepared comparison"
+        );
     }
 
     #[test]

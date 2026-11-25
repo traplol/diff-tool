@@ -1,10 +1,18 @@
 //! Local Git plumbing for immutable branch and working-tree review snapshots.
+#[path = "git/native.rs"]
 mod native;
+#[path = "git/patch_data.rs"]
 mod patch_data;
+#[cfg(not(feature = "storage-worker"))]
+#[path = "git/remote.rs"]
+mod remote;
 #[cfg(windows)]
+#[path = "git/windows.rs"]
 mod windows;
+#[path = "git/worker.rs"]
+pub(crate) mod worker;
 
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 use std::ffi::{OsStr, OsString};
@@ -24,7 +32,7 @@ pub(crate) fn configure_native() -> Option<tempfile::TempDir> {
     native::configure().ok()
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Repository {
     #[serde(serialize_with = "serialize_root")]
     pub root: PathBuf,
@@ -34,15 +42,53 @@ pub struct Repository {
     pub checkout: String,
     #[serde(skip)]
     native: Option<native::Handle>,
+    #[cfg(not(feature = "storage-worker"))]
+    #[serde(skip)]
+    remote: Option<std::sync::Arc<remote::Worker>>,
 }
 
 impl Repository {
     fn native(&self) -> Option<native::Access<'_>> {
         self.native.as_ref()?.access(&self.root)
     }
+
+    pub(crate) fn search_reader(&self) -> Result<Self> {
+        #[cfg(not(feature = "storage-worker"))]
+        {
+            let mut reader = self.clone();
+            if let Some(connection) = &self.remote {
+                reader.remote = Some(connection.independent_reader()?);
+            }
+            Ok(reader)
+        }
+        #[cfg(feature = "storage-worker")]
+        Ok(self.clone())
+    }
+
+    pub(crate) fn search_metadata_reader(&self) -> Self {
+        #[cfg(not(feature = "storage-worker"))]
+        {
+            let mut reader = self.clone();
+            // A warm search needs no comparison worker. Its remaining commit
+            // metadata uses the existing storage-side Git process path.
+            reader.remote = None;
+            reader
+        }
+        #[cfg(feature = "storage-worker")]
+        self.clone()
+    }
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[cfg(not(feature = "storage-worker"))]
+fn worker_reply<T: serde::de::DeserializeOwned>(
+    connection: &remote::Worker,
+    request: worker::Request,
+) -> Result<T> {
+    serde_json::from_value(connection.request(&request)?)
+        .map_err(|error| format!("The storage-side Git worker returned invalid data: {error}"))
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Change {
     pub status: String,
     pub old: String,
@@ -58,7 +104,7 @@ pub struct Change {
     local_sections: Vec<Vec<u8>>,
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Comparison {
     pub left: String,
     pub right: String,
@@ -78,7 +124,7 @@ impl Comparison {
     }
 }
 
-#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[derive(Clone, Debug, PartialEq, Eq, Deserialize, Serialize)]
 pub struct Line {
     pub kind: String,
     pub text: String,
@@ -87,7 +133,7 @@ pub struct Line {
     pub hunk: usize,
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Commit {
     pub sha: String,
     pub author: String,
@@ -169,6 +215,10 @@ pub(crate) fn command(root: &Path) -> Result<Command> {
 
 #[cfg(not(windows))]
 pub(crate) fn command(root: &Path) -> Result<Command> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(command) = remote::command(root)? {
+        return Ok(command);
+    }
     let mut cmd = Command::new("git");
     cmd.args(["--no-pager", "--literal-pathspecs", "-C"])
         .arg(root)
@@ -222,6 +272,15 @@ pub fn ref_name(s: &str) -> String {
 }
 
 pub fn checkout_state(root: &Path) -> (String, Option<String>) {
+    #[cfg(not(feature = "storage-worker"))]
+    match remote::for_root(root) {
+        Ok(Some(connection)) => {
+            return worker_reply(&connection, worker::Request::CheckoutState)
+                .unwrap_or_else(|_| ("HEAD".into(), None));
+        }
+        Err(_) => return ("HEAD".into(), None),
+        Ok(None) => {}
+    }
     if let Ok(state) = native::open(root).and_then(|repo| native::checkout(&repo)) {
         return state;
     }
@@ -237,6 +296,16 @@ pub fn checkout_state(root: &Path) -> (String, Option<String>) {
 }
 
 pub fn open_repo(path: &Path) -> Result<Repository> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = remote::for_root(path)? {
+        let opened = connection.open()?;
+        let mut repo = opened.repo;
+        repo.root = connection.logical_path(&repo.root)?;
+        connection.register_alias(&repo.root)?;
+        repo.native = None;
+        repo.remote = Some(connection);
+        return Ok(repo);
+    }
     if let Ok(repo) = native::open(path) {
         if let (Some(root), Ok(metadata)) = (repo.workdir(), native::metadata(&repo)) {
             #[cfg(unix)]
@@ -379,6 +448,8 @@ fn finish_repository(
         default_branch,
         checkout,
         native,
+        #[cfg(not(feature = "storage-worker"))]
+        remote: None,
     }
 }
 
@@ -394,6 +465,17 @@ pub fn discover_stack(
     base: &str,
     branch: &str,
 ) -> Result<(Vec<String>, Vec<String>)> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        return worker_reply(
+            connection,
+            worker::Request::DiscoverStack {
+                view: repo.clone(),
+                base: base.into(),
+                branch: branch.into(),
+            },
+        );
+    }
     let base_oid = revision(repo, base)?;
     if branch == EMPTY {
         return Ok((vec![base.into()], vec![]));
@@ -500,6 +582,18 @@ pub fn discover_stack(
 }
 
 pub fn compare(repo: &Repository, left: &str, right: &str) -> Result<Comparison> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        let wire: worker::WireComparison = worker_reply(
+            connection,
+            worker::Request::Compare {
+                view: repo.clone(),
+                left: left.into(),
+                right: right.into(),
+            },
+        )?;
+        return wire.decode();
+    }
     if right == WORKTREE {
         return working_tree(repo, left, None);
     }
@@ -516,6 +610,16 @@ pub fn compare(repo: &Repository, left: &str, right: &str) -> Result<Comparison>
 }
 
 pub fn merge_base(repo: &Repository, a: &str, b: &str) -> Result<String> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        return worker_reply(
+            connection,
+            worker::Request::MergeBase {
+                a: a.into(),
+                b: b.into(),
+            },
+        );
+    }
     if let Some(base) = repo
         .native()
         .and_then(|repo| native::merge_base(&repo, a, b).ok())
@@ -526,6 +630,16 @@ pub fn merge_base(repo: &Repository, a: &str, b: &str) -> Result<String> {
 }
 
 pub fn descends(repo: &Repository, origin: &str, head: &str) -> Result<bool> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        return worker_reply(
+            connection,
+            worker::Request::Descends {
+                origin: origin.into(),
+                head: head.into(),
+            },
+        );
+    }
     if let Some(result) = repo
         .native()
         .and_then(|repo| native::descends(&repo, origin, head).ok())
@@ -541,6 +655,16 @@ pub fn descends(repo: &Repository, origin: &str, head: &str) -> Result<bool> {
 }
 
 pub fn blob_bytes(root: &Path, object: &str) -> Result<Vec<u8>> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = remote::for_root(root)? {
+        let encoded: String = worker_reply(
+            &connection,
+            worker::Request::Blob {
+                object: object.into(),
+            },
+        )?;
+        return worker::decode_bytes(&encoded);
+    }
     if let Ok(data) = native::open(root).and_then(|repo| native::blob(&repo, object)) {
         return Ok(data);
     }
@@ -555,6 +679,20 @@ pub fn compare_trees(
     base: &str,
     head: &str,
 ) -> Result<Comparison> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        let wire: worker::WireComparison = worker_reply(
+            connection,
+            worker::Request::CompareTrees {
+                left: left.into(),
+                right: right.into(),
+                tip: tip.into(),
+                base: base.into(),
+                head: head.into(),
+            },
+        )?;
+        return wire.decode();
+    }
     if !valid_oid(base) || !valid_oid(head) {
         return Err("Invalid Git object ID.".into());
     }
@@ -791,6 +929,67 @@ pub fn working_tree(
     checkout: &str,
     untracked_paths: Option<&HashSet<String>>,
 ) -> Result<Comparison> {
+    #[cfg(test)]
+    WT_READS.with(|counts| counts.set((counts.get().0 + 1, counts.get().1)));
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        let wire: worker::WireComparison = worker_reply(
+            connection,
+            worker::Request::WorkingTree {
+                view: repo.clone(),
+                checkout: checkout.into(),
+                untracked_paths: untracked_paths.cloned(),
+            },
+        )?;
+        return wire.decode();
+    }
+    working_tree_impl(repo, checkout, untracked_paths, None)
+}
+
+/// A frozen, tracked-path snapshot for verifying unchanged review anchors.
+/// Rename detection and its digest cover only these paths. Untracked files are
+/// omitted. Callers must fall back to the full view for other anchors.
+pub(crate) fn working_tree_paths(
+    repo: &Repository,
+    checkout: &str,
+    paths: &HashSet<String>,
+) -> Result<Comparison> {
+    if paths.is_empty() {
+        return Err("Choose at least one working-tree path.".into());
+    }
+    #[cfg(test)]
+    WT_READS.with(|counts| counts.set((counts.get().0, counts.get().1 + 1)));
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        let wire: worker::WireComparison = worker_reply(
+            connection,
+            worker::Request::WorkingTreePaths {
+                view: repo.clone(),
+                checkout: checkout.into(),
+                paths: paths.clone(),
+            },
+        )?;
+        return wire.decode();
+    }
+    working_tree_impl(repo, checkout, Some(&HashSet::new()), Some(paths))
+}
+
+#[cfg(test)]
+thread_local! {
+    static WT_READS: std::cell::Cell<(usize, usize)> = const { std::cell::Cell::new((0, 0)) };
+}
+
+#[cfg(test)]
+pub(crate) fn take_working_tree_read_counts() -> (usize, usize) {
+    WT_READS.with(|counts| counts.replace((0, 0)))
+}
+
+fn working_tree_impl(
+    repo: &Repository,
+    checkout: &str,
+    untracked_paths: Option<&HashSet<String>>,
+    paths: Option<&HashSet<String>>,
+) -> Result<Comparison> {
     if checkout != repo.checkout {
         return Err("The checked-out branch changed. Refresh the working tree.".into());
     }
@@ -800,7 +999,9 @@ pub fn working_tree(
         checkout
     });
     let base = head.unwrap_or(&repo.refs[EMPTY]);
-    let native_repo = repo.native().filter(|repo| native::supports_diff(repo));
+    let native_repo = repo
+        .native()
+        .filter(|repo| native::supports_working_tree(repo));
     let native_index = native_repo
         .as_ref()
         .and_then(|repo| repo.index().ok())
@@ -841,11 +1042,18 @@ pub fn working_tree(
     };
     let initial_index = index_state()?;
     let files = if let Some(files) = native_repo.as_ref().and_then(|native| {
-        native::working_changes(native, base, native::empty_oid(repo), untracked_paths).ok()
+        native::working_changes(
+            native,
+            base,
+            native::empty_oid(repo),
+            untracked_paths,
+            paths,
+        )
+        .ok()
     }) {
         files
     } else {
-        working_changes_cli(repo, base, untracked_paths)?
+        working_changes_cli(repo, base, untracked_paths, paths)?
     };
     let current = native_repo
         .as_ref()
@@ -886,21 +1094,84 @@ fn working_changes_cli(
     repo: &Repository,
     base: &str,
     untracked_paths: Option<&HashSet<String>>,
+    paths: Option<&HashSet<String>>,
 ) -> Result<Vec<Change>> {
-    let mut files = local_changes(
-        repo,
-        "Staged",
-        &["--cached", "--diff-filter=u", base, "--"].map(OsStr::new),
-        false,
-    )?;
-    let mut unstaged = local_changes(
-        repo,
-        "Unstaged",
-        &["--ours", "--diff-filter=u", "--"].map(OsStr::new),
-        false,
-    )?;
+    let mut paths = paths.into_iter().flatten().collect::<Vec<_>>();
+    paths.sort();
+    let paths = paths
+        .into_iter()
+        .map(|p| path_arg(p))
+        .collect::<Result<Vec<_>>>()?;
+    let scoped = |args: &[&str]| -> Vec<OsString> {
+        args.iter()
+            .map(OsString::from)
+            .chain(paths.iter().cloned())
+            .collect()
+    };
+    let staged_args = scoped(&["--cached", "--diff-filter=u", base, "--"]);
+    let unstaged_args = scoped(&["--ours", "--diff-filter=u", "--"]);
+    let unmerged_args = scoped(&["ls-files", "--unmerged", "-z", "--"]);
+    let others_args = scoped(&["ls-files", "--others", "--exclude-standard", "-z", "--"]);
+    // Join every read before handling results, including failures. No capture
+    // can outlive the enclosing checkout/index consistency checks.
+    let (staged, unstaged, unmerged, others) = std::thread::scope(|scope| {
+        let staged = scope.spawn(|| {
+            local_changes(
+                repo,
+                "Staged",
+                &staged_args
+                    .iter()
+                    .map(OsString::as_os_str)
+                    .collect::<Vec<_>>(),
+                false,
+            )
+        });
+        let unstaged = scope.spawn(|| {
+            local_changes(
+                repo,
+                "Unstaged",
+                &unstaged_args
+                    .iter()
+                    .map(OsString::as_os_str)
+                    .collect::<Vec<_>>(),
+                false,
+            )
+        });
+        let unmerged = scope.spawn(|| {
+            run_git(
+                &repo.root,
+                &unmerged_args
+                    .iter()
+                    .map(OsString::as_os_str)
+                    .collect::<Vec<_>>(),
+                false,
+            )
+        });
+        let others = scope.spawn(|| {
+            if untracked_paths.is_none_or(|paths| !paths.is_empty()) {
+                run_git(
+                    &repo.root,
+                    &others_args
+                        .iter()
+                        .map(OsString::as_os_str)
+                        .collect::<Vec<_>>(),
+                    false,
+                )
+            } else {
+                Ok(Vec::new())
+            }
+        });
+        (
+            staged.join(),
+            unstaged.join(),
+            unmerged.join(),
+            others.join(),
+        )
+    });
+    let mut files = staged.map_err(|_| "The staged Git read panicked.")??;
+    let mut unstaged = unstaged.map_err(|_| "The unstaged Git read panicked.")??;
     // Unmerged paths have up to three stages. Use stage 2 for the old side.
-    let unmerged = git(&repo.root, &["ls-files", "--unmerged", "-z"])?;
+    let unmerged = unmerged.map_err(|_| "The unmerged Git read panicked.")??;
     let mut conflicts = BTreeMap::new();
     for entry in unmerged.split(|&b| b == 0).filter(|p| !p.is_empty()) {
         let tab = entry
@@ -956,10 +1227,7 @@ fn working_changes_cli(
         }
     }
     if untracked_paths.is_none_or(|p| !p.is_empty()) {
-        let others = git(
-            &repo.root,
-            &["ls-files", "--others", "--exclude-standard", "-z"],
-        )?;
+        let others = others.map_err(|_| "The untracked Git read panicked.")??;
         for raw in others.split(|&b| b == 0).filter(|p| !p.is_empty()) {
             let path = name(raw.strip_suffix(b"/").unwrap_or(raw));
             if untracked_paths.is_some_and(|p| !p.contains(&path)) {
@@ -1116,6 +1384,16 @@ fn patch_lines(chunks: &[&[u8]]) -> Vec<Line> {
 }
 
 pub fn patch(repo: &Repository, c: &Comparison, file: &Change) -> Result<Vec<Line>> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        return worker_reply(
+            connection,
+            worker::Request::Patch {
+                comparison: worker::ComparisonHeader::from_comparison(c),
+                file: worker::WireChange::from_change(file),
+            },
+        );
+    }
     with_patch_sections(repo, c, file, patch_lines)
 }
 
@@ -1454,7 +1732,7 @@ fn text_lines(data: &[u8]) -> Result<Vec<String>> {
         .collect())
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(tag = "kind", rename_all = "lowercase")]
 pub enum RevisionFile {
     Text { lines: Vec<String> },
@@ -1463,6 +1741,16 @@ pub enum RevisionFile {
 }
 
 pub fn revision_file(repo: &Repository, revision: &str, path: &str) -> Result<RevisionFile> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        return worker_reply(
+            connection,
+            worker::Request::RevisionFile {
+                revision: revision.into(),
+                path: path.into(),
+            },
+        );
+    }
     let path = path_arg(path)?;
     if let Some(native) = repo.native() {
         if let Ok(file) = native::revision_file(&native, revision, Path::new(&path)) {
@@ -1507,6 +1795,15 @@ pub fn revision_file(repo: &Repository, revision: &str, path: &str) -> Result<Re
 }
 
 pub fn file_contents(repo: &Repository, file: &Change) -> Result<Vec<String>> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        return worker_reply(
+            connection,
+            worker::Request::FileContents {
+                file: worker::WireChange::from_change(file),
+            },
+        );
+    }
     if file.added.is_none() || file.removed.is_none() {
         return Err("This file contains binary data.".into());
     }
@@ -1561,10 +1858,29 @@ pub fn display_patch(
     c: &Comparison,
     file: &Change,
 ) -> Result<(String, Vec<[usize; 2]>)> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        return worker_reply(
+            connection,
+            worker::Request::DisplayPatch {
+                comparison: worker::ComparisonHeader::from_comparison(c),
+                file: worker::WireChange::from_change(file),
+            },
+        );
+    }
     with_patch_sections(repo, c, file, patch_data::encode)
 }
 
 pub fn commits(repo: &Repository, c: &Comparison) -> Result<Vec<Commit>> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        return worker_reply(
+            connection,
+            worker::Request::Commits {
+                comparison: worker::ComparisonHeader::from_comparison(c),
+            },
+        );
+    }
     if c.right == WORKTREE {
         return Ok(vec![]);
     }
@@ -1619,6 +1935,10 @@ pub fn visit_revision(
 }
 
 pub fn commit_details(repo: &Repository, sha: &str) -> Result<String> {
+    #[cfg(not(feature = "storage-worker"))]
+    if let Some(connection) = &repo.remote {
+        return worker_reply(connection, worker::Request::Details { sha: sha.into() });
+    }
     if !valid_oid(sha) {
         return Err("Choose a commit from the comparison.".into());
     }

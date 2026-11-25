@@ -29,13 +29,17 @@ The Windows app can open Windows paths and WSL paths such as `\\wsl.localhost\Ub
 
 ### Build from source
 
-Install stable Rust, Node.js 22 with npm, Git, and the [Tauri build prerequisites](https://v2.tauri.app/start/prerequisites/) for your operating system. From Linux, WSL, or Git Bash on Windows, run the release build with one command.
+Install stable Rust, Node.js 22 with npm, Git, and the [Tauri build prerequisites](https://v2.tauri.app/start/prerequisites/) for your operating system. The x64 release build embeds a standalone Git worker for the other operating system. A Windows executable can therefore use Linux Git storage inside WSL, and the WSL executable can use Windows Git storage on NTFS. Running the worker does not require Rust, Node, or GTK in the other environment.
+
+From Linux, WSL, or Git Bash on Windows, run:
 
 ```sh
 ./build.sh
 ```
 
-The executable is in `src-tauri/target/release/` and the platform installer is under `src-tauri/target/release/bundle/`. Use `./build.sh --no-bundle` to build just the executable. From PowerShell, run `npm ci` followed by `npm run tauri -- build`. For a development window with live UI updates, run `npm run tauri -- dev` and open a repository from the sidebar.
+The executable is in `src-tauri/target/release/` and the platform installer is under `src-tauri/target/release/bundle/`. Use `./build.sh --no-bundle` to build just the executable.
+
+Linux and WSL builds need Clang, LLVM (including `llvm-rc`), LLD, and `cargo-xwin` (`cargo install --locked cargo-xwin`) to build the embedded Windows worker. Windows builds need Rust, GCC with static C library development files, and CMake in a WSL distribution to build the static GNU Linux worker. On Debian and Ubuntu, install `build-essential cmake`. When building the Windows GUI from Linux or WSL, install these prerequisites on the build system. The script adds the required Rust target and reuses the checkout's Windows SDK cache when available.
 
 To build a single portable Windows x64 executable, run:
 
@@ -43,7 +47,11 @@ To build a single portable Windows x64 executable, run:
 ./build.sh --windows
 ```
 
-The output is `src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe`. Install the Rust target with `rustup target add x86_64-pc-windows-msvc`. Cross-compiling from Linux or WSL also requires Clang, LLVM (including `llvm-rc`), LLD, and `cargo-xwin` (`cargo install --locked cargo-xwin`). On Git Bash, use the native MSVC toolchain. Windows still needs the WebView2 Runtime and Git to run Branchline.
+The output is `src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe`, including its Linux worker. Cross-compiling the GUI from Linux or WSL also uses `cargo-xwin`. On Git Bash, the GUI uses the native MSVC toolchain and the worker builds in the default WSL distribution. Windows still needs the WebView2 Runtime and Git to run Branchline.
+
+CI builds each worker on its native operating system and embeds it in the opposite GUI. To reuse a prebuilt worker locally, set `BRANCHLINE_GIT_WORKER_PATH` to its absolute path before running `build.sh`. Worker build output is under `src-tauri/target/git-worker/`.
+
+For a development window with live UI updates, run `npm run tauri -- dev`. Plain Cargo and development builds without `BRANCHLINE_GIT_WORKER_PATH` support same-filesystem repositories; cross-filesystem reviews require an embedded worker from a release build.
 
 The Rust build uses the same SQLite database as the previous Python release. Existing comments, suggestions, resolution status, viewed files, and saved stacks load when you open the same checkout. The Python/Tk sources and their regression tests remain available for compatibility checks.
 

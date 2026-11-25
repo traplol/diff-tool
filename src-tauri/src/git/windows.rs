@@ -6,8 +6,8 @@ use std::process::{Command, Stdio};
 use super::Result;
 
 pub(super) struct WslCheckout {
-    share: PathBuf,
-    distribution: OsString,
+    pub(super) share: PathBuf,
+    pub(super) distribution: OsString,
     pub(super) directory: OsString,
 }
 
@@ -66,7 +66,7 @@ impl WslCheckout {
         Ok(host)
     }
 
-    fn launcher(&self) -> Result<Command> {
+    pub(super) fn launcher(&self) -> Result<Command> {
         let launcher = std::env::var_os("SystemRoot")
             .map(PathBuf::from)
             .filter(|root| root.is_absolute())
@@ -188,7 +188,9 @@ mod tests {
             let checkout = WslCheckout::from_path(Path::new(input)).unwrap();
             assert_eq!(checkout.directory, "/home/alice/my repo/src");
             assert_eq!(
-                checkout.host_path(Path::new("/home/alice/my repo")).unwrap(),
+                checkout
+                    .host_path(Path::new("/home/alice/my repo"))
+                    .unwrap(),
                 Path::new(host_path),
             );
         }

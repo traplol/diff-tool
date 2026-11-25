@@ -17,8 +17,18 @@ enum Listener {
 }
 
 fn probe(addr: SocketAddr, before_launch: bool) -> Result<Listener, String> {
+    // Release this reservation before spawning. Never bind while the child is
+    // starting, because it must be able to claim the listener itself.
+    if before_launch && TcpListener::bind(addr).is_ok() {
+        return Ok(Listener::Free);
+    }
     let timeout = Duration::from_millis(350);
-    let stream = match TcpStream::connect_timeout(&addr, timeout) {
+    let connect_timeout = if before_launch {
+        timeout
+    } else {
+        Duration::from_millis(25)
+    };
+    let stream = match TcpStream::connect_timeout(&addr, connect_timeout) {
         Ok(stream) => stream,
         Err(error) if error.kind() == io::ErrorKind::ConnectionRefused => {
             return Ok(Listener::Free)
@@ -195,4 +205,9 @@ pub fn ensure_running(root: &str) -> Result<(), String> {
         let _ = child.wait();
     });
     result
+}
+
+#[cfg(test)]
+mod tests {
+    include!("desktop_tests.rs");
 }

@@ -63,6 +63,210 @@ fn changed_note(repo: &Repository, c: &Comparison, file: &Change) -> Value {
 }
 
 #[test]
+fn unchanged_modified_anchors_share_one_scoped_read_and_reuse_primary() {
+    for mode in 0..3 {
+        let t = Checkout::new();
+        t.write("second", "base\n");
+        t.commit("Add another tracked path");
+        t.write("second", "changed\n");
+        t.write("settings", "top\nlimit = 2\nbottom\n");
+        if mode > 0 {
+            t.git(&["add", "settings"]);
+        }
+        if mode == 2 {
+            t.write("settings", "top\nlimit = 3\nbottom\n");
+        }
+        let repo = t.repo();
+        let full = t.diff(&repo);
+        let notes = (0..100)
+            .map(|id| {
+                let mut note = changed_note(&repo, &full, &full.files[id % full.files.len()]);
+                note["id"] = json!(id as i64);
+                note
+            })
+            .collect::<Vec<_>>();
+        let index = fs::read(t.root.join(".git/index")).unwrap();
+        git::take_working_tree_read_counts();
+        let located = tracking::locate_notes(&repo, &repo.initial, None, &notes);
+        assert_eq!(git::take_working_tree_read_counts(), (0, 1));
+        assert_eq!(located.len(), 100);
+        for note in &notes {
+            let location = &located[&note["id"].as_i64().unwrap()][0];
+            assert_eq!(location["new"], note["new"]);
+            assert_eq!(location["group"], note["group"]);
+        }
+        assert_eq!(fs::read(t.root.join(".git/index")).unwrap(), index);
+        // The visible WT snapshot is authoritative, even if the disk changes.
+        t.write("settings", "external edit\n");
+        let located = tracking::locate_notes(&repo, &repo.initial, Some(&full), &notes);
+        assert_eq!(git::take_working_tree_read_counts(), (0, 0));
+        assert!(located.values().all(|locations| locations.len() == 1));
+    }
+}
+
+#[test]
+fn scoped_worktree_keeps_frozen_payloads_and_never_updates_the_index() {
+    for cli in [false, true] {
+        let t = Checkout::new();
+        if cli {
+            t.git(&["config", "diff.algorithm", "minimal"]);
+        }
+        t.write("literal[1]", "base\n");
+        t.commit("Add literal path");
+        t.write("settings", "top\nlimit = 2\nbottom\n");
+        t.write("literal[1]", "staged\n");
+        t.git(&["add", "literal[1]"]);
+        t.write("literal[1]", "unstaged\n");
+        let repo = t.repo();
+        let paths = HashSet::from(["literal[1]".to_string()]);
+        let index = fs::read(t.root.join(".git/index")).unwrap();
+        let scoped = git::working_tree_paths(&repo, &repo.checkout, &paths).unwrap();
+        assert_eq!(scoped.files.len(), 2);
+        assert!(scoped
+            .files
+            .iter()
+            .all(|file| file.path == "literal[1]" && file.status == "M"));
+        let patches = scoped
+            .files
+            .iter()
+            .map(|file| git::patch(&repo, &scoped, file).unwrap())
+            .collect::<Vec<_>>();
+        assert_eq!(fs::read(t.root.join(".git/index")).unwrap(), index);
+        t.write("literal[1]", "later\n");
+        t.git(&["add", "literal[1]"]);
+        for (file, patch) in scoped.files.iter().zip(patches) {
+            let frozen = git::patch(&repo, &scoped, file).unwrap();
+            assert_eq!(
+                serde_json::to_value(frozen).unwrap(),
+                serde_json::to_value(patch).unwrap()
+            );
+        }
+        // A stale checkout view must still fail the shared checkout guard.
+        t.git(&["switch", "-qc", "other"]);
+        assert!(git::working_tree_paths(&repo, &repo.checkout, &paths).is_err());
+    }
+}
+
+#[test]
+fn changed_modified_anchors_fall_back_for_external_edits_stage_and_commit() {
+    let t = Checkout::new();
+    t.write("settings", "top\nlimit = 2\nbottom\n");
+    let repo = t.repo();
+    let full = t.diff(&repo);
+    let mut note = changed_note(&repo, &full, &full.files[0]);
+    note["id"] = json!(1);
+    t.write("settings", "header\ntop\nlimit = 2\nbottom\n");
+    for step in 0..3 {
+        if step == 1 {
+            t.git(&["add", "settings"]);
+        }
+        if step == 2 {
+            t.commit("Commit reviewed change");
+        }
+        let current = t.repo();
+        git::take_working_tree_read_counts();
+        let located = tracking::locate_notes(
+            &current,
+            &current.initial,
+            None,
+            std::slice::from_ref(&note),
+        );
+        assert_eq!(git::take_working_tree_read_counts(), (1, 1));
+        assert_eq!(located[&1].len(), 1);
+        assert_eq!(located[&1][0]["new"], json!([3, 3]));
+        assert_eq!(
+            located[&1][0]["right"],
+            if step == 2 {
+                current.checkout.as_str()
+            } else {
+                WORKTREE
+            }
+        );
+        if step < 2 {
+            assert_eq!(
+                located[&1][0]["group"],
+                if step == 0 { "Unstaged" } else { "Staged" }
+            );
+        }
+    }
+}
+
+#[test]
+fn exact_modified_anchor_with_unrelated_history_uses_full_lookup() {
+    let t = Checkout::new();
+    t.write("settings", "top\nlimit = 2\nbottom\n");
+    let repo = t.repo();
+    let full = t.diff(&repo);
+    let mut note = changed_note(&repo, &full, &full.files[0]);
+    note["id"] = json!(1);
+    let unrelated = git::git(
+        &t.root,
+        &["commit-tree", "HEAD^{tree}", "-m", "Unrelated root"],
+    )
+    .unwrap();
+    note["left_tip"] = json!(String::from_utf8(unrelated).unwrap().trim());
+    git::take_working_tree_read_counts();
+    let located = tracking::locate_notes(&repo, &repo.initial, None, &[note]);
+    assert_eq!(git::take_working_tree_read_counts(), (1, 1));
+    assert_eq!(located[&1].len(), 1);
+}
+
+#[test]
+fn added_and_renamed_anchors_use_full_rename_detection() {
+    for rename in [false, true] {
+        let t = Checkout::new();
+        t.git(&["config", "diff.algorithm", "minimal"]);
+        t.write("source", "unique source content\n");
+        t.commit("Add rename source");
+        if rename {
+            t.git(&["mv", "source", "destination"]);
+        } else {
+            t.write("destination", "unique source content\n");
+            t.git(&["add", "destination"]);
+        }
+        let repo = t.repo();
+        let initial = t.diff(&repo);
+        let file = initial
+            .files
+            .iter()
+            .find(|file| file.path == "destination")
+            .unwrap();
+        assert_eq!(file.status, if rename { "R" } else { "A" });
+        let mut note = changed_note(&repo, &initial, file);
+        note["id"] = json!(1);
+        if rename {
+            t.write("aaa", "unique source content\n");
+            t.git(&["add", "aaa"]);
+        } else {
+            t.git(&["rm", "-q", "source"]);
+        }
+        // Scoped rename detection can preserve the obsolete A/R identity.
+        let paths = HashSet::from([file.path.clone(), file.old.clone()]);
+        let scoped = git::working_tree_paths(&repo, &repo.checkout, &paths).unwrap();
+        assert!(scoped
+            .files
+            .iter()
+            .any(|file| note_matches_file(&scoped, file, &note)));
+        let full = t.diff(&repo);
+        assert!(!full
+            .files
+            .iter()
+            .any(|file| note_matches_file(&full, file, &note)));
+        let expected = tracking::locate_notes(
+            &repo,
+            &repo.initial,
+            Some(&full),
+            std::slice::from_ref(&note),
+        );
+        git::take_working_tree_read_counts();
+        let actual =
+            tracking::locate_notes(&repo, &repo.initial, None, std::slice::from_ref(&note));
+        assert_eq!(git::take_working_tree_read_counts(), (1, 0));
+        assert_eq!(actual, expected);
+    }
+}
+
+#[test]
 fn replies_preserve_desktop_edits_and_can_resolve_the_same_thread() {
     let t = Checkout::new();
     t.write("settings", "top\nlimit = 2\nbottom\n");

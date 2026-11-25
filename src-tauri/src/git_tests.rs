@@ -52,7 +52,7 @@ fn libgit2_reads_normal_review_changes_without_the_compatibility_backend() {
     let repo = native::open(checkout.path()).unwrap();
     let metadata = native::metadata(&repo).unwrap();
     let base = metadata.head.as_deref().unwrap();
-    let files = native::working_changes(&repo, base, &metadata.empty, None).unwrap();
+    let files = native::working_changes(&repo, base, &metadata.empty, None, None).unwrap();
     assert_eq!(
         files
             .iter()
@@ -531,6 +531,83 @@ fn partially_staged_snapshot_survives_file_and_index_changes() {
 }
 
 #[test]
+fn skip_worktree_entries_preserve_git_status_and_frozen_patches() {
+    let dir = history();
+    let root = dir.path();
+    write(&dir, "tracked", b"base\n");
+    write(&dir, "hidden-absent", b"omitted from checkout\n");
+    write(&dir, "hidden-materialized", b"committed hidden content\n");
+    record(&dir, "Base");
+    // Manual flags exercise the same index semantics as sparse checkout without
+    // relying on core.sparseCheckout being enabled.
+    git(
+        root,
+        &[
+            "update-index",
+            "--skip-worktree",
+            "hidden-absent",
+            "hidden-materialized",
+        ],
+    )
+    .unwrap();
+    fs::remove_file(root.join("hidden-absent")).unwrap();
+    write(&dir, "hidden-materialized", b"ignored local hidden edit\n");
+    write(&dir, "tracked", b"staged\n");
+    git(root, &["add", "tracked"]).unwrap();
+    write(&dir, "tracked", b"unstaged\n");
+    write(&dir, "untracked", b"new\n");
+    let index = fs::read(root.join(".git/index")).unwrap();
+    let repo = open_repo(root).unwrap();
+    assert!(repo.native.is_some());
+    assert!(native::supports_working_tree(&repo.native().unwrap()));
+    let mut compatibility = repo.clone();
+    compatibility.native = None;
+    let expected = work(&compatibility);
+    assert_eq!(
+        expected
+            .files
+            .iter()
+            .map(|f| (f.group.as_str(), f.path.as_str()))
+            .collect::<Vec<_>>(),
+        [
+            ("Staged", "tracked"),
+            ("Unstaged", "tracked"),
+            ("Untracked", "untracked")
+        ]
+    );
+    let snapshot = work(&repo);
+    assert_eq!(
+        serde_json::to_value(&snapshot).unwrap(),
+        serde_json::to_value(&expected).unwrap()
+    );
+    assert_eq!(index, fs::read(root.join(".git/index")).unwrap());
+
+    write(&dir, "tracked", b"later\n");
+    fs::remove_file(root.join("untracked")).unwrap();
+    git(root, &["add", "tracked"]).unwrap();
+    assert_eq!(
+        content(&repo, &snapshot, "Staged", "tracked"),
+        ["base", "staged"]
+    );
+    assert_eq!(
+        content(&repo, &snapshot, "Unstaged", "tracked"),
+        ["staged", "unstaged"]
+    );
+    assert_eq!(content(&repo, &snapshot, "Untracked", "untracked"), ["new"]);
+    for change in &snapshot.files {
+        assert_eq!(
+            patch(&repo, &snapshot, change).unwrap(),
+            patch(
+                &compatibility,
+                &expected,
+                file(&expected, &change.group, &change.path)
+            )
+            .unwrap()
+        );
+    }
+}
+
+#[test]
 fn working_tree_snapshot_does_not_rewrite_stat_stale_index() {
     let dir = history();
     let root = dir.path();
@@ -723,4 +800,78 @@ fn revision_file_distinguishes_text_binary_and_missing_submodule_objects() {
         RevisionFile::Submodule { oid } if oid == target)
     );
     assert!(revision_file(&repo, revision, "absent").is_err());
+}
+
+#[test]
+fn configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs() {
+    let dir = history();
+    let root = dir.path();
+    write(&dir, "visible", b"base\n");
+    write(&dir, "hidden-missing", b"hidden\n");
+    write(&dir, "hidden-present", b"hidden\n");
+    record(&dir, "Base");
+    git(root, &["sparse-checkout", "set", "--no-cone", "/visible"]).unwrap();
+    write(&dir, "visible", b"staged\n");
+    git(root, &["add", "visible"]).unwrap();
+    write(&dir, "visible", b"unstaged\n");
+    write(&dir, "untracked", b"new\n");
+    write(&dir, "hidden-present", b"materialized sparse edit\n");
+    let before = fs::read(root.join(".git/index")).unwrap();
+    let before_stat = fs::metadata(root.join(".git/index")).unwrap();
+    let repo = open_repo(root).unwrap();
+    let access = repo.native().unwrap();
+    assert!(native::supports_diff(&access), "Branch reviews remain native");
+    assert!(!native::supports_working_tree(&access));
+    drop(access);
+    let actual = work(&repo);
+    let mut cli = repo.clone();
+    cli.native = None;
+    let expected = work(&cli);
+    assert_eq!(
+        serde_json::to_value(&actual).unwrap(),
+        serde_json::to_value(&expected).unwrap()
+    );
+    assert_eq!(
+        actual.files.iter().map(|f| (f.group.as_str(), f.path.as_str())).collect::<Vec<_>>(),
+        [("Staged", "visible"), ("Unstaged", "hidden-present"),
+         ("Unstaged", "visible"), ("Untracked", "untracked")]
+    );
+    let mut saved = Vec::new();
+    for (file, reference) in actual.files.iter().zip(&expected.files) {
+        assert_eq!(file.local_sections, reference.local_sections);
+        let rows = patch(&repo, &actual, file).unwrap();
+        let text = file_contents(&repo, file).unwrap();
+        assert_eq!(rows, patch(&cli, &expected, reference).unwrap());
+        assert_eq!(text, file_contents(&cli, reference).unwrap());
+        saved.push((rows, text));
+    }
+    let after_stat = fs::metadata(root.join(".git/index")).unwrap();
+    assert_eq!(before, fs::read(root.join(".git/index")).unwrap());
+    assert_eq!(before_stat.modified().unwrap(), after_stat.modified().unwrap());
+    #[cfg(unix)] {
+        use std::os::unix::fs::MetadataExt;
+        assert_eq!(before_stat.ino(), after_stat.ino());
+    }
+    write(&dir, "visible", b"new index and working bytes\n");
+    git(root, &["add", "visible"]).unwrap();
+    fs::remove_file(root.join("untracked")).unwrap();
+    for (file, (rows, text)) in actual.files.iter().zip(saved) {
+        assert_eq!(patch(&repo, &actual, file).unwrap(), rows);
+        assert_eq!(file_contents(&repo, file).unwrap(), text);
+    }
+}
+
+#[test]
+fn sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged() {
+    let dir = history();
+    write(&dir, "tracked", b"base\n");
+    record(&dir, "Base");
+    for (configured, expected) in [(None, true), (Some("true"), false), (Some("false"), true)] {
+        if let Some(value) = configured {
+            git(dir.path(), &["config", "core.sparseCheckout", value]).unwrap();
+        }
+        let repo = native::open(dir.path()).unwrap();
+        assert!(native::supports_diff(&repo));
+        assert_eq!(native::supports_working_tree(&repo), expected);
+    }
 }

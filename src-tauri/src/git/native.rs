@@ -414,23 +414,55 @@ pub(super) fn supports_diff(repo: &Repository) -> bool {
     true
 }
 
+// Configured sparse worktrees require Git. Choose it before parsing the index
+// that the native skip-worktree guard would otherwise load and discard.
+pub(super) fn supports_working_tree(repo: &Repository) -> bool {
+    supports_diff(repo)
+        && !repo
+            .config()
+            .ok()
+            .and_then(|config| config.get_bool("core.sparseCheckout").ok())
+            .unwrap_or(false)
+}
+
 pub(super) fn working_changes(
     repo: &Repository,
     base: &str,
     empty: &str,
     untracked: Option<&HashSet<String>>,
+    paths: Option<&HashSet<String>>,
 ) -> Result<Vec<Change>> {
     let mut index = repo.index()?;
     index.read(true)?;
+    // libgit2 reports omitted sparse paths as deletions. Git also honors manual
+    // skip-worktree flags when core.sparseCheckout is not configured.
+    if index.iter().any(|entry| {
+        git2::IndexEntryExtendedFlag::from_bits_truncate(entry.flags_extended).is_skip_worktree()
+    }) {
+        return Err(git2::Error::from_str(
+            "Use Git for skip-worktree index entries",
+        ));
+    }
     if index.has_conflicts() {
         return Err(git2::Error::from_str("Use Git for unmerged index entries"));
     }
     let base = tree(repo, base, empty)?;
-    let mut staged = repo.diff_tree_to_index(base.as_ref(), Some(&index), Some(&mut options()))?;
+    let scoped_options = || -> Result<_> {
+        let mut opts = options();
+        if let Some(paths) = paths {
+            opts.disable_pathspec_match(true);
+            for path in paths {
+                opts.pathspec(path_arg(path).map_err(|e| git2::Error::from_str(&e))?);
+            }
+        }
+        Ok(opts)
+    };
+    let mut staged =
+        repo.diff_tree_to_index(base.as_ref(), Some(&index), Some(&mut scoped_options()?))?;
     rename(&mut staged)?;
     let mut result = changes(&staged, "Staged", None)?;
     let include_untracked = untracked.is_none_or(|paths| !paths.is_empty());
-    let mut opts = options();
+    let mut opts = scoped_options()?;
     opts.update_index(false)
         .include_untracked(include_untracked)
         .recurse_untracked_dirs(include_untracked)
