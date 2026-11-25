@@ -1,5 +1,6 @@
 use super::*;
 use std::io::{BufRead, BufReader};
+use std::net::Shutdown;
 
 fn reply(
     status: &str,
@@ -11,11 +12,11 @@ fn reply(
     let addr = listener.local_addr().unwrap();
     let (status, headers, body) = (status.to_owned(), headers.to_owned(), body.to_owned());
     let server = thread::spawn(move || {
-        let (mut stream, _) = listener.accept().unwrap();
+        let (stream, _) = listener.accept().unwrap();
         stream
             .set_read_timeout(Some(Duration::from_secs(2)))
             .unwrap();
-        let mut reader = BufReader::new(stream.try_clone().unwrap());
+        let mut reader = BufReader::new(stream);
         let mut request = String::new();
         loop {
             let mut line = String::new();
@@ -35,11 +36,13 @@ fn reply(
         reader.read_exact(&mut payload).unwrap();
         request.push_str(std::str::from_utf8(&payload).unwrap());
         thread::sleep(delay);
-        let _ = write!(
-            stream,
+        write!(
+            reader.get_mut(),
             "HTTP/1.1 {status}\r\nConnection: close\r\n{headers}Content-Length: {}\r\n\r\n{body}",
             body.len()
-        );
+        )
+        .expect("send HTTP response");
+        reader.get_mut().shutdown(Shutdown::Write).unwrap();
         request
     });
     (addr, server)

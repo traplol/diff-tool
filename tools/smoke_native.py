@@ -327,6 +327,11 @@ def exercise(d, repo, screenshot):
         && !document.querySelector('#app')?.hasAttribute('aria-busy')
     """)
     d.click("#file-list button", "cache.txt", False)
+    d.wait(
+        "document.querySelector(arguments[0])?.getAttribute('aria-expanded') === 'false'",
+        f"{NOTES} .bl-disclosure",
+    )
+    d.click(f"{NOTES} .bl-disclosure")
     d.expect_text(ACTIVE, "Use the documented metrics capacity")
     d.click(f"{NOTES} button", "Resolve")
     d.wait(
