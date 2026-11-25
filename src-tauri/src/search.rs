@@ -787,7 +787,10 @@ mod tests {
         git(&["config", "commit.gpgsign", "false"]);
         git(&["config", "core.autocrlf", "false"]);
         let original = (1..=40).map(|i| format!("line {i}\n")).collect::<String>();
+        #[cfg(unix)]
         let literal = "literal[1]\n\té";
+        #[cfg(not(unix))]
+        let literal = "literal[1] é";
         fs::write(root.join("before"), &original).unwrap();
         fs::write(root.join(literal), &original).unwrap();
         fs::write(root.join("removed"), "needle removed\n").unwrap();

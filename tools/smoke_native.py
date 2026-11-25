@@ -320,6 +320,12 @@ def exercise(d, repo, screenshot):
     )
     d.click("dialog [aria-label=Close]")
     d.click("#stack-review")
+    # The working-tree rows remain until the asynchronous stack load finishes.
+    d.wait("""
+        document.querySelector('#page-title')?.textContent === 'Branch stack review'
+        && document.querySelector('#pair')?.value === '0'
+        && !document.querySelector('#app')?.hasAttribute('aria-busy')
+    """)
     d.click("#file-list button", "cache.txt", False)
     d.expect_text(ACTIVE, "Use the documented metrics capacity")
     d.click(f"{NOTES} button", "Resolve")

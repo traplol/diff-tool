@@ -64,10 +64,17 @@ fn existing_listener_keeps_the_http_timeout_in_both_phases() {
             Duration::from_millis(120),
         );
         // The HTTP response can take longer than the 25 ms connection poll.
-        assert!(matches!(
-            probe(addr, before_launch),
-            Ok(Listener::Branchline)
-        ));
+        let started = Instant::now();
+        let result = probe(addr, before_launch).map(|listener| match listener {
+            Listener::Free => "Free",
+            Listener::Branchline => "Branchline",
+        });
+        assert_eq!(
+            result,
+            Ok("Branchline"),
+            "before_launch={before_launch}, elapsed={:?}",
+            started.elapsed()
+        );
         let request = server.join().unwrap();
         assert!(request.starts_with("POST /mcp HTTP/1.1\r\n"));
         assert!(request.contains(r#""method":"initialize""#));
