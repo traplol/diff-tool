@@ -1,0 +1,12 @@
+
+running 7 tests
+test git::remote::tests::cached_worker_is_verified_and_corruption_is_replaced_atomically ... ok
+test git::remote::tests::native_git_failures_remain_domain_errors ... ok
+test git::remote::tests::only_drive_absolute_paths_identify_windows_storage ... ok
+test git::remote::tests::request_frames_escape_newlines_and_match_response_ids ... ok
+test git::remote::tests::stale_truncated_and_invalid_responses_are_rejected ... ok
+test git::remote::tests::wsl_logical_roots_preserve_legacy_raw_preference_and_draft_keys ... ok
+test git::remote::tests::wsl_worker_command_keeps_storage_cwd_and_helper_as_separate_arguments ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 60 filtered out; finished in 0.04s
+

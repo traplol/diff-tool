@@ -1,0 +1,25 @@
+--- a/frontend/app.js
++++ b/frontend/app.js
+@@ -699,7 +699,6 @@
+     if (!editor) fileIndex = index;
+     await navigate("Changes");
+     if (state.snapshot !== snapshot) return;
+-    editor?.setNotes(fileNotes(state, currentFile()));
+     await pick(index, true, anchored ? note.id : undefined);
+     if (state.snapshot !== snapshot || index !== fileIndex) return;
+     revealFileInTree(index);
+--- a/frontend/editor.js
++++ b/frontend/editor.js
+@@ -1612,8 +1612,10 @@
+       const row = layout.anchorRows.get(id);
+       if (row == null) return false;
+       const note = notes.find((n) => n.id === id);
+-      setFold(folds, note, false);
+-      refreshNotes();
++      if (controller.folded(note)) {
++        setFold(folds, note, false);
++        refreshNotes();
++      }
+       const { panes } = layout;
+       if (!panes.length) return true;
+       const side = note.new?.length ? "new" : "old";

@@ -1,0 +1,770 @@
+{
+  "correct": true,
+  "error": null,
+  "identity": {
+    "git": "C:\\Program Files\\Git\\cmd\\git.exe",
+    "account": "WINDOWS11\\max",
+    "owned": "C:\\Users\\max\\branchline-bench\\stateless-status-b2de070\\20261125T193241Z",
+    "git_sha256": "177bc8a9af84fa3a400c694c975fda731d048279c074e1a93947ce8b067ebb48",
+    "kernel_root": "C:\\Users\\max\\branchline-bench\\kernel-windows"
+  },
+  "configs": [
+    {
+      "key": "core.fscache",
+      "origin": "system\tfile:C:/Program Files/Git/etc/gitconfig\ttrue\n",
+      "exit": 0
+    },
+    {
+      "key": "core.preloadIndex",
+      "origin": "",
+      "exit": 1
+    },
+    {
+      "key": "core.untrackedCache",
+      "origin": "",
+      "exit": 1
+    },
+    {
+      "key": "core.fsmonitor",
+      "origin": "",
+      "exit": 1
+    },
+    {
+      "key": "core.splitIndex",
+      "origin": "",
+      "exit": 1
+    },
+    {
+      "key": "core.excludesFile",
+      "origin": "",
+      "exit": 1
+    }
+  ],
+  "commands": [
+    {
+      "label": "config-core.fscache",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "config",
+        "--show-origin",
+        "--show-scope",
+        "--get-all",
+        "core.fscache"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows config --show-origin --show-scope --get-all core.fscache",
+      "wall_ms": 70.8702,
+      "exit": 0,
+      "stdout_sha256": "253d9dfefe7a0c3de64a299d879300f21512bd2e231b071e286e92b5ec2b2737",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "config-core.preloadIndex",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "config",
+        "--show-origin",
+        "--show-scope",
+        "--get-all",
+        "core.preloadIndex"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows config --show-origin --show-scope --get-all core.preloadIndex",
+      "wall_ms": 50.7263,
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "config-core.untrackedCache",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "config",
+        "--show-origin",
+        "--show-scope",
+        "--get-all",
+        "core.untrackedCache"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows config --show-origin --show-scope --get-all core.untrackedCache",
+      "wall_ms": 49.468900000000005,
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "config-core.fsmonitor",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "config",
+        "--show-origin",
+        "--show-scope",
+        "--get-all",
+        "core.fsmonitor"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows config --show-origin --show-scope --get-all core.fsmonitor",
+      "wall_ms": 53.053900000000006,
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "config-core.splitIndex",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "config",
+        "--show-origin",
+        "--show-scope",
+        "--get-all",
+        "core.splitIndex"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows config --show-origin --show-scope --get-all core.splitIndex",
+      "wall_ms": 50.3196,
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "config-core.excludesFile",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "config",
+        "--show-origin",
+        "--show-scope",
+        "--get-all",
+        "core.excludesFile"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows config --show-origin --show-scope --get-all core.excludesFile",
+      "wall_ms": 50.2352,
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-head-before",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows rev-parse --verify HEAD",
+      "wall_ms": 53.903000000000006,
+      "exit": 0,
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-checkout-before",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "symbolic-ref",
+        "--quiet",
+        "HEAD"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows symbolic-ref --quiet HEAD",
+      "wall_ms": 51.9893,
+      "exit": 0,
+      "stdout_sha256": "39090c6b13838e7a47723595db801c82ccbc809027341a627490449e44b0419b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-1",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 851.644,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-1",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 276.0664,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-2",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 328.7196,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-2",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 887.7472,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-3",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 864.4289,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-3",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 271.42580000000004,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-4",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 317.1172,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-4",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 886.4281000000001,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-5",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 921.0045,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-5",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 286.15270000000004,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-6",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 276.444,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-6",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 870.7873000000001,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-7",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 921.9644000000001,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-7",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 265.3115,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-8",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 260.2715,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-8",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 898.9596,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-9",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 894.3295,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-9",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 259.618,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-status-10",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows status --porcelain=v2 -z --untracked-files=all --no-renames --ignore-submodules=all",
+      "wall_ms": 289.8626,
+      "exit": 0,
+      "stdout_sha256": "3ab5e0959c869419da3a2e00d87e9c8964951646acd02bccbd911293bd724cfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-warm-listing-10",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows ls-files --others --exclude-standard -z --",
+      "wall_ms": 970.095,
+      "exit": 0,
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-head-after",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows rev-parse --verify HEAD",
+      "wall_ms": 50.3892,
+      "exit": 0,
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "kernel-checkout-after",
+      "cwd": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+      "private_index": null,
+      "optional_locks": "0",
+      "argv": [
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "symbolic-ref",
+        "--quiet",
+        "HEAD"
+      ],
+      "arguments": "--no-pager --literal-pathspecs -C C:\\Users\\max\\branchline-bench\\kernel-windows symbolic-ref --quiet HEAD",
+      "wall_ms": 51.348200000000006,
+      "exit": 0,
+      "stdout_sha256": "39090c6b13838e7a47723595db801c82ccbc809027341a627490449e44b0419b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "cases": [],
+  "cold": null,
+  "kernel_unchanged": true,
+  "guard_before": {
+    "config": {
+      "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+      "length": 334,
+      "modified": 639312127943319714,
+      "created": 639312127943319714,
+      "attributes": "Archive"
+    },
+    "HEAD": {
+      "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+      "length": 39,
+      "modified": 639312115330000000,
+      "created": 639312115343920387,
+      "attributes": "Archive"
+    },
+    "index": {
+      "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129",
+      "length": 9271771,
+      "modified": 639312127479715229,
+      "created": 639312126368091771,
+      "attributes": "Archive"
+    }
+  },
+  "inherited_environment": {
+    "GIT_TRACE2": null,
+    "GIT_CONFIG_PARAMETERS": null,
+    "GIT_CONFIG_NOSYSTEM": null,
+    "GIT_CONFIG_GLOBAL": null,
+    "GIT_DIR": null,
+    "GIT_CONFIG_SYSTEM": null,
+    "GIT_COMMON_DIR": null,
+    "GIT_TRACE": null,
+    "GIT_WORK_TREE": null,
+    "GIT_INDEX_FILE": null,
+    "GIT_CONFIG_COUNT": null,
+    "LC_ALL": null
+  },
+  "guard_after": {
+    "config": {
+      "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+      "length": 334,
+      "modified": 639312127943319714,
+      "created": 639312127943319714,
+      "attributes": "Archive"
+    },
+    "HEAD": {
+      "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+      "length": 39,
+      "modified": 639312115330000000,
+      "created": 639312115343920387,
+      "attributes": "Archive"
+    },
+    "index": {
+      "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129",
+      "length": 9271771,
+      "modified": 639312127479715229,
+      "created": 639312126368091771,
+      "attributes": "Archive"
+    }
+  }
+}

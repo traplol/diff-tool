@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-11-25T20:24:08.584496+00:00",
+  "decision": "cmd fast-path revision host-validated; native VM tests/build/runtime evaluation await VM BUILD RELEASED",
+  "app_source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "snapshot_sha256": "03fecde11c0a48a50b437c089ff6e22d6521ede6352dda4c01477a9f70349739",
+  "patch_sha256": "5f87970efa96215e2965d90cbfcbfdace5ed725eac9e43b8a6e0fce05e2c38a7",
+  "base_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "changed_files": [
+    "src-tauri/src/git/remote.rs"
+  ],
+  "logs": {
+    "host-all-tests-cmd.log": {
+      "sha256": "cd9c4917a5e2e718a2104044175ce3da14d423724c7121a35137812289edb643",
+      "passed": 41,
+      "failed": 0,
+      "ignored": 1
+    },
+    "host-embedded-tests-cmd.log": {
+      "sha256": "ad400968c55354a25a42813e1d8fd4d484c37751feda049583912c4924ec9ddb",
+      "passed": 16,
+      "failed": 0,
+      "ignored": 1
+    },
+    "windows-source-check-cmd.log": {
+      "sha256": "ae8fb384b8226f11a2a37f5f0699a786d03e2788ffc6db869a609adbf1f308ad",
+      "status": "pass",
+      "target": "x86_64-pc-windows-gnu",
+      "kind": "source-only; not native runtime"
+    }
+  },
+  "supervisor_syntax": {
+    "run-after-release.py": {
+      "status": "pass: AST parse, not executed",
+      "sha256": "d5ddebf7373663791351454744496ad0cd306a4fc294dc52f6ac1360f09920be"
+    },
+    "vm-build-supervisor.py": {
+      "status": "pass: AST parse, not executed",
+      "sha256": "6d43215e4f01f62c5378ea77dffb19f84c23405ccd5242a533f0e57cce64deba"
+    }
+  },
+  "planned_paths_verified": {
+    "source_input_directory": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input",
+    "artifact_directory": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native",
+    "linux_binary": "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+    "windows_binary": "C:/Users/max/branchline-bench/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline.exe"
+  },
+  "release_required": "VM BUILD RELEASED",
+  "supervisors_executed": false,
+  "vm_actions_for_current_revision": false,
+  "production_remote_unchanged": true,
+  "measured_prior_query_decision": "query-decision.json",
+  "limitations": [
+    "new Rust parser and cmd fast-path integration have not executed on actual WSL GUI yet",
+    "cmd missing/empty environment to PowerShell known-folder runtime fallback pending",
+    "native deployment/stdio/EOF/drop/kill/abrupt-parent-death gates pending",
+    "no GUI timings for this revision"
+  ]
+}

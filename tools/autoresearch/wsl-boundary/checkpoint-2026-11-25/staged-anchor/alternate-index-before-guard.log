@@ -1,0 +1,36 @@
+   Compiling branchline v0.2.0 (/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/source/src-tauri)
+    Finished `test` profile [unoptimized] target(s) in 4.30s
+     Running unittests src/lib.rs (/home/max/workspace/merge-viewer-native/src-tauri/target/debug/deps/branchline-66cb84fd26a30aae)
+
+running 1 test
+test review::tests::staged_metadata_declines_alternate_index_and_tracks_the_selected_index ... 
+thread 'review::tests::staged_metadata_declines_alternate_index_and_tracks_the_selected_index' panicked at src/review_tests.rs:771:5:
+
+running 1 test
+test review::tests::staged_metadata_declines_alternate_index_and_tracks_the_selected_index ... FAILED
+
+failures:
+
+failures:
+    review::tests::staged_metadata_declines_alternate_index_and_tracks_the_selected_index
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 78 filtered out; finished in 0.01s
+
+
+{"actual":{"1":[{"base":"ff04c89203b055f42576f3972358ce2e3324b955","blob":"cf1cf170df6ccd1eab173cad50492ae38f9474f3","group":"Staged","head":"staged:955ee2e65dcf3a54c3bc7de17f5e59466151024c0a23c03de66ae47bd7e3a721","left":"refs/heads/feature","new":[2,2],"old":[],"path":"settings","right":":worktree:"}]},"cli_oid":"e56116dc1e0a06e47adf40956913f2065656ed69","expected":{"1":[{"base":"ff04c89203b055f42576f3972358ce2e3324b955","blob":"cf1cf170df6ccd1eab173cad50492ae38f9474f3","group":"Unstaged","head":"9a1386c82a63cc307044aa2e5cd43cf7fa09da8f22e56a3dc14b55de9f97c386","left":"refs/heads/feature","new":[2,2],"old":[],"path":"settings","right":":worktree:"}]},"native_oid":"cf1cf170df6ccd1eab173cad50492ae38f9474f3","proof_present":true}
+
+thread 'review::tests::staged_metadata_declines_alternate_index_and_tracks_the_selected_index' panicked at src/review_tests.rs:742:9:
+An alternate CLI index cannot use default-index metadata
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+FAILED
+
+failures:
+
+failures:
+    review::tests::staged_metadata_declines_alternate_index_and_tracks_the_selected_index
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 78 filtered out; finished in 0.05s
+
+error: test failed, to rerun pass `--lib`

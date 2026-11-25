@@ -1,0 +1,152 @@
+{
+  "supervisor_pid": 129637,
+  "supervisor_start_ticks": "14404163",
+  "status": "open-cache-and-frame-diagnostic-passed",
+  "profile": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01/profile",
+  "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "binary": "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+  "native_cache": "/mnt/c/Users/max/branchline-bench/native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01/native cache's r\u00e9view &[]/Branchline/git-workers/branchline-git-worker-6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2.exe",
+  "native_cache_existed": false,
+  "diagnostic_only": true,
+  "normal_cache_environment": {
+    "LOCALAPPDATA": "C:\\Users\\max\\branchline-bench\\native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01\\native cache's r\u00e9view &[]",
+    "WSLENV": "LOCALAPPDATA/w"
+  },
+  "cmd_portable_cache_query": {
+    "argv": [
+      "cmd.exe",
+      "/d",
+      "/u",
+      "/c",
+      "set LOCALAPPDATA"
+    ],
+    "value": "C:\\Users\\max\\branchline-bench\\native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01\\native cache's r\u00e9view &[]",
+    "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAGIAcgBhAG4AYwBoAGwAaQBuAGUALQBiAGUAbgBjAGgAXABuAGEAdABpAHYAZQAtAGgAZQBsAHAAZQByAC0AZABlAHAAbABvAHkAbQBlAG4AdAAtAGIAMgBkAGUAMAA3ADAALQAwADMAZgBlAGMAZABlADEAMQBjADAAYQAtAGYAaQByAHMAdAAtAGwAaQBuAHUAeAAtAGcAYQB0AGUALQAwADEAXABuAGEAdABpAHYAZQAgAGMAYQBjAGgAZQAnAHMAIAByAOkAdgBpAGUAdwAgACYAWwBdAA0ACgA="
+  },
+  "launch": {
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+    "binary_sha256": "67815591856441398d6d026bb9f828a1d67a71f73b3c241b802715f033a0fcbf",
+    "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+    "profile": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01/profile",
+    "port": 29341,
+    "mcp_port": 28941,
+    "session": "8167c30c-5b12-42aa-a2a0-78604c51192a",
+    "pid": 129645,
+    "app_process": {
+      "pid": 129645,
+      "start_ticks": "14404253",
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+        "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01/profile/welcome"
+      ]
+    },
+    "driver_process": {
+      "pid": 129643,
+      "start_ticks": "14404226",
+      "binary": "/usr/bin/WebKitWebDriver"
+    },
+    "supervisor_pid": 129637,
+    "display": ":0",
+    "gdk_backend": "x11"
+  },
+  "opened": {
+    "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+    "checkout": "refs/heads/feature/boundary-final",
+    "refs": {
+      "HEAD^": "856700f06bf917bd363dd835fe6f6bd3923254da",
+      "refs/heads/feature/boundary-final": "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+      "refs/heads/feature/boundary-first": "856700f06bf917bd363dd835fe6f6bd3923254da",
+      "refs/heads/main": "adc218676eef25575469234709c2d87185ca223a",
+      ":empty:": "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+    },
+    "stack": [
+      "refs/heads/main",
+      "refs/heads/feature/boundary-first",
+      "refs/heads/feature/boundary-final"
+    ],
+    "pair": [
+      "refs/heads/main",
+      "refs/heads/feature/boundary-final"
+    ],
+    "comparison": {
+      "left": "refs/heads/main",
+      "right": "refs/heads/feature/boundary-final",
+      "base": "adc218676eef25575469234709c2d87185ca223a",
+      "head": "997032e932bfa5fcefdab0c986c8d01fe56c8229"
+    },
+    "file_count": 30
+  },
+  "native_cache_installed": {
+    "sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2",
+    "bytes": 2720768,
+    "mtime_ns": 1795639750975573800
+  },
+  "frames": {
+    "times_ms": [
+      3593,
+      3609,
+      3626,
+      3643.0000000000005,
+      3659.0000000000005,
+      3676,
+      3692,
+      3709,
+      3725,
+      3742,
+      3759,
+      3775,
+      3791
+    ],
+    "diagnosticOnly": true,
+    "after": {
+      "hasFocus": true,
+      "visibilityState": "visible",
+      "viewport": [
+        1280,
+        800
+      ],
+      "activeElement": {
+        "className": "",
+        "id": "",
+        "tag": "BODY"
+      }
+    },
+    "before": {
+      "hasFocus": true,
+      "visibilityState": "visible",
+      "viewport": [
+        1280,
+        800
+      ],
+      "activeElement": {
+        "className": "",
+        "id": "",
+        "tag": "BODY"
+      }
+    },
+    "completionSettleFramesUnchanged": 2,
+    "deltas_ms": [
+      16,
+      17,
+      17.000000000000455,
+      16,
+      16.999999999999545,
+      16,
+      17,
+      16,
+      17,
+      17,
+      16,
+      16
+    ]
+  },
+  "stopped_owned_pids": [
+    129643,
+    129809
+  ],
+  "supervisor_thread_alive": false,
+  "supervisor_errors": [],
+  "gui_absent": true,
+  "driver_absent": true
+}

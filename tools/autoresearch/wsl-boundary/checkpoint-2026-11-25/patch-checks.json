@@ -1,0 +1,151 @@
+{
+  "checks": [
+    {
+      "base_commit": "b2de070becf3fcba2d47557efd375221c586f273",
+      "base_snapshot": null,
+      "candidate": "status",
+      "checked_against_current_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+      "files": [
+        {
+          "base_sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+          "candidate_sha256": "dcae797180249d4eab4ef12d0a2848d358bbcc0953b08f5b43f15e7edaeae0fc",
+          "path": "src-tauri/src/git.rs"
+        },
+        {
+          "base_sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+          "candidate_sha256": "f0d3d9667eede161d0bd4a05e9140ef76ce897fe1d77624d995699fac00c0ead",
+          "path": "src-tauri/src/git_tests.rs"
+        }
+      ],
+      "git_apply_check": "passed",
+      "patch": "status/candidate.patch",
+      "promoted": false,
+      "reconstructed_frozen_files": "exact SHA256 match",
+      "source_directory": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source"
+    },
+    {
+      "base_commit": "b2de070becf3fcba2d47557efd375221c586f273",
+      "base_snapshot": null,
+      "candidate": "native-helper",
+      "checked_against_current_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+      "files": [
+        {
+          "base_sha256": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+          "candidate_sha256": "1046beee3c3dbbad93fc6c8837c2d164ac5ecc26bb536bf39fa106f2d6f52cec",
+          "path": "src-tauri/src/git/remote.rs"
+        }
+      ],
+      "git_apply_check": "passed",
+      "patch": "native-helper/candidate.patch",
+      "promoted": false,
+      "reconstructed_frozen_files": "exact SHA256 match",
+      "source_directory": "build/experiments/native-helper-deployment/source"
+    },
+    {
+      "base_commit": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+      "base_snapshot": null,
+      "candidate": "staged-anchor",
+      "checked_against_current_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+      "files": [
+        {
+          "base_sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+          "candidate_sha256": "cac71741c77bfd9637065850907744c86bb1f64e7a8afe0e12d5ab1ac4338050",
+          "path": "src-tauri/git-worker/tests/stdio.rs"
+        },
+        {
+          "base_sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+          "candidate_sha256": "78928ee5acb68699a762ab6ff82d0965880236382736e7406135db80a9fc3979",
+          "path": "src-tauri/src/git.rs"
+        },
+        {
+          "base_sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+          "candidate_sha256": "cb18f64542882a8d7e8c376d5ff6c34c8b4ca28659538a5422925945c1316948",
+          "path": "src-tauri/src/git/native.rs"
+        },
+        {
+          "base_sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+          "candidate_sha256": "b3c4e9bced9f1e0442e7c01d0c0fc07f9f55f2146103ec079bae070a3168a53d",
+          "path": "src-tauri/src/git/worker.rs"
+        },
+        {
+          "base_sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+          "candidate_sha256": "e7a81f1562310aeb5d90eb3177e65e5263d8a8528fc2c3e8fa5bc85495b806b5",
+          "path": "src-tauri/src/git_tests.rs"
+        },
+        {
+          "base_sha256": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+          "candidate_sha256": "776dc85b0c8f459520787e651590bae0d0ec6aae0111fe5b524250508af152ae",
+          "path": "src-tauri/src/review_tests.rs"
+        },
+        {
+          "base_sha256": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+          "candidate_sha256": "edb39f6c1e7f0d8804a3a907284513bc0ef129d704945402bb633269cd0dcd9b",
+          "path": "src-tauri/src/tracking.rs"
+        }
+      ],
+      "git_apply_check": "passed",
+      "patch": "staged-anchor/candidate.patch",
+      "promoted": false,
+      "reconstructed_frozen_files": "exact SHA256 match",
+      "source_directory": "build/experiments/staged-anchor-metadata/source"
+    },
+    {
+      "base_commit": null,
+      "base_snapshot": "build/autoresearch/wsl-boundary/candidate-combined-v3-source",
+      "candidate": "comment-jump-refresh",
+      "checked_against_current_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+      "files": [
+        {
+          "base_sha256": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+          "candidate_sha256": "e61d340ab5f47e8fb827ca637a594b379c9bde3f19210368e170925d527195f1",
+          "path": "frontend/app.js"
+        },
+        {
+          "base_sha256": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+          "candidate_sha256": "7216482ff612551471c367f05ea8fc039102d54bd32ce0ac5cdaffeb1a8a1711",
+          "path": "frontend/editor.js"
+        }
+      ],
+      "git_apply_check": "passed",
+      "patch": "comment-jump-refresh/candidate.patch",
+      "promoted": false,
+      "reconstructed_frozen_files": "exact SHA256 match",
+      "source_directory": "build/experiments/comment-jump-refresh"
+    },
+    {
+      "base_commit": null,
+      "base_snapshot": "build/autoresearch/wsl-boundary/candidate-combined-v3-source",
+      "candidate": "pane-reuse",
+      "checked_against_current_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+      "files": [
+        {
+          "base_sha256": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+          "candidate_sha256": "03c144556e9ac5b8c70c8cfa548fd743cdfe79278e08a9053a0a705108768a48",
+          "path": "frontend/app.js"
+        },
+        {
+          "base_sha256": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+          "candidate_sha256": "7e66aba292f425d294168b2e90365d6efb81f715ac095b8fa2f502b412ca178f",
+          "path": "frontend/editor.js"
+        },
+        {
+          "base_sha256": null,
+          "candidate_sha256": "86b2c87f84f2e0ccf73272b52cf5add73e028b4bbc776c87ee23f8cb44a64a81",
+          "path": "frontend/reuse-lifecycle.test.js"
+        },
+        {
+          "base_sha256": null,
+          "candidate_sha256": "51ba78ee779594aba55615f574c55f07f4f0dcd6c598f59a617d70872ead954b",
+          "path": "frontend/reuse-rows.test.js"
+        }
+      ],
+      "git_apply_check": "passed",
+      "patch": "discarded-pane-reuse/candidate.patch",
+      "promoted": false,
+      "reconstructed_frozen_files": "exact SHA256 match",
+      "source_directory": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source"
+    }
+  ],
+  "current_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+  "scope": "apply checks and exact frozen-byte reconstruction only; no new functional/performance validation"
+}

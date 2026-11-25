@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native_route.py", line 23, in <module>
+    assert len(status)==1,status;assert len(listing)==2,listing
+                                        ^^^^^^^^^^^^^^^
+AssertionError: [{'event': 'start', 'sid': '20261125T193956.425366Z-H1e4590ba-P00001d1c', 'thread': 'main', 'time': '2026-11-25T19:39:56.433151Z', 'file': 'common-init.c', 'line': 78, 't_abs': 0.037985, 'argv': ['git.exe', '--no-pager', '--literal-pathspecs', '-C', 'C:\\Users\\max\\branchline-bench\\kernel-windows', 'ls-files', '--others', '--exclude-standard', '-z', '--']}]

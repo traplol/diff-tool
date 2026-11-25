@@ -1,0 +1,86 @@
+{
+  "experiment": "native-helper-deployment",
+  "kind": "measured cache-query refinement within same isolated helper experiment",
+  "decision": "reject PowerShell-only query source; implement measured cmd fast path with existing PowerShell fallback",
+  "rejected_app_source_hash": "f2ffb3cc14a90caa261e53de4400177b13297f100d66f33549d41afb36c9a334",
+  "rejected_snapshot_sha256": "ec0f60861d17c16e792a69b5e41ab11785ebfc933d2804cafdfdad98dd51f5bf",
+  "evidence": "query-component-02/results.json",
+  "evidence_sha256": "25dba976b13b0c7f2c8837839946b57f415b836afd8acec7333c30fdf9772e48",
+  "exact_cmd_argv": [
+    "cmd.exe",
+    "/d",
+    "/u",
+    "/c",
+    "set LOCALAPPDATA"
+  ],
+  "new_app_source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "new_patch_sha256": "5f87970efa96215e2965d90cbfcbfdace5ed725eac9e43b8a6e0fce05e2c38a7",
+  "summary": {
+    "ext4_welcome": {
+      "powershell": {
+        "first_ms": 600.152696,
+        "median_ms": 502.583297,
+        "samples_ms": [
+          600.152696,
+          502.583297,
+          498.044897,
+          495.389097,
+          510.950897
+        ]
+      },
+      "cmd": {
+        "first_ms": 139.296299,
+        "median_ms": 107.4768,
+        "samples_ms": [
+          139.296299,
+          107.4768,
+          107.772099,
+          101.587099,
+          100.7423
+        ]
+      },
+      "paired_powershell_minus_cmd_ms": [
+        460.856397,
+        395.106497,
+        390.27279799999997,
+        393.801998,
+        410.208597
+      ]
+    },
+    "ntfs_kernel": {
+      "powershell": {
+        "first_ms": 315.752399,
+        "median_ms": 317.634516,
+        "samples_ms": [
+          315.752399,
+          315.826616,
+          327.824217,
+          317.634516,
+          323.665317
+        ]
+      },
+      "cmd": {
+        "first_ms": 87.148704,
+        "median_ms": 90.409305,
+        "samples_ms": [
+          87.148704,
+          90.409305,
+          97.513405,
+          88.861304,
+          97.563805
+        ]
+      },
+      "paired_powershell_minus_cmd_ms": [
+        228.60369500000002,
+        225.41731099999998,
+        230.31081199999997,
+        228.773212,
+        226.101512
+      ]
+    }
+  },
+  "all_20_decoded_paths_equal": true,
+  "reason": "PowerShell query median502.58ms at product ext4 welcome cwd exceeds prior approximately394ms PE native-placement component gain; cmd median107.48ms. Both return same absolute path.",
+  "scope": "query component only; not combined GUI latency, not an OS-cold measurement, not a promoted performance win",
+  "vm_actions_after_component": false
+}

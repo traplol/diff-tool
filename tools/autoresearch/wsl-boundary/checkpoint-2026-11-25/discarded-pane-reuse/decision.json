@@ -1,0 +1,21 @@
+{
+  "candidate": "pane-reuse-v3",
+  "decision": "discarded-as-optimization-for-this-workload",
+  "recorded_unix": 1795637767.8104916,
+  "authority": "Root accepted pilot stop and directed this decision.",
+  "source_hash": "b1d14ea917f425c692de3f180f85291f0f80d5d11dda1c5aef7119f6b4ff9148",
+  "baseline_source_hash": "0560a9511e83f27a55e7018ea59b0fe9b3864887a079eb7bf3e1f647743327ca",
+  "case": "wsl_linux",
+  "contract": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "reason": "Four valid alternating pilot processes did not meet the 10% working-tree median improvement gate. Candidate pooled working-tree median was 475ms versus 444ms; several other medians and non-IPC elapsed remainders increased.",
+  "pilot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-gui-ab-20261125T201158375570Z.json",
+  "summary": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-gui-ab-20261125T201158375570Z-pilot-summary.json",
+  "summary_sha256": "4ab28c10d68f99e46234c0ccb67d727898556d5c8eacc50a1471defbe3ff08d7",
+  "correctness_proof_preserved": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-aux-native-03/report.json",
+  "correctness_proof_sha256": "7eb9abc776b5b53aecf7862d90dfe03c8919e0fce86c2202e1c0eb4f08e4c0c6",
+  "correctness_passed": true,
+  "twenty_repetition_runs": false,
+  "promoted": false,
+  "production_edits": false,
+  "vm_released": true
+}

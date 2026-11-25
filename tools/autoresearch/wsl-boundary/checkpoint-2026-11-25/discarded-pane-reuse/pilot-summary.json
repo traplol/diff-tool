@@ -1,0 +1,2178 @@
+{
+  "case": "wsl_linux",
+  "contract": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "interpretation": "Each variant has two fresh processes and six samples per repeated action. P95 is the largest of six samples and is not a final twenty-repetition estimate. No OS cache flush. Foreground IPC includes transport and body reads; elapsed minus its interval union includes UI/render/frame/wait time, not pure paint. Background note polls remain in raw elapsed and are reported separately.",
+  "native_auxiliary_report": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-aux-native-03/report.json",
+  "native_auxiliary_report_sha256": "7eb9abc776b5b53aecf7862d90dfe03c8919e0fce86c2202e1c0eb4f08e4c0c6",
+  "pilot_gate": {
+    "interpretation": "Pilot continuation gate only; final source acceptance still needs the charter gates and matrix.",
+    "pass": false,
+    "pooled_pilot_actions": {
+      "A": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 11,
+              "median_ms": 9.5,
+              "p95_ms": 11,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            465.0000000000009,
+            345
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 134,
+              "median_ms": 80.49999999999909,
+              "p95_ms": 134,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 13,
+              "median_ms": 11.50000000000091,
+              "p95_ms": 13,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 465.0000000000009,
+          "median_ms": 356.50000000000045,
+          "p95_ms": 465.0000000000009,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 8.999999999998181,
+              "median_ms": 8.49999999999909,
+              "p95_ms": 8.999999999998181,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            606,
+            372
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 299.00000000000045,
+              "median_ms": 135.0,
+              "p95_ms": 299.00000000000045,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 46,
+              "median_ms": 33.99999999999977,
+              "p95_ms": 46,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 606,
+          "median_ms": 428.50000000000045,
+          "p95_ms": 606,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 3,
+              "max_ms": 10,
+              "median_ms": 8.99999999999909,
+              "p95_ms": 10,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            662,
+            554
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 61,
+              "median_ms": 39.50000000000091,
+              "p95_ms": 61,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 6,
+              "max_ms": 323,
+              "median_ms": 208.50000000000023,
+              "p95_ms": 323,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 662,
+          "median_ms": 536.5,
+          "p95_ms": 662,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 8,
+              "median_ms": 7.5,
+              "p95_ms": 8,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            533.9999999999982,
+            488.9999999999991
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 44,
+              "median_ms": 39.49999999999818,
+              "p95_ms": 44,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 6,
+              "max_ms": 216.99999999999818,
+              "median_ms": 169.99999999999864,
+              "p95_ms": 216.99999999999818,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 533.9999999999982,
+          "median_ms": 482.49999999999955,
+          "p95_ms": 533.9999999999982,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {},
+          "count": 2,
+          "first_use_ms": [
+            2477,
+            687
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 2,
+              "max_ms": 473,
+              "median_ms": 311.0,
+              "p95_ms": 473,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 2,
+              "max_ms": 1497,
+              "median_ms": 868.5,
+              "p95_ms": 1497,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2477,
+          "median_ms": 1582.0,
+          "p95_ms": 2477,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 3,
+              "max_ms": 12,
+              "median_ms": 10.000000000001819,
+              "p95_ms": 12,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            441,
+            442
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 110,
+              "median_ms": 89.5,
+              "p95_ms": 110,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 69,
+              "median_ms": 62.0,
+              "p95_ms": 69,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 460,
+          "median_ms": 442.0,
+          "p95_ms": 460,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 3,
+              "max_ms": 12.99999999999909,
+              "median_ms": 10,
+              "p95_ms": 12.99999999999909,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            1888,
+            474
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 1481,
+              "median_ms": 160.99999999999955,
+              "p95_ms": 1481,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 53,
+              "median_ms": 34.5,
+              "p95_ms": 53,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1888,
+          "median_ms": 444.0,
+          "p95_ms": 1888,
+          "pending_count": 0
+        }
+      },
+      "B": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 4,
+              "max_ms": 12,
+              "median_ms": 10.000000000000455,
+              "p95_ms": 12,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            439.00000000000045,
+            422
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 118,
+              "median_ms": 83.5,
+              "p95_ms": 118,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 16,
+              "median_ms": 13.999999999999886,
+              "p95_ms": 16,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 478,
+          "median_ms": 435.5000000000002,
+          "p95_ms": 478,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 9,
+              "median_ms": 9,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            487.9999999999998,
+            430.9999999999998
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 192,
+              "median_ms": 148.0,
+              "p95_ms": 192,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 61,
+              "median_ms": 42.5,
+              "p95_ms": 61,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 618,
+          "median_ms": 519.5000000000005,
+          "p95_ms": 618,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 10,
+              "median_ms": 9.5,
+              "p95_ms": 10,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            665,
+            563
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 55.99999999999818,
+              "median_ms": 50.5,
+              "p95_ms": 55.99999999999818,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 6,
+              "max_ms": 274,
+              "median_ms": 168.0000000000009,
+              "p95_ms": 274,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 665,
+          "median_ms": 553.0,
+          "p95_ms": 665,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 3,
+              "max_ms": 8,
+              "median_ms": 8,
+              "p95_ms": 8,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            555.0000000000009,
+            618
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 51,
+              "median_ms": 46.5,
+              "p95_ms": 51,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 6,
+              "max_ms": 224,
+              "median_ms": 187.5,
+              "p95_ms": 224,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 618,
+          "median_ms": 555.5000000000005,
+          "p95_ms": 618,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 25,
+              "median_ms": 25,
+              "p95_ms": 25,
+              "pending_count": 0
+            }
+          },
+          "count": 2,
+          "first_use_ms": [
+            1281,
+            675
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 2,
+              "max_ms": 559,
+              "median_ms": 356.5,
+              "p95_ms": 559,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 2,
+              "max_ms": 473,
+              "median_ms": 347.0,
+              "p95_ms": 473,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1281,
+          "median_ms": 978.0,
+          "p95_ms": 1281,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 9,
+              "median_ms": 8.499999999999545,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            521,
+            529.9999999999995
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 107,
+              "median_ms": 87.5,
+              "p95_ms": 107,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 82,
+              "median_ms": 72.0,
+              "p95_ms": 82,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 563.0000000000018,
+          "median_ms": 514.0,
+          "p95_ms": 563.0000000000018,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 7,
+              "median_ms": 7,
+              "p95_ms": 7,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            577,
+            568
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 175,
+              "median_ms": 167.5000000000009,
+              "p95_ms": 175,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 80,
+              "median_ms": 21.999999999999545,
+              "p95_ms": 80,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 577,
+          "median_ms": 475.0,
+          "p95_ms": 577,
+          "pending_count": 0
+        }
+      }
+    },
+    "working_tree_median_ratio": 1.0698198198198199,
+    "worst_p95_ratio": 0.5171578522406136
+  },
+  "pooled_pilot": {
+    "A": {
+      "branch_final": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 2,
+            "max_ms": 11,
+            "median_ms": 9.5,
+            "p95_ms": 11,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          465.0000000000009,
+          345
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 147,
+          "median_ms": 90.50000000000091,
+          "p95_ms": 147
+        },
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 6,
+            "max_ms": 134,
+            "median_ms": 80.49999999999909,
+            "p95_ms": 134,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 13,
+            "median_ms": 11.50000000000091,
+            "p95_ms": 13,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 465.0000000000009,
+        "median_ms": 356.50000000000045,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 318.0000000000009,
+          "median_ms": 262.9999999999991,
+          "p95_ms": 318.0000000000009
+        },
+        "p95_ms": 465.0000000000009,
+        "pending_count": 0,
+        "representative": {
+          "action": "branch_final",
+          "background_ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 8,
+              "error": null,
+              "op": "refresh_notes",
+              "pending": false,
+              "start_ms": 263.0000000000009
+            }
+          ],
+          "correct": true,
+          "elapsed_ms": 356.0000000000009,
+          "expected": {
+            "file": "arch/parisc/include/asm/extable.h",
+            "file_count": 30,
+            "left": "refs/heads/feature/boundary-first",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16",
+            "right": "refs/heads/feature/boundary-final",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 87,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 76,
+              "op": "compare",
+              "start_ms": 1
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 11,
+              "op": "display_patch",
+              "start_ms": 84
+            }
+          ],
+          "left": "refs/heads/feature/boundary-first",
+          "non_ipc_elapsed_ms": 269.0000000000009,
+          "phase": "repeated",
+          "repetition": 1,
+          "right": "refs/heads/feature/boundary-final"
+        }
+      },
+      "branch_first": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 2,
+            "max_ms": 8.999999999998181,
+            "median_ms": 8.49999999999909,
+            "p95_ms": 8.999999999998181,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          606,
+          372
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 324.0,
+          "median_ms": 180.5,
+          "p95_ms": 324.0
+        },
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 6,
+            "max_ms": 299.00000000000045,
+            "median_ms": 135.0,
+            "p95_ms": 299.00000000000045,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 46,
+            "median_ms": 33.99999999999977,
+            "p95_ms": 46,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 606,
+        "median_ms": 428.50000000000045,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 282.0,
+          "median_ms": 257.99999999999955,
+          "p95_ms": 282.0
+        },
+        "p95_ms": 606,
+        "pending_count": 0,
+        "representative": {
+          "action": "branch_first",
+          "background_ipc": [],
+          "correct": true,
+          "elapsed_ms": 430.0000000000009,
+          "expected": {
+            "file": "arch/parisc/include/asm/extable.h",
+            "file_count": 30,
+            "left": "refs/heads/main",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16",
+            "right": "refs/heads/feature/boundary-first",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 176,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 133,
+              "op": "compare",
+              "start_ms": 0
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 43,
+              "op": "display_patch",
+              "start_ms": 141
+            }
+          ],
+          "left": "refs/heads/main",
+          "non_ipc_elapsed_ms": 254.0000000000009,
+          "phase": "repeated",
+          "repetition": 1,
+          "right": "refs/heads/feature/boundary-first"
+        }
+      },
+      "comment_branch": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 3,
+            "max_ms": 10,
+            "median_ms": 8.99999999999909,
+            "p95_ms": 10,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          662,
+          554
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 384,
+          "median_ms": 246.50000000000114,
+          "p95_ms": 384
+        },
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 61,
+            "median_ms": 39.50000000000091,
+            "p95_ms": 61,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 6,
+            "max_ms": 323,
+            "median_ms": 208.50000000000023,
+            "p95_ms": 323,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 662,
+        "median_ms": 536.5,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 293.9999999999982,
+          "median_ms": 285.9999999999998,
+          "p95_ms": 293.9999999999982
+        },
+        "p95_ms": 662,
+        "pending_count": 0,
+        "representative": {
+          "action": "comment_branch",
+          "background_ipc": [],
+          "correct": true,
+          "elapsed_ms": 519,
+          "expected": {
+            "file": "kernel/fork.c",
+            "file_count": 30,
+            "left": "refs/heads/main",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment",
+            "right": "refs/heads/feature/boundary-first",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "kernel/fork.c",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 225.00000000000182,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 185,
+              "op": "open",
+              "start_ms": 0
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 40.00000000000182,
+              "op": "display_patch",
+              "start_ms": 192
+            }
+          ],
+          "left": "refs/heads/main",
+          "non_ipc_elapsed_ms": 293.9999999999982,
+          "phase": "repeated",
+          "repetition": 1,
+          "right": "refs/heads/feature/boundary-first"
+        }
+      },
+      "comment_worktree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 2,
+            "max_ms": 8,
+            "median_ms": 7.5,
+            "p95_ms": 8,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          533.9999999999982,
+          488.9999999999991
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 259.0,
+          "median_ms": 208.49999999999773,
+          "p95_ms": 259.0
+        },
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 44,
+            "median_ms": 39.49999999999818,
+            "p95_ms": 44,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 6,
+            "max_ms": 216.99999999999818,
+            "median_ms": 169.99999999999864,
+            "p95_ms": 216.99999999999818,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 533.9999999999982,
+        "median_ms": 482.49999999999955,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 282.0,
+          "median_ms": 269.5000000000009,
+          "p95_ms": 282.0
+        },
+        "p95_ms": 533.9999999999982,
+        "pending_count": 0,
+        "representative": {
+          "action": "comment_worktree",
+          "background_ipc": [],
+          "correct": true,
+          "elapsed_ms": 476,
+          "expected": {
+            "file": "kernel/fork.c",
+            "file_count": 15,
+            "left": "refs/heads/feature/boundary-final",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment",
+            "right": ":worktree:",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "kernel/fork.c",
+          "file_count": 15,
+          "foreground_ipc_coverage_ms": 200.0,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 168.99999999999818,
+              "op": "open",
+              "start_ms": 1.000000000001819
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 31.00000000000182,
+              "op": "display_patch",
+              "start_ms": 175
+            }
+          ],
+          "left": "refs/heads/feature/boundary-final",
+          "non_ipc_elapsed_ms": 276.0,
+          "phase": "repeated",
+          "repetition": 1,
+          "right": ":worktree:"
+        }
+      },
+      "open": {
+        "background_ipc_by_command_and_op": {},
+        "count": 2,
+        "first_use_ms": [
+          2477,
+          687
+        ],
+        "foreground_ipc_coverage": {
+          "count": 2,
+          "max_ms": 1970,
+          "median_ms": 1179.5,
+          "p95_ms": 1970
+        },
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 2,
+            "max_ms": 473,
+            "median_ms": 311.0,
+            "p95_ms": 473,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 2,
+            "max_ms": 1497,
+            "median_ms": 868.5,
+            "p95_ms": 1497,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 2477,
+        "median_ms": 1582.0,
+        "non_ipc_elapsed": {
+          "count": 2,
+          "max_ms": 507,
+          "median_ms": 402.5,
+          "p95_ms": 507
+        },
+        "p95_ms": 2477,
+        "pending_count": 0,
+        "representative": {
+          "action": "open",
+          "background_ipc": [],
+          "correct": true,
+          "elapsed_ms": 2477,
+          "expected": {
+            "file": "arch/parisc/include/asm/extable.h",
+            "file_count": 30,
+            "left": "refs/heads/main",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16",
+            "right": "refs/heads/feature/boundary-final",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 1970,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 1497,
+              "op": "open",
+              "start_ms": 1
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 473,
+              "op": "display_patch",
+              "start_ms": 1539
+            }
+          ],
+          "left": "refs/heads/main",
+          "non_ipc_elapsed_ms": 507,
+          "phase": "fresh_process",
+          "repetition": 0,
+          "right": "refs/heads/feature/boundary-final"
+        }
+      },
+      "stack": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 3,
+            "max_ms": 12,
+            "median_ms": 10.000000000001819,
+            "p95_ms": 12,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          441,
+          442
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 163.0000000000009,
+          "median_ms": 150.5,
+          "p95_ms": 163.0000000000009
+        },
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 6,
+            "max_ms": 110,
+            "median_ms": 89.5,
+            "p95_ms": 110,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 69,
+            "median_ms": 62.0,
+            "p95_ms": 69,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 460,
+        "median_ms": 442.0,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 305.9999999999982,
+          "median_ms": 296.49999999999955,
+          "p95_ms": 305.9999999999982
+        },
+        "p95_ms": 460,
+        "pending_count": 0,
+        "representative": {
+          "action": "stack",
+          "background_ipc": [],
+          "correct": true,
+          "elapsed_ms": 442,
+          "expected": {
+            "file": "arch/parisc/include/asm/extable.h",
+            "file_count": 30,
+            "left": "refs/heads/main",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16",
+            "right": "refs/heads/feature/boundary-final",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 146,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 79,
+              "op": "compare",
+              "start_ms": 0
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 67,
+              "op": "display_patch",
+              "start_ms": 86
+            }
+          ],
+          "left": "refs/heads/main",
+          "non_ipc_elapsed_ms": 296,
+          "phase": "repeated",
+          "repetition": 1,
+          "right": "refs/heads/feature/boundary-final"
+        }
+      },
+      "working_tree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 3,
+            "max_ms": 12.99999999999909,
+            "median_ms": 10,
+            "p95_ms": 12.99999999999909,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          1888,
+          474
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 1522,
+          "median_ms": 191.5,
+          "p95_ms": 1522
+        },
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 6,
+            "max_ms": 1481,
+            "median_ms": 160.99999999999955,
+            "p95_ms": 1481,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 53,
+            "median_ms": 34.5,
+            "p95_ms": 53,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 1888,
+        "median_ms": 444.0,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 366,
+          "median_ms": 257.9999999999998,
+          "p95_ms": 366
+        },
+        "p95_ms": 1888,
+        "pending_count": 0,
+        "representative": {
+          "action": "working_tree",
+          "background_ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 10,
+              "error": null,
+              "op": "refresh_notes",
+              "pending": false,
+              "start_ms": 250
+            }
+          ],
+          "correct": true,
+          "elapsed_ms": 446,
+          "expected": {
+            "file": "kernel/fork.c",
+            "file_count": 15,
+            "left": "refs/heads/feature/boundary-final",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "right": ":worktree:",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "kernel/fork.c",
+          "file_count": 15,
+          "foreground_ipc_coverage_ms": 188,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 153,
+              "op": "compare",
+              "start_ms": 1
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 35,
+              "op": "display_patch",
+              "start_ms": 158
+            }
+          ],
+          "left": "refs/heads/feature/boundary-final",
+          "non_ipc_elapsed_ms": 258,
+          "phase": "repeated",
+          "repetition": 2,
+          "right": ":worktree:"
+        }
+      }
+    },
+    "B": {
+      "branch_final": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 4,
+            "max_ms": 12,
+            "median_ms": 10.000000000000455,
+            "p95_ms": 12,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          439.00000000000045,
+          422
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 131.00000000000045,
+          "median_ms": 98.49999999999955,
+          "p95_ms": 131.00000000000045
+        },
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 6,
+            "max_ms": 118,
+            "median_ms": 83.5,
+            "p95_ms": 118,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 16,
+            "median_ms": 13.999999999999886,
+            "p95_ms": 16,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 478,
+        "median_ms": 435.5000000000002,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 366,
+          "median_ms": 335.50000000000045,
+          "p95_ms": 366
+        },
+        "p95_ms": 478,
+        "pending_count": 0,
+        "representative": {
+          "action": "branch_final",
+          "background_ipc": [],
+          "correct": true,
+          "elapsed_ms": 439.00000000000045,
+          "expected": {
+            "file": "arch/parisc/include/asm/extable.h",
+            "file_count": 30,
+            "left": "refs/heads/feature/boundary-first",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16",
+            "right": "refs/heads/feature/boundary-final",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 131.00000000000045,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 118,
+              "op": "compare",
+              "start_ms": 1
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 13.000000000000455,
+              "op": "display_patch",
+              "start_ms": 128
+            }
+          ],
+          "left": "refs/heads/feature/boundary-first",
+          "non_ipc_elapsed_ms": 308.0,
+          "phase": "first_use",
+          "repetition": 0,
+          "right": "refs/heads/feature/boundary-final"
+        }
+      },
+      "branch_first": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 1,
+            "max_ms": 9,
+            "median_ms": 9,
+            "p95_ms": 9,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          487.9999999999998,
+          430.9999999999998
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 253,
+          "median_ms": 192.0,
+          "p95_ms": 253
+        },
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 6,
+            "max_ms": 192,
+            "median_ms": 148.0,
+            "p95_ms": 192,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 61,
+            "median_ms": 42.5,
+            "p95_ms": 61,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 618,
+        "median_ms": 519.5000000000005,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 365,
+          "median_ms": 333.00000000000045,
+          "p95_ms": 365
+        },
+        "p95_ms": 618,
+        "pending_count": 0,
+        "representative": {
+          "action": "branch_first",
+          "background_ipc": [],
+          "correct": true,
+          "elapsed_ms": 521.0000000000009,
+          "expected": {
+            "file": "arch/parisc/include/asm/extable.h",
+            "file_count": 30,
+            "left": "refs/heads/main",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16",
+            "right": "refs/heads/feature/boundary-first",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 189,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 149,
+              "op": "compare",
+              "start_ms": 1
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 40,
+              "op": "display_patch",
+              "start_ms": 156
+            }
+          ],
+          "left": "refs/heads/main",
+          "non_ipc_elapsed_ms": 332.0000000000009,
+          "phase": "repeated",
+          "repetition": 1,
+          "right": "refs/heads/feature/boundary-first"
+        }
+      },
+      "comment_branch": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 2,
+            "max_ms": 10,
+            "median_ms": 9.5,
+            "p95_ms": 10,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          665,
+          563
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 327,
+          "median_ms": 218.5000000000009,
+          "p95_ms": 327
+        },
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 55.99999999999818,
+            "median_ms": 50.5,
+            "p95_ms": 55.99999999999818,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 6,
+            "max_ms": 274,
+            "median_ms": 168.0000000000009,
+            "p95_ms": 274,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 665,
+        "median_ms": 553.0,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 341,
+          "median_ms": 337.4999999999991,
+          "p95_ms": 341
+        },
+        "p95_ms": 665,
+        "pending_count": 0,
+        "representative": {
+          "action": "comment_branch",
+          "background_ipc": [],
+          "correct": true,
+          "elapsed_ms": 563,
+          "expected": {
+            "file": "kernel/fork.c",
+            "file_count": 30,
+            "left": "refs/heads/main",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment",
+            "right": "refs/heads/feature/boundary-first",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "kernel/fork.c",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 222,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 172,
+              "op": "open",
+              "start_ms": 1
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 50,
+              "op": "display_patch",
+              "start_ms": 180
+            }
+          ],
+          "left": "refs/heads/main",
+          "non_ipc_elapsed_ms": 341,
+          "phase": "first_use",
+          "repetition": 0,
+          "right": "refs/heads/feature/boundary-first"
+        }
+      },
+      "comment_worktree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 3,
+            "max_ms": 8,
+            "median_ms": 8,
+            "p95_ms": 8,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          555.0000000000009,
+          618
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 275,
+          "median_ms": 233.5,
+          "p95_ms": 275
+        },
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 51,
+            "median_ms": 46.5,
+            "p95_ms": 51,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 6,
+            "max_ms": 224,
+            "median_ms": 187.5,
+            "p95_ms": 224,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 618,
+        "median_ms": 555.5000000000005,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 358,
+          "median_ms": 327.5,
+          "p95_ms": 358
+        },
+        "p95_ms": 618,
+        "pending_count": 0,
+        "representative": {
+          "action": "comment_worktree",
+          "background_ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 8,
+              "error": null,
+              "op": "refresh_notes",
+              "pending": false,
+              "start_ms": 445
+            }
+          ],
+          "correct": true,
+          "elapsed_ms": 555.0000000000009,
+          "expected": {
+            "file": "kernel/fork.c",
+            "file_count": 15,
+            "left": "refs/heads/feature/boundary-final",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment",
+            "right": ":worktree:",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "kernel/fork.c",
+          "file_count": 15,
+          "foreground_ipc_coverage_ms": 244,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 199,
+              "op": "open",
+              "start_ms": 0
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 45,
+              "op": "display_patch",
+              "start_ms": 205
+            }
+          ],
+          "left": "refs/heads/feature/boundary-final",
+          "non_ipc_elapsed_ms": 311.0000000000009,
+          "phase": "first_use",
+          "repetition": 0,
+          "right": ":worktree:"
+        }
+      },
+      "open": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 1,
+            "max_ms": 25,
+            "median_ms": 25,
+            "p95_ms": 25,
+            "pending_count": 0
+          }
+        },
+        "count": 2,
+        "first_use_ms": [
+          1281,
+          675
+        ],
+        "foreground_ipc_coverage": {
+          "count": 2,
+          "max_ms": 1032,
+          "median_ms": 703.5,
+          "p95_ms": 1032
+        },
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 2,
+            "max_ms": 559,
+            "median_ms": 356.5,
+            "p95_ms": 559,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 2,
+            "max_ms": 473,
+            "median_ms": 347.0,
+            "p95_ms": 473,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 1281,
+        "median_ms": 978.0,
+        "non_ipc_elapsed": {
+          "count": 2,
+          "max_ms": 300,
+          "median_ms": 274.5,
+          "p95_ms": 300
+        },
+        "p95_ms": 1281,
+        "pending_count": 0,
+        "representative": {
+          "action": "open",
+          "background_ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 25,
+              "error": null,
+              "op": "refresh_notes",
+              "pending": false,
+              "start_ms": 1068
+            }
+          ],
+          "correct": true,
+          "elapsed_ms": 1281,
+          "expected": {
+            "file": "arch/parisc/include/asm/extable.h",
+            "file_count": 30,
+            "left": "refs/heads/main",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16",
+            "right": "refs/heads/feature/boundary-final",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 1032,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 473,
+              "op": "open",
+              "start_ms": 1
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 559,
+              "op": "display_patch",
+              "start_ms": 490
+            }
+          ],
+          "left": "refs/heads/main",
+          "non_ipc_elapsed_ms": 249,
+          "phase": "fresh_process",
+          "repetition": 0,
+          "right": "refs/heads/feature/boundary-final"
+        }
+      },
+      "stack": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 2,
+            "max_ms": 9,
+            "median_ms": 8.499999999999545,
+            "p95_ms": 9,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          521,
+          529.9999999999995
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 185,
+          "median_ms": 159.5,
+          "p95_ms": 185
+        },
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 6,
+            "max_ms": 107,
+            "median_ms": 87.5,
+            "p95_ms": 107,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 82,
+            "median_ms": 72.0,
+            "p95_ms": 82,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 563.0000000000018,
+        "median_ms": 514.0,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 378.0000000000018,
+          "median_ms": 355.5000000000002,
+          "p95_ms": 378.0000000000018
+        },
+        "p95_ms": 563.0000000000018,
+        "pending_count": 0,
+        "representative": {
+          "action": "stack",
+          "background_ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 9,
+              "error": null,
+              "op": "refresh_notes",
+              "pending": false,
+              "start_ms": 404
+            }
+          ],
+          "correct": true,
+          "elapsed_ms": 521,
+          "expected": {
+            "file": "arch/parisc/include/asm/extable.h",
+            "file_count": 30,
+            "left": "refs/heads/main",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16",
+            "right": "refs/heads/feature/boundary-final",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "arch/parisc/include/asm/extable.h",
+          "file_count": 30,
+          "foreground_ipc_coverage_ms": 168,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 91,
+              "op": "compare",
+              "start_ms": 1
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 77,
+              "op": "display_patch",
+              "start_ms": 99
+            }
+          ],
+          "left": "refs/heads/main",
+          "non_ipc_elapsed_ms": 353,
+          "phase": "first_use",
+          "repetition": 0,
+          "right": "refs/heads/feature/boundary-final"
+        }
+      },
+      "working_tree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 1,
+            "max_ms": 7,
+            "median_ms": 7,
+            "p95_ms": 7,
+            "pending_count": 0
+          }
+        },
+        "count": 6,
+        "first_use_ms": [
+          577,
+          568
+        ],
+        "foreground_ipc_coverage": {
+          "count": 6,
+          "max_ms": 254.0,
+          "median_ms": 191.99999999999955,
+          "p95_ms": 254.0
+        },
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 6,
+            "max_ms": 175,
+            "median_ms": 167.5000000000009,
+            "p95_ms": 175,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 6,
+            "max_ms": 80,
+            "median_ms": 21.999999999999545,
+            "p95_ms": 80,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 577,
+        "median_ms": 475.0,
+        "non_ipc_elapsed": {
+          "count": 6,
+          "max_ms": 369,
+          "median_ms": 285.0,
+          "p95_ms": 369
+        },
+        "p95_ms": 577,
+        "pending_count": 0,
+        "representative": {
+          "action": "working_tree",
+          "background_ipc": [],
+          "correct": true,
+          "elapsed_ms": 524,
+          "expected": {
+            "file": "kernel/fork.c",
+            "file_count": 15,
+            "left": "refs/heads/feature/boundary-final",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "right": ":worktree:",
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+          },
+          "file": "kernel/fork.c",
+          "file_count": 15,
+          "foreground_ipc_coverage_ms": 199.0000000000009,
+          "ipc": [
+            {
+              "command": "workspace",
+              "elapsed_ms": 158,
+              "op": "compare",
+              "start_ms": 0
+            },
+            {
+              "command": "workspace",
+              "elapsed_ms": 41.00000000000091,
+              "op": "display_patch",
+              "start_ms": 163
+            }
+          ],
+          "left": "refs/heads/feature/boundary-final",
+          "non_ipc_elapsed_ms": 324.9999999999991,
+          "phase": "repeated",
+          "repetition": 1,
+          "right": ":worktree:"
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 465.0000000000009,
+          "max_ms": 465.0000000000009,
+          "p50_ms": 388,
+          "p95_ms": 465.0000000000009
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 606,
+          "max_ms": 606,
+          "p50_ms": 440.9999999999982,
+          "p95_ms": 606
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 662,
+          "max_ms": 662,
+          "p50_ms": 519,
+          "p95_ms": 662
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 533.9999999999982,
+          "max_ms": 533.9999999999982,
+          "p50_ms": 476,
+          "p95_ms": 533.9999999999982
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 2477,
+          "max_ms": 2477,
+          "p50_ms": 2477,
+          "p95_ms": 2477
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 441,
+          "max_ms": 449.9999999999982,
+          "p50_ms": 442,
+          "p95_ms": 449.9999999999982
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 1888,
+          "max_ms": 1888,
+          "p50_ms": 446,
+          "p95_ms": 1888
+        }
+      },
+      "browser_before": {
+        "busy": false,
+        "comparison": "",
+        "filename": "Select a file",
+        "repository": "",
+        "status": "\n          Local Gitfatal: not a git repository (or any of the parent directories): .git\n        ",
+        "title": "Branchline",
+        "url": "tauri://localhost",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/60.5 Safari/605.1.15",
+        "viewport": [
+          1280,
+          800
+        ],
+        "visible": "visible"
+      },
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-01.cleanup.log",
+      "label": "pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-01",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-combined-v3/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-combined-v3/branchline",
+          "pid": 118213,
+          "start_ticks": "14181408"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-combined-v3/branchline",
+        "binary_sha256": "f31f3342c307d433bdd9ad53b5e7232a67463240ccd11958ea56159ec842efeb",
+        "created": "14181408",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 118211,
+          "start_ticks": "14181385"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 118213,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "2d8bbbd5-c604-47ed-b975-a17bb69f90a1",
+        "source_hash": "0560a9511e83f27a55e7018ea59b0fe9b3864887a079eb7bf3e1f647743327ca",
+        "supervisor_pid": 118205
+      },
+      "number": 1,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-01.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-01/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-01/verdict.json"
+    },
+    {
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 439.00000000000045,
+          "max_ms": 478,
+          "p50_ms": 439.00000000000045,
+          "p95_ms": 478
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 487.9999999999998,
+          "max_ms": 618,
+          "p50_ms": 521.0000000000009,
+          "p95_ms": 618
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 665,
+          "max_ms": 665,
+          "p50_ms": 623,
+          "p95_ms": 665
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 555.0000000000009,
+          "max_ms": 601,
+          "p50_ms": 555.0000000000009,
+          "p95_ms": 601
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 1281,
+          "max_ms": 1281,
+          "p50_ms": 1281,
+          "p95_ms": 1281
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 521,
+          "max_ms": 563.0000000000018,
+          "p50_ms": 521,
+          "p95_ms": 563.0000000000018
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 577,
+          "max_ms": 577,
+          "p50_ms": 524,
+          "p95_ms": 577
+        }
+      },
+      "browser_before": {
+        "busy": false,
+        "comparison": "",
+        "filename": "Select a file",
+        "repository": "",
+        "status": "\n          Local Gitfatal: not a git repository (or any of the parent directories): .git\n        ",
+        "title": "Branchline",
+        "url": "tauri://localhost",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/60.5 Safari/605.1.15",
+        "viewport": [
+          1280,
+          800
+        ],
+        "visible": "visible"
+      },
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-01.cleanup.log",
+      "label": "pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-01",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-pane-reuse-v3/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-pane-reuse-v3/branchline",
+          "pid": 118974,
+          "start_ticks": "14183602"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-pane-reuse-v3/branchline",
+        "binary_sha256": "dbba4e387489c5de92380ac2052f2e93022b7828e84e1b18d656cb5b911d8f0d",
+        "created": "14183602",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 118972,
+          "start_ticks": "14183596"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 118974,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "73549de9-305f-4b0c-9d98-21039b038f48",
+        "source_hash": "b1d14ea917f425c692de3f180f85291f0f80d5d11dda1c5aef7119f6b4ff9148",
+        "supervisor_pid": 118971
+      },
+      "number": 1,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-01.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-01/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-01/verdict.json"
+    },
+    {
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 345,
+          "max_ms": 357,
+          "p50_ms": 356.0000000000009,
+          "p95_ms": 357
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 372,
+          "max_ms": 430.0000000000009,
+          "p50_ms": 427,
+          "p95_ms": 430.0000000000009
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 554,
+          "max_ms": 583,
+          "p50_ms": 554,
+          "p95_ms": 583
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 488.9999999999991,
+          "max_ms": 516.9999999999982,
+          "p50_ms": 488.9999999999991,
+          "p95_ms": 516.9999999999982
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 687,
+          "max_ms": 687,
+          "p50_ms": 687,
+          "p95_ms": 687
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 442,
+          "max_ms": 460,
+          "p50_ms": 442,
+          "p95_ms": 460
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 474,
+          "max_ms": 474,
+          "p50_ms": 442,
+          "p95_ms": 474
+        }
+      },
+      "browser_before": {
+        "busy": false,
+        "comparison": "",
+        "filename": "Select a file",
+        "repository": "",
+        "status": "\n          Local Gitfatal: not a git repository (or any of the parent directories): .git\n        ",
+        "title": "Branchline",
+        "url": "tauri://localhost",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/60.5 Safari/605.1.15",
+        "viewport": [
+          1280,
+          800
+        ],
+        "visible": "visible"
+      },
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-02.cleanup.log",
+      "label": "pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-02",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-combined-v3/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-combined-v3/branchline",
+          "pid": 119745,
+          "start_ticks": "14185403"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-combined-v3/branchline",
+        "binary_sha256": "f31f3342c307d433bdd9ad53b5e7232a67463240ccd11958ea56159ec842efeb",
+        "created": "14185403",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 119743,
+          "start_ticks": "14185402"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 119745,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "2281f613-7043-4c30-b6de-947a6c760a9b",
+        "source_hash": "0560a9511e83f27a55e7018ea59b0fe9b3864887a079eb7bf3e1f647743327ca",
+        "supervisor_pid": 119742
+      },
+      "number": 2,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-02.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-02/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-baseline-wsl-linux-20261125T201158375570Z-02/verdict.json"
+    },
+    {
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 422,
+          "max_ms": 442,
+          "p50_ms": 429,
+          "p95_ms": 442
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 430.9999999999998,
+          "max_ms": 529,
+          "p50_ms": 518,
+          "p95_ms": 529
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 563,
+          "max_ms": 563,
+          "p50_ms": 543,
+          "p95_ms": 563
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 618,
+          "max_ms": 618,
+          "p50_ms": 556,
+          "p95_ms": 618
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 675,
+          "max_ms": 675,
+          "p50_ms": 675,
+          "p95_ms": 675
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 529.9999999999995,
+          "max_ms": 529.9999999999995,
+          "p50_ms": 506,
+          "p95_ms": 529.9999999999995
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 568,
+          "max_ms": 568,
+          "p50_ms": 418.9999999999991,
+          "p95_ms": 568
+        }
+      },
+      "browser_before": {
+        "busy": false,
+        "comparison": "",
+        "filename": "Select a file",
+        "repository": "",
+        "status": "\n          Local Gitfatal: not a git repository (or any of the parent directories): .git\n        ",
+        "title": "Branchline",
+        "url": "tauri://localhost",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/60.5 Safari/605.1.15",
+        "viewport": [
+          1280,
+          800
+        ],
+        "visible": "visible"
+      },
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-02.cleanup.log",
+      "label": "pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-02",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-pane-reuse-v3/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-pane-reuse-v3/branchline",
+          "pid": 120494,
+          "start_ticks": "14186928"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-pane-reuse-v3/branchline",
+        "binary_sha256": "dbba4e387489c5de92380ac2052f2e93022b7828e84e1b18d656cb5b911d8f0d",
+        "created": "14186928",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 120492,
+          "start_ticks": "14186927"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 120494,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "d4515bf2-405c-4ff7-ab91-a4122f87360b",
+        "source_hash": "b1d14ea917f425c692de3f180f85291f0f80d5d11dda1c5aef7119f6b4ff9148",
+        "supervisor_pid": 120491
+      },
+      "number": 2,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-02.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-02/samples.jsonl",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-v3-candidate-wsl-linux-20261125T201158375570Z-02/verdict.json"
+    }
+  ],
+  "state": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/pane-reuse-gui-ab-20261125T201158375570Z.json",
+  "status": "pilot-no-qualifying-benefit-review-required",
+  "variants": {
+    "A": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-combined-v3/branchline",
+      "binary_sha256": "f31f3342c307d433bdd9ad53b5e7232a67463240ccd11958ea56159ec842efeb",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-combined-v3-build.json",
+      "build_record_sha256": "62c874fa4e64f8d649d04c97a056ce44d412f4a32873c365d081cfe0e519be59",
+      "label": "pane-reuse-v3-baseline",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-combined-v3-source",
+      "source_hash": "0560a9511e83f27a55e7018ea59b0fe9b3864887a079eb7bf3e1f647743327ca"
+    },
+    "B": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-pane-reuse-v3/branchline",
+      "binary_sha256": "dbba4e387489c5de92380ac2052f2e93022b7828e84e1b18d656cb5b911d8f0d",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-build.json",
+      "build_record_sha256": "1914f2f7b42f9f80392da92deb5e10c2286f5e2889d9bf72c75456eb67049008",
+      "label": "pane-reuse-v3-candidate",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source",
+      "source_hash": "b1d14ea917f425c692de3f180f85291f0f80d5d11dda1c5aef7119f6b4ff9148"
+    }
+  }
+}

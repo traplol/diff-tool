@@ -1,0 +1,109 @@
+{
+  "actions": {
+    "branch_final": {
+      "count": 20,
+      "first_use_ms": 554,
+      "max_ms": 638,
+      "p50_ms": 554,
+      "p95_ms": 575
+    },
+    "branch_first": {
+      "count": 20,
+      "first_use_ms": 544,
+      "max_ms": 703,
+      "p50_ms": 619,
+      "p95_ms": 674
+    },
+    "comment_branch": {
+      "count": 20,
+      "first_use_ms": 686,
+      "max_ms": 700,
+      "p50_ms": 664,
+      "p95_ms": 695
+    },
+    "comment_worktree": {
+      "count": 20,
+      "first_use_ms": 1061,
+      "max_ms": 1138,
+      "p50_ms": 1074,
+      "p95_ms": 1119.9999999999964
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 1376,
+      "max_ms": 1376,
+      "p50_ms": 1376,
+      "p95_ms": 1376
+    },
+    "stack": {
+      "count": 20,
+      "first_use_ms": 655,
+      "max_ms": 698,
+      "p50_ms": 627.0000000000146,
+      "p95_ms": 681
+    },
+    "working_tree": {
+      "count": 20,
+      "first_use_ms": 1275.9999999999995,
+      "max_ms": 1284,
+      "p50_ms": 1219,
+      "p95_ms": 1283.0000000000146
+    }
+  },
+  "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+  "case": "wsl_windows",
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "finished_at_unix": 1795637016.8360724,
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "label": "stateless-status-b2de070",
+  "launch": {
+    "app_process": {
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+      ],
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+      "pid": 117510,
+      "start_ticks": "14118336"
+    },
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+    "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+    "created": "14118336",
+    "display": ":0",
+    "driver_process": {
+      "binary": "/usr/bin/WebKitWebDriver",
+      "pid": 117508,
+      "start_ticks": "14118330"
+    },
+    "gdk_backend": "x11",
+    "mcp_port": 28867,
+    "pid": 117510,
+    "port": 29225,
+    "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+    "session": "a0ff4a56-28ea-4c47-b110-d64eb3e1b98a",
+    "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+    "supervisor_pid": 117507
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "measure",
+  "repetitions": 20,
+  "schema_version": 1,
+  "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+  "started_at_unix": 1795636889.3657265,
+  "target_met": false,
+  "target_ms": 250.0,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed",
+  "worst_interaction_p95_ms": 1376
+}

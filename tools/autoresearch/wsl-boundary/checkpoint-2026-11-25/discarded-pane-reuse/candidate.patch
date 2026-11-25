@@ -1,0 +1,975 @@
+--- a/frontend/app.js
++++ b/frontend/app.js
+@@ -51,6 +51,7 @@
+   loading = false,
+   sequence = 0;
+ let fileTree;
++let retainedEditor;
+ let notesPollInFlight = false;
+ const positions = new Map(),
+   folds = new Map();
+@@ -137,12 +138,18 @@
+     ])
+   );
+ }
++function discardRetainedEditor() {
++  retainedEditor?.destroy();
++  retainedEditor = null;
++}
+ function leaveFile() {
+   if (editor) {
+     positions.set(positionKey(), editor.getPosition());
+-    editor.destroy();
++    discardRetainedEditor();
++    editor.suspend();
++    retainedEditor = editor;
+     editor = null;
+-  }
++  } else retainedEditor?.suspend();
+   lines = [];
+   sequence++;
+   $("comment-jump-context").hidden = true;
+@@ -180,6 +187,7 @@
+     for (const n of state.notes)
+       if (folds.get(n.id) === !!n.resolved) folds.delete(n.id);
+     if (previousRoot !== state.repo.root) {
++      discardRetainedEditor();
+       positions.clear();
+       folds.clear();
+       selectedNote = undefined;
+@@ -507,8 +515,8 @@
+   $("suggest").disabled = true;
+   $("selection").textContent = "Whole file";
+   $("selection-help").textContent = "";
+-  $("diff").replaceChildren();
+   if (!f) {
++    discardRetainedEditor();
+     empty(
+       $("diff"),
+       state.error ||
+@@ -522,7 +530,7 @@
+     const data = await request("display_patch", { file: index });
+     if (sequence !== token) return;
+     lines = decodePatch(data);
+-    editor = createDiff($("diff"), {
++    const options = {
+       file: f,
+       emptyBase: state.comparison.base === state.repo.refs[EMPTY],
+       lines,
+@@ -546,12 +554,23 @@
+         if (help.textContent !== reason) help.textContent = reason;
+         $("suggest").disabled = !canSuggest;
+       },
+-    });
++    };
++    if (retainedEditor?.setDocument(options)) {
++      editor = retainedEditor;
++      retainedEditor = null;
++    } else {
++      discardRetainedEditor();
++      $("diff").replaceChildren();
++      editor = createDiff($("diff"), options);
++    }
+     $("full-file").disabled = !canExpandFile(f);
+     if (jump != null) editor.jump(jump);
+     if (focus && tab === "Changes") editor.focus();
+   } catch (err) {
+     if (sequence === token) {
++      discardRetainedEditor();
++      editor?.destroy();
++      editor = null;
+       empty($("diff"), String(err));
+       status(String(err), true);
+     }
+@@ -949,12 +968,14 @@
+   const captured = state;
+   const file = currentFile();
+   const capturedEditor = editor;
++  const capturedSequence = sequence;
+   let result;
+   if (scope === "file" || scope === "patch") {
+     if (!capturedEditor || !file || !captured.comparison)
+       throw Error("Choose a text file for this scope.");
+     const contents = scope === "file" ? await capturedEditor.contents() : null;
+-    if (captured !== state || editor !== capturedEditor) throw Error("The displayed file changed.");
++    if (captured !== state || editor !== capturedEditor || sequence !== capturedSequence)
++      throw Error("The displayed file changed.");
+     const { base, head } = captured.comparison;
+     result = localPaletteHits(scope, query, contents, lines, {
+       pair: captured.pair, base, head, path: file.path, group: file.group,
+--- a/frontend/editor.js
++++ b/frontend/editor.js
+@@ -67,6 +67,30 @@
+   });
+   flush();
+   return rows;
++}
++
++// Only rendered text belongs in the document. Row kinds, numbers, comments and
++// syntax are repainted separately, even when fresh snapshots share this text.
++export function rowUpdates(oldRows, previous, rows, lines, documents) {
++  const sameRow = (a, b) => rows[b].every((index, col) =>
++    (previous[oldRows[a][col]]?.text ?? "") === (lines[index]?.text ?? ""));
++  let start = 0, oldEnd = oldRows.length, end = rows.length;
++  while (start < oldEnd && start < end && sameRow(start, start)) start++;
++  while (oldEnd > start && end > start && sameRow(oldEnd - 1, end - 1)) {
++    oldEnd--; end--;
++  }
++  return documents.map((doc, col) => {
++    if (start === oldEnd && start === end) return undefined;
++    const offset = (row) => row < oldRows.length ? doc.line(row + 1).from : doc.length;
++    let from = offset(start);
++    const insert = rows.slice(start, end).map((row) => lines[row[col]]?.text ?? "");
++    if (oldEnd < oldRows.length) insert.push("");
++    else if (start > 0) {
++      if (start < oldRows.length) from--;
++      insert.unshift("");
++    }
++    return { from, to: offset(oldEnd), insert: Text.of(insert.length ? insert : [""]) };
++  });
+ }
+ 
+ // Keep matches on patch lines so a shared context line counts once in Split.
+@@ -533,14 +557,16 @@
+ }
+ 
+ export function createDiff(parent, options) {
+-  const { lines: patch, file, folds = new Map() } = options;
+-  const gaps =
++  let { lines: patch, file, folds = new Map() } = options;
++  let gaps =
+     canExpandFile(file) && options.loadContents ? contextGaps(patch, file) : [];
+   const expanded = new Map();
+   let { lines, controls } = displayContext(patch, gaps, expanded);
+   let contents,
+     loadingContents,
+     disposed = false,
++    suspended = false,
++    documentVersion = 0,
+     contextVersion = 0,
+     searchVersion = 0,
+     full = false;
+@@ -551,7 +577,11 @@
+   const layouts = new Map();
+   let layout, closeMenu, paintFrame, restoreFrame, pendingPosition;
+   let notesVersion = 0;
+-  const isCode = codeFiles.test(file.path);
++  let isCode = codeFiles.test(file.path), updatingRows = false;
++  const current = (version = documentVersion) =>
++    !disposed && !suspended && version === documentVersion;
++  const ownsDocument = (owner) => current() && owner === layout &&
++    owner.documentVersion === documentVersion;
+   const numbered = { old: new Map(), new: new Map() };
+   let digits = 2;
+   function indexLines() {
+@@ -569,21 +599,30 @@
+   indexLines();
+ 
+   let resumeFromGap = false;
+-  const controller = {
+-    folded: (n) => folds.get(n.id) ?? !!n.resolved,
+-    canApply: (n) => !!options.canApply?.(n),
+-    action: (action, note) => options.onAction?.(action, note),
+-    toggle(note) {
+-      setFold(folds, note, !controller.folded(note));
+-      refreshNotes();
+-    },
+-  };
++  let controller, toggleContext;
++  function bindDocumentCallbacks() {
++    const version = documentVersion, callbacks = options, documentFolds = folds;
++    const bound = {
++      folded: (n) => documentFolds.get(n.id) ?? !!n.resolved,
++      canApply: (n) => current(version) && !!callbacks.canApply?.(n),
++      action: (action, note) => current(version) && callbacks.onAction?.(action, note),
++      toggle(note) {
++        if (!current(version)) return;
++        setFold(documentFolds, note, !bound.folded(note));
++        refreshNotes();
++      },
++    };
++    controller = bound;
++    toggleContext = (...args) => current(version) && toggleGap(...args);
++  }
++  bindDocumentCallbacks();
+ 
+   function colSide(col) {
+     return layout.split ? (col === 0 ? "old" : "new") : "both";
+   }
+ 
+   function paintSelection() {
++    if (!current()) return;
+     if (layout.drawnSelection === selection) return;
+     layout.drawnSelection = selection;
+     for (const { view } of layout.panes)
+@@ -591,17 +630,22 @@
+   }
+ 
+   function changedSelection(next) {
++    if (!current()) return;
+     resumeFromGap = false;
+     selection = next;
+-    if (!paintFrame)
++    if (!paintFrame) {
++      const version = documentVersion;
+       paintFrame = requestAnimationFrame(() => {
+         paintFrame = null;
++        if (!current(version)) return;
+         paintSelection();
+         announceSelection();
+       });
++    }
+   }
+ 
+   function announceSelection() {
++    if (!current()) return;
+     const selected = selectedLines(lines, selection);
+     const side = selection?.side ?? "both";
+     const label =
+@@ -621,6 +665,7 @@
+   }
+ 
+   function compose(suggestion = false, wholeFile = false) {
++    if (!current()) return;
+     const selected = wholeFile ? [] : selectedLines(lines, selection);
+     const side = selection?.side ?? "both";
+     const reason = commentDisabledReason(selected, !wholeFile && !!selection);
+@@ -669,6 +714,8 @@
+   }
+ 
+   function copySelected() {
++    if (!current()) return;
++    const version = documentVersion;
+     const selected = selectedLines(lines, selection);
+     if (!selected.length) return;
+     const text = selected.map((l) => l.text).join("\n");
+@@ -676,10 +723,12 @@
+       ? options.onCopy(text)
+       : navigator.clipboard?.writeText(text);
+     if (result?.catch)
+-      result.catch((error) => options.onStatus?.(String(error)));
++      result.catch((error) => current(version) && options.onStatus?.(String(error)));
+   }
+ 
+   function menuAt(event, col, row) {
++    if (!current()) return;
++    const version = documentVersion;
+     const index = layout.rows[row]?.[col];
+     if (index >= 0 && !includesLine(selection, index, lines[index]))
+       selectRow(col, row, false);
+@@ -704,7 +753,7 @@
+         },
+       ],
+       ["Copy selected lines", copySelected, selected.length > 0],
+-    ]);
++    ].map(([label, run, enabled]) => [label, () => current(version) && run(), enabled]));
+   }
+ 
+   function arrow(view, col, delta, extend) {
+@@ -772,7 +821,7 @@
+       const pos = atEnd ? doc.length : doc.line(row + 1).from;
+       ranges.push(
+         Decoration.widget({
+-          widget: new ContextBlock(control, col !== 0, toggleGap),
++          widget: new ContextBlock(control, col !== 0, toggleContext),
+           block: true,
+           side: atEnd ? 2 : -2,
+         }).range(pos),
+@@ -813,7 +862,7 @@
+           attrs += " bl-row-picked";
+         if (attrs)
+           ranges.push(Decoration.line({ class: attrs.trim() }).range(row.from));
+-        if (isCode && codeLine(line) && line.text.length < 3000) {
++        if (owner.isCode && codeLine(line) && line.text.length < 3000) {
+           tokens.lastIndex = 0;
+           for (const match of line.text.matchAll(tokens)) {
+             const token = Object.keys(match.groups).find(
+@@ -849,12 +898,12 @@
+     return Decoration.set(ranges, true);
+   }
+ 
+-  function headerNames() {
+-    if (file.group === "Staged")
+-      return [options.emptyBase ? "Empty" : "HEAD", "Index"];
+-    if (file.group === "Unstaged")
+-      return [file.status === "U" ? "Ours" : "Index", "Working tree"];
+-    if (file.group === "Untracked") return ["Empty", "Working tree"];
++  function headerNames(owner = layout) {
++    if (owner.file.group === "Staged")
++      return [owner.emptyBase ? "Empty" : "HEAD", "Index"];
++    if (owner.file.group === "Unstaged")
++      return [owner.file.status === "U" ? "Ours" : "Index", "Working tree"];
++    if (owner.file.group === "Untracked") return ["Empty", "Working tree"];
+     return ["Base", "Head"];
+   }
+ 
+@@ -864,8 +913,8 @@
+     const { split, rows } = owner;
+     const side = colSide(col);
+     const container = element("section", "bl-pane");
+-    if (split)
+-      container.append(element("div", "bl-pane-heading", headerNames()[col]));
++    const heading = split && element("div", "bl-pane-heading", headerNames(owner)[col]);
++    if (heading) container.append(heading);
+     layout.root.append(container);
+     const doc = Text.of(rows.map((row) => lines[row[col]]?.text ?? ""));
+     const cardConfig = new Compartment();
+@@ -874,7 +923,7 @@
+         (line?.new != null ? 2 : 0) | (line?.old != null ? 1 : 0);
+       const pin =
+         (owner.pinned[row] || 0) & visibleSides & (split ? (col ? 2 : 1) : 3);
+-      const fmt = (n) => String(n ?? "").padStart(digits);
++      const fmt = (n) => String(n ?? "").padStart(owner.digits);
+       const number = split
+         ? fmt(line?.[side])
+         : fmt(line?.old) + " " + fmt(line?.new);
+@@ -896,9 +945,10 @@
+             update.view.dom.contains(active)
+           ) {
+             const { contextAt, contextAction } = active.dataset;
+-            queueMicrotask(() =>
+-              focusGapAction(update.view.dom, contextAt, contextAction),
+-            );
++            const version = documentVersion;
++            queueMicrotask(() => {
++              if (current(version)) focusGapAction(update.view.dom, contextAt, contextAction);
++            });
+           }
+           if (
+             update.viewportChanged ||
+@@ -919,11 +969,11 @@
+         extensions: [
+           EditorState.readOnly.of(true),
+           EditorState.tabSize.of(4),
+-          EditorView.contentAttributes.of({
+-            "aria-label": (split ? headerNames()[col] : "Unified") + " diff",
++          EditorView.contentAttributes.of(() => ({
++            "aria-label": (split ? headerNames(owner)[col] : "Unified") + " diff",
+             "aria-readonly": "true",
+             spellcheck: "false",
+-          }),
++          })),
+           render,
+           cardConfig.of(noteDecorations(owner, doc, groups, col)),
+           gutter({
+@@ -952,6 +1002,7 @@
+             domEventHandlers: {
+               mousedown(view, block, event) {
+                 if (
++                  !ownsDocument(owner) ||
+                   event.button !== 0 ||
+                   event.target.closest(".bl-gap-arrows")
+                 )
+@@ -966,6 +1017,7 @@
+                 return true;
+               },
+               contextmenu(view, block, event) {
++                if (!ownsDocument(owner)) return false;
+                 if (event.target.closest(".bl-gap-arrows")) return false;
+                 event.preventDefault();
+                 view.focus();
+@@ -983,15 +1035,17 @@
+             },
+           }),
+           EditorView.updateListener.of((update) => {
+-            if (layout === owner && update.selectionSet && update.view.hasFocus)
++            if (ownsDocument(owner) && !updatingRows && update.selectionSet && update.view.hasFocus)
+               syncSelection(update.view, col);
+           }),
+           EditorView.domEventHandlers({
+             focus() {
++              if (!ownsDocument(owner)) return false;
+               activeCol = col;
+               return false;
+             },
+             mousedown(e, view) {
++              if (!ownsDocument(owner)) return false;
+               if (e.button !== 0) return false;
+               const pos = view.posAtCoords(
+                 { x: e.clientX, y: e.clientY },
+@@ -1009,6 +1063,7 @@
+               return false; // CodeMirror owns pointer dragging and autoscroll.
+             },
+             keydown(e, view) {
++              if (!ownsDocument(owner)) return false;
+               if (e.metaKey || e.ctrlKey || e.altKey) return false;
+               if (isContextMenuKey(e)) {
+                 e.preventDefault();
+@@ -1037,6 +1092,7 @@
+               return true;
+             },
+             copy(e) {
++              if (!ownsDocument(owner)) return false;
+               const selected = selectedLines(lines, selection);
+               if (!selected.length || !e.clipboardData) return false;
+               e.clipboardData.setData(
+@@ -1047,6 +1103,7 @@
+               return true;
+             },
+             contextmenu(e, view) {
++              if (!ownsDocument(owner)) return false;
+               e.preventDefault();
+               const pos = view.posAtCoords(
+                 { x: e.clientX, y: e.clientY },
+@@ -1070,7 +1127,7 @@
+         .querySelector(".cm-gutters")
+         ?.removeAttribute("aria-hidden");
+     view.scrollDOM.addEventListener("scroll", () => {
+-      if (layout !== owner || pendingPosition) return;
++      if (!ownsDocument(owner) || pendingPosition) return;
+       const other = owner.panes[1 - col]?.view;
+       if (
+         other &&
+@@ -1080,7 +1137,7 @@
+         other.scrollDOM.scrollTop = view.scrollDOM.scrollTop;
+       }
+     });
+-    return { view, cardConfig };
++    return { view, cardConfig, heading };
+   }
+ 
+   function empty(groups) {
+@@ -1092,13 +1149,14 @@
+       button("Comment on file", () => compose(false, true)),
+     );
+     if (controls.length)
+-      box.append(new ContextBlock(controls[0], false, toggleGap).toDOM());
++      box.append(new ContextBlock(controls[0], false, toggleContext).toDOM());
+     if (groups.has(-1))
+       box.append(new CommentBlock(groups.get(-1), false, controller).toDOM());
+     layout.root.replaceChildren(box);
+   }
+ 
+   function refreshNotes() {
++    if (!current()) return;
+     const active = document.activeElement;
+     const note = active?.closest("[data-note]");
+     const focusedId = note && layout.root.contains(note) ? note.dataset.note : null;
+@@ -1154,16 +1212,40 @@
+   }
+ 
+   async function loadContents() {
+-    if (!contents) {
+-      loadingContents ??= options
+-        .loadContents()
+-        .then((result) => (contents = result))
+-        .finally(() => {
+-          loadingContents = null;
+-        });
+-      await loadingContents;
+-    }
+-    return contents;
++    const version = documentVersion;
++    if (!current(version)) return;
++    if (contents) return contents;
++    if (!loadingContents) {
++      const provider = options.loadContents;
++      const pending = Promise.resolve(provider())
++        .then((result) => {
++          if (current(version)) return (contents = result);
++        })
++        .catch((error) => { if (current(version)) throw error; })
++        .finally(() => { if (loadingContents === pending) loadingContents = null; });
++      loadingContents = pending;
++    }
++    const result = await loadingContents;
++    return current(version) ? result : undefined;
++  }
++
++  function suspend() {
++    suspended = true;
++    documentVersion++;
++    contextVersion++;
++    searchVersion++;
++    cancelAnimationFrame(paintFrame);
++    paintFrame = null;
++    cancelRestore();
++    closeMenu?.();
++    for (const { root } of layouts.values()) {
++      if (root.contains(document.activeElement)) document.activeElement.blur();
++      // Inert roots lose the CSS active z-index. Keep the last visible layout
++      // above a later, stale cached layout until the replacement is ready.
++      if (root === layout.root) root.style.setProperty("z-index", "1");
++      else root.style.removeProperty("z-index");
++      root.inert = true;
++    }
+   }
+ 
+   function dropLayouts() {
+@@ -1173,6 +1255,7 @@
+     closeMenu?.();
+     for (const { panes, root } of layouts.values()) {
+       for (const { view } of panes) view.destroy();
++      root.style.removeProperty("z-index");
+       root.remove();
+     }
+     layouts.clear();
+@@ -1255,6 +1338,11 @@
+     owner.root.style.setProperty("--bl-line-number-digits", digits);
+     owner.lines = lines;
+     owner.controls = controls;
++    owner.file = file;
++    owner.emptyBase = options.emptyBase;
++    owner.isCode = isCode;
++    owner.digits = digits;
++    owner.documentVersion = documentVersion;
+     owner.rows = diffRows(lines, owner.split);
+     owner.rowForLine = Array(lines.length);
+     owner.rows.forEach((cells, i) => {
+@@ -1264,71 +1352,48 @@
+ 
+   function updateContextRows(owner) {
+     const { rows: oldRows, lines: previous } = owner;
++    const snapshotChanged = owner.documentVersion !== documentVersion;
+     indexLayout(owner);
+     owner.drawnSelection = selection;
+-    const { rows } = owner;
+-    const sameRow = (a, b) =>
+-      rows[b].every((index, col) => {
+-        const before = previous[oldRows[a][col]];
+-        const after = lines[index];
+-        return (
+-          before === after ||
+-          (before?.contextOnly &&
+-            after?.contextOnly &&
+-            before.old === after.old &&
+-            before.new === after.new)
+-        );
++    const updates = rowUpdates(oldRows, previous, owner.rows, lines,
++      owner.panes.map(({ view }) => view.state.doc));
++    const groups = collectAnchors(owner);
++    updatingRows = true;
++    try {
++      owner.panes.forEach(({ view, cardConfig, heading }, col) => {
++        if (heading) heading.textContent = headerNames(owner)[col];
++        const doc = view.state.doc;
++        const changes = updates[col] && view.state.changes(updates[col]);
++        const effects = [
++          cardConfig.reconfigure(noteDecorations(owner, changes?.apply(doc) ?? doc, groups, col)),
++          repaint.of(null),
++        ];
++        if (snapshotChanged && !options.position)
++          effects.push(EditorView.scrollIntoView(0, { y: "start" }));
++        view.dispatch({
++          changes,
++          selection: snapshotChanged ? EditorSelection.cursor(0) : undefined,
++          effects,
++        });
++        if (snapshotChanged && !options.position) {
++          view.scrollDOM.scrollTop = 0;
++          view.scrollDOM.scrollLeft = 0;
++        }
++        const gutter = view.scrollDOM.querySelector(".cm-gutters");
++        if (col === 0 && gaps.length) gutter?.removeAttribute("aria-hidden");
++        else gutter?.setAttribute("aria-hidden", "true");
+       });
+-    let start = 0,
+-      oldEnd = oldRows.length,
+-      end = rows.length;
+-    while (start < oldEnd && start < end && sameRow(start, start)) start++;
+-    while (oldEnd > start && end > start && sameRow(oldEnd - 1, end - 1)) {
+-      oldEnd--;
+-      end--;
+-    }
+-    const groups = collectAnchors(owner);
+-    owner.panes.forEach(({ view, cardConfig }, col) => {
+-      const doc = view.state.doc;
+-      let changes;
+-      // Keep all matching rows before and after the reveal in CodeMirror.
+-      if (start !== oldEnd || start !== end) {
+-        const offset = (row) =>
+-          row < oldRows.length ? doc.line(row + 1).from : doc.length;
+-        let from = offset(start);
+-        const insert = rows
+-          .slice(start, end)
+-          .map((row) => lines[row[col]]?.text ?? "");
+-        if (oldEnd < oldRows.length) insert.push("");
+-        else if (start > 0) {
+-          if (start < oldRows.length) from--;
+-          insert.unshift("");
+-        }
+-        changes = view.state.changes({
+-          from,
+-          to: offset(oldEnd),
+-          insert: Text.of(insert),
+-        });
+-      }
+-      view.dispatch({
+-        changes,
+-        effects: [
+-          cardConfig.reconfigure(
+-            noteDecorations(owner, changes?.apply(doc) ?? doc, groups, col),
+-          ),
+-          repaint.of(null),
+-        ],
+-      });
+-    });
++    } finally { updatingRows = false; }
+   }
+ 
+   async function toggleGap(gap, action, box) {
++    const generation = documentVersion;
+     const turn = ++contextVersion;
+     const fromFocus = box.contains(document.activeElement);
+     searchVersion++;
+     try {
+       await loadContents();
+-      if (disposed || turn !== contextVersion) return;
++      if (!current(generation) || turn !== contextVersion) return;
+       const scroller = box.closest(".cm-scroller");
+       let y = scroller
+         ? box.getBoundingClientRect().top - scroller.getBoundingClientRect().top
+@@ -1342,7 +1407,7 @@
+       const count = gapLength(gap, contents);
+       expandGap(expanded, gap, count, action);
+       rebuildContext({ gap, y, previousTop }, () => {
+-        if (disposed || turn !== contextVersion) return;
++        if (!current(generation) || turn !== contextVersion) return;
+         if (fromFocus && document.activeElement === document.body)
+           resumeFromGap = true;
+         focusGapAction(
+@@ -1355,7 +1420,7 @@
+       });
+       if (!count) options.onStatus?.("This hunk reaches the end of the file.");
+     } catch (error) {
+-      if (!disposed) options.onStatus?.(String(error));
++      if (current(generation)) options.onStatus?.(String(error));
+     }
+   }
+ 
+@@ -1407,6 +1472,7 @@
+   }
+ 
+   function restorePosition(saved, { measured, restored, match } = {}) {
++    const version = documentVersion, owner = layout;
+     const row = layout.rowForLine[saved?.top];
+     if (row == null) return restored?.();
+     const views = layout.panes.map(({ view }) => view);
+@@ -1418,6 +1484,7 @@
+     );
+ 
+     function align() {
++      if (!current(version) || layout !== owner) return;
+       const top = source.lineBlockAt(sourcePos).top + offset;
+       for (const [i, view] of views.entries()) {
+         if (view.scrollDOM.scrollTop !== top) view.scrollDOM.scrollTop = top;
+@@ -1452,8 +1519,10 @@
+       });
+     }
+     restoreFrame = requestAnimationFrame(() => {
++      if (!current(version) || layout !== owner) return;
+       align();
+       restoreFrame = requestAnimationFrame(() => {
++        if (!current(version) || layout !== owner) return;
+         pendingPosition = null;
+         restored?.();
+       });
+@@ -1472,7 +1541,7 @@
+       layout.root.inert = true;
+     }
+     layout = layouts.get(split);
+-    const staleContext = layout && layout.controls !== controls;
++    const staleContext = layout && (layout.controls !== controls || layout.documentVersion !== documentVersion);
+     // A resize can wrap a comment and change every row position below it.
+     const measured =
+       layout &&
+@@ -1493,11 +1562,13 @@
+       root.addEventListener("focusin", (event) => {
+         const action = event.target.closest("[data-context-action]");
+         if (!action) return;
++        const version = documentVersion;
+         requestAnimationFrame(() => {
+-          if (document.activeElement === action) revealGapFocus(action);
++          if (current(version) && document.activeElement === action) revealGapFocus(action);
+         });
+       });
+       root.addEventListener("keydown", (event) => {
++        if (!current() || root !== layout.root) return;
+         if (
+           !event.target.closest("[data-context-action]") ||
+           !["ArrowDown", "ArrowUp"].includes(event.key) ||
+@@ -1532,6 +1603,9 @@
+         if (split) layout.panes.push(makePane(1, groups));
+       } else empty(groups);
+     }
++    // The selected root is active and up to date before its normal CSS stacking
++    // replaces the temporary retained-surface override.
++    for (const { root } of layouts.values()) root.style.removeProperty("z-index");
+     activeCol =
+       split &&
+       ((saved?.side ?? selection?.side) === "new" ||
+@@ -1544,14 +1618,48 @@
+     announceSelection();
+   }
+ 
++  function setDocument(next) {
++    const special = (f) => !f || f.binary || f.added == null || f.removed == null ||
++      f.mode === "160000" || f.old_mode === "160000" || f.status === "T";
++    if (disposed || !lines.length || !next.lines?.length || special(file) || special(next.file) ||
++        [...layouts.values()].some((owner) => !owner.panes.length)) return false;
++    suspend();
++    options = next;
++    ({ lines: patch, file, folds = new Map() } = next);
++    gaps = canExpandFile(file) && options.loadContents ? contextGaps(patch, file) : [];
++    expanded.clear();
++    contents = loadingContents = undefined;
++    full = false;
++    explicitHit = undefined;
++    notes = options.notes || [];
++    notesVersion++;
++    selection = options.position?.selection ?? null;
++    activeCol = 0;
++    resumeFromGap = false;
++    digits = 2;
++    isCode = codeFiles.test(file.path);
++    ({ lines, controls } = displayContext(patch, gaps, expanded));
++    indexLines();
++    bindDocumentCallbacks();
++    suspended = false;
++    showLayout(options.mode?.toLowerCase() === "split", options.position);
++    options.onContextChange?.({ full: false, expanded: false });
++    return true;
++  }
++
+   showLayout(options.mode?.toLowerCase() === "split", options.position);
+   return {
+     contents: loadContents,
++    setDocument,
++    suspend,
+     async showFullFile() {
++      const generation = documentVersion;
++      if (!current(generation)) return;
+       const turn = ++contextVersion;
+       searchVersion++;
+-      if (gaps.length) await loadContents();
+-      if (disposed || turn !== contextVersion) return;
++      try { if (gaps.length) await loadContents(); }
++      catch (error) { if (!current(generation)) return; throw error; }
++      if (!current(generation) || turn !== contextVersion) return;
+       full = true;
+       if (!gaps.length)
+         return options.onContextChange?.({ full, expanded: false });
+@@ -1560,6 +1668,7 @@
+       rebuildContext();
+     },
+     collapseContext() {
++      if (!current()) return;
+       contextVersion++;
+       searchVersion++;
+       full = false;
+@@ -1569,10 +1678,13 @@
+       rebuildContext();
+     },
+     async revealLine(side, number, from, to) {
++      const generation = documentVersion;
++      if (!current(generation)) return false;
+       const turn = ++searchVersion;
+       if (!numbered[side]?.has(number)) {
+-        await loadContents();
+-        if (disposed || turn !== searchVersion) return false;
++        try { await loadContents(); }
++        catch (error) { if (!current(generation)) return false; throw error; }
++        if (!current(generation) || turn !== searchVersion) return false;
+         const gap = gaps.find(
+           (g) => number >= g[side] && number < g[side] + gapLength(g, contents),
+         );
+@@ -1583,6 +1695,7 @@
+       return reveal(numbered[side].get(number), side, from, to);
+     },
+     revealPatchRow(index, from, to) {
++      if (!current()) return false;
+       searchVersion++;
+       const line = patch[index];
+       return reveal(
+@@ -1593,10 +1706,12 @@
+       );
+     },
+     setMode(value) {
++      if (!current()) return;
+       const split = value.toLowerCase() === "split";
+       if (split !== layout.split) showLayout(split, position());
+     },
+     setNotes(next) {
++      if (!current()) return;
+       const previous = new Map(notes.map((n) => [n.id, !!n.resolved]));
+       for (const note of next) {
+         if (previous.has(note.id) && previous.get(note.id) !== !!note.resolved)
+@@ -1609,6 +1724,7 @@
+       return remapPosition(position(), lines, patch);
+     },
+     jump(id) {
++      if (!current()) return false;
+       const row = layout.anchorRows.get(id);
+       if (row == null) return false;
+       const note = notes.find((n) => n.id === id);
+@@ -1637,6 +1753,7 @@
+       return true;
+     },
+     focus() {
++      if (!current()) return;
+       layout.panes[activeCol]?.view.focus();
+     },
+     comment() {
+@@ -1647,6 +1764,7 @@
+     },
+     destroy() {
+       disposed = true;
++      documentVersion++;
+       dropLayouts();
+     },
+   };
+--- /dev/null
++++ b/frontend/reuse-lifecycle.test.js
+@@ -0,0 +1,94 @@
++import assert from "node:assert/strict";
++import test from "node:test";
++import { createDiff } from "./editor.js";
++
++// Empty diffs use the real controller without constructing CodeMirror. Actual
++// pane layout and native input need the separate native regression sequence.
++class Node {
++  constructor(tag) {
++    this.tag = tag;
++    this.children = [];
++    this.events = {};
++    this.style = {
++      setProperty(key, value) { this[key] = value; },
++      removeProperty(key) { delete this[key]; },
++      getPropertyValue(key) { return this[key] ?? ""; },
++    };
++    this.classList = { toggle() {} };
++  }
++  addEventListener(type, listener) { this.events[type] = listener; }
++  setAttribute() {}
++  append(...nodes) {
++    for (const node of nodes) { node.parent = this; this.children.push(node); }
++  }
++  replaceChildren(...nodes) { this.children = []; this.append(...nodes); }
++  remove() {
++    if (this.parent) this.parent.children = this.parent.children.filter((n) => n !== this);
++  }
++  contains(node) { return node === this || this.children.some((child) => child.contains(node)); }
++}
++
++function fixture(loadContents) {
++  const previousDocument = globalThis.document;
++  const previousCancel = globalThis.cancelAnimationFrame;
++  const previousWindow = globalThis.window;
++  globalThis.document = { createElement: (tag) => new Node(tag), activeElement: null };
++  globalThis.cancelAnimationFrame = () => {};
++  globalThis.window = { devicePixelRatio: 1 };
++  const parent = new Node("parent");
++  const actions = [];
++  const diff = createDiff(parent, {
++    file: { path: "binary", binary: true, added: null, removed: null },
++    lines: [], loadContents,
++    onCompose: () => actions.push("compose"),
++    onStatus: () => actions.push("status"),
++    onContextChange: () => actions.push("context"),
++  });
++  return { diff, parent, actions, cleanup() {
++    diff.destroy();
++    globalThis.document = previousDocument;
++    globalThis.cancelAnimationFrame = previousCancel;
++    globalThis.window = previousWindow;
++  } };
++}
++
++test("suspension keeps the earlier active root above the later cached layout", () => {
++  const f = fixture(async () => ["old contents"]);
++  try {
++    f.diff.setMode("split");
++    f.diff.setMode("unified");
++    assert.equal(f.parent.children.length, 2);
++    const roots = [...f.parent.children];
++    const oldComment = roots[1].children[0].children.find((node) => node.tag === "button");
++    f.diff.suspend();
++    assert.equal(f.parent.children.length, 2);
++    assert.ok(roots.every((root) => root.inert));
++    assert.equal(roots[0].style.getPropertyValue("z-index"), "1");
++    assert.equal(roots[1].style.getPropertyValue("z-index"), "");
++    assert.equal(f.diff.setDocument({file: {path: "new.txt", added: 1, removed: 0}, lines: [{kind: "+", text: "new", new: 1}]}), false);
++    oldComment.events.click();
++    f.diff.comment();
++    assert.deepEqual(f.actions, []);
++    f.diff.destroy();
++    assert.equal(f.parent.children.length, 0);
++    assert.ok(roots.every((root) => root.style.getPropertyValue("z-index") === ""));
++  } finally { f.cleanup(); }
++});
++
++for (const reject of [false, true]) {
++  test(`suspension ignores a pending content ${reject ? "failure" : "result"} and reveal`, async () => {
++    let finish;
++    const pending = new Promise((resolve, fail) => { finish = reject ? fail : resolve; });
++    const f = fixture(() => pending);
++    try {
++      const contents = f.diff.contents();
++      const reveal = f.diff.revealLine("new", 20);
++      f.diff.suspend();
++      finish(reject ? Error("stale native failure") : ["stale contents"]);
++      assert.equal(await contents, undefined);
++      assert.equal(await reveal, false);
++      assert.deepEqual(f.actions, []);
++      assert.equal(await f.diff.contents(), undefined);
++    } finally { f.cleanup(); }
++  });
++}
+--- /dev/null
++++ b/frontend/reuse-rows.test.js
+@@ -0,0 +1,55 @@
++import assert from "node:assert/strict";
++import test from "node:test";
++import { EditorState, Text } from "@codemirror/state";
++import { diffRows, rowUpdates } from "./editor.js";
++
++const patch = (texts) => texts.map((text, i) => ({ kind: " ", text, old: i + 1, new: i + 1, hunk: 1 }));
++function update(before, after, split) {
++  const oldRows = diffRows(before, split), rows = diffRows(after, split);
++  const states = Array.from({ length: split ? 2 : 1 }, (_, col) =>
++    EditorState.create({ doc: Text.of(oldRows.length ? oldRows.map((row) => before[row[col]]?.text ?? "") : [""]) }));
++  const updates = rowUpdates(oldRows, before, rows, after, states.map((state) => state.doc));
++  states.forEach((state, col) => {
++    const actual = updates[col] ? state.changes(updates[col]).apply(state.doc) : state.doc;
++    assert.equal(actual.toString(), Text.of(rows.length ? rows.map((row) => after[row[col]]?.text ?? "") : [""]).toString());
++  });
++  return { updates, states };
++}
++
++test("fresh snapshots with identical text preserve the document despite metadata changes", () => {
++  const before = patch(["same", "", "Unicode 🛠"]);
++  const after = before.map((line) => ({ ...line, old: line.old + 100, new: line.new + 200, hunk: 4 }));
++  for (const split of [false, true]) assert.ok(update(before, after, split).updates.every((change) => change === undefined));
++  assert.ok(update(before, after.map((line) => ({ ...line, kind: "+" })), false).updates.every((change) => change === undefined));
++});
++
++test("text updates retain the matching prefix and suffix", () => {
++  const { updates, states } = update(patch(["prefix", "old", "suffix"]), patch(["prefix", "new", "suffix"]), false);
++  assert.equal(updates[0].from, states[0].doc.line(2).from);
++  assert.equal(updates[0].to, states[0].doc.line(3).from);
++  assert.equal(updates[0].insert.toString(), "new\n");
++});
++
++test("row changes handle boundary inserts, deletion, replacement, empty lines and fresh objects", () => {
++  const before = patch(["a", "b", "c"]);
++  const variants = [[], ["a", "b", "c"], ["first", "a", "b", "c"], ["a", "middle", "b", "c"],
++    ["a", "b", "c", "last"], ["b", "c"], ["a", "c"], ["a", "b"], ["new"],
++    ["a", "b", "c", ""], ["", "a", "b", "c"], ["a", "", "c"], ["\t", "é", "🛠"]];
++  for (const split of [false, true]) {
++    for (const texts of variants) update(before, patch(texts), split);
++    update([], patch(["first"]), split);
++    update([], [], split);
++  }
++});
++
++test("each cached layout can independently catch up from a different previous snapshot", () => {
++  const a = [{ kind: "-", text: "old", old: 1 }, { kind: "+", text: "new", new: 1 }];
++  const b = [...a, { kind: "+", text: "extra", new: 2 }];
++  const c = [{ kind: " ", text: "context", old: 4, new: 4 },
++    { kind: "-", text: "removed", old: 5 }, { kind: "+", text: "replacement", new: 5 },
++    { kind: "+", text: "uneven", new: 6 }];
++  update(a, b, false); // Unified advanced while Split still owns A.
++  update(a, c, true);  // Split must use its own A rows/doc, never Unified's B.
++  update(b, c, false);
++  update(c, a, true);
++});

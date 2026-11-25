@@ -1,0 +1,115 @@
+{
+  "pid": 129905,
+  "start_ticks": "14448724",
+  "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "status": "failed",
+  "cases": [
+    {
+      "name": "cache-hit-and-normal-connection-drop",
+      "started": 1795640214.6156483,
+      "proof": {
+        "native_cache_hit_no_rewrite": true,
+        "worker": {
+          "pid": 4504,
+          "parent": 9640,
+          "created": "2026-11-25T20:56:58.8689490Z",
+          "binary": "C:\\Users\\max\\branchline-bench\\native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01\\native cache's r\u00e9view &[]\\Branchline\\git-workers\\branchline-git-worker-6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2.exe",
+          "command": "branchline-git-worker-6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2.exe --stdio",
+          "cpu_seconds": 0.21875,
+          "children": [
+            {
+              "pid": 5348,
+              "binary": "C:\\WINDOWS\\system32\\conhost.exe",
+              "command": "\\??\\C:\\WINDOWS\\system32\\conhost.exe 0x4",
+              "created": "2026-11-25T20:56:58.8765180Z"
+            }
+          ]
+        },
+        "normal_connection_drop": {
+          "gone": true,
+          "elapsed_seconds": 0.6065810559957754,
+          "remaining": []
+        },
+        "gui_stayed_alive": true,
+        "control_root": {
+          "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+          "checkout": "refs/heads/feature/boundary-final",
+          "snapshot": 2,
+          "pair": [
+            "refs/heads/main",
+            "refs/heads/feature/boundary-final"
+          ],
+          "files": 30
+        }
+      },
+      "passed": true,
+      "cleanup": {
+        "stopped": [
+          129980
+        ],
+        "gui_absent": true,
+        "driver_absent": true
+      },
+      "finished": 1795640224.0407798
+    },
+    {
+      "name": "corrupt-native-cache-repair",
+      "started": 1795640224.0432572,
+      "proof": {
+        "repaired_sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2",
+        "worker": {
+          "pid": 14032,
+          "parent": 9640,
+          "created": "2026-11-25T20:57:06.5142280Z",
+          "binary": "C:\\Users\\max\\branchline-bench\\native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01\\native cache's r\u00e9view &[]\\Branchline\\git-workers\\branchline-git-worker-6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2.exe",
+          "command": "branchline-git-worker-6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2.exe --stdio",
+          "cpu_seconds": 0.1875,
+          "children": [
+            {
+              "pid": 2400,
+              "binary": "C:\\WINDOWS\\system32\\conhost.exe",
+              "command": "\\??\\C:\\WINDOWS\\system32\\conhost.exe 0x4",
+              "created": "2026-11-25T20:57:06.5230650Z"
+            }
+          ]
+        }
+      },
+      "passed": true,
+      "cleanup": {
+        "stopped": [
+          130182,
+          130357
+        ],
+        "gui_absent": true,
+        "driver_absent": true
+      },
+      "finished": 1795640229.067944
+    },
+    {
+      "name": "blocked-native-cache-fallback",
+      "started": 1795640229.0700862,
+      "passed": false,
+      "error": "Traceback (most recent call last):\n  File \"<stdin>\", line 77, in case\n  File \"<stdin>\", line 96, in blocked\n  File \"<stdin>\", line 54, in start\n  File \"<stdin>\", line 58, in open_ui\n  File \"/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input/source/tools/autoresearch/wsl-boundary/driver.py\", line 37, in wait\n    raise TimeoutError(f\"Browser condition did not become true: {condition}\")\nTimeoutError: Browser condition did not become true: window.boundaryProbe.state()?.repo?.root===arguments[0] && !document.querySelector('#app')?.hasAttribute('aria-busy') && [...document.querySelectorAll('#diff .cm-content')].some(n=>n.getClientRects().length)\n",
+      "cleanup": {
+        "stopped": [
+          130395
+        ],
+        "gui_absent": true,
+        "driver_absent": true
+      },
+      "finished": 1795640261.704265
+    }
+  ],
+  "not_a_score": true,
+  "fingerprint_before": {
+    "linux": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+    "windows": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+  },
+  "current_case": "blocked-native-cache-fallback",
+  "error": "Traceback (most recent call last):\n  File \"<stdin>\", line 180, in <module>\n  File \"<stdin>\", line 77, in case\n  File \"<stdin>\", line 96, in blocked\n  File \"<stdin>\", line 54, in start\n  File \"<stdin>\", line 58, in open_ui\n  File \"/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input/source/tools/autoresearch/wsl-boundary/driver.py\", line 37, in wait\n    raise TimeoutError(f\"Browser condition did not become true: {condition}\")\nTimeoutError: Browser condition did not become true: window.boundaryProbe.state()?.repo?.root===arguments[0] && !document.querySelector('#app')?.hasAttribute('aria-busy') && [...document.querySelectorAll('#diff .cm-content')].some(n=>n.getClientRects().length)\n",
+  "fingerprint_after": {
+    "linux": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+    "windows": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+  },
+  "finished": 1795640283.1775212
+}

@@ -1,0 +1,68 @@
+{
+  "correct": true,
+  "unrestricted_equals_explicit_all_untracked_selection": true,
+  "untracked_paths": [
+    "branchline-review-fixture/untracked-00.txt",
+    "branchline-review-fixture/untracked-01.txt",
+    "branchline-review-fixture/untracked-02.txt",
+    "branchline-review-fixture/untracked-03.txt",
+    "branchline-review-fixture/untracked-04.txt"
+  ],
+  "tracked_groups": [
+    "Staged",
+    "Unstaged",
+    "Untracked"
+  ],
+  "status_calls": [
+    {
+      "event": "start",
+      "sid": "20261125T194132.226249Z-H1e4590ba-P00001394",
+      "thread": "main",
+      "time": "2026-11-25T19:41:32.231951Z",
+      "file": "common-init.c",
+      "line": 78,
+      "t_abs": 0.033046,
+      "argv": [
+        "git.exe",
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "status",
+        "--porcelain=v2",
+        "-z",
+        "--untracked-files=all",
+        "--no-renames",
+        "--ignore-submodules=all"
+      ]
+    }
+  ],
+  "listing_calls": [
+    {
+      "event": "start",
+      "sid": "20261125T194133.716034Z-H1e4590ba-P0000227c",
+      "thread": "main",
+      "time": "2026-11-25T19:41:33.722256Z",
+      "file": "common-init.c",
+      "line": 78,
+      "t_abs": 0.038989,
+      "argv": [
+        "git.exe",
+        "--no-pager",
+        "--literal-pathspecs",
+        "-C",
+        "C:\\Users\\max\\branchline-bench\\kernel-windows",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--"
+      ]
+    }
+  ],
+  "filtered_keeps_original_ls_files": true,
+  "tracked_scoped_view_skips_untracked_discovery": true,
+  "empty_untracked_skips_discovery": true,
+  "trace_instrumented_not_performance": true,
+  "native_worker_exit": 0
+}

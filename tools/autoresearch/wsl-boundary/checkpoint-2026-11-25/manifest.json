@@ -1,0 +1,2372 @@
+{
+  "artifact_count": 101,
+  "artifacts": [
+    {
+      "bytes": 4760,
+      "kind": "generated",
+      "origins": [],
+      "path": "README.md",
+      "sha256": "93e06e7fbc1d4bad1ef58534ad186ddaf3f3858c3cd6bfc905e49209239bf60c"
+    },
+    {
+      "bytes": 2735,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/comment-jump-refresh/README.md",
+          "sha256": "c4a5353f05ae8f2464c1864b9fc0ef5d94acac173e30015c5cfe0f1630c694a6"
+        }
+      ],
+      "path": "comment-jump-refresh/README.md",
+      "sha256": "c4a5353f05ae8f2464c1864b9fc0ef5d94acac173e30015c5cfe0f1630c694a6"
+    },
+    {
+      "bytes": 900,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/comment-jump-refresh/candidate.patch",
+          "sha256": "d6168d60b7938b499a0f1bef828a90d0e30d3df459eac57bb8c4e3c5cca8107f"
+        }
+      ],
+      "path": "comment-jump-refresh/candidate.patch",
+      "sha256": "d6168d60b7938b499a0f1bef828a90d0e30d3df459eac57bb8c4e3c5cca8107f"
+    },
+    {
+      "bytes": 4015,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/comment-jump-refresh/frontend/comment-jump-refresh.test.js",
+          "sha256": "9882674a9f0444c2c4c1641430b64f1c6c4a1de6ab84725cda75c221b851e4df"
+        }
+      ],
+      "path": "comment-jump-refresh/comment-jump-refresh.test.js",
+      "sha256": "9882674a9f0444c2c4c1641430b64f1c6c4a1de6ab84725cda75c221b851e4df"
+    },
+    {
+      "bytes": 36954,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3.patch",
+          "sha256": "5898d218ae88c1c06cf9239edc29225d3a8a81b73a7a30638dbd796c7de70ce2"
+        }
+      ],
+      "path": "discarded-pane-reuse/candidate.patch",
+      "sha256": "5898d218ae88c1c06cf9239edc29225d3a8a81b73a7a30638dbd796c7de70ce2"
+    },
+    {
+      "bytes": 1477,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/pane-reuse-v3-decision.json",
+          "sha256": "49e2ede59ca090013f8f38769d2ed5c3e3be72c04b6c3636879f524f59fe1150"
+        }
+      ],
+      "path": "discarded-pane-reuse/decision.json",
+      "sha256": "49e2ede59ca090013f8f38769d2ed5c3e3be72c04b6c3636879f524f59fe1150"
+    },
+    {
+      "bytes": 67574,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/pane-reuse-gui-ab-20261125T201158375570Z-pilot-summary.json",
+          "sha256": "4ab28c10d68f99e46234c0ccb67d727898556d5c8eacc50a1471defbe3ff08d7"
+        }
+      ],
+      "path": "discarded-pane-reuse/pilot-summary.json",
+      "sha256": "4ab28c10d68f99e46234c0ccb67d727898556d5c8eacc50a1471defbe3ff08d7"
+    },
+    {
+      "bytes": 4940,
+      "kind": "generated-identity",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/build.sh",
+          "sha256": "bfd93253c5c812be6a29035b09275381839e69f407bc62eda1d58227276b5503"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/app.js",
+          "sha256": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/context.js",
+          "sha256": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/context.test.js",
+          "sha256": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/dialogs.js",
+          "sha256": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/editor.css",
+          "sha256": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/editor.js",
+          "sha256": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/editor.test.js",
+          "sha256": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/icons.js",
+          "sha256": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/index.html",
+          "sha256": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/patch.test.js",
+          "sha256": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/review-ui.js",
+          "sha256": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/review-ui.test.js",
+          "sha256": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/search-palette.js",
+          "sha256": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/search-palette.test.js",
+          "sha256": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/frontend/style.css",
+          "sha256": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/package-lock.json",
+          "sha256": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/package.json",
+          "sha256": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/Cargo.lock",
+          "sha256": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/Cargo.toml",
+          "sha256": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/build.rs",
+          "sha256": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/capabilities/default.json",
+          "sha256": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/git-worker/Cargo.lock",
+          "sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/git-worker/Cargo.toml",
+          "sha256": "df834cfe09bb0b7e359481e99e5248fd4c58d7d027648a1ccc6479a7b5b5b399"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/git-worker/src/main.rs",
+          "sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/git-worker/tests/stdio.rs",
+          "sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/config.rs",
+          "sha256": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/git.rs",
+          "sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/git/native.rs",
+          "sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/git/patch_data.rs",
+          "sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/git/remote.rs",
+          "sha256": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/git/windows.rs",
+          "sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/git/worker.rs",
+          "sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/git_tests.rs",
+          "sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/lib.rs",
+          "sha256": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/main.rs",
+          "sha256": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/mcp.rs",
+          "sha256": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/mcp/desktop.rs",
+          "sha256": "940bd5dd8edebe825d04081a434866daa9d8488374ae8c51d3e3e3901d2e293b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/mcp/tools.rs",
+          "sha256": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/report.rs",
+          "sha256": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/review.rs",
+          "sha256": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/review_tests.rs",
+          "sha256": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/search.rs",
+          "sha256": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/service.rs",
+          "sha256": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/stored_paths.rs",
+          "sha256": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/suggestions.rs",
+          "sha256": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/src/tracking.rs",
+          "sha256": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-combined-v3-source/src-tauri/tauri.conf.json",
+          "sha256": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        }
+      ],
+      "path": "identities/combined-v3.json",
+      "sha256": "b3d698c1c39ca4da09c0741601681b9ba22c76862e6b886f889ac57a4d7155f8"
+    },
+    {
+      "bytes": 5050,
+      "kind": "generated-identity",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/source/build.sh",
+          "sha256": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/app.js",
+          "sha256": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/context.js",
+          "sha256": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/context.test.js",
+          "sha256": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/dialogs.js",
+          "sha256": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/editor.css",
+          "sha256": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/editor.js",
+          "sha256": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/editor.test.js",
+          "sha256": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/icons.js",
+          "sha256": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/index.html",
+          "sha256": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/patch.test.js",
+          "sha256": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/review-ui.js",
+          "sha256": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/review-ui.test.js",
+          "sha256": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/search-palette.js",
+          "sha256": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/search-palette.test.js",
+          "sha256": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/frontend/style.css",
+          "sha256": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/package-lock.json",
+          "sha256": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/package.json",
+          "sha256": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/Cargo.lock",
+          "sha256": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/Cargo.toml",
+          "sha256": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/build.rs",
+          "sha256": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/capabilities/default.json",
+          "sha256": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/git-worker/Cargo.lock",
+          "sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/git-worker/Cargo.toml",
+          "sha256": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/git-worker/src/main.rs",
+          "sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/git-worker/tests/stdio.rs",
+          "sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/config.rs",
+          "sha256": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/git.rs",
+          "sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/git/native.rs",
+          "sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/git/patch_data.rs",
+          "sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/git/remote.rs",
+          "sha256": "1046beee3c3dbbad93fc6c8837c2d164ac5ecc26bb536bf39fa106f2d6f52cec"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/git/windows.rs",
+          "sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/git/worker.rs",
+          "sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/git_tests.rs",
+          "sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/lib.rs",
+          "sha256": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/main.rs",
+          "sha256": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/mcp.rs",
+          "sha256": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/mcp/desktop.rs",
+          "sha256": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/mcp/desktop_tests.rs",
+          "sha256": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/mcp/tools.rs",
+          "sha256": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/report.rs",
+          "sha256": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/review.rs",
+          "sha256": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/review_tests.rs",
+          "sha256": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/search.rs",
+          "sha256": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/service.rs",
+          "sha256": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/stored_paths.rs",
+          "sha256": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/suggestions.rs",
+          "sha256": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/src/tracking.rs",
+          "sha256": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8"
+        },
+        {
+          "path": "build/experiments/native-helper-deployment/source/src-tauri/tauri.conf.json",
+          "sha256": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        }
+      ],
+      "path": "identities/native-helper.json",
+      "sha256": "ee87b687fd39cde95643d01642183d42ef465f819818a28f2d18101ac58541ac"
+    },
+    {
+      "bytes": 5151,
+      "kind": "generated-identity",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/build.sh",
+          "sha256": "bfd93253c5c812be6a29035b09275381839e69f407bc62eda1d58227276b5503"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/app.js",
+          "sha256": "03c144556e9ac5b8c70c8cfa548fd743cdfe79278e08a9053a0a705108768a48"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/context.js",
+          "sha256": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/context.test.js",
+          "sha256": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/dialogs.js",
+          "sha256": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/editor.css",
+          "sha256": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/editor.js",
+          "sha256": "7e66aba292f425d294168b2e90365d6efb81f715ac095b8fa2f502b412ca178f"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/editor.test.js",
+          "sha256": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/icons.js",
+          "sha256": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/index.html",
+          "sha256": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/patch.test.js",
+          "sha256": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/reuse-lifecycle.test.js",
+          "sha256": "86b2c87f84f2e0ccf73272b52cf5add73e028b4bbc776c87ee23f8cb44a64a81"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/reuse-rows.test.js",
+          "sha256": "51ba78ee779594aba55615f574c55f07f4f0dcd6c598f59a617d70872ead954b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/review-ui.js",
+          "sha256": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/review-ui.test.js",
+          "sha256": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/search-palette.js",
+          "sha256": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/search-palette.test.js",
+          "sha256": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/frontend/style.css",
+          "sha256": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/package-lock.json",
+          "sha256": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/package.json",
+          "sha256": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/Cargo.lock",
+          "sha256": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/Cargo.toml",
+          "sha256": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/build.rs",
+          "sha256": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/capabilities/default.json",
+          "sha256": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/git-worker/Cargo.lock",
+          "sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/git-worker/Cargo.toml",
+          "sha256": "df834cfe09bb0b7e359481e99e5248fd4c58d7d027648a1ccc6479a7b5b5b399"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/git-worker/src/main.rs",
+          "sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/git-worker/tests/stdio.rs",
+          "sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/config.rs",
+          "sha256": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/git.rs",
+          "sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/git/native.rs",
+          "sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/git/patch_data.rs",
+          "sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/git/remote.rs",
+          "sha256": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/git/windows.rs",
+          "sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/git/worker.rs",
+          "sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/git_tests.rs",
+          "sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/lib.rs",
+          "sha256": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/main.rs",
+          "sha256": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/mcp.rs",
+          "sha256": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/mcp/desktop.rs",
+          "sha256": "940bd5dd8edebe825d04081a434866daa9d8488374ae8c51d3e3e3901d2e293b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/mcp/tools.rs",
+          "sha256": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/report.rs",
+          "sha256": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/review.rs",
+          "sha256": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/review_tests.rs",
+          "sha256": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/search.rs",
+          "sha256": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/service.rs",
+          "sha256": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/stored_paths.rs",
+          "sha256": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/suggestions.rs",
+          "sha256": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/src/tracking.rs",
+          "sha256": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-pane-reuse-v3-source/src-tauri/tauri.conf.json",
+          "sha256": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        }
+      ],
+      "path": "identities/pane-reuse.json",
+      "sha256": "45fe41d1fa94e29c44f75da2f9e8856e25f9c23b0d3cbafe80b991cf9a402e06"
+    },
+    {
+      "bytes": 5050,
+      "kind": "generated-identity",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/build.sh",
+          "sha256": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/app.js",
+          "sha256": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/context.js",
+          "sha256": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/context.test.js",
+          "sha256": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/dialogs.js",
+          "sha256": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/editor.css",
+          "sha256": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/editor.js",
+          "sha256": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/editor.test.js",
+          "sha256": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/icons.js",
+          "sha256": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/index.html",
+          "sha256": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/patch.test.js",
+          "sha256": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/review-ui.js",
+          "sha256": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/review-ui.test.js",
+          "sha256": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/search-palette.js",
+          "sha256": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/search-palette.test.js",
+          "sha256": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/frontend/style.css",
+          "sha256": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/package-lock.json",
+          "sha256": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/package.json",
+          "sha256": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/Cargo.lock",
+          "sha256": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/Cargo.toml",
+          "sha256": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/build.rs",
+          "sha256": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/capabilities/default.json",
+          "sha256": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/git-worker/Cargo.lock",
+          "sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/git-worker/Cargo.toml",
+          "sha256": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/git-worker/src/main.rs",
+          "sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/git-worker/tests/stdio.rs",
+          "sha256": "cac71741c77bfd9637065850907744c86bb1f64e7a8afe0e12d5ab1ac4338050"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/config.rs",
+          "sha256": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/git.rs",
+          "sha256": "78928ee5acb68699a762ab6ff82d0965880236382736e7406135db80a9fc3979"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/git/native.rs",
+          "sha256": "cb18f64542882a8d7e8c376d5ff6c34c8b4ca28659538a5422925945c1316948"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/git/patch_data.rs",
+          "sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/git/remote.rs",
+          "sha256": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/git/windows.rs",
+          "sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/git/worker.rs",
+          "sha256": "b3c4e9bced9f1e0442e7c01d0c0fc07f9f55f2146103ec079bae070a3168a53d"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/git_tests.rs",
+          "sha256": "e7a81f1562310aeb5d90eb3177e65e5263d8a8528fc2c3e8fa5bc85495b806b5"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/lib.rs",
+          "sha256": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/main.rs",
+          "sha256": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/mcp.rs",
+          "sha256": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/mcp/desktop.rs",
+          "sha256": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/mcp/desktop_tests.rs",
+          "sha256": "0bb8268871d8b8d9e66cbf757374d587233379749492b09fc90c735362dc3e13"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/mcp/tools.rs",
+          "sha256": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/report.rs",
+          "sha256": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/review.rs",
+          "sha256": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/review_tests.rs",
+          "sha256": "776dc85b0c8f459520787e651590bae0d0ec6aae0111fe5b524250508af152ae"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/search.rs",
+          "sha256": "de2551755e16cc3abef49a5b1b69f253f015562fc93ce8d6fe1b7d207ba59c14"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/service.rs",
+          "sha256": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/stored_paths.rs",
+          "sha256": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/suggestions.rs",
+          "sha256": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/src/tracking.rs",
+          "sha256": "edb39f6c1e7f0d8804a3a907284513bc0ef129d704945402bb633269cd0dcd9b"
+        },
+        {
+          "path": "build/experiments/staged-anchor-metadata/source/src-tauri/tauri.conf.json",
+          "sha256": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        }
+      ],
+      "path": "identities/staged-anchor.json",
+      "sha256": "27f9a557b837feadb805789adb13a66c6632be4aab98d272d421b7f87a5dc53a"
+    },
+    {
+      "bytes": 5050,
+      "kind": "generated-identity",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/build.sh",
+          "sha256": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/app.js",
+          "sha256": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/context.js",
+          "sha256": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/context.test.js",
+          "sha256": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/dialogs.js",
+          "sha256": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/editor.css",
+          "sha256": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/editor.js",
+          "sha256": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/editor.test.js",
+          "sha256": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/icons.js",
+          "sha256": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/index.html",
+          "sha256": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/patch.test.js",
+          "sha256": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/review-ui.js",
+          "sha256": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/review-ui.test.js",
+          "sha256": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/search-palette.js",
+          "sha256": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/search-palette.test.js",
+          "sha256": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/frontend/style.css",
+          "sha256": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/package-lock.json",
+          "sha256": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/package.json",
+          "sha256": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/Cargo.lock",
+          "sha256": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/Cargo.toml",
+          "sha256": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/build.rs",
+          "sha256": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/capabilities/default.json",
+          "sha256": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/git-worker/Cargo.lock",
+          "sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/git-worker/Cargo.toml",
+          "sha256": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/git-worker/src/main.rs",
+          "sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/git-worker/tests/stdio.rs",
+          "sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/config.rs",
+          "sha256": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/git.rs",
+          "sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/git/native.rs",
+          "sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/git/patch_data.rs",
+          "sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/git/remote.rs",
+          "sha256": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/git/windows.rs",
+          "sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/git/worker.rs",
+          "sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/git_tests.rs",
+          "sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/lib.rs",
+          "sha256": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/main.rs",
+          "sha256": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/mcp.rs",
+          "sha256": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/mcp/desktop.rs",
+          "sha256": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/mcp/desktop_tests.rs",
+          "sha256": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/mcp/tools.rs",
+          "sha256": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/report.rs",
+          "sha256": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/review.rs",
+          "sha256": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/review_tests.rs",
+          "sha256": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/search.rs",
+          "sha256": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/service.rs",
+          "sha256": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/stored_paths.rs",
+          "sha256": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/suggestions.rs",
+          "sha256": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/src/tracking.rs",
+          "sha256": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-source/src-tauri/tauri.conf.json",
+          "sha256": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        }
+      ],
+      "path": "identities/status-baseline.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 5050,
+      "kind": "generated-identity",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/build.sh",
+          "sha256": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/app.js",
+          "sha256": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/context.js",
+          "sha256": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/context.test.js",
+          "sha256": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/dialogs.js",
+          "sha256": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/editor.css",
+          "sha256": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/editor.js",
+          "sha256": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/editor.test.js",
+          "sha256": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/icons.js",
+          "sha256": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/index.html",
+          "sha256": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/patch.test.js",
+          "sha256": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/review-ui.js",
+          "sha256": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/review-ui.test.js",
+          "sha256": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/search-palette.js",
+          "sha256": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/search-palette.test.js",
+          "sha256": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/frontend/style.css",
+          "sha256": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/package-lock.json",
+          "sha256": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/package.json",
+          "sha256": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/Cargo.lock",
+          "sha256": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/Cargo.toml",
+          "sha256": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/build.rs",
+          "sha256": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/capabilities/default.json",
+          "sha256": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.lock",
+          "sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.toml",
+          "sha256": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/src/main.rs",
+          "sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/tests/stdio.rs",
+          "sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/config.rs",
+          "sha256": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/git.rs",
+          "sha256": "dcae797180249d4eab4ef12d0a2848d358bbcc0953b08f5b43f15e7edaeae0fc"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/git/native.rs",
+          "sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/git/patch_data.rs",
+          "sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/git/remote.rs",
+          "sha256": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/git/windows.rs",
+          "sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/git/worker.rs",
+          "sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/git_tests.rs",
+          "sha256": "f0d3d9667eede161d0bd4a05e9140ef76ce897fe1d77624d995699fac00c0ead"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/lib.rs",
+          "sha256": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/main.rs",
+          "sha256": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/mcp.rs",
+          "sha256": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/mcp/desktop.rs",
+          "sha256": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/mcp/desktop_tests.rs",
+          "sha256": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/mcp/tools.rs",
+          "sha256": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/report.rs",
+          "sha256": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/review.rs",
+          "sha256": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/review_tests.rs",
+          "sha256": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/search.rs",
+          "sha256": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/service.rs",
+          "sha256": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/stored_paths.rs",
+          "sha256": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/suggestions.rs",
+          "sha256": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/tracking.rs",
+          "sha256": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8"
+        },
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/tauri.conf.json",
+          "sha256": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        }
+      ],
+      "path": "identities/status.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 6344,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/README.md",
+          "sha256": "6fb6bf5f50281bca582808217b9595a128c674c832545fba2a67683e72b85890"
+        }
+      ],
+      "path": "native-helper/README.original.md",
+      "sha256": "6fb6bf5f50281bca582808217b9595a128c674c832545fba2a67683e72b85890"
+    },
+    {
+      "bytes": 23031,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/candidate-manifest.json",
+          "sha256": "9474eec58cf9281dd95a779cee5419cfcaa10be31fa1afb888a6919165ee1e4a"
+        }
+      ],
+      "path": "native-helper/candidate-manifest.json",
+      "sha256": "9474eec58cf9281dd95a779cee5419cfcaa10be31fa1afb888a6919165ee1e4a"
+    },
+    {
+      "bytes": 20467,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/candidate.patch",
+          "sha256": "5f87970efa96215e2965d90cbfcbfdace5ed725eac9e43b8a6e0fce05e2c38a7"
+        }
+      ],
+      "path": "native-helper/candidate.patch",
+      "sha256": "5f87970efa96215e2965d90cbfcbfdace5ed725eac9e43b8a6e0fce05e2c38a7"
+    },
+    {
+      "bytes": 4439,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/host-all-tests-cmd.log",
+          "sha256": "cd9c4917a5e2e718a2104044175ce3da14d423724c7121a35137812289edb643"
+        }
+      ],
+      "path": "native-helper/host-all-tests-cmd.log",
+      "sha256": "cd9c4917a5e2e718a2104044175ce3da14d423724c7121a35137812289edb643"
+    },
+    {
+      "bytes": 2171,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/host-embedded-tests-cmd.log",
+          "sha256": "ad400968c55354a25a42813e1d8fd4d484c37751feda049583912c4924ec9ddb"
+        }
+      ],
+      "path": "native-helper/host-embedded-tests-cmd.log",
+      "sha256": "ad400968c55354a25a42813e1d8fd4d484c37751feda049583912c4924ec9ddb"
+    },
+    {
+      "bytes": 2635,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/host-proof-cmd.json",
+          "sha256": "54dddc1d8713760313aca2fba71ea1c6a2464f96b30e2826468b14d1f0f6cc21"
+        }
+      ],
+      "path": "native-helper/host-proof-cmd.json",
+      "sha256": "54dddc1d8713760313aca2fba71ea1c6a2464f96b30e2826468b14d1f0f6cc21"
+    },
+    {
+      "bytes": 967,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/long-fallback-investigation.json",
+          "sha256": "ca60e3d605aa0ff469e674af523eca0fe0b1ec1e2084d445fa52ef52ea482a71"
+        }
+      ],
+      "path": "native-helper/long-fallback-investigation.json",
+      "sha256": "ca60e3d605aa0ff469e674af523eca0fe0b1ec1e2084d445fa52ef52ea482a71"
+    },
+    {
+      "bytes": 941,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/native-build-evidence/linux-gui-build.log",
+          "sha256": "77750c47a012355b97821dc852fe2a87b99e25afaf018c0ad118c2ac63aefbf3"
+        }
+      ],
+      "path": "native-helper/native-build/linux-gui-build.log",
+      "sha256": "77750c47a012355b97821dc852fe2a87b99e25afaf018c0ad118c2ac63aefbf3"
+    },
+    {
+      "bytes": 12115,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/native-build-evidence/linux-remote-tests.log",
+          "sha256": "acd5d9da030446f7b08eb9c90277c90fe1c654d61fbcc5082746030b4111bfb4"
+        }
+      ],
+      "path": "native-helper/native-build/linux-remote-tests.log",
+      "sha256": "acd5d9da030446f7b08eb9c90277c90fe1c654d61fbcc5082746030b4111bfb4"
+    },
+    {
+      "bytes": 12179,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/native-build-evidence/supervisor.json",
+          "sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13"
+        }
+      ],
+      "path": "native-helper/native-build/supervisor.json",
+      "sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13"
+    },
+    {
+      "bytes": 2030,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/native-build-evidence/windows-gui-build.log",
+          "sha256": "c9f3400e7f22764bae4278914aa304e0fa5b375f1de9df6575d1a1b34d81e662"
+        }
+      ],
+      "path": "native-helper/native-build/windows-gui-build.log",
+      "sha256": "c9f3400e7f22764bae4278914aa304e0fa5b375f1de9df6575d1a1b34d81e662"
+    },
+    {
+      "bytes": 113,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/native-build-evidence/windows-remote-tests-0.log",
+          "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd"
+        }
+      ],
+      "path": "native-helper/native-build/windows-remote-tests-0.log",
+      "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd"
+    },
+    {
+      "bytes": 733,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/native-build-evidence/windows-remote-tests-1.log",
+          "sha256": "2e27cf2097e1eb34a45a5fddfbdae7c0f5b1b5a63b702ed6cef70a23e01d2f0a"
+        }
+      ],
+      "path": "native-helper/native-build/windows-remote-tests-1.log",
+      "sha256": "2e27cf2097e1eb34a45a5fddfbdae7c0f5b1b5a63b702ed6cef70a23e01d2f0a"
+    },
+    {
+      "bytes": 749,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/query-component-02/configuration.json",
+          "sha256": "813056a3369956b367f2237939dc40c5a1527add65c4d8bae6b2c56db4fa00b6"
+        }
+      ],
+      "path": "native-helper/query-component-02/configuration.json",
+      "sha256": "813056a3369956b367f2237939dc40c5a1527add65c4d8bae6b2c56db4fa00b6"
+    },
+    {
+      "bytes": 34726,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/query-component-02/results.json",
+          "sha256": "25dba976b13b0c7f2c8837839946b57f415b836afd8acec7333c30fdf9772e48"
+        }
+      ],
+      "path": "native-helper/query-component-02/results.json",
+      "sha256": "25dba976b13b0c7f2c8837839946b57f415b836afd8acec7333c30fdf9772e48"
+    },
+    {
+      "bytes": 2325,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/query-component-02/summary.json",
+          "sha256": "75369a5ce868218720a5f3d8f60fd8fe64682768ab4c13ef3cd5a01398489fbb"
+        }
+      ],
+      "path": "native-helper/query-component-02/summary.json",
+      "sha256": "75369a5ce868218720a5f3d8f60fd8fe64682768ab4c13ef3cd5a01398489fbb"
+    },
+    {
+      "bytes": 2593,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/query-decision.json",
+          "sha256": "9384a5432139addb7d05ec65bd6437289ccced1ff4d74b467d62c5d539b26fa9"
+        }
+      ],
+      "path": "native-helper/query-decision.json",
+      "sha256": "9384a5432139addb7d05ec65bd6437289ccced1ff4d74b467d62c5d539b26fa9"
+    },
+    {
+      "bytes": 10166,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/first-linux-gate.log",
+          "sha256": "cc952c8f4af8d8fcd0c66bb40275c6625d35587e30c9358113b6ee2400e3ad86"
+        }
+      ],
+      "path": "native-helper/runtime/first-linux-gate.log",
+      "sha256": "cc952c8f4af8d8fcd0c66bb40275c6625d35587e30c9358113b6ee2400e3ad86"
+    },
+    {
+      "bytes": 36148,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/linux-correctness-short.log",
+          "sha256": "09ce11a7e13f2ee3d2b1e6547b8dc0913eef62f2cadeac84bf9ac969ac0280b9"
+        }
+      ],
+      "path": "native-helper/runtime/linux-correctness-short.log",
+      "sha256": "09ce11a7e13f2ee3d2b1e6547b8dc0913eef62f2cadeac84bf9ac969ac0280b9"
+    },
+    {
+      "bytes": 6738,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/linux-correctness.log",
+          "sha256": "a7a8fe964755c0fe6ba80cadf12145e69c963f340cb3df4b14938944d7415314"
+        }
+      ],
+      "path": "native-helper/runtime/linux-correctness.log",
+      "sha256": "a7a8fe964755c0fe6ba80cadf12145e69c963f340cb3df4b14938944d7415314"
+    },
+    {
+      "bytes": 7402,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/long-fallback-diag.log",
+          "sha256": "93c17cb224cb3eb7cd33dcbf7765dc1cb2d70c7281bab41217e78390f10b006a"
+        }
+      ],
+      "path": "native-helper/runtime/long-fallback-diag.log",
+      "sha256": "93c17cb224cb3eb7cd33dcbf7765dc1cb2d70c7281bab41217e78390f10b006a"
+    },
+    {
+      "bytes": 3134,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/summary.json",
+          "sha256": "3329442253c221413baeafd77f5b6c0441d866e415150bb0eb7c1cad0c4c8b78"
+        }
+      ],
+      "path": "native-helper/summary.json",
+      "sha256": "3329442253c221413baeafd77f5b6c0441d866e415150bb0eb7c1cad0c4c8b78"
+    },
+    {
+      "bytes": 12179,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/build/supervisor.json",
+          "sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13"
+        }
+      ],
+      "path": "native-helper/vm-checkpoint/build/supervisor.json",
+      "sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13"
+    },
+    {
+      "bytes": 5209,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/gates/first-linux/result.json",
+          "sha256": "db99084a5af2d0acba0d0ac7e1304fe909effb1fa01ee426de874e75ce113de6"
+        }
+      ],
+      "path": "native-helper/vm-checkpoint/gates/first-linux/result.json",
+      "sha256": "db99084a5af2d0acba0d0ac7e1304fe909effb1fa01ee426de874e75ce113de6"
+    },
+    {
+      "bytes": 5446,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/gates/linux-original/result.json",
+          "sha256": "cb566b61643e60c0bbb497ca4f8757eb3062c32f3acb86e5135214fbb90ad175"
+        }
+      ],
+      "path": "native-helper/vm-checkpoint/gates/linux-original/result.json",
+      "sha256": "cb566b61643e60c0bbb497ca4f8757eb3062c32f3acb86e5135214fbb90ad175"
+    },
+    {
+      "bytes": 34505,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/gates/linux-short/result.json",
+          "sha256": "3d0bc6815a6134d4657dd0240033145305311518730a67d9819a8192721d0c6f"
+        }
+      ],
+      "path": "native-helper/vm-checkpoint/gates/linux-short/result.json",
+      "sha256": "3d0bc6815a6134d4657dd0240033145305311518730a67d9819a8192721d0c6f"
+    },
+    {
+      "bytes": 5388,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/gates/long-path-comparison/result.json",
+          "sha256": "291ada45ecbaf58fd1bb0e3411288ddfe0f4aed7172b3eb6558f4a02ef166e79"
+        }
+      ],
+      "path": "native-helper/vm-checkpoint/gates/long-path-comparison/result.json",
+      "sha256": "291ada45ecbaf58fd1bb0e3411288ddfe0f4aed7172b3eb6558f4a02ef166e79"
+    },
+    {
+      "bytes": 3634,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/readiness.json",
+          "sha256": "10ba01556bd42bae2192dfdda1961f0c5a82bf1f5869fc3af2062d70f6266a0f"
+        }
+      ],
+      "path": "native-helper/vm-checkpoint/readiness.json",
+      "sha256": "10ba01556bd42bae2192dfdda1961f0c5a82bf1f5869fc3af2062d70f6266a0f"
+    },
+    {
+      "bytes": 6419,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/checkpoint/vm-sync-2026-11-25/vm-file-manifest.json",
+          "sha256": "98bb7295715e52cf48f96f51ca4b335da096f03614886f152b4c7670b476c240"
+        }
+      ],
+      "path": "native-helper/vm-checkpoint/vm-file-manifest.json",
+      "sha256": "98bb7295715e52cf48f96f51ca4b335da096f03614886f152b4c7670b476c240"
+    },
+    {
+      "bytes": 226,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/native-helper-deployment/windows-source-check-cmd.log",
+          "sha256": "ae8fb384b8226f11a2a37f5f0699a786d03e2788ffc6db869a609adbf1f308ad"
+        }
+      ],
+      "path": "native-helper/windows-source-check-cmd.log",
+      "sha256": "ae8fb384b8226f11a2a37f5f0699a786d03e2788ffc6db869a609adbf1f308ad"
+    },
+    {
+      "bytes": 6723,
+      "kind": "generated",
+      "origins": [],
+      "path": "patch-checks.json",
+      "sha256": "90e514078c3d47980c79c02ea3ae4cded296e30f835651487872e6756a1eceb1"
+    },
+    {
+      "bytes": 6844,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/README.md",
+          "sha256": "95ee856790db2c899915b2f0f204875b254b518ab36b0f21381a53d1e3220f9b"
+        }
+      ],
+      "path": "staged-anchor/README.original.md",
+      "sha256": "95ee856790db2c899915b2f0f204875b254b518ab36b0f21381a53d1e3220f9b"
+    },
+    {
+      "bytes": 535,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/alternate-index-after-guard.log",
+          "sha256": "b12d449ef1c36a6bf2dd7dc22cead6689141c73a7a38ed87628d4453f1ba3aa8"
+        }
+      ],
+      "path": "staged-anchor/alternate-index-after-guard.log",
+      "sha256": "b12d449ef1c36a6bf2dd7dc22cead6689141c73a7a38ed87628d4453f1ba3aa8"
+    },
+    {
+      "bytes": 2252,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/alternate-index-before-guard.log",
+          "sha256": "e3ccc8428895a9945a2863f6dab08bec552856b8fba15d6371e23f8a64df784c"
+        }
+      ],
+      "path": "staged-anchor/alternate-index-before-guard.log",
+      "sha256": "e3ccc8428895a9945a2863f6dab08bec552856b8fba15d6371e23f8a64df784c"
+    },
+    {
+      "bytes": 601,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/baseline.json",
+          "sha256": "580a1347434496def9d1761a7e65912e6b2eee59be9e9b00de27fe16face0c5f"
+        }
+      ],
+      "path": "staged-anchor/baseline.json",
+      "sha256": "580a1347434496def9d1761a7e65912e6b2eee59be9e9b00de27fe16face0c5f"
+    },
+    {
+      "bytes": 33694,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/candidate.patch",
+          "sha256": "53d3f02b0e49c3dc968ea7b0ce455702cd87109a8fbf82ef225bf8c4e973929a"
+        }
+      ],
+      "path": "staged-anchor/candidate.patch",
+      "sha256": "53d3f02b0e49c3dc968ea7b0ce455702cd87109a8fbf82ef225bf8c4e973929a"
+    },
+    {
+      "bytes": 7349,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/gui-rust-tests-index-guard.log",
+          "sha256": "1aecbadc523f37ae6b65270574e85397361fba8a9336b211bc8746b1fdedd51a"
+        }
+      ],
+      "path": "staged-anchor/gui-rust-tests-index-guard.log",
+      "sha256": "1aecbadc523f37ae6b65270574e85397361fba8a9336b211bc8746b1fdedd51a"
+    },
+    {
+      "bytes": 4657,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/proof.json",
+          "sha256": "b3df7a91a293f7dc5ba84c7efec73f51caff4912b758eb907d4f47c2b82f6955"
+        }
+      ],
+      "path": "staged-anchor/proof.json",
+      "sha256": "b3df7a91a293f7dc5ba84c7efec73f51caff4912b758eb907d4f47c2b82f6955"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/source.json",
+          "sha256": "27f9a557b837feadb805789adb13a66c6632be4aab98d272d421b7f87a5dc53a"
+        }
+      ],
+      "path": "staged-anchor/source.json",
+      "sha256": "27f9a557b837feadb805789adb13a66c6632be4aab98d272d421b7f87a5dc53a"
+    },
+    {
+      "bytes": 3315,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/staged-anchor-metadata/worker-tests-index-guard.log",
+          "sha256": "537a36de7faad2cbee0c3d4bfbe4392f5441953b1e80e866d7a8dd1d6a77a376"
+        }
+      ],
+      "path": "staged-anchor/worker-tests-index-guard.log",
+      "sha256": "537a36de7faad2cbee0c3d4bfbe4392f5441953b1e80e866d7a8dd1d6a77a376"
+    },
+    {
+      "bytes": 14483,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-build.json",
+          "sha256": "98ed2a83f25dc30e82deba3b521c6327cc3ee1d65beb0a162c7d8122088b7da1"
+        }
+      ],
+      "path": "status/build/candidate-stateless-status-b2de070-build.json",
+      "sha256": "98ed2a83f25dc30e82deba3b521c6327cc3ee1d65beb0a162c7d8122088b7da1"
+    },
+    {
+      "bytes": 7627,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json",
+          "sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384"
+        }
+      ],
+      "path": "status/build/checkpoint-b2de070-build.json",
+      "sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384"
+    },
+    {
+      "bytes": 12493,
+      "kind": "regenerated-patch",
+      "origins": [
+        {
+          "base_git_blob": "b2de070becf3fcba2d47557efd375221c586f273:src-tauri/src/git.rs",
+          "base_sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/git.rs",
+          "sha256": "dcae797180249d4eab4ef12d0a2848d358bbcc0953b08f5b43f15e7edaeae0fc"
+        },
+        {
+          "base_git_blob": "b2de070becf3fcba2d47557efd375221c586f273:src-tauri/src/git_tests.rs",
+          "base_sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source/src-tauri/src/git_tests.rs",
+          "sha256": "f0d3d9667eede161d0bd4a05e9140ef76ce897fe1d77624d995699fac00c0ead"
+        }
+      ],
+      "path": "status/candidate.patch",
+      "sha256": "9ae77ec45539699efcaedcdf8d19ab3353cffe5225a48150099b8f82ba285684"
+    },
+    {
+      "bytes": 510,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/browser-after.json",
+          "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/browser-after.json",
+      "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+    },
+    {
+      "bytes": 453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/browser-before.json",
+          "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/browser-before.json",
+      "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+    },
+    {
+      "bytes": 13368,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/samples.jsonl",
+          "sha256": "714bdfe9a0553eeee12ad68c385cadd2f92e6f161f4ab8b22f60c2a29f2c0663"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/samples.jsonl",
+      "sha256": "714bdfe9a0553eeee12ad68c385cadd2f92e6f161f4ab8b22f60c2a29f2c0663"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 3607,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/verdict.json",
+          "sha256": "599759688b97ac07383230d63d687829ad75cb5047a70fd301d29882e4e10afe"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-01/verdict.json",
+      "sha256": "599759688b97ac07383230d63d687829ad75cb5047a70fd301d29882e4e10afe"
+    },
+    {
+      "bytes": 510,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/browser-after.json",
+          "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/browser-after.json",
+      "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+    },
+    {
+      "bytes": 453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/browser-before.json",
+          "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/browser-before.json",
+      "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+    },
+    {
+      "bytes": 14248,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/samples.jsonl",
+          "sha256": "f3dc3156005eb64113b491246edee7ac50e5cefdf28c7ad09b3973d65c2e3a35"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/samples.jsonl",
+      "sha256": "f3dc3156005eb64113b491246edee7ac50e5cefdf28c7ad09b3973d65c2e3a35"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 3689,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/verdict.json",
+          "sha256": "c2e297b776b0766f5d7da74c442d8c1b9b1a9dc02122ea659dda9d79be88cf4c"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-02/verdict.json",
+      "sha256": "c2e297b776b0766f5d7da74c442d8c1b9b1a9dc02122ea659dda9d79be88cf4c"
+    },
+    {
+      "bytes": 510,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/browser-after.json",
+          "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/browser-after.json",
+      "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+    },
+    {
+      "bytes": 453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/browser-before.json",
+          "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/browser-before.json",
+      "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+    },
+    {
+      "bytes": 88608,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/samples.jsonl",
+          "sha256": "97309a16a2524b6263ed4e15b99da6cab33dcc9e0b16fff6cba4305e2c2fb81e"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/samples.jsonl",
+      "sha256": "97309a16a2524b6263ed4e15b99da6cab33dcc9e0b16fff6cba4305e2c2fb81e"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/source.json",
+          "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "bytes": 3641,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/verdict.json",
+          "sha256": "cee8fadc0db175823a2c6ae7bc7cedc075a797e01a106aa2073bd87b9dcac093"
+        }
+      ],
+      "path": "status/gui/checkpoint-b2de070-wsl-windows-20261125T195712607225Z-03/verdict.json",
+      "sha256": "cee8fadc0db175823a2c6ae7bc7cedc075a797e01a106aa2073bd87b9dcac093"
+    },
+    {
+      "bytes": 510,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/browser-after.json",
+          "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/browser-after.json",
+      "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+    },
+    {
+      "bytes": 453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/browser-before.json",
+          "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/browser-before.json",
+      "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+    },
+    {
+      "bytes": 13817,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/samples.jsonl",
+          "sha256": "995576744dc3263502c1eea8b4e1d1d0dde1701e0b3b77e1a46f24b2f92e0e04"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/samples.jsonl",
+      "sha256": "995576744dc3263502c1eea8b4e1d1d0dde1701e0b3b77e1a46f24b2f92e0e04"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 3717,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/verdict.json",
+          "sha256": "3a82a01ace3d67349a084cf424596afbb1d37653aeab09b36fe6bc64123b7c9c"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-01/verdict.json",
+      "sha256": "3a82a01ace3d67349a084cf424596afbb1d37653aeab09b36fe6bc64123b7c9c"
+    },
+    {
+      "bytes": 510,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/browser-after.json",
+          "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/browser-after.json",
+      "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+    },
+    {
+      "bytes": 453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/browser-before.json",
+          "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/browser-before.json",
+      "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+    },
+    {
+      "bytes": 13773,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/samples.jsonl",
+          "sha256": "667e3cae7b0392a6b5e06cfbe98a5bf73854a1bc5594a363e9172da09c90592f"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/samples.jsonl",
+      "sha256": "667e3cae7b0392a6b5e06cfbe98a5bf73854a1bc5594a363e9172da09c90592f"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 3741,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/verdict.json",
+          "sha256": "7ab81160865ce9fef9f99ec1486199caf7067160d92d5b2cadc3b44dcf9943c1"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-02/verdict.json",
+      "sha256": "7ab81160865ce9fef9f99ec1486199caf7067160d92d5b2cadc3b44dcf9943c1"
+    },
+    {
+      "bytes": 510,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/browser-after.json",
+          "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/browser-after.json",
+      "sha256": "8e27b89210530505e0a15eb8519d58dd8790bf8e1a566e4cdb954d23cc318d1b"
+    },
+    {
+      "bytes": 453,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/browser-before.json",
+          "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/browser-before.json",
+      "sha256": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+    },
+    {
+      "bytes": 88884,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/samples.jsonl",
+          "sha256": "7eb2f12566dfd0db7f3840c42c634ea712273b300033dd775d6a2a12edfb84fc"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/samples.jsonl",
+      "sha256": "7eb2f12566dfd0db7f3840c42c634ea712273b300033dd775d6a2a12edfb84fc"
+    },
+    {
+      "bytes": 5050,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/source.json",
+          "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "bytes": 3668,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/verdict.json",
+          "sha256": "1eea7821e2c89b874680a1a4a52047dee12234c92b2227a87217920eda3bbbd3"
+        }
+      ],
+      "path": "status/gui/stateless-status-b2de070-wsl-windows-20261125T195712607225Z-03/verdict.json",
+      "sha256": "1eea7821e2c89b874680a1a4a52047dee12234c92b2227a87217920eda3bbbd3"
+    },
+    {
+      "bytes": 219088,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/status-gui-ab-20261125T195712607225Z-summary.json",
+          "sha256": "df25ab8437491bcabda8c237967017653a0bfbda49346050c72601ec1f126139"
+        }
+      ],
+      "path": "status/gui/status-gui-ab-20261125T195712607225Z-summary.json",
+      "sha256": "df25ab8437491bcabda8c237967017653a0bfbda49346050c72601ec1f126139"
+    },
+    {
+      "bytes": 102559,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/status-gui-ab-20261125T195712607225Z.json",
+          "sha256": "f300eb1214e527e20f9f3f6eb674dfe9c3e870242d338800a22288a84d41c801"
+        }
+      ],
+      "path": "status/gui/status-gui-ab-20261125T195712607225Z.json",
+      "sha256": "f300eb1214e527e20f9f3f6eb674dfe9c3e870242d338800a22288a84d41c801"
+    },
+    {
+      "bytes": 4769,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/linux-worker-tests.log",
+          "sha256": "ecdf63cc7c38c931c0b3eae2f2373e99b952253cd5867a1b0b41f105a8bfc967"
+        }
+      ],
+      "path": "status/native/linux-worker-tests.log",
+      "sha256": "ecdf63cc7c38c931c0b3eae2f2373e99b952253cd5867a1b0b41f105a8bfc967"
+    },
+    {
+      "bytes": 2490,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/native-test-0.log",
+          "sha256": "d9f113b616c7439e43165fdd92f93069f71f8527256239c8be6eba0d1c1760d8"
+        }
+      ],
+      "path": "status/native/native-test-0.log",
+      "sha256": "d9f113b616c7439e43165fdd92f93069f71f8527256239c8be6eba0d1c1760d8"
+    },
+    {
+      "bytes": 1768,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/native-worker-routing-retry.log",
+          "sha256": "7526a20a560f26498129e76ba77faaf2b4c28c910b704337395722aa8f968113"
+        }
+      ],
+      "path": "status/native/native-worker-routing-retry.log",
+      "sha256": "7526a20a560f26498129e76ba77faaf2b4c28c910b704337395722aa8f968113"
+    },
+    {
+      "bytes": 663,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/native-worker-routing.log",
+          "sha256": "549692086d98b7f9ea562d8d08a2efcd434e40bc8a114b964897272de27591f2"
+        }
+      ],
+      "path": "status/native/native-worker-routing.log",
+      "sha256": "549692086d98b7f9ea562d8d08a2efcd434e40bc8a114b964897272de27591f2"
+    },
+    {
+      "bytes": 14908,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/proof.json",
+          "sha256": "770907a8fca4e3a4aabdd9cc1011bb11b80dff3b9430b88f48226d1c6dfb0112"
+        }
+      ],
+      "path": "status/native/proof.json",
+      "sha256": "770907a8fca4e3a4aabdd9cc1011bb11b80dff3b9430b88f48226d1c6dfb0112"
+    },
+    {
+      "bytes": 27768,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/results.json",
+          "sha256": "efc2fc9235b3bed86054bd095cfd169b8967463ced6572c2adedf7db1922b946"
+        }
+      ],
+      "path": "status/native/results.json",
+      "sha256": "efc2fc9235b3bed86054bd095cfd169b8967463ced6572c2adedf7db1922b946"
+    },
+    {
+      "bytes": 1768,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/routing.json",
+          "sha256": "7526a20a560f26498129e76ba77faaf2b4c28c910b704337395722aa8f968113"
+        }
+      ],
+      "path": "status/native/routing.json",
+      "sha256": "7526a20a560f26498129e76ba77faaf2b4c28c910b704337395722aa8f968113"
+    },
+    {
+      "bytes": 1558,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/summary.json",
+          "sha256": "d6a56f145648df8561cabae405b64b77181de5a3c464d7a874ae70ccb357e18e"
+        }
+      ],
+      "path": "status/native/summary.json",
+      "sha256": "d6a56f145648df8561cabae405b64b77181de5a3c464d7a874ae70ccb357e18e"
+    },
+    {
+      "bytes": 10741,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/supervisor.json",
+          "sha256": "d9831c388eb4f77745a633445a691a06af6792da073a4f76c0fed4c3030d790d"
+        }
+      ],
+      "path": "status/native/supervisor.json",
+      "sha256": "d9831c388eb4f77745a633445a691a06af6792da073a4f76c0fed4c3030d790d"
+    },
+    {
+      "bytes": 4529,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/README.md",
+          "sha256": "4f86b1aa41cc6b3294b267915632e47cd2e216c0680cd28531ee348d21266725"
+        }
+      ],
+      "path": "ui-phase-probe/README.md",
+      "sha256": "4f86b1aa41cc6b3294b267915632e47cd2e216c0680cd28531ee348d21266725"
+    },
+    {
+      "bytes": 7185,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/check.mjs",
+          "sha256": "8435e60575b2edd11732b47215dd443b320fb64b660a4bb09a55ad3dfc247fd6"
+        }
+      ],
+      "path": "ui-phase-probe/check.mjs",
+      "sha256": "8435e60575b2edd11732b47215dd443b320fb64b660a4bb09a55ad3dfc247fd6"
+    },
+    {
+      "bytes": 641,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/host-proof.json",
+          "sha256": "e014b76c8090afffcc8d2830cc76a19548359e5e1f6feb348a72c91677e96f8f"
+        }
+      ],
+      "path": "ui-phase-probe/host-proof.json",
+      "sha256": "e014b76c8090afffcc8d2830cc76a19548359e5e1f6feb348a72c91677e96f8f"
+    },
+    {
+      "bytes": 8107,
+      "kind": "copied",
+      "origins": [
+        {
+          "path": "build/experiments/ui-phase-probe/inject.js",
+          "sha256": "e3ffb91206c75e367a6562f4e617c8d5e458185639cb5e72fc6e9c768b0f1052"
+        }
+      ],
+      "path": "ui-phase-probe/inject.js",
+      "sha256": "e3ffb91206c75e367a6562f4e617c8d5e458185639cb5e72fc6e9c768b0f1052"
+    }
+  ],
+  "base_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+  "checkpoint_date": "2026-11-25",
+  "promoted": false,
+  "schema_version": 1,
+  "total_artifact_bytes": 1218862
+}

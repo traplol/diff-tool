@@ -1,0 +1,78 @@
+{
+  "correct": true,
+  "exact_raw_untracked_list_bytes_equal": true,
+  "pairs": 10,
+  "order": "odd listing then status; even status then listing",
+  "state_preserved": true,
+  "normal_user_settings_inherited": true,
+  "configs": [
+    {
+      "key": "core.fscache",
+      "origin": "system\tfile:C:/Program Files/Git/etc/gitconfig\ttrue\n",
+      "exit": 0
+    },
+    {
+      "key": "core.preloadIndex",
+      "origin": "",
+      "exit": 1
+    },
+    {
+      "key": "core.untrackedCache",
+      "origin": "",
+      "exit": 1
+    },
+    {
+      "key": "core.fsmonitor",
+      "origin": "",
+      "exit": 1
+    },
+    {
+      "key": "core.splitIndex",
+      "origin": "",
+      "exit": 1
+    },
+    {
+      "key": "core.excludesFile",
+      "origin": "",
+      "exit": 1
+    }
+  ],
+  "first_samples_are_not_os_cold": true,
+  "timings": {
+    "listing": {
+      "samples_ms": [
+        851.644,
+        887.7472,
+        864.4289,
+        886.4281000000001,
+        921.0045,
+        870.7873000000001,
+        921.9644000000001,
+        898.9596,
+        894.3295,
+        970.095
+      ],
+      "median_ms": 891.03835,
+      "max_ms": 970.095,
+      "min_ms": 851.644
+    },
+    "status": {
+      "samples_ms": [
+        276.0664,
+        328.7196,
+        271.42580000000004,
+        317.1172,
+        286.15270000000004,
+        276.444,
+        265.3115,
+        260.2715,
+        259.618,
+        289.8626
+      ],
+      "median_ms": 276.2552,
+      "max_ms": 328.7196,
+      "min_ms": 259.618
+    }
+  },
+  "median_reduction_percent": 68.9962614964889
+}

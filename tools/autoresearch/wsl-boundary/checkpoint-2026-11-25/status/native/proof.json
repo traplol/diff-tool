@@ -1,0 +1,390 @@
+{
+  "baseline_source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "candidate_source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+  "configuration_note": "No Branchline-owned monitor/cache is added. Existing user Git opt-ins remain effective, including Git itself automatically starting its configured fsmonitor daemon.",
+  "existing_optional_locks": "0",
+  "host_parity": {
+    "conflict": true,
+    "exact_raw_listing_bytes": true,
+    "existing_fsmonitor_hook_respected": true,
+    "gitignore_info_global_ignores": true,
+    "linked_worktree": true,
+    "literal_and_unix_byte_names": true,
+    "nested_repository_root": true,
+    "ordinary_nested_files": true,
+    "partial_staging": true,
+    "real_index_config_HEAD_bytes_mtime_inode_preserved": true,
+    "unborn_with_and_without_index": true,
+    "untracked_cache_false_and_true_persisted_UNTR": true
+  },
+  "hypothesis": "Git porcelain-v2 status can discover unrestricted Windows untracked paths faster than ls-files while preserving its raw NUL list and repository state.",
+  "independent_review": "Read-only parser/routing review; initial impossible-path/ordinary-U gap fixed; final narrow pass found no documented-output rejection or indexing panic.",
+  "isolated": true,
+  "new_config_overrides": [],
+  "not_verified": [
+    "End-to-end GUI latency improvement"
+  ],
+  "parser": "Byte-only NUL parser; ordinary and unmerged tracked records validated/skipped; ? paths copied intact; unsupported/malformed output errors trigger original listing.",
+  "product_argv": [
+    "status",
+    "--porcelain=v2",
+    "-z",
+    "--untracked-files=all",
+    "--no-renames",
+    "--ignore-submodules=all"
+  ],
+  "promoted": false,
+  "related_control": "build/experiments/windows-status-control/runs/20261125T185438Z/results.json (isolation-only forced-false config overrides are absent from this product candidate)",
+  "scope": "Only cfg(windows) unrestricted compatibility untracked discovery. Linux and named-path discovery, tracked captures, exact post-filter, ordering, frozen patch assembly, HEAD/index guards and error fallback remain unchanged.",
+  "tests": {
+    "linux_worker": {
+      "unit_passed": 30,
+      "real_stdio_passed": 1,
+      "log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/linux-worker-tests.log",
+      "log_sha256": "ecdf63cc7c38c931c0b3eae2f2373e99b952253cd5867a1b0b41f105a8bfc967"
+    },
+    "native_windows_unit": {
+      "passed": 27,
+      "failed": 0,
+      "ignored": 0,
+      "log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/native-test-0.log",
+      "log_sha256": "d9f113b616c7439e43165fdd92f93069f71f8527256239c8be6eba0d1c1760d8"
+    },
+    "native_real_stdio": {
+      "correct": true,
+      "unrestricted_equals_explicit_all_untracked_selection": true,
+      "untracked_paths": [
+        "branchline-review-fixture/untracked-00.txt",
+        "branchline-review-fixture/untracked-01.txt",
+        "branchline-review-fixture/untracked-02.txt",
+        "branchline-review-fixture/untracked-03.txt",
+        "branchline-review-fixture/untracked-04.txt"
+      ],
+      "tracked_groups": [
+        "Staged",
+        "Unstaged",
+        "Untracked"
+      ],
+      "status_calls": [
+        {
+          "event": "start",
+          "sid": "20261125T194132.226249Z-H1e4590ba-P00001394",
+          "thread": "main",
+          "time": "2026-11-25T19:41:32.231951Z",
+          "file": "common-init.c",
+          "line": 78,
+          "t_abs": 0.033046,
+          "argv": [
+            "git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:\\Users\\max\\branchline-bench\\kernel-windows",
+            "status",
+            "--porcelain=v2",
+            "-z",
+            "--untracked-files=all",
+            "--no-renames",
+            "--ignore-submodules=all"
+          ]
+        }
+      ],
+      "listing_calls": [
+        {
+          "event": "start",
+          "sid": "20261125T194133.716034Z-H1e4590ba-P0000227c",
+          "thread": "main",
+          "time": "2026-11-25T19:41:33.722256Z",
+          "file": "common-init.c",
+          "line": 78,
+          "t_abs": 0.038989,
+          "argv": [
+            "git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:\\Users\\max\\branchline-bench\\kernel-windows",
+            "ls-files",
+            "--others",
+            "--exclude-standard",
+            "-z",
+            "--"
+          ]
+        }
+      ],
+      "filtered_keeps_original_ls_files": true,
+      "tracked_scoped_view_skips_untracked_discovery": true,
+      "empty_untracked_skips_discovery": true,
+      "trace_instrumented_not_performance": true,
+      "native_worker_exit": 0
+    }
+  },
+  "vm_accessed": true,
+  "baseline_git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "source_files_changed": [
+    "src-tauri/src/git.rs",
+    "src-tauri/src/git_tests.rs"
+  ],
+  "native_git_paired_reads": {
+    "correct": true,
+    "exact_raw_untracked_list_bytes_equal": true,
+    "pairs": 10,
+    "order": "odd listing then status; even status then listing",
+    "state_preserved": true,
+    "normal_user_settings_inherited": true,
+    "configs": [
+      {
+        "key": "core.fscache",
+        "origin": "system\tfile:C:/Program Files/Git/etc/gitconfig\ttrue\n",
+        "exit": 0
+      },
+      {
+        "key": "core.preloadIndex",
+        "origin": "",
+        "exit": 1
+      },
+      {
+        "key": "core.untrackedCache",
+        "origin": "",
+        "exit": 1
+      },
+      {
+        "key": "core.fsmonitor",
+        "origin": "",
+        "exit": 1
+      },
+      {
+        "key": "core.splitIndex",
+        "origin": "",
+        "exit": 1
+      },
+      {
+        "key": "core.excludesFile",
+        "origin": "",
+        "exit": 1
+      }
+    ],
+    "first_samples_are_not_os_cold": true,
+    "timings": {
+      "listing": {
+        "samples_ms": [
+          851.644,
+          887.7472,
+          864.4289,
+          886.4281000000001,
+          921.0045,
+          870.7873000000001,
+          921.9644000000001,
+          898.9596,
+          894.3295,
+          970.095
+        ],
+        "median_ms": 891.03835,
+        "max_ms": 970.095,
+        "min_ms": 851.644
+      },
+      "status": {
+        "samples_ms": [
+          276.0664,
+          328.7196,
+          271.42580000000004,
+          317.1172,
+          286.15270000000004,
+          276.444,
+          265.3115,
+          260.2715,
+          259.618,
+          289.8626
+        ],
+        "median_ms": 276.2552,
+        "max_ms": 328.7196,
+        "min_ms": 259.618
+      }
+    },
+    "median_reduction_percent": 68.9962614964889
+  },
+  "native_tests": {
+    "passed": 27,
+    "failed": 0,
+    "ignored": 0,
+    "log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/native-test-0.log",
+    "log_sha256": "d9f113b616c7439e43165fdd92f93069f71f8527256239c8be6eba0d1c1760d8"
+  },
+  "end_to_end_gui_latency": {
+    "status": "not_measured",
+    "candidate_packaged": true
+  },
+  "native_git_version": "git version 2.56.1.windows.1",
+  "fixture_fingerprint_before": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "fixture_fingerprint_after": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "windows_worker": {
+    "path": "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+    "source_binary": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+    "bytes": 2726400,
+    "sha256": "8fafdb059c64cf88d7ab5815f3ca20af8b80e16aa7eed52be691813dcc8f16c3",
+    "recipe": {
+      "target": "x86_64-pc-windows-msvc",
+      "RUSTFLAGS": "-C target-feature=+crt-static",
+      "CARGO_BUILD_JOBS": "1",
+      "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+      "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+      "XWIN_CROSS_COMPILER": "clang",
+      "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin"
+    },
+    "imports": [
+      "bcryptprimitives.dll",
+      "KERNEL32.dll",
+      "api-ms-win-core-synch-l1-2-0.dll",
+      "WS2_32.dll",
+      "ntdll.dll",
+      "ADVAPI32.dll",
+      "Secur32.dll"
+    ],
+    "static_crt_import_check": true
+  },
+  "linux_gui": {
+    "path": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+    "bytes": 23264920,
+    "sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+    "embedded_helper_verified": true,
+    "renderer": "production default"
+  },
+  "supervisor": {
+    "initial_pid": 111496,
+    "resume_pid": 114593,
+    "status": "complete",
+    "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/supervisor.json"
+  },
+  "infrastructure_failures": [
+    {
+      "phase": "initial PowerShell stdin runner",
+      "result": "No samples or result; created only owned empty directory; switched to saved -File runner"
+    },
+    {
+      "phase": "first -File runner",
+      "result": "Rejected existing empty output directory before sampling; new unique owned directory then succeeded"
+    },
+    {
+      "phase": "native worker routing assertion attempt 1",
+      "result": "Payload parity passed; harness incorrectly expected tracked-only scoped view to run untracked listing. Corrected expected count to one; resumed routing and packaging only; prior logs retained."
+    }
+  ],
+  "commands": [
+    {
+      "phase": "linux-worker-tests",
+      "command": [
+        "cargo",
+        "test",
+        "--offline",
+        "--locked",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.toml",
+        "--",
+        "--test-threads=1"
+      ],
+      "started": 1795635355.5204253,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/linux-worker-tests.log",
+      "exit": 0,
+      "finished": 1795635414.8707182
+    },
+    {
+      "phase": "windows-worker-tests-build",
+      "command": [
+        "cargo",
+        "xwin",
+        "test",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "started": 1795635414.8719919,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/windows-worker-tests-build.log",
+      "exit": 0,
+      "finished": 1795635549.8754916
+    },
+    {
+      "phase": "native-test-0",
+      "command": [
+        "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline_git_worker-09f6db754efdc325.exe",
+        "--test-threads=1"
+      ],
+      "started": 1795635550.3206482,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native-test-0.log",
+      "exit": 0,
+      "finished": 1795635592.9511466
+    },
+    {
+      "phase": "windows-worker-build",
+      "command": [
+        "cargo",
+        "xwin",
+        "build",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc"
+      ],
+      "started": 1795635592.9567623,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/windows-worker-build.log",
+      "exit": 0,
+      "finished": 1795635593.1271908
+    },
+    {
+      "phase": "native-worker-routing",
+      "command": [
+        "/usr/bin/python3",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native_route.py",
+        "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native"
+      ],
+      "started": 1795635593.5519924,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native-worker-routing.log",
+      "exit": 1,
+      "finished": 1795635599.5650573
+    },
+    {
+      "phase": "native-worker-routing-retry",
+      "command": [
+        "/usr/bin/python3",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native_route.py",
+        "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native"
+      ],
+      "started": 1795635691.722836,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native-worker-routing-retry.log",
+      "exit": 0,
+      "finished": 1795635696.64991
+    },
+    {
+      "phase": "linux-gui-build",
+      "command": [
+        "./build.sh",
+        "--no-bundle"
+      ],
+      "started": 1795635696.651461,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/linux-gui-build.log",
+      "exit": 0,
+      "finished": 1795635801.8164823
+    }
+  ],
+  "versions": {
+    "rustc": "rustc 1.100.0 (0ef1bc386 2026-11-09)\nbinary: rustc\ncommit-hash: 0ef1bc386059596dada8fb65b50425aab2ea637a\ncommit-date: 2026-11-09\nhost: x86_64-unknown-linux-gnu\nrelease: 1.100.0\nLLVM version: 23.1.5",
+    "cargo": "cargo 1.100.0 (3acc79c0c 2026-11-05)",
+    "cc": "cc (Ubuntu 15.2.0-16ubuntu1) 15.2.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "node": "v22.22.1",
+    "npm": "9.2.0",
+    "windows_git": "git version 2.56.1.windows.1"
+  },
+  "source_manifest_preserved": true,
+  "native_routing_evidence": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/routing.json",
+  "raw_native_evidence_archive_sha256": "71e48a6b9ad7c320fc476746a0a9bbb6c9ee1b4c8203f3e342de682939f4e079"
+}

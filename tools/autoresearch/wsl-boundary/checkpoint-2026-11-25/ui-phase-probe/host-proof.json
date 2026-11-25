@@ -1,0 +1,13 @@
+{
+  "diagnostic_only": true,
+  "host_mock_checks": "passed",
+  "checks": [
+    "native IDs, cancellation, this, arguments, returns, throws, nesting, new views, memory cap and descriptor restoration (own rAF)",
+    "native IDs, cancellation, this, arguments, returns, throws, nesting, new views, memory cap and descriptor restoration (inherited rAF)",
+    "missing real view fails before hooks are installed",
+    "nonreplaceable descriptor fails before any hook is installed"
+  ],
+  "source_sha256": "e3ffb91206c75e367a6562f4e617c8d5e458185639cb5e72fc6e9c768b0f1052",
+  "native_gui_validation": "not run",
+  "timing_validation": "not run"
+}

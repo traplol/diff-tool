@@ -1,0 +1,121 @@
+{
+  "pid": 132124,
+  "start_ticks": "14498514",
+  "status": "complete",
+  "fallback_unc": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\native-helper-deployment-b2de070-03fecde11c0a-linux-correctness-02\\blocked-native\\cache\\branchline\\git-workers\\branchline-git-worker-6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2.exe",
+  "fallback_utf16_units": 270,
+  "cache_sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2",
+  "cases": [
+    {
+      "name": "current",
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+      "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+      "launch": {
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+        "binary_sha256": "67815591856441398d6d026bb9f828a1d67a71f73b3c241b802715f033a0fcbf",
+        "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+        "profile": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-linux-correctness-02/blocked-native",
+        "port": 29361,
+        "mcp_port": 28961,
+        "session": "ea023037-c3d4-48b2-b971-31e1127ab8ff",
+        "pid": 132135,
+        "app_process": {
+          "pid": 132135,
+          "start_ticks": "14498605",
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+            "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-linux-correctness-02/blocked-native/welcome"
+          ]
+        },
+        "driver_process": {
+          "pid": 132133,
+          "start_ticks": "14498587",
+          "binary": "/usr/bin/WebKitWebDriver"
+        },
+        "supervisor_pid": 132124,
+        "display": ":0",
+        "gdk_backend": "x11"
+      },
+      "observed": {
+        "calls": [
+          {
+            "error": "Native IPC returned an error",
+            "end": 774,
+            "start": 536,
+            "op": "open",
+            "command": "workspace",
+            "native_error": "The Git storage worker closed its output. Refresh the repository to reconnect."
+          }
+        ],
+        "outcome": "native_error",
+        "text": "The Git storage worker closed its output. Refresh the repository to reconnect.",
+        "nativeResponse": "The Git storage worker closed its output. Refresh the repository to reconnect."
+      },
+      "fallback_sha256_after": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2",
+      "stopped": [
+        132133
+      ],
+      "gui_absent": true,
+      "thread_alive": false,
+      "errors": []
+    },
+    {
+      "name": "unchanged-b2de070",
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+      "launch": {
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "profile": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-linux-correctness-02/blocked-native",
+        "port": 29361,
+        "mcp_port": 28961,
+        "session": "158aa581-ed64-4fc9-b123-ab09332a088a",
+        "pid": 132303,
+        "app_process": {
+          "pid": 132303,
+          "start_ticks": "14498971",
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-linux-correctness-02/blocked-native/welcome"
+          ]
+        },
+        "driver_process": {
+          "pid": 132301,
+          "start_ticks": "14498965",
+          "binary": "/usr/bin/WebKitWebDriver"
+        },
+        "supervisor_pid": 132124,
+        "display": ":0",
+        "gdk_backend": "x11"
+      },
+      "observed": {
+        "calls": [
+          {
+            "error": "Native IPC returned an error",
+            "end": 449,
+            "start": 376,
+            "op": "open",
+            "command": "workspace",
+            "native_error": "The Git storage worker closed its output. Refresh the repository to reconnect."
+          }
+        ],
+        "outcome": "native_error",
+        "text": "The Git storage worker closed its output. Refresh the repository to reconnect.",
+        "nativeResponse": "The Git storage worker closed its output. Refresh the repository to reconnect."
+      },
+      "fallback_sha256_after": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2",
+      "stopped": [
+        132301
+      ],
+      "gui_absent": true,
+      "thread_alive": false,
+      "errors": []
+    }
+  ],
+  "no_production_change": true,
+  "not_a_score": true,
+  "same_native_error": true
+}

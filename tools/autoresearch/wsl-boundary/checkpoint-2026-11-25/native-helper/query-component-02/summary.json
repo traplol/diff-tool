@@ -1,0 +1,79 @@
+{
+  "valid": true,
+  "all_paths_equal": true,
+  "configuration": {
+    "query": "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)",
+    "query_utf8_sha256": "0b4965d4cdb8481d3397128d900c12aef9abad2fb1b0915ef5fe9e142624f9e9",
+    "remote_rs_sha256": "6cad7de1ff99ea0714ce032c28fae19463cffc80e42a2110cfdc602bbfcaa1c5",
+    "app_source_hash": "f2ffb3cc14a90caa261e53de4400177b13297f100d66f33549d41afb36c9a334",
+    "cwds": {
+      "ext4_welcome": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "ntfs_kernel": "/mnt/c/Users/max/branchline-bench/kernel-windows"
+    }
+  },
+  "summary": {
+    "ext4_welcome": {
+      "powershell": {
+        "first_ms": 600.152696,
+        "median_ms": 502.583297,
+        "samples_ms": [
+          600.152696,
+          502.583297,
+          498.044897,
+          495.389097,
+          510.950897
+        ]
+      },
+      "cmd": {
+        "first_ms": 139.296299,
+        "median_ms": 107.4768,
+        "samples_ms": [
+          139.296299,
+          107.4768,
+          107.772099,
+          101.587099,
+          100.7423
+        ]
+      },
+      "paired_powershell_minus_cmd_ms": [
+        460.856397,
+        395.106497,
+        390.27279799999997,
+        393.801998,
+        410.208597
+      ]
+    },
+    "ntfs_kernel": {
+      "powershell": {
+        "first_ms": 315.752399,
+        "median_ms": 317.634516,
+        "samples_ms": [
+          315.752399,
+          315.826616,
+          327.824217,
+          317.634516,
+          323.665317
+        ]
+      },
+      "cmd": {
+        "first_ms": 87.148704,
+        "median_ms": 90.409305,
+        "samples_ms": [
+          87.148704,
+          90.409305,
+          97.513405,
+          88.861304,
+          97.563805
+        ]
+      },
+      "paired_powershell_minus_cmd_ms": [
+        228.60369500000002,
+        225.41731099999998,
+        230.31081199999997,
+        228.773212,
+        226.101512
+      ]
+    }
+  },
+  "caveat": "Fresh native processes, first samples retained; not OS-cold. No environment overrides, Git commands, fixture writes, app launches or builds."
+}

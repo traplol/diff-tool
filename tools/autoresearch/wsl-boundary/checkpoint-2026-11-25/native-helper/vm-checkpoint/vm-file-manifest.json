@@ -1,0 +1,125 @@
+{
+  "files": [
+    {
+      "path": "build/linux-gui-build.log",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/linux-gui-build.log",
+      "sha256": "77750c47a012355b97821dc852fe2a87b99e25afaf018c0ad118c2ac63aefbf3",
+      "bytes": 941
+    },
+    {
+      "path": "build/linux-remote-tests.log",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/linux-remote-tests.log",
+      "sha256": "acd5d9da030446f7b08eb9c90277c90fe1c654d61fbcc5082746030b4111bfb4",
+      "bytes": 12115
+    },
+    {
+      "path": "build/supervisor.json",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/supervisor.json",
+      "sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13",
+      "bytes": 12179
+    },
+    {
+      "path": "build/windows-gui-build.log",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/windows-gui-build.log",
+      "sha256": "c9f3400e7f22764bae4278914aa304e0fa5b375f1de9df6575d1a1b34d81e662",
+      "bytes": 2030
+    },
+    {
+      "path": "build/windows-remote-tests-0.log",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/windows-remote-tests-0.log",
+      "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd",
+      "bytes": 113
+    },
+    {
+      "path": "build/windows-remote-tests-1.log",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/windows-remote-tests-1.log",
+      "sha256": "2e27cf2097e1eb34a45a5fddfbdae7c0f5b1b5a63b702ed6cef70a23e01d2f0a",
+      "bytes": 733
+    },
+    {
+      "path": "build/windows-remote-tests-build.log",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/windows-remote-tests-build.log",
+      "sha256": "1514115cf8ae8640b7901bc132c25ca1a4064ed193fd11aa794681f943fd60b2",
+      "bytes": 416677
+    },
+    {
+      "path": "gates/first-linux/opened.png",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01/opened.png",
+      "sha256": "2fe1e4ca2ab39648c83889cf80c44ecc0c69ff07badb0dc0f032fbc269445a4a",
+      "bytes": 100290
+    },
+    {
+      "path": "gates/first-linux/result.json",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-first-linux-gate-01/result.json",
+      "sha256": "db99084a5af2d0acba0d0ac7e1304fe909effb1fa01ee426de874e75ce113de6",
+      "bytes": 5209
+    },
+    {
+      "path": "gates/linux-original/result.json",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-linux-correctness-02/result.json",
+      "sha256": "cb566b61643e60c0bbb497ca4f8757eb3062c32f3acb86e5135214fbb90ad175",
+      "bytes": 5446
+    },
+    {
+      "path": "gates/linux-short/result.json",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/nhg-252d-03/result.json",
+      "sha256": "3d0bc6815a6134d4657dd0240033145305311518730a67d9819a8192721d0c6f",
+      "bytes": 34505
+    },
+    {
+      "path": "gates/long-path-comparison/current-app.json",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/nhg-long-diag-04/current-app.json",
+      "sha256": "aebfed4e989a574998232af05bb7a274d72d49fc6e87d7fed36fc857593e87a4",
+      "bytes": 1205
+    },
+    {
+      "path": "gates/long-path-comparison/current-webdriver.log",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/nhg-long-diag-04/current-webdriver.log",
+      "sha256": "3c603538d9681302da9930b908849b30f6f95b52a15be37199b7846291b8b6b4",
+      "bytes": 550
+    },
+    {
+      "path": "gates/long-path-comparison/current.png",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/nhg-long-diag-04/current.png",
+      "sha256": "ded492d825699a0536cb41658369576c74a51ad124b37d37a366d5979e9e7bff",
+      "bytes": 37039
+    },
+    {
+      "path": "gates/long-path-comparison/result.json",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/nhg-long-diag-04/result.json",
+      "sha256": "291ada45ecbaf58fd1bb0e3411288ddfe0f4aed7172b3eb6558f4a02ef166e79",
+      "bytes": 5388
+    },
+    {
+      "path": "gates/long-path-comparison/unchanged-b2de070-app.json",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/nhg-long-diag-04/unchanged-b2de070-app.json",
+      "sha256": "3911a6003740d3239c1534ddc5220d6d5c2183e6220f2d2ab8dcb8c076ad93d2",
+      "bytes": 1124
+    },
+    {
+      "path": "gates/long-path-comparison/unchanged-b2de070-webdriver.log",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/nhg-long-diag-04/unchanged-b2de070-webdriver.log",
+      "sha256": "3c603538d9681302da9930b908849b30f6f95b52a15be37199b7846291b8b6b4",
+      "bytes": 550
+    },
+    {
+      "path": "gates/long-path-comparison/unchanged-b2de070.png",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/nhg-long-diag-04/unchanged-b2de070.png",
+      "sha256": "ded492d825699a0536cb41658369576c74a51ad124b37d37a366d5979e9e7bff",
+      "bytes": 37039
+    },
+    {
+      "path": "binaries/linux/branchline",
+      "source": "windows-vm:Ubuntu-26.04:/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+      "sha256": "67815591856441398d6d026bb9f828a1d67a71f73b3c241b802715f033a0fcbf",
+      "bytes": 23274280
+    },
+    {
+      "path": "binaries/windows/branchline.exe",
+      "source": "windows-vm:Ubuntu-26.04:/mnt/c/Users/max/branchline-bench/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline.exe",
+      "sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+      "bytes": 20665344
+    }
+  ],
+  "excluded": "No cache images, profile/database/user-data directories, or preserved-original-long-profile snapshot."
+}

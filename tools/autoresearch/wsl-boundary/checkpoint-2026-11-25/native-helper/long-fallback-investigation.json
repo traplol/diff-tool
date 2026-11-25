@@ -1,0 +1,10 @@
+{
+  "status": "short profile succeeded; long-case error and unchanged-baseline comparison pending",
+  "short_native_executable": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\nhg-252d-03\\blocked-native\\cache\\branchline\\git-workers\\branchline-git-worker-6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2.exe",
+  "short_utf16_units": 215,
+  "failed_long_expected_executable": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\native-helper-deployment-b2de070-03fecde11c0a-linux-correctness-02\\blocked-native\\cache\\branchline\\git-workers\\branchline-git-worker-6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2.exe",
+  "failed_long_utf16_units": 270,
+  "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "source_changed": false,
+  "hypothesis": "WSL interop fallback PE executable path length; not yet called an introduced regression"
+}

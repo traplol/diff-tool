@@ -1,0 +1,244 @@
+{
+  "pid": 114593,
+  "started": 1795635334.513834,
+  "status": "complete",
+  "phases": [
+    {
+      "phase": "linux-worker-tests",
+      "command": [
+        "cargo",
+        "test",
+        "--offline",
+        "--locked",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.toml",
+        "--",
+        "--test-threads=1"
+      ],
+      "started": 1795635355.5204253,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/linux-worker-tests.log",
+      "exit": 0,
+      "finished": 1795635414.8707182
+    },
+    {
+      "phase": "windows-worker-tests-build",
+      "command": [
+        "cargo",
+        "xwin",
+        "test",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "started": 1795635414.8719919,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/windows-worker-tests-build.log",
+      "exit": 0,
+      "finished": 1795635549.8754916
+    },
+    {
+      "phase": "native-test-0",
+      "command": [
+        "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline_git_worker-09f6db754efdc325.exe",
+        "--test-threads=1"
+      ],
+      "started": 1795635550.3206482,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native-test-0.log",
+      "exit": 0,
+      "finished": 1795635592.9511466
+    },
+    {
+      "phase": "windows-worker-build",
+      "command": [
+        "cargo",
+        "xwin",
+        "build",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc"
+      ],
+      "started": 1795635592.9567623,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/windows-worker-build.log",
+      "exit": 0,
+      "finished": 1795635593.1271908
+    },
+    {
+      "phase": "native-worker-routing",
+      "command": [
+        "/usr/bin/python3",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native_route.py",
+        "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native"
+      ],
+      "started": 1795635593.5519924,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native-worker-routing.log",
+      "exit": 1,
+      "finished": 1795635599.5650573
+    },
+    {
+      "phase": "native-worker-routing-retry",
+      "command": [
+        "/usr/bin/python3",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native_route.py",
+        "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+        "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native"
+      ],
+      "started": 1795635691.722836,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/native-worker-routing-retry.log",
+      "exit": 0,
+      "finished": 1795635696.64991
+    },
+    {
+      "phase": "linux-gui-build",
+      "command": [
+        "./build.sh",
+        "--no-bundle"
+      ],
+      "started": 1795635696.651461,
+      "log": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-native/linux-gui-build.log",
+      "exit": 0,
+      "finished": 1795635801.8164823
+    }
+  ],
+  "source": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source",
+  "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+  "fixture_fingerprint_before": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "current_phase": "linux-gui-build",
+  "native_test_artifacts": [
+    {
+      "reason": "compiler-artifact",
+      "package_id": "path+file:///home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.toml",
+      "target": {
+        "kind": [
+          "bin"
+        ],
+        "crate_types": [
+          "bin"
+        ],
+        "name": "branchline-git-worker",
+        "src_path": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/src/main.rs",
+        "edition": "2021",
+        "doc": true,
+        "doctest": false,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": true
+      },
+      "features": [
+        "default",
+        "storage-worker"
+      ],
+      "filenames": [
+        "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/09f6db754efdc325/out/branchline_git_worker-09f6db754efdc325.exe",
+        "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/09f6db754efdc325/out/branchline_git_worker-09f6db754efdc325.pdb"
+      ],
+      "executable": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/09f6db754efdc325/out/branchline_git_worker-09f6db754efdc325.exe",
+      "fresh": false
+    },
+    {
+      "reason": "compiler-artifact",
+      "package_id": "path+file:///home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/Cargo.toml",
+      "target": {
+        "kind": [
+          "test"
+        ],
+        "crate_types": [
+          "bin"
+        ],
+        "name": "stdio",
+        "src_path": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source/src-tauri/git-worker/tests/stdio.rs",
+        "edition": "2021",
+        "doc": false,
+        "doctest": false,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": true
+      },
+      "features": [
+        "default",
+        "storage-worker"
+      ],
+      "filenames": [
+        "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/c8857854f11ed40d/out/stdio-c8857854f11ed40d.exe",
+        "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/c8857854f11ed40d/out/stdio-c8857854f11ed40d.pdb"
+      ],
+      "executable": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/c8857854f11ed40d/out/stdio-c8857854f11ed40d.exe",
+      "fresh": false
+    }
+  ],
+  "windows_worker": {
+    "path": "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+    "source_binary": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+    "bytes": 2726400,
+    "sha256": "8fafdb059c64cf88d7ab5815f3ca20af8b80e16aa7eed52be691813dcc8f16c3",
+    "recipe": {
+      "target": "x86_64-pc-windows-msvc",
+      "RUSTFLAGS": "-C target-feature=+crt-static",
+      "CARGO_BUILD_JOBS": "1",
+      "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+      "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+      "XWIN_CROSS_COMPILER": "clang",
+      "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin"
+    },
+    "imports": [
+      "bcryptprimitives.dll",
+      "KERNEL32.dll",
+      "api-ms-win-core-synch-l1-2-0.dll",
+      "WS2_32.dll",
+      "ntdll.dll",
+      "ADVAPI32.dll",
+      "Secur32.dll"
+    ],
+    "static_crt_import_check": true
+  },
+  "previous_pid": 111496,
+  "resume_reason": "Harness count correction: tracked-only scoped view intentionally omits untracked discovery; expect one filtered ls-files call.",
+  "resumed": 1795635691.6482131,
+  "linux_gui_build_environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+    "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target",
+    "BRANCHLINE_GIT_WORKER_PATH": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+    "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+    "XWIN_CROSS_COMPILER": "clang",
+    "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin"
+  },
+  "linux_gui": {
+    "path": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+    "bytes": 23264920,
+    "sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+    "embedded_helper_verified": true,
+    "renderer": "production default"
+  },
+  "fixture_fingerprint_after": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "versions": {
+    "rustc": "rustc 1.100.0 (0ef1bc386 2026-11-09)\nbinary: rustc\ncommit-hash: 0ef1bc386059596dada8fb65b50425aab2ea637a\ncommit-date: 2026-11-09\nhost: x86_64-unknown-linux-gnu\nrelease: 1.100.0\nLLVM version: 23.1.5",
+    "cargo": "cargo 1.100.0 (3acc79c0c 2026-11-05)",
+    "cc": "cc (Ubuntu 15.2.0-16ubuntu1) 15.2.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "node": "v22.22.1",
+    "npm": "9.2.0",
+    "windows_git": "git version 2.56.1.windows.1"
+  },
+  "finished": 1795635824.4423423
+}

@@ -1,0 +1,10 @@
+{
+  "query": "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)",
+  "query_utf8_sha256": "0b4965d4cdb8481d3397128d900c12aef9abad2fb1b0915ef5fe9e142624f9e9",
+  "remote_rs_sha256": "6cad7de1ff99ea0714ce032c28fae19463cffc80e42a2110cfdc602bbfcaa1c5",
+  "app_source_hash": "f2ffb3cc14a90caa261e53de4400177b13297f100d66f33549d41afb36c9a334",
+  "cwds": {
+    "ext4_welcome": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+    "ntfs_kernel": "/mnt/c/Users/max/branchline-bench/kernel-windows"
+  }
+}
