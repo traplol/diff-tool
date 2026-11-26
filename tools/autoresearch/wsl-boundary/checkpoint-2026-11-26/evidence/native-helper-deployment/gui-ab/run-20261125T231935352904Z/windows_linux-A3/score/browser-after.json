@@ -1,0 +1,15 @@
+{
+  "busy": false,
+  "comparison": "feature/boundary-finalWorking tree",
+  "filename": "kernel/fork.c",
+  "repository": "//wsl.localhost/Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+  "status": "\n          Local GitComparison up to date\n        ",
+  "title": "kernel-wsl \u00b7 Branchline",
+  "url": "http://tauri.localhost/",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36 Edg/158.0.0.0",
+  "viewport": [
+    1280,
+    781
+  ],
+  "visible": "visible"
+}

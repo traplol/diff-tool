@@ -1,0 +1,63 @@
+{
+  "pid": 363771,
+  "started": 1795651893.7259114,
+  "status": "failed; inspect remote supervisor ownership before retry",
+  "release": "VM LINUX CLI BRANCH BUILD RELEASED",
+  "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+  "archive": {
+    "name": "linux-cli-branch-a4a08d-r2-input.tar",
+    "sha256": "f1e196565840f3a635c2ceb0af0913d3f88c94194f698dc84e283bb797be0655",
+    "bytes": 3051520,
+    "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+    "bundle_sha256": "d0743fee8d66c2548dca63636e0f484fee68be27f24da4adc6f682dfa05fe197",
+    "build_plan_sha256": "3d61fc781ec075b4e04ee785373ee07f02b4c1132c73fc0c157d40bb9db9ae52",
+    "vm_supervisor_sha256": "9e4e74584c61719b41597a43041cbf4d21c34ef712b8184596ea4fb29885b35a",
+    "host_launcher_sha256": "a4189af74acc7e827f73c1c3bae2926ade13c84250b478a428e7d6e0e89b2a0c",
+    "host_verifier_sha256": "c5f2227afa4a881a9a7b4fe3f9394a0a2b9e583ac162386cf8e64453adad573a",
+    "status": "host-prepared-only; mandatory fresh local extraction before SSH; fresh root producer required"
+  },
+  "phases": [
+    {
+      "name": "linux-cli-upload-input",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "cat > /c/Users/max/branchline-bench/linux-cli-branch-a4a08d-r2-input.tar"
+      ],
+      "started": 1795651893.7275467,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/native-build/linux-cli-upload-input.log",
+      "pid": 363810,
+      "exit": 0,
+      "finished": 1795651894.0845487
+    },
+    {
+      "name": "linux-cli-vm-build",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "MSYS_NO_PATHCONV=1 wsl.exe --distribution Ubuntu-26.04 --user max --exec /bin/sh -lc 'export PATH=\"$HOME/.cargo/bin:$PATH\"; exec /usr/bin/python3 -u -c '\"'\"'import hashlib, os, pathlib, tarfile; a=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'/mnt/c/Users/max/branchline-bench/linux-cli-branch-a4a08d-r2-input.tar'\"'\"'\"'\"'\"'\"'\"'\"'); assert hashlib.sha256(a.read_bytes()).hexdigest() == '\"'\"'\"'\"'\"'\"'\"'\"'f1e196565840f3a635c2ceb0af0913d3f88c94194f698dc84e283bb797be0655'\"'\"'\"'\"'\"'\"'\"'\"'; p=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input'\"'\"'\"'\"'\"'\"'\"'\"'); p.mkdir(exist_ok=False); tarfile.open(a).extractall(p, filter=\"data\"); os.execv(\"/usr/bin/python3\", [\"/usr/bin/python3\", \"-u\", str(p/\"vm-build-supervisor.py\"), '\"'\"'\"'\"'\"'\"'\"'\"'--release'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'VM LINUX CLI BRANCH BUILD RELEASED'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'--input'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input'\"'\"'\"'\"'\"'\"'\"'\"'])'\"'\"''"
+      ],
+      "started": 1795651894.0849037,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/native-build/linux-cli-vm-build.log",
+      "pid": 363869,
+      "exit": 1,
+      "finished": 1795652141.8794003
+    }
+  ],
+  "host_checks": "reused unchanged successful70 GUI+25 worker+1 stdio proof",
+  "windows_gui_requested": true,
+  "error": "linux-cli-vm-build failed; inspect /home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/native-build/linux-cli-vm-build.log",
+  "finished": 1795652141.8796322
+}

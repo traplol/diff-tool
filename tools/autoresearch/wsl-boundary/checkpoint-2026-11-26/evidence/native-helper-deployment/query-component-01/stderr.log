@@ -1,0 +1,2 @@
+socket: Operation not permitted
+ssh: connect to host 127.0.0.1 port 2222: failure

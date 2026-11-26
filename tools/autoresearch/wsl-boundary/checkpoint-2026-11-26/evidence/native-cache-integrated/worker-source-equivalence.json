@@ -1,0 +1,115 @@
+{
+  "status": "strict byte-source equivalence proved by host reads; no build or native revalidation executed",
+  "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "baseline_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "source_hash": "89f5019903f293ef659f60240d57b412a3b960b3da701490fe632152d9343b75",
+  "files": {
+    "src-tauri/git-worker/Cargo.toml": {
+      "b2_git_blob_sha256": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+      "main_ce75_sha256": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+      "reference_252_sha256": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+      "candidate_sha256": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+      "equal": true,
+      "test_only": false
+    },
+    "src-tauri/git-worker/Cargo.lock": {
+      "b2_git_blob_sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+      "main_ce75_sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+      "reference_252_sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+      "candidate_sha256": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+      "equal": true,
+      "test_only": false
+    },
+    "src-tauri/git-worker/src/main.rs": {
+      "b2_git_blob_sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+      "main_ce75_sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+      "reference_252_sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+      "candidate_sha256": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+      "equal": true,
+      "test_only": false
+    },
+    "src-tauri/src/git.rs": {
+      "b2_git_blob_sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+      "main_ce75_sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+      "reference_252_sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+      "candidate_sha256": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+      "equal": true,
+      "test_only": false
+    },
+    "src-tauri/src/git/native.rs": {
+      "b2_git_blob_sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+      "main_ce75_sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+      "reference_252_sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+      "candidate_sha256": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+      "equal": true,
+      "test_only": false
+    },
+    "src-tauri/src/git/patch_data.rs": {
+      "b2_git_blob_sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+      "main_ce75_sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+      "reference_252_sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+      "candidate_sha256": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+      "equal": true,
+      "test_only": false
+    },
+    "src-tauri/src/git/windows.rs": {
+      "b2_git_blob_sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+      "main_ce75_sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+      "reference_252_sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+      "candidate_sha256": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+      "equal": true,
+      "test_only": false
+    },
+    "src-tauri/src/git/worker.rs": {
+      "b2_git_blob_sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+      "main_ce75_sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+      "reference_252_sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+      "candidate_sha256": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+      "equal": true,
+      "test_only": false
+    },
+    "src-tauri/src/git_tests.rs": {
+      "b2_git_blob_sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+      "main_ce75_sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+      "reference_252_sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+      "candidate_sha256": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+      "equal": true,
+      "test_only": true
+    },
+    "src-tauri/git-worker/tests/stdio.rs": {
+      "b2_git_blob_sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+      "main_ce75_sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+      "reference_252_sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+      "candidate_sha256": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+      "equal": true,
+      "test_only": true
+    }
+  },
+  "all_files_equal": true,
+  "dependency_lock_and_manifest_equal": true,
+  "configuration": {
+    "worker_default_features": [
+      "storage-worker"
+    ],
+    "entry_point": "src-tauri/git-worker/src/main.rs -> ../../src/git.rs",
+    "remote_module_exclusion": "src-tauri/src/git.rs:6-8 uses cfg(not(feature = \"storage-worker\")); candidate remote.rs excluded from storage-worker builds",
+    "windows_module": "src-tauri/src/git/windows.rs included only on Windows; compared exactly anyway",
+    "test_only_shared_git_tests": "src-tauri/src/git.rs includes git_tests.rs under cfg(test); identical",
+    "tracked_cargo_configs_and_rust_toolchain_files": []
+  },
+  "evidence_record": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/native-build-evidence/supervisor.json",
+  "evidence_record_sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13",
+  "preserved_workers": {
+    "linux": {
+      "path": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/embedded-linux",
+      "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "bytes": 3969568
+    },
+    "windows": {
+      "path": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/embedded-windows.exe",
+      "sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2",
+      "bytes": 2720768
+    }
+  },
+  "reuse_policy": "Only the recorded GNU328c and PE6a40 workers are eligible for a future GUI-only build. Before reuse, verify the actual preserved worker bytes/hashes, build environment, protocol and embedding. Source proof is not a claim that new candidate GUIs exist or passed native gates. Do not reuse c200 worker artifacts or any GUI artifact."
+}

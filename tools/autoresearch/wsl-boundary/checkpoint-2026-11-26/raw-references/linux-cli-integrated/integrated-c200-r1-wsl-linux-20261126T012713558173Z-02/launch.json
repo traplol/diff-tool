@@ -1,0 +1,28 @@
+{
+  "app_process": {
+    "args": [
+      "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+      "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+    ],
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+    "pid": 227349,
+    "start_ticks": "16080952"
+  },
+  "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+  "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+  "created": "16080952",
+  "display": ":0",
+  "driver_process": {
+    "binary": "/usr/bin/WebKitWebDriver",
+    "pid": 227347,
+    "start_ticks": "16080945"
+  },
+  "gdk_backend": "x11",
+  "mcp_port": 28867,
+  "pid": 227349,
+  "port": 29225,
+  "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+  "session": "a82a338b-4ee5-4090-8832-83ce85fc1459",
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "supervisor_pid": 227346
+}

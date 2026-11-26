@@ -1,0 +1,55 @@
+{
+  "pid": 4180899,
+  "started": 1795638299.488101,
+  "status": "host proof verified and VM builds complete; runtime evaluation pending",
+  "phases": [
+    {
+      "name": "upload-build-input",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "cat > /c/Users/max/branchline-bench/native-helper-deployment-b2de070-03fecde11c0a-input.tar"
+      ],
+      "started": 1795638299.502268,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/upload-build-input.log",
+      "exit": 0,
+      "finished": 1795638299.8299484
+    },
+    {
+      "name": "vm-build-supervisor",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "MSYS_NO_PATHCONV=1 wsl.exe --distribution Ubuntu-26.04 --user max --exec /bin/sh -lc 'export PATH=\"$HOME/.cargo/bin:$PATH\"; exec /usr/bin/python3 -u -c '\"'\"'import os, pathlib, tarfile; p=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input'\"'\"'\"'\"'\"'\"'\"'\"'); p.mkdir(exist_ok=False); tarfile.open('\"'\"'\"'\"'\"'\"'\"'\"'/mnt/c/Users/max/branchline-bench/native-helper-deployment-b2de070-03fecde11c0a-input.tar'\"'\"'\"'\"'\"'\"'\"'\"').extractall(p, filter=\"data\"); os.execv(\"/usr/bin/python3\", [\"/usr/bin/python3\", \"-u\", str(p/\"vm-build-supervisor.py\"), \"--release\", \"VM BUILD RELEASED\", \"--input\", str(p)])'\"'\"''"
+      ],
+      "started": 1795638299.8302317,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/vm-build-supervisor.log",
+      "exit": 0,
+      "finished": 1795638974.798805
+    }
+  ],
+  "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "release": "VM BUILD RELEASED",
+  "host_checks": {
+    "status": "reused completed proof for unchanged exact source",
+    "proof": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/host-proof-cmd.json",
+    "proof_sha256": "54dddc1d8713760313aca2fba71ea1c6a2464f96b30e2826468b14d1f0f6cc21"
+  },
+  "archive": {
+    "path": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/native-helper-deployment-b2de070-03fecde11c0a-input.tar",
+    "sha256": "ad81226eab98301d7121dbdaf33c39a6c41a1175440f387d5eaf5fbd4db3f667"
+  },
+  "finished": 1795638974.799056
+}

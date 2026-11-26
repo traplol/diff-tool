@@ -1,0 +1,9 @@
+{
+  "result": "simple enough",
+  "agent": "/root/native_cache_integrated/native_cache_kiss",
+  "fork_turns": "none",
+  "scope": "KISS-only final candidate.patch and nearby remote.rs; no tests/builds/VM/runtime",
+  "source_hash": "89f5019903f293ef659f60240d57b412a3b960b3da701490fe632152d9343b75",
+  "patch_sha256": "2d07d19220affe36067f84f3e2d654fd8501487bd346e417e8cccd2dcdfbb7a2",
+  "timestamp_utc": "2026-11-26T01:34:27.955675+00:00"
+}

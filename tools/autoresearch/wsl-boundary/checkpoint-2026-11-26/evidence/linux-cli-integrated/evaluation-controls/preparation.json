@@ -1,0 +1,19 @@
+{
+  "status": "host-prepared-only-awaiting-complete-native-build",
+  "hashes": {
+    "native_proof.py": "0158e6cbf8417789568a2d358f53a0db2c2df9504f4bb4cab3eff6ca9ff39938",
+    "evaluate-windows.py": "fe2ae93df577c660e974b4c6bfd8052e98fc919bd89f2256810f5a0fbb47abe6",
+    "evaluate-linux.py": "35c98a273a35f0e124f30063ea8e3d46036c1501784ad1ba5bf456d7bb29189f",
+    "evaluation-controls/protocol.json": "df96e50ddce3ba82bd57fbeeeddf0981c256516fff5b892ffc5c7fa01872fce1"
+  },
+  "native_ready": {
+    "windows": false,
+    "wsl_linux": false,
+    "wsl_windows": false
+  },
+  "ast": true,
+  "prepare_only": true,
+  "vm_calls": false,
+  "ports_accessed": false,
+  "builds_tests_or_scoring": false
+}

@@ -1,0 +1,3576 @@
+{
+  "acceptance": {
+    "baseline_identity": "A remains exact b2/source56a8. Integrated base ce75 differs in current tests only; full source identities stay distinct. New B is ce75 plus only the Linux branch-filter condition and preserves all current tests.",
+    "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+    "expected_samples": 1272,
+    "fresh_processes": 24,
+    "full_goal": "Every cross-cell opening and interaction p95 below250ms, representative first/cold behavior, exact delivered source/builds and correctness must still be verified. Fresh processes are not OS-cold. No contract or charter has been weakened.",
+    "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+    "hypothesis": "Linux-only branch-summary CLI routing improves the primary Windows-GUI/WSL branch interactions. Existing Windows native policy and GUI behavior remain unchanged.",
+    "matrix": [
+      "windows_linux",
+      "windows_windows",
+      "wsl_windows",
+      "wsl_linux"
+    ],
+    "measurement": "Original canonical welcome async-error readiness, measured Open, six actions, exact native Git/content/comment correctness and two completion frames. Default renderer. Existing two-comment profiles are reused; no copies, seeding, prewarming, helper preparation or cache flush.",
+    "order_per_cell": [
+      "A1:3",
+      "B1:3",
+      "A2:3",
+      "B2:3",
+      "A3:20",
+      "B3:20"
+    ],
+    "qualification": {
+      "correctness": "Every source/build/producer/fixture/native-content/comment/identity/cleanup gate must pass. Invalid runs stop without automatic measurement retries.",
+      "cross_guards": "For windows_linux and reversed wsl_windows, every action final20 p95 and fresh-process Open p95 must be at most110% of matching A while the primary branch gain passes. No global worst-latency improvement is required in unaffected controls.",
+      "decision": "This protocol qualifies an optimization for further delivery verification. It does not complete the full goal merely because partial gains pass. Keep failed or inconclusive evidence without waivers.",
+      "maximums_and_first_use": "Retain all fresh Opens and first-use values, full20 p50/p95/max, strict repeated19 and all-series maxima. Investigate max outliers; do not introduce a new hard maximum gate for this expansion.",
+      "primary_gain": "Windows GUI/WSL maximum final20 p95 across branch_first, branch_final, stack and comment_branch must improve by at least10% against its new matched A series. A1 Open alone cannot establish a gain.",
+      "same_side_guards": "For windows_windows and wsl_linux, every action final20 median and p95 and fresh-process Open median and p95 must be at most110% of matching A."
+    },
+    "scope": "Exact integrated source and all four source-bound native artifacts. The older b2/a4 primary series remains separate pilot evidence and is never pooled.",
+    "serial_execution": "Run the Windows two-cell caller, then each Linux --case caller separately. No builds, tests, profilers, other benchmark or parallel resource work during scoring.",
+    "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+    "status": "frozen-before-integrated-matrix-measurement"
+  },
+  "baseline_identity_note": "A remains exact b2/source56a8. Integrated base ce75 differs in current tests only; full source identities stay distinct. New B is ce75 plus only the Linux branch-filter condition and preserves all current tests.",
+  "candidate_source": {
+    "files": {
+      "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+      "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+      "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+      "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+      "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+      "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+      "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+      "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+      "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+      "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+      "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+      "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+      "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+      "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+      "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+      "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+      "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+      "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+      "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+      "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+      "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+      "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+      "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+      "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+      "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+      "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+      "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+      "src-tauri/src/git.rs": "f709df7ab0c1d7f9119436cdc060b492bb6452b19adfbdea07c1897c65657e0f",
+      "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+      "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+      "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+      "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+      "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+      "src-tauri/src/git_tests.rs": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+      "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+      "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+      "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+      "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+      "src-tauri/src/mcp/desktop_tests.rs": "0bb8268871d8b8d9e66cbf757374d587233379749492b09fc90c735362dc3e13",
+      "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+      "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+      "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+      "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+      "src-tauri/src/search.rs": "de2551755e16cc3abef49a5b1b69f253f015562fc93ce8d6fe1b7d207ba59c14",
+      "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+      "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+      "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+      "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+      "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+    },
+    "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+    "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1"
+  },
+  "case": "wsl_windows",
+  "comments": [
+    {
+      "anchor": [
+        3434,
+        3434
+      ],
+      "body": "Boundary benchmark branch comment",
+      "id": 1,
+      "path": "kernel/fork.c"
+    },
+    {
+      "anchor": [
+        3438,
+        3438
+      ],
+      "body": "Boundary benchmark working-tree comment",
+      "id": 2,
+      "path": "kernel/fork.c"
+    }
+  ],
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "control_socket_absent": true,
+  "existing_runner_sha256": "2caebee7d2aef52e4d6ef90b89f410acf7966ee8d083f69e6dcae3fe3c103527",
+  "final20": {
+    "A": {
+      "branch_final": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 7,
+            "max_ms": 16,
+            "median_ms": 12,
+            "p95_ms": 16,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          646
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 518,
+            "median_ms": 296.5,
+            "p95_ms": 509,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 223,
+            "median_ms": 18.999999999999773,
+            "p95_ms": 151.99999999999818,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 1128,
+        "median_ms": 610.5,
+        "p95_ms": 1093,
+        "pending_count": 0
+      },
+      "branch_first": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 10,
+            "max_ms": 21.000000000007276,
+            "median_ms": 10.999999999992724,
+            "p95_ms": 21.000000000007276,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          657
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 507,
+            "median_ms": 338.0000000000073,
+            "p95_ms": 505,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 80.00000000000728,
+            "median_ms": 53.0,
+            "p95_ms": 78,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 996,
+        "median_ms": 662.0000000000073,
+        "p95_ms": 951.9999999999927,
+        "pending_count": 0
+      },
+      "comment_branch": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 8,
+            "max_ms": 66,
+            "median_ms": 12,
+            "p95_ms": 66,
+            "pending_count": 1
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          1008.0000000000018
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 112,
+            "median_ms": 55.5,
+            "p95_ms": 112,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 20,
+            "max_ms": 542,
+            "median_ms": 364.5000000000073,
+            "p95_ms": 509,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 1128.0000000000036,
+        "median_ms": 726.5000000000073,
+        "p95_ms": 1101,
+        "pending_count": 0
+      },
+      "comment_worktree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 11,
+            "max_ms": 14,
+            "median_ms": 11,
+            "p95_ms": 14,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          2313
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 88.00000000000728,
+            "median_ms": 50.50000000000182,
+            "p95_ms": 76,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 20,
+            "max_ms": 1890,
+            "median_ms": 1478.0,
+            "p95_ms": 1839.9999999999927,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 2313,
+        "median_ms": 1841.5,
+        "p95_ms": 2309.9999999999927,
+        "pending_count": 0
+      },
+      "open": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 1,
+            "max_ms": 11,
+            "median_ms": 11,
+            "p95_ms": 11,
+            "pending_count": 0
+          }
+        },
+        "count": 1,
+        "first_use_ms": [
+          1789
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 1,
+            "max_ms": 212,
+            "median_ms": 212,
+            "p95_ms": 212,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 1,
+            "max_ms": 1232,
+            "median_ms": 1232,
+            "p95_ms": 1232,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 1789,
+        "median_ms": 1789,
+        "p95_ms": 1789,
+        "pending_count": 0
+      },
+      "stack": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 8,
+            "max_ms": 28,
+            "median_ms": 12.500000000014552,
+            "p95_ms": 28,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          1072.0000000000018
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 409,
+            "median_ms": 307.0,
+            "p95_ms": 387.99999999999636,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 85,
+            "median_ms": 55.0,
+            "p95_ms": 74.0000000000291,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 1072.0000000000018,
+        "median_ms": 676.0,
+        "p95_ms": 788,
+        "pending_count": 0
+      },
+      "working_tree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 7,
+            "max_ms": 34,
+            "median_ms": 10,
+            "p95_ms": 34,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          2798
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 2659,
+            "median_ms": 1639.5000000000073,
+            "p95_ms": 2586,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 338,
+            "median_ms": 63.0,
+            "p95_ms": 79,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 3487,
+        "median_ms": 2026.5,
+        "p95_ms": 3204,
+        "pending_count": 0
+      }
+    },
+    "B": {
+      "branch_final": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 1,
+            "max_ms": 11,
+            "median_ms": 11,
+            "p95_ms": 11,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          634.0000000000005
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 412,
+            "median_ms": 304.0,
+            "p95_ms": 381,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 88,
+            "median_ms": 18.0,
+            "p95_ms": 70,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 854,
+        "median_ms": 618.0,
+        "p95_ms": 848,
+        "pending_count": 0
+      },
+      "branch_first": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 7,
+            "max_ms": 12.999999999970896,
+            "median_ms": 10.5,
+            "p95_ms": 12.999999999970896,
+            "pending_count": 1
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          708
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 499,
+            "median_ms": 352.0,
+            "p95_ms": 437,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 104,
+            "median_ms": 48.0,
+            "p95_ms": 68.00000000000728,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 925.0000000000291,
+        "median_ms": 684.5,
+        "p95_ms": 868,
+        "pending_count": 0
+      },
+      "comment_branch": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 8,
+            "max_ms": 40,
+            "median_ms": 10.500000000003638,
+            "p95_ms": 40,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          740
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 116,
+            "median_ms": 59.5,
+            "p95_ms": 89,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 20,
+            "max_ms": 593,
+            "median_ms": 380.0000000000073,
+            "p95_ms": 531,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 1375,
+        "median_ms": 768.5000000000073,
+        "p95_ms": 1072,
+        "pending_count": 0
+      },
+      "comment_worktree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 8,
+            "max_ms": 32,
+            "median_ms": 12,
+            "p95_ms": 32,
+            "pending_count": 1
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          1821
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 158,
+            "median_ms": 46.0,
+            "p95_ms": 103,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 20,
+            "max_ms": 2005.0000000000146,
+            "median_ms": 1466.4999999999973,
+            "p95_ms": 1929,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 2411,
+        "median_ms": 1833.5,
+        "p95_ms": 2362.0000000000146,
+        "pending_count": 0
+      },
+      "open": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 1,
+            "max_ms": 10,
+            "median_ms": 10,
+            "p95_ms": 10,
+            "pending_count": 0
+          }
+        },
+        "count": 1,
+        "first_use_ms": [
+          1725.0000000000005
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/display_patch": {
+            "count": 1,
+            "max_ms": 204,
+            "median_ms": 204,
+            "p95_ms": 204,
+            "pending_count": 0
+          },
+          "workspace/open": {
+            "count": 1,
+            "max_ms": 1186.0000000000002,
+            "median_ms": 1186.0000000000002,
+            "p95_ms": 1186.0000000000002,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 1725.0000000000005,
+        "median_ms": 1725.0000000000005,
+        "p95_ms": 1725.0000000000005,
+        "pending_count": 0
+      },
+      "stack": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 8,
+            "max_ms": 30,
+            "median_ms": 11.0,
+            "p95_ms": 30,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          615.0000000000009
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 361.00000000001455,
+            "median_ms": 318.5,
+            "p95_ms": 360,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 88,
+            "median_ms": 30.0,
+            "p95_ms": 83.00000000000364,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 929.9999999999709,
+        "median_ms": 680.5000000000036,
+        "p95_ms": 889,
+        "pending_count": 0
+      },
+      "working_tree": {
+        "background_ipc_by_command_and_op": {
+          "workspace/refresh_notes": {
+            "count": 8,
+            "max_ms": 29,
+            "median_ms": 10.00000000001819,
+            "p95_ms": 29,
+            "pending_count": 0
+          }
+        },
+        "count": 20,
+        "first_use_ms": [
+          2040
+        ],
+        "ipc_by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "max_ms": 2267.999999999971,
+            "median_ms": 1671.000000000001,
+            "p95_ms": 2236,
+            "pending_count": 0
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "max_ms": 174,
+            "median_ms": 71.5,
+            "p95_ms": 113,
+            "pending_count": 0
+          }
+        },
+        "max_ms": 2991,
+        "median_ms": 2099.5,
+        "p95_ms": 2882.0000000000146,
+        "pending_count": 0
+      }
+    }
+  },
+  "finished_unix": 1795656208.7414923,
+  "fixture_after": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_before": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "host_port_free": true,
+  "host_wrapper": {
+    "path": "/tmp/status-wsl-dvay7avx/bin/ssh",
+    "sha256": "f4a58571854a50c9820316b93dc886296d6f99c69b6981f22dbae640b28c1cff"
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "master": {
+    "argv": [
+      "/usr/bin/ssh",
+      "-F",
+      "/home/max/.ssh/config",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=10",
+      "-M",
+      "-S",
+      "/tmp/status-wsl-dvay7avx/ssh.sock",
+      "-o",
+      "ControlPersist=no",
+      "-N",
+      "-o",
+      "ExitOnForwardFailure=yes",
+      "-L",
+      "127.0.0.1:19227:127.0.0.1:29225",
+      "windows-vm"
+    ],
+    "pid": 735605,
+    "socket": "/tmp/status-wsl-dvay7avx/ssh.sock",
+    "start_ticks": "77801778"
+  },
+  "master_check": {
+    "exit": 0,
+    "stderr": "Master running (pid=735605)\n",
+    "stdout": ""
+  },
+  "master_exit": 255,
+  "master_exit_request": {
+    "exit": 0,
+    "stderr": "Exit request sent.\n",
+    "stdout": ""
+  },
+  "measurement": "Original canonical welcome async-error readiness, measured Open, six actions, exact native Git/content/comment correctness and two completion frames. Default renderer. Existing two-comment profiles are reused; no copies, seeding, prewarming, helper preparation or cache flush.",
+  "native_build_plan_sha256": "8142b26ea7c677893447d0ff0c27d694541c397b9f5d7bbe5937abe061a54f0a",
+  "native_build_ready": true,
+  "native_build_record": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/supervisor.json",
+  "native_build_record_sha256": "9efc646fbd95ad2ffca7d72c688c90fd9a3b2b3be7540655134a676fbecedf6e",
+  "native_gui_embeddings": {
+    "linux": {
+      "bytes": 23257808,
+      "embedded_helper_sha256": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+      "embedded_helper_verified": true,
+      "packaged_assets": {
+        "dist_files": {
+          "dist/web/assets/index-BqGvfgEY.js": {
+            "bytes": 280646,
+            "sha256": "bd660dbbd417b96e21abef95d7ea690a5c66b5b0f650012acaa733d33ce8dc5c"
+          },
+          "dist/web/assets/index-BwaTx77s.css": {
+            "bytes": 28169,
+            "sha256": "fe8e00190be638204c55e1aaabe1c7f461f2be84e999c4d410b62ff8d195b206"
+          },
+          "dist/web/index.html": {
+            "bytes": 12469,
+            "sha256": "f7d1f13a8d58030d2ee983b5dae6c5d8451c864afad1fef12202155e857caa81"
+          }
+        },
+        "generated_assets": [
+          {
+            "bytes": 6759,
+            "entire_blob_in_gui": true,
+            "path": "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/20304e16f3bcab3e/out/tauri-codegen-assets/6c70ea0a0b72b72484928bb5868ad42b996b947185a790aa1708dd5baceb4f9c.css",
+            "sha256": "4a4414fdc850125e10aa0d3224023d56c53be05ca058f46c62d93c2e36089157"
+          },
+          {
+            "bytes": 2465,
+            "entire_blob_in_gui": true,
+            "path": "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/20304e16f3bcab3e/out/tauri-codegen-assets/6cd20e90bab5a40d786a1311716c2e570f9ecad751222a6f9b58348e8a657e32.html",
+            "sha256": "66a301a425aec34d110b0acd56b2cfab16453113e11e2944dfd03f0b5b8a8b89"
+          },
+          {
+            "bytes": 88945,
+            "entire_blob_in_gui": true,
+            "path": "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/20304e16f3bcab3e/out/tauri-codegen-assets/a7c9b22bceabebf04a8f8335987ecc69bbe7b8e9cfc955417fabe7f8676b3ba4.js",
+            "sha256": "bf0296456a3a886475c4ef0b285e45849c99dfea89dc51fa94db8dabb2db4305"
+          }
+        ],
+        "macros_producer": {
+          "executable": null,
+          "features": [
+            "compression",
+            "custom-protocol"
+          ],
+          "filenames": [
+            "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri-macros/1e663dfcea5f4f70/out/libtauri_macros-1e663dfcea5f4f70.so"
+          ],
+          "fresh": true,
+          "manifest_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/Cargo.toml",
+          "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri-macros@2.6.3",
+          "profile": {
+            "debug_assertions": false,
+            "debuginfo": 0,
+            "opt_level": "0",
+            "overflow_checks": false,
+            "test": false
+          },
+          "reason": "compiler-artifact",
+          "target": {
+            "crate_types": [
+              "proc-macro"
+            ],
+            "doc": true,
+            "doctest": true,
+            "edition": "2021",
+            "kind": [
+              "proc-macro"
+            ],
+            "name": "tauri_macros",
+            "src_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/src/lib.rs",
+            "test": true
+          }
+        },
+        "production_dependency_features_verified": true,
+        "root_build_script": {
+          "cfgs": [
+            "branchline_git_worker",
+            "desktop"
+          ],
+          "env": [
+            [
+              "BRANCHLINE_GIT_WORKER_PATH",
+              "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe"
+            ],
+            [
+              "TAURI_ANDROID_PACKAGE_NAME_APP_NAME",
+              "review"
+            ],
+            [
+              "TAURI_ANDROID_PACKAGE_NAME_PREFIX",
+              "dev_branchline"
+            ],
+            [
+              "TAURI_ENV_TARGET_TRIPLE",
+              "x86_64-unknown-linux-gnu"
+            ]
+          ],
+          "linked_libs": [],
+          "linked_paths": [],
+          "out_dir": "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/20304e16f3bcab3e/out",
+          "package_id": "path+file:///home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri#branchline@0.2.0",
+          "reason": "build-script-executed"
+        },
+        "root_feature_list_required": false,
+        "root_library_producer": {
+          "executable": null,
+          "features": [],
+          "filenames": [
+            "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/baf16e45ab6efb27/out/libbranchline-baf16e45ab6efb27.rlib",
+            "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/baf16e45ab6efb27/out/libbranchline-baf16e45ab6efb27.rmeta"
+          ],
+          "fresh": false,
+          "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+          "package_id": "path+file:///home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri#branchline@0.2.0",
+          "profile": {
+            "debug_assertions": false,
+            "debuginfo": 0,
+            "opt_level": "3",
+            "overflow_checks": false,
+            "test": false
+          },
+          "reason": "compiler-artifact",
+          "target": {
+            "crate_types": [
+              "lib"
+            ],
+            "doc": true,
+            "doctest": true,
+            "edition": "2021",
+            "kind": [
+              "lib"
+            ],
+            "name": "branchline",
+            "src_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/src/lib.rs",
+            "test": true
+          }
+        },
+        "tauri_build_script": {
+          "cfgs": [
+            "custom_protocol",
+            "desktop"
+          ],
+          "env": [],
+          "linked_libs": [],
+          "linked_paths": [],
+          "out_dir": "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri/bfeb6e963a2aad20/out",
+          "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri@2.11.6",
+          "reason": "build-script-executed"
+        },
+        "tauri_producer": {
+          "executable": null,
+          "features": [
+            "common-controls-v6",
+            "compression",
+            "custom-protocol",
+            "dbus",
+            "default",
+            "dynamic-acl",
+            "tauri-runtime-wry",
+            "webkit2gtk",
+            "webview2-com",
+            "wry",
+            "x11"
+          ],
+          "filenames": [
+            "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri/b2a8e6f07e573d22/out/libtauri-b2a8e6f07e573d22.rlib",
+            "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri/b2a8e6f07e573d22/out/libtauri-b2a8e6f07e573d22.rmeta"
+          ],
+          "fresh": true,
+          "manifest_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.6/Cargo.toml",
+          "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri@2.11.6",
+          "profile": {
+            "debug_assertions": false,
+            "debuginfo": 0,
+            "opt_level": "3",
+            "overflow_checks": false,
+            "test": false
+          },
+          "reason": "compiler-artifact",
+          "target": {
+            "crate_types": [
+              "lib"
+            ],
+            "doc": true,
+            "doctest": true,
+            "edition": "2021",
+            "kind": [
+              "lib"
+            ],
+            "name": "tauri",
+            "src_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.6/src/lib.rs",
+            "test": true
+          }
+        }
+      },
+      "path": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/release/branchline",
+      "producer_fresh": false,
+      "renderer": "production default",
+      "sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a"
+    },
+    "windows": {
+      "bytes": 20661760,
+      "embedded_helper_sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+      "embedded_helper_verified": true,
+      "imports": [
+        "kernel32.dll",
+        "ws2_32.dll",
+        "user32.dll",
+        "bcryptprimitives.dll",
+        "ole32.dll",
+        "comctl32.dll",
+        "shell32.dll",
+        "ntdll.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "gdi32.dll",
+        "dwmapi.dll",
+        "shlwapi.dll",
+        "advapi32.dll",
+        "oleaut32.dll",
+        "secur32.dll"
+      ],
+      "packaged_assets": {
+        "dist_files": {
+          "dist/web/assets/index-BqGvfgEY.js": {
+            "bytes": 280646,
+            "sha256": "bd660dbbd417b96e21abef95d7ea690a5c66b5b0f650012acaa733d33ce8dc5c"
+          },
+          "dist/web/assets/index-BwaTx77s.css": {
+            "bytes": 28169,
+            "sha256": "fe8e00190be638204c55e1aaabe1c7f461f2be84e999c4d410b62ff8d195b206"
+          },
+          "dist/web/index.html": {
+            "bytes": 12469,
+            "sha256": "f7d1f13a8d58030d2ee983b5dae6c5d8451c864afad1fef12202155e857caa81"
+          }
+        },
+        "generated_assets": [
+          {
+            "bytes": 6759,
+            "entire_blob_in_gui": true,
+            "path": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/e793e4ef53fe4b3b/out/tauri-codegen-assets/6c70ea0a0b72b72484928bb5868ad42b996b947185a790aa1708dd5baceb4f9c.css",
+            "sha256": "4a4414fdc850125e10aa0d3224023d56c53be05ca058f46c62d93c2e36089157"
+          },
+          {
+            "bytes": 2465,
+            "entire_blob_in_gui": true,
+            "path": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/e793e4ef53fe4b3b/out/tauri-codegen-assets/6cd20e90bab5a40d786a1311716c2e570f9ecad751222a6f9b58348e8a657e32.html",
+            "sha256": "66a301a425aec34d110b0acd56b2cfab16453113e11e2944dfd03f0b5b8a8b89"
+          },
+          {
+            "bytes": 88945,
+            "entire_blob_in_gui": true,
+            "path": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/e793e4ef53fe4b3b/out/tauri-codegen-assets/a7c9b22bceabebf04a8f8335987ecc69bbe7b8e9cfc955417fabe7f8676b3ba4.js",
+            "sha256": "bf0296456a3a886475c4ef0b285e45849c99dfea89dc51fa94db8dabb2db4305"
+          }
+        ],
+        "macros_producer": {
+          "executable": null,
+          "features": [
+            "compression",
+            "custom-protocol"
+          ],
+          "filenames": [
+            "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri-macros/1e663dfcea5f4f70/out/libtauri_macros-1e663dfcea5f4f70.so"
+          ],
+          "fresh": true,
+          "manifest_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/Cargo.toml",
+          "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri-macros@2.6.3",
+          "profile": {
+            "debug_assertions": false,
+            "debuginfo": 0,
+            "opt_level": "0",
+            "overflow_checks": false,
+            "test": false
+          },
+          "reason": "compiler-artifact",
+          "target": {
+            "crate_types": [
+              "proc-macro"
+            ],
+            "doc": true,
+            "doctest": true,
+            "edition": "2021",
+            "kind": [
+              "proc-macro"
+            ],
+            "name": "tauri_macros",
+            "src_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/src/lib.rs",
+            "test": true
+          }
+        },
+        "production_dependency_features_verified": true,
+        "root_build_script": {
+          "cfgs": [
+            "branchline_git_worker",
+            "desktop"
+          ],
+          "env": [
+            [
+              "BRANCHLINE_GIT_WORKER_PATH",
+              "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker"
+            ],
+            [
+              "TAURI_ANDROID_PACKAGE_NAME_APP_NAME",
+              "review"
+            ],
+            [
+              "TAURI_ANDROID_PACKAGE_NAME_PREFIX",
+              "dev_branchline"
+            ],
+            [
+              "TAURI_ENV_TARGET_TRIPLE",
+              "x86_64-pc-windows-msvc"
+            ]
+          ],
+          "linked_libs": [],
+          "linked_paths": [],
+          "out_dir": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/e793e4ef53fe4b3b/out",
+          "package_id": "path+file:///home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri#branchline@0.2.0",
+          "reason": "build-script-executed"
+        },
+        "root_feature_list_required": false,
+        "root_library_producer": {
+          "executable": null,
+          "features": [],
+          "filenames": [
+            "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/d4d52eb1270aa5b2/out/libbranchline-d4d52eb1270aa5b2.rlib",
+            "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/d4d52eb1270aa5b2/out/libbranchline-d4d52eb1270aa5b2.rmeta"
+          ],
+          "fresh": false,
+          "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+          "package_id": "path+file:///home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri#branchline@0.2.0",
+          "profile": {
+            "debug_assertions": false,
+            "debuginfo": 0,
+            "opt_level": "3",
+            "overflow_checks": false,
+            "test": false
+          },
+          "reason": "compiler-artifact",
+          "target": {
+            "crate_types": [
+              "lib"
+            ],
+            "doc": true,
+            "doctest": true,
+            "edition": "2021",
+            "kind": [
+              "lib"
+            ],
+            "name": "branchline",
+            "src_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/src/lib.rs",
+            "test": true
+          }
+        },
+        "tauri_build_script": {
+          "cfgs": [
+            "custom_protocol",
+            "desktop"
+          ],
+          "env": [],
+          "linked_libs": [],
+          "linked_paths": [],
+          "out_dir": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/tauri/57899f7073bfa967/out",
+          "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri@2.11.6",
+          "reason": "build-script-executed"
+        },
+        "tauri_producer": {
+          "executable": null,
+          "features": [
+            "common-controls-v6",
+            "compression",
+            "custom-protocol",
+            "dbus",
+            "default",
+            "dynamic-acl",
+            "tauri-runtime-wry",
+            "webkit2gtk",
+            "webview2-com",
+            "wry",
+            "x11"
+          ],
+          "filenames": [
+            "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/tauri/d13ce480d6541678/out/libtauri-d13ce480d6541678.rlib",
+            "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/tauri/d13ce480d6541678/out/libtauri-d13ce480d6541678.rmeta"
+          ],
+          "fresh": true,
+          "manifest_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.6/Cargo.toml",
+          "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri@2.11.6",
+          "profile": {
+            "debug_assertions": false,
+            "debuginfo": 0,
+            "opt_level": "3",
+            "overflow_checks": false,
+            "test": false
+          },
+          "reason": "compiler-artifact",
+          "target": {
+            "crate_types": [
+              "lib"
+            ],
+            "doc": true,
+            "doctest": true,
+            "edition": "2021",
+            "kind": [
+              "lib"
+            ],
+            "name": "tauri",
+            "src_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.6/src/lib.rs",
+            "test": true
+          }
+        }
+      },
+      "path": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline.exe",
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe",
+      "producer_fresh": false,
+      "renderer": "production default",
+      "sha256": "eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25",
+      "static_crt_import_check": true
+    }
+  },
+  "native_proof_sha256": "0158e6cbf8417789568a2d358f53a0db2c2df9504f4bb4cab3eff6ca9ff39938",
+  "native_workers": {
+    "linux": {
+      "bytes": 3967600,
+      "path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker",
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/branchline-git-worker",
+      "producer_fresh": false,
+      "protocol": 1,
+      "sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd"
+    },
+    "windows": {
+      "bytes": 2720768,
+      "imports": [
+        "bcryptprimitives.dll",
+        "KERNEL32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "WS2_32.dll",
+        "ntdll.dll",
+        "ADVAPI32.dll",
+        "Secur32.dll"
+      ],
+      "path": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe",
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+      "producer_fresh": false,
+      "protocol": 1,
+      "sha256": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+      "static_crt_import_check": true
+    }
+  },
+  "old_samples_pooled": false,
+  "order": [
+    "A1:3",
+    "B1:3",
+    "A2:3",
+    "B2:3",
+    "A3:20",
+    "B3:20"
+  ],
+  "performance_early_gate": false,
+  "pid": 735544,
+  "ports": {
+    "driver": 29225,
+    "host": 19227,
+    "mcp": 28867
+  },
+  "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+  "renderer_and_mcp": "Unchanged canonical Linux launcher; no app environment or renderer overrides.",
+  "runner_sha256": "35c98a273a35f0e124f30063ea8e3d46036c1501784ad1ba5bf456d7bb29189f",
+  "runs": [
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 26,
+              "median_ms": 26,
+              "p95_ms": 26,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            705
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 339,
+              "median_ms": 324,
+              "p95_ms": 339,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 59,
+              "median_ms": 44.00000000000364,
+              "p95_ms": 59,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 705,
+          "median_ms": 668.9999999999982,
+          "p95_ms": 705,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 17,
+              "median_ms": 17,
+              "p95_ms": 17,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            882
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 368,
+              "median_ms": 345,
+              "p95_ms": 368,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 87.00000000000091,
+              "median_ms": 48,
+              "p95_ms": 87.00000000000091,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 882,
+          "median_ms": 703,
+          "p95_ms": 882,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 15,
+              "median_ms": 15,
+              "p95_ms": 15,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            799
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 121,
+              "median_ms": 64,
+              "p95_ms": 121,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 552,
+              "median_ms": 413,
+              "p95_ms": 552,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1345,
+          "median_ms": 799,
+          "p95_ms": 1345,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 12,
+              "median_ms": 12,
+              "p95_ms": 12,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            1880
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 71,
+              "median_ms": 51,
+              "p95_ms": 71,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 1502,
+              "median_ms": 1364,
+              "p95_ms": 1502,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1880,
+          "median_ms": 1696,
+          "p95_ms": 1880,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 14.999999999999545,
+              "median_ms": 14.999999999999545,
+              "p95_ms": 14.999999999999545,
+              "pending_count": 0
+            }
+          },
+          "count": 1,
+          "first_use_ms": [
+            3090
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 380,
+              "median_ms": 380,
+              "p95_ms": 380,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 2196,
+              "median_ms": 2196,
+              "p95_ms": 2196,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 3090,
+          "median_ms": 3090,
+          "p95_ms": 3090,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            718
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 371,
+              "median_ms": 288.00000000000364,
+              "p95_ms": 371,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 32,
+              "median_ms": 19,
+              "p95_ms": 32,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 731,
+          "median_ms": 718,
+          "p95_ms": 731,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            2003.999999999999
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 2438,
+              "median_ms": 1652.000000000001,
+              "p95_ms": 2438,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 82,
+              "median_ms": 68.00000000000364,
+              "p95_ms": 82,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2857.0000000000036,
+          "median_ms": 2005,
+          "p95_ms": 2857.0000000000036,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 705,
+          "max_ms": 705,
+          "p50_ms": 668.9999999999982,
+          "p95_ms": 705
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 882,
+          "max_ms": 882,
+          "p50_ms": 703,
+          "p95_ms": 882
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 799,
+          "max_ms": 1345,
+          "p50_ms": 799,
+          "p95_ms": 1345
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 1880,
+          "max_ms": 1880,
+          "p50_ms": 1696,
+          "p95_ms": 1880
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 3090,
+          "max_ms": 3090,
+          "p50_ms": 3090,
+          "p95_ms": 3090
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 718,
+          "max_ms": 731,
+          "p50_ms": 718,
+          "p95_ms": 731
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 2003.999999999999,
+          "max_ms": 2857.0000000000036,
+          "p50_ms": 2005,
+          "p95_ms": 2857.0000000000036
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01.cleanup.log",
+      "finished_unix": 1795655721.666345,
+      "host_supervisor_pid": 738450,
+      "label": "checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 223108,
+          "start_ticks": "15998075"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "15998075",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 223106,
+          "start_ticks": "15998054"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 223108,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "328238c2-50ea-40d1-8568-f5260c15d8ab",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 223105
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01.log",
+      "number": 1,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01.json",
+      "repetitions": 3,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01",
+        "--label",
+        "checkpoint-b2de070",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_windows",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "328238c2-50ea-40d1-8568-f5260c15d8ab",
+        "--repetitions",
+        "3"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01.json"
+      ],
+      "started_unix": 1795655685.8016706,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 14,
+              "median_ms": 14,
+              "p95_ms": 14,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            629
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 517.9999999999982,
+              "median_ms": 303,
+              "p95_ms": 517.9999999999982,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 110.99999999999818,
+              "median_ms": 19,
+              "p95_ms": 110.99999999999818,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 994,
+          "median_ms": 629,
+          "p95_ms": 994,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 44.00000000000182,
+              "median_ms": 26.00000000000091,
+              "p95_ms": 44.00000000000182,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            629
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 572,
+              "median_ms": 314,
+              "p95_ms": 572,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 106,
+              "median_ms": 47,
+              "p95_ms": 106,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1271.0000000000018,
+          "median_ms": 653,
+          "p95_ms": 1271.0000000000018,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            870
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 88,
+              "median_ms": 66,
+              "p95_ms": 88,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 438,
+              "median_ms": 365.00000000000364,
+              "p95_ms": 438,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 870,
+          "median_ms": 730.9999999999964,
+          "p95_ms": 870,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 33,
+              "median_ms": 33,
+              "p95_ms": 33,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            2224
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 52,
+              "median_ms": 51,
+              "p95_ms": 52,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 1498,
+              "median_ms": 1395,
+              "p95_ms": 1498,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2224,
+          "median_ms": 1761.0000000000036,
+          "p95_ms": 2224,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {},
+          "count": 1,
+          "first_use_ms": [
+            2178
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 333,
+              "median_ms": 333,
+              "p95_ms": 333,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 1454.0000000000005,
+              "median_ms": 1454.0000000000005,
+              "p95_ms": 1454.0000000000005,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2178,
+          "median_ms": 2178,
+          "p95_ms": 2178,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 18,
+              "median_ms": 18,
+              "p95_ms": 18,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            880
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 329.0000000000009,
+              "median_ms": 318,
+              "p95_ms": 329.0000000000009,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 83,
+              "median_ms": 51.99999999999909,
+              "p95_ms": 83,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 880,
+          "median_ms": 671,
+          "p95_ms": 880,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 13,
+              "median_ms": 13,
+              "p95_ms": 13,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            2043
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 1891,
+              "median_ms": 1626,
+              "p95_ms": 1891,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 91,
+              "median_ms": 69,
+              "p95_ms": 91,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2208,
+          "median_ms": 2043,
+          "p95_ms": 2208,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 629,
+          "max_ms": 994,
+          "p50_ms": 629,
+          "p95_ms": 994
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 629,
+          "max_ms": 1271.0000000000018,
+          "p50_ms": 653,
+          "p95_ms": 1271.0000000000018
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 870,
+          "max_ms": 870,
+          "p50_ms": 730.9999999999964,
+          "p95_ms": 870
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 2224,
+          "max_ms": 2224,
+          "p50_ms": 1761.0000000000036,
+          "p95_ms": 2224
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 2178,
+          "max_ms": 2178,
+          "p50_ms": 2178,
+          "p95_ms": 2178
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 880,
+          "max_ms": 880,
+          "p50_ms": 671,
+          "p95_ms": 880
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 2043,
+          "max_ms": 2208,
+          "p50_ms": 2043,
+          "p95_ms": 2208
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01.cleanup.log",
+      "finished_unix": 1795655753.6462872,
+      "host_supervisor_pid": 744047,
+      "label": "integrated-c200-r1-wsl-windows-20261126T011418639510Z-01",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+          "pid": 223419,
+          "start_ticks": "16001632"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+        "created": "16001632",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 223417,
+          "start_ticks": "16001626"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 223419,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "cce2315b-ccfa-4da7-803b-beee2c9c8d42",
+        "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+        "supervisor_pid": 223416
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-01.log",
+      "number": 1,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-01.json",
+      "repetitions": 3,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01",
+        "--label",
+        "integrated-c200-r1",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_windows",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-01.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "cce2315b-ccfa-4da7-803b-beee2c9c8d42",
+        "--repetitions",
+        "3"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-01.json"
+      ],
+      "started_unix": 1795655721.7088518,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            635
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 346,
+              "median_ms": 329.00000000000364,
+              "p95_ms": 346,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 21.99999999999818,
+              "median_ms": 17,
+              "p95_ms": 21.99999999999818,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 664,
+          "median_ms": 655,
+          "p95_ms": 664,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 10,
+              "median_ms": 9.49999999999909,
+              "p95_ms": 10,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            613
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 396,
+              "median_ms": 355,
+              "p95_ms": 396,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 62,
+              "median_ms": 51,
+              "p95_ms": 62,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 792,
+          "median_ms": 702,
+          "p95_ms": 792,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 12.000000000003638,
+              "median_ms": 12.000000000003638,
+              "p95_ms": 12.000000000003638,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            916
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 102,
+              "median_ms": 75,
+              "p95_ms": 102,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 482,
+              "median_ms": 429,
+              "p95_ms": 482,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 916,
+          "median_ms": 821,
+          "p95_ms": 916,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 12,
+              "median_ms": 12,
+              "p95_ms": 12,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            2011.9999999999982
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 66,
+              "median_ms": 63,
+              "p95_ms": 66,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 1828,
+              "median_ms": 1618,
+              "p95_ms": 1828,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2257,
+          "median_ms": 2011.9999999999982,
+          "p95_ms": 2257,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 21,
+              "median_ms": 21,
+              "p95_ms": 21,
+              "pending_count": 0
+            }
+          },
+          "count": 1,
+          "first_use_ms": [
+            2035
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 368,
+              "median_ms": 368,
+              "p95_ms": 368,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 1240,
+              "median_ms": 1240,
+              "p95_ms": 1240,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2035,
+          "median_ms": 2035,
+          "p95_ms": 2035,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 16,
+              "median_ms": 13.5,
+              "p95_ms": 16,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            977.0000000000009
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 376,
+              "median_ms": 360.9999999999991,
+              "p95_ms": 376,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 54,
+              "median_ms": 32,
+              "p95_ms": 54,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 977.0000000000009,
+          "median_ms": 753.9999999999964,
+          "p95_ms": 977.0000000000009,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 10,
+              "median_ms": 10,
+              "p95_ms": 10,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            2046.999999999999
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 1834.9999999999982,
+              "median_ms": 1812,
+              "p95_ms": 1834.9999999999982,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 72.00000000000091,
+              "median_ms": 71,
+              "p95_ms": 72.00000000000091,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2346,
+          "median_ms": 2274,
+          "p95_ms": 2346,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 635,
+          "max_ms": 664,
+          "p50_ms": 655,
+          "p95_ms": 664
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 613,
+          "max_ms": 792,
+          "p50_ms": 702,
+          "p95_ms": 792
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 916,
+          "max_ms": 916,
+          "p50_ms": 821,
+          "p95_ms": 916
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 2011.9999999999982,
+          "max_ms": 2257,
+          "p50_ms": 2011.9999999999982,
+          "p95_ms": 2257
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 2035,
+          "max_ms": 2035,
+          "p50_ms": 2035,
+          "p95_ms": 2035
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 977.0000000000009,
+          "max_ms": 977.0000000000009,
+          "p50_ms": 753.9999999999964,
+          "p95_ms": 977.0000000000009
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 2046.999999999999,
+          "max_ms": 2346,
+          "p50_ms": 2274,
+          "p95_ms": 2346
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02.cleanup.log",
+      "finished_unix": 1795655785.8043468,
+      "host_supervisor_pid": 750839,
+      "label": "checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 223802,
+          "start_ticks": "16004835"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "16004835",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 223800,
+          "start_ticks": "16004825"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 223802,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "c59b4364-1ee8-4ed2-a1f5-d869fd5254e9",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 223799
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02.log",
+      "number": 2,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02.json",
+      "repetitions": 3,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02",
+        "--label",
+        "checkpoint-b2de070",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_windows",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "c59b4364-1ee8-4ed2-a1f5-d869fd5254e9",
+        "--repetitions",
+        "3"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02.json"
+      ],
+      "started_unix": 1795655753.6972914,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 10,
+              "median_ms": 10,
+              "p95_ms": 10,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            689.0000000000009
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 401,
+              "median_ms": 350,
+              "p95_ms": 401,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 146,
+              "median_ms": 36,
+              "p95_ms": 146,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 873,
+          "median_ms": 770,
+          "p95_ms": 873,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 11.000000000000455,
+              "median_ms": 11.000000000000455,
+              "p95_ms": 11.000000000000455,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            688
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 517,
+              "median_ms": 363,
+              "p95_ms": 517,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 74.99999999999818,
+              "median_ms": 54,
+              "p95_ms": 74.99999999999818,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 941,
+          "median_ms": 883,
+          "p95_ms": 941,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 10.999999999996362,
+              "median_ms": 10.999999999996362,
+              "p95_ms": 10.999999999996362,
+              "pending_count": 1
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            828
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 94,
+              "median_ms": 69,
+              "p95_ms": 94,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 557,
+              "median_ms": 436,
+              "p95_ms": 557,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1077,
+          "median_ms": 828,
+          "p95_ms": 1077,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {},
+          "count": 3,
+          "first_use_ms": [
+            2251
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 95.99999999999818,
+              "median_ms": 58,
+              "p95_ms": 95.99999999999818,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 3,
+              "max_ms": 1844,
+              "median_ms": 1664,
+              "p95_ms": 1844,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2251,
+          "median_ms": 2247,
+          "p95_ms": 2251,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {},
+          "count": 1,
+          "first_use_ms": [
+            2042
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 323.99999999999955,
+              "median_ms": 323.99999999999955,
+              "p95_ms": 323.99999999999955,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 1350.0000000000005,
+              "median_ms": 1350.0000000000005,
+              "p95_ms": 1350.0000000000005,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2042,
+          "median_ms": 2042,
+          "p95_ms": 2042,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 15,
+              "median_ms": 12.500000000001819,
+              "p95_ms": 15,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            687
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 407,
+              "median_ms": 290.9999999999991,
+              "p95_ms": 407,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 34,
+              "median_ms": 19,
+              "p95_ms": 34,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 925,
+          "median_ms": 687,
+          "p95_ms": 925,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 9,
+              "median_ms": 9,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "count": 3,
+          "first_use_ms": [
+            2429.999999999999
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 3,
+              "max_ms": 2386,
+              "median_ms": 2024,
+              "p95_ms": 2386,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 3,
+              "max_ms": 41,
+              "median_ms": 25.000000000003638,
+              "p95_ms": 41,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2816,
+          "median_ms": 2429.999999999999,
+          "p95_ms": 2816,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 3,
+          "first_use_ms": 689.0000000000009,
+          "max_ms": 873,
+          "p50_ms": 770,
+          "p95_ms": 873
+        },
+        "branch_first": {
+          "count": 3,
+          "first_use_ms": 688,
+          "max_ms": 941,
+          "p50_ms": 883,
+          "p95_ms": 941
+        },
+        "comment_branch": {
+          "count": 3,
+          "first_use_ms": 828,
+          "max_ms": 1077,
+          "p50_ms": 828,
+          "p95_ms": 1077
+        },
+        "comment_worktree": {
+          "count": 3,
+          "first_use_ms": 2251,
+          "max_ms": 2251,
+          "p50_ms": 2247,
+          "p95_ms": 2251
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 2042,
+          "max_ms": 2042,
+          "p50_ms": 2042,
+          "p95_ms": 2042
+        },
+        "stack": {
+          "count": 3,
+          "first_use_ms": 687,
+          "max_ms": 925,
+          "p50_ms": 687,
+          "p95_ms": 925
+        },
+        "working_tree": {
+          "count": 3,
+          "first_use_ms": 2429.999999999999,
+          "max_ms": 2816,
+          "p50_ms": 2429.999999999999,
+          "p95_ms": 2816
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02.cleanup.log",
+      "finished_unix": 1795655820.4863126,
+      "host_supervisor_pid": 758532,
+      "label": "integrated-c200-r1-wsl-windows-20261126T011418639510Z-02",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+          "pid": 224062,
+          "start_ticks": "16008051"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+        "created": "16008051",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 224060,
+          "start_ticks": "16008049"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 224062,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "f63c7f14-31ee-4b06-901c-9b69eff4335c",
+        "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+        "supervisor_pid": 224059
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-02.log",
+      "number": 2,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-02.json",
+      "repetitions": 3,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02",
+        "--label",
+        "integrated-c200-r1",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_windows",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-02.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "f63c7f14-31ee-4b06-901c-9b69eff4335c",
+        "--repetitions",
+        "3"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-02.json"
+      ],
+      "started_unix": 1795655785.8654735,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 7,
+              "max_ms": 16,
+              "median_ms": 12,
+              "p95_ms": 16,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            646
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 518,
+              "median_ms": 296.5,
+              "p95_ms": 509,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 223,
+              "median_ms": 18.999999999999773,
+              "p95_ms": 151.99999999999818,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1128,
+          "median_ms": 610.5,
+          "p95_ms": 1093,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 10,
+              "max_ms": 21.000000000007276,
+              "median_ms": 10.999999999992724,
+              "p95_ms": 21.000000000007276,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            657
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 507,
+              "median_ms": 338.0000000000073,
+              "p95_ms": 505,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 80.00000000000728,
+              "median_ms": 53.0,
+              "p95_ms": 78,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 996,
+          "median_ms": 662.0000000000073,
+          "p95_ms": 951.9999999999927,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 8,
+              "max_ms": 66,
+              "median_ms": 12,
+              "p95_ms": 66,
+              "pending_count": 1
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            1008.0000000000018
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 112,
+              "median_ms": 55.5,
+              "p95_ms": 112,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 20,
+              "max_ms": 542,
+              "median_ms": 364.5000000000073,
+              "p95_ms": 509,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1128.0000000000036,
+          "median_ms": 726.5000000000073,
+          "p95_ms": 1101,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 11,
+              "max_ms": 14,
+              "median_ms": 11,
+              "p95_ms": 14,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            2313
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 88.00000000000728,
+              "median_ms": 50.50000000000182,
+              "p95_ms": 76,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 20,
+              "max_ms": 1890,
+              "median_ms": 1478.0,
+              "p95_ms": 1839.9999999999927,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2313,
+          "median_ms": 1841.5,
+          "p95_ms": 2309.9999999999927,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 11,
+              "median_ms": 11,
+              "p95_ms": 11,
+              "pending_count": 0
+            }
+          },
+          "count": 1,
+          "first_use_ms": [
+            1789
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 212,
+              "median_ms": 212,
+              "p95_ms": 212,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 1232,
+              "median_ms": 1232,
+              "p95_ms": 1232,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1789,
+          "median_ms": 1789,
+          "p95_ms": 1789,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 8,
+              "max_ms": 28,
+              "median_ms": 12.500000000014552,
+              "p95_ms": 28,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            1072.0000000000018
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 409,
+              "median_ms": 307.0,
+              "p95_ms": 387.99999999999636,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 85,
+              "median_ms": 55.0,
+              "p95_ms": 74.0000000000291,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1072.0000000000018,
+          "median_ms": 676.0,
+          "p95_ms": 788,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 7,
+              "max_ms": 34,
+              "median_ms": 10,
+              "p95_ms": 34,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            2798
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 2659,
+              "median_ms": 1639.5000000000073,
+              "p95_ms": 2586,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 338,
+              "median_ms": 63.0,
+              "p95_ms": 79,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 3487,
+          "median_ms": 2026.5,
+          "p95_ms": 3204,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 20,
+          "first_use_ms": 646,
+          "max_ms": 1128,
+          "p50_ms": 602,
+          "p95_ms": 1093
+        },
+        "branch_first": {
+          "count": 20,
+          "first_use_ms": 657,
+          "max_ms": 996,
+          "p50_ms": 662,
+          "p95_ms": 951.9999999999927
+        },
+        "comment_branch": {
+          "count": 20,
+          "first_use_ms": 1008.0000000000018,
+          "max_ms": 1128.0000000000036,
+          "p50_ms": 723,
+          "p95_ms": 1101
+        },
+        "comment_worktree": {
+          "count": 20,
+          "first_use_ms": 2313,
+          "max_ms": 2313,
+          "p50_ms": 1809,
+          "p95_ms": 2309.9999999999927
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 1789,
+          "max_ms": 1789,
+          "p50_ms": 1789,
+          "p95_ms": 1789
+        },
+        "stack": {
+          "count": 20,
+          "first_use_ms": 1072.0000000000018,
+          "max_ms": 1072.0000000000018,
+          "p50_ms": 672,
+          "p95_ms": 788
+        },
+        "working_tree": {
+          "count": 20,
+          "first_use_ms": 2798,
+          "max_ms": 3487,
+          "p50_ms": 2021,
+          "p95_ms": 3204
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03.cleanup.log",
+      "finished_unix": 1795656000.4984703,
+      "host_supervisor_pid": 763410,
+      "label": "checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 224306,
+          "start_ticks": "16011518"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "16011518",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 224304,
+          "start_ticks": "16011512"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 224306,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "e8288765-752f-4490-95d3-286cb044e4b8",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 224303
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03.log",
+      "number": 3,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03.json",
+      "repetitions": 20,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03",
+        "--label",
+        "checkpoint-b2de070",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_windows",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "e8288765-752f-4490-95d3-286cb044e4b8",
+        "--repetitions",
+        "20"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03.json"
+      ],
+      "started_unix": 1795655820.527872,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "A",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/verdict.json"
+    },
+    {
+      "action_and_ipc_summary": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 11,
+              "median_ms": 11,
+              "p95_ms": 11,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            634.0000000000005
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 412,
+              "median_ms": 304.0,
+              "p95_ms": 381,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 88,
+              "median_ms": 18.0,
+              "p95_ms": 70,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 854,
+          "median_ms": 618.0,
+          "p95_ms": 848,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 7,
+              "max_ms": 12.999999999970896,
+              "median_ms": 10.5,
+              "p95_ms": 12.999999999970896,
+              "pending_count": 1
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            708
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 499,
+              "median_ms": 352.0,
+              "p95_ms": 437,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 104,
+              "median_ms": 48.0,
+              "p95_ms": 68.00000000000728,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 925.0000000000291,
+          "median_ms": 684.5,
+          "p95_ms": 868,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 8,
+              "max_ms": 40,
+              "median_ms": 10.500000000003638,
+              "p95_ms": 40,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            740
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 116,
+              "median_ms": 59.5,
+              "p95_ms": 89,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 20,
+              "max_ms": 593,
+              "median_ms": 380.0000000000073,
+              "p95_ms": 531,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1375,
+          "median_ms": 768.5000000000073,
+          "p95_ms": 1072,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 8,
+              "max_ms": 32,
+              "median_ms": 12,
+              "p95_ms": 32,
+              "pending_count": 1
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            1821
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 158,
+              "median_ms": 46.0,
+              "p95_ms": 103,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 20,
+              "max_ms": 2005.0000000000146,
+              "median_ms": 1466.4999999999973,
+              "p95_ms": 1929,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2411,
+          "median_ms": 1833.5,
+          "p95_ms": 2362.0000000000146,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 10,
+              "median_ms": 10,
+              "p95_ms": 10,
+              "pending_count": 0
+            }
+          },
+          "count": 1,
+          "first_use_ms": [
+            1725.0000000000005
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 1,
+              "max_ms": 204,
+              "median_ms": 204,
+              "p95_ms": 204,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 1,
+              "max_ms": 1186.0000000000002,
+              "median_ms": 1186.0000000000002,
+              "p95_ms": 1186.0000000000002,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 1725.0000000000005,
+          "median_ms": 1725.0000000000005,
+          "p95_ms": 1725.0000000000005,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 8,
+              "max_ms": 30,
+              "median_ms": 11.0,
+              "p95_ms": 30,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            615.0000000000009
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 361.00000000001455,
+              "median_ms": 318.5,
+              "p95_ms": 360,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 88,
+              "median_ms": 30.0,
+              "p95_ms": 83.00000000000364,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 929.9999999999709,
+          "median_ms": 680.5000000000036,
+          "p95_ms": 889,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 8,
+              "max_ms": 29,
+              "median_ms": 10.00000000001819,
+              "p95_ms": 29,
+              "pending_count": 0
+            }
+          },
+          "count": 20,
+          "first_use_ms": [
+            2040
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 20,
+              "max_ms": 2267.999999999971,
+              "median_ms": 1671.000000000001,
+              "p95_ms": 2236,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 20,
+              "max_ms": 174,
+              "median_ms": 71.5,
+              "p95_ms": 113,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 2991,
+          "median_ms": 2099.5,
+          "p95_ms": 2882.0000000000146,
+          "pending_count": 0
+        }
+      },
+      "actions": {
+        "branch_final": {
+          "count": 20,
+          "first_use_ms": 634.0000000000005,
+          "max_ms": 854,
+          "p50_ms": 618,
+          "p95_ms": 848
+        },
+        "branch_first": {
+          "count": 20,
+          "first_use_ms": 708,
+          "max_ms": 925.0000000000291,
+          "p50_ms": 681,
+          "p95_ms": 868
+        },
+        "comment_branch": {
+          "count": 20,
+          "first_use_ms": 740,
+          "max_ms": 1375,
+          "p50_ms": 742,
+          "p95_ms": 1072
+        },
+        "comment_worktree": {
+          "count": 20,
+          "first_use_ms": 1821,
+          "max_ms": 2411,
+          "p50_ms": 1821,
+          "p95_ms": 2362.0000000000146
+        },
+        "open": {
+          "count": 1,
+          "first_use_ms": 1725.0000000000005,
+          "max_ms": 1725.0000000000005,
+          "p50_ms": 1725.0000000000005,
+          "p95_ms": 1725.0000000000005
+        },
+        "stack": {
+          "count": 20,
+          "first_use_ms": 615.0000000000009,
+          "max_ms": 929.9999999999709,
+          "p50_ms": 674.0000000000073,
+          "p95_ms": 889
+        },
+        "working_tree": {
+          "count": 20,
+          "first_use_ms": 2040,
+          "max_ms": 2991,
+          "p50_ms": 2072,
+          "p95_ms": 2882.0000000000146
+        }
+      },
+      "cleanup_complete": true,
+      "cleanup_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03.cleanup.log",
+      "finished_unix": 1795656181.0176575,
+      "host_supervisor_pid": 808183,
+      "label": "integrated-c200-r1-wsl-windows-20261126T011418639510Z-03",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+          "pid": 224602,
+          "start_ticks": "16029516"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+        "created": "16029516",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 224600,
+          "start_ticks": "16029510"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 224602,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "63a5561c-1f63-46fb-a4b8-6ba76e1f2842",
+        "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+        "supervisor_pid": 224599
+      },
+      "launch_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-03.log",
+      "number": 3,
+      "record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-03.json",
+      "repetitions": 20,
+      "run_dir": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03",
+      "samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl",
+      "score_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/score.py",
+        "--source",
+        "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source",
+        "--run-dir",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03",
+        "--label",
+        "integrated-c200-r1",
+        "--manifest",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/workload.json",
+        "--case",
+        "wsl_windows",
+        "--launch-record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-03.json",
+        "--webkit-port",
+        "19227",
+        "--session",
+        "63a5561c-1f63-46fb-a4b8-6ba76e1f2842",
+        "--repetitions",
+        "20"
+      ],
+      "score_exit": 0,
+      "score_log": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03.stdout.log",
+      "start_command": [
+        "/usr/bin/python3",
+        "/home/max/workspace/merge-viewer-native/tools/autoresearch/wsl-boundary/launch_linux.py",
+        "start",
+        "--binary",
+        "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "--profile",
+        "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "--port",
+        "29225",
+        "--mcp-port",
+        "28867",
+        "--source-hash",
+        "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+        "--record",
+        "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-03.json"
+      ],
+      "started_unix": 1795656000.5523658,
+      "status": "complete-valid-stopped",
+      "supervisor_exit": 0,
+      "variant": "B",
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/verdict.json"
+    }
+  ],
+  "runtime_release": "VM INTEGRATED LINUX MATRIX RELEASED",
+  "seed_sha256": "595c5fc08854dcb5cf12eec7136de587f94f375c1c30272deab059649c99a3fa",
+  "seed_verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/seed-candidate-worker-v1-wsl-windows/verdict.json",
+  "start_ticks": "77801752",
+  "started_unix": 1795655658.6396132,
+  "status": "complete-valid-awaiting-10percent-review",
+  "transport": "Existing task-owned private master/forward and host-only wrapper; no new TCP fallback and no wrapper PATH in VM.",
+  "transport_helper_sha256": "4a253a7a50595aeabd755be55c16c024634882567c48235b6cb07e7714ed1d42",
+  "variants": {
+    "A": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json",
+      "build_record_sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384",
+      "embedded_helper": {
+        "bytes": 2720768,
+        "path": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline-git-worker.exe",
+        "preserved_from": "/home/max/benchmarks/branchline-boundary/helper-placement/placement-v3-01/windows/foreign/branchline-git-worker.exe",
+        "sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2"
+      },
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+      "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/supervisor.json",
+      "build_record_sha256": "9efc646fbd95ad2ffca7d72c688c90fd9a3b2b3be7540655134a676fbecedf6e",
+      "embedded_helper": {
+        "bytes": 2720768,
+        "imports": [
+          "bcryptprimitives.dll",
+          "KERNEL32.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "WS2_32.dll",
+          "ntdll.dll",
+          "ADVAPI32.dll",
+          "Secur32.dll"
+        ],
+        "path": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe",
+        "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+        "producer_fresh": false,
+        "protocol": 1,
+        "sha256": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+        "static_crt_import_check": true
+      },
+      "label": "integrated-c200-r1",
+      "protocol": 1,
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source",
+      "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1"
+    }
+  }
+}

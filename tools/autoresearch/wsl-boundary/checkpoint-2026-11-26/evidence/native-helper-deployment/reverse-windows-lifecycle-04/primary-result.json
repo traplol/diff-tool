@@ -1,0 +1,227 @@
+{
+  "host_pid": 47910,
+  "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+  "status": "failed",
+  "cases": [
+    {
+      "name": "abrupt-windows-gui-busy-real-read",
+      "started": 1795643306.7944198,
+      "inflight_proof": {
+        "owner": {
+          "binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+          "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+          "cdp_port": 29371,
+          "profile": "C:\\Users\\max\\branchline-bench\\nwg-252d-02\\r\u00e9view space\\retry-gui-busy",
+          "session": 1,
+          "mcp_port": 28971,
+          "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+          "repo": "C:\\Users\\max\\branchline-bench\\nwg-252d-02\\r\u00e9view space\\retry-gui-busy\\welcome",
+          "pid": 8428,
+          "created": "2026-11-25T16:48:28.4952120-05:00"
+        },
+        "before": [
+          {
+            "pid": 135463,
+            "start_ticks": "14760592",
+            "state": "S",
+            "exe": "/home/max/benchmarks/branchline-boundary/nwg-252d-02/cache's r\u00e9view &[]/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "args": "/home/max/benchmarks/branchline-boundary/nwg-252d-02/cache's r\u00e9view &[]/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa --stdio ",
+            "environment": {
+              "XDG_CACHE_HOME": "/home/max/benchmarks/branchline-boundary/nwg-252d-02/cache's r\u00e9view &[]",
+              "HOME": "/home/max",
+              "USER": "max",
+              "GIT_OPTIONAL_LOCKS": null,
+              "GIT_TERMINAL_PROMPT": null,
+              "GIT_NO_LAZY_FETCH": null,
+              "LC_ALL": null
+            }
+          }
+        ],
+        "busy": true,
+        "busy_observation": {
+          "worker": {
+            "pid": 135463,
+            "start_ticks": "14760592",
+            "exe": "/home/max/benchmarks/branchline-boundary/nwg-252d-02/cache's r\u00e9view &[]/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          },
+          "git": {
+            "pid": 135490,
+            "start_ticks": "14760749",
+            "exe": "/usr/bin/git",
+            "args": "git --no-pager --literal-pathspecs -C /home/max/benchmarks/branchline-boundary/kernel-wsl -c diff.autoRefreshIndex=false -c core.quotePath=true -c diff.suppressBlankEmpty=false diff --patch --full-index --no-color --no-ext-diff --no-textconv --find-renames --unified=3 --ignore-submodules=none --submodule=short --no-relative --output-indicator-new=+ --output-indicator-old=- --output-indicator-context=  --raw --numstat --no-abbrev -z --ours --diff-filter=u -- ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "state": "T",
+            "environment": {
+              "GIT_OPTIONAL_LOCKS": "0",
+              "GIT_TERMINAL_PROMPT": "0",
+              "GIT_NO_LAZY_FETCH": "1",
+              "LC_ALL": null
+            }
+          },
+          "real_read_paused": true
+        },
+        "killed": {
+          "killed_pid": 8428
+        },
+        "resumed": {
+          "resumed_exact_git": {
+            "pid": 135490,
+            "start_ticks": "14760749",
+            "exe": "/usr/bin/git",
+            "args": "git --no-pager --literal-pathspecs -C /home/max/benchmarks/branchline-boundary/kernel-wsl -c diff.autoRefreshIndex=false -c core.quotePath=true -c diff.suppressBlankEmpty=false diff --patch --full-index --no-color --no-ext-diff --no-textconv --find-renames --unified=3 --ignore-submodules=none --submodule=short --no-relative --output-indicator-new=+ --output-indicator-old=- --output-indicator-context=  --raw --numstat --no-abbrev -z --ours --diff-filter=u -- ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "state": "T",
+            "environment": {
+              "GIT_OPTIONAL_LOCKS": "0",
+              "GIT_TERMINAL_PROMPT": "0",
+              "GIT_NO_LAZY_FETCH": "1",
+              "LC_ALL": null
+            }
+          }
+        },
+        "workers_gone": {
+          "gone": true
+        }
+      },
+      "proof": {
+        "owner": {
+          "binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+          "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+          "cdp_port": 29371,
+          "profile": "C:\\Users\\max\\branchline-bench\\nwg-252d-02\\r\u00e9view space\\retry-gui-busy",
+          "session": 1,
+          "mcp_port": 28971,
+          "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+          "repo": "C:\\Users\\max\\branchline-bench\\nwg-252d-02\\r\u00e9view space\\retry-gui-busy\\welcome",
+          "pid": 8428,
+          "created": "2026-11-25T16:48:28.4952120-05:00"
+        },
+        "before": [
+          {
+            "pid": 135463,
+            "start_ticks": "14760592",
+            "state": "S",
+            "exe": "/home/max/benchmarks/branchline-boundary/nwg-252d-02/cache's r\u00e9view &[]/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "args": "/home/max/benchmarks/branchline-boundary/nwg-252d-02/cache's r\u00e9view &[]/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa --stdio ",
+            "environment": {
+              "XDG_CACHE_HOME": "/home/max/benchmarks/branchline-boundary/nwg-252d-02/cache's r\u00e9view &[]",
+              "HOME": "/home/max",
+              "USER": "max",
+              "GIT_OPTIONAL_LOCKS": null,
+              "GIT_TERMINAL_PROMPT": null,
+              "GIT_NO_LAZY_FETCH": null,
+              "LC_ALL": null
+            }
+          }
+        ],
+        "busy": true,
+        "busy_observation": {
+          "worker": {
+            "pid": 135463,
+            "start_ticks": "14760592",
+            "exe": "/home/max/benchmarks/branchline-boundary/nwg-252d-02/cache's r\u00e9view &[]/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          },
+          "git": {
+            "pid": 135490,
+            "start_ticks": "14760749",
+            "exe": "/usr/bin/git",
+            "args": "git --no-pager --literal-pathspecs -C /home/max/benchmarks/branchline-boundary/kernel-wsl -c diff.autoRefreshIndex=false -c core.quotePath=true -c diff.suppressBlankEmpty=false diff --patch --full-index --no-color --no-ext-diff --no-textconv --find-renames --unified=3 --ignore-submodules=none --submodule=short --no-relative --output-indicator-new=+ --output-indicator-old=- --output-indicator-context=  --raw --numstat --no-abbrev -z --ours --diff-filter=u -- ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "state": "T",
+            "environment": {
+              "GIT_OPTIONAL_LOCKS": "0",
+              "GIT_TERMINAL_PROMPT": "0",
+              "GIT_NO_LAZY_FETCH": "1",
+              "LC_ALL": null
+            }
+          },
+          "real_read_paused": true
+        },
+        "killed": {
+          "killed_pid": 8428
+        },
+        "resumed": {
+          "resumed_exact_git": {
+            "pid": 135490,
+            "start_ticks": "14760749",
+            "exe": "/usr/bin/git",
+            "args": "git --no-pager --literal-pathspecs -C /home/max/benchmarks/branchline-boundary/kernel-wsl -c diff.autoRefreshIndex=false -c core.quotePath=true -c diff.suppressBlankEmpty=false diff --patch --full-index --no-color --no-ext-diff --no-textconv --find-renames --unified=3 --ignore-submodules=none --submodule=short --no-relative --output-indicator-new=+ --output-indicator-old=- --output-indicator-context=  --raw --numstat --no-abbrev -z --ours --diff-filter=u -- ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "state": "T",
+            "environment": {
+              "GIT_OPTIONAL_LOCKS": "0",
+              "GIT_TERMINAL_PROMPT": "0",
+              "GIT_NO_LAZY_FETCH": "1",
+              "LC_ALL": null
+            }
+          }
+        },
+        "workers_gone": {
+          "gone": true
+        }
+      },
+      "passed": true,
+      "cleanup": {
+        "profile": "C:\\Users\\max\\branchline-bench\\nwg-252d-02\\r\u00e9view space\\retry-gui-busy",
+        "stopped_pids": [
+          6500
+        ]
+      },
+      "finished": 1795643315.7433813
+    },
+    {
+      "name": "abrupt-windows-mcp-idle",
+      "started": 1795643315.7436557,
+      "passed": false,
+      "error": "Traceback (most recent call last):\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py\", line 75, in case\n    try:c['proof']=body();c['passed']=True\n                   ~~~~^^\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py\", line 238, in <lambda>\n    case('abrupt-windows-mcp-idle',lambda:death(False,False))\n                                          ~~~~~^^^^^^^^^^^^^\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py\", line 163, in death\n    proof['completed_mcp_read']=rpc_work();mcp_workers=[w for w in workers()['workers'] if w['pid']!=before[0]['pid']];assert len(mcp_workers)==1,mcp_workers;proof['mcp_workers']=mcp_workers\n                                ~~~~~~~~^^\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py\", line 152, in rpc_work\n    with urllib.request.urlopen(req,timeout=20) as r: result=json.load(r)\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 493, in open\n    response = meth(req, response)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 602, in http_response\n    response = self.parent.error(\n        'http', request, response, code, msg, hdrs)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 531, in error\n    return self._call_chain(*args)\n           ~~~~~~~~~~~~~~~~^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 611, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 403: Forbidden\n",
+      "failure_ui": {
+        "url": "http://tauri.localhost/",
+        "title": "kernel-wsl \u00b7 Branchline",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36 Edg/158.0.0.0",
+        "viewport": [
+          1280,
+          781
+        ],
+        "visible": "visible",
+        "busy": false,
+        "repository": "//wsl.localhost/Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+        "comparison": "mainfeature/boundary-final",
+        "filename": "arch/parisc/include/asm/extable.h",
+        "status": "\n          Local GitComparison up to date\n        "
+      },
+      "cleanup": {
+        "profile": "C:\\Users\\max\\branchline-bench\\nwg-252d-02\\r\u00e9view space\\retry-mcp-idle",
+        "stopped_pids": [
+          11048,
+          204
+        ]
+      },
+      "finished": 1795643322.6001823
+    }
+  ],
+  "not_a_score": true,
+  "tunnel_pid": 47912,
+  "control_socket": "/tmp/nh-lc04-47910.sock",
+  "control_verified": "Master running (pid=47912)",
+  "fingerprint_before": {
+    "linux": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+    "windows": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+  },
+  "error": "Traceback (most recent call last):\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py\", line 238, in <module>\n    case('abrupt-windows-mcp-idle',lambda:death(False,False))\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py\", line 75, in case\n    try:c['proof']=body();c['passed']=True\n                   ~~~~^^\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py\", line 238, in <lambda>\n    case('abrupt-windows-mcp-idle',lambda:death(False,False))\n                                          ~~~~~^^^^^^^^^^^^^\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py\", line 163, in death\n    proof['completed_mcp_read']=rpc_work();mcp_workers=[w for w in workers()['workers'] if w['pid']!=before[0]['pid']];assert len(mcp_workers)==1,mcp_workers;proof['mcp_workers']=mcp_workers\n                                ~~~~~~~~^^\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle-04.py\", line 152, in rpc_work\n    with urllib.request.urlopen(req,timeout=20) as r: result=json.load(r)\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 493, in open\n    response = meth(req, response)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 602, in http_response\n    response = self.parent.error(\n        'http', request, response, code, msg, hdrs)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 531, in error\n    return self._call_chain(*args)\n           ~~~~~~~~~~~~~~~~^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 611, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 403: Forbidden\n",
+  "paused_git_release": [],
+  "remaining_workers": [],
+  "windows_release": {
+    "actors": [],
+    "ports": []
+  },
+  "fingerprint_after": {
+    "linux": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+    "windows": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+  },
+  "tunnel_stopped": true,
+  "control_socket_absent": true,
+  "actual_client_malformed_response_injection": "unproved; real server-invalid-request recovery is a separate gate; no broad fault fixture added"
+}

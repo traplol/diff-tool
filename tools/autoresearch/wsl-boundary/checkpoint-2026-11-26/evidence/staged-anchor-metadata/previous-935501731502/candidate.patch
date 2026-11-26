@@ -1,0 +1,726 @@
+diff --git a/src-tauri/git-worker/tests/stdio.rs b/src-tauri/git-worker/tests/stdio.rs
+index 34f0873..8964639 100644
+--- a/src-tauri/git-worker/tests/stdio.rs
++++ b/src-tauri/git-worker/tests/stdio.rs
+@@ -93,7 +93,9 @@ fn real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs() {
+     std::fs::write(&file, "review\n").unwrap();
+     git(root, &["commit", "-qam", "review"]);
+     let mut worker = Worker::start();
+-    let pid = worker.call(json!({"op":"hello"}))["pid"].clone();
++    let hello = worker.call(json!({"op":"hello"}));
++    assert_eq!(hello["protocol"], 2);
++    let pid = hello["pid"].clone();
+     let opened = worker.call(json!({"op":"open","path":root}));
+     let view = opened["repo"].clone();
+     let branch = worker.call(json!({"op":"compare","view":view,
+@@ -119,6 +121,18 @@ fn real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs() {
+     let patch = worker.call(patch_request.clone());
+     assert!(patch[0].as_str().unwrap().contains("+unstaged"));
+     let index = std::fs::read(root.join(".git/index")).unwrap();
++    let staged = files.iter().find(|file| file["group"] == "Staged").unwrap();
++    let expected = json!({"path":staged["path"],"old_oid":staged["old_oid"],"oid":staged["oid"],
++        "old_mode":staged["old_mode"],"mode":staged["mode"]});
++    let proof_request = json!({"op":"verify_staged_versions","view":view,
++        "checkout":"refs/heads/review","expected":[expected]});
++    let proof = worker.call(proof_request.clone());
++    assert_eq!(proof["versions"], json!([expected]));
++    assert!(proof["location_head"]
++        .as_str()
++        .unwrap()
++        .starts_with("staged:"));
++    assert_eq!(std::fs::read(root.join(".git/index")).unwrap(), index);
+     let scoped = worker.call(json!({"op":"working_tree_paths","view":view,
+         "checkout":"refs/heads/review","paths":["file.txt"]}));
+     assert_eq!(scoped["files"].as_array().unwrap().len(), 2);
+@@ -136,6 +150,7 @@ fn real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs() {
+     let contents_request = json!({"op":"file_contents","file":selected});
+     assert_eq!(worker.call(contents_request.clone()), json!(["unstaged"]));
+     std::fs::write(&file, "changed after snapshot\n").unwrap();
++    assert_eq!(worker.call(proof_request.clone()), proof);
+     assert_eq!(worker.call(scoped_patch.clone()), patch);
+     assert_eq!(worker.call(patch_request.clone()), patch);
+     assert_eq!(worker.call(contents_request.clone()), json!(["unstaged"]));
+@@ -148,7 +163,9 @@ fn real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs() {
+     assert!(worker.request(json!({"op":"run_shell"}))["error"].is_string());
+ 
+     git(root, &["add", "file.txt"]);
++    assert!(worker.call(proof_request.clone()).is_null());
+     git(root, &["commit", "-qm", "later"]);
++    assert!(worker.call(proof_request).is_null());
+     let fresh = worker.call(json!({"op":"open","path":root}))["repo"].clone();
+     assert_eq!(worker.call(scoped_patch), patch);
+     assert_ne!(
+diff --git a/src-tauri/src/git.rs b/src-tauri/src/git.rs
+index 9ecaf1f..8c7fad0 100644
+--- a/src-tauri/src/git.rs
++++ b/src-tauri/src/git.rs
+@@ -946,6 +946,68 @@ pub fn working_tree(
+     working_tree_impl(repo, checkout, untracked_paths, None)
+ }
+ 
++/// Exact staged blob/mode facts. This is never a patch or search snapshot.
++#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Deserialize, Serialize)]
++pub(crate) struct StagedVersion {
++    pub path: String,
++    pub old_oid: String,
++    pub oid: String,
++    pub old_mode: String,
++    pub mode: String,
++}
++
++#[derive(Debug, Deserialize, Serialize)]
++pub(crate) struct StagedProof {
++    pub base: String,
++    pub location_head: String,
++    pub versions: Vec<StagedVersion>,
++}
++
++/// A declined proof leaves callers on the existing frozen-snapshot lookup.
++pub(crate) fn verify_staged_versions(
++    repo: &Repository,
++    checkout: &str,
++    expected: &[StagedVersion],
++) -> Option<StagedProof> {
++    if expected.is_empty() || checkout != repo.checkout {
++        return None;
++    }
++    #[cfg(test)]
++    STAGED_READS.with(|count| count.set(count.get() + 1));
++    #[cfg(not(feature = "storage-worker"))]
++    if let Some(connection) = &repo.remote {
++        return worker_reply(
++            connection,
++            worker::Request::VerifyStagedVersions {
++                view: repo.clone(),
++                checkout: checkout.into(),
++                expected: expected.to_vec(),
++            },
++        )
++        .ok()
++        .flatten();
++    }
++    let head = repo.refs.get(if checkout.starts_with("HEAD@") {
++        "HEAD"
++    } else {
++        checkout
++    })?;
++    let native = repo.native()?;
++    native::verify_staged_versions(&native, checkout, head, expected)
++        .ok()
++        .flatten()
++}
++
++#[cfg(test)]
++thread_local! {
++    static STAGED_READS: std::cell::Cell<usize> = const { std::cell::Cell::new(0) };
++}
++
++#[cfg(test)]
++pub(crate) fn take_staged_read_count() -> usize {
++    STAGED_READS.with(|count| count.replace(0))
++}
++
+ /// A frozen, tracked-path snapshot for verifying unchanged review anchors.
+ /// Rename detection and its digest cover only these paths. Untracked files are
+ /// omitted. Callers must fall back to the full view for other anchors.
+@@ -984,6 +1046,27 @@ pub(crate) fn take_working_tree_read_counts() -> (usize, usize) {
+     WT_READS.with(|counts| counts.replace((0, 0)))
+ }
+ 
++fn index_state(index_path: &Path) -> Result<Option<(u64, u64, std::time::SystemTime)>> {
++    match fs::metadata(&index_path) {
++        Ok(m) => {
++            #[cfg(unix)]
++            let identity = {
++                use std::os::unix::fs::MetadataExt;
++                m.ino()
++            };
++            #[cfg(not(unix))]
++            let identity = 0_u64;
++            Ok(Some((
++                identity,
++                m.len(),
++                m.modified().map_err(|e| e.to_string())?,
++            )))
++        }
++        Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(None),
++        Err(e) => Err(e.to_string()),
++    }
++}
++
+ fn working_tree_impl(
+     repo: &Repository,
+     checkout: &str,
+@@ -1020,27 +1103,7 @@ fn working_tree_impl(
+         };
+         repo.root.join(index)
+     };
+-    let index_state = || -> Result<_> {
+-        match fs::metadata(&index_path) {
+-            Ok(m) => {
+-                #[cfg(unix)]
+-                let identity = {
+-                    use std::os::unix::fs::MetadataExt;
+-                    m.ino()
+-                };
+-                #[cfg(not(unix))]
+-                let identity = 0_u64;
+-                Ok(Some((
+-                    identity,
+-                    m.len(),
+-                    m.modified().map_err(|e| e.to_string())?,
+-                )))
+-            }
+-            Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(None),
+-            Err(e) => Err(e.to_string()),
+-        }
+-    };
+-    let initial_index = index_state()?;
++    let initial_index = index_state(&index_path)?;
+     let files = if let Some(files) = native_repo.as_ref().and_then(|native| {
+         native::working_changes(
+             native,
+@@ -1059,7 +1122,9 @@ fn working_tree_impl(
+         .as_ref()
+         .and_then(|repo| native::checkout(repo).ok())
+         .unwrap_or_else(|| checkout_state(&repo.root));
+-    if current != (checkout.to_string(), head.cloned()) || index_state()? != initial_index {
++    if current != (checkout.to_string(), head.cloned())
++        || index_state(&index_path)? != initial_index
++    {
+         return Err("The checkout or index changed. Refresh to review its current changes.".into());
+     }
+     let mut digest = Sha256::new();
+diff --git a/src-tauri/src/git/native.rs b/src-tauri/src/git/native.rs
+index e8bab02..6cfdb00 100644
+--- a/src-tauri/src/git/native.rs
++++ b/src-tauri/src/git/native.rs
+@@ -425,6 +425,130 @@ pub(super) fn supports_working_tree(repo: &Repository) -> bool {
+             .unwrap_or(false)
+ }
+ 
++// Read staged facts only. Worktree conversions and sparse omissions elsewhere
++// cannot change objects that are already in the index.
++pub(super) fn verify_staged_versions(
++    repo: &Repository,
++    checkout_name: &str,
++    head: &str,
++    expected: &[super::StagedVersion],
++) -> Result<Option<super::StagedProof>> {
++    let config = repo.config()?;
++    if config
++        .get_str("extensions.objectFormat")
++        .is_ok_and(|value| value != "sha1")
++        || config.get_entry("extensions.compatObjectFormat").is_ok()
++        || config.get_entry("extensions.refStorage").is_ok()
++    {
++        return Ok(None);
++    }
++    let wanted_checkout = (checkout_name.to_string(), Some(head.to_string()));
++    if checkout(repo)? != wanted_checkout {
++        return Ok(None);
++    }
++    let mut index = repo.index()?;
++    let Some(index_path) = index.path().map(Path::to_path_buf) else {
++        return Ok(None);
++    };
++    let initial_index = super::index_state(&index_path).map_err(|e| git2::Error::from_str(&e))?;
++    index.read(true)?;
++    if index.has_conflicts() {
++        return Ok(None);
++    }
++    let tree = repo.find_commit(Oid::from_str(head)?)?.tree()?;
++    let mut versions = Vec::new();
++    for version in expected {
++        if !matches!(version.old_mode.as_str(), "100644" | "100755")
++            || !matches!(version.mode.as_str(), "100644" | "100755")
++        {
++            continue;
++        }
++        let path = path_arg(&version.path).map_err(|e| git2::Error::from_str(&e))?;
++        let raw = path.as_encoded_bytes();
++        if !Path::new(&path)
++            .components()
++            .all(|part| matches!(part, std::path::Component::Normal(_)))
++            || raw.contains(&0)
++            || raw
++                .split(|b| *b == b'/')
++                .any(|part| matches!(part, b"" | b"." | b".."))
++        {
++            continue;
++        }
++        let Some(entry) = index.get_path(Path::new(&path), 0) else {
++            continue;
++        };
++        let flags = git2::IndexEntryExtendedFlag::from_bits_truncate(entry.flags_extended);
++        // get_path can obey an ignore-case index comparator. Require raw bytes.
++        if entry.path != raw || flags.is_skip_worktree() || flags.is_intent_to_add() {
++            continue;
++        }
++        let Some(old) = exact_tree_entry(repo, &tree, raw) else {
++            continue;
++        };
++        let old_mode = format!("{:06o}", old.filemode_raw());
++        let mode = format!("{:06o}", entry.mode);
++        if old_mode == version.old_mode
++            && mode == version.mode
++            && old.id().to_string() == version.old_oid
++            && entry.id.to_string() == version.oid
++            && (old.id() != entry.id || old_mode != mode)
++        {
++            versions.push(version.clone());
++        }
++    }
++    if checkout(repo)? != wanted_checkout
++        || super::index_state(&index_path).map_err(|e| git2::Error::from_str(&e))? != initial_index
++    {
++        return Ok(None);
++    }
++    if versions.is_empty() {
++        return Ok(None);
++    }
++    versions.sort();
++    versions.dedup();
++    use sha2::{Digest, Sha256};
++    let mut digest = Sha256::new();
++    digest.update(head.as_bytes());
++    for version in &versions {
++        for value in [
++            &version.path,
++            &version.old_oid,
++            &version.oid,
++            &version.old_mode,
++            &version.mode,
++        ] {
++            digest.update([0]);
++            digest.update(value.as_bytes());
++        }
++    }
++    Ok(Some(super::StagedProof {
++        base: head.to_string(),
++        location_head: format!("staged:{:x}", digest.finalize()),
++        versions,
++    }))
++}
++
++fn exact_tree_entry(
++    repo: &Repository,
++    tree: &Tree<'_>,
++    path: &[u8],
++) -> Option<git2::TreeEntry<'static>> {
++    let mut tree = tree.clone();
++    let mut parts = path.split(|b| *b == b'/').peekable();
++    loop {
++        let part = parts.next()?;
++        let entry = tree.get_name_bytes(part)?.to_owned();
++        if entry.name_bytes() != part {
++            return None;
++        }
++        if parts.peek().is_none() {
++            return Some(entry);
++        }
++        tree = repo.find_tree(entry.id()).ok()?;
++    }
++}
++
+ pub(super) fn working_changes(
+     repo: &Repository,
+     base: &str,
+diff --git a/src-tauri/src/git/worker.rs b/src-tauri/src/git/worker.rs
+index 95fbb6a..ae288ca 100644
+--- a/src-tauri/src/git/worker.rs
++++ b/src-tauri/src/git/worker.rs
+@@ -6,7 +6,7 @@ use serde_json::Value;
+ use std::collections::HashSet;
+ 
+ type Result<T> = std::result::Result<T, String>;
+-pub(crate) const PROTOCOL: u32 = 1;
++pub(crate) const PROTOCOL: u32 = 2;
+ 
+ pub(crate) fn encode_bytes(bytes: &[u8]) -> String {
+     STANDARD.encode(bytes)
+@@ -154,6 +154,11 @@ pub(crate) enum Request {
+         checkout: String,
+         paths: HashSet<String>,
+     },
++    VerifyStagedVersions {
++        view: Repository,
++        checkout: String,
++        expected: Vec<super::StagedVersion>,
++    },
+     MergeBase {
+         a: String,
+         b: String,
+@@ -316,6 +321,15 @@ mod server {
+                     &checkout,
+                     &paths
+                 )?))),
++                Request::VerifyStagedVersions {
++                    view,
++                    checkout,
++                    expected,
++                } => Ok(json!(git::verify_staged_versions(
++                    &self.view(view)?,
++                    &checkout,
++                    &expected
++                ))),
+                 Request::MergeBase { a, b } => Ok(json!(git::merge_base(self.repo()?, &a, &b)?)),
+                 Request::Descends { origin, head } => {
+                     Ok(json!(git::descends(self.repo()?, &origin, &head)?))
+diff --git a/src-tauri/src/git_tests.rs b/src-tauri/src/git_tests.rs
+index a40b994..8132b2b 100644
+--- a/src-tauri/src/git_tests.rs
++++ b/src-tauri/src/git_tests.rs
+@@ -875,3 +875,184 @@ fn sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged() {
+         assert_eq!(native::supports_working_tree(&repo), expected);
+     }
+ }
++
++fn staged_version(file: &Change) -> StagedVersion {
++    StagedVersion {
++        path: file.path.clone(),
++        old_oid: file.old_oid.clone(),
++        oid: file.oid.clone(),
++        old_mode: file.old_mode.clone(),
++        mode: file.mode.clone(),
++    }
++}
++
++#[test]
++fn staged_metadata_reads_index_not_worktree_and_rejects_restage_or_stale_head() {
++    let t = history();
++    write(&t, "code", b"base\n");
++    record(&t, "Base");
++    write(&t, "code", b"staged\n");
++    git(t.path(), &["add", "code"]).unwrap();
++    let repo = open_repo(t.path()).unwrap();
++    let snapshot = work(&repo);
++    let expected = staged_version(file(&snapshot, "Staged", "code"));
++    let index = fs::read(t.path().join(".git/index")).unwrap();
++    write(&t, "code", b"unstaged\n");
++    for args in [
++        &["config", "core.autocrlf", "true"][..],
++        &["config", "filter.explode.clean", "false"],
++        &["config", "core.attributesFile", "missing-attributes"],
++        &["config", "diff.algorithm", "minimal"],
++    ] {
++        git(t.path(), args).unwrap();
++    }
++    write(
++        &t,
++        ".gitattributes",
++        b"code filter=explode working-tree-encoding=UTF-16\n",
++    );
++    fs::remove_file(t.path().join("code")).unwrap();
++    let proof = verify_staged_versions(&repo, &repo.checkout, &[expected.clone()]).unwrap();
++    assert_eq!(proof.versions, [expected.clone()]);
++    assert!(proof.location_head.starts_with("staged:"));
++    assert_eq!(fs::read(t.path().join(".git/index")).unwrap(), index);
++    fs::remove_file(t.path().join(".gitattributes")).unwrap();
++    write(&t, "code", b"restaged\n");
++    git(t.path(), &["add", "code"]).unwrap();
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[expected.clone()]).is_none());
++    git(t.path(), &["commit", "-qm", "Advance HEAD"]).unwrap();
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[expected]).is_none());
++}
++
++#[test]
++fn staged_metadata_accepts_chmod_and_unrelated_sparse_omissions_but_rejects_requested_skip() {
++    let t = history();
++    write(&t, "code", b"base\n");
++    write(&t, "omitted", b"hidden\n");
++    record(&t, "Base");
++    git(t.path(), &["update-index", "--chmod=+x", "code"]).unwrap();
++    let repo = open_repo(t.path()).unwrap();
++    let expected = staged_version(file(&work(&repo), "Staged", "code"));
++    assert_eq!(expected.old_oid, expected.oid);
++    assert_ne!(expected.old_mode, expected.mode);
++    git(t.path(), &["update-index", "--skip-worktree", "omitted"]).unwrap();
++    fs::remove_file(t.path().join("omitted")).unwrap();
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[expected.clone()]).is_some());
++    git(t.path(), &["config", "core.sparseCheckout", "true"]).unwrap();
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[expected.clone()]).is_some());
++    git(t.path(), &["update-index", "--skip-worktree", "code"]).unwrap();
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[expected]).is_none());
++}
++
++#[test]
++fn staged_metadata_rejects_intent_to_add_conflicts_and_non_modifications() {
++    let t = history();
++    write(&t, "code", b"base\n");
++    record(&t, "Base");
++    let repo = open_repo(t.path()).unwrap();
++    let base = git_text(t.path(), &["rev-parse", "HEAD:code"]).unwrap();
++    let empty = git_text(t.path(), &["hash-object", "--stdin"]).unwrap();
++    git(t.path(), &["rm", "--cached", "code"]).unwrap();
++    git(t.path(), &["add", "-N", "code"]).unwrap();
++    let expected = StagedVersion {
++        path: "code".into(),
++        old_oid: base.clone(),
++        oid: empty,
++        old_mode: "100644".into(),
++        mode: "100644".into(),
++    };
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[expected.clone()]).is_none());
++    git(t.path(), &["add", "code"]).unwrap();
++    let unchanged = StagedVersion {
++        oid: base,
++        ..expected.clone()
++    };
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[unchanged]).is_none());
++    write(&t, "code", b"changed\n");
++    git(t.path(), &["add", "code"]).unwrap();
++    let expected = staged_version(file(&work(&repo), "Staged", "code"));
++    let mut index = native::open(t.path()).unwrap().index().unwrap();
++    let mut entry = index.get_path(Path::new("code"), 0).unwrap();
++    index.remove_path(Path::new("code")).unwrap();
++    entry.flags = (entry.flags & !0x3000) | 0x1000;
++    index.add(&entry).unwrap();
++    entry.flags = (entry.flags & !0x3000) | 0x2000;
++    index.add(&entry).unwrap();
++    index.write().unwrap();
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[expected]).is_none());
++}
++
++#[test]
++fn staged_metadata_requires_exact_raw_path_and_regular_modes() {
++    let t = history();
++    fs::create_dir(t.path().join("Directory")).unwrap();
++    write(&t, "Directory/File", b"base\n");
++    record(&t, "Base");
++    write(&t, "Directory/File", b"staged\n");
++    git(t.path(), &["add", "Directory/File"]).unwrap();
++    git(t.path(), &["config", "core.ignorecase", "true"]).unwrap();
++    let repo = open_repo(t.path()).unwrap();
++    let expected = staged_version(file(&work(&repo), "Staged", "Directory/File"));
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[expected.clone()]).is_some());
++    for path in [
++        "directory/File",
++        "Directory/file",
++        "./Directory/File",
++        "Directory/../File",
++        "Directory//File",
++        "Directory/File\0",
++    ] {
++        let expected = StagedVersion {
++            path: path.into(),
++            ..expected.clone()
++        };
++        assert!(
++            verify_staged_versions(&repo, &repo.checkout, &[expected]).is_none(),
++            "{path:?}"
++        );
++    }
++    let invalid_mode = StagedVersion {
++        mode: "120000".into(),
++        ..expected.clone()
++    };
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[invalid_mode]).is_none());
++    // Case-only staged rename leaves the saved raw path absent from the index.
++    git(t.path(), &["mv", "Directory/File", "Directory/file"]).unwrap();
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[expected.clone()]).is_none());
++    let renamed = StagedVersion {
++        path: "Directory/file".into(),
++        ..expected.clone()
++    };
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[renamed]).is_none());
++    git(t.path(), &["mv", "Directory", "temporary-directory"]).unwrap();
++    git(t.path(), &["mv", "temporary-directory", "directory"]).unwrap();
++    let renamed = StagedVersion {
++        path: "directory/file".into(),
++        ..expected
++    };
++    assert!(verify_staged_versions(&repo, &repo.checkout, &[renamed]).is_none());
++}
++
++
++#[test]
++fn staged_metadata_declines_unsupported_raw_tree_mode() {
++    let t = history();
++    write(&t, "code", b"base\n");
++    record(&t, "Base");
++    write(&t, "code", b"staged\n");
++    git(t.path(), &["add", "code"]).unwrap();
++    let view = open_repo(t.path()).unwrap();
++    let expected = staged_version(file(&work(&view), "Staged", "code"));
++    let repo = native::open(t.path()).unwrap();
++    let mut raw = b"100664 code\0".to_vec();
++    raw.extend(git2::Oid::from_str(&expected.old_oid).unwrap().as_bytes());
++    let oid = repo.odb().unwrap().write(git2::ObjectType::Tree, &raw).unwrap();
++    let tree = repo.find_tree(oid).unwrap();
++    assert_eq!(tree.get_name("code").unwrap().filemode(), 0o100644);
++    assert_eq!(tree.get_name("code").unwrap().filemode_raw(), 0o100664);
++    let parent = repo.head().unwrap().peel_to_commit().unwrap();
++    let signature = repo.signature().unwrap();
++    repo.commit(Some("HEAD"), &signature, &signature, "Unsupported raw mode", &tree, &[&parent]).unwrap();
++    let current = open_repo(t.path()).unwrap();
++    assert!(verify_staged_versions(&current, &current.checkout, &[expected]).is_none());
++}
+diff --git a/src-tauri/src/review_tests.rs b/src-tauri/src/review_tests.rs
+index 209caad..00fc23b 100644
+--- a/src-tauri/src/review_tests.rs
++++ b/src-tauri/src/review_tests.rs
+@@ -636,3 +636,78 @@ fn python_non_utf8_paths_roundtrip_without_conflating_literal_escape_text() {
+     assert!(data.contains(r#""path":"settings-\udcff""#));
+     assert_eq!(store.notes(&repo).unwrap()[0]["path"], encoded);
+ }
++
++#[test]
++fn staged_anchors_share_metadata_proof_and_displayed_snapshot_takes_precedence() {
++    let t = Checkout::new();
++    t.write("settings", "top\nlimit = 2\nbottom\n");
++    t.git(&["add", "settings"]);
++    let repo = t.repo();
++    let full = t.diff(&repo);
++    let notes = (0..100)
++        .map(|id| {
++            let mut note = changed_note(&repo, &full, &full.files[0]);
++            note["id"] = json!(id);
++            note
++        })
++        .collect::<Vec<_>>();
++    // Partial staging and an external edit must not change the staged proof.
++    t.write("settings", "external edit\n");
++    git::take_working_tree_read_counts();
++    git::take_staged_read_count();
++    let located = tracking::locate_notes(&repo, &repo.initial, None, &notes);
++    assert_eq!(git::take_staged_read_count(), 1);
++    assert_eq!(git::take_working_tree_read_counts(), (0, 0));
++    assert_eq!(located.len(), 100);
++    for note in &notes {
++        let location = &located[&note["id"].as_i64().unwrap()][0];
++        assert_eq!(location["new"], note["new"]);
++        assert_eq!(location["blob"], note["file_version"][1]);
++        assert!(s(location, "head").starts_with("staged:"));
++    }
++    // Restaging invalidates the metadata proof, but never the displayed snapshot.
++    t.git(&["add", "settings"]);
++    let displayed = tracking::locate_notes(&repo, &repo.initial, Some(&full), &notes);
++    assert_eq!(git::take_staged_read_count(), 0);
++    assert_eq!(git::take_working_tree_read_counts(), (0, 0));
++    assert!(displayed
++        .values()
++        .all(|locations| locations[0]["head"] == full.head));
++    let current = t.diff(&repo);
++    let expected = tracking::locate_notes(&repo, &repo.initial, Some(&current), &notes);
++    git::take_working_tree_read_counts();
++    let actual = tracking::locate_notes(&repo, &repo.initial, None, &notes);
++    assert_eq!(git::take_staged_read_count(), 1);
++    assert_eq!(git::take_working_tree_read_counts(), (1, 1));
++    assert_eq!(actual, expected);
++}
++
++#[test]
++fn staged_metadata_preserves_ancestry_fallback_and_commit_tracking() {
++    let t = Checkout::new();
++    t.write("settings", "top\nlimit = 2\nbottom\n");
++    t.git(&["add", "settings"]);
++    let repo = t.repo();
++    let full = t.diff(&repo);
++    let mut note = changed_note(&repo, &full, &full.files[0]);
++    note["id"] = json!(1);
++    let unrelated = git::git(
++        &t.root,
++        &["commit-tree", "HEAD^{tree}", "-m", "Unrelated root"],
++    )
++    .unwrap();
++    let mut unrelated_note = note.clone();
++    unrelated_note["left_tip"] = json!(String::from_utf8(unrelated).unwrap().trim());
++    git::take_working_tree_read_counts();
++    git::take_staged_read_count();
++    let locations = tracking::locate_notes(&repo, &repo.initial, None, &[unrelated_note]);
++    assert_eq!(git::take_staged_read_count(), 1);
++    assert_eq!(git::take_working_tree_read_counts(), (1, 1));
++    assert_eq!(locations[&1].len(), 1);
++    t.commit("Commit reviewed staged change");
++    let current = t.repo();
++    let locations = tracking::locate_notes(&current, &current.initial, None, &[note]);
++    assert_eq!(locations[&1].len(), 1);
++    assert_eq!(locations[&1][0]["right"], current.checkout);
++    assert_eq!(locations[&1][0]["new"], json!([2, 2]));
++}
+diff --git a/src-tauri/src/tracking.rs b/src-tauri/src/tracking.rs
+index e552f50..71185d1 100644
+--- a/src-tauri/src/tracking.rs
++++ b/src-tauri/src/tracking.rs
+@@ -150,6 +150,20 @@ pub fn location_for(c: &Comparison, f: &Change, n: &Value) -> Value {
+     }
+     l
+ }
++fn staged_version(note: &Value) -> Option<git::StagedVersion> {
++    let version = note["file_version"].as_array()?;
++    if s(note, "group") != "Staged" || version.len() != 4 {
++        return None;
++    }
++    Some(git::StagedVersion {
++        path: s(note, "path").to_string(),
++        old_oid: version[0].as_str()?.to_string(),
++        oid: version[1].as_str()?.to_string(),
++        old_mode: version[2].as_str()?.to_string(),
++        mode: version[3].as_str()?.to_string(),
++    })
++}
++
+ struct Lookup<'a> {
+     repo: &'a Repository,
+     untracked: HashSet<String>,
+@@ -159,6 +173,8 @@ struct Lookup<'a> {
+     ancestry: HashMap<(String, String), bool>,
+     anchor_paths: HashSet<String>,
+     scoped_worktree: Option<Result<Rc<Comparison>, String>>,
++    staged_versions: Vec<git::StagedVersion>,
++    staged_proof: Option<Option<git::StagedProof>>,
+ }
+ impl Lookup<'_> {
+     fn exact_worktree_location(&mut self, note: &Value) -> Option<Value> {
+@@ -166,9 +182,33 @@ impl Lookup<'_> {
+             return None;
+         }
+         let key = (self.repo.checkout.clone(), WORKTREE.to_string());
++        // A displayed frozen snapshot is authoritative, even after restaging.
+         let comparison = if let Some(full) = self.comparisons.get(&key) {
+             full.clone()
+         } else {
++            if let Some(version) = staged_version(note) {
++                let proof = self.staged_proof.get_or_insert_with(|| {
++                    git::verify_staged_versions(
++                        self.repo,
++                        &self.repo.checkout,
++                        &self.staged_versions,
++                    )
++                });
++                if let Some(proof) = proof
++                    .as_ref()
++                    .filter(|proof| proof.versions.contains(&version))
++                {
++                    let base = proof.base.clone();
++                    let head = proof.location_head.clone();
++                    if self.descends(s(note, "left_tip"), &base).ok()? {
++                        return Some(
++                            json!({"left":self.repo.checkout,"right":WORKTREE,"base":base,"head":head,
++                            "path":version.path,"group":"Staged","old":note["old"],"new":note["new"],
++                            "blob":if span(note,"old").is_some() && span(note,"new").is_none() {version.old_oid} else {version.oid}}),
++                        );
++                    }
++                }
++            }
+             self.scoped_worktree
+                 .get_or_insert_with(|| {
+                     git::working_tree_paths(self.repo, &self.repo.checkout, &self.anchor_paths)
+@@ -435,6 +475,16 @@ pub fn locate_notes(
+             })
+             .collect(),
+         scoped_worktree: None,
++        staged_versions: anchors
++            .iter()
++            .filter(|(_, _, note)| {
++                note["left"] == repo.checkout && note["old_path"] == note["path"]
++            })
++            .filter_map(|(_, _, note)| staged_version(note))
++            .collect::<std::collections::BTreeSet<_>>()
++            .into_iter()
++            .collect(),
++        staged_proof: None,
+     };
+     if let Some(c) = primary {
+         look.comparisons

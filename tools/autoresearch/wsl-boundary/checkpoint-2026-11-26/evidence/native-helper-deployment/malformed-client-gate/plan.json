@@ -1,0 +1,144 @@
+{
+  "status": "prepared-host-only; uncompiled and unrun; no VM calls",
+  "execution_gate": "Await separate explicit root release before all builds/tests/VM activity",
+  "original_app_source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "original_remote_sha256": "1046beee3c3dbbad93fc6c8837c2d164ac5ecc26bb536bf39fa106f2d6f52cec",
+  "copied_remote_sha256": "99cf2c959e5ef38197b4ff68247356866cd6d6aa969f1a5d7111e78f4a2d5ed5",
+  "prefix_bytes": 52378,
+  "appended_loader_sha256": "eb50683579fa51644266230ca36f9d072a07bfedf4f41dd548de073cecf60528",
+  "test_module_sha256": "fb9f478b59e201752aac2bf55ecf4b4f56c7370f7bfa128eafed2c45980a2670",
+  "invariant": "Hold the actual Connection and its retained stdin/stdout alive after Connection.request returns the wrong-ID error, invalidates, kills and waits. Assert owned launcher handle is reaped and exact Hello nativePID+creation/start+exe is gone before Drop. A same-PID zombie remains a failure.",
+  "fixtures": {
+    "linux": "Executable Python3 stdio script; valid protocol1 Hello(pid,image), wrong responseID999, then reads until EOF",
+    "windows": "Dependency-free static-CRT Rust PE; valid protocol1 Hello(native WindowsPID), wrong responseID999, then reads until EOF",
+    "per_run_identity": "Append an owned PID+nanosecond nonce to fixture bytes before real materialize SHA check; PE overlay is plain data, same ordinary native executable launch. Unique SHA-named normal cache files only.",
+    "missing_generated_input": "source/src-tauri/src/git/fixtures/malformed-windows.exe is intentionally absent until the released std-only fixture build; no placeholder or bypass is supplied."
+  },
+  "native_paths": {
+    "linux_client": "Real windows_worker_cache() discovery + materialize() in native Windows cache, then actual Location::Windows.command() direct NTFS PE",
+    "windows_client": "Real materialize() in Windows GUI cache, actual Location::Wsl.command() bootstrap SHA validation/copy to native WSL cache, shebang Python execution"
+  },
+  "native_identity_probes": {
+    "windows": "Read-only PowerShell Get-CimInstance for Hello native WindowsPID; record creation time+exe before request and poll identity after request",
+    "linux": "Read-only WSL Python proc snapshot for Hello LinuxPID; startticks+exe+argv+SHA+ext4 before request and exact PID/start disappearance after request"
+  },
+  "scope": "One appended test-only loader plus one ignored test module in an isolated COPY of existing harness. Production source untouched. No parser unit reruns, app build, GUI, scorer, general fault framework, new dependency, or product knob.",
+  "test_filter": "git::remote::malformed_response_test::malformed_response_reaps_native_worker_before_connection_drop",
+  "future_vm_input": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec",
+  "future_commands": [
+    {
+      "phase": "build-only-std-Windows-fixture",
+      "cwd": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec",
+      "environment": {
+        "CARGO_BUILD_JOBS": "1",
+        "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+        "CARGO_TARGET_DIR": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/fixture-target",
+        "RUSTFLAGS": "-C target-feature=+crt-static",
+        "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+        "XWIN_CROSS_COMPILER": "clang",
+        "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin"
+      },
+      "argv": [
+        "cargo",
+        "xwin",
+        "build",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "windows-fixture/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc"
+      ],
+      "after": "Record PE SHA/size/source identity; copy only that PE to source/src-tauri/src/git/fixtures/malformed-windows.exe; verify bytes and CRT imports."
+    },
+    {
+      "phase": "build-Linux-test-harness-only",
+      "cwd": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec",
+      "argv": [
+        "cargo",
+        "test",
+        "--offline",
+        "--locked",
+        "--manifest-path",
+        "host-harness/Cargo.toml",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "after": "Record emitted one lib test executable PID/hash. No BRANCHLINE_GIT_WORKER_PATH or branchline_git_worker cfg is required: the ignored test calls unchanged materialize/Location/Connection directly."
+    },
+    {
+      "phase": "run-Linux-client-on-WSL",
+      "cwd": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec",
+      "argv": [
+        "<exact-built-linux-test-executable>",
+        "git::remote::malformed_response_test::malformed_response_reaps_native_worker_before_connection_drop",
+        "--ignored",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "bound": "One invocation, outer120s ownership timeout; no automatic retry."
+    },
+    {
+      "phase": "build-Windows-test-harness-only",
+      "cwd": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec",
+      "environment": {
+        "RUSTFLAGS": "-C target-feature=+crt-static"
+      },
+      "argv": [
+        "cargo",
+        "xwin",
+        "test",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "host-harness/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "after": "Copy exact emitted test exe to owned short NTFS directory, verify SHA, execute natively; no app build."
+    },
+    {
+      "phase": "run-Windows-client-native",
+      "cwd": "<owned-short-NTFS-output>",
+      "argv": [
+        "<exact-built-native-Windows-test-executable>",
+        "git::remote::malformed_response_test::malformed_response_reaps_native_worker_before_connection_drop",
+        "--ignored",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "bound": "One invocation, outer120s ownership timeout; no automatic retry."
+    }
+  ],
+  "cleanup": "Success: after before-Drop native-death proof and subsequent Drop, SHA-check and unlink only per-run owned helper source and (Windowsclient) exact native cache copy. Failure: preserve named cache file identities/logs for exact cleanup; do not delete a live file to conceal orphan evidence. Test panic drops Connection only after failing the retained-pipe proof.",
+  "remaining_unverified": [
+    "All new Rust fixture/test source remains uncompiled by instruction",
+    "Actual Location/interop malformed-response worker cleanup has not run; existing parser units are not counted",
+    "Need bounded release supervisor/process ownership record when root authorizes execution; no runtime is held during preparation"
+  ],
+  "files": {
+    "host-harness/Cargo.lock": "71c7ab72546fa3c9627e4f20d84fd93ef96364ef6465949477e1d8112061ff2f",
+    "host-harness/Cargo.toml": "9c38d6041c2c8b17a6290e25f06b57af1faa9b9684b1bd2ea5a99a3c7eeb23a1",
+    "host-harness/src/lib.rs": "b3cf129979a46e1779c6bf954d573cb9a2b38cbfef02a72aab82d8a773dfb65d",
+    "original-remote.sha256": "819552e256a8bced8434a21886ffab2c308198f4cfb2098578f894ab101f226f",
+    "source/src-tauri/src/git/fixtures/malformed-linux.py": "a559d2358addd9c8acde727e5c4e76bc539dd6f28f81e2f4e05e5484f382e4c7",
+    "source/src-tauri/src/git/malformed_response_test.rs": "fb9f478b59e201752aac2bf55ecf4b4f56c7370f7bfa128eafed2c45980a2670",
+    "source/src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+    "source/src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+    "source/src-tauri/src/git/remote.rs": "99cf2c959e5ef38197b4ff68247356866cd6d6aa969f1a5d7111e78f4a2d5ed5",
+    "source/src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+    "source/src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+    "source/src-tauri/src/git.rs": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+    "source/src-tauri/src/git_tests.rs": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+    "test-module-delta.txt": "eb50683579fa51644266230ca36f9d072a07bfedf4f41dd548de073cecf60528",
+    "windows-fixture/Cargo.lock": "67c56b8c96735b7731614ff5c8874dabbbcc7daf95272af4a830291bc78cffca",
+    "windows-fixture/Cargo.toml": "fff6d4ca8359f79d03de3e20121bcd54618680db0dfd28d6ecdaa1defe536020",
+    "windows-fixture/src/main.rs": "fb8ec3cd658105225207945636bf862c2d2d048cba47273e3a0f0dd9d2977488"
+  }
+}

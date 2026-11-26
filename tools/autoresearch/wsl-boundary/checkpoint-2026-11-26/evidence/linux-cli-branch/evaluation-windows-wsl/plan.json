@@ -1,0 +1,228 @@
+{
+  "acceptance": {
+    "baseline_identity": {
+      "embedded_linux_worker_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+      "protocol": 1,
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+      "windows_gui_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481"
+    },
+    "candidate_identity": {
+      "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+      "protocol": 1,
+      "required_artifacts": "Fresh static GNU Linux worker and matching Windows GUI with byte-verified embedding. No protocol2 helper, PE worker or Linux GUI is required for this primary experiment.",
+      "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5"
+    },
+    "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+    "execution": "Six serial fresh processes through one owned private mux/CDP tunnel; exact PID/create-time cleanup, free ports and native fixture/raw guards before and after. No concurrent builds or profiling.",
+    "goal": "Every cross-cell opening/action p95 below250ms, representative first/cold behavior and exact delivered builds; full campaign remains incomplete.",
+    "hypothesis": "Actual Linux execution uses the existing Git CLI branch-summary path to reduce measured first-comparison CPU; Windows native comparison, GUI code and existing helper placement remain unchanged.",
+    "ipc_diagnostic": "Keep foreground intervals, overlapping background refresh, pending IPC and remainder. Backend evidence is not a GUI latency score.",
+    "measurement": "Unchanged canonical Open plus six actions, native Git/content/comment checks and two animation frames. Default renderer, same seeded profile and MCP. Completed welcome startup async error precedes measured Open. No helper preseed, cache flush or new tracing.",
+    "order": [
+      "A1:3",
+      "B1:3",
+      "A2:3",
+      "B2:3",
+      "A3:20",
+      "B3:20"
+    ],
+    "pilot_acceptance": [
+      "Every launch, native correctness, scoring, fixture, identity and cleanup gate passes. An invalid run stops the series; no measurement retry within it.",
+      "Worst p95 across Open and all six actions improves by at least10% against the new interleaved A series.",
+      "At least one of fresh-process Open median or maximum p95 across branch_first, branch_final, stack and comment_branch improves by at least10%; an A1-only first-use drop does not establish a candidate gain.",
+      "Every final20 action p95 and maximum, plus fresh-process Open median, p95 and maximum, remains at most110% of matching new A. Keep every first-use sample and investigate failed guards.",
+      "Noisy or below-threshold evidence is inconclusive. This one-cell experiment cannot promote or complete the full four-cell and cold-cache campaign."
+    ],
+    "preserved_controls": "Same profile, repository, branch stack, comments, manifest, source/binary identities and two completion frames. No mixed helper-placement or staged-metadata candidate.",
+    "primary_metric": "Worst end-to-end p95 across fresh-process Open and all six actions; report all opening and action first-use values separately. Fresh process is not OS-cold.",
+    "priority_case": "windows_linux",
+    "producer_gate": "Require exact-root manifest Cargo compiler-artifact records for optimized GNU worker, its unit and stdio tests, and fresh Windows GUI bin/lib. Root artifacts must have fresh:false, exact target names/kinds/test flags, and reported executable paths/filenames within the owned release caches; do not assume a Cargo test deps layout. Packaged mode is proved by actual tauri and tauri_macros dependency custom-protocol features and production build-script cfgs, independently of root feature[]. Copied worker/GUI producer links, real25+1 test names, kernel parity, source provenance and raw fixture guards remain strict. The original failed R2 assertion record remains unchanged and is paired with a hashed no-rebuild recovery report. Canonical live-app readiness and content/comment correctness still gate every timing sample.",
+    "runtime_release": "VM LINUX CLI BRANCH RUNTIME RELEASED"
+  },
+  "baseline_identity_note": "Both sources are pinned to b2. Candidate changes only the Linux execution branch-summary path; Windows native policy and helper placement are unchanged.",
+  "build_state": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/windows-controls-b2de070-20261125T213427886542Z/remote-evidence/state.json",
+  "build_state_sha256": "69e86cbf34f1dc355ff557e3e9a9b81829c8e022a6974a05801df7956d7ea9b5",
+  "caller_transport": "One task-owned private ControlMaster/CDP forward; all child SSH calls select it and refuse new TCP fallback.",
+  "case_order": [
+    "windows_linux"
+  ],
+  "cases": {
+    "windows_linux": {
+      "comments": [
+        {
+          "anchor": [
+            3434,
+            3434
+          ],
+          "body": "Boundary benchmark branch comment",
+          "id": 1,
+          "path": "kernel/fork.c"
+        },
+        {
+          "anchor": [
+            3438,
+            3438
+          ],
+          "body": "Boundary benchmark working-tree comment",
+          "id": 2,
+          "path": "kernel/fork.c"
+        }
+      ],
+      "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+      "repository": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+      "seed_sha256": "5da3f8249310dd9a33a7c19e94c23036cee5d78367fb6907be7882722fad8b78",
+      "seed_verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/seed-windows-linux-02/verdict.json"
+    }
+  },
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "fixture_guards": {
+    "windows": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614734418472500,
+        "device": 87,
+        "inode": 2814749767263140,
+        "mode": 33279,
+        "mtime_ns": 1795614733000000000,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994331971400,
+        "device": 87,
+        "inode": 3377699720684454,
+        "mode": 33279,
+        "mtime_ns": 1795615994331971400,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615947971522900,
+        "device": 87,
+        "inode": 562949953782638,
+        "mode": 33279,
+        "mtime_ns": 1795615947971522900,
+        "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+      }
+    },
+    "wsl": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614733907349066,
+        "device": 2096,
+        "inode": 272949,
+        "mode": 33188,
+        "mtime_ns": 1795614733907349066,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994729935414,
+        "device": 2096,
+        "inode": 278185,
+        "mode": 33188,
+        "mtime_ns": 1795615994729935414,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615942133939671,
+        "device": 2096,
+        "inode": 278079,
+        "mode": 33188,
+        "mtime_ns": 1795615942129939671,
+        "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+      }
+    }
+  },
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "measurement": "Canonical Open and all six actions; completed welcome startup error; no warmup or cache flush.",
+  "native_build_plan_sha256": "3d61fc781ec075b4e04ee785373ee07f02b4c1132c73fc0c157d40bb9db9ae52",
+  "native_build_ready": true,
+  "native_build_record": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/native-build/postbuild-input/native/supervisor.json",
+  "native_build_record_sha256": "bac4e31155c5b23de0c51ef35cd206a076051023214203267459426d35c6b29c",
+  "native_gui_embeddings": {
+    "windows_gui": {
+      "bytes": 20661760,
+      "embedded_helper_sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+      "embedded_helper_verified": true,
+      "imports": [
+        "kernel32.dll",
+        "ws2_32.dll",
+        "user32.dll",
+        "bcryptprimitives.dll",
+        "ole32.dll",
+        "comctl32.dll",
+        "shell32.dll",
+        "ntdll.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "gdi32.dll",
+        "dwmapi.dll",
+        "shlwapi.dll",
+        "advapi32.dll",
+        "oleaut32.dll",
+        "secur32.dll"
+      ],
+      "path": "/mnt/c/Users/max/branchline-bench/binaries/linux-cli-branch-a4a08d-r2/branchline.exe",
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe",
+      "producer_fresh": false,
+      "renderer": "production default",
+      "sha256": "6d19d864c30a9753b6570f83e890356cd3445e591047f5e877992c7289a90c77",
+      "static_crt_import_check": true
+    }
+  },
+  "native_workers": {
+    "linux": {
+      "bytes": 3967600,
+      "path": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/branchline-git-worker",
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/branchline-git-worker",
+      "producer_fresh": false,
+      "protocol": 1,
+      "sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd"
+    }
+  },
+  "order_per_case": [
+    "A1:3",
+    "B1:3",
+    "A2:3",
+    "B2:3",
+    "A3:20",
+    "B3:20"
+  ],
+  "performance_early_gate": false,
+  "ports": {
+    "host_loopback": 19223,
+    "windows_cdp": 29223,
+    "windows_mcp": 28865
+  },
+  "postbuild_recovery_record": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/postbuild-recovery/recovery.json",
+  "postbuild_recovery_sha256": "1bcae11954aee25e8ed06516e3a87a82898eb0af80e90da622dfc3c118c9e88f",
+  "profiles": "Reuse the existing two-comment profiles directly; no copies, seeding or helper preparation.",
+  "retained_previous_attempt": "Historical status, staged-metadata and helper results remain separate; no old samples are pooled.",
+  "reused_caller_sha256": "a9587333c5dd330c6fc2f830d6d9d0ae74042c45edc6a47e3ad173b210d49052",
+  "runner_sha256": "9c4440a5c516cc26759fd842a49ae1acf4c3d936ff170e8df17e2af7948d61b9",
+  "runtime_release": "VM LINUX CLI BRANCH RUNTIME RELEASED",
+  "status": "prepared-only-no-VM-or-port-access",
+  "summary_helper_sha256": "2caebee7d2aef52e4d6ef90b89f410acf7966ee8d083f69e6dcae3fe3c103527",
+  "variants": {
+    "A": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+      "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+      "helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\linux-cli-branch-a4a08d-r2\\branchline.exe",
+      "binary_sha256": "6d19d864c30a9753b6570f83e890356cd3445e591047f5e877992c7289a90c77",
+      "helper_sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+      "label": "linux-cli-branch-a4a08d-r2",
+      "protocol": 1,
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/source",
+      "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5"
+    }
+  }
+}

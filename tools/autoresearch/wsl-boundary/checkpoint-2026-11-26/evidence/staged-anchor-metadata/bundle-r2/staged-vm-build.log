@@ -1,0 +1,32 @@
+{"supervisor_pid": 165337, "record": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/supervisor.json"}
+{
+  "record": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/supervisor.json",
+  "linux_gui": {
+    "path": "/home/max/benchmarks/branchline-boundary/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline",
+    "sha256": "adda6c5f3e9cc40e5454d3999f76c0de00f76326b22b67fcee483ff2e387442d",
+    "bytes": 23358912,
+    "embedded_helper_sha256": "8a72de49d410742c2fc7ad4010c9b4c96be94dac3dd83ec733485a1d88b3788d",
+    "embedded_helper_verified": true,
+    "renderer": "production default"
+  },
+  "windows_gui": {
+    "path": "/mnt/c/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline.exe",
+    "sha256": "86c90415605b2f4841c36abd390d48c45d2af094fdb9829f5ecb923c85331462",
+    "bytes": 20818944,
+    "embedded_helper_sha256": "d729e0eaaff4d8ef4f7f8bed374b984115b2270aae210022ca91470f90741e2e",
+    "embedded_helper_verified": true,
+    "renderer": "production default"
+  },
+  "workers": {
+    "linux": {
+      "path": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker",
+      "sha256": "d729e0eaaff4d8ef4f7f8bed374b984115b2270aae210022ca91470f90741e2e",
+      "bytes": 4036144
+    },
+    "windows": {
+      "path": "/mnt/c/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline-git-worker.exe",
+      "sha256": "8a72de49d410742c2fc7ad4010c9b4c96be94dac3dd83ec733485a1d88b3788d",
+      "bytes": 2784768
+    }
+  }
+}

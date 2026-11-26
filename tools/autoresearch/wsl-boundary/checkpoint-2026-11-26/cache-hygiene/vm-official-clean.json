@@ -1,0 +1,100 @@
+{
+  "time": 1795658169.1969745,
+  "action": "Official root-package-only Cargo release cleanup after experiments; four shared GUI/worker entrypoints backed up and restored byte-exactly",
+  "phases": [
+    {
+      "name": "gui-linux",
+      "argv": [
+        "/home/max/.cargo/bin/cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml"
+      ],
+      "exit": 0,
+      "seconds": 2.169578790664673,
+      "log": "/home/max/benchmarks/branchline-boundary/cache-hygiene-20261126/official-clean/gui-linux.log",
+      "log_sha256": "ecda12b63d6c8c99c73ec6e779b41e77f26e4c54d644f4ba2ef78a3cf70ff278"
+    },
+    {
+      "name": "gui-windows",
+      "argv": [
+        "/home/max/.cargo/bin/cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc"
+      ],
+      "exit": 0,
+      "seconds": 0.16569161415100098,
+      "log": "/home/max/benchmarks/branchline-boundary/cache-hygiene-20261126/official-clean/gui-windows.log",
+      "log_sha256": "8b760a2c557e825466456b620c5e5ab59cd6a85ddb87b6a04d50b11920e464cb"
+    },
+    {
+      "name": "worker-linux",
+      "argv": [
+        "/home/max/.cargo/bin/cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline-git-worker",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-unknown-linux-gnu"
+      ],
+      "exit": 0,
+      "seconds": 1.4153096675872803,
+      "log": "/home/max/benchmarks/branchline-boundary/cache-hygiene-20261126/official-clean/worker-linux.log",
+      "log_sha256": "14557ee1958dcc17bd5f8bc904997e35bc8a9a606a9bab29365c3515ba8ec4f4"
+    },
+    {
+      "name": "worker-windows",
+      "argv": [
+        "/home/max/.cargo/bin/cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline-git-worker",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc"
+      ],
+      "exit": 0,
+      "seconds": 0.21961760520935059,
+      "log": "/home/max/benchmarks/branchline-boundary/cache-hygiene-20261126/official-clean/worker-windows.log",
+      "log_sha256": "6512d6fe69a2be39e9a95191abe218c49a6efb9757036ec842a34c7a201a36f2"
+    }
+  ],
+  "source_files_unchanged": true,
+  "four_entrypoint_hashes_before": {
+    "gui-linux": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+    "gui-windows": "eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25",
+    "worker-linux": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+    "worker-windows": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd"
+  },
+  "four_entrypoint_hashes_after": {
+    "gui-linux": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+    "gui-windows": "eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25",
+    "worker-linux": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+    "worker-windows": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd"
+  },
+  "dependencies_and_installed_apps_untouched": true,
+  "failure": null,
+  "note": "Generated unit/link artifacts were invalidated. Shared entrypoints remain last experimental artifacts; immutable baseline/candidate paths remain distinct. The next build must regenerate package metadata from its real source."
+}

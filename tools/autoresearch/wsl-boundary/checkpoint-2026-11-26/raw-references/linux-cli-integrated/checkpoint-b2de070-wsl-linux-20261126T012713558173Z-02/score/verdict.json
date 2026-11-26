@@ -1,0 +1,109 @@
+{
+  "actions": {
+    "branch_final": {
+      "count": 3,
+      "first_use_ms": 387.9999999999998,
+      "max_ms": 404,
+      "p50_ms": 391,
+      "p95_ms": 404
+    },
+    "branch_first": {
+      "count": 3,
+      "first_use_ms": 393,
+      "max_ms": 465,
+      "p50_ms": 452,
+      "p95_ms": 465
+    },
+    "comment_branch": {
+      "count": 3,
+      "first_use_ms": 648,
+      "max_ms": 709,
+      "p50_ms": 648,
+      "p95_ms": 709
+    },
+    "comment_worktree": {
+      "count": 3,
+      "first_use_ms": 518,
+      "max_ms": 580,
+      "p50_ms": 518,
+      "p95_ms": 580
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 738,
+      "max_ms": 738,
+      "p50_ms": 738,
+      "p95_ms": 738
+    },
+    "stack": {
+      "count": 3,
+      "first_use_ms": 472,
+      "max_ms": 705.0000000000018,
+      "p50_ms": 498,
+      "p95_ms": 705.0000000000018
+    },
+    "working_tree": {
+      "count": 3,
+      "first_use_ms": 543,
+      "max_ms": 767,
+      "p50_ms": 543,
+      "p95_ms": 767
+    }
+  },
+  "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+  "case": "wsl_linux",
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "finished_at_unix": 1795656514.305234,
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "label": "checkpoint-b2de070",
+  "launch": {
+    "app_process": {
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+      ],
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "pid": 226597,
+      "start_ticks": "16079169"
+    },
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+    "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+    "created": "16079169",
+    "display": ":0",
+    "driver_process": {
+      "binary": "/usr/bin/WebKitWebDriver",
+      "pid": 226595,
+      "start_ticks": "16079168"
+    },
+    "gdk_backend": "x11",
+    "mcp_port": 28867,
+    "pid": 226597,
+    "port": 29225,
+    "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+    "session": "38096afb-27ae-4c69-8897-53a14d4984ba",
+    "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+    "supervisor_pid": 226594
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "measure",
+  "repetitions": 3,
+  "schema_version": 1,
+  "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "started_at_unix": 1795656498.1927905,
+  "target_met": false,
+  "target_ms": 250.0,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed",
+  "worst_interaction_p95_ms": 767
+}

@@ -1,0 +1,48 @@
+{
+  "archive_sha256": "78e5183e7a8eb4efbecd681588b08a44167eaeec387ab7b32587212b4772a340",
+  "files": {
+    "native-worker-unit-tests.log": {
+      "bytes": 2537,
+      "sha256": "929dec3f2c2267dfad71acd7fbf5090814b865a249e7a68c29090b11508a4fe6"
+    },
+    "build-candidate-worker.log": {
+      "bytes": 62,
+      "sha256": "480756e6db0b3ebe7f2916464148eadf36e6c6cc06f959648e40a3578f2b75a4"
+    },
+    "imports.txt": {
+      "bytes": 2777576,
+      "sha256": "771ddc2f0e8d800ef9e3c9b24792221a7abb73f7bed3cd6fe7644687a3cdd0d7"
+    },
+    "build-native-worker-unit-tests.log": {
+      "bytes": 51378,
+      "sha256": "cae55b37d61030a85c0f5f65a03114aff1257018a0186afac71b93c53d20a3ed"
+    },
+    "freshness-diagnostic.stdout": {
+      "bytes": 51119,
+      "sha256": "50f2e00f3d817f529dfb30c062292ae1ccb960d49c31e184b5ae6e8a94477a6e"
+    },
+    "freshness-diagnostic.stderr": {
+      "bytes": 1387,
+      "sha256": "dd67821416f3aa67bc1188d9585b0ffb982cb960c372df659ac4745e6623b9e6"
+    },
+    "0-A.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "freshness-diagnostic.json": {
+      "bytes": 927,
+      "sha256": "bfdfc0ac7d3499412d8c8e1341d70d98d4960498a5b1e132a55ff72bc0956afb"
+    },
+    "state.json": {
+      "bytes": 273765,
+      "sha256": "3eb8e32bc0b5dcebb67812501aa046b2ff73b4123988a3e0b7102ada70084e6d"
+    },
+    "1-B.stderr": {
+      "bytes": 9692,
+      "sha256": "125ff2386f8a717184907cc63d310eb838ce37b79f163df717129b42d3986362"
+    }
+  },
+  "count": 10,
+  "bytes": 3168443,
+  "status": "failed-stale-artifact-attempt-preserved; no performance claim"
+}

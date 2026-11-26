@@ -1,0 +1,88 @@
+{
+  "status": "prior evidence retained unchanged; no performance promotion",
+  "reference_source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "candidate_remote_matches_reference": true,
+  "records": {
+    "build/experiments/native-helper-deployment/host-proof-cmd.json": {
+      "sha256": "54dddc1d8713760313aca2fba71ea1c6a2464f96b30e2826468b14d1f0f6cc21"
+    },
+    "build/experiments/native-helper-deployment/native-build-evidence/supervisor.json": {
+      "sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13"
+    },
+    "build/experiments/native-helper-deployment/reverse-windows-lifecycle-05/primary-result.json": {
+      "sha256": "e0966429b151e3d9912a73f05a4977ff9f353fed2065ba64b6f3200ff207f057"
+    },
+    "build/experiments/native-helper-deployment/malformed-client-gate/summary.json": {
+      "sha256": "2a724514b12d7ac0408b8fc6f7b11a370081fca8f2017e22fa0c9a9540d8bf79"
+    },
+    "build/checkpoint/vm-sync-2026-11-25/malformed-client-gate/summary.json": {
+      "sha256": "2a724514b12d7ac0408b8fc6f7b11a370081fca8f2017e22fa0c9a9540d8bf79"
+    },
+    "build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/summary.json": {
+      "sha256": "81338c931cfdeb9a1ef17ef8390c928931b40251ef4630ca2fa89b76f19ad177"
+    }
+  },
+  "prior_malformed_gates": {
+    "status": "passed-both-native-malformed-response-cleanup-gates",
+    "scope": "Wrong responseID999 after valid protocol1 Hello. Actual unchanged materialize + Location.command + Connection.start/request. Error invalidated Connection and killed/reaped launcher. Exact native child disappearance was checked while Connection retained its stdin/stdout, before Drop; subsequent request rejected disconnected.",
+    "directions": [
+      "linux-native-client",
+      "windows-native-client"
+    ],
+    "cleanup_checked_before_connection_drop_with_retained_pipes": true,
+    "external_test_module_kept_outside_candidate_production_source": true
+  },
+  "prior_gui_result": {
+    "status": "valid helper-placement series; final action regression guards failed; no promotion",
+    "final_action_guards_pass": false,
+    "failed_action_guards": {
+      "branch_first": {
+        "max_ms": {
+          "A_ms": 215.30000001192093,
+          "B_ms": 246.2000000178814,
+          "ratio": 1.1435206688539228,
+          "change_percent": 14.35206688539228,
+          "pass": false
+        }
+      },
+      "comment_branch": {
+        "p95_ms": {
+          "A_ms": 214.7000000178814,
+          "B_ms": 243.59999999403954,
+          "ratio": 1.1346064274511,
+          "change_percent": 13.460642745110007,
+          "pass": false
+        },
+        "max_ms": {
+          "A_ms": 229.19999998807907,
+          "B_ms": 276.5,
+          "ratio": 1.2063699826107375,
+          "change_percent": 20.636998261073746,
+          "pass": false
+        }
+      }
+    },
+    "open_observations": {
+      "A_fresh_process_ms": [
+        3091.100000023842,
+        727.5999999940395,
+        728.1999999880791
+      ],
+      "B_initial_install_ms": 852.9000000059605,
+      "B_cache_hit_fresh_process_ms": [
+        603.2999999821186,
+        586.3000000119209
+      ],
+      "paired_cache_hit_percent_changes": [
+        -17.083562398699726,
+        -19.486404830881774
+      ],
+      "initial_install_distribution_proved": false,
+      "OS_cold_claim": false,
+      "interpretation": "A1 outlier remains included and separately identified; do not use it to claim an install distribution. B2/B3 are separate fresh-process cache-hit Opens, not action repetitions."
+    },
+    "retroactive_waiver": false,
+    "reverse_gui_performance_measured": false,
+    "comparison_with_new_candidate": "Old252 and current89f5 are distinct source identities; no samples pooled and no old GUI binaries used for current integration qualification."
+  }
+}

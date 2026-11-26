@@ -1,0 +1,66 @@
+{
+  "status": "saved note2 staged metadata eligibility proved; actual measured GUI path not observed",
+  "proof": "build/experiments/staged-anchor-metadata/eligibility-proof/proof.json",
+  "proof_sha256": "3e682e7644abe54dfb5ad4a2474999dc3d8df524c172d4dc27c9f9a40e167191",
+  "worker_sha256": "d729e0eaaff4d8ef4f7f8bed374b984115b2270aae210022ca91470f90741e2e",
+  "worker": {
+    "pid": 196975,
+    "start_ticks": "15539169",
+    "image": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker",
+    "cwd": "/home/max/benchmarks/branchline-boundary/staged-note2-eligibility-20261125T235815Z"
+  },
+  "hello": {
+    "architecture": "x86_64",
+    "os": "linux",
+    "pid": 196975,
+    "protocol": 2
+  },
+  "note": {
+    "old_path": "kernel/fork.c",
+    "path": "kernel/fork.c",
+    "left": "refs/heads/feature/boundary-final",
+    "left_tip": "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+    "group": "Staged",
+    "file_version": [
+      "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+      "aeb14599caf65d5f8fbdf9051d296e5b5894c250",
+      "100644",
+      "100644"
+    ],
+    "id": 2
+  },
+  "lookup_preconditions": {
+    "same_raw_path": true,
+    "checkout_matches_note_left": true,
+    "staged_group": true,
+    "left_tip_equals_current_checkout_tip": true
+  },
+  "returned_proof": {
+    "base": "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+    "location_head": "staged:457e783e6ffe51f867e9e9560e8afc7f8fc136ff88d68c7a3f8f9b47496b01c1",
+    "versions": [
+      {
+        "mode": "100644",
+        "oid": "aeb14599caf65d5f8fbdf9051d296e5b5894c250",
+        "old_mode": "100644",
+        "old_oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+        "path": "kernel/fork.c"
+      }
+    ]
+  },
+  "database_mode": "ro",
+  "request_ops": [
+    "hello",
+    "open",
+    "verify_staged_versions"
+  ],
+  "worker_exit": 0,
+  "guards_unchanged": true,
+  "exact_native_absent": true,
+  "host_controller_pid": 264488,
+  "host_ssh_pid": 264651,
+  "host_controller_and_ssh_absent": true,
+  "scope": "One read-only SQLite note query and one existing worker process. No GUI, benchmark, build, repository write or helper cache change. Active host compilation prevents any timing claim.",
+  "remote_proof": "/home/max/benchmarks/branchline-boundary/staged-note2-eligibility-20261125T235815Z/proof.json",
+  "limitation": "This removes the saved-tuple eligibility uncertainty. It does not retroactively prove that the earlier measured GUI took the typed branch; no GUI location export was captured."
+}

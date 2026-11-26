@@ -1,0 +1,110 @@
+{
+  "records": [
+    {
+      "bytes": 2777577,
+      "dll_names": [
+        "ADVAPI32.dll",
+        "KERNEL32.dll",
+        "Secur32.dll",
+        "WS2_32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "bcryptprimitives.dll",
+        "ntdll.dll"
+      ],
+      "origin": "build/experiments/git-command-cost-trace/native-evidence/imports.txt",
+      "scope": "DLL names extracted from saved objdump text; original build/static-link conclusions remain in copied native supervisor records.",
+      "sha256": "f4910ce32dae727672d8a7787b15461feb4840025082aea8d3e16b4502d4f68a"
+    },
+    {
+      "bytes": 25149282,
+      "dll_names": [
+        "advapi32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "bcryptprimitives.dll",
+        "comctl32.dll",
+        "dwmapi.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "ntdll.dll",
+        "ole32.dll",
+        "oleaut32.dll",
+        "secur32.dll",
+        "shell32.dll",
+        "shlwapi.dll",
+        "user32.dll",
+        "ws2_32.dll"
+      ],
+      "origin": "build/experiments/gui-open-phases/r2/native-build-evidence/vm/windows-gui-imports.txt",
+      "scope": "DLL names extracted from saved objdump text; original build/static-link conclusions remain in copied native supervisor records.",
+      "sha256": "187ae200b08800b382b06ba23b21a9a2ca23ccf5f1f912517f7e7ef888cc53dd"
+    },
+    {
+      "bytes": 25138290,
+      "dll_names": [
+        "advapi32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "bcryptprimitives.dll",
+        "comctl32.dll",
+        "dwmapi.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "ntdll.dll",
+        "ole32.dll",
+        "oleaut32.dll",
+        "secur32.dll",
+        "shell32.dll",
+        "shlwapi.dll",
+        "user32.dll",
+        "ws2_32.dll"
+      ],
+      "origin": "build/experiments/linux-cli-integrated/native-build/native-evidence/windows-gui-imports.log",
+      "scope": "DLL names extracted from saved objdump text; original build/static-link conclusions remain in copied native supervisor records.",
+      "sha256": "e7c683d215ba50791d841db8119310cae2d914d6a02c159e3fb6eb8147040f62"
+    },
+    {
+      "bytes": 2758228,
+      "dll_names": [
+        "ADVAPI32.dll",
+        "KERNEL32.dll",
+        "Secur32.dll",
+        "WS2_32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "bcryptprimitives.dll",
+        "ntdll.dll"
+      ],
+      "origin": "build/experiments/linux-cli-integrated/native-build/native-evidence/windows-worker-imports.log",
+      "scope": "DLL names extracted from saved objdump text; original build/static-link conclusions remain in copied native supervisor records.",
+      "sha256": "2fdf3222af3036d21d073cbf7fa76f250376ff9fa1f38c3b66365ec658de6b51"
+    },
+    {
+      "bytes": 2777576,
+      "dll_names": [
+        "ADVAPI32.dll",
+        "KERNEL32.dll",
+        "Secur32.dll",
+        "WS2_32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "bcryptprimitives.dll",
+        "ntdll.dll"
+      ],
+      "origin": "build/experiments/parallel-untracked/native-evidence-r1/files/imports.txt",
+      "scope": "DLL names extracted from saved objdump text; original build/static-link conclusions remain in copied native supervisor records.",
+      "sha256": "771ddc2f0e8d800ef9e3c9b24792221a7abb73f7bed3cd6fe7644687a3cdd0d7"
+    },
+    {
+      "bytes": 2800929,
+      "dll_names": [
+        "ADVAPI32.dll",
+        "KERNEL32.dll",
+        "Secur32.dll",
+        "WS2_32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "bcryptprimitives.dll",
+        "ntdll.dll"
+      ],
+      "origin": "build/experiments/parallel-untracked/native-r2/native-evidence/imports.txt",
+      "scope": "DLL names extracted from saved objdump text; original build/static-link conclusions remain in copied native supervisor records.",
+      "sha256": "c6e116a3cd2783b6688563b8a3acb0157e0023f83d19d0ac9edce760d0d87386"
+    }
+  ]
+}

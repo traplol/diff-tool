@@ -1,0 +1,516 @@
+{
+  "manifest_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/manifest.json",
+  "manifest_sha256": "835e10ff70283587d24ba44af5d934157d43042cc99625cb5349bc67cdd4f3d9",
+  "references": [
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/build/candidate-stateless-status-b2de070-build.json",
+      "bytes": 14483,
+      "path": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-build.json",
+      "sha256": "98ed2a83f25dc30e82deba3b521c6327cc3ee1d65beb0a162c7d8122088b7da1"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/build/checkpoint-b2de070-build.json",
+      "bytes": 7627,
+      "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json",
+      "sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "bytes": 13797,
+      "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "sha256": "1820a0e57838ad490f34f51018f96cab098a3facefd71278bc204552e28f53ab"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/source.json",
+      "bytes": 5050,
+      "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-01/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "bytes": 14190,
+      "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "sha256": "f95da081bb9720bd5ac89e2f053c29ee0546c72ef2fa53f6671c1f1c0c5f2518"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/source.json",
+      "bytes": 5050,
+      "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-02/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "bytes": 90113,
+      "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "sha256": "bd35038e4f64c56e3d8db0f56fdab01eeba3f249f2e3f553f3428e9412fc90c1"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/source.json",
+      "bytes": 5050,
+      "path": "build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T223739227075Z-03/source.json",
+      "sha256": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "bytes": 14116,
+      "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/samples.jsonl",
+      "sha256": "36226adc3451ba7c39ab42cf4b8966863388bf0bb1ef91e72246c71496807a3d"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/source.json",
+      "bytes": 5050,
+      "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-01/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "bytes": 14102,
+      "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/samples.jsonl",
+      "sha256": "f9cb45ea9bfe50e32e4be67ca76684f3624221159823cf586ee83bc09e2ef0cb"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/source.json",
+      "bytes": 5050,
+      "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-02/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "bytes": 87498,
+      "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/samples.jsonl",
+      "sha256": "8913849eefb210b7e52c558c798423e11b98af90f1c1fb512a80bd4771d757f9"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/raw/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/source.json",
+      "bytes": 5050,
+      "path": "build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T223739227075Z-03/source.json",
+      "sha256": "e4b1a32883191e9e503302cb8da885d3dcb00f215dbf3bddecba65ef69b0ad4f"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/git-command-cost-trace/baseline-source.json",
+      "bytes": 5050,
+      "path": "build/experiments/git-command-cost-trace/baseline-source.json",
+      "sha256": "90b47f28804dd7020b7f32ed996bc629549b627886d99cce34f13d9d9e6245fc"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/git-command-cost-trace/prepared.json",
+      "bytes": 1898,
+      "path": "build/experiments/git-command-cost-trace/prepared.json",
+      "sha256": "2db0dd191c2c6c53d69d1d2dbc3172bc9e312ce31b4f6f5b4f80af89751bfcdd"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/git-command-cost-trace/source.json",
+      "bytes": 5050,
+      "path": "build/experiments/git-command-cost-trace/source.json",
+      "sha256": "1fbfbf3dfd78951cbfc342d09f2ceb3ed3e829d99cd0646a21f472cf4f83d34a"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/git-command-cost-trace/trace-overlay.patch",
+      "bytes": 2153,
+      "path": "build/experiments/git-command-cost-trace/trace-overlay.patch",
+      "sha256": "b4fd4730d0ba5306b4efea2d31d8ebc03bf8df7208d41ce1c5d38b78f80c09c6"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/README.original.md",
+      "bytes": 6344,
+      "path": "build/experiments/native-helper-deployment/README.md",
+      "sha256": "6fb6bf5f50281bca582808217b9595a128c674c832545fba2a67683e72b85890"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/candidate-manifest.json",
+      "bytes": 23031,
+      "path": "build/experiments/native-helper-deployment/candidate-manifest.json",
+      "sha256": "9474eec58cf9281dd95a779cee5419cfcaa10be31fa1afb888a6919165ee1e4a"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/candidate.patch",
+      "bytes": 20467,
+      "path": "build/experiments/native-helper-deployment/candidate.patch",
+      "sha256": "5f87970efa96215e2965d90cbfcbfdace5ed725eac9e43b8a6e0fce05e2c38a7"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/runtime/first-linux-gate.log",
+      "bytes": 10166,
+      "path": "build/experiments/native-helper-deployment/first-linux-gate.log",
+      "sha256": "cc952c8f4af8d8fcd0c66bb40275c6625d35587e30c9358113b6ee2400e3ad86"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/host-all-tests-cmd.log",
+      "bytes": 4439,
+      "path": "build/experiments/native-helper-deployment/host-all-tests-cmd.log",
+      "sha256": "cd9c4917a5e2e718a2104044175ce3da14d423724c7121a35137812289edb643"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/host-embedded-tests-cmd.log",
+      "bytes": 2171,
+      "path": "build/experiments/native-helper-deployment/host-embedded-tests-cmd.log",
+      "sha256": "ad400968c55354a25a42813e1d8fd4d484c37751feda049583912c4924ec9ddb"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/host-proof-cmd.json",
+      "bytes": 2635,
+      "path": "build/experiments/native-helper-deployment/host-proof-cmd.json",
+      "sha256": "54dddc1d8713760313aca2fba71ea1c6a2464f96b30e2826468b14d1f0f6cc21"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/runtime/linux-correctness-short.log",
+      "bytes": 36148,
+      "path": "build/experiments/native-helper-deployment/linux-correctness-short.log",
+      "sha256": "09ce11a7e13f2ee3d2b1e6547b8dc0913eef62f2cadeac84bf9ac969ac0280b9"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/runtime/linux-correctness.log",
+      "bytes": 6738,
+      "path": "build/experiments/native-helper-deployment/linux-correctness.log",
+      "sha256": "a7a8fe964755c0fe6ba80cadf12145e69c963f340cb3df4b14938944d7415314"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/runtime/long-fallback-diag.log",
+      "bytes": 7402,
+      "path": "build/experiments/native-helper-deployment/long-fallback-diag.log",
+      "sha256": "93c17cb224cb3eb7cd33dcbf7765dc1cb2d70c7281bab41217e78390f10b006a"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/long-fallback-investigation.json",
+      "bytes": 967,
+      "path": "build/experiments/native-helper-deployment/long-fallback-investigation.json",
+      "sha256": "ca60e3d605aa0ff469e674af523eca0fe0b1ec1e2084d445fa52ef52ea482a71"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/native-build/linux-gui-build.log",
+      "bytes": 941,
+      "path": "build/experiments/native-helper-deployment/native-build-evidence/linux-gui-build.log",
+      "sha256": "77750c47a012355b97821dc852fe2a87b99e25afaf018c0ad118c2ac63aefbf3"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/native-build/linux-remote-tests.log",
+      "bytes": 12115,
+      "path": "build/experiments/native-helper-deployment/native-build-evidence/linux-remote-tests.log",
+      "sha256": "acd5d9da030446f7b08eb9c90277c90fe1c654d61fbcc5082746030b4111bfb4"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/native-build/supervisor.json",
+      "bytes": 12179,
+      "path": "build/experiments/native-helper-deployment/native-build-evidence/supervisor.json",
+      "sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/native-build/windows-gui-build.log",
+      "bytes": 2030,
+      "path": "build/experiments/native-helper-deployment/native-build-evidence/windows-gui-build.log",
+      "sha256": "c9f3400e7f22764bae4278914aa304e0fa5b375f1de9df6575d1a1b34d81e662"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/native-build/windows-remote-tests-0.log",
+      "bytes": 113,
+      "path": "build/experiments/native-helper-deployment/native-build-evidence/windows-remote-tests-0.log",
+      "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/native-build/windows-remote-tests-1.log",
+      "bytes": 733,
+      "path": "build/experiments/native-helper-deployment/native-build-evidence/windows-remote-tests-1.log",
+      "sha256": "2e27cf2097e1eb34a45a5fddfbdae7c0f5b1b5a63b702ed6cef70a23e01d2f0a"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/query-component-02/configuration.json",
+      "bytes": 749,
+      "path": "build/experiments/native-helper-deployment/query-component-02/configuration.json",
+      "sha256": "813056a3369956b367f2237939dc40c5a1527add65c4d8bae6b2c56db4fa00b6"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/query-component-02/results.json",
+      "bytes": 34726,
+      "path": "build/experiments/native-helper-deployment/query-component-02/results.json",
+      "sha256": "25dba976b13b0c7f2c8837839946b57f415b836afd8acec7333c30fdf9772e48"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/query-component-02/summary.json",
+      "bytes": 2325,
+      "path": "build/experiments/native-helper-deployment/query-component-02/summary.json",
+      "sha256": "75369a5ce868218720a5f3d8f60fd8fe64682768ab4c13ef3cd5a01398489fbb"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/query-decision.json",
+      "bytes": 2593,
+      "path": "build/experiments/native-helper-deployment/query-decision.json",
+      "sha256": "9384a5432139addb7d05ec65bd6437289ccced1ff4d74b467d62c5d539b26fa9"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/summary.json",
+      "bytes": 3134,
+      "path": "build/experiments/native-helper-deployment/summary.json",
+      "sha256": "3329442253c221413baeafd77f5b6c0441d866e415150bb0eb7c1cad0c4c8b78"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/native-helper/windows-source-check-cmd.log",
+      "bytes": 226,
+      "path": "build/experiments/native-helper-deployment/windows-source-check-cmd.log",
+      "sha256": "ae8fb384b8226f11a2a37f5f0699a786d03e2788ffc6db869a609adbf1f308ad"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/baseline-source.json",
+      "bytes": 5050,
+      "path": "build/experiments/parallel-untracked/baseline-source.json",
+      "sha256": "90b47f28804dd7020b7f32ed996bc629549b627886d99cce34f13d9d9e6245fc"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/baseline.json",
+      "bytes": 547,
+      "path": "build/experiments/parallel-untracked/baseline.json",
+      "sha256": "488af191f78415c31ade6c1b6729f3f275343b2244d7853655352c631b5100e6"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/candidate.patch",
+      "bytes": 14742,
+      "path": "build/experiments/parallel-untracked/candidate.patch",
+      "sha256": "5a9c9f3c778544f7508c19e3d68c56c5a167b48c553247a6bd83d5d3dcfb8253"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/focused-tests-oracle-path-failure.log",
+      "bytes": 1840,
+      "path": "build/experiments/parallel-untracked/focused-tests-oracle-path-failure.log",
+      "sha256": "7fdc4fc03a3b171645e57a0b443db8e3b998c42285c5c07fa93452cd433790c5"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/gui-rust-tests-loopback.log",
+      "bytes": 7256,
+      "path": "build/experiments/parallel-untracked/gui-rust-tests-loopback.log",
+      "sha256": "abde3ad0498be034735330b7c081b65ca32e8e264cf9ea2bcc93fddce2025f49"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/gui-rust-tests.log",
+      "bytes": 9691,
+      "path": "build/experiments/parallel-untracked/gui-rust-tests.log",
+      "sha256": "1a723ffc796b7a5d9800e8e4c3d2d31e31e20fff4d7c4080048ebd2e38f6b871"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/proof.json",
+      "bytes": 3127,
+      "path": "build/experiments/parallel-untracked/proof.json",
+      "sha256": "b526c63d9e001edc199ff9547def4a071bf9fcbba7463c16dc7a39ff324774c9"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/source.json",
+      "bytes": 5050,
+      "path": "build/experiments/parallel-untracked/source.json",
+      "sha256": "c05b1ac831e2ed561228371bff1d13fae1d60659d31c18506547aa22a3e1acb5"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/worker-tests-oracle-binary-failure.log",
+      "bytes": 3835,
+      "path": "build/experiments/parallel-untracked/worker-tests-oracle-binary-failure.log",
+      "sha256": "010bd22bcfebf1f9df18a50dadf5d6f960c9c7e9dfd5c8327cd570e968cc98b3"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/parallel-untracked/worker-tests.log",
+      "bytes": 3550,
+      "path": "build/experiments/parallel-untracked/worker-tests.log",
+      "sha256": "6b983600e403034ad0aa5e92a65f6cba869d8a307b578185318f63e945aa0dff"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/README.original.md",
+      "bytes": 6844,
+      "path": "build/experiments/staged-anchor-metadata/README.md",
+      "sha256": "95ee856790db2c899915b2f0f204875b254b518ab36b0f21381a53d1e3220f9b"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/alternate-index-after-guard.log",
+      "bytes": 535,
+      "path": "build/experiments/staged-anchor-metadata/alternate-index-after-guard.log",
+      "sha256": "b12d449ef1c36a6bf2dd7dc22cead6689141c73a7a38ed87628d4453f1ba3aa8"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/alternate-index-before-guard.log",
+      "bytes": 2252,
+      "path": "build/experiments/staged-anchor-metadata/alternate-index-before-guard.log",
+      "sha256": "e3ccc8428895a9945a2863f6dab08bec552856b8fba15d6371e23f8a64df784c"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/baseline.json",
+      "bytes": 601,
+      "path": "build/experiments/staged-anchor-metadata/baseline.json",
+      "sha256": "580a1347434496def9d1761a7e65912e6b2eee59be9e9b00de27fe16face0c5f"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/build-after-release.py",
+      "bytes": 7217,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/build-after-release.py",
+      "sha256": "f3b831f96374a0b7c367d12b93f22366e9fe1e91c8b41decda21b21e0d1e7096"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/build-plan.json",
+      "bytes": 49515,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/build-plan.json",
+      "sha256": "24cf5c843d65a37194257e580626d65afcbf936a0c4a4f40cb2cbf348c495feb"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/bundle-create.log",
+      "bytes": 0,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/bundle-create.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/bundle-heads.txt",
+      "bytes": 46,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/bundle-heads.txt",
+      "sha256": "752ee7cf0e6136a21aebadea7ca98437e726219943728ea7a5a15c787f950863"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/bundle-verify.log",
+      "bytes": 278,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/bundle-verify.log",
+      "sha256": "16d78943b58539e20213be770d4a3dc3e27d5c2dfa3dba57610b41cd26742483"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/bundle.json",
+      "bytes": 1155,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/bundle.json",
+      "sha256": "b90e941cc85598f7d2d99658b0b673284e33f761b48094c017339664b79a0780"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/handoff.json",
+      "bytes": 3565,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/handoff.json",
+      "sha256": "925690283c2efb286ceee863906634f0a99ede70d92169803af1bc97a0ae145f"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/input-tar.json",
+      "bytes": 839,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/input-tar.json",
+      "sha256": "b0e93a0c2cd2ce1cdcb3365e182e15ec82a82c833f5d667b4a3190eacfa0a2ce"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/original-packaging-diagnosis.json",
+      "bytes": 423,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/original-packaging-diagnosis.json",
+      "sha256": "ee70fdea9019dc43706c651d16b04d1651695970156d54dce26439a3383e1ea2"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/roundtrip-verification.json",
+      "bytes": 2079,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/roundtrip-verification.json",
+      "sha256": "b1fa26702f7fe93a8a5dd3522fe0f7e18a70a64bea0d45756e208f112d7191d2"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/bundle-r2/vm-build-supervisor.py",
+      "bytes": 21318,
+      "path": "build/experiments/staged-anchor-metadata/bundle-r2/vm-build-supervisor.py",
+      "sha256": "7378aa16cb3f4ce969b725e873e73bf097e9f835a6c5b876b54fcabc400fadce"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/candidate.patch",
+      "bytes": 33694,
+      "path": "build/experiments/staged-anchor-metadata/candidate.patch",
+      "sha256": "53d3f02b0e49c3dc968ea7b0ce455702cd87109a8fbf82ef225bf8c4e973929a"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/failed-native-packaging/build-after-release.py",
+      "bytes": 5199,
+      "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/build-after-release.py",
+      "sha256": "071baf89d134b574797c78822d97394b93c6de4ae5730433a82c5c8d24209255"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/failed-native-packaging/build-plan.json",
+      "bytes": 134322,
+      "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/build-plan.json",
+      "sha256": "d2b3b25fc2ecb16dfebc5f94fa97348e25767f47513b1b43dd4b75f6118eb8e5"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/failed-native-packaging/input-tar.json",
+      "bytes": 715,
+      "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/input-tar.json",
+      "sha256": "b192b4bf7115266e679c0ccd2c56aaa65a29de9df745c6134ca31d6daf325cac"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/failed-native-packaging/native-build-supervisor.json",
+      "bytes": 3593,
+      "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/native-build-supervisor.json",
+      "sha256": "3abb5f46886e5e95650e847f19dcad79d94e25bbb4f50b48be42733aac80fb57"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/failed-native-packaging/staged-upload-input.log",
+      "bytes": 0,
+      "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/staged-upload-input.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/failed-native-packaging/staged-vm-build.log",
+      "bytes": 1711,
+      "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/staged-vm-build.log",
+      "sha256": "486e6390c0a1761d197493f6836d26eaae43a45282ed90401bca785a3e46aec0"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/failed-native-packaging/vm-build-supervisor.py",
+      "bytes": 18806,
+      "path": "build/experiments/staged-anchor-metadata/failed-aba80d920269-attempt1/vm-build-supervisor.py",
+      "sha256": "1eed4e65cc9178d5a79fce38b9ce84c99182e082598d28fc931ed56f6f0a0dfd"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/gui-rust-tests-index-guard.log",
+      "bytes": 7349,
+      "path": "build/experiments/staged-anchor-metadata/gui-rust-tests-index-guard.log",
+      "sha256": "1aecbadc523f37ae6b65270574e85397361fba8a9336b211bc8746b1fdedd51a"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/proof.json",
+      "bytes": 4657,
+      "path": "build/experiments/staged-anchor-metadata/proof.json",
+      "sha256": "b3df7a91a293f7dc5ba84c7efec73f51caff4912b758eb907d4f47c2b82f6955"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/source.json",
+      "bytes": 5050,
+      "path": "build/experiments/staged-anchor-metadata/source.json",
+      "sha256": "27f9a557b837feadb805789adb13a66c6632be4aab98d272d421b7f87a5dc53a"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/staged-anchor/worker-tests-index-guard.log",
+      "bytes": 3315,
+      "path": "build/experiments/staged-anchor-metadata/worker-tests-index-guard.log",
+      "sha256": "537a36de7faad2cbee0c3d4bfbe4392f5441953b1e80e866d7a8dd1d6a77a376"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/fixture-after.json",
+      "bytes": 1996,
+      "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/fixture-after.json",
+      "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/fixture-before.json",
+      "bytes": 1996,
+      "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/fixture-before.json",
+      "sha256": "b65e9bd8071aa98c1939f7b5ac59179e82d90675627ecdaaac24cb13444e1496"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/frozen-runner.py",
+      "bytes": 12859,
+      "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/frozen-runner.py",
+      "sha256": "4a253a7a50595aeabd755be55c16c024634882567c48235b6cb07e7714ed1d42"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/max-sample-evidence.json",
+      "bytes": 7407,
+      "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/max-sample-evidence.json",
+      "sha256": "c176565732fce82c30831948cefe1a25c3914be4bf0eb2e703b67fd5b0846713"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/plan.json",
+      "bytes": 5019,
+      "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/plan.json",
+      "sha256": "cb2cace60401972f99c29a36c16ed7c704aff7d904b6bdb6abe652ab634a41da"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/state.json",
+      "bytes": 95646,
+      "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/state.json",
+      "sha256": "61dea9660b233f440baa156322e5c422eaf365a8f6954ec07cc048d213a7d5a0"
+    },
+    {
+      "archive_path": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25/status/wsl-control/summary.json",
+      "bytes": 28165,
+      "path": "build/experiments/status-wsl-control/run-20261125T223739227075Z/summary.json",
+      "sha256": "889c3ccf0b9028c6ee2bb08a29287c2c7a939313cfefea12aae460b2688a140a"
+    }
+  ]
+}

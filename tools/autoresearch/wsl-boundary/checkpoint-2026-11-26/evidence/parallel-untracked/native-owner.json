@@ -1,0 +1,69 @@
+{
+  "pid": 290704,
+  "started": 1795651200.2560198,
+  "status": "failed; inspect exact live owner before retry",
+  "archive": {
+    "name": "parallel-untracked-f15e85-r1-input.tar",
+    "sha256": "79453f4aae86ec8079e35f040192acbd39e2b5e526a9c2dfe6482c053cf38b83",
+    "bytes": 972800,
+    "source_hash": "f15e85e1ec50af3bdc82e792a4d2d1189b67f4e56375679d88e0b035fe587a0f",
+    "baseline_source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+    "controls": {
+      "native-plan.json": "e2ab203ad25e5c247932eb477b89bd7466f137194dd93bf9e1b1371d74369617",
+      "native-experiment.py": "3bc23ffb978b4689a8befe9591774b08dc9dd1c020b3628d85a313a60a386b6e",
+      "run-native.py": "f8258aea008e81a4e3d35645209b319c6665d36978cea363972bd1b20ea4030f"
+    },
+    "source_files": 49,
+    "support_files": {
+      "backend_compare.py": "b184265bf085720774b3d661534878846eff5484befe3075345fbc8132e5a79b",
+      "workload.json": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+      "host-proof.json": "b526c63d9e001edc199ff9547def4a071bf9fcbba7463c16dc7a39ff324774c9"
+    },
+    "native_builds": false,
+    "vm_calls": false,
+    "tests": false,
+    "syntax": "ast.parse only; no imports/runtime executed"
+  },
+  "phases": [
+    {
+      "name": "upload-native-input",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "cat > /c/Users/max/branchline-bench/parallel-untracked-f15e85-r1-input.tar"
+      ],
+      "started": 1795651200.2565444,
+      "pid": 290706,
+      "start_ticks": "77355939",
+      "exit": 0,
+      "finished": 1795651200.5958354
+    },
+    {
+      "name": "native-experiment",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "MSYS_NO_PATHCONV=1 wsl.exe -d Ubuntu-26.04 -u max --exec /usr/bin/python3 -u -c 'import hashlib,os,pathlib,tarfile; a=pathlib.Path('\"'\"'/mnt/c/Users/max/branchline-bench/parallel-untracked-f15e85-r1-input.tar'\"'\"'); assert hashlib.sha256(a.read_bytes()).hexdigest()=='\"'\"'79453f4aae86ec8079e35f040192acbd39e2b5e526a9c2dfe6482c053cf38b83'\"'\"'; p=pathlib.Path('\"'\"'/home/max/benchmarks/branchline-boundary/parallel-untracked-f15e85-r1-input'\"'\"');p.mkdir(exist_ok=False); tarfile.open(a).extractall(p,filter=\"data\"); os.execv(\"/usr/bin/python3\",[\"/usr/bin/python3\",\"-u\",str(p/\"native-experiment.py\"),\"--input\",str(p),\"--release\",'\"'\"'VM PARALLEL UNTRACKED NATIVE RELEASED'\"'\"'])'"
+      ],
+      "started": 1795651200.5961127,
+      "pid": 290741,
+      "start_ticks": "77355973",
+      "exit": 1,
+      "finished": 1795651250.6916885
+    }
+  ],
+  "error": "('native-experiment', 1)",
+  "finished": 1795651250.692031
+}

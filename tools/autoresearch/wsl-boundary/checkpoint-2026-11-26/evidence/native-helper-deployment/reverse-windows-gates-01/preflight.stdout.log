@@ -1,0 +1,13 @@
+{
+  "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "binary": "/mnt/c/Users/max/branchline-bench/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline.exe",
+  "binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+  "helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+  "embedding_exact": true,
+  "fingerprints": {
+    "linux": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+    "windows": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+  },
+  "old_owned_supervisors_live": [],
+  "new_cache_absent": true
+}

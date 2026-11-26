@@ -1,0 +1,268 @@
+{
+  "status": "host-prepared-only; preserved r1 failure; no native r2 build/test/VM call run",
+  "release": "VM PARALLEL UNTRACKED NATIVE R2 RELEASED",
+  "input": "/home/max/benchmarks/branchline-boundary/parallel-untracked-f15e85-r2-input",
+  "output": "/home/max/benchmarks/branchline-boundary/parallel-untracked-f15e85-r2-evidence",
+  "native_output": "/mnt/c/Users/max/branchline-bench/binaries/parallel-untracked-f15e85-r2",
+  "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+  "native_root": "C:/Users/max/branchline-bench/kernel-windows",
+  "git": "/mnt/c/Program Files/Git/cmd/git.exe",
+  "git_sha256": "177bc8a9af84fa3a400c694c975fda731d048279c074e1a93947ce8b067ebb48",
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "source": {
+    "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+    "files": {
+      "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+      "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+      "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+      "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+      "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+      "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+      "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+      "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+      "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+      "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+      "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+      "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+      "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+      "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+      "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+      "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+      "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+      "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+      "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+      "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+      "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+      "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+      "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+      "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+      "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+      "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+      "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+      "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+      "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+      "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+      "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+      "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+      "src-tauri/src/git.rs": "709bdc5b27e1404df257c0e4ac72619ff4eeee7c926acccca924245aa8dad9f4",
+      "src-tauri/src/git_tests.rs": "14f2f9362af32de2e5a41db3a612a4e7dbd54c0609c62749d90bfbb069b4df0e",
+      "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+      "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+      "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+      "src-tauri/src/mcp/desktop_tests.rs": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f",
+      "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+      "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+      "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+      "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+      "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+      "src-tauri/src/search.rs": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f",
+      "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+      "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+      "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+      "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+      "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+    },
+    "source_hash": "f15e85e1ec50af3bdc82e792a4d2d1189b67f4e56375679d88e0b035fe587a0f"
+  },
+  "baseline_source": {
+    "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+    "files": {
+      "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+      "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+      "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+      "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+      "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+      "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+      "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+      "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+      "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+      "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+      "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+      "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+      "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+      "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+      "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+      "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+      "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+      "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+      "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+      "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+      "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+      "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+      "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+      "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+      "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+      "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+      "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+      "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+      "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+      "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+      "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+      "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+      "src-tauri/src/git.rs": "dcae797180249d4eab4ef12d0a2848d358bbcc0953b08f5b43f15e7edaeae0fc",
+      "src-tauri/src/git_tests.rs": "f0d3d9667eede161d0bd4a05e9140ef76ce897fe1d77624d995699fac00c0ead",
+      "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+      "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+      "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+      "src-tauri/src/mcp/desktop_tests.rs": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f",
+      "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+      "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+      "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+      "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+      "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+      "src-tauri/src/search.rs": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f",
+      "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+      "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+      "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+      "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+      "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+    },
+    "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+  },
+  "baseline_worker": {
+    "path": "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+    "source_binary": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+    "bytes": 2726400,
+    "sha256": "8fafdb059c64cf88d7ab5815f3ca20af8b80e16aa7eed52be691813dcc8f16c3",
+    "recipe": {
+      "target": "x86_64-pc-windows-msvc",
+      "RUSTFLAGS": "-C target-feature=+crt-static",
+      "CARGO_BUILD_JOBS": "1",
+      "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+      "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+      "XWIN_CROSS_COMPILER": "clang",
+      "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin"
+    },
+    "imports": [
+      "bcryptprimitives.dll",
+      "KERNEL32.dll",
+      "api-ms-win-core-synch-l1-2-0.dll",
+      "WS2_32.dll",
+      "ntdll.dll",
+      "ADVAPI32.dll",
+      "Secur32.dll"
+    ],
+    "static_crt_import_check": true
+  },
+  "support_files": {
+    "backend_compare.py": "b184265bf085720774b3d661534878846eff5484befe3075345fbc8132e5a79b",
+    "workload.json": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+    "host-proof.json": "b526c63d9e001edc199ff9547def4a071bf9fcbba7463c16dc7a39ff324774c9"
+  },
+  "run_order": [
+    "A",
+    "B",
+    "B",
+    "A"
+  ],
+  "requests_per_process": "Hello/Open/first WT + five repeated WT, then raw-patch validation and final Hello",
+  "build_environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target/git-worker",
+    "RUSTFLAGS": "-C target-feature=+crt-static",
+    "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+    "XWIN_CROSS_COMPILER": "clang",
+    "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin"
+  },
+  "score_scope": "backend-only preliminary evidence; canonical GUI scoring required before promotion",
+  "caller_cwd_scope": "native cmd cwd probe using the same WSL Popen cwd; no remote PEB read of worker cwd",
+  "runtime_gate": "exact owned Windows PID/creation/image before/after; graceful EOF and launcher zero exit required; empty stderr, source/worker/Git hashes and index/config/HEAD raw guards required; forced cleanup invalidates run",
+  "canonical_controls_modified": false,
+  "native_active": "C:/Users/max/branchline-bench/binaries/parallel-untracked-f15e85-r2/branchline-git-worker.exe",
+  "host_checks": {
+    "proof_path": "build/experiments/parallel-untracked/proof.json",
+    "proof_sha256": "b526c63d9e001edc199ff9547def4a071bf9fcbba7463c16dc7a39ff324774c9",
+    "tests": {
+      "worker_unit": {
+        "passed": 32,
+        "failed": 0
+      },
+      "worker_real_stdio": {
+        "passed": 1,
+        "failed": 0
+      },
+      "gui_rust_library": {
+        "passed": 77,
+        "failed": 0,
+        "ignored": 1,
+        "log": "gui-rust-tests-loopback.log"
+      }
+    },
+    "logs": {
+      "worker-tests.log": {
+        "sha256": "6b983600e403034ad0aa5e92a65f6cba869d8a307b578185318f63e945aa0dff",
+        "bytes": 3550
+      },
+      "gui-rust-tests.log": {
+        "sha256": "1a723ffc796b7a5d9800e8e4c3d2d31e31e20fff4d7c4080048ebd2e38f6b871",
+        "bytes": 9691
+      },
+      "gui-rust-tests-loopback.log": {
+        "sha256": "abde3ad0498be034735330b7c081b65ca32e8e264cf9ea2bcc93fddce2025f49",
+        "bytes": 7256
+      },
+      "worker-tests-oracle-binary-failure.log": {
+        "sha256": "010bd22bcfebf1f9df18a50dadf5d6f960c9c7e9dfd5c8327cd570e968cc98b3",
+        "bytes": 3835
+      },
+      "focused-tests-oracle-path-failure.log": {
+        "sha256": "7fdc4fc03a3b171645e57a0b443db8e3b998c42285c5c07fa93452cd433790c5",
+        "bytes": 1840
+      }
+    },
+    "reused_unchanged": true
+  },
+  "native_tests": "MSVC worker bin unit tests only, executed natively from owned NTFS directory. Cross-built stdio test excluded because its embedded Cargo path is Linux; real native persistent stdio is exercised in A/B/B/A.",
+  "artifact_control": "cargo clean --release --package branchline-git-worker only; exact root manifest/target/kind/profile/test compiler-artifact with fresh:false; copy only reported executable",
+  "windows_gui_requested": false,
+  "source_identity_control": "real self-contained pinned b2 Git bundle init/fetch/update-ref/read-tree without checkout; exact canonical49 app file enumeration and source hash before/after",
+  "expected_unit_tests": [
+    "git::tests::advertised_remote_default_and_orphan_and_detached_checkout",
+    "git::tests::configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs",
+    "git::tests::display_patch_preserves_git_rows_and_frozen_working_tree",
+    "git::tests::first_commit_diverged_base_stack_and_forks",
+    "git::tests::libgit2_reads_normal_review_changes_without_the_compatibility_backend",
+    "git::tests::literal_names_binary_rename_line_numbers_and_scoped_untracked",
+    "git::tests::merge_conflict_shows_existing_stage_two_and_other_staged_changes",
+    "git::tests::parallel_untracked_keeps_git_order_raw_patches_and_frozen_content",
+    "git::tests::partially_staged_snapshot_survives_file_and_index_changes",
+    "git::tests::patch_reader_checks_cancellation_while_git_is_silent",
+    "git::tests::patch_stream_stops_at_201_matches_inside_the_first_file",
+    "git::tests::raw_and_numstat_parsers_keep_counts_errors_and_stat_only_changes",
+    "git::tests::revision_file_distinguishes_text_binary_and_missing_submodule_objects",
+    "git::tests::skip_worktree_entries_preserve_git_status_and_frozen_patches",
+    "git::tests::sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged",
+    "git::tests::streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes",
+    "git::tests::whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move",
+    "git::tests::whole_file_reconstructs_unstaged_gaps_after_the_index_and_disk_change",
+    "git::tests::windows_status_git_parity_handles_unborn_conflicts_and_linked_worktrees",
+    "git::tests::windows_status_git_parity_preserves_ignores_partial_staging_and_user_cache_configuration",
+    "git::tests::windows_status_parser_keeps_raw_question_paths_and_ignores_valid_tracked_records",
+    "git::tests::windows_status_parser_rejects_malformed_and_unsupported_records_for_fallback",
+    "git::tests::working_tree_snapshot_does_not_rewrite_stat_stale_index",
+    "git::windows::tests::wsl_paths_round_trip_through_the_named_distribution",
+    "git::worker::tests::invalid_sections_are_rejected_before_git_access",
+    "git::worker::tests::null_success_is_distinct_from_failure",
+    "git::worker::tests::protocol_rejects_mutating_and_unknown_operations",
+    "git::worker::tests::wire_sections_are_lossless_and_do_not_change_frontend_serialization"
+  ],
+  "excluded_unix_unit_tests": [
+    "streamed_patches_keep_type_change_sections_and_byte_paths",
+    "patch_process_is_reaped_when_a_silent_search_is_superseded",
+    "symlinks_type_changes_nested_repo_and_non_utf8_names",
+    "windows_status_git_parity_preserves_unix_byte_names_and_configured_monitor_hook",
+    "parallel_untracked_preserves_first_error_with_multiple_failed_reads"
+  ],
+  "bundle": {
+    "name": "source-b2de070.bundle",
+    "sha256": "d0743fee8d66c2548dca63636e0f484fee68be27f24da4adc6f682dfa05fe197",
+    "git_tree": "f479c6a62a6fb2664aced380e7aafe860bfa0db6"
+  },
+  "previous_failed_supervisor": {
+    "pid": 196994,
+    "start_ticks": "15549528"
+  },
+  "rejected_stale_worker_sha256": "515100518438c763128b627626ceb228954b615e57ee0696321a7f00cb92625e"
+}

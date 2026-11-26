@@ -1,0 +1,49 @@
+{
+  "status": "prepared-host-only; queued; KISS and all execution gates pending",
+  "hypothesis": "Linux CLI branch patches may avoid the measured native first-patch penalty after CLI branch statistics, using the existing diff_patch path.",
+  "baseline_source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "source_hash": "fcc050e9843ae3caa7826a00cbbd684ecc6e8805ce12994f364e21dc96d5e704",
+  "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "git_tree": "c3d380fd97b2bf2113d0b94db74ff62bc22ab33b",
+  "baseline_directory": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source",
+  "candidate_directory": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch-patch/source",
+  "canonical_app_files": 49,
+  "tracked_files": 551,
+  "changed_files_vs_c200": [
+    "src-tauri/git-worker/tests/stdio.rs",
+    "src-tauri/src/git.rs"
+  ],
+  "production_change": "One Linux filter in with_patch_sections; existing CLI diff_patch path handles branch patches.",
+  "test_change": "Extend the existing real-pipe test with exact branch display rows and hunk starts before reopen, after ref movement/reopen, and after worker restart.",
+  "all_existing_test_lines_retained": true,
+  "all_other_tracked_files_unchanged": true,
+  "real_git": true,
+  "git_metadata_is_directory": true,
+  "external_alternates": false,
+  "git_objects_are_independent_file_copies": true,
+  "baseline_integrated_source_unchanged": true,
+  "production_main_source_unchanged": true,
+  "patch_sha256": "32ccafde0036eb1af698a6cd12e2a6eda9b063abd88c37a1299f92d8f98cfeb9",
+  "production_patch_sha256": "8a2fb439b1bd3853338512340aeec2465fed5b98ba90e1f8fd2c7c7d41049ccf",
+  "evaluation_patch_sha256": "432dd36816164358cfb3feba8ee5675bbad8ce017a506eb5baa1225396974181",
+  "full_head_patch_sha256": "5736e58c0e43c9c1e77e9962d0ab542b9a48a1e207e427a63e55334f6758a3f6",
+  "kiss": {
+    "status": "pending",
+    "reason": "All four agent slots occupied at preparation; fresh KISS-only agent required when a slot is available."
+  },
+  "execution": {
+    "tests": false,
+    "builds": false,
+    "ssh": false,
+    "scoring": false,
+    "vm_calls": false
+  },
+  "queue_condition": "Do not evaluate until the integrated c200 baseline has completed its full matrix; session 36761 currently owns native build execution.",
+  "promoted": false,
+  "performance_claim": null,
+  "documentation_files": {
+    "README.md": "06850b36b521a45af391f908c4556c25e2ff2b592d75e30b3b07218556466502",
+    "TEST_PLAN.md": "368ad70ccd3ed434098c74717ff71ce2a387465ce92c604f073f5d6995b6f069"
+  },
+  "static_diff_whitespace_check": "passed; no runtime execution"
+}

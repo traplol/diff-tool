@@ -1,0 +1,139 @@
+{
+  "build_state": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/windows-controls-b2de070-20261125T213427886542Z/remote-evidence/state.json",
+  "build_state_sha256": "69e86cbf34f1dc355ff557e3e9a9b81829c8e022a6974a05801df7956d7ea9b5",
+  "caller_transport": "One task-owned private ControlMaster/CDP forward; all child SSH calls select it and refuse new TCP fallback.",
+  "case_order": [
+    "windows_linux"
+  ],
+  "cases": {
+    "windows_linux": {
+      "comments": [
+        {
+          "anchor": [
+            3434,
+            3434
+          ],
+          "body": "Boundary benchmark branch comment",
+          "id": 1,
+          "path": "kernel/fork.c"
+        },
+        {
+          "anchor": [
+            3438,
+            3438
+          ],
+          "body": "Boundary benchmark working-tree comment",
+          "id": 2,
+          "path": "kernel/fork.c"
+        }
+      ],
+      "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+      "repository": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+      "seed_sha256": "5da3f8249310dd9a33a7c19e94c23036cee5d78367fb6907be7882722fad8b78",
+      "seed_verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/seed-windows-linux-02/verdict.json"
+    }
+  },
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "diagnostic_only": true,
+  "fixture_guards": {
+    "windows": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614734418472500,
+        "device": 87,
+        "inode": 2814749767263140,
+        "mode": 33279,
+        "mtime_ns": 1795614733000000000,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994331971400,
+        "device": 87,
+        "inode": 3377699720684454,
+        "mode": 33279,
+        "mtime_ns": 1795615994331971400,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615947971522900,
+        "device": 87,
+        "inode": 562949953782638,
+        "mode": 33279,
+        "mtime_ns": 1795615947971522900,
+        "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+      }
+    },
+    "wsl": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614733907349066,
+        "device": 2096,
+        "inode": 272949,
+        "mode": 33188,
+        "mtime_ns": 1795614733907349066,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994729935414,
+        "device": 2096,
+        "inode": 278185,
+        "mode": 33188,
+        "mtime_ns": 1795615994729935414,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615942133939671,
+        "device": 2096,
+        "inode": 278079,
+        "mode": 33188,
+        "mtime_ns": 1795615942129939671,
+        "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+      }
+    }
+  },
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "logging_overhead_measured": false,
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "measurement": "One actual Windows GUI/WSL process, unchanged canonical scorer repetitions1: Open plus six actions/two comment-jump Opens, required two-frame settle unchanged.",
+  "order_per_case": [
+    "diagnostic A1:1 only; all other inherited loop entries are skipped"
+  ],
+  "performance_early_gate": false,
+  "ports": {
+    "host_loopback": 19223,
+    "windows_cdp": 29223,
+    "windows_mcp": 28865
+  },
+  "production_cache": "Default production native cache/environment; no helper preparation, probes before Open or shared/default file deletion.",
+  "profiles": "Reuse the existing two-comment profiles directly; no copies, seeding or helper preparation.",
+  "retained_previous_attempt": {
+    "included_in_new_samples": false,
+    "next_authorization": "Start a complete new twelve-process A/B series; no measurement retry within a series.",
+    "sha256": "f42ec2824101efec94c7ccd8ba77705ab0671037b780e66d26bd36cbd7d4429d",
+    "summary": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T215420528806Z/summary.json",
+    "valid_A1_kept_separate": true
+  },
+  "reused_status_caller_sha256": "a9587333c5dd330c6fc2f830d6d9d0ae74042c45edc6a47e3ad173b210d49052",
+  "runner_sha256": "42b000948f034133c557186f6c494fc331e6c01eb8d444b73ad5dc533ec9ced2",
+  "runtime_release": "VM OPEN PHASE RUNTIME RELEASED",
+  "source_build_proof": "/home/max/workspace/merge-viewer-native/build/experiments/gui-open-phases/r2/native-build-proof.json",
+  "source_build_proof_sha256": "cb1d0df7d4ebc8f75fc0dd658d79f4e146d036096d191f67c662ad1180640def",
+  "speedup_or_acceptance_claim": false,
+  "status": "prepared-host-only-one-diagnostic-process",
+  "stderr": "Record current owned stderr.log length after welcome-ready; capture exact appended bytes before exact STOP; parse only fixed tags with actual GUI PID.",
+  "summary_helper_sha256": "2caebee7d2aef52e4d6ef90b89f410acf7966ee8d083f69e6dcae3fe3c103527",
+  "variants": {
+    "A": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\gui-open-phases-b2de070-29898a628ed5-r2\\branchline.exe",
+      "binary_sha256": "35a152eb0f3ac6ead0451a981722c14658fce466a9a225e3717a65e2a2d2a462",
+      "helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "label": "gui-open-phases-b2de070-29898a628ed5-r2",
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/gui-open-phases/source",
+      "source_hash": "29898a628ed57d5a4688800e87966729bc6e9391d5ece489cadb424702f588cc"
+    }
+  }
+}

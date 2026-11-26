@@ -1,0 +1,785 @@
+{
+  "valid": true,
+  "configuration": {
+    "query": "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)",
+    "query_utf8_sha256": "0b4965d4cdb8481d3397128d900c12aef9abad2fb1b0915ef5fe9e142624f9e9",
+    "remote_rs_sha256": "6cad7de1ff99ea0714ce032c28fae19463cffc80e42a2110cfdc602bbfcaa1c5",
+    "app_source_hash": "f2ffb3cc14a90caa261e53de4400177b13297f100d66f33549d41afb36c9a334",
+    "cwds": {
+      "ext4_welcome": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "ntfs_kernel": "/mnt/c/Users/max/branchline-bench/kernel-windows"
+    }
+  },
+  "supervisor_pid": 121310,
+  "supervisor_cwd": "/mnt/c/Users/max",
+  "executables": {
+    "powershell.exe": {
+      "resolved": "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "sha256_after_measurement": "d8f182560210d43baaf767d482ad1dc1207372522e91413b9d5e515a875e552d"
+    },
+    "cmd.exe": {
+      "resolved": "/mnt/c/WINDOWS/system32/cmd.exe",
+      "sha256_after_measurement": "ccd79a7568ea9240ccd6fe124807b9d3e4dbc3a4cf92954299ac3029f4a91d02"
+    }
+  },
+  "timing_boundary": "spawn through completed stdout/stderr and reaped exit; includes recorded Linux proc identity probe",
+  "caveat": "Fresh native processes, first samples retained; not OS-cold. No environment overrides, Git commands, fixture writes, app launches or builds.",
+  "native_pid_limit": "PID/start ticks identify WSL interop proxy; native executable path/hash and exact argv retained. No extra native process observer was run.",
+  "all_paths_equal": true,
+  "rows": [
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 0,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121311,
+        "started_unix": 1795637998.8291893,
+        "linux_start_ticks": "14229450",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 53.701999,
+      "total_ms": 600.152696,
+      "identity_probe_ms": 0.3711,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": true,
+      "first_for_cwd": true,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 0,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121313,
+        "started_unix": 1795637999.4295342,
+        "linux_start_ticks": "14229510",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 37.326,
+      "total_ms": 139.296299,
+      "identity_probe_ms": 0.5024,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "JwBcAFwAdwBzAGwALgBsAG8AYwBhAGwAaABvAHMAdABcAFUAYgB1AG4AdAB1AC0AMgA2AC4AMAA0AFwAaABvAG0AZQBcAG0AYQB4AFwAYgBlAG4AYwBoAG0AYQByAGsAcwBcAGIAcgBhAG4AYwBoAGwAaQBuAGUALQBiAG8AdQBuAGQAYQByAHkAXABwAHIAbwBmAGkAbABlAHMAXABjAGEAbgBkAGkAZABhAHQAZQAtAHcAbwByAGsAZQByAC0AdgAxAC0AdwBzAGwALQB3AGkAbgBkAG8AdwBzAFwAdwBlAGwAYwBvAG0AZQAnAA0ACgBDAE0ARAAuAEUAWABFACAAdwBhAHMAIABzAHQAYQByAHQAZQBkACAAdwBpAHQAaAAgAHQAaABlACAAYQBiAG8AdgBlACAAcABhAHQAaAAgAGEAcwAgAHQAaABlACAAYwB1AHIAcgBlAG4AdAAgAGQAaQByAGUAYwB0AG8AcgB5AC4ADQAKAFUATgBDACAAcABhAHQAaABzACAAYQByAGUAIABuAG8AdAAgAHMAdQBwAHAAbwByAHQAZQBkAC4AIAAgAEQAZQBmAGEAdQBsAHQAaQBuAGcAIAB0AG8AIABXAGkAbgBkAG8AdwBzACAAZABpAHIAZQBjAHQAbwByAHkALgANAAoA",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": true,
+      "first_for_cwd": true,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 1,
+      "order": [
+        "cmd",
+        "powershell"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121314,
+        "started_unix": 1795637999.5705366,
+        "linux_start_ticks": "14229524",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 34.1904,
+      "total_ms": 107.4768,
+      "identity_probe_ms": 0.196,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "JwBcAFwAdwBzAGwALgBsAG8AYwBhAGwAaABvAHMAdABcAFUAYgB1AG4AdAB1AC0AMgA2AC4AMAA0AFwAaABvAG0AZQBcAG0AYQB4AFwAYgBlAG4AYwBoAG0AYQByAGsAcwBcAGIAcgBhAG4AYwBoAGwAaQBuAGUALQBiAG8AdQBuAGQAYQByAHkAXABwAHIAbwBmAGkAbABlAHMAXABjAGEAbgBkAGkAZABhAHQAZQAtAHcAbwByAGsAZQByAC0AdgAxAC0AdwBzAGwALQB3AGkAbgBkAG8AdwBzAFwAdwBlAGwAYwBvAG0AZQAnAA0ACgBDAE0ARAAuAEUAWABFACAAdwBhAHMAIABzAHQAYQByAHQAZQBkACAAdwBpAHQAaAAgAHQAaABlACAAYQBiAG8AdgBlACAAcABhAHQAaAAgAGEAcwAgAHQAaABlACAAYwB1AHIAcgBlAG4AdAAgAGQAaQByAGUAYwB0AG8AcgB5AC4ADQAKAFUATgBDACAAcABhAHQAaABzACAAYQByAGUAIABuAG8AdAAgAHMAdQBwAHAAbwByAHQAZQBkAC4AIAAgAEQAZQBmAGEAdQBsAHQAaQBuAGcAIAB0AG8AIABXAGkAbgBkAG8AdwBzACAAZABpAHIAZQBjAHQAbwByAHkALgANAAoA",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 1,
+      "order": [
+        "cmd",
+        "powershell"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121315,
+        "started_unix": 1795637999.6780872,
+        "linux_start_ticks": "14229535",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 49.175599,
+      "total_ms": 502.583297,
+      "identity_probe_ms": 0.2132,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 2,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121316,
+        "started_unix": 1795638000.1807628,
+        "linux_start_ticks": "14229585",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 50.303299,
+      "total_ms": 498.044897,
+      "identity_probe_ms": 0.2306,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 2,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121317,
+        "started_unix": 1795638000.678876,
+        "linux_start_ticks": "14229635",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 36.813499,
+      "total_ms": 107.772099,
+      "identity_probe_ms": 0.2167,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "JwBcAFwAdwBzAGwALgBsAG8AYwBhAGwAaABvAHMAdABcAFUAYgB1AG4AdAB1AC0AMgA2AC4AMAA0AFwAaABvAG0AZQBcAG0AYQB4AFwAYgBlAG4AYwBoAG0AYQByAGsAcwBcAGIAcgBhAG4AYwBoAGwAaQBuAGUALQBiAG8AdQBuAGQAYQByAHkAXABwAHIAbwBmAGkAbABlAHMAXABjAGEAbgBkAGkAZABhAHQAZQAtAHcAbwByAGsAZQByAC0AdgAxAC0AdwBzAGwALQB3AGkAbgBkAG8AdwBzAFwAdwBlAGwAYwBvAG0AZQAnAA0ACgBDAE0ARAAuAEUAWABFACAAdwBhAHMAIABzAHQAYQByAHQAZQBkACAAdwBpAHQAaAAgAHQAaABlACAAYQBiAG8AdgBlACAAcABhAHQAaAAgAGEAcwAgAHQAaABlACAAYwB1AHIAcgBlAG4AdAAgAGQAaQByAGUAYwB0AG8AcgB5AC4ADQAKAFUATgBDACAAcABhAHQAaABzACAAYQByAGUAIABuAG8AdAAgAHMAdQBwAHAAbwByAHQAZQBkAC4AIAAgAEQAZQBmAGEAdQBsAHQAaQBuAGcAIAB0AG8AIABXAGkAbgBkAG8AdwBzACAAZABpAHIAZQBjAHQAbwByAHkALgANAAoA",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 3,
+      "order": [
+        "cmd",
+        "powershell"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121318,
+        "started_unix": 1795638000.7871733,
+        "linux_start_ticks": "14229646",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 33.4592,
+      "total_ms": 101.587099,
+      "identity_probe_ms": 0.2135,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "JwBcAFwAdwBzAGwALgBsAG8AYwBhAGwAaABvAHMAdABcAFUAYgB1AG4AdAB1AC0AMgA2AC4AMAA0AFwAaABvAG0AZQBcAG0AYQB4AFwAYgBlAG4AYwBoAG0AYQByAGsAcwBcAGIAcgBhAG4AYwBoAGwAaQBuAGUALQBiAG8AdQBuAGQAYQByAHkAXABwAHIAbwBmAGkAbABlAHMAXABjAGEAbgBkAGkAZABhAHQAZQAtAHcAbwByAGsAZQByAC0AdgAxAC0AdwBzAGwALQB3AGkAbgBkAG8AdwBzAFwAdwBlAGwAYwBvAG0AZQAnAA0ACgBDAE0ARAAuAEUAWABFACAAdwBhAHMAIABzAHQAYQByAHQAZQBkACAAdwBpAHQAaAAgAHQAaABlACAAYQBiAG8AdgBlACAAcABhAHQAaAAgAGEAcwAgAHQAaABlACAAYwB1AHIAcgBlAG4AdAAgAGQAaQByAGUAYwB0AG8AcgB5AC4ADQAKAFUATgBDACAAcABhAHQAaABzACAAYQByAGUAIABuAG8AdAAgAHMAdQBwAHAAbwByAHQAZQBkAC4AIAAgAEQAZQBmAGEAdQBsAHQAaQBuAGcAIAB0AG8AIABXAGkAbgBkAG8AdwBzACAAZABpAHIAZQBjAHQAbwByAHkALgANAAoA",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 3,
+      "order": [
+        "cmd",
+        "powershell"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121319,
+        "started_unix": 1795638000.888821,
+        "linux_start_ticks": "14229656",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 48.7049,
+      "total_ms": 495.389097,
+      "identity_probe_ms": 0.4218,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 4,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121320,
+        "started_unix": 1795638001.3842623,
+        "linux_start_ticks": "14229705",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 50.4616,
+      "total_ms": 510.950897,
+      "identity_probe_ms": 0.5155,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ext4_welcome",
+      "cwd": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome",
+      "pair": 4,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121321,
+        "started_unix": 1795638001.8952959,
+        "linux_start_ticks": "14229756",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 33.5189,
+      "total_ms": 100.7423,
+      "identity_probe_ms": 0.2071,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "JwBcAFwAdwBzAGwALgBsAG8AYwBhAGwAaABvAHMAdABcAFUAYgB1AG4AdAB1AC0AMgA2AC4AMAA0AFwAaABvAG0AZQBcAG0AYQB4AFwAYgBlAG4AYwBoAG0AYQByAGsAcwBcAGIAcgBhAG4AYwBoAGwAaQBuAGUALQBiAG8AdQBuAGQAYQByAHkAXABwAHIAbwBmAGkAbABlAHMAXABjAGEAbgBkAGkAZABhAHQAZQAtAHcAbwByAGsAZQByAC0AdgAxAC0AdwBzAGwALQB3AGkAbgBkAG8AdwBzAFwAdwBlAGwAYwBvAG0AZQAnAA0ACgBDAE0ARAAuAEUAWABFACAAdwBhAHMAIABzAHQAYQByAHQAZQBkACAAdwBpAHQAaAAgAHQAaABlACAAYQBiAG8AdgBlACAAcABhAHQAaAAgAGEAcwAgAHQAaABlACAAYwB1AHIAcgBlAG4AdAAgAGQAaQByAGUAYwB0AG8AcgB5AC4ADQAKAFUATgBDACAAcABhAHQAaABzACAAYQByAGUAIABuAG8AdAAgAHMAdQBwAHAAbwByAHQAZQBkAC4AIAAgAEQAZQBmAGEAdQBsAHQAaQBuAGcAIAB0AG8AIABXAGkAbgBkAG8AdwBzACAAZABpAHIAZQBjAHQAbwByAHkALgANAAoA",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 0,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121322,
+        "started_unix": 1795638002.000731,
+        "linux_start_ticks": "14229767",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 53.911499,
+      "total_ms": 315.752399,
+      "identity_probe_ms": 0.201,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": true,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 0,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121324,
+        "started_unix": 1795638002.31653,
+        "linux_start_ticks": "14229798",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 34.009401,
+      "total_ms": 87.148704,
+      "identity_probe_ms": 0.1852,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": true,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 1,
+      "order": [
+        "cmd",
+        "powershell"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121325,
+        "started_unix": 1795638002.403729,
+        "linux_start_ticks": "14229807",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 37.760402,
+      "total_ms": 90.409305,
+      "identity_probe_ms": 0.1851,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 1,
+      "order": [
+        "cmd",
+        "powershell"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121326,
+        "started_unix": 1795638002.4941971,
+        "linux_start_ticks": "14229816",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 51.751402,
+      "total_ms": 315.826616,
+      "identity_probe_ms": 0.2328,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 2,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121327,
+        "started_unix": 1795638002.8100812,
+        "linux_start_ticks": "14229848",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 51.360702,
+      "total_ms": 327.824217,
+      "identity_probe_ms": 0.2256,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 2,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121328,
+        "started_unix": 1795638003.1379519,
+        "linux_start_ticks": "14229881",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 39.887502,
+      "total_ms": 97.513405,
+      "identity_probe_ms": 0.2258,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 3,
+      "order": [
+        "cmd",
+        "powershell"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121329,
+        "started_unix": 1795638003.2355368,
+        "linux_start_ticks": "14229890",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 36.210901,
+      "total_ms": 88.861304,
+      "identity_probe_ms": 0.2114,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 3,
+      "order": [
+        "cmd",
+        "powershell"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121330,
+        "started_unix": 1795638003.3244507,
+        "linux_start_ticks": "14229899",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 48.717103,
+      "total_ms": 317.634516,
+      "identity_probe_ms": 0.3093,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 4,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "powershell",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)"
+      ],
+      "identity": {
+        "linux_interop_pid": 121331,
+        "started_unix": 1795638003.6421368,
+        "linux_start_ticks": "14229931",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1MvU3lzdGVtMzIvV2luZG93c1Bvd2VyU2hlbGwvdjEuMC9wb3dlcnNoZWxsLmV4ZQBwb3dlcnNoZWxsLmV4ZQAtTm9Mb2dvAC1Ob1Byb2ZpbGUALU5vbkludGVyYWN0aXZlAC1Db21tYW5kAFtDb25zb2xlXTo6T3V0cHV0RW5jb2RpbmcgPSBbVGV4dC5VVEY4RW5jb2RpbmddOjpuZXcoJGZhbHNlKTsgJGRpcmVjdG9yeSA9ICRlbnY6TE9DQUxBUFBEQVRBOyBpZiAoW3N0cmluZ106OklzTnVsbE9yRW1wdHkoJGRpcmVjdG9yeSkpIHsgJGRpcmVjdG9yeSA9IFtFbnZpcm9ubWVudF06OkdldEZvbGRlclBhdGgoW0Vudmlyb25tZW50K1NwZWNpYWxGb2xkZXJdOjpMb2NhbEFwcGxpY2F0aW9uRGF0YSkgfTsgW0NvbnNvbGVdOjpXcml0ZSgkZGlyZWN0b3J5KQA="
+      },
+      "spawn_ms": 50.920303,
+      "total_ms": 323.665317,
+      "identity_probe_ms": 0.2005,
+      "exit": 0,
+      "stdout_base64": "QzpcVXNlcnNcbWF4XEFwcERhdGFcTG9jYWw=",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    },
+    {
+      "cwd_kind": "ntfs_kernel",
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pair": 4,
+      "order": [
+        "powershell",
+        "cmd"
+      ],
+      "kind": "cmd",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/u",
+        "/c",
+        "set LOCALAPPDATA"
+      ],
+      "identity": {
+        "linux_interop_pid": 121332,
+        "started_unix": 1795638003.9658585,
+        "linux_start_ticks": "14229963",
+        "linux_exe": "/init",
+        "linux_cmdline_base64": "L2luaXQAL21udC9jL1dJTkRPV1Mvc3lzdGVtMzIvY21kLmV4ZQBjbWQuZXhlAC9kAC91AC9jAHNldCBMT0NBTEFQUERBVEEA"
+      },
+      "spawn_ms": 37.591802,
+      "total_ms": 97.563805,
+      "identity_probe_ms": 0.2061,
+      "exit": 0,
+      "stdout_base64": "TABPAEMAQQBMAEEAUABQAEQAQQBUAEEAPQBDADoAXABVAHMAZQByAHMAXABtAGEAeABcAEEAcABwAEQAYQB0AGEAXABMAG8AYwBhAGwADQAKAA==",
+      "stderr_base64": "",
+      "decoded_path": "C:\\Users\\max\\AppData\\Local",
+      "first_for_command": false,
+      "first_for_cwd": false,
+      "paired_output_equal": true
+    }
+  ],
+  "summary": {
+    "ext4_welcome": {
+      "powershell": {
+        "first_ms": 600.152696,
+        "median_ms": 502.583297,
+        "samples_ms": [
+          600.152696,
+          502.583297,
+          498.044897,
+          495.389097,
+          510.950897
+        ]
+      },
+      "cmd": {
+        "first_ms": 139.296299,
+        "median_ms": 107.4768,
+        "samples_ms": [
+          139.296299,
+          107.4768,
+          107.772099,
+          101.587099,
+          100.7423
+        ]
+      },
+      "paired_powershell_minus_cmd_ms": [
+        460.856397,
+        395.106497,
+        390.27279799999997,
+        393.801998,
+        410.208597
+      ]
+    },
+    "ntfs_kernel": {
+      "powershell": {
+        "first_ms": 315.752399,
+        "median_ms": 317.634516,
+        "samples_ms": [
+          315.752399,
+          315.826616,
+          327.824217,
+          317.634516,
+          323.665317
+        ]
+      },
+      "cmd": {
+        "first_ms": 87.148704,
+        "median_ms": 90.409305,
+        "samples_ms": [
+          87.148704,
+          90.409305,
+          97.513405,
+          88.861304,
+          97.563805
+        ]
+      },
+      "paired_powershell_minus_cmd_ms": [
+        228.60369500000002,
+        225.41731099999998,
+        230.31081199999997,
+        228.773212,
+        226.101512
+      ]
+    }
+  }
+}

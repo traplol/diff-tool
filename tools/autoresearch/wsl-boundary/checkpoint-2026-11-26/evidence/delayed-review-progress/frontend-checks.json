@@ -1,0 +1,29 @@
+[
+  {
+    "name": "frontend-tests",
+    "argv": [
+      "npm",
+      "test"
+    ],
+    "cwd": "/home/max/workspace/merge-viewer-native/build/experiments/delayed-review-progress/source",
+    "exit_code": 0,
+    "started_utc": "2026-11-26T00:21:13.711575+00:00",
+    "finished_utc": "2026-11-26T00:21:13.927119+00:00",
+    "log": "frontend-tests.log",
+    "log_sha256": "6567ce9026b2998653d03d53662f77d6ede98a157047ec6efae9c49103e066cf"
+  },
+  {
+    "name": "vite-build",
+    "argv": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "cwd": "/home/max/workspace/merge-viewer-native/build/experiments/delayed-review-progress/source",
+    "exit_code": 0,
+    "started_utc": "2026-11-26T00:21:13.927213+00:00",
+    "finished_utc": "2026-11-26T00:21:14.742292+00:00",
+    "log": "vite-build.log",
+    "log_sha256": "b7fbdb35e037c49d1ba260ac5fb0de275bf9f0a4d824bb59a0892c645764f490"
+  }
+]

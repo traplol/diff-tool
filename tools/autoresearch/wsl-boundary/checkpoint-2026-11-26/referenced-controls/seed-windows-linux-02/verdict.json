@@ -1,0 +1,61 @@
+{
+  "binary_sha256": "0dae1d626a3a026d7890970087b846bc65642f09ca7dbb381fc8343cdb533de6",
+  "case": "windows_linux",
+  "comments": [
+    {
+      "anchor": [
+        3434,
+        3434
+      ],
+      "body": "Boundary benchmark branch comment",
+      "id": 1,
+      "path": "kernel/fork.c"
+    },
+    {
+      "anchor": [
+        3438,
+        3438
+      ],
+      "body": "Boundary benchmark working-tree comment",
+      "id": 2,
+      "path": "kernel/fork.c"
+    }
+  ],
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "3493356f71192d983e3ee7da41952552cb86f737310cc1ea247f3196e0ae48f4",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "0e5b8e54e36660b0217ee138dcc4e8e3243a061f9f426cf80afe437b73116b66",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "37ec6d9ebf66ab1aac43510f24269d7b111ebbb0a939784b823e84c4800a70e8"
+  },
+  "finished_at_unix": 1795617046.9888606,
+  "git_head": "82402a7087cdd54f2d84a7b064adab61f1bf8b00",
+  "label": "baseline-seed",
+  "launch": {
+    "binary": "C:\\Users\\max\\branchline-bench\\binaries\\baseline\\branchline.exe",
+    "binary_sha256": "0dae1d626a3a026d7890970087b846bc65642f09ca7dbb381fc8343cdb533de6",
+    "cdp_port": 29233,
+    "created": "2026-11-25T09:26:52.4509990-05:00",
+    "mcp_port": 28875,
+    "pid": 10444,
+    "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+    "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+    "session": 1,
+    "source_hash": "fc3c6f04f234cf84be1b80679cb33327843e8d75c950c3854713718921ce0c4a"
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "seed",
+  "next_action": "Close the seed app and restart the same isolated profile on the non-repository directory before measurement.",
+  "repetitions": 3,
+  "schema_version": 1,
+  "setup_complete": true,
+  "source_hash": "fc3c6f04f234cf84be1b80679cb33327843e8d75c950c3854713718921ce0c4a",
+  "started_at_unix": 1795616856.6639817,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed"
+}

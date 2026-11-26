@@ -1,0 +1,28 @@
+{
+  "app_process": {
+    "args": [
+      "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+      "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+    ],
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+    "pid": 191252,
+    "start_ticks": "15343376"
+  },
+  "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+  "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+  "created": "15343376",
+  "display": ":0",
+  "driver_process": {
+    "binary": "/usr/bin/WebKitWebDriver",
+    "pid": 191250,
+    "start_ticks": "15343370"
+  },
+  "gdk_backend": "x11",
+  "mcp_port": 28867,
+  "pid": 191252,
+  "port": 29225,
+  "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+  "session": "47b53b64-23e3-4b84-94f9-ecb1cb7913f8",
+  "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+  "supervisor_pid": 191249
+}

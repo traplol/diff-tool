@@ -1,0 +1,31 @@
+--- a/src-tauri/git-worker/tests/stdio.rs
++++ b/src-tauri/git-worker/tests/stdio.rs
+@@ -99,6 +99,12 @@
+     let branch = worker.call(json!({"op":"compare","view":view,
+         "left":"refs/heads/main","right":"refs/heads/review"}));
+     assert_eq!(branch["head"], view["refs"]["refs/heads/review"]);
++    let mut branch_header = branch.clone();
++    branch_header.as_object_mut().unwrap().remove("files");
++    let branch_patch_request = json!({"op":"display_patch","comparison":branch_header,
++        "file":branch["files"][0]});
++    let branch_patch = json!(["@@ -1 +1 @@\n-base\n+review\n", [[1, 1]]]);
++    assert_eq!(worker.call(branch_patch_request.clone()), branch_patch);
+ 
+     std::fs::write(&file, "staged\n").unwrap();
+     git(root, &["add", "file.txt"]);
+@@ -150,6 +156,7 @@
+     git(root, &["add", "file.txt"]);
+     git(root, &["commit", "-qm", "later"]);
+     let fresh = worker.call(json!({"op":"open","path":root}))["repo"].clone();
++    assert_eq!(worker.call(branch_patch_request.clone()), branch_patch);
+     assert_eq!(worker.call(scoped_patch), patch);
+     assert_ne!(
+         fresh["refs"]["refs/heads/review"],
+@@ -172,6 +179,7 @@
+     assert_eq!(worker.call(json!({"op":"hello"}))["pid"], pid);
+     let mut restarted = Worker::start();
+     restarted.call(json!({"op":"open","path":root}));
++    assert_eq!(restarted.call(branch_patch_request), branch_patch);
+     assert_eq!(restarted.call(patch_request), patch);
+     assert_eq!(restarted.call(contents_request), json!(["unstaged"]));
+ }

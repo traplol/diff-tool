@@ -1,0 +1,104 @@
+{
+  "status": "host-extract-git-discovery-and-source-passed",
+  "archive_sha256": "052a2e9ecb7b7a7c1cee91946a754b3912715087b7ca5a1326542948f3064ee3",
+  "bundle_sha256": "1509cbcd868db0160fc1b8299b3755283afbfc8e0ba8244cb63b39540737d1e5",
+  "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "git_tree": "c3d380fd97b2bf2113d0b94db74ff62bc22ab33b",
+  "canonical_app_files": 49,
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "all_snapshot_files_unchanged": true,
+  "snapshot_file_count": 51,
+  "external_alternates": false,
+  "build_sh_executable": true,
+  "workload_control_sha256": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "--quiet",
+        "/tmp/integrated-cli-package-ivzyok77/source"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "bundle",
+        "verify",
+        "/tmp/integrated-cli-package-ivzyok77/source-ce75cd6.bundle"
+      ],
+      "exit": 0,
+      "stdout": "The bundle contains this ref:\nce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df HEAD\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n",
+      "stderr": "/tmp/integrated-cli-package-ivzyok77/source-ce75cd6.bundle is okay\n"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "/tmp/integrated-cli-package-ivzyok77/source-ce75cd6.bundle",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "From /tmp/integrated-cli-package-ivzyok77/source-ce75cd6.bundle\n * branch            HEAD       -> FETCH_HEAD\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "FETCH_HEAD"
+      ],
+      "exit": 0,
+      "stdout": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "update-ref",
+        "--no-deref",
+        "HEAD",
+        "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "read-tree",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "exit": 0,
+      "stdout": "c3d380fd97b2bf2113d0b94db74ff62bc22ab33b\n",
+      "stderr": ""
+    }
+  ],
+  "vm_calls": false,
+  "builds_tests_or_scoring": false
+}

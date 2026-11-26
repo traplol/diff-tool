@@ -1,0 +1,106 @@
+{
+  "cache_hygiene": {
+    "build_notice": "Shared target entrypoints remain the last experimental artifacts and are not deployed. The next ordinary build must regenerate package metadata and compile from its actual source.",
+    "host": "13 own-package debug fingerprint directories reversibly backed up.",
+    "receipts": [
+      "cache-hygiene/host.json",
+      "cache-hygiene/vm.json",
+      "cache-hygiene/vm-official-clean.json"
+    ],
+    "vm_final_cleanup": "Four official Cargo own-package release cleanup commands exited zero; all four shared GUI/worker entrypoints restored byte-exactly. Sources, dependency artifacts and installed apps remained unchanged.",
+    "vm_initial_attempt": "Historical layout-specific pass moved zero fingerprint directories; retained honestly as the first attempt."
+  },
+  "checkpoint_date": "2026-11-26",
+  "delayed_review_progress": {
+    "decision": "Focused host cases and frontend checks pass. Native behavior and GUI measurements remain pending.",
+    "source_hash": "57b8d4671f5b477dc430d1bc719e6882d68a26aa7e5456fd007fbfd917329d4d"
+  },
+  "git_command_trace": {
+    "decision": "Native diagnostic with wire/patch parity. Command spans do not establish a GUI score or isolate every timing cause.",
+    "source_hash": "e72a63dcb70773427a836cc4d68f7e153f08e39c0641a2dd6c01da75be0e9b68"
+  },
+  "gui_open_phases": {
+    "decision": "Native phase diagnostic only; original runtime failure and corrected r2 captures retained. Overlapping spans are not additive.",
+    "source_hash": "29898a628ed57d5a4688800e87966729bc6e9391d5ece489cadb424702f588cc"
+  },
+  "integrated_linux_cli": {
+    "case_sample_counts": {
+      "windows_linux": 318,
+      "windows_windows": 318,
+      "wsl_linux": 318,
+      "wsl_windows": 318
+    },
+    "correct_samples": 1272,
+    "decision": "Reject for promotion. Primary gain is below 10%, and all four cells have failed frozen guards.",
+    "decision_record": "evidence/linux-cli-integrated/evaluation-controls/decision.md",
+    "failed_frozen_guard_counts": {
+      "windows_linux": 2,
+      "windows_windows": 6,
+      "wsl_linux": 11,
+      "wsl_windows": 1
+    },
+    "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+    "linux_caller_sample_counts": {
+      "wsl_linux": 318,
+      "wsl_windows": 318
+    },
+    "old_pilot_samples_pooled": false,
+    "primary_branch_group_p95_ms": {
+      "baseline": 229.0,
+      "candidate": 224.7,
+      "improvement_percent": 1.8777292576419216,
+      "minimum_required_percent": 10
+    },
+    "recorded_cleanup": "All 24 exact owned run actors stopped; fixture, private transport/socket and task-port checks pass. These are recorded checks, not a new VM inventory.",
+    "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+    "summary": "evidence/linux-cli-integrated/evaluation-controls/summary.json",
+    "valid_processes": 24,
+    "windows_caller_total_samples": 636
+  },
+  "linux_cli_branch_patch": {
+    "decision": "Prepared against integrated c200; KISS simple enough. All execution gates remain pending.",
+    "source_hash": "fcc050e9843ae3caa7826a00cbbd684ecc6e8805ce12994f364e21dc96d5e704"
+  },
+  "main_application_commit": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "measurement_limits": [
+    "Fresh process is not OS-cold.",
+    "Do not pool platforms, source revisions or older pilots.",
+    "Foreground IPC remainder includes other UI/frame/wait work and is not pure paint.",
+    "Historical paths, process IDs and release strings describe past runs; do not treat them as live ownership or execute saved supervisors."
+  ],
+  "native_cache_integrated": {
+    "decision": "Prepared and KISS simple enough. No tests, builds, VM runs or scores for this exact source. Prior 252 gates do not establish its acceptance.",
+    "proof": "evidence/native-cache-integrated/proof.json",
+    "source_hash": "89f5019903f293ef659f60240d57b412a3b960b3da701490fe632152d9343b75"
+  },
+  "native_helper_252": {
+    "decision": "Valid GUI series fails final action regression guards; no performance promotion.",
+    "gui_sample_count": 318,
+    "protocol_and_lifecycle_gates": "Passed in both directions, including malformed-response cleanup before Connection Drop with retained pipes.",
+    "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500"
+  },
+  "native_index_path": {
+    "decision": "Recorded host correctness gates pass. Native validation and timing remain pending.",
+    "source_hash": "47a2289c47378a2e0e159951218e27b973bd572ff376bddb035b0c0b733b9a08"
+  },
+  "old_linux_cli_pilot": {
+    "decision": "Its one-cell frozen qualification passes. This older b2-based series is separate from integrated c200 and does not qualify the integrated source.",
+    "sample_count": 318,
+    "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5"
+  },
+  "parallel_untracked": {
+    "decision": "Native r2 backend wire/patch parity passes; preliminary backend evidence only. Failed r1 and startup-offset analysis remain. No GUI acceptance.",
+    "source_hash": "f15e85e1ec50af3bdc82e792a4d2d1189b67f4e56375679d88e0b035fe587a0f"
+  },
+  "promoted": false,
+  "staged_anchor": {
+    "decision": "Valid native pilot fails frozen staged-metadata acceptance; eligibility proof and failed first packaging attempt retained.",
+    "sample_count": 318,
+    "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404"
+  },
+  "status": "Evidence checkpoint; no candidate promoted; target remains unmet",
+  "windows_effective_git_config": {
+    "decision": "Read-only proof: core.fscache=true from system config; core.fsmonitor and core.untrackedCache unset. Index/config/HEAD unchanged. No flag-only speed experiment warranted.",
+    "proof": "evidence/windows-git-effective-config/proof.json"
+  }
+}

@@ -1,0 +1,45 @@
+   Compiling branchline-git-worker v0.2.0 (/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/source/src-tauri/git-worker)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.27s
+     Running unittests src/main.rs (src-tauri/git-worker/target/debug/deps/branchline_git_worker-ec14863b7131678d)
+
+running 30 tests
+test git::tests::raw_and_numstat_parsers_keep_counts_errors_and_stat_only_changes ... ok
+test git::tests::display_patch_preserves_git_rows_and_frozen_working_tree ... ok
+test git::tests::libgit2_reads_normal_review_changes_without_the_compatibility_backend ... ok
+test git::worker::tests::invalid_sections_are_rejected_before_git_access ... ok
+test git::worker::tests::null_success_is_distinct_from_failure ... ok
+test git::tests::patch_reader_checks_cancellation_while_git_is_silent ... ok
+test git::worker::tests::wire_sections_are_lossless_and_do_not_change_frontend_serialization ... ok
+test git::worker::tests::protocol_rejects_mutating_and_unknown_operations ... ok
+test git::tests::sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged ... ok
+test git::tests::staged_metadata_declines_unsupported_raw_tree_mode ... ok
+test git::tests::staged_metadata_accepts_chmod_and_unrelated_sparse_omissions_but_rejects_requested_skip ... ok
+test git::tests::revision_file_distinguishes_text_binary_and_missing_submodule_objects ... ok
+test git::tests::advertised_remote_default_and_orphan_and_detached_checkout ... ok
+test git::tests::staged_metadata_rejects_intent_to_add_conflicts_and_non_modifications ... ok
+test git::tests::working_tree_snapshot_does_not_rewrite_stat_stale_index ... ok
+test git::tests::staged_metadata_requires_exact_raw_path_and_regular_modes ... ok
+test git::tests::literal_names_binary_rename_line_numbers_and_scoped_untracked ... ok
+test git::tests::streamed_patches_keep_type_change_sections_and_byte_paths ... ok
+test git::tests::patch_stream_stops_at_201_matches_inside_the_first_file ... ok
+test git::tests::skip_worktree_entries_preserve_git_status_and_frozen_patches ... ok
+test git::tests::whole_file_reconstructs_unstaged_gaps_after_the_index_and_disk_change ... ok
+test git::tests::partially_staged_snapshot_survives_file_and_index_changes ... ok
+test git::tests::patch_process_is_reaped_when_a_silent_search_is_superseded ... ok
+test git::tests::whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move ... ok
+test git::tests::staged_metadata_reads_index_not_worktree_and_rejects_restage_or_stale_head ... ok
+test git::tests::symlinks_type_changes_nested_repo_and_non_utf8_names ... ok
+test git::tests::streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes ... ok
+test git::tests::configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs ... ok
+test git::tests::merge_conflict_shows_existing_stage_two_and_other_staged_changes ... ok
+test git::tests::first_commit_diverged_base_stack_and_forks ... ok
+
+test result: ok. 30 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running tests/stdio.rs (src-tauri/git-worker/target/debug/deps/stdio-ed737cf310c0694c)
+
+running 1 test
+test real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+

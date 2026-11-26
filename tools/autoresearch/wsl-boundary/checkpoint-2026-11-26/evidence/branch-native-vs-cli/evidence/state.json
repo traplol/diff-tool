@@ -1,0 +1,353 @@
+{
+  "status": "complete-diagnostic-only",
+  "source_worker_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+  "scope": "Fresh native worker vs a fresh native Linux Git child; OS caches are not flushed; exact30 file metadata/stats parity. No GUI verdict.",
+  "before": {
+    "index": {
+      "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017",
+      "size": 9271771,
+      "mtime": 1795615942129939671,
+      "ctime": 1795615942133939671,
+      "inode": 278079,
+      "mode": 33188
+    },
+    "config": {
+      "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+      "size": 334,
+      "mtime": 1795615994729935414,
+      "ctime": 1795615994729935414,
+      "inode": 278185,
+      "mode": 33188
+    },
+    "HEAD": {
+      "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+      "size": 39,
+      "mtime": 1795614733907349066,
+      "ctime": 1795614733907349066,
+      "inode": 272949,
+      "mode": 33188
+    }
+  },
+  "after": {
+    "index": {
+      "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017",
+      "size": 9271771,
+      "mtime": 1795615942129939671,
+      "ctime": 1795615942133939671,
+      "inode": 278079,
+      "mode": 33188
+    },
+    "config": {
+      "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+      "size": 334,
+      "mtime": 1795615994729935414,
+      "ctime": 1795615994729935414,
+      "inode": 278185,
+      "mode": 33188
+    },
+    "HEAD": {
+      "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+      "size": 39,
+      "mtime": 1795614733907349066,
+      "ctime": 1795614733907349066,
+      "inode": 272949,
+      "mode": 33188
+    }
+  },
+  "rows": [
+    {
+      "method": "native",
+      "number": 0,
+      "wall_ms": 763.246679,
+      "second_wall_ms": 38.438604,
+      "cpu_ms": 420.0,
+      "minor_faults": 8633,
+      "major_faults": 13,
+      "pid": 196921,
+      "start_ticks": "15497754",
+      "records": [
+        {
+          "variant": "native-0",
+          "phase": "hello",
+          "op": "hello",
+          "iteration": 0,
+          "start_ns": 154977549120049,
+          "end_ns": 154977550129649,
+          "elapsed_ns": 1009600,
+          "request_bytes": 22,
+          "response_bytes": 83,
+          "response_sha256": "3752bbfafe8c67e09d3b7b9f9ca217382340dbdf0f10bc90d1d0e5e156569221"
+        },
+        {
+          "variant": "native-0",
+          "phase": "open",
+          "op": "open",
+          "iteration": 0,
+          "start_ns": 154977550172149,
+          "end_ns": 154977580746053,
+          "elapsed_ns": 30573904,
+          "request_bytes": 82,
+          "response_bytes": 592,
+          "response_sha256": "b857ce26d26b827a141f1842cc1deff17866027849efb249107be7d688e202de"
+        },
+        {
+          "variant": "native-0",
+          "phase": "first_compare",
+          "op": "compare",
+          "iteration": 0,
+          "start_ns": 154977581148553,
+          "end_ns": 154978344232532,
+          "elapsed_ns": 763083979,
+          "request_bytes": 643,
+          "response_bytes": 8393,
+          "response_sha256": "25ae1937ebcff7ddf8049a3d8cf78802bbfd9f64cd514bba0e8a65ddd88e5b60"
+        },
+        {
+          "variant": "native-0",
+          "phase": "second_compare",
+          "op": "compare",
+          "iteration": 0,
+          "start_ns": 154978344574032,
+          "end_ns": 154978382819936,
+          "elapsed_ns": 38245904,
+          "request_bytes": 643,
+          "response_bytes": 8393,
+          "response_sha256": "f67a3ce993577835dead3305780e0224bdc1490dbe14d1e3caadaac805041fa2"
+        }
+      ],
+      "exit": 0,
+      "native_gone": true
+    },
+    {
+      "method": "cli",
+      "number": 1,
+      "wall_ms": 43.894104,
+      "cpu_ms": 20.881999999999984,
+      "stdout_sha256": "23dbb183ebb88906fcfc67457a14682eaa2dbe424e04c9e94e7309a6ffe04931",
+      "metadata_parity": true
+    },
+    {
+      "method": "cli",
+      "number": 2,
+      "wall_ms": 28.428802,
+      "cpu_ms": 26.223999999999997,
+      "stdout_sha256": "23dbb183ebb88906fcfc67457a14682eaa2dbe424e04c9e94e7309a6ffe04931",
+      "metadata_parity": true
+    },
+    {
+      "method": "native",
+      "number": 3,
+      "wall_ms": 217.582423,
+      "second_wall_ms": 37.781804,
+      "cpu_ms": 210.0,
+      "minor_faults": 8643,
+      "major_faults": 0,
+      "pid": 196924,
+      "start_ticks": "15497846",
+      "records": [
+        {
+          "variant": "native-3",
+          "phase": "hello",
+          "op": "hello",
+          "iteration": 0,
+          "start_ns": 154978469340345,
+          "end_ns": 154978471780845,
+          "elapsed_ns": 2440500,
+          "request_bytes": 22,
+          "response_bytes": 83,
+          "response_sha256": "de5ec1c7619e68f0184c21ddcd5c4d607a404d4877b9d6efea6f2a4df3340805"
+        },
+        {
+          "variant": "native-3",
+          "phase": "open",
+          "op": "open",
+          "iteration": 0,
+          "start_ns": 154978471819345,
+          "end_ns": 154978472859945,
+          "elapsed_ns": 1040600,
+          "request_bytes": 82,
+          "response_bytes": 592,
+          "response_sha256": "b857ce26d26b827a141f1842cc1deff17866027849efb249107be7d688e202de"
+        },
+        {
+          "variant": "native-3",
+          "phase": "first_compare",
+          "op": "compare",
+          "iteration": 0,
+          "start_ns": 154978473077745,
+          "end_ns": 154978690511068,
+          "elapsed_ns": 217433323,
+          "request_bytes": 643,
+          "response_bytes": 8393,
+          "response_sha256": "25ae1937ebcff7ddf8049a3d8cf78802bbfd9f64cd514bba0e8a65ddd88e5b60"
+        },
+        {
+          "variant": "native-3",
+          "phase": "second_compare",
+          "op": "compare",
+          "iteration": 0,
+          "start_ns": 154978690836968,
+          "end_ns": 154978728315372,
+          "elapsed_ns": 37478404,
+          "request_bytes": 643,
+          "response_bytes": 8393,
+          "response_sha256": "f67a3ce993577835dead3305780e0224bdc1490dbe14d1e3caadaac805041fa2"
+        }
+      ],
+      "exit": 0,
+      "native_gone": true
+    },
+    {
+      "method": "native",
+      "number": 4,
+      "wall_ms": 144.256615,
+      "second_wall_ms": 35.382703,
+      "cpu_ms": 130.0,
+      "minor_faults": 8642,
+      "major_faults": 0,
+      "pid": 196925,
+      "start_ticks": "15497874",
+      "records": [
+        {
+          "variant": "native-4",
+          "phase": "hello",
+          "op": "hello",
+          "iteration": 0,
+          "start_ns": 154978746830874,
+          "end_ns": 154978747577874,
+          "elapsed_ns": 747000,
+          "request_bytes": 22,
+          "response_bytes": 83,
+          "response_sha256": "ab25cb6102617640342fdb23dfccd9a72f349ee3c6d17c9b328f9dabedcc50de"
+        },
+        {
+          "variant": "native-4",
+          "phase": "open",
+          "op": "open",
+          "iteration": 0,
+          "start_ns": 154978747626474,
+          "end_ns": 154978748773674,
+          "elapsed_ns": 1147200,
+          "request_bytes": 82,
+          "response_bytes": 592,
+          "response_sha256": "b857ce26d26b827a141f1842cc1deff17866027849efb249107be7d688e202de"
+        },
+        {
+          "variant": "native-4",
+          "phase": "first_compare",
+          "op": "compare",
+          "iteration": 0,
+          "start_ns": 154978748903274,
+          "end_ns": 154978893031189,
+          "elapsed_ns": 144127915,
+          "request_bytes": 643,
+          "response_bytes": 8393,
+          "response_sha256": "25ae1937ebcff7ddf8049a3d8cf78802bbfd9f64cd514bba0e8a65ddd88e5b60"
+        },
+        {
+          "variant": "native-4",
+          "phase": "second_compare",
+          "op": "compare",
+          "iteration": 0,
+          "start_ns": 154978893587289,
+          "end_ns": 154978928830392,
+          "elapsed_ns": 35243103,
+          "request_bytes": 643,
+          "response_bytes": 8393,
+          "response_sha256": "f67a3ce993577835dead3305780e0224bdc1490dbe14d1e3caadaac805041fa2"
+        }
+      ],
+      "exit": 0,
+      "native_gone": true
+    },
+    {
+      "method": "cli",
+      "number": 5,
+      "wall_ms": 19.910402,
+      "cpu_ms": 17.541999999999945,
+      "stdout_sha256": "23dbb183ebb88906fcfc67457a14682eaa2dbe424e04c9e94e7309a6ffe04931",
+      "metadata_parity": true
+    },
+    {
+      "method": "cli",
+      "number": 6,
+      "wall_ms": 19.166802,
+      "cpu_ms": 16.392000000000017,
+      "stdout_sha256": "23dbb183ebb88906fcfc67457a14682eaa2dbe424e04c9e94e7309a6ffe04931",
+      "metadata_parity": true
+    },
+    {
+      "method": "native",
+      "number": 7,
+      "wall_ms": 223.829423,
+      "second_wall_ms": 34.187904,
+      "cpu_ms": 220.0,
+      "minor_faults": 8643,
+      "major_faults": 0,
+      "pid": 196928,
+      "start_ticks": "15497897",
+      "records": [
+        {
+          "variant": "native-7",
+          "phase": "hello",
+          "op": "hello",
+          "iteration": 0,
+          "start_ns": 154978979917198,
+          "end_ns": 154978982496598,
+          "elapsed_ns": 2579400,
+          "request_bytes": 22,
+          "response_bytes": 83,
+          "response_sha256": "d3760d4ca11c1678dfd99b26e6b98a825d69311238618ca356201865d7274662"
+        },
+        {
+          "variant": "native-7",
+          "phase": "open",
+          "op": "open",
+          "iteration": 0,
+          "start_ns": 154978982533898,
+          "end_ns": 154978984657698,
+          "elapsed_ns": 2123800,
+          "request_bytes": 82,
+          "response_bytes": 592,
+          "response_sha256": "b857ce26d26b827a141f1842cc1deff17866027849efb249107be7d688e202de"
+        },
+        {
+          "variant": "native-7",
+          "phase": "first_compare",
+          "op": "compare",
+          "iteration": 0,
+          "start_ns": 154978984772998,
+          "end_ns": 154979208469921,
+          "elapsed_ns": 223696923,
+          "request_bytes": 643,
+          "response_bytes": 8393,
+          "response_sha256": "25ae1937ebcff7ddf8049a3d8cf78802bbfd9f64cd514bba0e8a65ddd88e5b60"
+        },
+        {
+          "variant": "native-7",
+          "phase": "second_compare",
+          "op": "compare",
+          "iteration": 0,
+          "start_ns": 154979208948921,
+          "end_ns": 154979242947125,
+          "elapsed_ns": 33998204,
+          "request_bytes": 643,
+          "response_bytes": 8393,
+          "response_sha256": "f67a3ce993577835dead3305780e0224bdc1490dbe14d1e3caadaac805041fa2"
+        }
+      ],
+      "exit": 0,
+      "native_gone": true
+    }
+  ],
+  "summary": {
+    "native": {
+      "median_wall_ms": 220.70592299999998,
+      "median_cpu_ms": 215.0
+    },
+    "cli": {
+      "median_wall_ms": 24.169602,
+      "median_cpu_ms": 19.211999999999964
+    }
+  }
+}

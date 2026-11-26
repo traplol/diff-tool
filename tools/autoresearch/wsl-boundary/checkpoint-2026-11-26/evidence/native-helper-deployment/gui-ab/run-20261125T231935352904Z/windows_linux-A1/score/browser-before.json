@@ -1,0 +1,15 @@
+{
+  "busy": false,
+  "comparison": "",
+  "filename": "Select a file",
+  "repository": "",
+  "status": "\n          Local Gitfatal: not a git repository (or any of the parent directories): .git\n        ",
+  "title": "Branchline",
+  "url": "http://tauri.localhost/",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36 Edg/158.0.0.0",
+  "viewport": [
+    1280,
+    781
+  ],
+  "visible": "visible"
+}

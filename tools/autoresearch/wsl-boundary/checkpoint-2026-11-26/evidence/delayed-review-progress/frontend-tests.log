@@ -1,0 +1,44 @@
+
+> branchline@0.2.0 test
+> node --test frontend/*.test.js
+
+TAP version 13
+# Subtest: frontend/context.test.js
+ok 1 - frontend/context.test.js
+  ---
+  duration_ms: 49.08293
+  type: 'test'
+  ...
+# Subtest: frontend/editor.test.js
+ok 2 - frontend/editor.test.js
+  ---
+  duration_ms: 46.729383
+  type: 'test'
+  ...
+# Subtest: frontend/patch.test.js
+ok 3 - frontend/patch.test.js
+  ---
+  duration_ms: 27.66722
+  type: 'test'
+  ...
+# Subtest: frontend/review-ui.test.js
+ok 4 - frontend/review-ui.test.js
+  ---
+  duration_ms: 30.863635
+  type: 'test'
+  ...
+# Subtest: frontend/search-palette.test.js
+ok 5 - frontend/search-palette.test.js
+  ---
+  duration_ms: 53.069982
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 65.024093

@@ -1,0 +1,2 @@
+{"controller": {"pid": 196974, "start_ticks": "15539095", "image": "/usr/bin/python3.14", "cwd": "/mnt/c/Users/max"}, "output": "/home/max/benchmarks/branchline-boundary/staged-note2-eligibility-20261125T235815Z"}
+{"worker": {"pid": 196975, "start_ticks": "15539169", "image": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker", "cwd": "/home/max/benchmarks/branchline-boundary/staged-note2-eligibility-20261125T235815Z"}}

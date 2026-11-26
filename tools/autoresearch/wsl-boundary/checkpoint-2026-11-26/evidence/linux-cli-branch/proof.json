@@ -1,0 +1,71 @@
+{
+  "time_unix": 1795651020.7465518,
+  "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+  "baseline_source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "canonical_app_files": 49,
+  "owned_git_metadata": true,
+  "git_alternates": false,
+  "changed_files": [
+    "src-tauri/src/git.rs"
+  ],
+  "patch_sha256": "3592906b51c69dee26402fe413a2015d34fe76c00fd855c7d798689836b4e6c9",
+  "scope": "One Linux-only condition on existing native branch comparison filter; existing CLI/parser fallback selected. No API/config/cache or Git flag changes. Windows and other OS native paths preserved.",
+  "host_worker": {
+    "unit_passed": 25,
+    "real_stdio_passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "log": "worker-tests.log",
+    "log_sha256": "33b43364e41cb58e2c329108809a95dc720d936513480869c243fb4a01d0f938"
+  },
+  "host_gui_rust": {
+    "passed": 70,
+    "failed": 0,
+    "ignored": 1,
+    "log": "gui-tests.log",
+    "log_sha256": "18572bd511b95718f780baffca890aa2f6f8eb5ae3d43839ea584bdc160118b2",
+    "loopback_available": true,
+    "test_threads": 1
+  },
+  "source_unchanged_after_tests": true,
+  "all_started_host_actors_absent": [
+    {
+      "pid": 238434,
+      "start_ticks": "77327636",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 238437,
+      "start_ticks": "77327643",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 239555,
+      "start_ticks": "77328358",
+      "exact_actor_absent": true
+    }
+  ],
+  "kiss": {
+    "result": "simple enough",
+    "agent": "/root/git_command_native_diagnostic/linux_cli_branch_kiss",
+    "fork_turns": "none",
+    "scope": "Final one-line production diff only; KISS, no correctness or performance review"
+  },
+  "vm_calls": false,
+  "native_vm_builds": false,
+  "candidate_benchmarks": false,
+  "promoted": false,
+  "canonical_controls_changed": false,
+  "main_source_changed": false,
+  "f15_preflight_unchanged": {
+    "archive_sha256": "79453f4aae86ec8079e35f040192acbd39e2b5e526a9c2dfe6482c053cf38b83",
+    "expected": "79453f4aae86ec8079e35f040192acbd39e2b5e526a9c2dfe6482c053cf38b83"
+  },
+  "remaining": [
+    "Native GNU worker build and exact kernel metadata/patch parity",
+    "Matching Windows GUI build embedding the new GNU worker",
+    "Canonical GUI A/B and all retained opening/first-use/repeated/control gates",
+    "No component or candidate end-to-end speedup claim yet"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "status": "host-source-and-rust-syntax-only-passed",
+  "source_hash": "29898a628ed57d5a4688800e87966729bc6e9391d5ece489cadb424702f588cc",
+  "base_source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "changed_from_252": [
+    "src-tauri/src/git/remote.rs",
+    "src-tauri/src/service.rs"
+  ],
+  "owned_git": {
+    "head": "b2de070becf3fcba2d47557efd375221c586f273",
+    "commit_type": "commit",
+    "real_git_dir": true,
+    "alternates_absent": true
+  },
+  "syntax": {
+    "tool": "rustfmt 1.8.0-stable (29483883ee 2025-08-04)",
+    "files": [
+      "src-tauri/src/git/remote.rs",
+      "src-tauri/src/service.rs"
+    ],
+    "parse_passed": true
+  },
+  "call_counts_preserved": true,
+  "log_schema": "gui_open_phase pid=<native PID> tag=<fixed literal> elapsed_us=<Instant duration>; no paths/args/requests/results. stderr write errors ignored.",
+  "tags": [
+    "remote.connection_start",
+    "remote.hello",
+    "remote.helper_path",
+    "remote.location_command",
+    "remote.logical_mapping",
+    "remote.open",
+    "remote.request.blob",
+    "remote.request.checkout_state",
+    "remote.request.compare",
+    "remote.request.compare_trees",
+    "remote.request.descends",
+    "remote.request.display_patch",
+    "remote.request.merge_base",
+    "remote.request.other",
+    "remote.request.patch",
+    "remote.request.working_tree",
+    "remote.request.working_tree_paths",
+    "remote.start",
+    "session.compare",
+    "session.load",
+    "session.reload_notes",
+    "session.viewed",
+    "workspace.git_open_repo",
+    "workspace.open",
+    "workspace.open_stack",
+    "workspace.repo_settings",
+    "workspace.store_open"
+  ],
+  "nested_spans": "Outer workspace.open/session.load/remote.start include nested tap overhead. remote.open includes Open response metadata conversion. remote.request.* covers existing Connection.request after lock acquisition; no bodies serialized for logging.",
+  "build_or_tests_run": false,
+  "diagnostic_only": true,
+  "patch_sha256": "0c6a946928fe9e60d1f4239811fdaeacce3c2264c0cc377ca0dfd64d781b62a7",
+  "combined_b2_patch_sha256": "74c6c38c9a9b7ebba1d800f227315cff4c980f22f04de772cc15f9f64321f4e4"
+}

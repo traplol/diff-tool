@@ -1,0 +1,23 @@
+{
+  "vm_owner_absent": true,
+  "archive_sha256": "cef076a0cdfeda4e14eab58749f4b47a8fdde9a0c360b18f115bf456789dbeec",
+  "probe_sha256": "f5cd402a84c68c1ce57137386faf6cd72be6c3042b3df8b571e0835d6aa4ed4a",
+  "native_child_exits": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "summary": {
+    "native": {
+      "median_wall_ms": 220.70592299999998,
+      "median_cpu_ms": 215.0
+    },
+    "cli": {
+      "median_wall_ms": 24.169602,
+      "median_cpu_ms": 19.211999999999964
+    }
+  },
+  "all_30_metadata_comparisons_asserted": true,
+  "guard_unchanged": true
+}

@@ -1,0 +1,1270 @@
+{
+  "pid": 165337,
+  "start_ticks": "15194512",
+  "started": 1795647650.2053552,
+  "status": "built; canonical GUI evaluation pending",
+  "source": {
+    "files": {
+      "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+      "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+      "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+      "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+      "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+      "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+      "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+      "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+      "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+      "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+      "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+      "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+      "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+      "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+      "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+      "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+      "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+      "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+      "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+      "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+      "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+      "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+      "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+      "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+      "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+      "src-tauri/git-worker/tests/stdio.rs": "cac71741c77bfd9637065850907744c86bb1f64e7a8afe0e12d5ab1ac4338050",
+      "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+      "src-tauri/src/git.rs": "78928ee5acb68699a762ab6ff82d0965880236382736e7406135db80a9fc3979",
+      "src-tauri/src/git/native.rs": "cb18f64542882a8d7e8c376d5ff6c34c8b4ca28659538a5422925945c1316948",
+      "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+      "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+      "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+      "src-tauri/src/git/worker.rs": "b3c4e9bced9f1e0442e7c01d0c0fc07f9f55f2146103ec079bae070a3168a53d",
+      "src-tauri/src/git_tests.rs": "e7a81f1562310aeb5d90eb3177e65e5263d8a8528fc2c3e8fa5bc85495b806b5",
+      "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+      "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+      "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+      "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+      "src-tauri/src/mcp/desktop_tests.rs": "0bb8268871d8b8d9e66cbf757374d587233379749492b09fc90c735362dc3e13",
+      "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+      "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+      "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+      "src-tauri/src/review_tests.rs": "776dc85b0c8f459520787e651590bae0d0ec6aae0111fe5b524250508af152ae",
+      "src-tauri/src/search.rs": "de2551755e16cc3abef49a5b1b69f253f015562fc93ce8d6fe1b7d207ba59c14",
+      "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+      "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+      "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+      "src-tauri/src/tracking.rs": "edb39f6c1e7f0d8804a3a907284513bc0ef129d704945402bb633269cd0dcd9b",
+      "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+    },
+    "git_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+    "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404"
+  },
+  "release": "VM STAGED BUILD RELEASED",
+  "input": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input",
+  "phases": [
+    {
+      "name": "source-git-init",
+      "argv": [
+        "git",
+        "init",
+        "--quiet",
+        "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647650.2171228,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/source-git-init.log",
+      "pid": 165345,
+      "start_ticks": "15194589",
+      "exit": 0,
+      "finished": 1795647650.2727294
+    },
+    {
+      "name": "source-bundle-verify",
+      "argv": [
+        "git",
+        "bundle",
+        "verify",
+        "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source-1135a59.bundle"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647650.273274,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/source-bundle-verify.log",
+      "pid": 165346,
+      "start_ticks": "15194594",
+      "exit": 0,
+      "finished": 1795647650.2779016
+    },
+    {
+      "name": "source-bundle-fetch",
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source-1135a59.bundle",
+        "HEAD"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647650.2781305,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/source-bundle-fetch.log",
+      "pid": 165347,
+      "start_ticks": "15194595",
+      "exit": 0,
+      "finished": 1795647650.3881018
+    },
+    {
+      "name": "source-git-head",
+      "argv": [
+        "git",
+        "update-ref",
+        "--no-deref",
+        "HEAD",
+        "1135a59f3a51253709d652d1e4ec82fa8b32ce09"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647650.3934186,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/source-git-head.log",
+      "pid": 165359,
+      "start_ticks": "15194606",
+      "exit": 0,
+      "finished": 1795647650.4026718
+    },
+    {
+      "name": "source-git-index",
+      "argv": [
+        "git",
+        "read-tree",
+        "HEAD"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647650.4034407,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/source-git-index.log",
+      "pid": 165360,
+      "start_ticks": "15194607",
+      "exit": 0,
+      "finished": 1795647650.410483
+    },
+    {
+      "name": "linux-worker-build",
+      "argv": [
+        "cargo",
+        "build",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-unknown-linux-gnu"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647673.7023792,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/linux-worker-build.log",
+      "pid": 165439,
+      "start_ticks": "15196937",
+      "exit": 0,
+      "finished": 1795647752.9616716
+    },
+    {
+      "name": "windows-worker-build",
+      "argv": [
+        "cargo",
+        "xwin",
+        "build",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647752.9637191,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/windows-worker-build.log",
+      "pid": 167008,
+      "start_ticks": "15204863",
+      "exit": 0,
+      "finished": 1795647900.803223
+    },
+    {
+      "name": "linux-worker-format",
+      "argv": [
+        "file",
+        "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647901.323791,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/linux-worker-format.log",
+      "pid": 167705,
+      "start_ticks": "15219699",
+      "exit": 0,
+      "finished": 1795647901.3703973
+    },
+    {
+      "name": "linux-worker-program-headers",
+      "argv": [
+        "readelf",
+        "-l",
+        "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647901.3708239,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/linux-worker-program-headers.log",
+      "pid": 167706,
+      "start_ticks": "15219704",
+      "exit": 0,
+      "finished": 1795647901.3820593
+    },
+    {
+      "name": "linux-worker-tests",
+      "argv": [
+        "cargo",
+        "test",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-unknown-linux-gnu",
+        "--",
+        "--test-threads=1"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647901.3824167,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/linux-worker-tests.log",
+      "pid": 167707,
+      "start_ticks": "15219705",
+      "exit": 0,
+      "finished": 1795647968.9124982
+    },
+    {
+      "name": "windows-worker-tests-build",
+      "argv": [
+        "cargo",
+        "xwin",
+        "test",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc",
+        "--bin",
+        "branchline-git-worker",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795647968.9186928,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/windows-worker-tests-build.log",
+      "pid": 169119,
+      "start_ticks": "15226459",
+      "exit": 0,
+      "finished": 1795648109.069007
+    },
+    {
+      "name": "windows-worker-unit-tests",
+      "argv": [
+        "/mnt/c/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/worker-unit-tests.exe",
+        "--test-threads=1"
+      ],
+      "cwd": "/mnt/c/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2",
+      "started": 1795648109.4922712,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/windows-worker-unit-tests.log",
+      "pid": 169543,
+      "start_ticks": "15240516",
+      "exit": 0,
+      "finished": 1795648130.1480665
+    },
+    {
+      "name": "linux-gui-build",
+      "argv": [
+        "./build.sh",
+        "--no-bundle"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795648131.7239416,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/linux-gui-build.log",
+      "pid": 169560,
+      "start_ticks": "15242739",
+      "exit": 0,
+      "finished": 1795648231.23796
+    },
+    {
+      "name": "windows-gui-build",
+      "argv": [
+        "./build.sh",
+        "--windows"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input/source",
+      "started": 1795648231.5087285,
+      "log": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/windows-gui-build.log",
+      "pid": 169884,
+      "start_ticks": "15252718",
+      "exit": 0,
+      "finished": 1795648338.6036007
+    }
+  ],
+  "windows_gui_requested": true,
+  "kernel_git_environment": {
+    "linux": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_CONFIG_NOSYSTEM": "1",
+      "GIT_CONFIG_GLOBAL": "/dev/null",
+      "GIT_TERMINAL_PROMPT": "0"
+    },
+    "windows": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_CONFIG_NOSYSTEM": "1",
+      "GIT_CONFIG_GLOBAL": "NUL",
+      "GIT_TERMINAL_PROMPT": "0"
+    }
+  },
+  "build_environments": {
+    "linux_worker": {
+      "CARGO_BUILD_JOBS": "1",
+      "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+      "CARGO_NET_OFFLINE": "true",
+      "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target/git-worker",
+      "RUSTFLAGS": "-C target-feature=+crt-static",
+      "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+      "XWIN_CROSS_COMPILER": "clang",
+      "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+      "LIBZ_SYS_STATIC": "1"
+    },
+    "windows_worker": {
+      "CARGO_BUILD_JOBS": "1",
+      "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+      "CARGO_NET_OFFLINE": "true",
+      "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target/git-worker",
+      "RUSTFLAGS": "-C target-feature=+crt-static",
+      "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+      "XWIN_CROSS_COMPILER": "clang",
+      "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin"
+    },
+    "linux_gui": {
+      "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target",
+      "BRANCHLINE_GIT_WORKER_PATH": "/mnt/c/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline-git-worker.exe"
+    },
+    "windows_gui": {
+      "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target",
+      "BRANCHLINE_GIT_WORKER_PATH": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker",
+      "RUSTFLAGS": "build.sh adds -C target-feature=+crt-static"
+    }
+  },
+  "source_git_environment": {
+    "GIT_CONFIG_NOSYSTEM": "1",
+    "GIT_CONFIG_GLOBAL": "/dev/null",
+    "GIT_TERMINAL_PROMPT": "0",
+    "GIT_NO_LAZY_FETCH": "1"
+  },
+  "current_phase": "windows-gui-build",
+  "source_git_provenance": {
+    "head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+    "tree": "473206ad67cbd478e9f2385718f17fe519bc67e6",
+    "bundle_sha256": "e7b7d43e9147b2d72fdb64e49e6bbc23cb11dcddadd8f12d70a99d44c8ad6248",
+    "external_alternates": false,
+    "working_files_preserved": true,
+    "method": "init/fetch/update-ref/read-tree; no checkout"
+  },
+  "kernel_read_commands": [
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stdout_bytes": 41
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "show-ref"
+      ],
+      "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5",
+      "stdout_bytes": 264
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48",
+      "stdout_bytes": 7748183
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b",
+      "stdout_bytes": 396
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--cached",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290",
+      "stdout_bytes": 1618
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4",
+      "stdout_bytes": 1659
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stdout_bytes": 215
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stdout_bytes": 41
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "show-ref"
+      ],
+      "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5",
+      "stdout_bytes": 264
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48",
+      "stdout_bytes": 7748183
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b",
+      "stdout_bytes": 396
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--cached",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290",
+      "stdout_bytes": 1618
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4",
+      "stdout_bytes": 1659
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stdout_bytes": 215
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-tree",
+        "-z",
+        "HEAD",
+        "--",
+        "kernel/fork.c",
+        "kernel/time/time.c",
+        "kernel/trace/blktrace.c",
+        "mm/kfence/core.c",
+        "mm/memory.c"
+      ],
+      "stdout_sha256": "2aa2e2157cdeb4f6d5b13d6e6e1e4157ef34fe7da4cd148ec2e5d839b543b8bb",
+      "stdout_bytes": 351
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "kernel/fork.c",
+        "kernel/time/time.c",
+        "kernel/trace/blktrace.c",
+        "mm/kfence/core.c",
+        "mm/memory.c"
+      ],
+      "stdout_sha256": "b34a6d000883625daf72aafe03635fd9a7b9187f7759fb6e1c49f17694c2a642",
+      "stdout_bytes": 336
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-tree",
+        "-z",
+        "HEAD",
+        "--",
+        "kernel/fork.c",
+        "kernel/time/time.c",
+        "kernel/trace/blktrace.c",
+        "mm/kfence/core.c",
+        "mm/memory.c"
+      ],
+      "stdout_sha256": "2aa2e2157cdeb4f6d5b13d6e6e1e4157ef34fe7da4cd148ec2e5d839b543b8bb",
+      "stdout_bytes": 351
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "kernel/fork.c",
+        "kernel/time/time.c",
+        "kernel/trace/blktrace.c",
+        "mm/kfence/core.c",
+        "mm/memory.c"
+      ],
+      "stdout_sha256": "b34a6d000883625daf72aafe03635fd9a7b9187f7759fb6e1c49f17694c2a642",
+      "stdout_bytes": 336
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stdout_bytes": 41
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "show-ref"
+      ],
+      "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5",
+      "stdout_bytes": 264
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48",
+      "stdout_bytes": 7748183
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b",
+      "stdout_bytes": 396
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--cached",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290",
+      "stdout_bytes": 1618
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4",
+      "stdout_bytes": 1659
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stdout_bytes": 215
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stdout_bytes": 41
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "show-ref"
+      ],
+      "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5",
+      "stdout_bytes": 264
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48",
+      "stdout_bytes": 7748183
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b",
+      "stdout_bytes": 396
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--cached",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290",
+      "stdout_bytes": 1618
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4",
+      "stdout_bytes": 1659
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stdout_bytes": 215
+    }
+  ],
+  "fixture_before": {
+    "linux": {
+      "git_state_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+      "files": {
+        ".git/index": {
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017",
+          "size": 9271771,
+          "mtime_ns": 1795615942129939671,
+          "inode": 278079,
+          "mode": 33188
+        },
+        ".git/HEAD": {
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+          "size": 39,
+          "mtime_ns": 1795614733907349066,
+          "inode": 272949,
+          "mode": 33188
+        },
+        ".git/config": {
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+          "size": 334,
+          "mtime_ns": 1795615994729935414,
+          "inode": 278185,
+          "mode": 33188
+        }
+      }
+    },
+    "windows": {
+      "git_state_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+      "files": {
+        ".git/index": {
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129",
+          "size": 9271771,
+          "mtime_ns": 1795615947971522900,
+          "inode": 562949953782638,
+          "mode": 33279
+        },
+        ".git/HEAD": {
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+          "size": 39,
+          "mtime_ns": 1795614733000000000,
+          "inode": 2814749767263140,
+          "mode": 33279
+        },
+        ".git/config": {
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+          "size": 334,
+          "mtime_ns": 1795615994331971400,
+          "inode": 3377699720684454,
+          "mode": 33279
+        }
+      }
+    }
+  },
+  "workers": {
+    "linux": {
+      "path": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker",
+      "sha256": "d729e0eaaff4d8ef4f7f8bed374b984115b2270aae210022ca91470f90741e2e",
+      "bytes": 4036144
+    },
+    "windows": {
+      "path": "/mnt/c/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline-git-worker.exe",
+      "sha256": "8a72de49d410742c2fc7ad4010c9b4c96be94dac3dd83ec733485a1d88b3788d",
+      "bytes": 2784768
+    }
+  },
+  "kernel_proofs": [
+    {
+      "platform": "linux",
+      "executable": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker",
+      "sha256": "d729e0eaaff4d8ef4f7f8bed374b984115b2270aae210022ca91470f90741e2e",
+      "cwd": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native",
+      "started": 1795648130.2592566,
+      "interop_pid": 169556,
+      "start_ticks": "15242593",
+      "hello": {
+        "architecture": "x86_64",
+        "os": "linux",
+        "pid": 169556,
+        "protocol": 2
+      },
+      "expected": [
+        {
+          "path": "kernel/fork.c",
+          "old_mode": "100644",
+          "old_oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+          "mode": "100644",
+          "oid": "aeb14599caf65d5f8fbdf9051d296e5b5894c250"
+        },
+        {
+          "path": "kernel/time/time.c",
+          "old_mode": "100644",
+          "old_oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+          "mode": "100644",
+          "oid": "b69a89d3069c352b0b192607b675248b10a066e0"
+        },
+        {
+          "path": "kernel/trace/blktrace.c",
+          "old_mode": "100644",
+          "old_oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+          "mode": "100644",
+          "oid": "4d0cf8a17ad4607eaa20b43301de94bb3a4a8fb5"
+        },
+        {
+          "path": "mm/kfence/core.c",
+          "old_mode": "100644",
+          "old_oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+          "mode": "100644",
+          "oid": "1a53e8e53a201f01c29b2d66d7c1071f172ea153"
+        },
+        {
+          "path": "mm/memory.c",
+          "old_mode": "100644",
+          "old_oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+          "mode": "100644",
+          "oid": "a55a6e02a454c54048a5d7623644acd2b0613fee"
+        }
+      ],
+      "result": {
+        "base": "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+        "location_head": "staged:2d3dbb72b4edb668a8f860f4302be70eb89f55307eafcda6a6e4b80c840fadf1",
+        "versions": [
+          {
+            "mode": "100644",
+            "oid": "aeb14599caf65d5f8fbdf9051d296e5b5894c250",
+            "old_mode": "100644",
+            "old_oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+            "path": "kernel/fork.c"
+          },
+          {
+            "mode": "100644",
+            "oid": "b69a89d3069c352b0b192607b675248b10a066e0",
+            "old_mode": "100644",
+            "old_oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+            "path": "kernel/time/time.c"
+          },
+          {
+            "mode": "100644",
+            "oid": "4d0cf8a17ad4607eaa20b43301de94bb3a4a8fb5",
+            "old_mode": "100644",
+            "old_oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+            "path": "kernel/trace/blktrace.c"
+          },
+          {
+            "mode": "100644",
+            "oid": "1a53e8e53a201f01c29b2d66d7c1071f172ea153",
+            "old_mode": "100644",
+            "old_oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+            "path": "mm/kfence/core.c"
+          },
+          {
+            "mode": "100644",
+            "oid": "a55a6e02a454c54048a5d7623644acd2b0613fee",
+            "old_mode": "100644",
+            "old_oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+            "path": "mm/memory.c"
+          }
+        ]
+      },
+      "exit": 0,
+      "finished": 1795648130.3721445
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline-git-worker.exe",
+      "sha256": "8a72de49d410742c2fc7ad4010c9b4c96be94dac3dd83ec733485a1d88b3788d",
+      "cwd": "/mnt/c/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2",
+      "started": 1795648130.6599953,
+      "interop_pid": 169559,
+      "start_ticks": "15242633",
+      "hello": {
+        "architecture": "x86_64",
+        "os": "windows",
+        "pid": 5740,
+        "protocol": 2
+      },
+      "expected": [
+        {
+          "path": "kernel/fork.c",
+          "old_mode": "100644",
+          "old_oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+          "mode": "100644",
+          "oid": "aeb14599caf65d5f8fbdf9051d296e5b5894c250"
+        },
+        {
+          "path": "kernel/time/time.c",
+          "old_mode": "100644",
+          "old_oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+          "mode": "100644",
+          "oid": "b69a89d3069c352b0b192607b675248b10a066e0"
+        },
+        {
+          "path": "kernel/trace/blktrace.c",
+          "old_mode": "100644",
+          "old_oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+          "mode": "100644",
+          "oid": "4d0cf8a17ad4607eaa20b43301de94bb3a4a8fb5"
+        },
+        {
+          "path": "mm/kfence/core.c",
+          "old_mode": "100644",
+          "old_oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+          "mode": "100644",
+          "oid": "1a53e8e53a201f01c29b2d66d7c1071f172ea153"
+        },
+        {
+          "path": "mm/memory.c",
+          "old_mode": "100644",
+          "old_oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+          "mode": "100644",
+          "oid": "a55a6e02a454c54048a5d7623644acd2b0613fee"
+        }
+      ],
+      "result": {
+        "base": "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+        "location_head": "staged:2d3dbb72b4edb668a8f860f4302be70eb89f55307eafcda6a6e4b80c840fadf1",
+        "versions": [
+          {
+            "mode": "100644",
+            "oid": "aeb14599caf65d5f8fbdf9051d296e5b5894c250",
+            "old_mode": "100644",
+            "old_oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+            "path": "kernel/fork.c"
+          },
+          {
+            "mode": "100644",
+            "oid": "b69a89d3069c352b0b192607b675248b10a066e0",
+            "old_mode": "100644",
+            "old_oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+            "path": "kernel/time/time.c"
+          },
+          {
+            "mode": "100644",
+            "oid": "4d0cf8a17ad4607eaa20b43301de94bb3a4a8fb5",
+            "old_mode": "100644",
+            "old_oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+            "path": "kernel/trace/blktrace.c"
+          },
+          {
+            "mode": "100644",
+            "oid": "1a53e8e53a201f01c29b2d66d7c1071f172ea153",
+            "old_mode": "100644",
+            "old_oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+            "path": "mm/kfence/core.c"
+          },
+          {
+            "mode": "100644",
+            "oid": "a55a6e02a454c54048a5d7623644acd2b0613fee",
+            "old_mode": "100644",
+            "old_oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+            "path": "mm/memory.c"
+          }
+        ]
+      },
+      "exit": 0,
+      "finished": 1795648131.722576
+    }
+  ],
+  "linux_gui": {
+    "path": "/home/max/benchmarks/branchline-boundary/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline",
+    "sha256": "adda6c5f3e9cc40e5454d3999f76c0de00f76326b22b67fcee483ff2e387442d",
+    "bytes": 23358912,
+    "embedded_helper_sha256": "8a72de49d410742c2fc7ad4010c9b4c96be94dac3dd83ec733485a1d88b3788d",
+    "embedded_helper_verified": true,
+    "renderer": "production default"
+  },
+  "windows_gui": {
+    "path": "/mnt/c/Users/max/branchline-bench/binaries/staged-anchor-metadata-aba80d920269-bundle-r2/branchline.exe",
+    "sha256": "86c90415605b2f4841c36abd390d48c45d2af094fdb9829f5ecb923c85331462",
+    "bytes": 20818944,
+    "embedded_helper_sha256": "d729e0eaaff4d8ef4f7f8bed374b984115b2270aae210022ca91470f90741e2e",
+    "embedded_helper_verified": true,
+    "renderer": "production default"
+  },
+  "fixture_after": {
+    "linux": {
+      "git_state_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+      "files": {
+        ".git/index": {
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017",
+          "size": 9271771,
+          "mtime_ns": 1795615942129939671,
+          "inode": 278079,
+          "mode": 33188
+        },
+        ".git/HEAD": {
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+          "size": 39,
+          "mtime_ns": 1795614733907349066,
+          "inode": 272949,
+          "mode": 33188
+        },
+        ".git/config": {
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+          "size": 334,
+          "mtime_ns": 1795615994729935414,
+          "inode": 278185,
+          "mode": 33188
+        }
+      }
+    },
+    "windows": {
+      "git_state_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+      "files": {
+        ".git/index": {
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129",
+          "size": 9271771,
+          "mtime_ns": 1795615947971522900,
+          "inode": 562949953782638,
+          "mode": 33279
+        },
+        ".git/HEAD": {
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+          "size": 39,
+          "mtime_ns": 1795614733000000000,
+          "inode": 2814749767263140,
+          "mode": 33279
+        },
+        ".git/config": {
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+          "size": 334,
+          "mtime_ns": 1795615994331971400,
+          "inode": 3377699720684454,
+          "mode": 33279
+        }
+      }
+    }
+  },
+  "finished": 1795648363.0571787
+}

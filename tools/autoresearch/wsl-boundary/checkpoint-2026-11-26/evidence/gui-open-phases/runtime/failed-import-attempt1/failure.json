@@ -1,0 +1,10 @@
+{
+  "session": 25974,
+  "exit": 1,
+  "cause": "PureWindowsPath missing import, before remote launch.START call",
+  "old_runner_sha256": "54fa4a85325cd097059afd0567b0b64a28d9584e909716d50388dac94476e3a6",
+  "new_runner_sha256": "42b000948f034133c557186f6c494fc331e6c01eb8d444b73ad5dc533ec9ced2",
+  "original_state": "runtime/run-20261125T233854191163Z/state.json",
+  "retry_root": "runtime-r2",
+  "product_source_or_binary_changed": false
+}

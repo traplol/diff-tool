@@ -1,0 +1,23 @@
+   Compiling branchline-native-helper-host-check v0.1.0 (/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/host-harness)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.83s
+     Running unittests src/lib.rs (/tmp/branchline-native-helper-embedded-target/debug/deps/branchline_native_helper_host_check-512210014b990f69)
+
+running 15 tests
+test git::remote::tests::native_git_failures_remain_domain_errors ... ok
+test git::remote::tests::windows_worker_command_maps_its_storage_cwd_before_interop ... ignored, Requires WSL path translation; run explicitly inside WSL
+test git::remote::tests::windows_native_cache_path_preserves_unicode_and_rejects_foreign_storage ... ok
+test git::remote::tests::only_drive_absolute_paths_identify_windows_storage ... ok
+test git::remote::tests::cached_worker_is_verified_and_corruption_is_replaced_atomically ... ok
+test git::remote::tests::request_frames_escape_newlines_and_match_response_ids ... ok
+test git::remote::tests::stale_truncated_and_invalid_responses_are_rejected ... ok
+test git::remote::tests::a_git_failure_does_not_disconnect_the_persistent_child ... ok
+test git::remote::tests::a_protocol_failure_stops_and_reaps_only_the_owned_child ... ok
+test git::remote::tests::native_wsl_bootstrap_rejects_wrong_bytes_and_cleans_temporary_copy ... ok
+test git::remote::tests::native_wsl_bootstrap_parallel_installs_publish_only_verified_bytes ... ok
+test git::remote::tests::blocked_search_preparation_does_not_queue_foreground_requests ... ok
+test git::remote::tests::native_wsl_bootstrap_unavailable_cache_execs_verified_source_without_temporary_leaks ... ok
+test git::remote::tests::native_wsl_bootstrap_missing_cache_environment_execs_only_verified_source ... ok
+test git::remote::tests::native_wsl_bootstrap_execs_one_worker_and_preserves_raw_pipes ... ok
+
+test result: ok. 14 passed; 0 failed; 1 ignored; 0 measured; 25 filtered out; finished in 0.08s
+

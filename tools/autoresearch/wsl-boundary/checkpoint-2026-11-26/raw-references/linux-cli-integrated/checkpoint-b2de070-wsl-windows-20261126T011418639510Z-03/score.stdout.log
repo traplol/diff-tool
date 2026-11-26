@@ -1,0 +1,230 @@
+{"action": "open", "repetition": 0, "elapsed_ms": 1789}
+{"action": "branch_first", "repetition": 0, "elapsed_ms": 657}
+{"action": "branch_final", "repetition": 0, "elapsed_ms": 646}
+{"action": "working_tree", "repetition": 0, "elapsed_ms": 2798}
+{"action": "stack", "repetition": 0, "elapsed_ms": 1072.0000000000018}
+{"action": "comment_branch", "repetition": 0, "elapsed_ms": 1008.0000000000018}
+{"action": "comment_worktree", "repetition": 0, "elapsed_ms": 2313}
+{"action": "branch_first", "repetition": 1, "elapsed_ms": 869}
+{"action": "branch_final", "repetition": 1, "elapsed_ms": 1093}
+{"action": "working_tree", "repetition": 1, "elapsed_ms": 2632}
+{"action": "stack", "repetition": 1, "elapsed_ms": 776}
+{"action": "comment_branch", "repetition": 1, "elapsed_ms": 1101}
+{"action": "comment_worktree", "repetition": 1, "elapsed_ms": 2136}
+{"action": "branch_first", "repetition": 2, "elapsed_ms": 996}
+{"action": "branch_final", "repetition": 2, "elapsed_ms": 994.9999999999964}
+{"action": "working_tree", "repetition": 2, "elapsed_ms": 2635}
+{"action": "stack", "repetition": 2, "elapsed_ms": 701}
+{"action": "comment_branch", "repetition": 2, "elapsed_ms": 1128.0000000000036}
+{"action": "comment_worktree", "repetition": 2, "elapsed_ms": 2102.0000000000036}
+{"action": "branch_first", "repetition": 3, "elapsed_ms": 712}
+{"action": "branch_final", "repetition": 3, "elapsed_ms": 736}
+{"action": "working_tree", "repetition": 3, "elapsed_ms": 3204}
+{"action": "stack", "repetition": 3, "elapsed_ms": 761}
+{"action": "comment_branch", "repetition": 3, "elapsed_ms": 854}
+{"action": "comment_worktree", "repetition": 3, "elapsed_ms": 2309.9999999999927}
+{"action": "branch_first", "repetition": 4, "elapsed_ms": 923.9999999999927}
+{"action": "branch_final", "repetition": 4, "elapsed_ms": 1128}
+{"action": "working_tree", "repetition": 4, "elapsed_ms": 2225.0000000000073}
+{"action": "stack", "repetition": 4, "elapsed_ms": 669}
+{"action": "comment_branch", "repetition": 4, "elapsed_ms": 975.0000000000073}
+{"action": "comment_worktree", "repetition": 4, "elapsed_ms": 1909}
+{"action": "branch_first", "repetition": 5, "elapsed_ms": 739.0000000000073}
+{"action": "branch_final", "repetition": 5, "elapsed_ms": 587.9999999999927}
+{"action": "working_tree", "repetition": 5, "elapsed_ms": 2043}
+{"action": "stack", "repetition": 5, "elapsed_ms": 715}
+{"action": "comment_branch", "repetition": 5, "elapsed_ms": 838}
+{"action": "comment_worktree", "repetition": 5, "elapsed_ms": 2288}
+{"action": "branch_first", "repetition": 6, "elapsed_ms": 951.9999999999927}
+{"action": "branch_final", "repetition": 6, "elapsed_ms": 915.0000000000073}
+{"action": "working_tree", "repetition": 6, "elapsed_ms": 3071}
+{"action": "stack", "repetition": 6, "elapsed_ms": 680}
+{"action": "comment_branch", "repetition": 6, "elapsed_ms": 878.9999999999854}
+{"action": "comment_worktree", "repetition": 6, "elapsed_ms": 1782}
+{"action": "branch_first", "repetition": 7, "elapsed_ms": 658}
+{"action": "branch_final", "repetition": 7, "elapsed_ms": 619}
+{"action": "working_tree", "repetition": 7, "elapsed_ms": 2032}
+{"action": "stack", "repetition": 7, "elapsed_ms": 702}
+{"action": "comment_branch", "repetition": 7, "elapsed_ms": 759}
+{"action": "comment_worktree", "repetition": 7, "elapsed_ms": 1792}
+{"action": "branch_first", "repetition": 8, "elapsed_ms": 662}
+{"action": "branch_final", "repetition": 8, "elapsed_ms": 591}
+{"action": "working_tree", "repetition": 8, "elapsed_ms": 1975}
+{"action": "stack", "repetition": 8, "elapsed_ms": 616}
+{"action": "comment_branch", "repetition": 8, "elapsed_ms": 702}
+{"action": "comment_worktree", "repetition": 8, "elapsed_ms": 1770}
+{"action": "branch_first", "repetition": 9, "elapsed_ms": 691.9999999999854}
+{"action": "branch_final", "repetition": 9, "elapsed_ms": 650}
+{"action": "working_tree", "repetition": 9, "elapsed_ms": 3487}
+{"action": "stack", "repetition": 9, "elapsed_ms": 788}
+{"action": "comment_branch", "repetition": 9, "elapsed_ms": 777}
+{"action": "comment_worktree", "repetition": 9, "elapsed_ms": 2008.0000000000146}
+{"action": "branch_first", "repetition": 10, "elapsed_ms": 693}
+{"action": "branch_final", "repetition": 10, "elapsed_ms": 620}
+{"action": "working_tree", "repetition": 10, "elapsed_ms": 2199}
+{"action": "stack", "repetition": 10, "elapsed_ms": 642}
+{"action": "comment_branch", "repetition": 10, "elapsed_ms": 687.0000000000146}
+{"action": "comment_worktree", "repetition": 10, "elapsed_ms": 1641}
+{"action": "branch_first", "repetition": 11, "elapsed_ms": 628.0000000000146}
+{"action": "branch_final", "repetition": 11, "elapsed_ms": 566}
+{"action": "working_tree", "repetition": 11, "elapsed_ms": 1946}
+{"action": "stack", "repetition": 11, "elapsed_ms": 636.0000000000146}
+{"action": "comment_branch", "repetition": 11, "elapsed_ms": 675}
+{"action": "comment_worktree", "repetition": 11, "elapsed_ms": 1611}
+{"action": "branch_first", "repetition": 12, "elapsed_ms": 662.0000000000146}
+{"action": "branch_final", "repetition": 12, "elapsed_ms": 585.9999999999854}
+{"action": "working_tree", "repetition": 12, "elapsed_ms": 2021}
+{"action": "stack", "repetition": 12, "elapsed_ms": 656}
+{"action": "comment_branch", "repetition": 12, "elapsed_ms": 730.0000000000146}
+{"action": "comment_worktree", "repetition": 12, "elapsed_ms": 1656}
+{"action": "branch_first", "repetition": 13, "elapsed_ms": 633}
+{"action": "branch_final", "repetition": 13, "elapsed_ms": 574}
+{"action": "working_tree", "repetition": 13, "elapsed_ms": 1921}
+{"action": "stack", "repetition": 13, "elapsed_ms": 725.9999999999854}
+{"action": "comment_branch", "repetition": 13, "elapsed_ms": 675.0000000000146}
+{"action": "comment_worktree", "repetition": 13, "elapsed_ms": 1941.9999999999854}
+{"action": "branch_first", "repetition": 14, "elapsed_ms": 642}
+{"action": "branch_final", "repetition": 14, "elapsed_ms": 552}
+{"action": "working_tree", "repetition": 14, "elapsed_ms": 1949}
+{"action": "stack", "repetition": 14, "elapsed_ms": 609}
+{"action": "comment_branch", "repetition": 14, "elapsed_ms": 692}
+{"action": "comment_worktree", "repetition": 14, "elapsed_ms": 1711}
+{"action": "branch_first", "repetition": 15, "elapsed_ms": 655.9999999999709}
+{"action": "branch_final", "repetition": 15, "elapsed_ms": 565}
+{"action": "working_tree", "repetition": 15, "elapsed_ms": 1789.999999999971}
+{"action": "stack", "repetition": 15, "elapsed_ms": 682.9999999999709}
+{"action": "comment_branch", "repetition": 15, "elapsed_ms": 703}
+{"action": "comment_worktree", "repetition": 15, "elapsed_ms": 1809}
+{"action": "branch_first", "repetition": 16, "elapsed_ms": 646}
+{"action": "branch_final", "repetition": 16, "elapsed_ms": 567}
+{"action": "working_tree", "repetition": 16, "elapsed_ms": 1918}
+{"action": "stack", "repetition": 16, "elapsed_ms": 629}
+{"action": "comment_branch", "repetition": 16, "elapsed_ms": 657.9999999999709}
+{"action": "comment_worktree", "repetition": 16, "elapsed_ms": 1647}
+{"action": "branch_first", "repetition": 17, "elapsed_ms": 623.0000000000291}
+{"action": "branch_final", "repetition": 17, "elapsed_ms": 637}
+{"action": "working_tree", "repetition": 17, "elapsed_ms": 1992}
+{"action": "stack", "repetition": 17, "elapsed_ms": 612}
+{"action": "comment_branch", "repetition": 17, "elapsed_ms": 723}
+{"action": "comment_worktree", "repetition": 17, "elapsed_ms": 1882}
+{"action": "branch_first", "repetition": 18, "elapsed_ms": 659}
+{"action": "branch_final", "repetition": 18, "elapsed_ms": 578}
+{"action": "working_tree", "repetition": 18, "elapsed_ms": 1907}
+{"action": "stack", "repetition": 18, "elapsed_ms": 672}
+{"action": "comment_branch", "repetition": 18, "elapsed_ms": 691.0000000000291}
+{"action": "comment_worktree", "repetition": 18, "elapsed_ms": 1874}
+{"action": "branch_first", "repetition": 19, "elapsed_ms": 682}
+{"action": "branch_final", "repetition": 19, "elapsed_ms": 602}
+{"action": "working_tree", "repetition": 19, "elapsed_ms": 1930.000000000029}
+{"action": "stack", "repetition": 19, "elapsed_ms": 656}
+{"action": "comment_branch", "repetition": 19, "elapsed_ms": 692}
+{"action": "comment_worktree", "repetition": 19, "elapsed_ms": 1613}
+{
+  "actions": {
+    "branch_final": {
+      "count": 20,
+      "first_use_ms": 646,
+      "max_ms": 1128,
+      "p50_ms": 602,
+      "p95_ms": 1093
+    },
+    "branch_first": {
+      "count": 20,
+      "first_use_ms": 657,
+      "max_ms": 996,
+      "p50_ms": 662,
+      "p95_ms": 951.9999999999927
+    },
+    "comment_branch": {
+      "count": 20,
+      "first_use_ms": 1008.0000000000018,
+      "max_ms": 1128.0000000000036,
+      "p50_ms": 723,
+      "p95_ms": 1101
+    },
+    "comment_worktree": {
+      "count": 20,
+      "first_use_ms": 2313,
+      "max_ms": 2313,
+      "p50_ms": 1809,
+      "p95_ms": 2309.9999999999927
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 1789,
+      "max_ms": 1789,
+      "p50_ms": 1789,
+      "p95_ms": 1789
+    },
+    "stack": {
+      "count": 20,
+      "first_use_ms": 1072.0000000000018,
+      "max_ms": 1072.0000000000018,
+      "p50_ms": 672,
+      "p95_ms": 788
+    },
+    "working_tree": {
+      "count": 20,
+      "first_use_ms": 2798,
+      "max_ms": 3487,
+      "p50_ms": 2021,
+      "p95_ms": 3204
+    }
+  },
+  "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+  "case": "wsl_windows",
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "finished_at_unix": 1795655999.8924332,
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "label": "checkpoint-b2de070",
+  "launch": {
+    "app_process": {
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+      ],
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "pid": 224306,
+      "start_ticks": "16011518"
+    },
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+    "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+    "created": "16011518",
+    "display": ":0",
+    "driver_process": {
+      "binary": "/usr/bin/WebKitWebDriver",
+      "pid": 224304,
+      "start_ticks": "16011512"
+    },
+    "gdk_backend": "x11",
+    "mcp_port": 28867,
+    "pid": 224306,
+    "port": 29225,
+    "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+    "session": "e8288765-752f-4490-95d3-286cb044e4b8",
+    "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+    "supervisor_pid": 224303
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "measure",
+  "repetitions": 20,
+  "schema_version": 1,
+  "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "started_at_unix": 1795655821.777005,
+  "target_met": false,
+  "target_ms": 250.0,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed",
+  "worst_interaction_p95_ms": 3204
+}

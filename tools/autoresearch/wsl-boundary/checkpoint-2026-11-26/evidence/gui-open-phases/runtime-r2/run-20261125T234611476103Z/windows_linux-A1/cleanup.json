@@ -1,0 +1,30 @@
+{
+  "canonical_stop": {
+    "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+    "stopped_pids": [
+      352,
+      2436
+    ]
+  },
+  "diagnostic_stderr_captured": true,
+  "exact_owned_processes_absent": true,
+  "gui_phase_count": 85,
+  "observed_children": [
+    {
+      "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+      "created": "2026-11-25T18:46:41.3282070-05:00",
+      "pid": 5732
+    },
+    {
+      "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+      "created": "2026-11-25T18:46:43.7605420-05:00",
+      "pid": 14300
+    },
+    {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\gui-open-phases-b2de070-29898a628ed5-r2\\branchline.exe",
+      "created": "2026-11-25T18:46:44.7595580-05:00",
+      "pid": 2436
+    }
+  ],
+  "ports_free": true
+}

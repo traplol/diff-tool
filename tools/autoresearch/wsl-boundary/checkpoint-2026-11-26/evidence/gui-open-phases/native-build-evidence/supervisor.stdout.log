@@ -1,0 +1,4 @@
+{"supervisor_pid": 195196, "start_ticks": "15367023", "record": "/home/max/benchmarks/branchline-boundary/gui-open-phases-b2de070-29898a628ed5-native/supervisor.json"}
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+{"status": "failed-no-automatic-retry", "record": "/home/max/benchmarks/branchline-boundary/gui-open-phases-b2de070-29898a628ed5-native/supervisor.json", "windows_gui": null}

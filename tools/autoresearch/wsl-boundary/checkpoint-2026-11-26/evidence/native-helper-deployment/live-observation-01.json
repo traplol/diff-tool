@@ -1,0 +1,26 @@
+{
+  "pid": 121613,
+  "start_ticks": "14259473",
+  "status": "running",
+  "current_phase": "linux-remote-tests",
+  "error": null,
+  "phase": {
+    "name": "linux-remote-tests",
+    "argv": [
+      "cargo",
+      "test",
+      "--offline",
+      "--locked",
+      "--manifest-path",
+      "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input/source/src-tauri/Cargo.toml",
+      "git::remote",
+      "--",
+      "--test-threads=1"
+    ],
+    "cwd": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input/source",
+    "started": 1795638322.3364527,
+    "log": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/linux-remote-tests.log",
+    "pid": 121695
+  },
+  "log_tail": "   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.27\n   Compiling quote v1.0.47\n   Compiling syn v3.0.10\n   Compiling serde_core v1.0.229\n   Compiling serde_derive v1.0.229\n   Compiling serde v1.0.229\n   Compiling smallvec v1.16.6\n   Compiling libc v0.2.191\n   Compiling hashbrown v0.17.1\n   Compiling equivalent v1.0.3\n   Compiling indexmap v2.14.2\n   Compiling pkg-config v0.3.34\n   Compiling heck v0.5.0\n   Compiling toml_datetime v0.6.3\n   Compiling winnow v0.5.40\n   Compiling serde_spanned v0.6.9\n   Compiling toml_edit v0.20.2\n   Compiling target-lexicon v0.12.16\n   Compiling cfg-expr v0.15.8\n   Compiling toml v0.8.2\n   Compiling syn v2.0.119\n   Compiling version-compare v0.2.1\n   Compiling system-deps v6.2.2\n   Compiling memchr v2.8.3\n   Compiling synstructure v0.14.0\n   Compiling zerofrom-derive v0.1.8\n   Compiling zerofrom v0.1.8\n   Compiling yoke-derive v0.8.4\n   Compiling zerovec-derive v0.11.7\n   Compiling itoa v1.0.19\n   Compiling displaydoc v0.2.7\n   Compiling version_check v0.9.5\n   Compiling cfg-if v1.0.5\n   Compiling thiserror v1.0.69\n   Compiling siphasher v1.0.4\n   Compiling thiserror-impl v1.0.69\n   Compiling litemap v0.8.3\n   Compiling writeable v0.6.4\n   Compiling phf_shared v0.13.1\n   Compiling glib-sys v0.18.1\n   Compiling fastrand v2.5.0\n   Compiling phf_generator v0.13.1\n   Compiling gobject-sys v0.18.0\n   Compiling stable_deref_trait v1.2.1\n   Compiling icu_properties_data v2.1.2\n   Compiling icu_normalizer_data v2.1.1\n"
+}

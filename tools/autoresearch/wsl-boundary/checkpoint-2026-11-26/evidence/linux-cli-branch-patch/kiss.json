@@ -1,0 +1,9 @@
+{
+  "agent": "/root/linux_branch_patch_kiss",
+  "fork_turns": "none",
+  "scope": "KISS only, final incremental diff and nearby existing code",
+  "result": "simple enough",
+  "patch_sha256": "32ccafde0036eb1af698a6cd12e2a6eda9b063abd88c37a1299f92d8f98cfeb9",
+  "created": 1795654949.1172445,
+  "tests_builds_vm_calls": false
+}

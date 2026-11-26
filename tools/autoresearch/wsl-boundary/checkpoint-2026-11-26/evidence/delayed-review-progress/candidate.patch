@@ -1,0 +1,19 @@
+--- a/frontend/app.js
++++ b/frontend/app.js
+@@ -159,7 +159,7 @@
+   if (loading || editLock) return;
+   loading = true;
+   $("app").setAttribute("aria-busy", "true");
+-  status("Reading Git changes…");
++  const progressTimer = setTimeout(() => status("Reading Git changes…"), 200);
+   try {
+     const previous = currentFile(),
+       previousRoot = state?.repo.root;
+@@ -284,6 +284,7 @@
+       .join(" · ");
+     status(warning || "Comparison up to date", !!warning);
+   } finally {
++    clearTimeout(progressTimer);
+     loading = false;
+     $("app").removeAttribute("aria-busy");
+     if (state) $("pair").selectedIndex = choiceIndex();

@@ -1,0 +1,3436 @@
+{
+  "status": "valid helper-placement series; final action regression guards failed; no promotion",
+  "state": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/state.json",
+  "state_sha256": "b7be19f14d6bf99e37fdd02fc68c8e7458b1d836acf0b3636e0d5cc60ac679c2",
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "variants": {
+    "A": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+      "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+      "helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+      "binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/native-build-evidence/supervisor.json",
+      "build_record_sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13",
+      "helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "label": "native-helper-deployment-b2de070-03fecde11c0a",
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/source",
+      "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500"
+    }
+  },
+  "samples": 318,
+  "old_samples_pooled": false,
+  "statistics": "Canonical nearest-rank p50/p95; conventional median additionally retained. Final20 includes first_use; strict repeated19 is separate. Open three-process distribution retains A1 outlier, with initial-install/cache-hit categories separately reported.",
+  "metrics": {
+    "A": {
+      "open": {
+        "measurement": {
+          "count": 3,
+          "p50_ms": 728.1999999880791,
+          "median_ms": 728.1999999880791,
+          "p95_ms": 3091.100000023842,
+          "max_ms": 3091.100000023842
+        },
+        "all_new_series": {
+          "count": 3,
+          "p50_ms": 728.1999999880791,
+          "median_ms": 728.1999999880791,
+          "p95_ms": 3091.100000023842,
+          "max_ms": 3091.100000023842
+        },
+        "first_use_by_process_ms": [
+          3091.100000023842,
+          727.5999999940395,
+          728.1999999880791
+        ],
+        "strict_repeated_phase": null
+      },
+      "branch_first": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 182.90000000596046,
+          "median_ms": 182.90000000596046,
+          "p95_ms": 199.40000000596046,
+          "max_ms": 215.30000001192093
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 182.90000000596046,
+          "median_ms": 182.90000000596046,
+          "p95_ms": 215.30000001192093,
+          "max_ms": 486.89999997615814
+        },
+        "first_use_by_process_ms": [
+          486.89999997615814,
+          127.5,
+          129.5
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 182.90000000596046,
+          "median_ms": 182.90000000596046,
+          "p95_ms": 215.30000001192093,
+          "max_ms": 215.30000001192093
+        }
+      },
+      "branch_final": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 134.39999997615814,
+          "median_ms": 134.84999999403954,
+          "p95_ms": 137.19999998807907,
+          "max_ms": 137.2000000178814
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 135.5,
+          "median_ms": 135.5,
+          "p95_ms": 139.40000000596046,
+          "max_ms": 543.8000000119209
+        },
+        "first_use_by_process_ms": [
+          543.8000000119209,
+          133.90000000596046,
+          136.09999999403954
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 134.39999997615814,
+          "median_ms": 134.39999997615814,
+          "p95_ms": 137.2000000178814,
+          "max_ms": 137.2000000178814
+        }
+      },
+      "working_tree": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 192.09999999403954,
+          "median_ms": 192.29999999701977,
+          "p95_ms": 207,
+          "max_ms": 221.69999998807907
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 193.30000001192093,
+          "median_ms": 197.40000000596046,
+          "p95_ms": 221.69999998807907,
+          "max_ms": 566.5
+        },
+        "first_use_by_process_ms": [
+          566.5,
+          188.69999998807907,
+          221.69999998807907
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 192.09999999403954,
+          "median_ms": 192.09999999403954,
+          "p95_ms": 207,
+          "max_ms": 207
+        }
+      },
+      "stack": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 126.30000001192093,
+          "median_ms": 126.40000000596046,
+          "p95_ms": 141.80000001192093,
+          "max_ms": 159
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 126.89999997615814,
+          "median_ms": 127.0499999821186,
+          "p95_ms": 159,
+          "max_ms": 267.7999999821186
+        },
+        "first_use_by_process_ms": [
+          267.7999999821186,
+          136.59999999403954,
+          141.80000001192093
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 126.30000001192093,
+          "median_ms": 126.30000001192093,
+          "p95_ms": 159,
+          "max_ms": 159
+        }
+      },
+      "comment_branch": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 198,
+          "median_ms": 198.05000001192093,
+          "p95_ms": 214.7000000178814,
+          "max_ms": 229.19999998807907
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 198.2000000178814,
+          "median_ms": 198.30000001192093,
+          "p95_ms": 228.7000000178814,
+          "max_ms": 229.19999998807907
+        },
+        "first_use_by_process_ms": [
+          228.7000000178814,
+          213.7000000178814,
+          214
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 198,
+          "median_ms": 198,
+          "p95_ms": 229.19999998807907,
+          "max_ms": 229.19999998807907
+        }
+      },
+      "comment_worktree": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 211.80000001192093,
+          "median_ms": 212.30000001192093,
+          "p95_ms": 228.19999998807907,
+          "max_ms": 228.80000001192093
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 213.09999999403954,
+          "median_ms": 213.09999999403954,
+          "p95_ms": 230.40000000596046,
+          "max_ms": 276.90000000596046
+        },
+        "first_use_by_process_ms": [
+          213.2999999821186,
+          230.40000000596046,
+          228.09999999403954
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 211.80000001192093,
+          "median_ms": 211.80000001192093,
+          "p95_ms": 228.80000001192093,
+          "max_ms": 228.80000001192093
+        }
+      }
+    },
+    "B": {
+      "open": {
+        "measurement": {
+          "count": 3,
+          "p50_ms": 603.2999999821186,
+          "median_ms": 603.2999999821186,
+          "p95_ms": 852.9000000059605,
+          "max_ms": 852.9000000059605
+        },
+        "all_new_series": {
+          "count": 3,
+          "p50_ms": 603.2999999821186,
+          "median_ms": 603.2999999821186,
+          "p95_ms": 852.9000000059605,
+          "max_ms": 852.9000000059605
+        },
+        "first_use_by_process_ms": [
+          852.9000000059605,
+          603.2999999821186,
+          586.3000000119209
+        ],
+        "strict_repeated_phase": null
+      },
+      "branch_first": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 183,
+          "median_ms": 183.1499999910593,
+          "p95_ms": 212.59999999403954,
+          "max_ms": 246.2000000178814
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 183,
+          "median_ms": 183.1499999910593,
+          "p95_ms": 212.59999999403954,
+          "max_ms": 246.2000000178814
+        },
+        "first_use_by_process_ms": [
+          129.59999999403954,
+          135.7999999821186,
+          155
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 183.2999999821186,
+          "median_ms": 183.2999999821186,
+          "p95_ms": 246.2000000178814,
+          "max_ms": 246.2000000178814
+        }
+      },
+      "branch_final": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 122.59999999403954,
+          "median_ms": 126.45000000298023,
+          "p95_ms": 137.69999998807907,
+          "max_ms": 148.09999999403954
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 133.59999999403954,
+          "median_ms": 133.75,
+          "p95_ms": 151.09999999403954,
+          "max_ms": 168.7000000178814
+        },
+        "first_use_by_process_ms": [
+          151.09999999403954,
+          135.90000000596046,
+          121.19999998807907
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 130.30000001192093,
+          "median_ms": 130.30000001192093,
+          "p95_ms": 148.09999999403954,
+          "max_ms": 148.09999999403954
+        }
+      },
+      "working_tree": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 192.60000002384186,
+          "median_ms": 198.00000001490116,
+          "p95_ms": 207.19999998807907,
+          "max_ms": 215.59999999403954
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 203.60000002384186,
+          "median_ms": 203.65000002086163,
+          "p95_ms": 215.59999999403954,
+          "max_ms": 221.19999998807907
+        },
+        "first_use_by_process_ms": [
+          221.19999998807907,
+          207.60000002384186,
+          207.19999998807907
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 192.60000002384186,
+          "median_ms": 192.60000002384186,
+          "p95_ms": 215.59999999403954,
+          "max_ms": 215.59999999403954
+        }
+      },
+      "stack": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 126.40000000596046,
+          "median_ms": 126.40000000596046,
+          "p95_ms": 128.90000000596046,
+          "max_ms": 137.09999999403954
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 126.40000000596046,
+          "median_ms": 126.6000000089407,
+          "p95_ms": 137.09999999403954,
+          "max_ms": 174.10000002384186
+        },
+        "first_use_by_process_ms": [
+          127,
+          127.69999998807907,
+          126.09999999403954
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 126.40000000596046,
+          "median_ms": 126.40000000596046,
+          "p95_ms": 137.09999999403954,
+          "max_ms": 137.09999999403954
+        }
+      },
+      "comment_branch": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 199.19999998807907,
+          "median_ms": 199.3999999910593,
+          "p95_ms": 243.59999999403954,
+          "max_ms": 276.5
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 199.10000002384186,
+          "median_ms": 199.15000000596046,
+          "p95_ms": 243.59999999403954,
+          "max_ms": 276.5
+        },
+        "first_use_by_process_ms": [
+          200.69999998807907,
+          213.30000001192093,
+          199.10000002384186
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 199.59999999403954,
+          "median_ms": 199.59999999403954,
+          "p95_ms": 276.5,
+          "max_ms": 276.5
+        }
+      },
+      "comment_worktree": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 213.2999999821186,
+          "median_ms": 213.34999999403954,
+          "p95_ms": 228.59999999403954,
+          "max_ms": 229.7000000178814
+        },
+        "all_new_series": {
+          "count": 26,
+          "p50_ms": 213.19999998807907,
+          "median_ms": 213.24999998509884,
+          "p95_ms": 228.59999999403954,
+          "max_ms": 229.7000000178814
+        },
+        "first_use_by_process_ms": [
+          213.39999997615814,
+          212.5,
+          214
+        ],
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 213.2999999821186,
+          "median_ms": 213.2999999821186,
+          "p95_ms": 229.7000000178814,
+          "max_ms": 229.7000000178814
+        }
+      }
+    }
+  },
+  "fresh_process_and_first_use": {
+    "A": {
+      "open": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 3091.100000023842,
+          "foreground_ipc_union_ms": 3023.0,
+          "non_foreground_ipc_remainder_ms": 68.10000002384186
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 727.5999999940395,
+          "foreground_ipc_union_ms": 653.2999999821186,
+          "non_foreground_ipc_remainder_ms": 74.30000001192093
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 728.1999999880791,
+          "foreground_ipc_union_ms": 653.3000000119209,
+          "non_foreground_ipc_remainder_ms": 74.89999997615814
+        }
+      ],
+      "branch_first": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 486.89999997615814,
+          "foreground_ipc_union_ms": 440.4000000357628,
+          "non_foreground_ipc_remainder_ms": 46.499999940395355
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 127.5,
+          "foreground_ipc_union_ms": 90.30000001192093,
+          "non_foreground_ipc_remainder_ms": 37.19999998807907
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 129.5,
+          "foreground_ipc_union_ms": 86.90000003576279,
+          "non_foreground_ipc_remainder_ms": 42.59999996423721
+        }
+      ],
+      "branch_final": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 543.8000000119209,
+          "foreground_ipc_union_ms": 499.10000002384186,
+          "non_foreground_ipc_remainder_ms": 44.69999998807907
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 133.90000000596046,
+          "foreground_ipc_union_ms": 88.0,
+          "non_foreground_ipc_remainder_ms": 45.900000005960464
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 136.09999999403954,
+          "foreground_ipc_union_ms": 88.90000000596046,
+          "non_foreground_ipc_remainder_ms": 47.19999998807907
+        }
+      ],
+      "working_tree": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 566.5,
+          "foreground_ipc_union_ms": 531.8999999761581,
+          "non_foreground_ipc_remainder_ms": 34.60000002384186
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 188.69999998807907,
+          "foreground_ipc_union_ms": 152.59999999403954,
+          "non_foreground_ipc_remainder_ms": 36.099999994039536
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 221.69999998807907,
+          "foreground_ipc_union_ms": 178.90000000596046,
+          "non_foreground_ipc_remainder_ms": 42.79999998211861
+        }
+      ],
+      "stack": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 267.7999999821186,
+          "foreground_ipc_union_ms": 226.60000002384186,
+          "non_foreground_ipc_remainder_ms": 41.19999995827675
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 136.59999999403954,
+          "foreground_ipc_union_ms": 89.7999999821186,
+          "non_foreground_ipc_remainder_ms": 46.80000001192093
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 141.80000001192093,
+          "foreground_ipc_union_ms": 106.09999999403954,
+          "non_foreground_ipc_remainder_ms": 35.70000001788139
+        }
+      ],
+      "comment_branch": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 228.7000000178814,
+          "foreground_ipc_union_ms": 192.0,
+          "non_foreground_ipc_remainder_ms": 36.70000001788139
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 213.7000000178814,
+          "foreground_ipc_union_ms": 164.7000000178814,
+          "non_foreground_ipc_remainder_ms": 49.0
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 214,
+          "foreground_ipc_union_ms": 173.2000000178814,
+          "non_foreground_ipc_remainder_ms": 40.79999998211861
+        }
+      ],
+      "comment_worktree": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 213.2999999821186,
+          "foreground_ipc_union_ms": 173.2999999821186,
+          "non_foreground_ipc_remainder_ms": 40.0
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 230.40000000596046,
+          "foreground_ipc_union_ms": 195.40000000596046,
+          "non_foreground_ipc_remainder_ms": 35.0
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 228.09999999403954,
+          "foreground_ipc_union_ms": 187.90000000596046,
+          "non_foreground_ipc_remainder_ms": 40.19999998807907
+        }
+      ]
+    },
+    "B": {
+      "open": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 852.9000000059605,
+          "foreground_ipc_union_ms": 787.7999999821186,
+          "non_foreground_ipc_remainder_ms": 65.10000002384186
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 603.2999999821186,
+          "foreground_ipc_union_ms": 530.5999999940395,
+          "non_foreground_ipc_remainder_ms": 72.69999998807907
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 586.3000000119209,
+          "foreground_ipc_union_ms": 514.4000000059605,
+          "non_foreground_ipc_remainder_ms": 71.90000000596046
+        }
+      ],
+      "branch_first": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 129.59999999403954,
+          "foreground_ipc_union_ms": 93.59999999403954,
+          "non_foreground_ipc_remainder_ms": 36.0
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 135.7999999821186,
+          "foreground_ipc_union_ms": 92.59999999403954,
+          "non_foreground_ipc_remainder_ms": 43.19999998807907
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 155,
+          "foreground_ipc_union_ms": 108.10000002384186,
+          "non_foreground_ipc_remainder_ms": 46.89999997615814
+        }
+      ],
+      "branch_final": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 151.09999999403954,
+          "foreground_ipc_union_ms": 115.90000000596046,
+          "non_foreground_ipc_remainder_ms": 35.19999998807907
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 135.90000000596046,
+          "foreground_ipc_union_ms": 90.09999999403954,
+          "non_foreground_ipc_remainder_ms": 45.80000001192093
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 121.19999998807907,
+          "foreground_ipc_union_ms": 83.99999997019768,
+          "non_foreground_ipc_remainder_ms": 37.20000001788139
+        }
+      ],
+      "working_tree": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 221.19999998807907,
+          "foreground_ipc_union_ms": 179.59999999403954,
+          "non_foreground_ipc_remainder_ms": 41.599999994039536
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 207.60000002384186,
+          "foreground_ipc_union_ms": 160.90000000596046,
+          "non_foreground_ipc_remainder_ms": 46.70000001788139
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 207.19999998807907,
+          "foreground_ipc_union_ms": 163.30000001192093,
+          "non_foreground_ipc_remainder_ms": 43.89999997615814
+        }
+      ],
+      "stack": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 127,
+          "foreground_ipc_union_ms": 90.2999999821186,
+          "non_foreground_ipc_remainder_ms": 36.70000001788139
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 127.69999998807907,
+          "foreground_ipc_union_ms": 85.90000000596046,
+          "non_foreground_ipc_remainder_ms": 41.79999998211861
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 126.09999999403954,
+          "foreground_ipc_union_ms": 83.30000001192093,
+          "non_foreground_ipc_remainder_ms": 42.79999998211861
+        }
+      ],
+      "comment_branch": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 200.69999998807907,
+          "foreground_ipc_union_ms": 162.0,
+          "non_foreground_ipc_remainder_ms": 38.69999998807907
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 213.30000001192093,
+          "foreground_ipc_union_ms": 173.10000002384186,
+          "non_foreground_ipc_remainder_ms": 40.19999998807907
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 199.10000002384186,
+          "foreground_ipc_union_ms": 163.19999998807907,
+          "non_foreground_ipc_remainder_ms": 35.90000003576279
+        }
+      ],
+      "comment_worktree": [
+        {
+          "process_number": 1,
+          "elapsed_ms": 213.39999997615814,
+          "foreground_ipc_union_ms": 170.80000001192093,
+          "non_foreground_ipc_remainder_ms": 42.59999996423721
+        },
+        {
+          "process_number": 2,
+          "elapsed_ms": 212.5,
+          "foreground_ipc_union_ms": 173.7999999821186,
+          "non_foreground_ipc_remainder_ms": 38.70000001788139
+        },
+        {
+          "process_number": 3,
+          "elapsed_ms": 214,
+          "foreground_ipc_union_ms": 168.59999999403954,
+          "non_foreground_ipc_remainder_ms": 45.400000005960464
+        }
+      ]
+    }
+  },
+  "open_observations": {
+    "A_fresh_process_ms": [
+      3091.100000023842,
+      727.5999999940395,
+      728.1999999880791
+    ],
+    "B_initial_install_ms": 852.9000000059605,
+    "B_cache_hit_fresh_process_ms": [
+      603.2999999821186,
+      586.3000000119209
+    ],
+    "paired_cache_hit_percent_changes": [
+      -17.083562398699726,
+      -19.486404830881774
+    ],
+    "initial_install_distribution_proved": false,
+    "OS_cold_claim": false,
+    "interpretation": "A1 outlier remains included and separately identified; do not use it to claim an install distribution. B2/B3 are separate fresh-process cache-hit Opens, not action repetitions."
+  },
+  "foreground_ipc_union_and_remainder": {
+    "A": {
+      "open": {
+        "scope": "three fresh Opens",
+        "foreground_ipc_union_ms": {
+          "count": 3,
+          "p50_ms": 653.3000000119209,
+          "median_ms": 653.3000000119209,
+          "p95_ms": 3023.0,
+          "max_ms": 3023.0
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 3,
+          "p50_ms": 74.30000001192093,
+          "median_ms": 74.30000001192093,
+          "p95_ms": 74.89999997615814,
+          "max_ms": 74.89999997615814
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 3,
+          "p50_ms": 52.099999994039536,
+          "median_ms": 52.099999994039536,
+          "p95_ms": 52.599999994039536,
+          "max_ms": 52.599999994039536
+        },
+        "completed_background_union_ms": {
+          "count": 3,
+          "p50_ms": 0,
+          "median_ms": 0,
+          "p95_ms": 0,
+          "max_ms": 0
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "open",
+          "repetition": 0,
+          "phase": "fresh_process",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "elapsed_ms": 3091.100000023842,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "open",
+              "start_ms": 12.400000005960464,
+              "elapsed_ms": 2987.5
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 3012.2000000178814,
+              "elapsed_ms": 35.5
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "arch/parisc/include/asm/extable.h",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "variant": "A",
+          "process_number": 1,
+          "foreground_union_intervals_ms": [
+            [
+              12.400000005960464,
+              2999.9000000059605
+            ],
+            [
+              3012.2000000178814,
+              3047.7000000178814
+            ]
+          ],
+          "foreground_ipc_union_ms": 3023.0,
+          "non_foreground_ipc_remainder_ms": 68.10000002384186,
+          "after_last_foreground_ipc_ms": 43.400000005960464,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A1/score/samples.jsonl"
+        }
+      },
+      "branch_first": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 144.5,
+          "median_ms": 144.95000000298023,
+          "p95_ms": 156.5,
+          "max_ms": 169.59999999403954
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 42.59999996423721,
+          "median_ms": 42.599999979138374,
+          "p95_ms": 48.599999994039536,
+          "max_ms": 50.19999995827675
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 38.10000002384186,
+          "median_ms": 38.400000020861626,
+          "p95_ms": 45.0,
+          "max_ms": 46.19999998807907
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 0
+        },
+        "pending_background_calls": 2,
+        "slowest_sample": {
+          "action": "branch_first",
+          "repetition": 4,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "elapsed_ms": 215.30000001192093,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "compare",
+              "start_ms": 0.20000001788139343,
+              "elapsed_ms": 157.5
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 161.40000000596046,
+              "elapsed_ms": 12.099999994039536
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "arch/parisc/include/asm/extable.h",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-first",
+          "file_count": 30,
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.20000001788139343,
+              157.7000000178814
+            ],
+            [
+              161.40000000596046,
+              173.5
+            ]
+          ],
+          "foreground_ipc_union_ms": 169.59999999403954,
+          "non_foreground_ipc_remainder_ms": 45.70000001788139,
+          "after_last_foreground_ipc_ms": 41.80000001192093,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/samples.jsonl"
+        }
+      },
+      "branch_final": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 88.59999999403954,
+          "median_ms": 88.6499999910593,
+          "p95_ms": 91.2999999821186,
+          "max_ms": 98.90000000596046
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 44.599999994039536,
+          "median_ms": 44.6499999910593,
+          "p95_ms": 48.29999998211861,
+          "max_ms": 48.70000001788139
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 40.5,
+          "median_ms": 40.79999999701977,
+          "p95_ms": 44.29999998211861,
+          "max_ms": 44.5
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 6.699999988079071,
+          "max_ms": 17.0
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "branch_final",
+          "repetition": 10,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/feature/boundary-first",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "elapsed_ms": 137.2000000178814,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "compare",
+              "start_ms": 0.10000002384185791,
+              "elapsed_ms": 79.09999999403954
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 82.60000002384186,
+              "elapsed_ms": 12.199999988079071
+            }
+          ],
+          "background_ipc": [
+            {
+              "command": "workspace",
+              "op": "refresh_notes",
+              "start_ms": 103.2000000178814,
+              "elapsed_ms": 17,
+              "pending": false,
+              "error": null
+            }
+          ],
+          "correct": true,
+          "file": "arch/parisc/include/asm/extable.h",
+          "left": "refs/heads/feature/boundary-first",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.10000002384185791,
+              79.2000000178814
+            ],
+            [
+              82.60000002384186,
+              94.80000001192093
+            ]
+          ],
+          "foreground_ipc_union_ms": 91.2999999821186,
+          "non_foreground_ipc_remainder_ms": 45.90000003576279,
+          "after_last_foreground_ipc_ms": 42.400000005960464,
+          "completed_background_union_ms": 17.0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/samples.jsonl"
+        }
+      },
+      "working_tree": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 153.7999999821186,
+          "median_ms": 153.7999999821186,
+          "p95_ms": 170.09999999403954,
+          "max_ms": 178.90000000596046
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 41.70000001788139,
+          "median_ms": 41.75,
+          "p95_ms": 46.49999997019768,
+          "max_ms": 47.20000001788139
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 39.19999998807907,
+          "median_ms": 39.29999999701977,
+          "p95_ms": 44.099999994039536,
+          "max_ms": 44.5
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 0
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "working_tree",
+          "repetition": 0,
+          "phase": "first_use",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00"
+          },
+          "elapsed_ms": 221.69999998807907,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "compare",
+              "start_ms": 0.09999999403953552,
+              "elapsed_ms": 170.7000000178814
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 173,
+              "elapsed_ms": 8.199999988079071
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "kernel/fork.c",
+          "left": "refs/heads/feature/boundary-final",
+          "right": ":worktree:",
+          "file_count": 15,
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.09999999403953552,
+              170.80000001192093
+            ],
+            [
+              173,
+              181.19999998807907
+            ]
+          ],
+          "foreground_ipc_union_ms": 178.90000000596046,
+          "non_foreground_ipc_remainder_ms": 42.79999998211861,
+          "after_last_foreground_ipc_ms": 40.5,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/samples.jsonl"
+        }
+      },
+      "stack": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 87.0,
+          "median_ms": 87.00000001490116,
+          "p95_ms": 106.09999999403954,
+          "max_ms": 114.90000000596046
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 38.10000002384186,
+          "median_ms": 39.150000005960464,
+          "p95_ms": 44.80000001192093,
+          "max_ms": 47.49999997019768
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 34.60000002384186,
+          "median_ms": 35.650000005960464,
+          "p95_ms": 41.30000001192093,
+          "max_ms": 44.29999998211861
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 12.199999988079071
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "stack",
+          "repetition": 1,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "elapsed_ms": 159,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "compare",
+              "start_ms": 0.09999999403953552,
+              "elapsed_ms": 103.90000000596046
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 107.69999998807907,
+              "elapsed_ms": 11
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "arch/parisc/include/asm/extable.h",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.09999999403953552,
+              104.0
+            ],
+            [
+              107.69999998807907,
+              118.69999998807907
+            ]
+          ],
+          "foreground_ipc_union_ms": 114.90000000596046,
+          "non_foreground_ipc_remainder_ms": 44.099999994039536,
+          "after_last_foreground_ipc_ms": 40.30000001192093,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/samples.jsonl"
+        }
+      },
+      "comment_branch": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 159.40000000596046,
+          "median_ms": 159.40000002086163,
+          "p95_ms": 175.2999999821186,
+          "max_ms": 183.0
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 39.40000003576279,
+          "median_ms": 39.6000000089407,
+          "p95_ms": 46.19999998807907,
+          "max_ms": 46.79999998211861
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 35.70000001788139,
+          "median_ms": 35.8500000089407,
+          "p95_ms": 42.19999998807907,
+          "max_ms": 42.29999998211861
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 13.099999994039536
+        },
+        "pending_background_calls": 1,
+        "slowest_sample": {
+          "action": "comment_branch",
+          "repetition": 11,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment"
+          },
+          "elapsed_ms": 229.19999998807907,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "open",
+              "start_ms": 0.19999998807907104,
+              "elapsed_ms": 168
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 172,
+              "elapsed_ms": 15
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "kernel/fork.c",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-first",
+          "file_count": 30,
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.19999998807907104,
+              168.19999998807907
+            ],
+            [
+              172,
+              187
+            ]
+          ],
+          "foreground_ipc_union_ms": 183.0,
+          "non_foreground_ipc_remainder_ms": 46.19999998807907,
+          "after_last_foreground_ipc_ms": 42.19999998807907,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/samples.jsonl"
+        }
+      },
+      "comment_worktree": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 170.7999999821186,
+          "median_ms": 171.69999998807907,
+          "p95_ms": 187.90000000596046,
+          "max_ms": 190.9000000357628
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 37.89999997615814,
+          "median_ms": 37.99999998509884,
+          "p95_ms": 42.80000004172325,
+          "max_ms": 47.0
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 35.5,
+          "median_ms": 35.6499999910593,
+          "p95_ms": 40.30000001192093,
+          "max_ms": 44.599999994039536
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 0
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "comment_worktree",
+          "repetition": 11,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "elapsed_ms": 228.80000001192093,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "open",
+              "start_ms": 0.09999999403953552,
+              "elapsed_ms": 181.80000001192093
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 184.19999998807907,
+              "elapsed_ms": 9.100000023841858
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "kernel/fork.c",
+          "left": "refs/heads/feature/boundary-final",
+          "right": ":worktree:",
+          "file_count": 15,
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.09999999403953552,
+              181.90000000596046
+            ],
+            [
+              184.19999998807907,
+              193.30000001192093
+            ]
+          ],
+          "foreground_ipc_union_ms": 190.9000000357628,
+          "non_foreground_ipc_remainder_ms": 37.89999997615814,
+          "after_last_foreground_ipc_ms": 35.5,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/samples.jsonl"
+        }
+      }
+    },
+    "B": {
+      "open": {
+        "scope": "three fresh Opens",
+        "foreground_ipc_union_ms": {
+          "count": 3,
+          "p50_ms": 530.5999999940395,
+          "median_ms": 530.5999999940395,
+          "p95_ms": 787.7999999821186,
+          "max_ms": 787.7999999821186
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 3,
+          "p50_ms": 71.90000000596046,
+          "median_ms": 71.90000000596046,
+          "p95_ms": 72.69999998807907,
+          "max_ms": 72.69999998807907
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 3,
+          "p50_ms": 49.80000001192093,
+          "median_ms": 49.80000001192093,
+          "p95_ms": 51.0,
+          "max_ms": 51.0
+        },
+        "completed_background_union_ms": {
+          "count": 3,
+          "p50_ms": 0,
+          "median_ms": 0,
+          "p95_ms": 0,
+          "max_ms": 0
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "open",
+          "repetition": 0,
+          "phase": "fresh_process",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "elapsed_ms": 852.9000000059605,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "open",
+              "start_ms": 9.200000017881393,
+              "elapsed_ms": 742.1999999880791
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 766.3000000119209,
+              "elapsed_ms": 45.599999994039536
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "arch/parisc/include/asm/extable.h",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "variant": "B",
+          "process_number": 1,
+          "foreground_union_intervals_ms": [
+            [
+              9.200000017881393,
+              751.4000000059605
+            ],
+            [
+              766.3000000119209,
+              811.9000000059605
+            ]
+          ],
+          "foreground_ipc_union_ms": 787.7999999821186,
+          "non_foreground_ipc_remainder_ms": 65.10000002384186,
+          "after_last_foreground_ipc_ms": 41.0,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B1/score/samples.jsonl"
+        }
+      },
+      "branch_first": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 142.90000000596046,
+          "median_ms": 143.25000001490116,
+          "p95_ms": 167.0,
+          "max_ms": 207.09999999403954
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 42.20000001788139,
+          "median_ms": 42.29999999701977,
+          "p95_ms": 50.49999997019768,
+          "max_ms": 50.599999994039536
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 38.5,
+          "median_ms": 38.54999999701977,
+          "p95_ms": 45.39999997615814,
+          "max_ms": 46.400000005960464
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 7.799999982118607
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "branch_first",
+          "repetition": 1,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "elapsed_ms": 246.2000000178814,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "compare",
+              "start_ms": 0.20000001788139343,
+              "elapsed_ms": 194.40000000596046
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 198.2000000178814,
+              "elapsed_ms": 12.699999988079071
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "arch/parisc/include/asm/extable.h",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-first",
+          "file_count": 30,
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.20000001788139343,
+              194.60000002384186
+            ],
+            [
+              198.2000000178814,
+              210.90000000596046
+            ]
+          ],
+          "foreground_ipc_union_ms": 207.09999999403954,
+          "non_foreground_ipc_remainder_ms": 39.10000002384186,
+          "after_last_foreground_ipc_ms": 35.30000001192093,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/samples.jsonl"
+        }
+      },
+      "branch_final": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 85.80000001192093,
+          "median_ms": 86.65000002086163,
+          "p95_ms": 95.2000000178814,
+          "max_ms": 104.59999999403954
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 38.80000001192093,
+          "median_ms": 39.5,
+          "p95_ms": 48.5,
+          "max_ms": 48.70000001788139
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 34.900000005960464,
+          "median_ms": 35.54999999701977,
+          "p95_ms": 45.0,
+          "max_ms": 45.0
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 0
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "branch_final",
+          "repetition": 3,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/feature/boundary-first",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "elapsed_ms": 148.09999999403954,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "compare",
+              "start_ms": 0.09999999403953552,
+              "elapsed_ms": 89.40000000596046
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 94.40000000596046,
+              "elapsed_ms": 15.199999988079071
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "arch/parisc/include/asm/extable.h",
+          "left": "refs/heads/feature/boundary-first",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.09999999403953552,
+              89.5
+            ],
+            [
+              94.40000000596046,
+              109.59999999403954
+            ]
+          ],
+          "foreground_ipc_union_ms": 104.59999999403954,
+          "non_foreground_ipc_remainder_ms": 43.5,
+          "after_last_foreground_ipc_ms": 38.5,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/samples.jsonl"
+        }
+      },
+      "working_tree": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 156.40000000596046,
+          "median_ms": 157.5,
+          "p95_ms": 170.0,
+          "max_ms": 171.5
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 43.40000003576279,
+          "median_ms": 43.50000001490116,
+          "p95_ms": 46.19999998807907,
+          "max_ms": 47.10000002384186
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 40.599999994039536,
+          "median_ms": 40.8500000089407,
+          "p95_ms": 43.70000001788139,
+          "max_ms": 44.60000002384186
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 0
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "working_tree",
+          "repetition": 17,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00"
+          },
+          "elapsed_ms": 215.59999999403954,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "compare",
+              "start_ms": 0.09999999403953552,
+              "elapsed_ms": 162.09999999403954
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 164.69999998807907,
+              "elapsed_ms": 9.400000005960464
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "kernel/fork.c",
+          "left": "refs/heads/feature/boundary-final",
+          "right": ":worktree:",
+          "file_count": 15,
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.09999999403953552,
+              162.19999998807907
+            ],
+            [
+              164.69999998807907,
+              174.09999999403954
+            ]
+          ],
+          "foreground_ipc_union_ms": 171.5,
+          "non_foreground_ipc_remainder_ms": 44.099999994039536,
+          "after_last_foreground_ipc_ms": 41.5,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/samples.jsonl"
+        }
+      },
+      "stack": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 87.2999999821186,
+          "median_ms": 87.5499999821186,
+          "p95_ms": 91.50000002980232,
+          "max_ms": 93.5
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 38.50000002980232,
+          "median_ms": 38.650000020861626,
+          "p95_ms": 47.0,
+          "max_ms": 47.900000005960464
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 34.60000002384186,
+          "median_ms": 34.75000001490116,
+          "p95_ms": 43.5,
+          "max_ms": 44.30000001192093
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 7.300000011920929
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "stack",
+          "repetition": 2,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "elapsed_ms": 137.09999999403954,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "compare",
+              "start_ms": 0.29999998211860657,
+              "elapsed_ms": 76.5
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 80.09999999403954,
+              "elapsed_ms": 12.699999988079071
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "arch/parisc/include/asm/extable.h",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.29999998211860657,
+              76.7999999821186
+            ],
+            [
+              80.09999999403954,
+              92.7999999821186
+            ]
+          ],
+          "foreground_ipc_union_ms": 89.19999998807907,
+          "non_foreground_ipc_remainder_ms": 47.900000005960464,
+          "after_last_foreground_ipc_ms": 44.30000001192093,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/samples.jsonl"
+        }
+      },
+      "comment_branch": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 159.69999998807907,
+          "median_ms": 161.44999998807907,
+          "p95_ms": 198.10000002384186,
+          "max_ms": 232.49999997019768
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 42.400000005960464,
+          "median_ms": 43.0,
+          "p95_ms": 47.099999994039536,
+          "max_ms": 50.29999998211861
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 38.29999998211861,
+          "median_ms": 39.04999998211861,
+          "p95_ms": 43.099999994039536,
+          "max_ms": 46.29999998211861
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 0
+        },
+        "pending_background_calls": 1,
+        "slowest_sample": {
+          "action": "comment_branch",
+          "repetition": 6,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment"
+          },
+          "elapsed_ms": 276.5,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "open",
+              "start_ms": 0.09999999403953552,
+              "elapsed_ms": 221.59999999403954
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 225.5,
+              "elapsed_ms": 10.899999976158142
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "kernel/fork.c",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-first",
+          "file_count": 30,
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.09999999403953552,
+              221.69999998807907
+            ],
+            [
+              225.5,
+              236.39999997615814
+            ]
+          ],
+          "foreground_ipc_union_ms": 232.49999997019768,
+          "non_foreground_ipc_remainder_ms": 44.00000002980232,
+          "after_last_foreground_ipc_ms": 40.10000002384186,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/samples.jsonl"
+        }
+      },
+      "comment_worktree": {
+        "scope": "final twenty action samples including first_use",
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 169.90000000596046,
+          "median_ms": 170.59999999403954,
+          "p95_ms": 188.09999999403954,
+          "max_ms": 189.7999999821186
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 40.900000005960464,
+          "median_ms": 41.19999998807907,
+          "p95_ms": 45.89999997615814,
+          "max_ms": 47.200000047683716
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 38.30000001192093,
+          "median_ms": 38.75000001490116,
+          "p95_ms": 43.69999998807907,
+          "max_ms": 44.30000001192093
+        },
+        "completed_background_union_ms": {
+          "count": 20,
+          "p50_ms": 0,
+          "median_ms": 0.0,
+          "p95_ms": 0,
+          "max_ms": 18.799999982118607
+        },
+        "pending_background_calls": 0,
+        "slowest_sample": {
+          "action": "comment_worktree",
+          "repetition": 7,
+          "phase": "repeated",
+          "expected": {
+            "root": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "elapsed_ms": 229.7000000178814,
+          "ipc": [
+            {
+              "command": "workspace",
+              "op": "open",
+              "start_ms": 0.30000001192092896,
+              "elapsed_ms": 180.30000001192093
+            },
+            {
+              "command": "workspace",
+              "op": "display_patch",
+              "start_ms": 182.7000000178814,
+              "elapsed_ms": 7.799999982118607
+            }
+          ],
+          "background_ipc": [],
+          "correct": true,
+          "file": "kernel/fork.c",
+          "left": "refs/heads/feature/boundary-final",
+          "right": ":worktree:",
+          "file_count": 15,
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.30000001192092896,
+              180.60000002384186
+            ],
+            [
+              182.7000000178814,
+              190.5
+            ]
+          ],
+          "foreground_ipc_union_ms": 188.09999999403954,
+          "non_foreground_ipc_remainder_ms": 41.60000002384186,
+          "after_last_foreground_ipc_ms": 39.20000001788139,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/samples.jsonl"
+        }
+      }
+    }
+  },
+  "all_action_10percent_guards": {
+    "branch_first": {
+      "p95_ms": {
+        "A_ms": 199.40000000596046,
+        "B_ms": 212.59999999403954,
+        "ratio": 1.0661985957255993,
+        "change_percent": 6.619859572559927,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 215.30000001192093,
+        "B_ms": 246.2000000178814,
+        "ratio": 1.1435206688539228,
+        "change_percent": 14.35206688539228,
+        "pass": false
+      }
+    },
+    "branch_final": {
+      "p95_ms": {
+        "A_ms": 137.19999998807907,
+        "B_ms": 137.69999998807907,
+        "ratio": 1.0036443148691212,
+        "change_percent": 0.36443148691212013,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 137.2000000178814,
+        "B_ms": 148.09999999403954,
+        "ratio": 1.079446063955813,
+        "change_percent": 7.9446063955812996,
+        "pass": true
+      }
+    },
+    "working_tree": {
+      "p95_ms": {
+        "A_ms": 207,
+        "B_ms": 207.19999998807907,
+        "ratio": 1.0009661835172903,
+        "change_percent": 0.09661835172902755,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 221.69999998807907,
+        "B_ms": 215.59999999403954,
+        "ratio": 0.972485340575699,
+        "change_percent": -2.751465942430098,
+        "pass": true
+      }
+    },
+    "stack": {
+      "p95_ms": {
+        "A_ms": 141.80000001192093,
+        "B_ms": 128.90000000596046,
+        "ratio": 0.909026798273089,
+        "change_percent": -9.097320172691104,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 159,
+        "B_ms": 137.09999999403954,
+        "ratio": 0.862264150905909,
+        "change_percent": -13.773584909409099,
+        "pass": true
+      }
+    },
+    "comment_branch": {
+      "p95_ms": {
+        "A_ms": 214.7000000178814,
+        "B_ms": 243.59999999403954,
+        "ratio": 1.1346064274511,
+        "change_percent": 13.460642745110007,
+        "pass": false
+      },
+      "max_ms": {
+        "A_ms": 229.19999998807907,
+        "B_ms": 276.5,
+        "ratio": 1.2063699826107375,
+        "change_percent": 20.636998261073746,
+        "pass": false
+      }
+    },
+    "comment_worktree": {
+      "p95_ms": {
+        "A_ms": 228.19999998807907,
+        "B_ms": 228.59999999403954,
+        "ratio": 1.0017528484048264,
+        "change_percent": 0.17528484048263682,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 228.80000001192093,
+        "B_ms": 229.7000000178814,
+        "ratio": 1.0039335664594125,
+        "change_percent": 0.3933566459412452,
+        "pass": true
+      }
+    }
+  },
+  "failed_action_guards": {
+    "branch_first": {
+      "max_ms": {
+        "A_ms": 215.30000001192093,
+        "B_ms": 246.2000000178814,
+        "ratio": 1.1435206688539228,
+        "change_percent": 14.35206688539228,
+        "pass": false
+      }
+    },
+    "comment_branch": {
+      "p95_ms": {
+        "A_ms": 214.7000000178814,
+        "B_ms": 243.59999999403954,
+        "ratio": 1.1346064274511,
+        "change_percent": 13.460642745110007,
+        "pass": false
+      },
+      "max_ms": {
+        "A_ms": 229.19999998807907,
+        "B_ms": 276.5,
+        "ratio": 1.2063699826107375,
+        "change_percent": 20.636998261073746,
+        "pass": false
+      }
+    }
+  },
+  "final_action_guards_pass": false,
+  "pilot_result": {
+    "cache_hit_fresh_open_ratio": 0.8291643760130027,
+    "interpretation": "Continuation gate only; no cold distribution, OS-cold, full matrix or source promotion claim.",
+    "one_initial_install_fresh_open_ratio": 0.275921193102579,
+    "pass": true,
+    "pooled_actions": {
+      "A": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {},
+          "count": 6,
+          "first_use_ms": [
+            543.8000000119209,
+            133.90000000596046
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 486.60000002384186,
+              "median_ms": 79.75,
+              "p95_ms": 486.60000002384186,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 13.199999988079071,
+              "median_ms": 12.0,
+              "p95_ms": 13.199999988079071,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 543.8000000119209,
+          "median_ms": 137.19999998807907,
+          "p95_ms": 543.8000000119209,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 7.800000011920929,
+              "median_ms": 7.800000011920929,
+              "p95_ms": 7.800000011920929,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            486.89999997615814,
+            127.5
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 429.2000000178814,
+              "median_ms": 135.84999999403954,
+              "p95_ms": 429.2000000178814,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 13.300000011920929,
+              "median_ms": 12.150000005960464,
+              "p95_ms": 13.300000011920929,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 486.89999997615814,
+          "median_ms": 188.8999999910593,
+          "p95_ms": 486.89999997615814,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 27.5,
+              "median_ms": 27.5,
+              "p95_ms": 27.5,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            228.7000000178814,
+            213.7000000178814
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 15.699999988079071,
+              "median_ms": 13.0,
+              "p95_ms": 15.699999988079071,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 6,
+              "max_ms": 182.09999999403954,
+              "median_ms": 151.3500000089407,
+              "p95_ms": 182.09999999403954,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 228.7000000178814,
+          "median_ms": 206.0,
+          "p95_ms": 228.7000000178814,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 2,
+              "max_ms": 16.900000005960464,
+              "median_ms": 13.599999994039536,
+              "p95_ms": 16.900000005960464,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            213.2999999821186,
+            230.40000000596046
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 9.599999994039536,
+              "median_ms": 8.849999994039536,
+              "p95_ms": 9.599999994039536,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 6,
+              "max_ms": 224.10000002384186,
+              "median_ms": 175.34999999403954,
+              "p95_ms": 224.10000002384186,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 276.90000000596046,
+          "median_ms": 221.70000000298023,
+          "p95_ms": 276.90000000596046,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {},
+          "count": 2,
+          "first_use_ms": [
+            3091.100000023842,
+            727.5999999940395
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 2,
+              "max_ms": 43.400000005960464,
+              "median_ms": 39.45000000298023,
+              "p95_ms": 43.400000005960464,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 2,
+              "max_ms": 2987.5,
+              "median_ms": 1798.699999988079,
+              "p95_ms": 2987.5,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 3091.100000023842,
+          "median_ms": 1909.3500000089407,
+          "p95_ms": 3091.100000023842,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {},
+          "count": 6,
+          "first_use_ms": [
+            267.7999999821186,
+            136.59999999403954
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 216.30000001192093,
+              "median_ms": 78.59999999403954,
+              "p95_ms": 216.30000001192093,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 12.800000011920929,
+              "median_ms": 11.850000008940697,
+              "p95_ms": 12.800000011920929,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 267.7999999821186,
+          "median_ms": 138.44999998807907,
+          "p95_ms": 267.7999999821186,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 6.200000017881393,
+              "median_ms": 6.200000017881393,
+              "p95_ms": 6.200000017881393,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            566.5,
+            188.69999998807907
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 523.1999999880791,
+              "median_ms": 156.15000000596046,
+              "p95_ms": 523.1999999880791,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 9,
+              "median_ms": 8.200000002980232,
+              "p95_ms": 9,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 566.5,
+          "median_ms": 207.15000000596046,
+          "p95_ms": 566.5,
+          "pending_count": 0
+        }
+      },
+      "B": {
+        "branch_final": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": null,
+              "median_ms": null,
+              "p95_ms": null,
+              "pending_count": 1
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            151.09999999403954,
+            135.90000000596046
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 108.89999997615814,
+              "median_ms": 79.19999998807907,
+              "p95_ms": 108.89999997615814,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 12.900000005960464,
+              "median_ms": 11.400000005960464,
+              "p95_ms": 12.900000005960464,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 168.7000000178814,
+          "median_ms": 137.40000000596046,
+          "p95_ms": 168.7000000178814,
+          "pending_count": 0
+        },
+        "branch_first": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": null,
+              "median_ms": null,
+              "p95_ms": null,
+              "pending_count": 1
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            129.59999999403954,
+            135.7999999821186
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 154.90000000596046,
+              "median_ms": 133.05000001192093,
+              "p95_ms": 154.90000000596046,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 12.900000005960464,
+              "median_ms": 11.299999997019768,
+              "p95_ms": 12.900000005960464,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 198.90000000596046,
+          "median_ms": 181.8999999910593,
+          "p95_ms": 198.90000000596046,
+          "pending_count": 0
+        },
+        "comment_branch": {
+          "background_ipc_by_command_and_op": {},
+          "count": 6,
+          "first_use_ms": [
+            200.69999998807907,
+            213.30000001192093
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 13,
+              "median_ms": 12.399999991059303,
+              "p95_ms": 13,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 6,
+              "max_ms": 161,
+              "median_ms": 146.30000001192093,
+              "p95_ms": 161,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 213.30000001192093,
+          "median_ms": 198.1000000089407,
+          "p95_ms": 213.30000001192093,
+          "pending_count": 0
+        },
+        "comment_worktree": {
+          "background_ipc_by_command_and_op": {},
+          "count": 6,
+          "first_use_ms": [
+            213.39999997615814,
+            212.5
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 9.900000005960464,
+              "median_ms": 9.049999997019768,
+              "p95_ms": 9.900000005960464,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 6,
+              "max_ms": 164.09999999403954,
+              "median_ms": 161.20000000298023,
+              "p95_ms": 164.09999999403954,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 213.5,
+          "median_ms": 213.0499999821186,
+          "p95_ms": 213.5,
+          "pending_count": 0
+        },
+        "open": {
+          "background_ipc_by_command_and_op": {},
+          "count": 2,
+          "first_use_ms": [
+            852.9000000059605,
+            603.2999999821186
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/display_patch": {
+              "count": 2,
+              "max_ms": 45.599999994039536,
+              "median_ms": 42.3999999910593,
+              "p95_ms": 45.599999994039536,
+              "pending_count": 0
+            },
+            "workspace/open": {
+              "count": 2,
+              "max_ms": 742.1999999880791,
+              "median_ms": 616.7999999970198,
+              "p95_ms": 742.1999999880791,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 852.9000000059605,
+          "median_ms": 728.0999999940395,
+          "p95_ms": 852.9000000059605,
+          "pending_count": 0
+        },
+        "stack": {
+          "background_ipc_by_command_and_op": {},
+          "count": 6,
+          "first_use_ms": [
+            127,
+            127.69999998807907
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 115.09999999403954,
+              "median_ms": 76.95000000298023,
+              "p95_ms": 115.09999999403954,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 12.199999988079071,
+              "median_ms": 11.849999994039536,
+              "p95_ms": 12.199999988079071,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 174.10000002384186,
+          "median_ms": 127.34999999403954,
+          "p95_ms": 174.10000002384186,
+          "pending_count": 0
+        },
+        "working_tree": {
+          "background_ipc_by_command_and_op": {
+            "workspace/refresh_notes": {
+              "count": 1,
+              "max_ms": 8,
+              "median_ms": 8,
+              "p95_ms": 8,
+              "pending_count": 0
+            }
+          },
+          "count": 6,
+          "first_use_ms": [
+            221.19999998807907,
+            207.60000002384186
+          ],
+          "ipc_by_command_and_op": {
+            "workspace/compare": {
+              "count": 6,
+              "max_ms": 169.80000001192093,
+              "median_ms": 156.40000000596046,
+              "p95_ms": 169.80000001192093,
+              "pending_count": 0
+            },
+            "workspace/display_patch": {
+              "count": 6,
+              "max_ms": 10.799999982118607,
+              "median_ms": 9.349999994039536,
+              "p95_ms": 10.799999982118607,
+              "pending_count": 0
+            }
+          },
+          "max_ms": 221.19999998807907,
+          "median_ms": 207.30000001192093,
+          "p95_ms": 221.19999998807907,
+          "pending_count": 0
+        }
+      }
+    },
+    "six_action_pooled_p95_ratios": {
+      "branch_final": 0.3102243472125473,
+      "branch_first": 0.4085027726754979,
+      "comment_branch": 0.932662877110816,
+      "comment_worktree": 0.7710364752452303,
+      "stack": 0.6501120240308692,
+      "working_tree": 0.3904677846214988
+    }
+  },
+  "processes_and_cleanup": [
+    {
+      "variant": "A",
+      "process_number": 1,
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+        "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "cdp_port": 29223,
+        "created": "2026-11-25T18:20:03.9263740-05:00",
+        "mcp_port": 28865,
+        "pid": 6672,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            6672,
+            7948
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "native_workers_gone": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T18:20:04.0781080-05:00",
+            "pid": 14224
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T18:20:05.9364610-05:00",
+            "pid": 8512
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+            "created": "2026-11-25T18:20:08.7044760-05:00",
+            "pid": 7948
+          }
+        ],
+        "ports_free": true
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A1/score/verdict.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A1/score/samples.jsonl",
+      "welcome_startup_error_observed": true,
+      "transport_startup": []
+    },
+    {
+      "variant": "B",
+      "process_number": 1,
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+        "binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+        "cdp_port": 29223,
+        "created": "2026-11-25T18:20:21.6768180-05:00",
+        "mcp_port": 28865,
+        "pid": 4496,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500"
+      },
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            4496,
+            10940
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "native_workers_gone": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T18:20:21.9971440-05:00",
+            "pid": 6764
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T18:20:26.2178640-05:00",
+            "pid": 3896
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+            "created": "2026-11-25T18:20:26.7365350-05:00",
+            "pid": 10940
+          }
+        ],
+        "ports_free": true
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B1/score/verdict.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B1/score/samples.jsonl",
+      "welcome_startup_error_observed": true,
+      "transport_startup": []
+    },
+    {
+      "variant": "A",
+      "process_number": 2,
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+        "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "cdp_port": 29223,
+        "created": "2026-11-25T18:20:38.2181660-05:00",
+        "mcp_port": 28865,
+        "pid": 4092,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            4092,
+            5820
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "native_workers_gone": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T18:20:38.3779460-05:00",
+            "pid": 4736
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T18:20:40.2173120-05:00",
+            "pid": 12480
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+            "created": "2026-11-25T18:20:40.6167350-05:00",
+            "pid": 5820
+          }
+        ],
+        "ports_free": true
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A2/score/verdict.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A2/score/samples.jsonl",
+      "welcome_startup_error_observed": true,
+      "transport_startup": []
+    },
+    {
+      "variant": "B",
+      "process_number": 2,
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+        "binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+        "cdp_port": 29223,
+        "created": "2026-11-25T18:20:52.0260460-05:00",
+        "mcp_port": 28865,
+        "pid": 4080,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500"
+      },
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            4080,
+            7844
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "native_workers_gone": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T18:20:52.1841020-05:00",
+            "pid": 3136
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T18:20:53.9677070-05:00",
+            "pid": 13572
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+            "created": "2026-11-25T18:20:54.2402530-05:00",
+            "pid": 7844
+          }
+        ],
+        "ports_free": true
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B2/score/verdict.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B2/score/samples.jsonl",
+      "welcome_startup_error_observed": true,
+      "transport_startup": []
+    },
+    {
+      "variant": "A",
+      "process_number": 3,
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+        "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "cdp_port": 29223,
+        "created": "2026-11-25T18:21:05.8087840-05:00",
+        "mcp_port": 28865,
+        "pid": 4512,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            4512,
+            13652
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "native_workers_gone": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T18:21:05.9699450-05:00",
+            "pid": 3032
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T18:21:07.7801950-05:00",
+            "pid": 4580
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+            "created": "2026-11-25T18:21:08.1744640-05:00",
+            "pid": 13652
+          }
+        ],
+        "ports_free": true
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/verdict.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/samples.jsonl",
+      "welcome_startup_error_observed": true,
+      "transport_startup": []
+    },
+    {
+      "variant": "B",
+      "process_number": 3,
+      "launch": {
+        "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+        "binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+        "cdp_port": 29223,
+        "created": "2026-11-25T18:21:46.6957000-05:00",
+        "mcp_port": 28865,
+        "pid": 1052,
+        "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+        "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+        "session": 1,
+        "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500"
+      },
+      "cleanup": {
+        "canonical_stop": {
+          "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+          "stopped_pids": [
+            1052,
+            9696
+          ]
+        },
+        "exact_owned_processes_absent": true,
+        "native_workers_gone": true,
+        "observed_children": [
+          {
+            "binary": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\158.0.4370.33\\msedgewebview2.exe",
+            "created": "2026-11-25T18:21:46.8502500-05:00",
+            "pid": 14272
+          },
+          {
+            "binary": "C:\\WINDOWS\\System32\\wsl.exe",
+            "created": "2026-11-25T18:21:48.6387780-05:00",
+            "pid": 5004
+          },
+          {
+            "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+            "created": "2026-11-25T18:21:48.9033840-05:00",
+            "pid": 9696
+          }
+        ],
+        "ports_free": true
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/verdict.json",
+      "samples": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/samples.jsonl",
+      "welcome_startup_error_observed": true,
+      "transport_startup": []
+    }
+  ],
+  "native_cache_placement": [
+    {
+      "variant": "A",
+      "process_number": 1,
+      "before": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "exists": false
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600
+          }
+        },
+        "label": "b2 foreign-filesystem helper control; native cache unused",
+        "metadata_only": true,
+        "root_exists": false,
+        "temporary": [],
+        "workers": []
+      },
+      "after": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "exists": false
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "filesystem_type": "0x1021997",
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          }
+        },
+        "root_exists": false,
+        "temporary": [],
+        "workers": [
+          {
+            "args": "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa --stdio ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "exe": "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+            "pid": 177388,
+            "start_ticks": "15310171",
+            "state": "S"
+          }
+        ]
+      }
+    },
+    {
+      "variant": "B",
+      "process_number": 1,
+      "before": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "exists": false
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600
+          }
+        },
+        "label": "initial native-cache install; one fresh-process observation",
+        "metadata_only": true,
+        "root_exists": false,
+        "temporary": [],
+        "workers": []
+      },
+      "after": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795648826917940912,
+            "device": 2096,
+            "exists": true,
+            "filesystem_type": "0xef53",
+            "inode": 316404,
+            "mode": "0o755",
+            "mtime_ns": 1795648826529940904,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "filesystem_type": "0x1021997",
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          }
+        },
+        "root_exists": true,
+        "temporary": [],
+        "workers": [
+          {
+            "args": "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa --stdio ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "exe": "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+            "pid": 178009,
+            "start_ticks": "15312197",
+            "state": "S"
+          }
+        ]
+      }
+    },
+    {
+      "variant": "A",
+      "process_number": 2,
+      "before": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795648826917940912,
+            "device": 2096,
+            "exists": true,
+            "inode": 316404,
+            "mode": "0o755",
+            "mtime_ns": 1795648826529940904
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600
+          }
+        },
+        "label": "b2 foreign-filesystem helper control; native cache unused",
+        "metadata_only": true,
+        "root_exists": true,
+        "temporary": [],
+        "workers": []
+      },
+      "after": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795648826917940912,
+            "device": 2096,
+            "exists": true,
+            "filesystem_type": "0xef53",
+            "inode": 316404,
+            "mode": "0o755",
+            "mtime_ns": 1795648826529940904,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "filesystem_type": "0x1021997",
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          }
+        },
+        "root_exists": true,
+        "temporary": [],
+        "workers": [
+          {
+            "args": "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa --stdio ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "exe": "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+            "pid": 178635,
+            "start_ticks": "15313597",
+            "state": "S"
+          }
+        ]
+      }
+    },
+    {
+      "variant": "B",
+      "process_number": 2,
+      "before": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795648826917940912,
+            "device": 2096,
+            "exists": true,
+            "inode": 316404,
+            "mode": "0o755",
+            "mtime_ns": 1795648826529940904
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600
+          }
+        },
+        "label": "native-cache hit in a fresh process; no pre-Open hash/read/exec",
+        "metadata_only": true,
+        "root_exists": true,
+        "temporary": [],
+        "workers": []
+      },
+      "after": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795648854397941356,
+            "device": 2096,
+            "exists": true,
+            "filesystem_type": "0xef53",
+            "inode": 316404,
+            "mode": "0o755",
+            "mtime_ns": 1795648826529940904,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "filesystem_type": "0x1021997",
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          }
+        },
+        "root_exists": true,
+        "temporary": [],
+        "workers": [
+          {
+            "args": "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa --stdio ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "exe": "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+            "pid": 179248,
+            "start_ticks": "15314973",
+            "state": "S"
+          }
+        ]
+      }
+    },
+    {
+      "variant": "A",
+      "process_number": 3,
+      "before": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795648854397941356,
+            "device": 2096,
+            "exists": true,
+            "inode": 316404,
+            "mode": "0o755",
+            "mtime_ns": 1795648826529940904
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600
+          }
+        },
+        "label": "b2 foreign-filesystem helper control; native cache unused",
+        "metadata_only": true,
+        "root_exists": true,
+        "temporary": [],
+        "workers": []
+      },
+      "after": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795648854397941356,
+            "device": 2096,
+            "exists": true,
+            "filesystem_type": "0xef53",
+            "inode": 316404,
+            "mode": "0o755",
+            "mtime_ns": 1795648826529940904,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "filesystem_type": "0x1021997",
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          }
+        },
+        "root_exists": true,
+        "temporary": [],
+        "workers": [
+          {
+            "args": "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa --stdio ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "exe": "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+            "pid": 179872,
+            "start_ticks": "15316353",
+            "state": "S"
+          }
+        ]
+      }
+    },
+    {
+      "variant": "B",
+      "process_number": 3,
+      "before": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795648854397941356,
+            "device": 2096,
+            "exists": true,
+            "inode": 316404,
+            "mode": "0o755",
+            "mtime_ns": 1795648826529940904
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600
+          }
+        },
+        "label": "native-cache hit in a fresh process; no pre-Open hash/read/exec",
+        "metadata_only": true,
+        "root_exists": true,
+        "temporary": [],
+        "workers": []
+      },
+      "after": {
+        "files": {
+          "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795648909057935730,
+            "device": 2096,
+            "exists": true,
+            "filesystem_type": "0xef53",
+            "inode": 316404,
+            "mode": "0o755",
+            "mtime_ns": 1795648826529940904,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          },
+          "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+            "bytes": 3969568,
+            "ctime_ns": 1795627806285832400,
+            "device": 87,
+            "exists": true,
+            "filesystem_type": "0x1021997",
+            "inode": 3377699720889874,
+            "mode": "0o777",
+            "mtime_ns": 1795627806274878600,
+            "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+          }
+        },
+        "root_exists": true,
+        "temporary": [],
+        "workers": [
+          {
+            "args": "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa --stdio ",
+            "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "exe": "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+            "pid": 183562,
+            "start_ticks": "15320439",
+            "state": "S"
+          }
+        ]
+      }
+    }
+  ],
+  "native_cache_cleanup": {
+    "owned_cache_root_absent": true,
+    "removed_owned_files": [
+      "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+    ]
+  },
+  "fixture_before": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_after": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "transport_cleanup": {
+    "pid": 92508,
+    "start_ticks": "77113441",
+    "tunnel": {
+      "argv": [
+        "/usr/bin/ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "-M",
+        "-S",
+        "/tmp/status-win-3a3xqjit/ssh.sock",
+        "-o",
+        "ControlPersist=no",
+        "-N",
+        "-o",
+        "ExitOnForwardFailure=yes",
+        "-L",
+        "127.0.0.1:19223:127.0.0.1:29223",
+        "windows-vm"
+      ],
+      "control_socket": "/tmp/status-win-3a3xqjit/ssh.sock",
+      "pid": 92513,
+      "start_ticks": "77113449"
+    },
+    "master_check": {
+      "exit": 0,
+      "stderr": "Master running (pid=92513)\n",
+      "stdout": ""
+    },
+    "master_exit_request": {
+      "exit": 0,
+      "stderr": "Exit request sent.\n",
+      "stdout": ""
+    },
+    "tunnel_exit": 255,
+    "host_loopback_port_free": true,
+    "control_socket_absent": true
+  },
+  "host_exact_master_absent_now": true,
+  "input_hashes": {
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A1/score/verdict.json": "1246dc01e4dbeee011074e3390cd7e8c753936f4de329ddfc91417dc1e046862",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A1/score/samples.jsonl": "d14763f6f9870a4dfcceec443350868cb2559402a346dd3a5fb66e206ad4a2ac",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A1/launch.json": "6fe66ef65e5f831e9cbf9587630d4ef08724cc4ca85cd7bc9054fbaeaff37ea2",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A1/cleanup.json": "168e6fa57e0d5c19a2e2ebf851a38888116d6d54f8e6bea48fe9a1d7e1aff7b9",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A1/welcome-ready.json": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B1/score/verdict.json": "8182f5aacc875587d481db9c13ef4f62f8aa9f819ae92f9076b896d6ae50c79c",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B1/score/samples.jsonl": "6e61167f9a73f875844a07f5d8c99c0e99028376c97dac54fb374ae2aac372a6",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B1/launch.json": "f4f8f13a7409a756da2914dd8eea61b676429404ed155724aff72393d9536715",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B1/cleanup.json": "4ba8e38a98aaa777e16c6a9e8c642b74c2f66c4e0014ef6dcc521ec44a7ec7d6",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B1/welcome-ready.json": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A2/score/verdict.json": "6d3569608c07d8102c7d838262b395ec4d0fe4d28594caaaa59ef23e5297434c",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A2/score/samples.jsonl": "b527b1e544adf7398ce6b06e8074d74f91447b747a4a8e44a304e18bee394f69",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A2/launch.json": "581dfe6ba59a4433cd8f9cdbd91dca1b0f795fe1353a7f9842ec211234baf23b",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A2/cleanup.json": "b7f95cfb3ceeb1b9b3eba3dbd35863468e8afecf327f6be15b519c072a236bd9",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A2/welcome-ready.json": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B2/score/verdict.json": "009e4e7cf6d79919b17308d74d6621cf3c0d5552ecdf16d821f152e7df17c56c",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B2/score/samples.jsonl": "7f8f4b2545a9f5217cdeeb0a117361482dff97b7e2e9326ab35cbec03f0db286",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B2/launch.json": "062226640d169800c9eb9bf50fba0e473917e2b6d2b52359b507104bcae76a7b",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B2/cleanup.json": "bcc5c0a505497f98965e3d8ee6dff7c1ea3224c17faa0f244ed75863aa63f278",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B2/welcome-ready.json": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/verdict.json": "00d5d0f9ae30a0f647419eeb55bcfa44537cabe15ea4e7ebb63471ea645e7b3c",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/score/samples.jsonl": "4c4a43183375f40bf83ec5f999e10c7d2b03dbc4a344ca2b539700ff4fc4edee",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/launch.json": "9d6057b84c3e358e9b0d6ece73e32309a3b013f7eb62e21ee6ccf82e1c0b6cd1",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/cleanup.json": "ca84c0fd64bd89fed052177e1f2846867d760e3fc075407da35ac1a1f40aadd2",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/welcome-ready.json": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/verdict.json": "cf0da6bc4648e1b00bfdf7a9a26e19791f1bae7c0fee81443ebd85ee9fe0da82",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/score/samples.jsonl": "2f32abd89b6e917f256683927722a0d12e41e53ab2326d6108067ae37da9b880",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/launch.json": "9f85119eb164eda0dbc6fb02753d603daab07fef6fbc161ff8d1485ebd925dd5",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/cleanup.json": "17a3b003b0d795be6485482bb18a26598768baba700a88e4bfcd30ea8181b9a8",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/welcome-ready.json": "368e05272682f899820ca1647e6e6632d33ceb27d7e5f3e4c4b7f6271408ad22",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A1/cache-after-score.json": "b92cca5a4f586791e564ac0c96e554ce6a0c22f8440d866626e687f402f19cad",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B1/cache-after-score.json": "55fcfb44a9908eb7fcaaf1f4da4a406a9841912be141c95203be1d44464e8f06",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A2/cache-after-score.json": "afc1b8244de6100baa05bb785774865bf303ac5a3407de0de54a1c44742b87cd",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B2/cache-after-score.json": "9aa93b3860847b712021ae4d91fd08884517aab77010ef26787d3467ecb4df3a",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-A3/cache-after-score.json": "1ef96641f5fd21b2ba00b5b273b1c52a1e17507155f72a7a52d5bda4cca7d9c0",
+    "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/windows_linux-B3/cache-after-score.json": "53abb9b0eb6b7a815de0cba70490495fe5ad9375644ace957731bbe309d49520"
+  },
+  "interpretation": [
+    "Cache-hit Open observations improve in both later fresh processes, but final action guards fail. No promotion follows from Open alone.",
+    "No source causality is inferred from IPC interval differences. The non-foreground remainder is not paint-only time.",
+    "No samples or outliers were removed; no VM access, tests or builds occurred during analysis."
+  ],
+  "outlier_comparison": {
+    "record": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/gui-ab/run-20261125T231935352904Z/outlier-comparison.json",
+    "sha256": "e51ca9a7f8b9333a31b750c3525ea3bc3f93117107873038a02fe025febf98bf"
+  },
+  "viewports": [
+    [
+      1280,
+      781
+    ]
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "changed_files_per_layer": 30,
+  "comment_target_file": "kernel/fork.c",
+  "first_branch_file": "arch/parisc/include/asm/extable.h",
+  "first_worktree_file": "kernel/fork.c",
+  "git_state_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "head": "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+  "index_stat_cache": {
+    "windows": "Git for Windows",
+    "wsl": "Linux Git"
+  },
+  "kernel_base": "adc218676eef25575469234709c2d87185ca223a",
+  "kernel_release": "v6.12",
+  "layers": [
+    {
+      "files": {
+        "arch/parisc/include/asm/extable.h": {
+          "line": 66,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+        },
+        "arch/s390/kernel/unwind_bc.c": {
+          "line": 184,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_15"
+        },
+        "arch/x86/include/asm/pm-trace.h": {
+          "line": 26,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_17"
+        },
+        "block/blk-mq.h": {
+          "line": 443,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_28"
+        },
+        "block/partitions/atari.h": {
+          "line": 38,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_27"
+        },
+        "block/partitions/sysv68.c": {
+          "line": 97,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_29"
+        },
+        "drivers/base/core.c": {
+          "line": 5217,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_12"
+        },
+        "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c": {
+          "line": 155,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_13"
+        },
+        "drivers/gpu/drm/panel/panel-tpo-tpg110.c": {
+          "line": 489,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_14"
+        },
+        "fs/nfs/blocklayout/extent_tree.c": {
+          "line": 649,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_07"
+        },
+        "fs/open.c": {
+          "line": 1657,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_06"
+        },
+        "fs/smb/client/smb2pdu.h": {
+          "line": 450,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_08"
+        },
+        "include/dt-bindings/reset/sun20i-d1-ccu.h": {
+          "line": 81,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_18"
+        },
+        "include/uapi/linux/auto_fs4.h": {
+          "line": 17,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_20"
+        },
+        "include/video/sisfb.h": {
+          "line": 26,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_19"
+        },
+        "kernel/fork.c": {
+          "line": 3434,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00"
+        },
+        "kernel/time/time.c": {
+          "line": 1058,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_02"
+        },
+        "kernel/trace/blktrace.c": {
+          "line": 1919,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_01"
+        },
+        "lib/842/842_debugfs.h": {
+          "line": 52,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_23"
+        },
+        "lib/hweight.c": {
+          "line": 70,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_21"
+        },
+        "lib/test_free_pages.c": {
+          "line": 50,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_22"
+        },
+        "mm/kfence/core.c": {
+          "line": 1262,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_04"
+        },
+        "mm/madvise.c": {
+          "line": 1550,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_05"
+        },
+        "mm/memory.c": {
+          "line": 6943,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_03"
+        },
+        "net/core/dev.c": {
+          "line": 12184,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_09"
+        },
+        "net/ipv6/exthdrs_core.c": {
+          "line": 284,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_11"
+        },
+        "net/sched/em_u32.c": {
+          "line": 63,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_10"
+        },
+        "security/keys/request_key.c": {
+          "line": 823,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_26"
+        },
+        "security/selinux/netport.c": {
+          "line": 240,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_24"
+        },
+        "security/tomoyo/file.c": {
+          "line": 1047,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_1_25"
+        }
+      },
+      "ref": "refs/heads/feature/boundary-first",
+      "sha": "856700f06bf917bd363dd835fe6f6bd3923254da"
+    },
+    {
+      "files": {
+        "arch/parisc/include/asm/extable.h": {
+          "line": 68,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+        },
+        "arch/s390/kernel/unwind_bc.c": {
+          "line": 186,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_15"
+        },
+        "arch/x86/include/asm/pm-trace.h": {
+          "line": 28,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_17"
+        },
+        "block/blk-mq.h": {
+          "line": 445,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_28"
+        },
+        "block/partitions/atari.h": {
+          "line": 40,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_27"
+        },
+        "block/partitions/sysv68.c": {
+          "line": 99,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_29"
+        },
+        "drivers/base/core.c": {
+          "line": 5219,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_12"
+        },
+        "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c": {
+          "line": 157,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_13"
+        },
+        "drivers/gpu/drm/panel/panel-tpo-tpg110.c": {
+          "line": 491,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_14"
+        },
+        "fs/nfs/blocklayout/extent_tree.c": {
+          "line": 651,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_07"
+        },
+        "fs/open.c": {
+          "line": 1659,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_06"
+        },
+        "fs/smb/client/smb2pdu.h": {
+          "line": 452,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_08"
+        },
+        "include/dt-bindings/reset/sun20i-d1-ccu.h": {
+          "line": 83,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_18"
+        },
+        "include/uapi/linux/auto_fs4.h": {
+          "line": 19,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_20"
+        },
+        "include/video/sisfb.h": {
+          "line": 28,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_19"
+        },
+        "kernel/fork.c": {
+          "line": 3436,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_00"
+        },
+        "kernel/time/time.c": {
+          "line": 1060,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_02"
+        },
+        "kernel/trace/blktrace.c": {
+          "line": 1921,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_01"
+        },
+        "lib/842/842_debugfs.h": {
+          "line": 54,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_23"
+        },
+        "lib/hweight.c": {
+          "line": 72,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_21"
+        },
+        "lib/test_free_pages.c": {
+          "line": 52,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_22"
+        },
+        "mm/kfence/core.c": {
+          "line": 1264,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_04"
+        },
+        "mm/madvise.c": {
+          "line": 1552,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_05"
+        },
+        "mm/memory.c": {
+          "line": 6945,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_03"
+        },
+        "net/core/dev.c": {
+          "line": 12186,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_09"
+        },
+        "net/ipv6/exthdrs_core.c": {
+          "line": 286,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_11"
+        },
+        "net/sched/em_u32.c": {
+          "line": 65,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_10"
+        },
+        "security/keys/request_key.c": {
+          "line": 825,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_26"
+        },
+        "security/selinux/netport.c": {
+          "line": 242,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_24"
+        },
+        "security/tomoyo/file.c": {
+          "line": 1049,
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_25"
+        }
+      },
+      "ref": "refs/heads/feature/boundary-final",
+      "sha": "997032e932bfa5fcefdab0c986c8d01fe56c8229"
+    }
+  ],
+  "local": {
+    "Staged": {
+      "kernel/fork.c": {
+        "line": 3438,
+        "marker": "BRANCHLINE_BOUNDARY_STAGED_00"
+      },
+      "kernel/time/time.c": {
+        "line": 1062,
+        "marker": "BRANCHLINE_BOUNDARY_STAGED_02"
+      },
+      "kernel/trace/blktrace.c": {
+        "line": 1923,
+        "marker": "BRANCHLINE_BOUNDARY_STAGED_01"
+      },
+      "mm/kfence/core.c": {
+        "line": 1266,
+        "marker": "BRANCHLINE_BOUNDARY_STAGED_04"
+      },
+      "mm/memory.c": {
+        "line": 6947,
+        "marker": "BRANCHLINE_BOUNDARY_STAGED_03"
+      }
+    },
+    "Unstaged": {
+      "fs/nfs/blocklayout/extent_tree.c": {
+        "line": 653,
+        "marker": "BRANCHLINE_BOUNDARY_UNSTAGED_04"
+      },
+      "fs/open.c": {
+        "line": 1661,
+        "marker": "BRANCHLINE_BOUNDARY_UNSTAGED_03"
+      },
+      "mm/kfence/core.c": {
+        "line": 1268,
+        "marker": "BRANCHLINE_BOUNDARY_UNSTAGED_01"
+      },
+      "mm/madvise.c": {
+        "line": 1554,
+        "marker": "BRANCHLINE_BOUNDARY_UNSTAGED_02"
+      },
+      "mm/memory.c": {
+        "line": 6949,
+        "marker": "BRANCHLINE_BOUNDARY_UNSTAGED_00"
+      }
+    },
+    "Untracked": {
+      "branchline-review-fixture/untracked-00.txt": {
+        "line": 2,
+        "marker": "BRANCHLINE_BOUNDARY_UNTRACKED_00"
+      },
+      "branchline-review-fixture/untracked-01.txt": {
+        "line": 2,
+        "marker": "BRANCHLINE_BOUNDARY_UNTRACKED_01"
+      },
+      "branchline-review-fixture/untracked-02.txt": {
+        "line": 2,
+        "marker": "BRANCHLINE_BOUNDARY_UNTRACKED_02"
+      },
+      "branchline-review-fixture/untracked-03.txt": {
+        "line": 2,
+        "marker": "BRANCHLINE_BOUNDARY_UNTRACKED_03"
+      },
+      "branchline-review-fixture/untracked-04.txt": {
+        "line": 2,
+        "marker": "BRANCHLINE_BOUNDARY_UNTRACKED_04"
+      }
+    }
+  },
+  "materialized_tracked_files": 86651,
+  "paths": {
+    "windows_linux": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+    "windows_windows": "C:\\Users\\max\\branchline-bench\\kernel-windows",
+    "wsl_linux": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+    "wsl_windows": "/mnt/c/Users/max/branchline-bench/kernel-windows"
+  },
+  "refs": [
+    "refs/heads/main",
+    "refs/heads/feature/boundary-first",
+    "refs/heads/feature/boundary-final"
+  ],
+  "schema_version": 1,
+  "sparse_exclusions": [
+    "drivers/gpu/drm/nouveau/nvkm/subdev/i2c/aux.c",
+    "drivers/gpu/drm/nouveau/nvkm/subdev/i2c/aux.h",
+    "include/soc/arc/aux.h",
+    "include/uapi/linux/netfilter/xt_CONNMARK.h",
+    "include/uapi/linux/netfilter/xt_DSCP.h",
+    "include/uapi/linux/netfilter/xt_MARK.h",
+    "include/uapi/linux/netfilter/xt_RATEEST.h",
+    "include/uapi/linux/netfilter/xt_TCPMSS.h",
+    "include/uapi/linux/netfilter/xt_connmark.h",
+    "include/uapi/linux/netfilter/xt_dscp.h",
+    "include/uapi/linux/netfilter/xt_mark.h",
+    "include/uapi/linux/netfilter/xt_rateest.h",
+    "include/uapi/linux/netfilter/xt_tcpmss.h",
+    "include/uapi/linux/netfilter_ipv4/ipt_ECN.h",
+    "include/uapi/linux/netfilter_ipv4/ipt_TTL.h",
+    "include/uapi/linux/netfilter_ipv4/ipt_ecn.h",
+    "include/uapi/linux/netfilter_ipv4/ipt_ttl.h",
+    "include/uapi/linux/netfilter_ipv6/ip6t_HL.h",
+    "include/uapi/linux/netfilter_ipv6/ip6t_hl.h",
+    "net/netfilter/xt_DSCP.c",
+    "net/netfilter/xt_HL.c",
+    "net/netfilter/xt_RATEEST.c",
+    "net/netfilter/xt_TCPMSS.c",
+    "net/netfilter/xt_dscp.c",
+    "net/netfilter/xt_hl.c",
+    "net/netfilter/xt_rateest.c",
+    "net/netfilter/xt_tcpmss.c",
+    "tools/memory-model/litmus-tests/Z6.0+pooncelock+poonceLock+pombonce.litmus",
+    "tools/memory-model/litmus-tests/Z6.0+pooncelock+pooncelock+pombonce.litmus"
+  ],
+  "tracked_files": 86680,
+  "windows_symlinks": "core.symlinks=false; tracked Git entries preserved"
+}

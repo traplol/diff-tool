@@ -1,0 +1,1782 @@
+{
+  "status": "valid separate confirmation pair; 10percent guard failure retained; no promotion",
+  "state": "/home/max/workspace/merge-viewer-native/build/experiments/status-wsl-control/confirmation/run-20261125T232342724804Z/state.json",
+  "state_sha256": "98702f9855fdf72b682056f76860b227cc18ee57b568784400660455a2d8f122",
+  "original_series": "/home/max/workspace/merge-viewer-native/build/experiments/status-wsl-control/run-20261125T223739227075Z/state.json",
+  "pooling": false,
+  "samples": 242,
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "variants": {
+    "A": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json",
+      "build_record_sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384",
+      "embedded_helper": {
+        "bytes": 2720768,
+        "path": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline-git-worker.exe",
+        "preserved_from": "/home/max/benchmarks/branchline-boundary/helper-placement/placement-v3-01/windows/foreign/branchline-git-worker.exe",
+        "sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2"
+      },
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+      "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-build.json",
+      "build_record_sha256": "98ed2a83f25dc30e82deba3b521c6327cc3ee1d65beb0a162c7d8122088b7da1",
+      "embedded_helper": {
+        "bytes": 2726400,
+        "imports": [
+          "bcryptprimitives.dll",
+          "KERNEL32.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "WS2_32.dll",
+          "ntdll.dll",
+          "ADVAPI32.dll",
+          "Secur32.dll"
+        ],
+        "path": "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+        "recipe": {
+          "CARGO_BUILD_JOBS": "1",
+          "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+          "RUSTFLAGS": "-C target-feature=+crt-static",
+          "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+          "XWIN_CROSS_COMPILER": "clang",
+          "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+          "target": "x86_64-pc-windows-msvc"
+        },
+        "sha256": "8fafdb059c64cf88d7ab5815f3ca20af8b80e16aa7eed52be691813dcc8f16c3",
+        "source_binary": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+        "static_crt_import_check": true
+      },
+      "label": "stateless-status-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source",
+      "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+    }
+  },
+  "statistics": "Canonical nearest-rank p50/p95. Conventional median also retained. All20 includes one first-use plus19 repeated actions; Open is one fresh-process observation per variant and is not a distribution.",
+  "metrics": {
+    "A": {
+      "open": {
+        "all_twenty_including_first_use": {
+          "count": 1,
+          "p50_ms": 2275,
+          "median_ms": 2275,
+          "p95_ms": 2275,
+          "max_ms": 2275
+        },
+        "first_use_ms": 2275,
+        "strict_repeated_phase": null
+      },
+      "branch_first": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 442,
+          "median_ms": 442.5,
+          "p95_ms": 482,
+          "max_ms": 852.0000000000009
+        },
+        "first_use_ms": 852.0000000000009,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 442,
+          "median_ms": 442,
+          "p95_ms": 482,
+          "max_ms": 482
+        }
+      },
+      "branch_final": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 368,
+          "median_ms": 368.00000000000364,
+          "p95_ms": 409,
+          "max_ms": 735
+        },
+        "first_use_ms": 735,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 368,
+          "median_ms": 368,
+          "p95_ms": 409,
+          "max_ms": 409
+        }
+      },
+      "working_tree": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 460,
+          "median_ms": 464.5,
+          "p95_ms": 578,
+          "max_ms": 1732
+        },
+        "first_use_ms": 1732,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 460,
+          "median_ms": 460,
+          "p95_ms": 578,
+          "max_ms": 578
+        }
+      },
+      "stack": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 455,
+          "median_ms": 455.0,
+          "p95_ms": 498,
+          "max_ms": 500.9999999999927
+        },
+        "first_use_ms": 438,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 455,
+          "median_ms": 455,
+          "p95_ms": 500.9999999999927,
+          "max_ms": 500.9999999999927
+        }
+      },
+      "comment_branch": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 487.00000000001455,
+          "median_ms": 489.0000000000073,
+          "p95_ms": 523,
+          "max_ms": 673
+        },
+        "first_use_ms": 673,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 487.00000000001455,
+          "median_ms": 487.00000000001455,
+          "p95_ms": 523,
+          "max_ms": 523
+        }
+      },
+      "comment_worktree": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 471,
+          "median_ms": 475.0,
+          "p95_ms": 523,
+          "max_ms": 527
+        },
+        "first_use_ms": 523,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 471,
+          "median_ms": 471,
+          "p95_ms": 527,
+          "max_ms": 527
+        }
+      }
+    },
+    "B": {
+      "open": {
+        "all_twenty_including_first_use": {
+          "count": 1,
+          "p50_ms": 716,
+          "median_ms": 716,
+          "p95_ms": 716,
+          "max_ms": 716
+        },
+        "first_use_ms": 716,
+        "strict_repeated_phase": null
+      },
+      "branch_first": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 438.00000000001455,
+          "median_ms": 441.5000000000073,
+          "p95_ms": 465,
+          "max_ms": 467
+        },
+        "first_use_ms": 408.0000000000002,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 445,
+          "median_ms": 445,
+          "p95_ms": 467,
+          "max_ms": 467
+        }
+      },
+      "branch_final": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 357.9999999999927,
+          "median_ms": 358.49999999999636,
+          "p95_ms": 388,
+          "max_ms": 396.9999999999998
+        },
+        "first_use_ms": 396.9999999999998,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 357.9999999999927,
+          "median_ms": 357.9999999999927,
+          "p95_ms": 388,
+          "max_ms": 388
+        }
+      },
+      "working_tree": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 437.99999999999636,
+          "median_ms": 439.4999999999982,
+          "p95_ms": 503,
+          "max_ms": 529
+        },
+        "first_use_ms": 503,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 437.99999999999636,
+          "median_ms": 437.99999999999636,
+          "p95_ms": 529,
+          "max_ms": 529
+        }
+      },
+      "stack": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 446,
+          "median_ms": 446.5,
+          "p95_ms": 483.9999999999927,
+          "max_ms": 516
+        },
+        "first_use_ms": 482,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 446,
+          "median_ms": 446,
+          "p95_ms": 516,
+          "max_ms": 516
+        }
+      },
+      "comment_branch": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 486,
+          "median_ms": 486.0000000000018,
+          "p95_ms": 541.0000000000036,
+          "max_ms": 574.9999999999991
+        },
+        "first_use_ms": 574.9999999999991,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 486,
+          "median_ms": 486,
+          "p95_ms": 541.0000000000036,
+          "max_ms": 541.0000000000036
+        }
+      },
+      "comment_worktree": {
+        "all_twenty_including_first_use": {
+          "count": 20,
+          "p50_ms": 490,
+          "median_ms": 491.0,
+          "p95_ms": 529,
+          "max_ms": 591
+        },
+        "first_use_ms": 480,
+        "strict_repeated_phase": {
+          "count": 19,
+          "p50_ms": 492,
+          "median_ms": 492,
+          "p95_ms": 591,
+          "max_ms": 591
+        }
+      }
+    }
+  },
+  "foreground_ipc_union_and_remainder": {
+    "A": {
+      "open": {
+        "foreground_ipc_union_ms": {
+          "count": 1,
+          "p50_ms": 1593,
+          "median_ms": 1593,
+          "p95_ms": 1593,
+          "max_ms": 1593
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 1,
+          "p50_ms": 682,
+          "median_ms": 682,
+          "p95_ms": 682,
+          "max_ms": 682
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 1,
+          "p50_ms": 486,
+          "median_ms": 486,
+          "p95_ms": 486,
+          "max_ms": 486
+        }
+      },
+      "branch_first": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 186,
+          "median_ms": 186.0,
+          "p95_ms": 218,
+          "max_ms": 460
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 258,
+          "median_ms": 258.0,
+          "p95_ms": 277.0,
+          "max_ms": 392.0000000000009
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 252,
+          "median_ms": 252.0,
+          "p95_ms": 269,
+          "max_ms": 345.0000000000009
+        }
+      },
+      "branch_final": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 95,
+          "median_ms": 95.5,
+          "p95_ms": 132,
+          "max_ms": 364
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 273,
+          "median_ms": 273.5,
+          "p95_ms": 293.00000000001455,
+          "max_ms": 371
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 265,
+          "median_ms": 265.5,
+          "p95_ms": 286.0000000000073,
+          "max_ms": 355
+        }
+      },
+      "working_tree": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 198,
+          "median_ms": 199.0,
+          "p95_ms": 245.0,
+          "max_ms": 1424
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 257,
+          "median_ms": 259.0000000000073,
+          "p95_ms": 310,
+          "max_ms": 362
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 253,
+          "median_ms": 254.0,
+          "p95_ms": 303,
+          "max_ms": 357
+        }
+      },
+      "stack": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 157.99999999999636,
+          "median_ms": 158.99999999999818,
+          "p95_ms": 187,
+          "max_ms": 193.00000000000728
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 297,
+          "median_ms": 297.99999999999636,
+          "p95_ms": 328.0000000000291,
+          "max_ms": 331.0
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 291,
+          "median_ms": 291.49999999999636,
+          "p95_ms": 321.00000000001455,
+          "max_ms": 326.0
+        }
+      },
+      "comment_branch": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 204,
+          "median_ms": 204.49999999999272,
+          "p95_ms": 226,
+          "max_ms": 375.9999999999982
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 283,
+          "median_ms": 284.5,
+          "p95_ms": 297.9999999999927,
+          "max_ms": 299
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 277,
+          "median_ms": 278.0,
+          "p95_ms": 290.9999999999927,
+          "max_ms": 291
+        }
+      },
+      "comment_worktree": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 212.00000000001455,
+          "median_ms": 212.50000000000728,
+          "p95_ms": 242,
+          "max_ms": 251
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 270,
+          "median_ms": 271.5,
+          "p95_ms": 293.9999999999927,
+          "max_ms": 294
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 266,
+          "median_ms": 266.0,
+          "p95_ms": 288,
+          "max_ms": 288.9999999999927
+        }
+      }
+    },
+    "B": {
+      "open": {
+        "foreground_ipc_union_ms": {
+          "count": 1,
+          "p50_ms": 466.0000000000001,
+          "median_ms": 466.0000000000001,
+          "p95_ms": 466.0000000000001,
+          "max_ms": 466.0000000000001
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 1,
+          "p50_ms": 249.9999999999999,
+          "median_ms": 249.9999999999999,
+          "p95_ms": 249.9999999999999,
+          "max_ms": 249.9999999999999
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 1,
+          "p50_ms": 224.9999999999999,
+          "median_ms": 224.9999999999999,
+          "p95_ms": 224.9999999999999,
+          "max_ms": 224.9999999999999
+        }
+      },
+      "branch_first": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 185,
+          "median_ms": 185.5,
+          "p95_ms": 209,
+          "max_ms": 210
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 256.9999999999927,
+          "median_ms": 256.99999999999636,
+          "p95_ms": 277,
+          "max_ms": 280.0000000000002
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 251,
+          "median_ms": 251.0,
+          "p95_ms": 269,
+          "max_ms": 271.0000000000002
+        }
+      },
+      "branch_final": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 95.00000000000728,
+          "median_ms": 95.50000000000364,
+          "p95_ms": 106.99999999998545,
+          "max_ms": 107
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 267,
+          "median_ms": 267.0,
+          "p95_ms": 285,
+          "max_ms": 294.9999999999998
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 260.0,
+          "median_ms": 260.00000000000364,
+          "p95_ms": 279,
+          "max_ms": 284.9999999999998
+        }
+      },
+      "working_tree": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 194,
+          "median_ms": 195.00000000000364,
+          "p95_ms": 223,
+          "max_ms": 239
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 249.00000000000728,
+          "median_ms": 249.50000000000364,
+          "p95_ms": 290,
+          "max_ms": 295.00000000000045
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 245.0,
+          "median_ms": 245.0,
+          "p95_ms": 285,
+          "max_ms": 289.0
+        }
+      },
+      "stack": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 155,
+          "median_ms": 156.0,
+          "p95_ms": 181.00000000000045,
+          "max_ms": 216
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 289,
+          "median_ms": 290.49999999999636,
+          "p95_ms": 306.0,
+          "max_ms": 308.0
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 283,
+          "median_ms": 283.5,
+          "p95_ms": 299.9999999999927,
+          "max_ms": 300.9999999999927
+        }
+      },
+      "comment_branch": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 198,
+          "median_ms": 198.5,
+          "p95_ms": 253,
+          "max_ms": 278.0
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 284,
+          "median_ms": 284.0,
+          "p95_ms": 298.00000000000364,
+          "max_ms": 301.0
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 277,
+          "median_ms": 277.5,
+          "p95_ms": 290.00000000000364,
+          "max_ms": 294.0000000000073
+        }
+      },
+      "comment_worktree": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 220,
+          "median_ms": 220.00000000000364,
+          "p95_ms": 241.99999999999636,
+          "max_ms": 244.99999999999636
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 266.99999999998545,
+          "median_ms": 269.9999999999918,
+          "p95_ms": 294.0,
+          "max_ms": 363
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 261.99999999998545,
+          "median_ms": 264.49999999999227,
+          "p95_ms": 288,
+          "max_ms": 357
+        }
+      }
+    }
+  },
+  "all_twenty_guards": {
+    "open": {
+      "p95_ms": {
+        "A_ms": 2275,
+        "B_ms": 716,
+        "change_percent": -68.52747252747253,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 2275,
+        "B_ms": 716,
+        "change_percent": -68.52747252747253,
+        "pass": true
+      }
+    },
+    "branch_first": {
+      "p95_ms": {
+        "A_ms": 482,
+        "B_ms": 465,
+        "change_percent": -3.526970954356845,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 852.0000000000009,
+        "B_ms": 467,
+        "change_percent": -45.187793427230105,
+        "pass": true
+      }
+    },
+    "branch_final": {
+      "p95_ms": {
+        "A_ms": 409,
+        "B_ms": 388,
+        "change_percent": -5.134474327628357,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 735,
+        "B_ms": 396.9999999999998,
+        "change_percent": -45.98639455782316,
+        "pass": true
+      }
+    },
+    "working_tree": {
+      "p95_ms": {
+        "A_ms": 578,
+        "B_ms": 503,
+        "change_percent": -12.975778546712801,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 1732,
+        "B_ms": 529,
+        "change_percent": -69.45727482678984,
+        "pass": true
+      }
+    },
+    "stack": {
+      "p95_ms": {
+        "A_ms": 498,
+        "B_ms": 483.9999999999927,
+        "change_percent": -2.8112449799211348,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 500.9999999999927,
+        "B_ms": 516,
+        "change_percent": 2.9940119760494044,
+        "pass": true
+      }
+    },
+    "comment_branch": {
+      "p95_ms": {
+        "A_ms": 523,
+        "B_ms": 541.0000000000036,
+        "change_percent": 3.4416826003831114,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 673,
+        "B_ms": 574.9999999999991,
+        "change_percent": -14.561664190193301,
+        "pass": true
+      }
+    },
+    "comment_worktree": {
+      "p95_ms": {
+        "A_ms": 523,
+        "B_ms": 529,
+        "change_percent": 1.1472275334607929,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 527,
+        "B_ms": 591,
+        "change_percent": 12.144212523719155,
+        "pass": false
+      }
+    }
+  },
+  "strict_repeated_phase_guards": {
+    "branch_first": {
+      "p95_ms": {
+        "A_ms": 482,
+        "B_ms": 467,
+        "change_percent": -3.112033195020747,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 482,
+        "B_ms": 467,
+        "change_percent": -3.112033195020747,
+        "pass": true
+      }
+    },
+    "branch_final": {
+      "p95_ms": {
+        "A_ms": 409,
+        "B_ms": 388,
+        "change_percent": -5.134474327628357,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 409,
+        "B_ms": 388,
+        "change_percent": -5.134474327628357,
+        "pass": true
+      }
+    },
+    "working_tree": {
+      "p95_ms": {
+        "A_ms": 578,
+        "B_ms": 529,
+        "change_percent": -8.477508650519027,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 578,
+        "B_ms": 529,
+        "change_percent": -8.477508650519027,
+        "pass": true
+      }
+    },
+    "stack": {
+      "p95_ms": {
+        "A_ms": 500.9999999999927,
+        "B_ms": 516,
+        "change_percent": 2.9940119760494044,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 500.9999999999927,
+        "B_ms": 516,
+        "change_percent": 2.9940119760494044,
+        "pass": true
+      }
+    },
+    "comment_branch": {
+      "p95_ms": {
+        "A_ms": 523,
+        "B_ms": 541.0000000000036,
+        "change_percent": 3.4416826003831114,
+        "pass": true
+      },
+      "max_ms": {
+        "A_ms": 523,
+        "B_ms": 541.0000000000036,
+        "change_percent": 3.4416826003831114,
+        "pass": true
+      }
+    },
+    "comment_worktree": {
+      "p95_ms": {
+        "A_ms": 527,
+        "B_ms": 591,
+        "change_percent": 12.144212523719155,
+        "pass": false
+      },
+      "max_ms": {
+        "A_ms": 527,
+        "B_ms": 591,
+        "change_percent": 12.144212523719155,
+        "pass": false
+      }
+    }
+  },
+  "all_twenty_guards_pass": false,
+  "strict_repeated_guards_pass": false,
+  "outlier_rows": {
+    "branch_first": {
+      "A": {
+        "max": {
+          "action": "branch_first",
+          "repetition": 0,
+          "phase": "first_use",
+          "expected": {
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 852.0000000000009,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 3,
+              "elapsed_ms": 396
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 443,
+              "elapsed_ms": 64
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [],
+          "variant": "A",
+          "process_number": 4,
+          "foreground_union_intervals_ms": [
+            [
+              3,
+              399
+            ],
+            [
+              443,
+              507
+            ]
+          ],
+          "foreground_ipc_union_ms": 460,
+          "non_foreground_ipc_remainder_ms": 392.0000000000009,
+          "after_last_foreground_ipc_ms": 345.0000000000009,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl",
+          "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/000-branch_first.png",
+          "screenshot_write_utc": "2026-11-25T23:24:13.921845+00:00"
+        },
+        "near_p50": {
+          "action": "branch_first",
+          "repetition": 4,
+          "phase": "repeated",
+          "expected": {
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 442,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 144
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 150,
+              "elapsed_ms": 43
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 319,
+              "elapsed_ms": 9,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "variant": "A",
+          "process_number": 4,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              145
+            ],
+            [
+              150,
+              193
+            ]
+          ],
+          "foreground_ipc_union_ms": 187,
+          "non_foreground_ipc_remainder_ms": 255,
+          "after_last_foreground_ipc_ms": 249,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl",
+          "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/004-branch_first.png",
+          "screenshot_write_utc": "2026-11-25T23:24:32.401890+00:00"
+        },
+        "strict_repeated_max": {
+          "action": "branch_first",
+          "repetition": 6,
+          "phase": "repeated",
+          "expected": {
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 482,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0.999999999996362,
+              "elapsed_ms": 156
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 164,
+              "elapsed_ms": 49
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 457,
+              "elapsed_ms": 10.999999999996362,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "variant": "A",
+          "process_number": 4,
+          "foreground_union_intervals_ms": [
+            [
+              0.999999999996362,
+              156.99999999999636
+            ],
+            [
+              164,
+              213
+            ]
+          ],
+          "foreground_ipc_union_ms": 205.0,
+          "non_foreground_ipc_remainder_ms": 277.0,
+          "after_last_foreground_ipc_ms": 269,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl"
+        }
+      },
+      "B": {
+        "max": {
+          "action": "branch_first",
+          "repetition": 2,
+          "phase": "repeated",
+          "expected": {
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 467,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 157
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 164,
+              "elapsed_ms": 52
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [],
+          "variant": "B",
+          "process_number": 4,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              158
+            ],
+            [
+              164,
+              216
+            ]
+          ],
+          "foreground_ipc_union_ms": 209,
+          "non_foreground_ipc_remainder_ms": 258,
+          "after_last_foreground_ipc_ms": 251,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl",
+          "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/002-branch_first.png",
+          "screenshot_write_utc": "2026-11-25T23:25:51.153745+00:00"
+        },
+        "near_p50": {
+          "action": "branch_first",
+          "repetition": 19,
+          "phase": "repeated",
+          "expected": {
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 438.00000000001455,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 150
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 155,
+              "elapsed_ms": 44
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 293,
+              "elapsed_ms": 9,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "variant": "B",
+          "process_number": 4,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              150
+            ],
+            [
+              155,
+              199
+            ]
+          ],
+          "foreground_ipc_union_ms": 194,
+          "non_foreground_ipc_remainder_ms": 244.00000000001455,
+          "after_last_foreground_ipc_ms": 239.00000000001455,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl",
+          "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/019-branch_first.png",
+          "screenshot_write_utc": "2026-11-25T23:26:59.733440+00:00"
+        }
+      }
+    },
+    "comment_worktree": {
+      "A": {
+        "max": {
+          "action": "comment_worktree",
+          "repetition": 18,
+          "phase": "repeated",
+          "expected": {
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 527,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 195
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 200,
+              "elapsed_ms": 47
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "variant": "A",
+          "process_number": 4,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              195
+            ],
+            [
+              200,
+              247
+            ]
+          ],
+          "foreground_ipc_union_ms": 242,
+          "non_foreground_ipc_remainder_ms": 285,
+          "after_last_foreground_ipc_ms": 280,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl",
+          "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/018-comment_worktree.png",
+          "screenshot_write_utc": "2026-11-25T23:25:34.177722+00:00"
+        },
+        "near_p50": {
+          "action": "comment_worktree",
+          "repetition": 1,
+          "phase": "repeated",
+          "expected": {
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 471,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 164
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 171,
+              "elapsed_ms": 34
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "variant": "A",
+          "process_number": 4,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              165
+            ],
+            [
+              171,
+              205
+            ]
+          ],
+          "foreground_ipc_union_ms": 198,
+          "non_foreground_ipc_remainder_ms": 273,
+          "after_last_foreground_ipc_ms": 266,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl",
+          "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/001-comment_worktree.png",
+          "screenshot_write_utc": "2026-11-25T23:24:23.836864+00:00"
+        }
+      },
+      "B": {
+        "max": {
+          "action": "comment_worktree",
+          "repetition": 10,
+          "phase": "repeated",
+          "expected": {
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 591,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 193
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 199,
+              "elapsed_ms": 35
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "variant": "B",
+          "process_number": 4,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              194
+            ],
+            [
+              199,
+              234
+            ]
+          ],
+          "foreground_ipc_union_ms": 228,
+          "non_foreground_ipc_remainder_ms": 363,
+          "after_last_foreground_ipc_ms": 357,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl",
+          "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/010-comment_worktree.png",
+          "screenshot_write_utc": "2026-11-25T23:26:27.083793+00:00"
+        },
+        "near_p50": {
+          "action": "comment_worktree",
+          "repetition": 12,
+          "phase": "repeated",
+          "expected": {
+            "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 490,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 191
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 197,
+              "elapsed_ms": 40
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "variant": "B",
+          "process_number": 4,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              192
+            ],
+            [
+              197,
+              237
+            ]
+          ],
+          "foreground_ipc_union_ms": 231,
+          "non_foreground_ipc_remainder_ms": 259,
+          "after_last_foreground_ipc_ms": 253,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl",
+          "screenshot": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/012-comment_worktree.png",
+          "screenshot_write_utc": "2026-11-25T23:26:35.051826+00:00"
+        }
+      }
+    }
+  },
+  "outlier_differences": {
+    "branch_first": {
+      "Bmax_minus_Amax": {
+        "elapsed_ms": -385.0000000000009,
+        "foreground_ipc_union_ms": -251,
+        "non_foreground_ipc_remainder_ms": -134.0000000000009
+      },
+      "Bmax_minus_Anear_p50": {
+        "elapsed_ms": 25,
+        "foreground_ipc_union_ms": 22,
+        "non_foreground_ipc_remainder_ms": 3
+      },
+      "Bmax_minus_Astrict_repeated_max": {
+        "elapsed_ms": -15,
+        "foreground_ipc_union_ms": 4.0,
+        "non_foreground_ipc_remainder_ms": -19.0
+      }
+    },
+    "comment_worktree": {
+      "Bmax_minus_Amax": {
+        "elapsed_ms": 64,
+        "foreground_ipc_union_ms": -14,
+        "non_foreground_ipc_remainder_ms": 78
+      },
+      "Bmax_minus_Anear_p50": {
+        "elapsed_ms": 120,
+        "foreground_ipc_union_ms": 30,
+        "non_foreground_ipc_remainder_ms": 90
+      }
+    }
+  },
+  "scorer_bounds_utc": {
+    "A": {
+      "started_at_unix": "2026-11-25T23:24:07.837934+00:00",
+      "finished_at_unix": "2026-11-25T23:25:38.323223+00:00"
+    },
+    "B": {
+      "started_at_unix": "2026-11-25T23:25:40.415982+00:00",
+      "finished_at_unix": "2026-11-25T23:27:03.164463+00:00"
+    }
+  },
+  "timestamp_limit": "No absolute action start timestamps exist; screenshot write times are context only.",
+  "processes_and_cleanup": [
+    {
+      "variant": "A",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 187411,
+          "start_ticks": "15333983"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "15333983",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 187409,
+          "start_ticks": "15333955"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 187411,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "b0f0c110-61d3-48a6-903e-0546c530439d",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 187408
+      },
+      "cleanup": {
+        "exact_launch_cleanup": [
+          187409,
+          187584
+        ],
+        "observed_identities": [
+          {
+            "pid": 187411,
+            "start_ticks": "15333983",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+            ]
+          },
+          {
+            "pid": 187409,
+            "start_ticks": "15333955",
+            "binary": "/usr/bin/WebKitWebDriver"
+          },
+          {
+            "pid": 187411,
+            "start_ticks": "15333983",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+            ]
+          },
+          {
+            "pid": 187584,
+            "start_ticks": "15334526",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "--mcp",
+              "--port",
+              "28867",
+              "--",
+              "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+            ]
+          },
+          {
+            "pid": 187408,
+            "start_ticks": "15333932",
+            "binary": "/usr/bin/python3.14"
+          }
+        ],
+        "exact_owned_processes_absent": true,
+        "ports_free": true,
+        "host_wrapper_absent_from_vm_environment": true
+      },
+      "supervisor_exit": 0,
+      "browser_before": {
+        "busy": false,
+        "comparison": "",
+        "filename": "Select a file",
+        "repository": "",
+        "status": "\n          Local Gitfatal: not a git repository (or any of the parent directories): .git\n        ",
+        "title": "Branchline",
+        "url": "tauri://localhost",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/60.5 Safari/605.1.15",
+        "viewport": [
+          1280,
+          800
+        ],
+        "visible": "visible"
+      }
+    },
+    {
+      "variant": "B",
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+          "pid": 191252,
+          "start_ticks": "15343376"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+        "created": "15343376",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 191250,
+          "start_ticks": "15343370"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 191252,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+        "session": "47b53b64-23e3-4b84-94f9-ecb1cb7913f8",
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+        "supervisor_pid": 191249
+      },
+      "cleanup": {
+        "exact_launch_cleanup": [
+          191250,
+          191447
+        ],
+        "observed_identities": [
+          {
+            "pid": 191252,
+            "start_ticks": "15343376",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+            ]
+          },
+          {
+            "pid": 191250,
+            "start_ticks": "15343370",
+            "binary": "/usr/bin/WebKitWebDriver"
+          },
+          {
+            "pid": 191252,
+            "start_ticks": "15343376",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+            ]
+          },
+          {
+            "pid": 191447,
+            "start_ticks": "15343579",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+              "--mcp",
+              "--port",
+              "28867",
+              "--",
+              "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+            ]
+          },
+          {
+            "pid": 191249,
+            "start_ticks": "15343358",
+            "binary": "/usr/bin/python3.14"
+          }
+        ],
+        "exact_owned_processes_absent": true,
+        "ports_free": true,
+        "host_wrapper_absent_from_vm_environment": true
+      },
+      "supervisor_exit": 0,
+      "browser_before": {
+        "busy": false,
+        "comparison": "",
+        "filename": "Select a file",
+        "repository": "",
+        "status": "\n          Local Gitfatal: not a git repository (or any of the parent directories): .git\n        ",
+        "title": "Branchline",
+        "url": "tauri://localhost",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/60.5 Safari/605.1.15",
+        "viewport": [
+          1280,
+          800
+        ],
+        "visible": "visible"
+      }
+    }
+  ],
+  "fixture_before": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_after": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "transport_cleanup": {
+    "pid": 94644,
+    "start_ticks": "77138178",
+    "master": {
+      "argv": [
+        "/usr/bin/ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "-M",
+        "-S",
+        "/tmp/status-wsl-kf2p04xl/ssh.sock",
+        "-o",
+        "ControlPersist=no",
+        "-N",
+        "-o",
+        "ExitOnForwardFailure=yes",
+        "-L",
+        "127.0.0.1:19227:127.0.0.1:29225",
+        "windows-vm"
+      ],
+      "pid": 94647,
+      "socket": "/tmp/status-wsl-kf2p04xl/ssh.sock",
+      "start_ticks": "77138186"
+    },
+    "master_check": {
+      "exit": 0,
+      "stderr": "Master running (pid=94647)\n",
+      "stdout": ""
+    },
+    "master_exit_request": {
+      "exit": 0,
+      "stderr": "Exit request sent.\n",
+      "stdout": ""
+    },
+    "master_exit": 255,
+    "host_port_free": true,
+    "control_socket_absent": true,
+    "host_wrapper": {
+      "path": "/tmp/status-wsl-kf2p04xl/bin/ssh",
+      "sha256": "1d458fce0566883fdc4d770976c5147b6b9071e8922043c17f7c89c5f704f1ec"
+    }
+  },
+  "input_hashes": {
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/verdict.json": "a424d8d213ff4f93fde991c1a05fa2ffd358470c7b211553f733ca00c371385b",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl": "533943b617c6689d55fbf24e2badb9413caa673d222465188412a6afaf69a493",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04.cleanup.log": "2aa8de0be58382faeb903dda2e32246ccc1498050d4955281f1a0ff66078820f",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04.json": "614a7dff94574880fbed8fdfe1fa674f487601ca564f17a90f0fef008df95738",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-linux-20261125T232342724804Z-04/browser-before.json": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/verdict.json": "711fbaa3d9b441b451b3726aa484efe6bfa159dc75d32d7b14b23ceacef2ae04",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/samples.jsonl": "2a24a3d9386097adcc5719613cab677c2564fa08a6025af499519d37eddfeb20",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04.cleanup.log": "bf6d885c32be298a573abd8fb56e644df55556cd82b26c4d71f800adae02e9b7",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04.json": "b9a76e309c120d0dd6cd3108a2db2cf2216bbba62e6ac0432f9378c00b3b398e",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/stateless-status-b2de070-wsl-linux-20261125T232342724804Z-04/browser-before.json": "7a4a7f7b8c7007d3c22400dfeeeeb203255583ac00a80c09a34e95e32355efc7"
+  },
+  "interpretation": [
+    "Original B branch-first544 ms did not recur, but its guard failure remains in the original series.",
+    "This pair has a different comment_worktree max guard failure, including in strictly repeated samples. It does not establish no-regression.",
+    "The cfg(windows) status change is inactive in this local Linux cell; that fact neither explains nor waives measured failures.",
+    "First-use/Open order effects and small sample tails do not establish source causality. No VM/tests/builds occurred in this analysis."
+  ],
+  "original_branch_first_reference": {
+    "evidence": "build/experiments/status-wsl-control/run-20261125T223739227075Z/max-sample-evidence.json",
+    "sha256": "c176565732fce82c30831948cefe1a25c3914be4bf0eb2e703b67fd5b0846713",
+    "sample_elapsed_ms": 544,
+    "phase": "repeated",
+    "repetition": 11,
+    "foreground_ipc_union_ms": 202,
+    "remainder_ms": 342,
+    "new_B_repeated_max_ms": 467,
+    "new_B_foreground_ipc_union_ms": 209,
+    "new_B_remainder_ms": 258,
+    "pooled": false,
+    "interpretation": "The earlier maximum did not recur, but remains an observed failed original-series guard. One confirmation pair does not establish a cause or no-regression."
+  }
+}

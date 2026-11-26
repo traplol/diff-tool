@@ -1,0 +1,76 @@
+{
+  "time": 1795657171.7371068,
+  "git_sha256": "177bc8a9af84fa3a400c694c975fda731d048279c074e1a93947ce8b067ebb48",
+  "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+  "queries": [
+    {
+      "key": "core.fscache",
+      "exit": 0,
+      "configured": true,
+      "stdout": "file:C:/Program Files/Git/etc/gitconfig\ttrue\n",
+      "stderr": ""
+    },
+    {
+      "key": "core.fsmonitor",
+      "exit": 1,
+      "configured": false,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "key": "core.untrackedCache",
+      "exit": 1,
+      "configured": false,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "before": {
+    "index": {
+      "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129",
+      "size": 9271771,
+      "mtime_ns": 1795615947971522900,
+      "inode": 562949953782638,
+      "mode": 33279
+    },
+    "HEAD": {
+      "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+      "size": 39,
+      "mtime_ns": 1795614733000000000,
+      "inode": 2814749767263140,
+      "mode": 33279
+    },
+    "config": {
+      "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+      "size": 334,
+      "mtime_ns": 1795615994331971400,
+      "inode": 3377699720684454,
+      "mode": 33279
+    }
+  },
+  "after": {
+    "index": {
+      "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129",
+      "size": 9271771,
+      "mtime_ns": 1795615947971522900,
+      "inode": 562949953782638,
+      "mode": 33279
+    },
+    "HEAD": {
+      "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+      "size": 39,
+      "mtime_ns": 1795614733000000000,
+      "inode": 2814749767263140,
+      "mode": 33279
+    },
+    "config": {
+      "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+      "size": 334,
+      "mtime_ns": 1795615994331971400,
+      "inode": 3377699720684454,
+      "mode": 33279
+    }
+  },
+  "index_config_head_unchanged": true,
+  "settings_or_daemons_changed": false
+}

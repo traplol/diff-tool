@@ -1,0 +1,4 @@
+  File "<string>", line 9
+    script="[Console]::OutputEncoding=[Text.UTF8Encoding]::new($false);$a=@(Get-CimInstance Win32_Process | Where-Object {$_.ExecutablePath -eq 'C:\Users\max\branchline-bench\nmf252\test.exe'} | ForEach-Object {@{pid=$_.ProcessId;created=$_.CreationDate.ToString('o');exe=$_.ExecutablePath}});ConvertTo-Json -InputObject $a -Compress"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 135-136: truncated \UXXXXXXXX escape

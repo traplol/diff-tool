@@ -1,0 +1,17 @@
+{
+  "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+  "baseline_source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "changed_files": [
+    "src-tauri/src/git.rs"
+  ],
+  "owned_git_metadata": true,
+  "git_alternates": false,
+  "patch_sha256": "3592906b51c69dee26402fe413a2015d34fe76c00fd855c7d798689836b4e6c9",
+  "scope": "One Linux-only condition on existing native branch comparison filter; existing CLI/parser fallback selected. No API/config/cache or Git flag changes. Windows and other OS native paths preserved.",
+  "tests_run": true,
+  "vm_calls": false,
+  "promoted": false,
+  "host_prep_failure": "Initial import of scorer lacked its sibling driver directory on sys.path; no source edits had occurred. Fixed caller import path only.",
+  "tests_proof": "proof.json"
+}

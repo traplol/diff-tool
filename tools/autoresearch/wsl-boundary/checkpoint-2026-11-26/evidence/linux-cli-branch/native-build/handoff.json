@@ -1,0 +1,36 @@
+{
+  "status": "host-prepared-only-awaiting-explicit-release",
+  "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "archive": {
+    "name": "linux-cli-branch-a4a08d-r2-input.tar",
+    "sha256": "f1e196565840f3a635c2ceb0af0913d3f88c94194f698dc84e283bb797be0655",
+    "bytes": 3051520,
+    "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+    "bundle_sha256": "d0743fee8d66c2548dca63636e0f484fee68be27f24da4adc6f682dfa05fe197",
+    "build_plan_sha256": "3d61fc781ec075b4e04ee785373ee07f02b4c1132c73fc0c157d40bb9db9ae52",
+    "vm_supervisor_sha256": "9e4e74584c61719b41597a43041cbf4d21c34ef712b8184596ea4fb29885b35a",
+    "host_launcher_sha256": "a4189af74acc7e827f73c1c3bae2926ade13c84250b478a428e7d6e0e89b2a0c",
+    "host_verifier_sha256": "c5f2227afa4a881a9a7b4fe3f9394a0a2b9e583ac162386cf8e64453adad573a",
+    "status": "host-prepared-only; mandatory fresh local extraction before SSH; fresh root producer required"
+  },
+  "package_proof": {
+    "path": "build/experiments/linux-cli-branch/native-build/package-verification.json",
+    "sha256": "c13fd83ac5f985958b7408b23e4eb36d746f035651160732506bc98c35df4f82"
+  },
+  "host_producer_proof": {
+    "path": "build/experiments/linux-cli-branch/host-producer-proof.json",
+    "sha256": "cab85389066c1a9468fd37490afa589eb36ed0fc078baae384c6566fea47a208"
+  },
+  "build_command": "python3 -u build/experiments/linux-cli-branch/native-build/build-after-release.py --release 'VM LINUX CLI BRANCH BUILD RELEASED'",
+  "native_gui_only_scope": "GNUstatic/proto1worker+25unit/1stdio+3kernelbranchmetadata proofs+WindowsGUIembedding; no PE/LinuxGUI/252/proto2",
+  "artifact_binding": "Package-scoped root clean in VMgeneratedtargetcache. Require exact manifest/target/profile compiler-artifact fresh:false and copy reported executable; both worker and packagedWindowsGUI. Native test artifact names equal pinned host tests. No guessed target/release path.",
+  "copied_evidence": "native-build/native-evidence/supervisor.json plus branchline-git-worker and branchline.exe; SHA verified after terminal supervisor",
+  "runtime_command": "python3 -u build/experiments/linux-cli-branch/evaluate-windows-wsl.py --release 'VM LINUX CLI BRANCH RUNTIME RELEASED'",
+  "evaluation": "Separate exact b2 A vs a4 B; windows_linux sixfreshprocesses3/3/20; samecanonicalprofile/contract/twoframes; buildproofrequired",
+  "native_builds_or_vm_calls": false,
+  "new_host_tests_or_builds": false,
+  "previous_preparation_preserved": "native-build/previous-r1",
+  "f15_retry": "not prepared; old f15 failed producer evidence remains unchanged; root prioritizes a4",
+  "promoted": false
+}

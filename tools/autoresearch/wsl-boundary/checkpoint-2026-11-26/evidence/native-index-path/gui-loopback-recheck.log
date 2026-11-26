@@ -1,0 +1,10 @@
+
+running 5 tests
+test mcp::desktop::tests::authenticated_listener_identity_does_not_bypass_registration_denial ... ok
+test mcp::desktop::tests::existing_listener_keeps_the_http_timeout_in_both_phases ... ok
+test mcp::desktop::tests::free_prelaunch_probe_releases_the_port_before_spawn ... ok
+test mcp::desktop::tests::registration_keeps_the_checkout_and_identity_headers ... ok
+test mcp::desktop::tests::wrong_or_malformed_listeners_are_not_treated_as_free ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 67 filtered out; finished in 0.24s
+

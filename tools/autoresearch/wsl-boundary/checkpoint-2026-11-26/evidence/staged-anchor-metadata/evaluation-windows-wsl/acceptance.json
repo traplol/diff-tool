@@ -1,0 +1,167 @@
+{
+  "hypothesis": "When a saved Staged M anchor is unchanged in HEAD and index, metadata verification removes scoped frozen patch construction from note lookup. It preserves the authoritative displayed working-tree snapshot and includes worker startup/materialization inside Open.",
+  "priority_case": "windows_linux",
+  "order": [
+    "A1:3",
+    "B1:3",
+    "A2:3",
+    "B2:3",
+    "A3:20",
+    "B3:20"
+  ],
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "measurement": "Original canonical Open plus six actions, actual native Git/content/comment correctness and two frames; default renderer and MCP. Completed welcome startup async error is required before measured Open. No preseed, helper preparation or cache flush.",
+  "primary_metric": "Worst end-to-end p95 across Open and all six actions. Report fresh-process Open separately and all first-use values; fresh-process does not mean OS-cold.",
+  "pilot_acceptance": [
+    "Every launch/scoring/native correctness/fixture/identity/cleanup gate passes. Invalid run stops the series without a measurement retry.",
+    "Worst p95 across Open and all six actions improves by at least 10% against the new interleaved A series.",
+    "At least one of Open median or the maximum p95 across branch_first, branch_final, stack and comment_branch improves by at least 10%; an A1-only first-use drop does not establish a candidate gain.",
+    "Every final-20 action p95 and maximum, plus fresh-process Open median, p95 and maximum, remains at most 110% of the matching new A value. Preserve and investigate every failed guard.",
+    "Below-threshold improvement or noisy first-use evidence is inconclusive. No promotion from this pilot: all four cells and the exact delivered source/builds remain required."
+  ],
+  "target": "Every cross-cell Open/action p95 below 250 ms. This one-cell pilot cannot complete the campaign.",
+  "ipc_diagnostic": "Preserve foreground intervals, overlapping background refresh, pending IPC and non-IPC remainder. Backend-only improvement is not an end-to-end win.",
+  "baseline_identity": {
+    "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+    "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+    "windows_gui_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+    "embedded_linux_worker_protocol": 1,
+    "embedded_linux_worker_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+    "candidate_base_git_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+    "base_difference_patch": "build/experiments/staged-anchor-metadata/evaluation-windows-wsl/b2-to-1135-tests.patch",
+    "base_difference_sha256": "4ccf115a1e12c977a9ecbdd705499e697dbfb39e4e26beae8644f597699391cd",
+    "base_difference_scope": "desktop_tests.rs, search.rs inside cfg(test) module, tools/smoke_native.py only; production release behavior is unchanged. The measured A is still labeled b2, not 1135."
+  },
+  "candidate_identity": {
+    "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+    "git_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+    "protocol": 2,
+    "workers": "Both rebuilt matching workers and both verified GUI embeddings are mandatory; no protocol-1 override or old 328/6a artifact."
+  },
+  "historical_context_only": {
+    "record": "build/experiments/status-windows-controls/run-20261125T220910302670Z/summary.json",
+    "sha256": "2985b4879bb4c51f1a66efc2978e9a5177099a4ff1ea544f869c9ec54d3cd5ff",
+    "not_pooled": true,
+    "A_actions": {
+      "branch_final": {
+        "all_samples_count": 26,
+        "count": 20,
+        "first_use_by_process_ms": [
+          199.09999999403954,
+          137.60000002384186,
+          131
+        ],
+        "max_across_all_fresh_processes_ms": 199.09999999403954,
+        "max_ms": 135.7000000178814,
+        "p50_ms": 132.19999998807907,
+        "p95_ms": 135.10000002384186
+      },
+      "branch_first": {
+        "all_samples_count": 26,
+        "count": 20,
+        "first_use_by_process_ms": [
+          302.59999999403954,
+          128.5,
+          127.5
+        ],
+        "max_across_all_fresh_processes_ms": 302.59999999403954,
+        "max_ms": 211.40000000596046,
+        "p50_ms": 181.10000002384186,
+        "p95_ms": 196.19999998807907
+      },
+      "comment_branch": {
+        "all_samples_count": 26,
+        "count": 20,
+        "first_use_by_process_ms": [
+          244.30000001192093,
+          198.30000001192093,
+          197.90000000596046
+        ],
+        "max_across_all_fresh_processes_ms": 244.30000001192093,
+        "max_ms": 213.40000000596046,
+        "p50_ms": 197.90000000596046,
+        "p95_ms": 213.39999997615814
+      },
+      "comment_worktree": {
+        "all_samples_count": 26,
+        "count": 20,
+        "first_use_by_process_ms": [
+          213.7999999821186,
+          213.2999999821186,
+          197.5
+        ],
+        "max_across_all_fresh_processes_ms": 229,
+        "max_ms": 229,
+        "p50_ms": 212.90000000596046,
+        "p95_ms": 227.5
+      },
+      "open": {
+        "all_samples_count": 3,
+        "count": 3,
+        "first_use_by_process_ms": [
+          1745.5999999940395,
+          712.4000000059605,
+          713.0999999940395
+        ],
+        "max_across_all_fresh_processes_ms": 1745.5999999940395,
+        "max_ms": 1745.5999999940395,
+        "p50_ms": 713.0999999940395,
+        "p95_ms": 1745.5999999940395
+      },
+      "stack": {
+        "all_samples_count": 26,
+        "count": 20,
+        "first_use_by_process_ms": [
+          126.5,
+          126.30000001192093,
+          122.59999999403954
+        ],
+        "max_across_all_fresh_processes_ms": 137.90000000596046,
+        "max_ms": 137.90000000596046,
+        "p50_ms": 123.80000001192093,
+        "p95_ms": 136.40000000596046
+      },
+      "working_tree": {
+        "all_samples_count": 26,
+        "count": 20,
+        "first_use_by_process_ms": [
+          1267.5,
+          220.40000000596046,
+          203.69999998807907
+        ],
+        "max_across_all_fresh_processes_ms": 1267.5,
+        "max_ms": 203.69999998807907,
+        "p50_ms": 187.40000000596046,
+        "p95_ms": 202.40000000596046
+      }
+    },
+    "fresh_process": {
+      "A": {
+        "first_working_tree_ms": [
+          1267.5,
+          220.40000000596046,
+          203.69999998807907
+        ],
+        "open_ms": [
+          1745.5999999940395,
+          712.4000000059605,
+          713.0999999940395
+        ]
+      },
+      "B": {
+        "first_working_tree_ms": [
+          205,
+          190.09999999403954,
+          190.40000000596046
+        ],
+        "open_ms": [
+          760.2000000178814,
+          697.2999999821186,
+          729.8000000119209
+        ]
+      }
+    },
+    "interpretation": "Windows/WSL source cfg(windows) is inactive in the Linux status worker. The historical A1 warmup/order difference is retained and is not a status candidate gain."
+  },
+  "execution": "Wait for explicit VM STAGED METADATA RUNTIME RELEASED. One private mux/tunnel, six serial fresh processes, exact PID/create-time cleanup, free ports, native fingerprint before/after; no builds during timing."
+}

@@ -1,0 +1,16 @@
+{
+  "source_git_rs_sha256": "709bdc5b27e1404df257c0e4ac72619ff4eeee7c926acccca924245aa8dad9f4",
+  "source_git_rs_mtime_ns": 1795641750270402669,
+  "artifacts": [
+    {
+      "package_id": "path+file:///home/max/benchmarks/branchline-boundary/parallel-untracked-f15e85-r1-input/source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/parallel-untracked-f15e85-r1-input/source/src-tauri/git-worker/Cargo.toml",
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+      "fresh": true,
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline_git_worker.pdb"
+      ]
+    }
+  ]
+}

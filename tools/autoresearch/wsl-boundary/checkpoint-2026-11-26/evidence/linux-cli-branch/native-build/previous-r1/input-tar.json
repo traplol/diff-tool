@@ -1,0 +1,12 @@
+{
+  "name": "linux-cli-branch-a4a08d-r1-input.tar",
+  "sha256": "e2b01403cd39997d75423c8b240ee749efad2ae2e21ae03acf613343b22c8342",
+  "bytes": 3051520,
+  "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+  "bundle_sha256": "d0743fee8d66c2548dca63636e0f484fee68be27f24da4adc6f682dfa05fe197",
+  "build_plan_sha256": "8694e1d4e0c40b95fa60db081d45bbbfcfd9b083a70ed9ba52d771e549108502",
+  "vm_supervisor_sha256": "7ac7036ed169797d4fc61a3bc439fdaa19aa1d23ef8f1c0bd08f9fd2bfddfc25",
+  "host_launcher_sha256": "99408ec35baf51ae8d6f0b7ef619b5ce6c6557b4ab3592045a5595cad750ebe4",
+  "host_verifier_sha256": "c5f2227afa4a881a9a7b4fe3f9394a0a2b9e583ac162386cf8e64453adad573a",
+  "status": "host-prepared-only; mandatory fresh local extraction before SSH"
+}

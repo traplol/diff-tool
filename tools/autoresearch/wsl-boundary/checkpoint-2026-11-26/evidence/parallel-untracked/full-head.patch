@@ -1,0 +1,632 @@
+diff --git a/src-tauri/src/git.rs b/src-tauri/src/git.rs
+index 9ecaf1f..1b8708f 100644
+--- a/src-tauri/src/git.rs
++++ b/src-tauri/src/git.rs
+@@ -1090,6 +1090,81 @@ fn working_tree_impl(
+     })
+ }
+ 
++
++#[cfg(any(windows, test))]
++fn status_relative_path(path: &[u8]) -> bool {
++    let path = path.strip_suffix(b"/").unwrap_or(path);
++    if path.is_empty() || path.split(|byte| *byte == b'/')
++        .any(|part| part.is_empty() || part == b"." || part == b"..") {
++        return false;
++    }
++    #[cfg(windows)]
++    if path.contains(&b'\\') || path.get(1) == Some(&b':') && path[0].is_ascii_alphabetic() {
++        return false;
++    }
++    true
++}
++
++// Porcelain v2 keeps paths as raw bytes with -z. Accept only the formats this
++// command requests, so new or malformed output uses the original listing.
++#[cfg(any(windows, test))]
++fn status_untracked_names(data: &[u8]) -> Result<Vec<u8>> {
++    if data.is_empty() {
++        return Ok(Vec::new());
++    }
++    let records = data.strip_suffix(b"\0").ok_or("Invalid Git status terminator.")?;
++    let mut names = Vec::new();
++    for record in records.split(|byte| *byte == 0) {
++        if let Some(path) = record.strip_prefix(b"? ") {
++            if !status_relative_path(path) {
++                return Err("Invalid Git status path.".into());
++            }
++            names.extend_from_slice(path);
++            names.push(0);
++            continue;
++        }
++        let unmerged = record.starts_with(b"u ");
++        if !unmerged && !record.starts_with(b"1 ") {
++            return Err("Unsupported Git status record.".into());
++        }
++        let field_count = if unmerged { 11 } else { 9 };
++        let fields = record.splitn(field_count, |byte| *byte == b' ').collect::<Vec<_>>();
++        let mode_end = if unmerged { 7 } else { 6 };
++        let valid_submodule = |field: &[u8]| {
++            field == b"N..." || field.len() == 4 && field[0] == b'S'
++                && b".C".contains(&field[1]) && b".M".contains(&field[2])
++                && b".U".contains(&field[3])
++        };
++        if fields.len() != field_count
++            || fields[1].len() != 2
++            || if unmerged {
++                !matches!(fields[1], b"DD" | b"AU" | b"UD" | b"UA" | b"DU" | b"AA" | b"UU")
++            } else {
++                !fields[1].iter().all(|byte| b".MTADRC".contains(byte))
++            }
++            || !valid_submodule(fields[2])
++            || !fields[3..mode_end].iter().all(|mode| mode.len() == 6
++                && mode.iter().all(|byte| (b'0'..=b'7').contains(byte)))
++            || !fields[mode_end..field_count - 1].iter().all(|oid| matches!(oid.len(), 40 | 64)
++                && oid.iter().all(u8::is_ascii_hexdigit))
++            || !status_relative_path(fields[field_count - 1])
++            || fields[field_count - 1].ends_with(b"/")
++        {
++            return Err("Invalid Git status record.".into());
++        }
++    }
++    Ok(names)
++}
++
++#[cfg(any(windows, test))]
++fn windows_status_untracked(root: &Path) -> Result<Vec<u8>> {
++    let data = git(root, &[
++        "status", "--porcelain=v2", "-z", "--untracked-files=all",
++        "--no-renames", "--ignore-submodules=all",
++    ])?;
++    status_untracked_names(&data)
++}
++
+ fn working_changes_cli(
+     repo: &Repository,
+     base: &str,
+@@ -1149,6 +1224,12 @@ fn working_changes_cli(
+         });
+         let others = scope.spawn(|| {
+             if untracked_paths.is_none_or(|paths| !paths.is_empty()) {
++                #[cfg(windows)]
++                if untracked_paths.is_none() && paths.is_empty() {
++                    if let Ok(names) = windows_status_untracked(&repo.root) {
++                        return Ok(names);
++                    }
++                }
+                 run_git(
+                     &repo.root,
+                     &others_args
+@@ -1228,98 +1309,120 @@ fn working_changes_cli(
+     }
+     if untracked_paths.is_none_or(|p| !p.is_empty()) {
+         let others = others.map_err(|_| "The untracked Git read panicked.")??;
+-        for raw in others.split(|&b| b == 0).filter(|p| !p.is_empty()) {
+-            let path = name(raw.strip_suffix(b"/").unwrap_or(raw));
+-            if untracked_paths.is_some_and(|p| !p.contains(&path)) {
+-                continue;
++        let paths = others
++            .split(|&byte| byte == 0)
++            .filter(|path| !path.is_empty())
++            .map(|raw| name(raw.strip_suffix(b"/").unwrap_or(raw)))
++            .filter(|path| untracked_paths.is_none_or(|paths| paths.contains(path)))
++            .collect::<Vec<_>>();
++        // Bound child processes and preserve Git's listing/error order. Join
++        // every capture before returning, including when an earlier read fails.
++        for paths in paths.chunks(4) {
++            let captures = std::thread::scope(|scope| {
++                let reads = paths
++                    .iter()
++                    .map(|path| scope.spawn(|| untracked_changes(repo, base, path)))
++                    .collect::<Vec<_>>();
++                reads
++                    .into_iter()
++                    .map(|read| read.join())
++                    .collect::<Vec<_>>()
++            });
++            for capture in captures {
++                files.extend(capture.map_err(|_| "The untracked Git capture panicked.")??);
+             }
+-            let arg = path_arg(&path)?;
+-            let target = repo.root.join(&arg);
+-            let kind = fs::symlink_metadata(&target)
+-                .map_err(|e| e.to_string())?
+-                .file_type();
+-            if kind.is_dir() && target.join(".git").exists() {
+-                let oid = git_text(&target, &["rev-parse", "--verify", "HEAD"])
+-                    .unwrap_or_else(|_| "0".repeat(base.len()));
+-                files.push(Change {
+-                    status: "A".into(),
+-                    old: path.clone(),
+-                    path,
+-                    added: Some(0),
+-                    removed: Some(0),
+-                    old_mode: "000000".into(),
+-                    mode: "160000".into(),
+-                    old_oid: "0".repeat(oid.len()),
+-                    oid,
+-                    group: "Untracked".into(),
+-                    local_sections: vec![],
+-                });
+-            } else if kind.is_symlink() || kind.is_file() {
+-                // Pass a regular copy of link text. Git's --no-index can follow a
+-                // link to a directory or FIFO when the link is a command argument.
+-                let temp;
+-                let source = if kind.is_symlink() {
+-                    #[cfg(windows)]
+-                    let wsl = windows::WslCheckout::from_path(&repo.root);
+-                    #[cfg(windows)]
+-                    let scratch = if let Some(wsl) = &wsl {
+-                        tempfile::tempdir_in(wsl.host_path(Path::new("/tmp"))?)
+-                    } else {
+-                        tempfile::tempdir()
+-                    };
+-                    #[cfg(not(windows))]
+-                    let scratch = tempfile::tempdir();
+-                    temp = scratch.map_err(|e| e.to_string())?;
+-                    let native_link = || {
+-                        fs::read_link(&target)
+-                            .map(|path| path.as_os_str().as_encoded_bytes().to_vec())
+-                            .map_err(|e| e.to_string())
+-                    };
+-                    #[cfg(windows)]
+-                    let link = match &wsl {
+-                        Some(wsl) => wsl.link_target(&arg)?,
+-                        None => native_link()?,
+-                    };
+-                    #[cfg(not(windows))]
+-                    let link = native_link()?;
+-                    let source = temp.path().join("link");
+-                    fs::write(&source, link).map_err(|e| e.to_string())?;
+-                    #[cfg(windows)]
+-                    if wsl.is_some() {
+-                        windows::WslCheckout::from_path(&source)
+-                            .ok_or("Could not resolve the WSL temporary file.")?
+-                            .directory
+-                    } else {
+-                        source.into_os_string()
+-                    }
+-                    #[cfg(not(windows))]
+-                    source.into_os_string()
+-                } else {
+-                    let mut source = OsString::from("./");
+-                    source.push(&arg);
+-                    source
+-                };
+-                let mut added = local_changes(
+-                    repo,
+-                    "Untracked",
+-                    &[
+-                        "--no-index".as_ref(),
+-                        "--".as_ref(),
+-                        "/dev/null".as_ref(),
+-                        &source,
+-                    ],
+-                    true,
+-                )?;
+-                for f in &mut added {
+-                    f.old = path.clone();
+-                    f.path = path.clone();
+-                    if kind.is_symlink() {
+-                        f.mode = "120000".into();
+-                    }
+-                }
+-                files.extend(added);
++        }
++    }
++    Ok(files)
++}
++
++fn untracked_changes(repo: &Repository, base: &str, path: &str) -> Result<Vec<Change>> {
++    let mut files = Vec::new();
++    let arg = path_arg(path)?;
++    let target = repo.root.join(&arg);
++    let kind = fs::symlink_metadata(&target)
++        .map_err(|e| e.to_string())?
++        .file_type();
++    if kind.is_dir() && target.join(".git").exists() {
++        let oid = git_text(&target, &["rev-parse", "--verify", "HEAD"])
++            .unwrap_or_else(|_| "0".repeat(base.len()));
++        files.push(Change {
++            status: "A".into(),
++            old: path.to_owned(),
++            path: path.to_owned(),
++            added: Some(0),
++            removed: Some(0),
++            old_mode: "000000".into(),
++            mode: "160000".into(),
++            old_oid: "0".repeat(oid.len()),
++            oid,
++            group: "Untracked".into(),
++            local_sections: vec![],
++        });
++    } else if kind.is_symlink() || kind.is_file() {
++        // Pass a regular copy of link text. Git's --no-index can follow a
++        // link to a directory or FIFO when the link is a command argument.
++        let temp;
++        let source = if kind.is_symlink() {
++            #[cfg(windows)]
++            let wsl = windows::WslCheckout::from_path(&repo.root);
++            #[cfg(windows)]
++            let scratch = if let Some(wsl) = &wsl {
++                tempfile::tempdir_in(wsl.host_path(Path::new("/tmp"))?)
++            } else {
++                tempfile::tempdir()
++            };
++            #[cfg(not(windows))]
++            let scratch = tempfile::tempdir();
++            temp = scratch.map_err(|e| e.to_string())?;
++            let native_link = || {
++                fs::read_link(&target)
++                    .map(|path| path.as_os_str().as_encoded_bytes().to_vec())
++                    .map_err(|e| e.to_string())
++            };
++            #[cfg(windows)]
++            let link = match &wsl {
++                Some(wsl) => wsl.link_target(&arg)?,
++                None => native_link()?,
++            };
++            #[cfg(not(windows))]
++            let link = native_link()?;
++            let source = temp.path().join("link");
++            fs::write(&source, link).map_err(|e| e.to_string())?;
++            #[cfg(windows)]
++            if wsl.is_some() {
++                windows::WslCheckout::from_path(&source)
++                    .ok_or("Could not resolve the WSL temporary file.")?
++                    .directory
++            } else {
++                source.into_os_string()
++            }
++            #[cfg(not(windows))]
++            source.into_os_string()
++        } else {
++            let mut source = OsString::from("./");
++            source.push(&arg);
++            source
++        };
++        let mut added = local_changes(
++            repo,
++            "Untracked",
++            &[
++                "--no-index".as_ref(),
++                "--".as_ref(),
++                "/dev/null".as_ref(),
++                &source,
++            ],
++            true,
++        )?;
++        for f in &mut added {
++            f.old = path.to_owned();
++            f.path = path.to_owned();
++            if kind.is_symlink() {
++                f.mode = "120000".into();
+             }
+         }
++        files.extend(added);
+     }
+     Ok(files)
+ }
+diff --git a/src-tauri/src/git_tests.rs b/src-tauri/src/git_tests.rs
+index a40b994..f2992f2 100644
+--- a/src-tauri/src/git_tests.rs
++++ b/src-tauri/src/git_tests.rs
+@@ -875,3 +875,318 @@ fn sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged() {
+         assert_eq!(native::supports_working_tree(&repo), expected);
+     }
+ }
++
++
++#[test]
++fn windows_status_parser_keeps_raw_question_paths_and_ignores_valid_tracked_records() {
++    let oid = "a".repeat(40);
++    let mut data = format!("1 MM N... 100644 100644 100644 {oid} {oid} tracked path\0").into_bytes();
++    data.extend_from_slice(format!("u UU N... 100644 100644 100644 100644 {oid} {oid} {oid} conflicted\0").as_bytes());
++    data.extend_from_slice(b"? leading space\0?  two spaces\0? tabs\tand\nnewlines\0? invalid\xff\0? nested/\0");
++    assert_eq!(status_untracked_names(&data).unwrap(),
++        b"leading space\0 two spaces\0tabs\tand\nnewlines\0invalid\xff\0nested/\0");
++    let sha256 = "f".repeat(64);
++    let data = format!("1 .M S.MU 160000 160000 160000 {sha256} {sha256} submodule\0? file\0");
++    assert_eq!(status_untracked_names(data.as_bytes()).unwrap(), b"file\0");
++    assert!(status_untracked_names(b"").unwrap().is_empty());
++}
++
++#[test]
++fn windows_status_parser_rejects_malformed_and_unsupported_records_for_fallback() {
++    let oid = "a".repeat(40);
++    let valid = format!("1 MM N... 100644 100644 100644 {oid} {oid} path\0");
++    let mut invalid = vec![b"? missing terminator".to_vec(), b"? \0".to_vec(), b"\0".to_vec(),
++        b"? good\0\0".to_vec(), b"?no space\0".to_vec(), b"? ../outside\0".to_vec(), b"? /absolute\0".to_vec(),
++        b"? ./file\0".to_vec(), b"? a//b\0".to_vec(), b"? a/../b\0".to_vec(), b"# branch.head main\0".to_vec(),
++        b"! ignored\0".to_vec(), b"2 rename\0source\0".to_vec(), b"1 malformed\0".to_vec()];
++    for (old, new) in [(" MM ", " M "), (" N... ", " N.. "), ("100644", "100649"), (" MM ", " ?? "), (" MM ", " UU "),
++        (" path\0", " \0")] {
++        invalid.push(valid.replacen(old, new, 1).into_bytes());
++    }
++    invalid.push(valid.replacen(&oid, "bad", 1).into_bytes());
++    for data in invalid {
++        assert!(status_untracked_names(&data).is_err(), "accepted malformed status {:?}", String::from_utf8_lossy(&data));
++    }
++}
++
++fn status_guard_files(root: &Path) -> Vec<(String, Option<Vec<u8>>, Option<std::time::SystemTime>, u64)> {
++    ["index", "config", "HEAD"].into_iter().map(|name| {
++        let path = git_text(root, &["rev-parse", "--git-path", name]).unwrap();
++        let path = root.join(path);
++        let bytes = match fs::read(&path) {
++            Ok(bytes) => Some(bytes),
++            Err(error) if error.kind() == std::io::ErrorKind::NotFound => None,
++            Err(error) => panic!("{path:?}: {error}"),
++        };
++        let metadata = fs::metadata(path).ok();
++        #[cfg(unix)]
++        let inode = {
++            use std::os::unix::fs::MetadataExt;
++            metadata.as_ref().map_or(0, |metadata| metadata.ino())
++        };
++        #[cfg(not(unix))]
++        let inode = 0;
++        (name.into(), bytes, metadata.and_then(|metadata| metadata.modified().ok()), inode)
++    }).collect()
++}
++
++fn assert_windows_status_listing(root: &Path) -> Vec<u8> {
++    let before = status_guard_files(root);
++    let expected = git(root, &["ls-files", "--others", "--exclude-standard", "-z", "--"]).unwrap();
++    let actual = windows_status_untracked(root).unwrap();
++    assert_eq!(actual, expected, "status must retain the original raw NUL-list bytes");
++    assert_eq!(status_guard_files(root), before, "discovery rewrote repository state");
++    actual
++}
++
++#[test]
++fn windows_status_git_parity_preserves_ignores_partial_staging_and_user_cache_configuration() {
++    let dir = history();
++    write(&dir, "tracked", b"base\n");
++    write(&dir, "unchanged", b"same bytes\n");
++    write(&dir, ".gitignore", b"ignored\nignored-dir/\n");
++    record(&dir, "Base");
++    write(&dir, "tracked", b"staged\n");
++    git(dir.path(), &["add", "tracked"]).unwrap();
++    write(&dir, "tracked", b"unstaged\n");
++    // Status may refresh stale stat data in memory, but optional locks must
++    // prevent that refresh from replacing the real index.
++    fs::OpenOptions::new().write(true).open(dir.path().join("unchanged")).unwrap()
++        .set_modified(std::time::UNIX_EPOCH + std::time::Duration::from_secs(1_000_000_000)).unwrap();
++    fs::create_dir_all(dir.path().join("folder/deep")).unwrap();
++    fs::create_dir_all(dir.path().join("ignored-dir")).unwrap();
++    for name in ["literal[1]", "--dash", "space name", "folder/deep/file", "ignored", "ignored-dir/file", "info-ignored", "global-ignored"] {
++        write(&dir, name, b"new data\n");
++    }
++    fs::write(dir.path().join(".git/info/exclude"), b"info-ignored\n").unwrap();
++    let excludes = dir.path().parent().unwrap().join(format!("{}-global-ignore", dir.path().file_name().unwrap().to_string_lossy()));
++    fs::write(&excludes, b"global-ignored\n").unwrap();
++    git(dir.path(), &["config", "core.excludesFile", excludes.to_str().unwrap()]).unwrap();
++    fs::create_dir(dir.path().join("nested")).unwrap();
++    git(&dir.path().join("nested"), &["init", "-q"]).unwrap();
++    write(&dir, "nested/file", b"nested checkout\n");
++    for enabled in ["false", "true"] {
++        git(dir.path(), &["config", "core.untrackedCache", enabled]).unwrap();
++        if enabled == "true" {
++            git(dir.path(), &["update-index", "--untracked-cache"]).unwrap();
++            let seed = Command::new("git").arg("-C").arg(dir.path())
++                .args(["status", "--porcelain=v2", "-z", "--untracked-files=all"])
++                .env("GIT_OPTIONAL_LOCKS", "1").output().unwrap();
++            assert!(seed.status.success());
++            assert!(fs::read(dir.path().join(".git/index")).unwrap().windows(4).any(|bytes| bytes == b"UNTR"));
++            write(&dir, "folder/cache-added", b"new after persisted cache\n");
++        }
++        let names = assert_windows_status_listing(dir.path());
++        assert!(names.split(|byte| *byte == 0).any(|name| name == b"nested/"));
++        assert!(!names.split(|byte| *byte == 0).any(|name| name.ends_with(b"ignored")));
++    }
++    fs::remove_file(excludes).unwrap();
++}
++
++#[test]
++fn windows_status_git_parity_handles_unborn_conflicts_and_linked_worktrees() {
++    let dir = history();
++    write(&dir, "draft", b"untracked before first commit\n");
++    assert_eq!(assert_windows_status_listing(dir.path()), b"draft\0");
++    git(dir.path(), &["add", "draft"]).unwrap();
++    write(&dir, "new draft", b"untracked beside unborn index\n");
++    assert_eq!(assert_windows_status_listing(dir.path()), b"new draft\0");
++    record(&dir, "Base");
++    git(dir.path(), &["switch", "-qc", "other"]).unwrap();
++    write(&dir, "draft", b"other\n");
++    record(&dir, "Other");
++    git(dir.path(), &["switch", "-q", "main"]).unwrap();
++    write(&dir, "draft", b"main\n");
++    record(&dir, "Main");
++    assert!(git(dir.path(), &["merge", "--no-edit", "other"]).is_err());
++    write(&dir, "untracked conflict note", b"review\n");
++    assert_eq!(assert_windows_status_listing(dir.path()), b"untracked conflict note\0");
++    git(dir.path(), &["merge", "--abort"]).unwrap();
++    let linked = tempfile::tempdir().unwrap();
++    let linked_root = linked.path().join("linked");
++    git(dir.path(), &["worktree", "add", "--detach", linked_root.to_str().unwrap(), "HEAD"]).unwrap();
++    fs::write(linked_root.join("literal[1]"), b"linked worktree review\n").unwrap();
++    assert_eq!(assert_windows_status_listing(&linked_root), b"literal[1]\0");
++}
++
++#[cfg(unix)]
++#[test]
++fn windows_status_git_parity_preserves_unix_byte_names_and_configured_monitor_hook() {
++    use std::os::unix::{ffi::OsStrExt, fs::{symlink, PermissionsExt}};
++    let dir = history();
++    write(&dir, "tracked", b"base\n");
++    record(&dir, "Base");
++    for raw in [b"invalid\xff\t\n".as_slice(), b"C:foo", b":(glob)magic*", b"back\\slash"] {
++        fs::write(dir.path().join(OsStr::from_bytes(raw)), b"new bytes\n").unwrap();
++    }
++    symlink("missing", dir.path().join("link")).unwrap();
++    let hook_dir = tempfile::tempdir().unwrap();
++    let hook = hook_dir.path().join("monitor");
++    let marker = hook_dir.path().join("called");
++    fs::write(&hook, format!("#!/bin/sh\nprintf called >> '{}'\nprintf 'token\\0/\\0'\n", marker.display())).unwrap();
++    fs::set_permissions(&hook, fs::Permissions::from_mode(0o755)).unwrap();
++    git(dir.path(), &["config", "core.fsmonitor", hook.to_str().unwrap()]).unwrap();
++    git(dir.path(), &["config", "core.fsmonitorHookVersion", "2"]).unwrap();
++    let names = assert_windows_status_listing(dir.path());
++    assert!(names.split(|byte| *byte == 0).any(|path| path == b"invalid\xff\t\n"));
++    assert!(marker.exists(), "the existing configured Git hook must remain effective");
++}
++
++#[test]
++fn parallel_untracked_keeps_git_order_raw_patches_and_frozen_content() {
++    let dir = history();
++    let root = dir.path();
++    write(&dir, "tracked", b"base\n");
++    write(&dir, ".gitignore", b"ignored\n");
++    record(&dir, "Base");
++    for (path, bytes) in [
++        ("a-empty", b"".as_slice()),
++        ("b-text", b"first\nsecond\n"),
++        ("c-binary", b"binary\0bytes"),
++        ("d space", b"space\n"),
++        ("e[1]", b"literal\n"),
++        ("g-last", b"last\n"),
++        ("ignored", b"hidden\n"),
++    ] {
++        write(&dir, path, bytes);
++    }
++    let nested = root.join("f-nested");
++    fs::create_dir(&nested).unwrap();
++    git(&nested, &["init", "-qb", "main"]).unwrap();
++    git(&nested, &["config", "user.name", "Nested"]).unwrap();
++    git(&nested, &["config", "user.email", "nested@example.test"]).unwrap();
++    git(&nested, &["config", "commit.gpgsign", "false"]).unwrap();
++    fs::write(nested.join("inside"), b"nested\n").unwrap();
++    git(&nested, &["add", "."]).unwrap();
++    git(&nested, &["commit", "-qm", "Nested"]).unwrap();
++    #[cfg(unix)]
++    std::os::unix::fs::symlink(".", root.join("h-dirlink")).unwrap();
++    let before = status_guard_files(root);
++    let mut repo = open_repo(root).unwrap();
++    repo.native = None;
++    let snapshot = work(&repo);
++    let listed = git(
++        root,
++        &["ls-files", "--others", "--exclude-standard", "-z", "--"],
++    )
++    .unwrap();
++    let expected = listed
++        .split(|&byte| byte == 0)
++        .filter(|path| !path.is_empty())
++        .map(|path| name(path.strip_suffix(b"/").unwrap_or(path)))
++        .collect::<Vec<_>>();
++    assert_eq!(
++        snapshot
++            .files
++            .iter()
++            .map(|file| file.path.clone())
++            .collect::<Vec<_>>(),
++        expected
++    );
++    assert!(snapshot.files.len() > 4, "exercise multiple batches");
++    assert!(snapshot.files.iter().all(|file| file.group == "Untracked"));
++    assert_eq!(file(&snapshot, "Untracked", "c-binary").added, None);
++    assert_eq!(file(&snapshot, "Untracked", "a-empty").added, Some(0));
++    assert_eq!(file(&snapshot, "Untracked", "f-nested").mode, "160000");
++    assert_eq!(
++        file(&snapshot, "Untracked", "f-nested").oid,
++        git_text(&nested, &["rev-parse", "HEAD"]).unwrap()
++    );
++    #[cfg(unix)]
++    {
++        assert_eq!(file(&snapshot, "Untracked", "h-dirlink").mode, "120000");
++        assert_eq!(content(&repo, &snapshot, "Untracked", "h-dirlink"), ["."]);
++    }
++    // Compare regular-file captures with the original one-at-a-time Git reads.
++    for change in &snapshot.files {
++        if change.mode == "160000" || change.mode == "120000" {
++            continue;
++        }
++        let mut source = OsString::from("./");
++        source.push(path_arg(&change.path).unwrap());
++        let mut expected = local_changes(
++            &repo,
++            "Untracked",
++            &[
++                "--no-index".as_ref(),
++                "--".as_ref(),
++                "/dev/null".as_ref(),
++                &source,
++            ],
++            true,
++        )
++        .unwrap();
++        expected[0].old = change.old.clone();
++        expected[0].path = change.path.clone();
++        assert_eq!(
++            serde_json::to_value(change).unwrap(),
++            serde_json::to_value(&expected[0]).unwrap()
++        );
++        assert_eq!(change.local_sections, expected[0].local_sections);
++    }
++    let frozen = snapshot
++        .files
++        .iter()
++        .map(|change| {
++            (
++                patch(&repo, &snapshot, change).unwrap(),
++                file_contents(&repo, change),
++            )
++        })
++        .collect::<Vec<_>>();
++    assert_eq!(status_guard_files(root), before);
++    for path in ["a-empty", "b-text", "c-binary", "d space", "e[1]", "g-last"] {
++        fs::remove_file(root.join(path)).unwrap();
++    }
++    #[cfg(unix)]
++    fs::remove_file(root.join("h-dirlink")).unwrap();
++    write(&dir, "tracked", b"new staged content\n");
++    git(root, &["add", "tracked"]).unwrap();
++    for (change, (rows, contents)) in snapshot.files.iter().zip(frozen) {
++        assert_eq!(patch(&repo, &snapshot, change).unwrap(), rows);
++        assert_eq!(file_contents(&repo, change), contents);
++    }
++}
++
++#[cfg(unix)]
++#[test]
++fn parallel_untracked_preserves_first_error_with_multiple_failed_reads() {
++    use std::os::unix::fs::PermissionsExt;
++    let dir = history();
++    let root = dir.path();
++    write(&dir, "tracked", b"base\n");
++    record(&dir, "Base");
++    for path in ["a-denied", "b-denied", "c-valid", "d-valid", "e-valid"] {
++        write(&dir, path, b"untracked\n");
++    }
++    let mut repo = open_repo(root).unwrap();
++    repo.native = None;
++    for path in ["a-denied", "b-denied"] {
++        fs::set_permissions(root.join(path), fs::Permissions::from_mode(0)).unwrap();
++    }
++    let before = status_guard_files(root);
++    let expected = local_changes(
++        &repo,
++        "Untracked",
++        &[
++            "--no-index".as_ref(),
++            "--".as_ref(),
++            "/dev/null".as_ref(),
++            "./a-denied".as_ref(),
++        ],
++        true,
++    )
++    .unwrap_err();
++    let actual = working_changes_cli(&repo, &repo.refs[&repo.checkout], None, None).unwrap_err();
++    for path in ["a-denied", "b-denied"] {
++        fs::set_permissions(root.join(path), fs::Permissions::from_mode(0o600)).unwrap();
++    }
++    assert!(expected.contains("a-denied"), "{expected}");
++    assert_eq!(actual, expected);
++    assert_eq!(status_guard_files(root), before);
++    assert_eq!(
++        work(&repo).files.len(),
++        5,
++        "subsequent reads still complete after the error"
++    );
++}

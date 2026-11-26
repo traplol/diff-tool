@@ -1,0 +1,66 @@
+{
+  "windows": {
+    "guards": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614734418472500,
+        "device": 87,
+        "inode": 2814749767263140,
+        "mode": 33279,
+        "mtime_ns": 1795614733000000000,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994331971400,
+        "device": 87,
+        "inode": 3377699720684454,
+        "mode": 33279,
+        "mtime_ns": 1795615994331971400,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615947971522900,
+        "device": 87,
+        "inode": 562949953782638,
+        "mode": 33279,
+        "mtime_ns": 1795615947971522900,
+        "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+      }
+    },
+    "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+  },
+  "wsl": {
+    "guards": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614733907349066,
+        "device": 2096,
+        "inode": 272949,
+        "mode": 33188,
+        "mtime_ns": 1795614733907349066,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994729935414,
+        "device": 2096,
+        "inode": 278185,
+        "mode": 33188,
+        "mtime_ns": 1795615994729935414,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615942133939671,
+        "device": 2096,
+        "inode": 278079,
+        "mode": 33188,
+        "mtime_ns": 1795615942129939671,
+        "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+      }
+    },
+    "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+  }
+}

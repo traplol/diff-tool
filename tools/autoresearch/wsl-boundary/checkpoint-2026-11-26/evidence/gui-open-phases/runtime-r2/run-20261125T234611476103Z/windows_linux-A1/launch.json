@@ -1,0 +1,12 @@
+{
+  "binary": "C:\\Users\\max\\branchline-bench\\binaries\\gui-open-phases-b2de070-29898a628ed5-r2\\branchline.exe",
+  "binary_sha256": "35a152eb0f3ac6ead0451a981722c14658fce466a9a225e3717a65e2a2d2a462",
+  "cdp_port": 29223,
+  "created": "2026-11-25T18:46:41.2128140-05:00",
+  "mcp_port": 28865,
+  "pid": 352,
+  "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+  "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+  "session": 1,
+  "source_hash": "29898a628ed57d5a4688800e87966729bc6e9391d5ece489cadb424702f588cc"
+}

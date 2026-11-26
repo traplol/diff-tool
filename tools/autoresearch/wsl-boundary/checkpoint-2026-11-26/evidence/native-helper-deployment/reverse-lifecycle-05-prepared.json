@@ -1,0 +1,17 @@
+{
+  "controller": "build/experiments/native-helper-deployment/reverse-windows-lifecycle-05.py",
+  "sha256": "596764ff4cdd2321f2d99e140fbf5d985256cc23797412f1e3f49102d37c0b72",
+  "preserved_controller04_sha256": "fc50a55510e244d1d45bee12bf072d79a1956968c1e022e3f204141a68cd53c6",
+  "runtime": "not run; awaiting VM MCP LIFECYCLE RELEASED",
+  "cases": [
+    "MCPidle-after-completed-real-read",
+    "MCPbusy-real-paused-read"
+  ],
+  "fix": "Explicit native Host127.0.0.1:28971 over unchanged local tunnel48971",
+  "idle_expectation": "MCP call_repository opens local Repository per call, then Connection Drop closes worker; no idle MCP worker remains after completed read. Same production behavior was validated in forward gate.",
+  "source_references": [
+    "source/src-tauri/src/mcp.rs:174-188",
+    "source/src-tauri/src/mcp/tools.rs:261-267",
+    "linux-correctness-short-remote.py:156-158"
+  ]
+}

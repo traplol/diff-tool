@@ -1,0 +1,130 @@
+     Locking 43 packages to latest compatible versions
+      Adding base64 v0.22.1 (available: v0.23.1)
+   Compiling libc v0.2.191
+   Compiling shlex v2.0.1
+   Compiling find-msvc-tools v0.1.15
+   Compiling pkg-config v0.3.34
+   Compiling version_check v0.9.5
+   Compiling vcpkg v0.2.15
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling typenum v1.20.1
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.229
+   Compiling bitflags v2.13.2
+   Compiling cfg-if v1.0.5
+   Compiling rustix v1.1.6
+   Compiling zmij v1.0.23
+   Compiling getrandom v0.4.3
+   Compiling linux-raw-sys v0.12.1
+   Compiling serde_json v1.0.154
+   Compiling serde v1.0.229
+   Compiling cpufeatures v0.2.17
+   Compiling once_cell v1.21.4
+   Compiling memchr v2.8.3
+   Compiling fastrand v2.5.0
+   Compiling itoa v1.0.19
+   Compiling log v0.4.35
+   Compiling base64 v0.22.1
+   Compiling generic-array v0.14.7
+   Compiling syn v3.0.10
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling digest v0.10.7
+   Compiling sha2 v0.10.9
+   Compiling jobserver v0.1.35
+   Compiling cc v1.11.3
+   Compiling tempfile v3.27.0
+   Compiling serde_derive v1.0.229
+   Compiling libz-sys v1.1.33
+   Compiling libgit2-sys v0.18.8+1.9.7
+   Compiling git2 v0.21.0
+   Compiling branchline-native-helper-host-check v0.1.0 (/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/host-harness)
+warning: unexpected `cfg` condition name: `branchline_git_worker`
+ --> src/../../source/src-tauri/src/git/remote.rs:6:11
+  |
+6 | #[cfg(any(branchline_git_worker, test))]
+  |           ^^^^^^^^^^^^^^^^^^^^^
+  |
+  = help: expected names are: `docsrs`, `feature`, and `test` and 31 more
+  = help: consider using a Cargo feature instead
+  = help: or consider adding in `Cargo.toml` the `check-cfg` lint config for the lint:
+           [lints.rust]
+           unexpected_cfgs = { level = "warn", check-cfg = ['cfg(branchline_git_worker)'] }
+  = help: or consider adding `println!("cargo::rustc-check-cfg=cfg(branchline_git_worker)");` to the top of the `build.rs`
+  = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+  = note: `#[warn(unexpected_cfgs)]` on by default
+
+warning: unexpected `cfg` condition name: `branchline_git_worker`
+  --> src/../../source/src-tauri/src/git/remote.rs:23:7
+   |
+23 | #[cfg(branchline_git_worker)]
+   |       ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: consider using a Cargo feature instead
+   = help: or consider adding in `Cargo.toml` the `check-cfg` lint config for the lint:
+            [lints.rust]
+            unexpected_cfgs = { level = "warn", check-cfg = ['cfg(branchline_git_worker)'] }
+   = help: or consider adding `println!("cargo::rustc-check-cfg=cfg(branchline_git_worker)");` to the top of the `build.rs`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition name: `branchline_git_worker`
+   --> src/../../source/src-tauri/src/git/remote.rs:681:11
+    |
+681 | #[cfg(any(branchline_git_worker, test))]
+    |           ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: consider using a Cargo feature instead
+    = help: or consider adding in `Cargo.toml` the `check-cfg` lint config for the lint:
+             [lints.rust]
+             unexpected_cfgs = { level = "warn", check-cfg = ['cfg(branchline_git_worker)'] }
+    = help: or consider adding `println!("cargo::rustc-check-cfg=cfg(branchline_git_worker)");` to the top of the `build.rs`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition name: `branchline_git_worker`
+   --> src/../../source/src-tauri/src/git/remote.rs:650:15
+    |
+650 |     #[cfg(not(branchline_git_worker))]
+    |               ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: consider using a Cargo feature instead
+    = help: or consider adding in `Cargo.toml` the `check-cfg` lint config for the lint:
+             [lints.rust]
+             unexpected_cfgs = { level = "warn", check-cfg = ['cfg(branchline_git_worker)'] }
+    = help: or consider adding `println!("cargo::rustc-check-cfg=cfg(branchline_git_worker)");` to the top of the `build.rs`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition name: `branchline_git_worker`
+   --> src/../../source/src-tauri/src/git/remote.rs:654:11
+    |
+654 |     #[cfg(branchline_git_worker)]
+    |           ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: consider using a Cargo feature instead
+    = help: or consider adding in `Cargo.toml` the `check-cfg` lint config for the lint:
+             [lints.rust]
+             unexpected_cfgs = { level = "warn", check-cfg = ['cfg(branchline_git_worker)'] }
+    = help: or consider adding `println!("cargo::rustc-check-cfg=cfg(branchline_git_worker)");` to the top of the `build.rs`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: `branchline-native-helper-host-check` (lib test) generated 5 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.87s
+     Running unittests src/lib.rs (/tmp/branchline-native-helper-target/debug/deps/branchline_native_helper_host_check-b9411c9cb24f2826)
+
+running 13 tests
+test git::remote::tests::native_git_failures_remain_domain_errors ... ok
+test git::remote::tests::only_drive_absolute_paths_identify_windows_storage ... ok
+test git::remote::tests::windows_worker_command_maps_its_storage_cwd_before_interop ... ignored, Requires WSL path translation; run explicitly inside WSL
+test git::remote::tests::request_frames_escape_newlines_and_match_response_ids ... ok
+test git::remote::tests::windows_native_cache_path_preserves_unicode_and_rejects_foreign_storage ... ok
+test git::remote::tests::cached_worker_is_verified_and_corruption_is_replaced_atomically ... ok
+test git::remote::tests::stale_truncated_and_invalid_responses_are_rejected ... ok
+test git::remote::tests::a_protocol_failure_stops_and_reaps_only_the_owned_child ... ok
+test git::remote::tests::a_git_failure_does_not_disconnect_the_persistent_child ... ok
+test git::remote::tests::native_wsl_bootstrap_rejects_wrong_bytes_and_cleans_temporary_copy ... ok
+test git::remote::tests::native_wsl_bootstrap_parallel_installs_publish_only_verified_bytes ... ok
+test git::remote::tests::blocked_search_preparation_does_not_queue_foreground_requests ... ok
+test git::remote::tests::native_wsl_bootstrap_execs_one_worker_and_preserves_raw_pipes ... ok
+
+test result: ok. 12 passed; 0 failed; 1 ignored; 0 measured; 25 filtered out; finished in 0.09s
+

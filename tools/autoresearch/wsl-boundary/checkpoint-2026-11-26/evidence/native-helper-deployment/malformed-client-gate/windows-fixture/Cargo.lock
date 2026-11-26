@@ -1,0 +1,5 @@
+version = 4
+
+[[package]]
+name = "branchline-malformed-response-fixture"
+version = "0.1.0"

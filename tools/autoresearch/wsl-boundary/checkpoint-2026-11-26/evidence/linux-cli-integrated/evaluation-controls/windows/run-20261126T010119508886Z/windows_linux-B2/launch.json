@@ -1,0 +1,12 @@
+{
+  "binary": "C:\\Users\\max\\branchline-bench\\binaries\\integrated-c200-r1\\branchline.exe",
+  "binary_sha256": "eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25",
+  "cdp_port": 29223,
+  "created": "2026-11-25T20:02:43.7706780-05:00",
+  "mcp_port": 28865,
+  "pid": 14272,
+  "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+  "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+  "session": 1,
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1"
+}

@@ -1,0 +1,4 @@
+PASS fast success starts native work immediately and cancels progress before 200 ms
+PASS pending work shows progress at 200 ms without delaying native work or completion
+PASS native rejection preserves the error and clears progress and busy state
+{"passed":3,"cases":["fast success starts native work immediately and cancels progress before 200 ms","pending work shows progress at 200 ms without delaying native work or completion","native rejection preserves the error and clears progress and busy state"]}

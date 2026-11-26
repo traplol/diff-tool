@@ -1,0 +1,11 @@
+{"supervisor_pid": 197196, "record": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/supervisor.json"}
+Traceback (most recent call last):
+  File "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/vm-build-supervisor.py", line 339, in <module>
+    main()
+    ~~~~^^
+  File "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/vm-build-supervisor.py", line 334, in main
+    raise failure
+  File "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/vm-build-supervisor.py", line 308, in main
+    if 'custom-protocol' not in gui_producer.get('features',[]):raise RuntimeError('GUI producer lacks packaged custom-protocol assets')
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: GUI producer lacks packaged custom-protocol assets

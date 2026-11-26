@@ -1,0 +1,93 @@
+{
+  "actions": {
+    "branch_final": {
+      "count": 3,
+      "first_use_ms": 153.2999999821186,
+      "max_ms": 174.40000000596046,
+      "p50_ms": 153.2999999821186,
+      "p95_ms": 174.40000000596046
+    },
+    "branch_first": {
+      "count": 3,
+      "first_use_ms": 152.59999999403954,
+      "max_ms": 216.09999999403954,
+      "p50_ms": 206.30000001192093,
+      "p95_ms": 216.09999999403954
+    },
+    "comment_branch": {
+      "count": 3,
+      "first_use_ms": 228.90000000596046,
+      "max_ms": 228.90000000596046,
+      "p50_ms": 213,
+      "p95_ms": 228.90000000596046
+    },
+    "comment_worktree": {
+      "count": 3,
+      "first_use_ms": 232,
+      "max_ms": 232,
+      "p50_ms": 228.90000000596046,
+      "p95_ms": 232
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 897.1000000238419,
+      "max_ms": 897.1000000238419,
+      "p50_ms": 897.1000000238419,
+      "p95_ms": 897.1000000238419
+    },
+    "stack": {
+      "count": 3,
+      "first_use_ms": 136.69999998807907,
+      "max_ms": 138.59999999403954,
+      "p50_ms": 136.69999998807907,
+      "p95_ms": 138.59999999403954
+    },
+    "working_tree": {
+      "count": 3,
+      "first_use_ms": 259.19999998807907,
+      "max_ms": 259.19999998807907,
+      "p50_ms": 212.40000000596046,
+      "p95_ms": 259.19999998807907
+    }
+  },
+  "binary_sha256": "86c90415605b2f4841c36abd390d48c45d2af094fdb9829f5ecb923c85331462",
+  "case": "windows_linux",
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "finished_at_unix": 1795648543.7827232,
+  "git_head": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+  "label": "staged-anchor-metadata-aba80d920269-bundle-r2",
+  "launch": {
+    "binary": "C:\\Users\\max\\branchline-bench\\binaries\\staged-anchor-metadata-aba80d920269-bundle-r2\\branchline.exe",
+    "binary_sha256": "86c90415605b2f4841c36abd390d48c45d2af094fdb9829f5ecb923c85331462",
+    "cdp_port": 29223,
+    "created": "2026-11-25T18:15:34.1208990-05:00",
+    "mcp_port": 28865,
+    "pid": 5048,
+    "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+    "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+    "session": 1,
+    "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404"
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "measure",
+  "repetitions": 3,
+  "schema_version": 1,
+  "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+  "started_at_unix": 1795648537.189568,
+  "target_met": false,
+  "target_ms": 250.0,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed",
+  "worst_interaction_p95_ms": 897.1000000238419
+}

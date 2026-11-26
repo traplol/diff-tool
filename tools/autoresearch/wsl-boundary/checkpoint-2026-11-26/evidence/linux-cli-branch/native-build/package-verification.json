@@ -1,0 +1,73 @@
+{
+  "status": "host-extract-git-discovery-and-source-passed",
+  "archive_sha256": "f1e196565840f3a635c2ceb0af0913d3f88c94194f698dc84e283bb797be0655",
+  "bundle_sha256": "d0743fee8d66c2548dca63636e0f484fee68be27f24da4adc6f682dfa05fe197",
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "git_tree": "f479c6a62a6fb2664aced380e7aafe860bfa0db6",
+  "canonical_app_files": 49,
+  "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+  "all_snapshot_files_unchanged": true,
+  "snapshot_file_count": 181,
+  "external_alternates": false,
+  "build_sh_executable": true,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "--quiet",
+        "/tmp/linux-cli-package-sinray4x/source"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "bundle",
+        "verify",
+        "/tmp/linux-cli-package-sinray4x/source-b2de070.bundle"
+      ],
+      "exit": 0,
+      "stdout": "The bundle contains this ref:\nb2de070becf3fcba2d47557efd375221c586f273 HEAD\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n",
+      "stderr": "/tmp/linux-cli-package-sinray4x/source-b2de070.bundle is okay\n"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "/tmp/linux-cli-package-sinray4x/source-b2de070.bundle",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "From /tmp/linux-cli-package-sinray4x/source-b2de070.bundle\n * branch            HEAD       -> FETCH_HEAD\n"
+    },
+    {
+      "argv": [
+        "git",
+        "update-ref",
+        "--no-deref",
+        "HEAD",
+        "b2de070becf3fcba2d47557efd375221c586f273"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "read-tree",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "vm_calls": false,
+  "builds_tests_or_scoring": false
+}

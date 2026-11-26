@@ -1,0 +1,22 @@
+{
+  "host_pid": 77494,
+  "started": 1795647048.9083354,
+  "archive_sha256": "7e6fa5770a8f399fe601ff1ed70e552aafece74885fcfe12d8cbb0c2dcbb19ad",
+  "vm_root": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec",
+  "status": "terminal",
+  "ssh_pid": 77497,
+  "vm_supervisor": {
+    "supervisor_pid": 162976,
+    "start_ticks": "15134395",
+    "record": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/evidence/supervisor.json"
+  },
+  "current_child": {
+    "phase": "windows-native-client",
+    "child_pid": 165208,
+    "start_ticks": "15143498",
+    "log": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/evidence/windows-native-client.log"
+  },
+  "exit": 0,
+  "error": "Traceback (most recent call last):\n  File \"/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/malformed-client-gate/run-released.py\", line 30, in <module>\n    owner['status']='terminal';save();raise SystemExit(owner['exit'])\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSystemExit: 0\n",
+  "finished": 1795647143.8632154
+}

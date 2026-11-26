@@ -1,0 +1,15 @@
+{
+  "base_commit": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+  "source": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/source",
+  "root_dirty": " M tools/autoresearch/wsl-boundary/results.jsonl\n M tools/autoresearch/wsl-boundary/state.md\n",
+  "scope": [
+    "src-tauri/src/git.rs",
+    "src-tauri/src/git/native.rs",
+    "src-tauri/src/git/worker.rs",
+    "src-tauri/src/tracking.rs",
+    "src-tauri/src/git_tests.rs",
+    "src-tauri/src/review_tests.rs",
+    "src-tauri/git-worker/tests/stdio.rs"
+  ],
+  "state": "source-only experiment, no VM or benchmark"
+}

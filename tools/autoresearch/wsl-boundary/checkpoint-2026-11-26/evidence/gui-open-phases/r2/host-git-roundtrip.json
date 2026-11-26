@@ -1,0 +1,26 @@
+{
+  "status": "host-archive-Git-and-source-roundtrip-passed",
+  "archive_sha256": "0b88875c1b30039bed96f754a0b0b23ca253aefa4bc26414c9aef65b3e7ca39e",
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "object_type": "commit",
+  "source_hash": "29898a628ed57d5a4688800e87966729bc6e9391d5ece489cadb424702f588cc",
+  "official_file_count": 49,
+  "files_verified": 206,
+  "actual_Git_directories_verified": [
+    ".git",
+    ".git/hooks",
+    ".git/info",
+    ".git/logs",
+    ".git/objects",
+    ".git/objects/info",
+    ".git/objects/pack",
+    ".git/refs",
+    ".git/refs/heads",
+    ".git/refs/tags"
+  ],
+  "alternates_absent": true,
+  "build_or_tests_run": false,
+  "r2_caller_sha256": "22979066bb772e4546337cb1b1fe7c6b5fbc74bfb9813770c8c5b5cc64943709",
+  "r2_plan_sha256": "524837a566edaf4800e75c54d87b5dc55b59da1ff1c062014002448add13efb9",
+  "preserved_failure_manifest_sha256": "9c824e6a6b3fc0e2ad5965f8a2efd3e800adc57e16d5db9caabedee730d0acdc"
+}

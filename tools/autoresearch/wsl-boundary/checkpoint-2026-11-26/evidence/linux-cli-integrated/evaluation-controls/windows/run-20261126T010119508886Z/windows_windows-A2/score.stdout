@@ -1,0 +1,112 @@
+{"action": "open", "repetition": 0, "elapsed_ms": 800.5999999940395}
+{"action": "branch_first", "repetition": 0, "elapsed_ms": 386.2999999821186}
+{"action": "branch_final", "repetition": 0, "elapsed_ms": 369.19999998807907}
+{"action": "working_tree", "repetition": 0, "elapsed_ms": 1531.7999999821186}
+{"action": "stack", "repetition": 0, "elapsed_ms": 342.09999999403954}
+{"action": "comment_branch", "repetition": 0, "elapsed_ms": 463}
+{"action": "comment_worktree", "repetition": 0, "elapsed_ms": 1587.199999988079}
+{"action": "branch_first", "repetition": 1, "elapsed_ms": 429.5}
+{"action": "branch_final", "repetition": 1, "elapsed_ms": 415.59999999403954}
+{"action": "working_tree", "repetition": 1, "elapsed_ms": 1656}
+{"action": "stack", "repetition": 1, "elapsed_ms": 337.90000000596046}
+{"action": "comment_branch", "repetition": 1, "elapsed_ms": 479.69999998807907}
+{"action": "comment_worktree", "repetition": 1, "elapsed_ms": 1714.199999988079}
+{"action": "branch_first", "repetition": 2, "elapsed_ms": 442.2999999821186}
+{"action": "branch_final", "repetition": 2, "elapsed_ms": 367.90000000596046}
+{"action": "working_tree", "repetition": 2, "elapsed_ms": 1548.2000000178814}
+{"action": "stack", "repetition": 2, "elapsed_ms": 342.2000000178814}
+{"action": "comment_branch", "repetition": 2, "elapsed_ms": 446.69999998807907}
+{"action": "comment_worktree", "repetition": 2, "elapsed_ms": 1556.4000000059605}
+{
+  "actions": {
+    "branch_final": {
+      "count": 3,
+      "first_use_ms": 369.19999998807907,
+      "max_ms": 415.59999999403954,
+      "p50_ms": 369.19999998807907,
+      "p95_ms": 415.59999999403954
+    },
+    "branch_first": {
+      "count": 3,
+      "first_use_ms": 386.2999999821186,
+      "max_ms": 442.2999999821186,
+      "p50_ms": 429.5,
+      "p95_ms": 442.2999999821186
+    },
+    "comment_branch": {
+      "count": 3,
+      "first_use_ms": 463,
+      "max_ms": 479.69999998807907,
+      "p50_ms": 463,
+      "p95_ms": 479.69999998807907
+    },
+    "comment_worktree": {
+      "count": 3,
+      "first_use_ms": 1587.199999988079,
+      "max_ms": 1714.199999988079,
+      "p50_ms": 1587.199999988079,
+      "p95_ms": 1714.199999988079
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 800.5999999940395,
+      "max_ms": 800.5999999940395,
+      "p50_ms": 800.5999999940395,
+      "p95_ms": 800.5999999940395
+    },
+    "stack": {
+      "count": 3,
+      "first_use_ms": 342.09999999403954,
+      "max_ms": 342.2000000178814,
+      "p50_ms": 342.09999999403954,
+      "p95_ms": 342.2000000178814
+    },
+    "working_tree": {
+      "count": 3,
+      "first_use_ms": 1531.7999999821186,
+      "max_ms": 1656,
+      "p50_ms": 1548.2000000178814,
+      "p95_ms": 1656
+    }
+  },
+  "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+  "case": "windows_windows",
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "finished_at_unix": 1795655144.9861438,
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "label": "checkpoint-b2de070",
+  "launch": {
+    "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+    "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+    "cdp_port": 29223,
+    "created": "2026-11-25T20:05:24.7977050-05:00",
+    "mcp_port": 28865,
+    "pid": 10988,
+    "profile": "C:\\Users\\max\\branchline-bench\\profiles\\candidate-scoped-v2-windows-windows",
+    "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+    "session": 1,
+    "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "measure",
+  "repetitions": 3,
+  "schema_version": 1,
+  "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "started_at_unix": 1795655127.9843335,
+  "target_met": false,
+  "target_ms": 250.0,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed",
+  "worst_interaction_p95_ms": 1714.199999988079
+}

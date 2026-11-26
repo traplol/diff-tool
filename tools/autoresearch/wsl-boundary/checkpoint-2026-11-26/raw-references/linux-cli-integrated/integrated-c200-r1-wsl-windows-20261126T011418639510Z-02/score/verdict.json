@@ -1,0 +1,109 @@
+{
+  "actions": {
+    "branch_final": {
+      "count": 3,
+      "first_use_ms": 689.0000000000009,
+      "max_ms": 873,
+      "p50_ms": 770,
+      "p95_ms": 873
+    },
+    "branch_first": {
+      "count": 3,
+      "first_use_ms": 688,
+      "max_ms": 941,
+      "p50_ms": 883,
+      "p95_ms": 941
+    },
+    "comment_branch": {
+      "count": 3,
+      "first_use_ms": 828,
+      "max_ms": 1077,
+      "p50_ms": 828,
+      "p95_ms": 1077
+    },
+    "comment_worktree": {
+      "count": 3,
+      "first_use_ms": 2251,
+      "max_ms": 2251,
+      "p50_ms": 2247,
+      "p95_ms": 2251
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 2042,
+      "max_ms": 2042,
+      "p50_ms": 2042,
+      "p95_ms": 2042
+    },
+    "stack": {
+      "count": 3,
+      "first_use_ms": 687,
+      "max_ms": 925,
+      "p50_ms": 687,
+      "p95_ms": 925
+    },
+    "working_tree": {
+      "count": 3,
+      "first_use_ms": 2429.999999999999,
+      "max_ms": 2816,
+      "p50_ms": 2429.999999999999,
+      "p95_ms": 2816
+    }
+  },
+  "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+  "case": "wsl_windows",
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "finished_at_unix": 1795655820.0099003,
+  "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "label": "integrated-c200-r1",
+  "launch": {
+    "app_process": {
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+      ],
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+      "pid": 224062,
+      "start_ticks": "16008051"
+    },
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+    "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+    "created": "16008051",
+    "display": ":0",
+    "driver_process": {
+      "binary": "/usr/bin/WebKitWebDriver",
+      "pid": 224060,
+      "start_ticks": "16008049"
+    },
+    "gdk_backend": "x11",
+    "mcp_port": 28867,
+    "pid": 224062,
+    "port": 29225,
+    "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+    "session": "f63c7f14-31ee-4b06-901c-9b69eff4335c",
+    "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+    "supervisor_pid": 224059
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "measure",
+  "repetitions": 3,
+  "schema_version": 1,
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "started_at_unix": 1795655787.429953,
+  "target_met": false,
+  "target_ms": 250.0,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed",
+  "worst_interaction_p95_ms": 2816
+}

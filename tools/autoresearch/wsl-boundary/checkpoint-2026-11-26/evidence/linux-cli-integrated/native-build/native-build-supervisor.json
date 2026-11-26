@@ -1,0 +1,95 @@
+{
+  "pid": 467853,
+  "start_ticks": "77644745",
+  "started": 1795654088.47905,
+  "status": "native GNU/PE workers, checks and both GUI builds complete; GUI scoring pending",
+  "release": "VM INTEGRATED CLI BUILD RELEASED",
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "archive": {
+    "name": "integrated-c200-r1-input.tar",
+    "sha256": "052a2e9ecb7b7a7c1cee91946a754b3912715087b7ca5a1326542948f3064ee3",
+    "bytes": 2181120,
+    "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+    "bundle_sha256": "1509cbcd868db0160fc1b8299b3755283afbfc8e0ba8244cb63b39540737d1e5",
+    "build_plan_sha256": "8142b26ea7c677893447d0ff0c27d694541c397b9f5d7bbe5937abe061a54f0a",
+    "vm_supervisor_sha256": "83d3e37672e3c7e50c474fc142365caa2f8a7f656fc736bfa42b508582cea158",
+    "host_launcher_sha256": "06b97dc8584529a1cdd2abcca221d717c53dca9c5cf07b243137e1b109a8f7cb",
+    "host_verifier_sha256": "af3075c0f5651b1f1bffbb8d6792abfe49e1e888956b33e11fa0efb71702a58a",
+    "status": "prepared; mandatory realGit hostextract/49hash verification before SSH"
+  },
+  "phases": [
+    {
+      "name": "integrated-upload-input",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "set -C; cat > /c/Users/max/branchline-bench/integrated-c200-r1-input.tar"
+      ],
+      "started": 1795654088.4800775,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/integrated-upload-input.log",
+      "pid": 467958,
+      "start_ticks": "77644762",
+      "exit": 0,
+      "finished": 1795654088.8203015,
+      "exact_actor_absent": true
+    },
+    {
+      "name": "integrated-vm-build",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "MSYS_NO_PATHCONV=1 wsl.exe --distribution Ubuntu-26.04 --user max --exec /bin/sh -lc 'export PATH=\"$HOME/.cargo/bin:$PATH\"; exec /usr/bin/python3 -u -c '\"'\"'import hashlib, os, pathlib, tarfile; a=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'/mnt/c/Users/max/branchline-bench/integrated-c200-r1-input.tar'\"'\"'\"'\"'\"'\"'\"'\"'); assert hashlib.sha256(a.read_bytes()).hexdigest() == '\"'\"'\"'\"'\"'\"'\"'\"'052a2e9ecb7b7a7c1cee91946a754b3912715087b7ca5a1326542948f3064ee3'\"'\"'\"'\"'\"'\"'\"'\"'; p=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input'\"'\"'\"'\"'\"'\"'\"'\"'); p.mkdir(exist_ok=False); tarfile.open(a).extractall(p, filter=\"data\"); os.execv(\"/usr/bin/python3\", [\"/usr/bin/python3\", \"-u\", str(p/\"vm-build-supervisor.py\"), '\"'\"'\"'\"'\"'\"'\"'\"'--release'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'VM INTEGRATED CLI BUILD RELEASED'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'--input'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input'\"'\"'\"'\"'\"'\"'\"'\"'])'\"'\"''"
+      ],
+      "started": 1795654088.8206398,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/integrated-vm-build.log",
+      "pid": 468061,
+      "start_ticks": "77644796",
+      "exit": 0,
+      "finished": 1795654700.4700587,
+      "exact_actor_absent": true
+    },
+    {
+      "name": "copy-native-evidence",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "MSYS_NO_PATHCONV=1 wsl.exe -d Ubuntu-26.04 -u max --exec /usr/bin/python3 -u -c 'import json, pathlib, sys, tarfile\np = pathlib.Path('\"'\"'/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native'\"'\"')\ns = json.loads((p / '\"'\"'supervisor.json'\"'\"').read_text())\nassert s['\"'\"'status'\"'\"'] in ['\"'\"'failed'\"'\"', '\"'\"'built; canonical GUI evaluation pending'\"'\"'] and s.get('\"'\"'finished'\"'\"')\ndef absent(actor):\n    current = pathlib.Path('\"'\"'/proc'\"'\"') / str(actor['\"'\"'pid'\"'\"']) / '\"'\"'stat'\"'\"'\n    return not current.exists() or current.read_text().rsplit('\"'\"') '\"'\"', 1)[1].split()[19] != actor['\"'\"'start_ticks'\"'\"']\nassert absent(s) and all(absent(phase) for phase in s['\"'\"'phases'\"'\"'] if '\"'\"'pid'\"'\"' in phase)\npaths = [(pathlib.Path('\"'\"'/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline'\"'\"'), '\"'\"'branchline'\"'\"'),\n         (pathlib.Path('\"'\"'/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline.exe'\"'\"'), '\"'\"'branchline.exe'\"'\"'),\n         (pathlib.Path('\"'\"'/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline.exe'\"'\"').parent / '\"'\"'branchline-git-worker.exe'\"'\"', '\"'\"'branchline-git-worker.exe'\"'\"')]\nwith tarfile.open(fileobj=sys.stdout.buffer, mode='\"'\"'w|'\"'\"') as packed:\n    packed.add(p, arcname='\"'\"'.'\"'\"')\n    for path, name in paths:\n        if path.is_file():\n            packed.add(path, arcname=name)\n'"
+      ],
+      "started": 1795654700.5239296,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence.tar",
+      "pid": 585026,
+      "start_ticks": "77705968",
+      "exit": 0,
+      "finished": 1795654703.9805267,
+      "exact_actor_absent": true
+    }
+  ],
+  "host_checks": "unchanged successful 70 GUI (one ignored), 25 worker and one stdio proof",
+  "windows_gui_requested": true,
+  "linux_gui_requested": true,
+  "copied_binary_hashes": {
+    "linux_worker": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+    "windows_worker": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+    "linux_gui": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+    "windows_gui": "eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25"
+  },
+  "finished": 1795654704.1055312
+}

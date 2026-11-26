@@ -1,0 +1,71 @@
+{
+  "status": "host archive extraction, real Git discovery and canonical49 identity passed",
+  "archive_sha256": "c1f47d1cbe98e400900f6481a580bf0e0a2cb49c64df792e518327aa78515955",
+  "bundle_sha256": "d0743fee8d66c2548dca63636e0f484fee68be27f24da4adc6f682dfa05fe197",
+  "source_hash": "f15e85e1ec50af3bdc82e792a4d2d1189b67f4e56375679d88e0b035fe587a0f",
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "git_tree": "f479c6a62a6fb2664aced380e7aafe860bfa0db6",
+  "canonical_app_files": 49,
+  "external_alternates": false,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "--quiet",
+        "/tmp/parallel-untracked-r2-package-yk_71f6r/source"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "bundle",
+        "verify",
+        "/tmp/parallel-untracked-r2-package-yk_71f6r/source-b2de070.bundle"
+      ],
+      "exit": 0,
+      "stdout": "The bundle contains this ref:\nb2de070becf3fcba2d47557efd375221c586f273 HEAD\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n",
+      "stderr": "/tmp/parallel-untracked-r2-package-yk_71f6r/source-b2de070.bundle is okay\n"
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "/tmp/parallel-untracked-r2-package-yk_71f6r/source-b2de070.bundle",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "From /tmp/parallel-untracked-r2-package-yk_71f6r/source-b2de070.bundle\n * branch            HEAD       -> FETCH_HEAD\n"
+    },
+    {
+      "argv": [
+        "git",
+        "update-ref",
+        "--no-deref",
+        "HEAD",
+        "b2de070becf3fcba2d47557efd375221c586f273"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "read-tree",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "syntax": "ast.parse only",
+  "vm_calls": false,
+  "builds_tests_or_scoring": false
+}

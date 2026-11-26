@@ -1,0 +1,57 @@
+{
+  "timestamp_utc": "2026-11-25T20:07:25.458027+00:00",
+  "decision": "current LOCALAPPDATA revision host-validated; VM build and native runtime evaluation await separate release",
+  "app_source_hash": "f2ffb3cc14a90caa261e53de4400177b13297f100d66f33549d41afb36c9a334",
+  "snapshot_sha256": "ec0f60861d17c16e792a69b5e41ab11785ebfc933d2804cafdfdad98dd51f5bf",
+  "patch_sha256": "c63045ac55c4aa53726e3f29c780316206ad459923f6ea338c381ff5ff8d3ecb",
+  "base_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "changed_files": [
+    "src-tauri/src/git/remote.rs"
+  ],
+  "logs": {
+    "host-all-tests-localappdata.log": {
+      "sha256": "f2ddab86c04b90ae21973485067cd97686a83221f135c6091d30dcab6fe335db",
+      "passed": 39,
+      "failed": 0,
+      "ignored": 1
+    },
+    "host-embedded-tests-localappdata.log": {
+      "sha256": "07d131181572b5b992bf5039baad69f5ade63d285d9a0fefabdd236eecc756b7",
+      "passed": 14,
+      "failed": 0,
+      "ignored": 1
+    },
+    "windows-source-check-localappdata.log": {
+      "sha256": "c81e912088c1dada11bc73170e8e4b5aa71fc8b45a73c56c146d1156baebdefb",
+      "status": "pass",
+      "target": "x86_64-pc-windows-gnu",
+      "kind": "source-only; not native runtime"
+    }
+  },
+  "supervisor_syntax": {
+    "run-after-release.py": {
+      "status": "pass: AST parse after proof-reuse cleanup; not executed",
+      "sha256": "8178a721ede88b912ab9550d6341650c2583dcadd84521d6312782116de2d624"
+    },
+    "vm-build-supervisor.py": {
+      "status": "pass: py_compile and AST parse, not executed",
+      "sha256": "6d43215e4f01f62c5378ea77dffb19f84c23405ccd5242a533f0e57cce64deba"
+    }
+  },
+  "planned_paths_verified": {
+    "source_input_directory": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-ec0f60861d17-input",
+    "artifact_directory": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-ec0f60861d17-native",
+    "linux_binary": "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-ec0f60861d17/branchline",
+    "windows_binary": "C:/Users/max/branchline-bench/binaries/native-helper-deployment-b2de070-ec0f60861d17/branchline.exe"
+  },
+  "release_required": "VM BUILD RELEASED",
+  "supervisors_executed": false,
+  "vm_actions": false,
+  "production_remote_unchanged": true,
+  "limitations": [
+    "native LOCALAPPDATA inheritance and known-folder fallback not executed",
+    "native Windows/WSL deployment and lifecycle gates still pending",
+    "no performance measurements",
+    "Windows stdio/EOF/kill propagation requires native proof"
+  ]
+}

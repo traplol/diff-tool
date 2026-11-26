@@ -1,0 +1,160 @@
+{
+  "build_state": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/windows-controls-b2de070-20261125T213427886542Z/remote-evidence/state.json",
+  "build_state_sha256": "69e86cbf34f1dc355ff557e3e9a9b81829c8e022a6974a05801df7956d7ea9b5",
+  "cache_policy": "Same series-owned normal XDG_CACHE_HOME/WSLENV passed to A/B; seeded Windows profile/data/settings/comments unchanged. No cache directory or helper is created before timed Open. Metadata-only proof after welcome-ready, immediately before canonical scorer. Hash/worker/storage verification only after the complete score.",
+  "caller_transport": "One task-owned private ControlMaster/CDP forward; all child SSH calls select it and refuse new TCP fallback.",
+  "case_order": [
+    "windows_linux"
+  ],
+  "cases": {
+    "windows_linux": {
+      "comments": [
+        {
+          "anchor": [
+            3434,
+            3434
+          ],
+          "body": "Boundary benchmark branch comment",
+          "id": 1,
+          "path": "kernel/fork.c"
+        },
+        {
+          "anchor": [
+            3438,
+            3438
+          ],
+          "body": "Boundary benchmark working-tree comment",
+          "id": 2,
+          "path": "kernel/fork.c"
+        }
+      ],
+      "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+      "repository": "\\\\wsl.localhost\\Ubuntu-26.04\\home\\max\\benchmarks\\branchline-boundary\\kernel-wsl",
+      "seed_sha256": "5da3f8249310dd9a33a7c19e94c23036cee5d78367fb6907be7882722fad8b78",
+      "seed_verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/seed-windows-linux-02/verdict.json"
+    }
+  },
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "fixture_guards": {
+    "windows": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614734418472500,
+        "device": 87,
+        "inode": 2814749767263140,
+        "mode": 33279,
+        "mtime_ns": 1795614733000000000,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994331971400,
+        "device": 87,
+        "inode": 3377699720684454,
+        "mode": 33279,
+        "mtime_ns": 1795615994331971400,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615947971522900,
+        "device": 87,
+        "inode": 562949953782638,
+        "mode": 33279,
+        "mtime_ns": 1795615947971522900,
+        "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+      }
+    },
+    "wsl": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614733907349066,
+        "device": 2096,
+        "inode": 272949,
+        "mode": 33188,
+        "mtime_ns": 1795614733907349066,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994729935414,
+        "device": 2096,
+        "inode": 278185,
+        "mode": 33188,
+        "mtime_ns": 1795615994729935414,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615942133939671,
+        "device": 2096,
+        "inode": 278079,
+        "mode": 33188,
+        "mtime_ns": 1795615942129939671,
+        "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+      }
+    }
+  },
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "measurement": "Canonical Open and all six actions; completed welcome startup error; no warmup or cache flush.",
+  "native_cache_template": "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/<unique run directory>",
+  "open_labels": "B1 is one initial-install fresh Open; B2/B3 are fresh-process native-cache hits. No cold-install distribution or OS-cold claim. --repetitions repeats six later actions, not Open.",
+  "order_per_case": [
+    "A1:3",
+    "B1:3 initial native-cache install",
+    "A2:3",
+    "B2:3 native-cache hit",
+    "pilot gate",
+    "A3:20",
+    "B3:20 native-cache hit"
+  ],
+  "pending_matrix": "Windows/NTFS same-side and both Linux GUI cells remain separate later assignments.",
+  "performance_early_gate": true,
+  "pilot_gate": {
+    "cache_hit_fresh_open_max_ratio": 0.9,
+    "each_six_action_pooled_p95_max_ratio": 1.1,
+    "failure": "Stop before20, preserve valid pilots, await review; no retry or promotion.",
+    "initial_install_open_max_ratio": 1.1
+  },
+  "ports": {
+    "host_loopback": 19223,
+    "windows_cdp": 29223,
+    "windows_mcp": 28865
+  },
+  "profiles": "Reuse the existing two-comment profiles directly; no copies, seeding or helper preparation.",
+  "retained_previous_attempt": {
+    "included_in_new_samples": false,
+    "next_authorization": "Start a complete new twelve-process A/B series; no measurement retry within a series.",
+    "sha256": "f42ec2824101efec94c7ccd8ba77705ab0671037b780e66d26bd36cbd7d4429d",
+    "summary": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run-20261125T215420528806Z/summary.json",
+    "valid_A1_kept_separate": true
+  },
+  "reused_status_caller": "/home/max/workspace/merge-viewer-native/build/experiments/status-windows-controls/run.py",
+  "reused_status_caller_sha256": "a9587333c5dd330c6fc2f830d6d9d0ae74042c45edc6a47e3ad173b210d49052",
+  "runner_sha256": "38fd2b6b1e99a242486d87820c3310fcc72e6a8b7c494737ed209295e2a3f6fd",
+  "runtime_release": "VM NATIVE HELPER GUI RUNTIME RELEASED",
+  "source_change": "None; source/scorer/contract/two-frame settle unchanged.",
+  "status": "prepared-host-only-no-VM-or-scorer-access",
+  "summary_helper_sha256": "2caebee7d2aef52e4d6ef90b89f410acf7966ee8d083f69e6dcae3fe3c103527",
+  "variants": {
+    "A": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe",
+      "binary_sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+      "helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "C:\\Users\\max\\branchline-bench\\binaries\\native-helper-deployment-b2de070-03fecde11c0a\\branchline.exe",
+      "binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/native-build-evidence/supervisor.json",
+      "build_record_sha256": "0718e78d1daf60e63252350790a31d9848ed98ca4cb01edff07c42ebcf4a6d13",
+      "helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "label": "native-helper-deployment-b2de070-03fecde11c0a",
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/source",
+      "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500"
+    }
+  }
+}

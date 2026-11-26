@@ -1,0 +1,4590 @@
+{
+  "status": "valid completed Linux GUI cell; no promotion",
+  "case": "wsl_windows",
+  "scope": "One integrated matrix cell only. Other cells and the old b2/a4 pilot are not pooled.",
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "state": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/evaluation-controls/wsl_windows/run-20261126T011418639510Z/state.json",
+  "state_sha256": "1b8c39390bdd8eb0227c0396a4529e7452e488754fba66a0c5b75932450a4c69",
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "valid_runs": 6,
+  "sample_count": 318,
+  "variants": {
+    "A": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json",
+      "build_record_sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384",
+      "embedded_helper": {
+        "bytes": 2720768,
+        "path": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline-git-worker.exe",
+        "preserved_from": "/home/max/benchmarks/branchline-boundary/helper-placement/placement-v3-01/windows/foreign/branchline-git-worker.exe",
+        "sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2"
+      },
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+      "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/supervisor.json",
+      "build_record_sha256": "9efc646fbd95ad2ffca7d72c688c90fd9a3b2b3be7540655134a676fbecedf6e",
+      "embedded_helper": {
+        "bytes": 2720768,
+        "imports": [
+          "bcryptprimitives.dll",
+          "KERNEL32.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "WS2_32.dll",
+          "ntdll.dll",
+          "ADVAPI32.dll",
+          "Secur32.dll"
+        ],
+        "path": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe",
+        "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+        "producer_fresh": false,
+        "protocol": 1,
+        "sha256": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+        "static_crt_import_check": true
+      },
+      "label": "integrated-c200-r1",
+      "protocol": 1,
+      "source": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source",
+      "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1"
+    }
+  },
+  "statistics": "Canonical nearest-rank p50/p95 and conventional median. Full final20 includes first_use; strict repeated19 and all-series26 are separate. Open retains all3 fresh processes. No OS cache flush.",
+  "metrics": {
+    "A": {
+      "open": {
+        "measurement": {
+          "count": 3,
+          "p50_ms": 2035,
+          "median_ms": 2035,
+          "p95_ms": 3090,
+          "max_ms": 3090
+        },
+        "strict_repeated19": null,
+        "all_series": {
+          "count": 3,
+          "p50_ms": 2035,
+          "median_ms": 2035,
+          "p95_ms": 3090,
+          "max_ms": 3090
+        },
+        "first_use_by_process_ms": [
+          3090,
+          2035,
+          1789
+        ]
+      },
+      "branch_first": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 662,
+          "median_ms": 662.0000000000073,
+          "p95_ms": 951.9999999999927,
+          "max_ms": 996
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 662.0000000000146,
+          "median_ms": 662.0000000000146,
+          "p95_ms": 996,
+          "max_ms": 996
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 662.0000000000146,
+          "median_ms": 672.0000000000073,
+          "p95_ms": 951.9999999999927,
+          "max_ms": 996
+        },
+        "first_use_by_process_ms": [
+          882,
+          613,
+          657
+        ]
+      },
+      "branch_final": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 602,
+          "median_ms": 610.5,
+          "p95_ms": 1093,
+          "max_ms": 1128
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 602,
+          "median_ms": 602,
+          "p95_ms": 1128,
+          "max_ms": 1128
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 620,
+          "median_ms": 627.5,
+          "p95_ms": 1093,
+          "max_ms": 1128
+        },
+        "first_use_by_process_ms": [
+          705,
+          635,
+          646
+        ]
+      },
+      "working_tree": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 2021,
+          "median_ms": 2026.5,
+          "p95_ms": 3204,
+          "max_ms": 3487
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 2021,
+          "median_ms": 2021,
+          "p95_ms": 3487,
+          "max_ms": 3487
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 2032,
+          "median_ms": 2037.5,
+          "p95_ms": 3204,
+          "max_ms": 3487
+        },
+        "first_use_by_process_ms": [
+          2003.999999999999,
+          2046.999999999999,
+          2798
+        ]
+      },
+      "stack": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 672,
+          "median_ms": 676.0,
+          "p95_ms": 788,
+          "max_ms": 1072.0000000000018
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 672,
+          "median_ms": 672,
+          "p95_ms": 788,
+          "max_ms": 788
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 680,
+          "median_ms": 681.4999999999854,
+          "p95_ms": 977.0000000000009,
+          "max_ms": 1072.0000000000018
+        },
+        "first_use_by_process_ms": [
+          718,
+          977.0000000000009,
+          1072.0000000000018
+        ]
+      },
+      "comment_branch": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 723,
+          "median_ms": 726.5000000000073,
+          "p95_ms": 1101,
+          "max_ms": 1128.0000000000036
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 723,
+          "median_ms": 723,
+          "p95_ms": 1128.0000000000036,
+          "max_ms": 1128.0000000000036
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 733,
+          "median_ms": 746.0,
+          "p95_ms": 1128.0000000000036,
+          "max_ms": 1345
+        },
+        "first_use_by_process_ms": [
+          799,
+          916,
+          1008.0000000000018
+        ]
+      },
+      "comment_worktree": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 1809,
+          "median_ms": 1841.5,
+          "p95_ms": 2309.9999999999927,
+          "max_ms": 2313
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 1809,
+          "median_ms": 1809,
+          "p95_ms": 2309.9999999999927,
+          "max_ms": 2309.9999999999927
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 1809,
+          "median_ms": 1841.5,
+          "p95_ms": 2309.9999999999927,
+          "max_ms": 2313
+        },
+        "first_use_by_process_ms": [
+          1880,
+          2011.9999999999982,
+          2313
+        ]
+      }
+    },
+    "B": {
+      "open": {
+        "measurement": {
+          "count": 3,
+          "p50_ms": 2042,
+          "median_ms": 2042,
+          "p95_ms": 2178,
+          "max_ms": 2178
+        },
+        "strict_repeated19": null,
+        "all_series": {
+          "count": 3,
+          "p50_ms": 2042,
+          "median_ms": 2042,
+          "p95_ms": 2178,
+          "max_ms": 2178
+        },
+        "first_use_by_process_ms": [
+          2178,
+          2042,
+          1725.0000000000005
+        ]
+      },
+      "branch_first": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 681,
+          "median_ms": 684.5,
+          "p95_ms": 868,
+          "max_ms": 925.0000000000291
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 681,
+          "median_ms": 681,
+          "p95_ms": 925.0000000000291,
+          "max_ms": 925.0000000000291
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 688,
+          "median_ms": 688.0,
+          "p95_ms": 941,
+          "max_ms": 1271.0000000000018
+        },
+        "first_use_by_process_ms": [
+          629,
+          688,
+          708
+        ]
+      },
+      "branch_final": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 618,
+          "median_ms": 618.0,
+          "p95_ms": 848,
+          "max_ms": 854
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 618,
+          "median_ms": 618,
+          "p95_ms": 854,
+          "max_ms": 854
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 622.0000000000146,
+          "median_ms": 625.5000000000073,
+          "p95_ms": 873,
+          "max_ms": 994
+        },
+        "first_use_by_process_ms": [
+          629,
+          689.0000000000009,
+          634.0000000000005
+        ]
+      },
+      "working_tree": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 2072,
+          "median_ms": 2099.5,
+          "p95_ms": 2882.0000000000146,
+          "max_ms": 2991
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 2127,
+          "median_ms": 2127,
+          "p95_ms": 2991,
+          "max_ms": 2991
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 2127,
+          "median_ms": 2129.4999999999854,
+          "p95_ms": 2882.0000000000146,
+          "max_ms": 2991
+        },
+        "first_use_by_process_ms": [
+          2043,
+          2429.999999999999,
+          2040
+        ]
+      },
+      "stack": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 674.0000000000073,
+          "median_ms": 680.5000000000036,
+          "p95_ms": 889,
+          "max_ms": 929.9999999999709
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 687,
+          "median_ms": 687,
+          "p95_ms": 929.9999999999709,
+          "max_ms": 929.9999999999709
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 674.0000000000073,
+          "median_ms": 680.5000000000036,
+          "p95_ms": 925,
+          "max_ms": 929.9999999999709
+        },
+        "first_use_by_process_ms": [
+          880,
+          687,
+          615.0000000000009
+        ]
+      },
+      "comment_branch": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 742,
+          "median_ms": 768.5000000000073,
+          "p95_ms": 1072,
+          "max_ms": 1375
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 795.0000000000146,
+          "median_ms": 795.0000000000146,
+          "p95_ms": 1375,
+          "max_ms": 1375
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 795.0000000000146,
+          "median_ms": 795.5000000000091,
+          "p95_ms": 1077,
+          "max_ms": 1375
+        },
+        "first_use_by_process_ms": [
+          870,
+          828,
+          740
+        ]
+      },
+      "comment_worktree": {
+        "measurement": {
+          "count": 20,
+          "p50_ms": 1821,
+          "median_ms": 1833.5,
+          "p95_ms": 2362.0000000000146,
+          "max_ms": 2411
+        },
+        "strict_repeated19": {
+          "count": 19,
+          "p50_ms": 1846,
+          "median_ms": 1846,
+          "p95_ms": 2411,
+          "max_ms": 2411
+        },
+        "all_series": {
+          "count": 26,
+          "p50_ms": 1821,
+          "median_ms": 1833.5,
+          "p95_ms": 2362.0000000000146,
+          "max_ms": 2411
+        },
+        "first_use_by_process_ms": [
+          2224,
+          2251,
+          1821
+        ]
+      }
+    }
+  },
+  "foreground_ipc_union_and_remainder": {
+    "A": {
+      "open": {
+        "foreground_ipc_union_ms": {
+          "count": 3,
+          "p50_ms": 1608,
+          "median_ms": 1608,
+          "p95_ms": 2576,
+          "max_ms": 2576
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 3,
+          "p50_ms": 427,
+          "median_ms": 427,
+          "p95_ms": 514,
+          "max_ms": 514
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 3,
+          "p50_ms": 356,
+          "median_ms": 356,
+          "p95_ms": 410,
+          "max_ms": 410
+        },
+        "by_command_and_op": {
+          "workspace/open": {
+            "count": 3,
+            "p50_ms": 1240,
+            "median_ms": 1240,
+            "p95_ms": 2196,
+            "max_ms": 2196
+          },
+          "workspace/display_patch": {
+            "count": 3,
+            "p50_ms": 368,
+            "median_ms": 368,
+            "p95_ms": 380,
+            "max_ms": 380
+          }
+        }
+      },
+      "branch_first": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 393.0,
+          "median_ms": 394.0,
+          "p95_ms": 558,
+          "max_ms": 583
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 275.9999999999709,
+          "median_ms": 279.4999999999782,
+          "p95_ms": 369.9999999999927,
+          "max_ms": 438
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 264.0,
+          "median_ms": 269.0,
+          "p95_ms": 359.9999999999927,
+          "max_ms": 430
+        },
+        "by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "p50_ms": 337.00000000001455,
+            "median_ms": 338.0000000000073,
+            "p95_ms": 505,
+            "max_ms": 507
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 53,
+            "median_ms": 53.0,
+            "p95_ms": 78,
+            "max_ms": 80.00000000000728
+          }
+        }
+      },
+      "branch_final": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 318,
+          "median_ms": 319.0,
+          "p95_ms": 660.9999999999982,
+          "max_ms": 741
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 284.99999999998545,
+          "median_ms": 286.9999999999927,
+          "p95_ms": 432.0000000000018,
+          "max_ms": 497.99999999999636
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 278.0,
+          "median_ms": 280.0,
+          "p95_ms": 419.0,
+          "max_ms": 485.0
+        },
+        "by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "p50_ms": 291,
+            "median_ms": 296.5,
+            "p95_ms": 509,
+            "max_ms": 518
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 18.999999999999545,
+            "median_ms": 18.999999999999773,
+            "p95_ms": 151.99999999999818,
+            "max_ms": 223
+          }
+        }
+      },
+      "working_tree": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 1698.0000000000146,
+          "median_ms": 1708.0,
+          "p95_ms": 2643,
+          "max_ms": 2721
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 314.00000000001455,
+          "median_ms": 314.9999999999782,
+          "p95_ms": 575.0000000000009,
+          "max_ms": 978
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 305.0,
+          "median_ms": 307.49999999998545,
+          "p95_ms": 548,
+          "max_ms": 937
+        },
+        "by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "p50_ms": 1626.0000000000146,
+            "median_ms": 1639.5000000000073,
+            "p95_ms": 2586,
+            "max_ms": 2659
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 62,
+            "median_ms": 63.0,
+            "p95_ms": 79,
+            "max_ms": 338
+          }
+        }
+      },
+      "stack": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 349,
+          "median_ms": 349.0,
+          "p95_ms": 426,
+          "max_ms": 433
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 317.00000000001455,
+          "median_ms": 323.0000000000073,
+          "p95_ms": 375,
+          "max_ms": 646.0000000000018
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 310.0,
+          "median_ms": 316.0,
+          "p95_ms": 366,
+          "max_ms": 627.0000000000018
+        },
+        "by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "p50_ms": 306,
+            "median_ms": 307.0,
+            "p95_ms": 387.99999999999636,
+            "max_ms": 409
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 51,
+            "median_ms": 55.0,
+            "p95_ms": 74.0000000000291,
+            "max_ms": 85
+          }
+        }
+      },
+      "comment_branch": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 418,
+          "median_ms": 419.5000000000073,
+          "p95_ms": 600,
+          "max_ms": 654
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 305,
+          "median_ms": 306.5,
+          "p95_ms": 501,
+          "max_ms": 502.0000000000073
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 293,
+          "median_ms": 296.0,
+          "p95_ms": 490,
+          "max_ms": 494.0000000000073
+        },
+        "by_command_and_op": {
+          "workspace/open": {
+            "count": 20,
+            "p50_ms": 364.00000000001455,
+            "median_ms": 364.5000000000073,
+            "p95_ms": 509,
+            "max_ms": 542
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 55,
+            "median_ms": 55.5,
+            "p95_ms": 112,
+            "max_ms": 112
+          }
+        }
+      },
+      "comment_worktree": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 1522,
+          "median_ms": 1523.5,
+          "p95_ms": 1928.0,
+          "max_ms": 1956.9999999999982
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 293.00000000001455,
+          "median_ms": 310.0000000000073,
+          "p95_ms": 387.99999999999636,
+          "max_ms": 435.9999999999927
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 287.0,
+          "median_ms": 302.0,
+          "p95_ms": 378.0,
+          "max_ms": 388.9999999999927
+        },
+        "by_command_and_op": {
+          "workspace/open": {
+            "count": 20,
+            "p50_ms": 1475,
+            "median_ms": 1478.0,
+            "p95_ms": 1839.9999999999927,
+            "max_ms": 1890
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 47.00000000000364,
+            "median_ms": 50.50000000000182,
+            "p95_ms": 76,
+            "max_ms": 88.00000000000728
+          }
+        }
+      }
+    },
+    "B": {
+      "open": {
+        "foreground_ipc_union_ms": {
+          "count": 3,
+          "p50_ms": 1674.0,
+          "median_ms": 1674.0,
+          "p95_ms": 1787.0000000000005,
+          "max_ms": 1787.0000000000005
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 3,
+          "p50_ms": 368.0,
+          "median_ms": 368.0,
+          "p95_ms": 390.99999999999955,
+          "max_ms": 390.99999999999955
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 3,
+          "p50_ms": 320,
+          "median_ms": 320,
+          "p95_ms": 342.0,
+          "max_ms": 342.0
+        },
+        "by_command_and_op": {
+          "workspace/open": {
+            "count": 3,
+            "p50_ms": 1350.0000000000005,
+            "median_ms": 1350.0000000000005,
+            "p95_ms": 1454.0000000000005,
+            "max_ms": 1454.0000000000005
+          },
+          "workspace/display_patch": {
+            "count": 3,
+            "p50_ms": 323.99999999999955,
+            "median_ms": 323.99999999999955,
+            "p95_ms": 333,
+            "max_ms": 333
+          }
+        }
+      },
+      "branch_first": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 397.00000000000364,
+          "median_ms": 399.0000000000018,
+          "p95_ms": 516,
+          "max_ms": 556
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 272,
+          "median_ms": 274.0,
+          "p95_ms": 354,
+          "max_ms": 369.0000000000291
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 266,
+          "median_ms": 267.0,
+          "p95_ms": 343,
+          "max_ms": 358.0000000000291
+        },
+        "by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "p50_ms": 351,
+            "median_ms": 352.0,
+            "p95_ms": 437,
+            "max_ms": 499
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 48,
+            "median_ms": 48.0,
+            "p95_ms": 68.00000000000728,
+            "max_ms": 104
+          }
+        }
+      },
+      "branch_final": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 324,
+          "median_ms": 325.0,
+          "p95_ms": 437,
+          "max_ms": 462
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 292,
+          "median_ms": 293.0,
+          "p95_ms": 417,
+          "max_ms": 431.0
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 282,
+          "median_ms": 283.5,
+          "p95_ms": 406,
+          "max_ms": 412.0000000000073
+        },
+        "by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "p50_ms": 301,
+            "median_ms": 304.0,
+            "p95_ms": 381,
+            "max_ms": 412
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 18,
+            "median_ms": 18.0,
+            "p95_ms": 70,
+            "max_ms": 88
+          }
+        }
+      },
+      "working_tree": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 1729.0,
+          "median_ms": 1750.000000000001,
+          "p95_ms": 2284.999999999971,
+          "max_ms": 2349
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 316,
+          "median_ms": 316.99999999998545,
+          "p95_ms": 642,
+          "max_ms": 935.0000000000146
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 308,
+          "median_ms": 308.5,
+          "p95_ms": 577,
+          "max_ms": 924.0000000000146
+        },
+        "by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "p50_ms": 1644,
+            "median_ms": 1671.000000000001,
+            "p95_ms": 2236,
+            "max_ms": 2267.999999999971
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 70,
+            "median_ms": 71.5,
+            "p95_ms": 113,
+            "max_ms": 174
+          }
+        }
+      },
+      "stack": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 353,
+          "median_ms": 354.5,
+          "p95_ms": 403.00000000001455,
+          "max_ms": 409.00000000000364
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 301.0000000000009,
+          "median_ms": 304.00000000000045,
+          "p95_ms": 503.9999999999709,
+          "max_ms": 541.9999999999709
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 291.0000000000009,
+          "median_ms": 293.00000000000045,
+          "p95_ms": 489,
+          "max_ms": 532.0
+        },
+        "by_command_and_op": {
+          "workspace/compare": {
+            "count": 20,
+            "p50_ms": 311,
+            "median_ms": 318.5,
+            "p95_ms": 360,
+            "max_ms": 361.00000000001455
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 28,
+            "median_ms": 30.0,
+            "p95_ms": 83.00000000000364,
+            "max_ms": 88
+          }
+        }
+      },
+      "comment_branch": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 431.00000000001455,
+          "median_ms": 435.0000000000073,
+          "p95_ms": 567.0,
+          "max_ms": 709
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 321,
+          "median_ms": 321.0000000000073,
+          "p95_ms": 544.0000000000146,
+          "max_ms": 666
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 300.00000000001455,
+          "median_ms": 306.0000000000073,
+          "p95_ms": 536,
+          "max_ms": 648
+        },
+        "by_command_and_op": {
+          "workspace/open": {
+            "count": 20,
+            "p50_ms": 376.00000000001455,
+            "median_ms": 380.0000000000073,
+            "p95_ms": 531,
+            "max_ms": 593
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 58,
+            "median_ms": 59.5,
+            "p95_ms": 89,
+            "max_ms": 116
+          }
+        }
+      },
+      "comment_worktree": {
+        "foreground_ipc_union_ms": {
+          "count": 20,
+          "p50_ms": 1477.0000000000018,
+          "median_ms": 1519.000000000001,
+          "p95_ms": 1989.000000000029,
+          "max_ms": 2040.0
+        },
+        "non_foreground_ipc_remainder_ms": {
+          "count": 20,
+          "p50_ms": 301.0000000000073,
+          "median_ms": 303.50000000000364,
+          "p95_ms": 421.9999999999709,
+          "max_ms": 678.0000000000146
+        },
+        "after_last_foreground_ipc_ms": {
+          "count": 20,
+          "p50_ms": 294,
+          "median_ms": 297.5,
+          "p95_ms": 411.9999999999709,
+          "max_ms": 568.0000000000073
+        },
+        "by_command_and_op": {
+          "workspace/open": {
+            "count": 20,
+            "p50_ms": 1442.0000000000018,
+            "median_ms": 1466.4999999999973,
+            "p95_ms": 1929,
+            "max_ms": 2005.0000000000146
+          },
+          "workspace/display_patch": {
+            "count": 20,
+            "p50_ms": 45,
+            "median_ms": 46.0,
+            "p95_ms": 103,
+            "max_ms": 158
+          }
+        }
+      }
+    }
+  },
+  "qualification": {
+    "per_case_guards": [
+      {
+        "action": "open",
+        "metric": "p95_ms",
+        "A_ms": 3090,
+        "B_ms": 2178,
+        "change_percent": -29.51456310679612,
+        "limit_ratio": 1.1,
+        "pass": true
+      },
+      {
+        "action": "branch_first",
+        "metric": "p95_ms",
+        "A_ms": 951.9999999999927,
+        "B_ms": 868,
+        "change_percent": -8.823529411764008,
+        "limit_ratio": 1.1,
+        "pass": true
+      },
+      {
+        "action": "branch_final",
+        "metric": "p95_ms",
+        "A_ms": 1093,
+        "B_ms": 848,
+        "change_percent": -22.41537053979872,
+        "limit_ratio": 1.1,
+        "pass": true
+      },
+      {
+        "action": "working_tree",
+        "metric": "p95_ms",
+        "A_ms": 3204,
+        "B_ms": 2882.0000000000146,
+        "change_percent": -10.049937578027013,
+        "limit_ratio": 1.1,
+        "pass": true
+      },
+      {
+        "action": "stack",
+        "metric": "p95_ms",
+        "A_ms": 788,
+        "B_ms": 889,
+        "change_percent": 12.817258883248739,
+        "limit_ratio": 1.1,
+        "pass": false
+      },
+      {
+        "action": "comment_branch",
+        "metric": "p95_ms",
+        "A_ms": 1101,
+        "B_ms": 1072,
+        "change_percent": -2.6339691189827374,
+        "limit_ratio": 1.1,
+        "pass": true
+      },
+      {
+        "action": "comment_worktree",
+        "metric": "p95_ms",
+        "A_ms": 2309.9999999999927,
+        "B_ms": 2362.0000000000146,
+        "change_percent": 2.251082251083214,
+        "limit_ratio": 1.1,
+        "pass": true
+      }
+    ],
+    "failed_guards": [
+      {
+        "action": "stack",
+        "metric": "p95_ms",
+        "A_ms": 788,
+        "B_ms": 889,
+        "change_percent": 12.817258883248739,
+        "limit_ratio": 1.1,
+        "pass": false
+      }
+    ],
+    "observed_cell_guard_pass": false,
+    "primary_gain_assessed_in_this_cell": false,
+    "full_matrix_complete": false,
+    "optimization_qualified": false,
+    "promoted": false
+  },
+  "failed_guard_ipc_details": [
+    {
+      "case": "wsl_windows",
+      "guard": {
+        "action": "stack",
+        "metric": "p95_ms",
+        "A_ms": 788,
+        "B_ms": 889,
+        "change_percent": 12.817258883248739,
+        "limit_ratio": 1.1,
+        "pass": false
+      },
+      "A_p95_row": {
+        "action": "stack",
+        "repetition": 9,
+        "phase": "repeated",
+        "expected": {
+          "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "file": "arch/parisc/include/asm/extable.h",
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+        },
+        "file_count": 30,
+        "left": "refs/heads/main",
+        "correct": true,
+        "elapsed_ms": 788,
+        "ipc": [
+          {
+            "op": "compare",
+            "command": "workspace",
+            "start_ms": 1,
+            "elapsed_ms": 409
+          },
+          {
+            "op": "display_patch",
+            "command": "workspace",
+            "start_ms": 420,
+            "elapsed_ms": 24
+          }
+        ],
+        "file": "arch/parisc/include/asm/extable.h",
+        "right": "refs/heads/feature/boundary-final",
+        "background_ipc": [],
+        "case": "wsl_windows",
+        "variant": "A",
+        "process_number": 3,
+        "foreground_union_intervals_ms": [
+          [
+            1,
+            410
+          ],
+          [
+            420,
+            444
+          ]
+        ],
+        "foreground_ipc_union_ms": 433,
+        "non_foreground_ipc_remainder_ms": 355,
+        "after_last_foreground_ipc_ms": 344,
+        "completed_background_union_ms": 0,
+        "pending_background_count": 0,
+        "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+      },
+      "B_p95_row": {
+        "action": "stack",
+        "repetition": 17,
+        "phase": "repeated",
+        "expected": {
+          "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "file": "arch/parisc/include/asm/extable.h",
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+        },
+        "file_count": 30,
+        "left": "refs/heads/main",
+        "correct": true,
+        "elapsed_ms": 889,
+        "ipc": [
+          {
+            "op": "compare",
+            "command": "workspace",
+            "start_ms": 1,
+            "elapsed_ms": 345.0000000000291
+          },
+          {
+            "op": "display_patch",
+            "command": "workspace",
+            "start_ms": 360,
+            "elapsed_ms": 40
+          }
+        ],
+        "file": "arch/parisc/include/asm/extable.h",
+        "right": "refs/heads/feature/boundary-final",
+        "background_ipc": [
+          {
+            "pending": false,
+            "start_ms": 787,
+            "elapsed_ms": 12,
+            "error": null,
+            "op": "refresh_notes",
+            "command": "workspace"
+          }
+        ],
+        "case": "wsl_windows",
+        "variant": "B",
+        "process_number": 3,
+        "foreground_union_intervals_ms": [
+          [
+            1,
+            346.0000000000291
+          ],
+          [
+            360,
+            400
+          ]
+        ],
+        "foreground_ipc_union_ms": 385.0000000000291,
+        "non_foreground_ipc_remainder_ms": 503.9999999999709,
+        "after_last_foreground_ipc_ms": 489,
+        "completed_background_union_ms": 12,
+        "pending_background_count": 0,
+        "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+      },
+      "B_minus_A_at_p95_rows": {
+        "elapsed_ms": 101,
+        "foreground_ipc_union_ms": -47.999999999970896,
+        "non_foreground_ipc_remainder_ms": 148.9999999999709
+      },
+      "A_max_row": {
+        "action": "stack",
+        "repetition": 0,
+        "phase": "first_use",
+        "expected": {
+          "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "file": "arch/parisc/include/asm/extable.h",
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+        },
+        "file_count": 30,
+        "left": "refs/heads/main",
+        "correct": true,
+        "elapsed_ms": 1072.0000000000018,
+        "ipc": [
+          {
+            "op": "compare",
+            "command": "workspace",
+            "start_ms": 0,
+            "elapsed_ms": 375
+          },
+          {
+            "op": "display_patch",
+            "command": "workspace",
+            "start_ms": 394,
+            "elapsed_ms": 51
+          }
+        ],
+        "file": "arch/parisc/include/asm/extable.h",
+        "right": "refs/heads/feature/boundary-final",
+        "background_ipc": [
+          {
+            "pending": false,
+            "start_ms": 875,
+            "elapsed_ms": 28,
+            "error": null,
+            "op": "refresh_notes",
+            "command": "workspace"
+          }
+        ],
+        "case": "wsl_windows",
+        "variant": "A",
+        "process_number": 3,
+        "foreground_union_intervals_ms": [
+          [
+            0,
+            375
+          ],
+          [
+            394,
+            445
+          ]
+        ],
+        "foreground_ipc_union_ms": 426,
+        "non_foreground_ipc_remainder_ms": 646.0000000000018,
+        "after_last_foreground_ipc_ms": 627.0000000000018,
+        "completed_background_union_ms": 28,
+        "pending_background_count": 0,
+        "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+      },
+      "B_max_row": {
+        "action": "stack",
+        "repetition": 16,
+        "phase": "repeated",
+        "expected": {
+          "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "file_count": 30,
+          "file": "arch/parisc/include/asm/extable.h",
+          "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+        },
+        "file_count": 30,
+        "left": "refs/heads/main",
+        "correct": true,
+        "elapsed_ms": 929.9999999999709,
+        "ipc": [
+          {
+            "op": "compare",
+            "command": "workspace",
+            "start_ms": 0.9999999999708962,
+            "elapsed_ms": 360
+          },
+          {
+            "op": "display_patch",
+            "command": "workspace",
+            "start_ms": 369.9999999999709,
+            "elapsed_ms": 28
+          }
+        ],
+        "file": "arch/parisc/include/asm/extable.h",
+        "right": "refs/heads/feature/boundary-final",
+        "background_ipc": [
+          {
+            "pending": false,
+            "start_ms": 884.9999999999709,
+            "elapsed_ms": 18,
+            "error": null,
+            "op": "refresh_notes",
+            "command": "workspace"
+          }
+        ],
+        "case": "wsl_windows",
+        "variant": "B",
+        "process_number": 3,
+        "foreground_union_intervals_ms": [
+          [
+            0.9999999999708962,
+            360.9999999999709
+          ],
+          [
+            369.9999999999709,
+            397.9999999999709
+          ]
+        ],
+        "foreground_ipc_union_ms": 388.0,
+        "non_foreground_ipc_remainder_ms": 541.9999999999709,
+        "after_last_foreground_ipc_ms": 532.0,
+        "completed_background_union_ms": 18.0,
+        "pending_background_count": 0,
+        "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+      }
+    }
+  ],
+  "retained_max_p95_near_p50_rows": {
+    "open": {
+      "A": {
+        "near_p50": {
+          "action": "open",
+          "repetition": 0,
+          "phase": "fresh_process",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 2035,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 2,
+              "elapsed_ms": 1240
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1311,
+              "elapsed_ms": 368
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 1773,
+              "elapsed_ms": 21,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 2,
+          "foreground_union_intervals_ms": [
+            [
+              2,
+              1242
+            ],
+            [
+              1311,
+              1679
+            ]
+          ],
+          "foreground_ipc_union_ms": 1608,
+          "non_foreground_ipc_remainder_ms": 427,
+          "after_last_foreground_ipc_ms": 356,
+          "completed_background_union_ms": 21,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02/samples.jsonl"
+        },
+        "p95": {
+          "action": "open",
+          "repetition": 0,
+          "phase": "fresh_process",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 3090,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 2196
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 2300,
+              "elapsed_ms": 380
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 2725.0000000000005,
+              "elapsed_ms": 14.999999999999545,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 1,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              2197
+            ],
+            [
+              2300,
+              2680
+            ]
+          ],
+          "foreground_ipc_union_ms": 2576,
+          "non_foreground_ipc_remainder_ms": 514,
+          "after_last_foreground_ipc_ms": 410,
+          "completed_background_union_ms": 14.999999999999545,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01/samples.jsonl"
+        },
+        "max": {
+          "action": "open",
+          "repetition": 0,
+          "phase": "fresh_process",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 3090,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 2196
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 2300,
+              "elapsed_ms": 380
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 2725.0000000000005,
+              "elapsed_ms": 14.999999999999545,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 1,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              2197
+            ],
+            [
+              2300,
+              2680
+            ]
+          ],
+          "foreground_ipc_union_ms": 2576,
+          "non_foreground_ipc_remainder_ms": 514,
+          "after_last_foreground_ipc_ms": 410,
+          "completed_background_union_ms": 14.999999999999545,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01/samples.jsonl"
+        }
+      },
+      "B": {
+        "near_p50": {
+          "action": "open",
+          "repetition": 0,
+          "phase": "fresh_process",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 2042,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 2,
+              "elapsed_ms": 1350.0000000000005
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1376.0000000000005,
+              "elapsed_ms": 323.99999999999955
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 2,
+          "foreground_union_intervals_ms": [
+            [
+              2,
+              1352.0000000000005
+            ],
+            [
+              1376.0000000000005,
+              1700.0
+            ]
+          ],
+          "foreground_ipc_union_ms": 1674.0,
+          "non_foreground_ipc_remainder_ms": 368.0,
+          "after_last_foreground_ipc_ms": 342.0,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02/samples.jsonl"
+        },
+        "p95": {
+          "action": "open",
+          "repetition": 0,
+          "phase": "fresh_process",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 2178,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 11,
+              "elapsed_ms": 1454.0000000000005
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1525,
+              "elapsed_ms": 333
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 1,
+          "foreground_union_intervals_ms": [
+            [
+              11,
+              1465.0000000000005
+            ],
+            [
+              1525,
+              1858
+            ]
+          ],
+          "foreground_ipc_union_ms": 1787.0000000000005,
+          "non_foreground_ipc_remainder_ms": 390.99999999999955,
+          "after_last_foreground_ipc_ms": 320,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01/samples.jsonl"
+        },
+        "max": {
+          "action": "open",
+          "repetition": 0,
+          "phase": "fresh_process",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 2178,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 11,
+              "elapsed_ms": 1454.0000000000005
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1525,
+              "elapsed_ms": 333
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 1,
+          "foreground_union_intervals_ms": [
+            [
+              11,
+              1465.0000000000005
+            ],
+            [
+              1525,
+              1858
+            ]
+          ],
+          "foreground_ipc_union_ms": 1787.0000000000005,
+          "non_foreground_ipc_remainder_ms": 390.99999999999955,
+          "after_last_foreground_ipc_ms": 320,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01/samples.jsonl"
+        }
+      }
+    },
+    "branch_first": {
+      "A": {
+        "near_p50": {
+          "action": "branch_first",
+          "repetition": 8,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 662,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 337.00000000001455
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 345,
+              "elapsed_ms": 53
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 639,
+              "elapsed_ms": 11,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              338.00000000001455
+            ],
+            [
+              345,
+              398
+            ]
+          ],
+          "foreground_ipc_union_ms": 390.00000000001455,
+          "non_foreground_ipc_remainder_ms": 271.99999999998545,
+          "after_last_foreground_ipc_ms": 264,
+          "completed_background_union_ms": 11,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "branch_first",
+          "repetition": 6,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 951.9999999999927,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 505
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 515,
+              "elapsed_ms": 78
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 752.9999999999927,
+              "elapsed_ms": 13.000000000007276,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              506
+            ],
+            [
+              515,
+              593
+            ]
+          ],
+          "foreground_ipc_union_ms": 583,
+          "non_foreground_ipc_remainder_ms": 368.9999999999927,
+          "after_last_foreground_ipc_ms": 358.9999999999927,
+          "completed_background_union_ms": 13.000000000007276,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "branch_first",
+          "repetition": 2,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 996,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 507
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 515,
+              "elapsed_ms": 51
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              507
+            ],
+            [
+              515,
+              566
+            ]
+          ],
+          "foreground_ipc_union_ms": 558,
+          "non_foreground_ipc_remainder_ms": 438,
+          "after_last_foreground_ipc_ms": 430,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      },
+      "B": {
+        "near_p50": {
+          "action": "branch_first",
+          "repetition": 13,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 681,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 380.00000000001455
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 385,
+              "elapsed_ms": 46
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              380.00000000001455
+            ],
+            [
+              385,
+              431
+            ]
+          ],
+          "foreground_ipc_union_ms": 426.00000000001455,
+          "non_foreground_ipc_remainder_ms": 254.99999999998545,
+          "after_last_foreground_ipc_ms": 250,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "branch_first",
+          "repetition": 16,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 868,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 412
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 421,
+              "elapsed_ms": 104
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              413
+            ],
+            [
+              421,
+              525
+            ]
+          ],
+          "foreground_ipc_union_ms": 516,
+          "non_foreground_ipc_remainder_ms": 352,
+          "after_last_foreground_ipc_ms": 343,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "branch_first",
+          "repetition": 17,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 925.0000000000291,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 499
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 510,
+              "elapsed_ms": 57
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              500
+            ],
+            [
+              510,
+              567
+            ]
+          ],
+          "foreground_ipc_union_ms": 556,
+          "non_foreground_ipc_remainder_ms": 369.0000000000291,
+          "after_last_foreground_ipc_ms": 358.0000000000291,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      }
+    },
+    "branch_final": {
+      "A": {
+        "near_p50": {
+          "action": "branch_final",
+          "repetition": 19,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-first",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/feature/boundary-first",
+          "correct": true,
+          "elapsed_ms": 602,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 302
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 310,
+              "elapsed_ms": 16
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 486.0000000000291,
+              "elapsed_ms": 9.999999999970896,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              303
+            ],
+            [
+              310,
+              326
+            ]
+          ],
+          "foreground_ipc_union_ms": 318,
+          "non_foreground_ipc_remainder_ms": 284,
+          "after_last_foreground_ipc_ms": 276,
+          "completed_background_union_ms": 9.999999999970896,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "branch_final",
+          "repetition": 1,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-first",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/feature/boundary-first",
+          "correct": true,
+          "elapsed_ms": 1093,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 509
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 522.0000000000018,
+              "elapsed_ms": 151.99999999999818
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 683,
+              "elapsed_ms": 16,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              510
+            ],
+            [
+              522.0000000000018,
+              674.0
+            ]
+          ],
+          "foreground_ipc_union_ms": 660.9999999999982,
+          "non_foreground_ipc_remainder_ms": 432.0000000000018,
+          "after_last_foreground_ipc_ms": 419.0,
+          "completed_background_union_ms": 16,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "branch_final",
+          "repetition": 4,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-first",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/feature/boundary-first",
+          "correct": true,
+          "elapsed_ms": 1128,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 518
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 546,
+              "elapsed_ms": 223
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 985,
+              "elapsed_ms": 11,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              518
+            ],
+            [
+              546,
+              769
+            ]
+          ],
+          "foreground_ipc_union_ms": 741,
+          "non_foreground_ipc_remainder_ms": 387,
+          "after_last_foreground_ipc_ms": 359,
+          "completed_background_union_ms": 11,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      },
+      "B": {
+        "near_p50": {
+          "action": "branch_final",
+          "repetition": 1,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-first",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/feature/boundary-first",
+          "correct": true,
+          "elapsed_ms": 618,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 307
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 316,
+              "elapsed_ms": 17
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              308
+            ],
+            [
+              316,
+              333
+            ]
+          ],
+          "foreground_ipc_union_ms": 324,
+          "non_foreground_ipc_remainder_ms": 294,
+          "after_last_foreground_ipc_ms": 285,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "branch_final",
+          "repetition": 16,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-first",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/feature/boundary-first",
+          "correct": true,
+          "elapsed_ms": 848,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 374
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 383,
+              "elapsed_ms": 88
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              375
+            ],
+            [
+              383,
+              471
+            ]
+          ],
+          "foreground_ipc_union_ms": 462,
+          "non_foreground_ipc_remainder_ms": 386,
+          "after_last_foreground_ipc_ms": 377,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "branch_final",
+          "repetition": 17,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-first",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/feature/boundary-first",
+          "correct": true,
+          "elapsed_ms": 854,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 412
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 423,
+              "elapsed_ms": 25
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              413
+            ],
+            [
+              423,
+              448
+            ]
+          ],
+          "foreground_ipc_union_ms": 437,
+          "non_foreground_ipc_remainder_ms": 417,
+          "after_last_foreground_ipc_ms": 406,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      }
+    },
+    "working_tree": {
+      "A": {
+        "near_p50": {
+          "action": "working_tree",
+          "repetition": 12,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 2021,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 1626.0000000000146
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1634,
+              "elapsed_ms": 72
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 1709,
+              "elapsed_ms": 10,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              1626.0000000000146
+            ],
+            [
+              1634,
+              1706
+            ]
+          ],
+          "foreground_ipc_union_ms": 1698.0000000000146,
+          "non_foreground_ipc_remainder_ms": 322.99999999998545,
+          "after_last_foreground_ipc_ms": 315,
+          "completed_background_union_ms": 10,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "working_tree",
+          "repetition": 3,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 3204,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 2659
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 2729,
+              "elapsed_ms": 62
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              2659
+            ],
+            [
+              2729,
+              2791
+            ]
+          ],
+          "foreground_ipc_union_ms": 2721,
+          "non_foreground_ipc_remainder_ms": 483,
+          "after_last_foreground_ipc_ms": 413,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "working_tree",
+          "repetition": 9,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 3487,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 2171
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 2212,
+              "elapsed_ms": 338
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 3062,
+              "elapsed_ms": 34,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              2172
+            ],
+            [
+              2212,
+              2550
+            ]
+          ],
+          "foreground_ipc_union_ms": 2509,
+          "non_foreground_ipc_remainder_ms": 978,
+          "after_last_foreground_ipc_ms": 937,
+          "completed_background_union_ms": 34,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      },
+      "B": {
+        "near_p50": {
+          "action": "working_tree",
+          "repetition": 1,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 2072,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 1698.0000000000018
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1704,
+              "elapsed_ms": 73
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 1782,
+              "elapsed_ms": 11,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              1698.0000000000018
+            ],
+            [
+              1704,
+              1777
+            ]
+          ],
+          "foreground_ipc_union_ms": 1771.0000000000018,
+          "non_foreground_ipc_remainder_ms": 300.9999999999982,
+          "after_last_foreground_ipc_ms": 295,
+          "completed_background_union_ms": 11,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "working_tree",
+          "repetition": 14,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 2882.0000000000146,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 1773
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1784,
+              "elapsed_ms": 174
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 2479,
+              "elapsed_ms": 29,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              1773
+            ],
+            [
+              1784,
+              1958
+            ]
+          ],
+          "foreground_ipc_union_ms": 1947,
+          "non_foreground_ipc_remainder_ms": 935.0000000000146,
+          "after_last_foreground_ipc_ms": 924.0000000000146,
+          "completed_background_union_ms": 29,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "working_tree",
+          "repetition": 17,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 2991,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 2236
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 2301,
+              "elapsed_ms": 113
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              2236
+            ],
+            [
+              2301,
+              2414
+            ]
+          ],
+          "foreground_ipc_union_ms": 2349,
+          "non_foreground_ipc_remainder_ms": 642,
+          "after_last_foreground_ipc_ms": 577,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      }
+    },
+    "stack": {
+      "A": {
+        "near_p50": {
+          "action": "stack",
+          "repetition": 18,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 672,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 306
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 315,
+              "elapsed_ms": 74.0000000000291
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 394,
+              "elapsed_ms": 13.000000000029104,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              307
+            ],
+            [
+              315,
+              389.0000000000291
+            ]
+          ],
+          "foreground_ipc_union_ms": 380.0000000000291,
+          "non_foreground_ipc_remainder_ms": 291.9999999999709,
+          "after_last_foreground_ipc_ms": 282.9999999999709,
+          "completed_background_union_ms": 13.000000000029104,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "stack",
+          "repetition": 9,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 788,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 409
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 420,
+              "elapsed_ms": 24
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              410
+            ],
+            [
+              420,
+              444
+            ]
+          ],
+          "foreground_ipc_union_ms": 433,
+          "non_foreground_ipc_remainder_ms": 355,
+          "after_last_foreground_ipc_ms": 344,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "stack",
+          "repetition": 0,
+          "phase": "first_use",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 1072.0000000000018,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 375
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 394,
+              "elapsed_ms": 51
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 875,
+              "elapsed_ms": 28,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              375
+            ],
+            [
+              394,
+              445
+            ]
+          ],
+          "foreground_ipc_union_ms": 426,
+          "non_foreground_ipc_remainder_ms": 646.0000000000018,
+          "after_last_foreground_ipc_ms": 627.0000000000018,
+          "completed_background_union_ms": 28,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      },
+      "B": {
+        "near_p50": {
+          "action": "stack",
+          "repetition": 4,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 674.0000000000073,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 281
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 289,
+              "elapsed_ms": 24
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 524,
+              "elapsed_ms": 9,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              281
+            ],
+            [
+              289,
+              313
+            ]
+          ],
+          "foreground_ipc_union_ms": 305,
+          "non_foreground_ipc_remainder_ms": 369.0000000000073,
+          "after_last_foreground_ipc_ms": 361.0000000000073,
+          "completed_background_union_ms": 9,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "stack",
+          "repetition": 17,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 889,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 345.0000000000291
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 360,
+              "elapsed_ms": 40
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 787,
+              "elapsed_ms": 12,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              346.0000000000291
+            ],
+            [
+              360,
+              400
+            ]
+          ],
+          "foreground_ipc_union_ms": 385.0000000000291,
+          "non_foreground_ipc_remainder_ms": 503.9999999999709,
+          "after_last_foreground_ipc_ms": 489,
+          "completed_background_union_ms": 12,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "stack",
+          "repetition": 16,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "file_count": 30,
+            "file": "arch/parisc/include/asm/extable.h",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_2_16"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 929.9999999999709,
+          "ipc": [
+            {
+              "op": "compare",
+              "command": "workspace",
+              "start_ms": 0.9999999999708962,
+              "elapsed_ms": 360
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 369.9999999999709,
+              "elapsed_ms": 28
+            }
+          ],
+          "file": "arch/parisc/include/asm/extable.h",
+          "right": "refs/heads/feature/boundary-final",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 884.9999999999709,
+              "elapsed_ms": 18,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0.9999999999708962,
+              360.9999999999709
+            ],
+            [
+              369.9999999999709,
+              397.9999999999709
+            ]
+          ],
+          "foreground_ipc_union_ms": 388.0,
+          "non_foreground_ipc_remainder_ms": 541.9999999999709,
+          "after_last_foreground_ipc_ms": 532.0,
+          "completed_background_union_ms": 18.0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      }
+    },
+    "comment_branch": {
+      "A": {
+        "near_p50": {
+          "action": "comment_branch",
+          "repetition": 17,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 723,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 365
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 371,
+              "elapsed_ms": 53
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              365
+            ],
+            [
+              371,
+              424
+            ]
+          ],
+          "foreground_ipc_union_ms": 418,
+          "non_foreground_ipc_remainder_ms": 305,
+          "after_last_foreground_ipc_ms": 299,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "comment_branch",
+          "repetition": 1,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 1101,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 488
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 499,
+              "elapsed_ms": 112
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 964,
+              "elapsed_ms": 12,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              489
+            ],
+            [
+              499,
+              611
+            ]
+          ],
+          "foreground_ipc_union_ms": 600,
+          "non_foreground_ipc_remainder_ms": 501,
+          "after_last_foreground_ipc_ms": 490,
+          "completed_background_union_ms": 12,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "comment_branch",
+          "repetition": 2,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 1128.0000000000036,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 3,
+              "elapsed_ms": 542
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 555,
+              "elapsed_ms": 112
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              3,
+              545
+            ],
+            [
+              555,
+              667
+            ]
+          ],
+          "foreground_ipc_union_ms": 654,
+          "non_foreground_ipc_remainder_ms": 474.00000000000364,
+          "after_last_foreground_ipc_ms": 461.00000000000364,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      },
+      "B": {
+        "near_p50": {
+          "action": "comment_branch",
+          "repetition": 13,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 742,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 384
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 393,
+              "elapsed_ms": 37
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              385
+            ],
+            [
+              393,
+              430
+            ]
+          ],
+          "foreground_ipc_union_ms": 421,
+          "non_foreground_ipc_remainder_ms": 321,
+          "after_last_foreground_ipc_ms": 312,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "comment_branch",
+          "repetition": 10,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 1072,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1.000000000014552,
+              "elapsed_ms": 466.99999999998545
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 475,
+              "elapsed_ms": 61
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 908,
+              "elapsed_ms": 30,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1.000000000014552,
+              468.0
+            ],
+            [
+              475,
+              536
+            ]
+          ],
+          "foreground_ipc_union_ms": 527.9999999999854,
+          "non_foreground_ipc_remainder_ms": 544.0000000000146,
+          "after_last_foreground_ipc_ms": 536,
+          "completed_background_union_ms": 30,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "comment_branch",
+          "repetition": 15,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "file_count": 30,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_LAYER_1_00",
+            "note_body": "Boundary benchmark branch comment"
+          },
+          "file_count": 30,
+          "left": "refs/heads/main",
+          "correct": true,
+          "elapsed_ms": 1375,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 593
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 611,
+              "elapsed_ms": 116
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": "refs/heads/feature/boundary-first",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 770,
+              "elapsed_ms": 40,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              593
+            ],
+            [
+              611,
+              727
+            ]
+          ],
+          "foreground_ipc_union_ms": 709,
+          "non_foreground_ipc_remainder_ms": 666,
+          "after_last_foreground_ipc_ms": 648,
+          "completed_background_union_ms": 40,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      }
+    },
+    "comment_worktree": {
+      "A": {
+        "near_p50": {
+          "action": "comment_worktree",
+          "repetition": 15,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 1809,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 1475
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1482,
+              "elapsed_ms": 47
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              1476
+            ],
+            [
+              1482,
+              1529
+            ]
+          ],
+          "foreground_ipc_union_ms": 1522,
+          "non_foreground_ipc_remainder_ms": 287,
+          "after_last_foreground_ipc_ms": 280,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "comment_worktree",
+          "repetition": 3,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 2309.9999999999927,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 1839.9999999999927
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1850.9999999999927,
+              "elapsed_ms": 88.00000000000728
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              1839.9999999999927
+            ],
+            [
+              1850.9999999999927,
+              1939.0
+            ]
+          ],
+          "foreground_ipc_union_ms": 1928.0,
+          "non_foreground_ipc_remainder_ms": 381.9999999999927,
+          "after_last_foreground_ipc_ms": 370.9999999999927,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "comment_worktree",
+          "repetition": 0,
+          "phase": "first_use",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 2313,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 1890
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1902.0000000000018,
+              "elapsed_ms": 66.99999999999818
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 2184,
+              "elapsed_ms": 14,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "A",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              1891
+            ],
+            [
+              1902.0000000000018,
+              1969.0
+            ]
+          ],
+          "foreground_ipc_union_ms": 1956.9999999999982,
+          "non_foreground_ipc_remainder_ms": 356.0000000000018,
+          "after_last_foreground_ipc_ms": 344.0,
+          "completed_background_union_ms": 14,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      },
+      "B": {
+        "near_p50": {
+          "action": "comment_worktree",
+          "repetition": 0,
+          "phase": "first_use",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 1821,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 1,
+              "elapsed_ms": 1442.0000000000018
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1467,
+              "elapsed_ms": 35
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [
+            {
+              "pending": false,
+              "start_ms": 1502,
+              "elapsed_ms": 32,
+              "error": null,
+              "op": "refresh_notes",
+              "command": "workspace"
+            }
+          ],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              1,
+              1443.0000000000018
+            ],
+            [
+              1467,
+              1502
+            ]
+          ],
+          "foreground_ipc_union_ms": 1477.0000000000018,
+          "non_foreground_ipc_remainder_ms": 343.9999999999982,
+          "after_last_foreground_ipc_ms": 319,
+          "completed_background_union_ms": 32,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "p95": {
+          "action": "comment_worktree",
+          "repetition": 14,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 2362.0000000000146,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 2005.0000000000146
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 2011.0000000000146,
+              "elapsed_ms": 34.99999999998545
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              2005.0000000000146
+            ],
+            [
+              2011.0000000000146,
+              2046.0
+            ]
+          ],
+          "foreground_ipc_union_ms": 2040.0,
+          "non_foreground_ipc_remainder_ms": 322.00000000001455,
+          "after_last_foreground_ipc_ms": 316.00000000001455,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        },
+        "max": {
+          "action": "comment_worktree",
+          "repetition": 15,
+          "phase": "repeated",
+          "expected": {
+            "root": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+            "left": "refs/heads/feature/boundary-final",
+            "right": ":worktree:",
+            "file_count": 15,
+            "file": "kernel/fork.c",
+            "marker": "BRANCHLINE_BOUNDARY_STAGED_00",
+            "note_body": "Boundary benchmark working-tree comment"
+          },
+          "file_count": 15,
+          "left": "refs/heads/feature/boundary-final",
+          "correct": true,
+          "elapsed_ms": 2411,
+          "ipc": [
+            {
+              "op": "open",
+              "command": "workspace",
+              "start_ms": 0,
+              "elapsed_ms": 1929
+            },
+            {
+              "op": "display_patch",
+              "command": "workspace",
+              "start_ms": 1939,
+              "elapsed_ms": 60.000000000029104
+            }
+          ],
+          "file": "kernel/fork.c",
+          "right": ":worktree:",
+          "background_ipc": [],
+          "case": "wsl_windows",
+          "variant": "B",
+          "process_number": 3,
+          "foreground_union_intervals_ms": [
+            [
+              0,
+              1929
+            ],
+            [
+              1939,
+              1999.000000000029
+            ]
+          ],
+          "foreground_ipc_union_ms": 1989.000000000029,
+          "non_foreground_ipc_remainder_ms": 421.9999999999709,
+          "after_last_foreground_ipc_ms": 411.9999999999709,
+          "completed_background_union_ms": 0,
+          "pending_background_count": 0,
+          "source_samples": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl"
+        }
+      }
+    }
+  },
+  "processes_and_cleanup": [
+    {
+      "case": "wsl_windows",
+      "variant": "A",
+      "number": 1,
+      "repetitions": 3,
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 223108,
+          "start_ticks": "15998075"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "15998075",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 223106,
+          "start_ticks": "15998054"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 223108,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "328238c2-50ea-40d1-8568-f5260c15d8ab",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 223105
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01/verdict.json",
+      "cleanup": {
+        "exact_launch_cleanup": [
+          223106,
+          223345
+        ],
+        "observed_identities": [
+          {
+            "pid": 223108,
+            "start_ticks": "15998075",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 223106,
+            "start_ticks": "15998054",
+            "binary": "/usr/bin/WebKitWebDriver"
+          },
+          {
+            "pid": 223108,
+            "start_ticks": "15998075",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 223345,
+            "start_ticks": "15998728",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "--mcp",
+              "--port",
+              "28867",
+              "--",
+              "/mnt/c/Users/max/branchline-bench/kernel-windows"
+            ]
+          },
+          {
+            "pid": 223105,
+            "start_ticks": "15998026",
+            "binary": "/usr/bin/python3.14"
+          }
+        ],
+        "exact_owned_processes_absent": true,
+        "ports_free": true,
+        "host_wrapper_absent_from_vm_environment": true
+      },
+      "supervisor_exit": 0,
+      "host_supervisor_pid": 738450,
+      "valid": true
+    },
+    {
+      "case": "wsl_windows",
+      "variant": "B",
+      "number": 1,
+      "repetitions": 3,
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+          "pid": 223419,
+          "start_ticks": "16001632"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+        "created": "16001632",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 223417,
+          "start_ticks": "16001626"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 223419,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "cce2315b-ccfa-4da7-803b-beee2c9c8d42",
+        "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+        "supervisor_pid": 223416
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01/verdict.json",
+      "cleanup": {
+        "exact_launch_cleanup": [
+          223417,
+          223621
+        ],
+        "observed_identities": [
+          {
+            "pid": 223419,
+            "start_ticks": "16001632",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 223417,
+            "start_ticks": "16001626",
+            "binary": "/usr/bin/WebKitWebDriver"
+          },
+          {
+            "pid": 223419,
+            "start_ticks": "16001632",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 223621,
+            "start_ticks": "16001935",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+              "--mcp",
+              "--port",
+              "28867",
+              "--",
+              "/mnt/c/Users/max/branchline-bench/kernel-windows"
+            ]
+          },
+          {
+            "pid": 223416,
+            "start_ticks": "16001611",
+            "binary": "/usr/bin/python3.14"
+          }
+        ],
+        "exact_owned_processes_absent": true,
+        "ports_free": true,
+        "host_wrapper_absent_from_vm_environment": true
+      },
+      "supervisor_exit": 0,
+      "host_supervisor_pid": 744047,
+      "valid": true
+    },
+    {
+      "case": "wsl_windows",
+      "variant": "A",
+      "number": 2,
+      "repetitions": 3,
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 223802,
+          "start_ticks": "16004835"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "16004835",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 223800,
+          "start_ticks": "16004825"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 223802,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "c59b4364-1ee8-4ed2-a1f5-d869fd5254e9",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 223799
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02/verdict.json",
+      "cleanup": {
+        "exact_launch_cleanup": [
+          223800,
+          224008
+        ],
+        "observed_identities": [
+          {
+            "pid": 223802,
+            "start_ticks": "16004835",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 223800,
+            "start_ticks": "16004825",
+            "binary": "/usr/bin/WebKitWebDriver"
+          },
+          {
+            "pid": 223802,
+            "start_ticks": "16004835",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 224008,
+            "start_ticks": "16005100",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "--mcp",
+              "--port",
+              "28867",
+              "--",
+              "/mnt/c/Users/max/branchline-bench/kernel-windows"
+            ]
+          },
+          {
+            "pid": 223799,
+            "start_ticks": "16004812",
+            "binary": "/usr/bin/python3.14"
+          }
+        ],
+        "exact_owned_processes_absent": true,
+        "ports_free": true,
+        "host_wrapper_absent_from_vm_environment": true
+      },
+      "supervisor_exit": 0,
+      "host_supervisor_pid": 750839,
+      "valid": true
+    },
+    {
+      "case": "wsl_windows",
+      "variant": "B",
+      "number": 2,
+      "repetitions": 3,
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+          "pid": 224062,
+          "start_ticks": "16008051"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+        "created": "16008051",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 224060,
+          "start_ticks": "16008049"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 224062,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "f63c7f14-31ee-4b06-901c-9b69eff4335c",
+        "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+        "supervisor_pid": 224059
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02/verdict.json",
+      "cleanup": {
+        "exact_launch_cleanup": [
+          224060,
+          224260
+        ],
+        "observed_identities": [
+          {
+            "pid": 224062,
+            "start_ticks": "16008051",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 224060,
+            "start_ticks": "16008049",
+            "binary": "/usr/bin/WebKitWebDriver"
+          },
+          {
+            "pid": 224062,
+            "start_ticks": "16008051",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 224260,
+            "start_ticks": "16008380",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+              "--mcp",
+              "--port",
+              "28867",
+              "--",
+              "/mnt/c/Users/max/branchline-bench/kernel-windows"
+            ]
+          },
+          {
+            "pid": 224059,
+            "start_ticks": "16008030",
+            "binary": "/usr/bin/python3.14"
+          }
+        ],
+        "exact_owned_processes_absent": true,
+        "ports_free": true,
+        "host_wrapper_absent_from_vm_environment": true
+      },
+      "supervisor_exit": 0,
+      "host_supervisor_pid": 758532,
+      "valid": true
+    },
+    {
+      "case": "wsl_windows",
+      "variant": "A",
+      "number": 3,
+      "repetitions": 20,
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+          "pid": 224306,
+          "start_ticks": "16011518"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+        "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+        "created": "16011518",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 224304,
+          "start_ticks": "16011512"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 224306,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "e8288765-752f-4490-95d3-286cb044e4b8",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+        "supervisor_pid": 224303
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/verdict.json",
+      "cleanup": {
+        "exact_launch_cleanup": [
+          224304,
+          224508
+        ],
+        "observed_identities": [
+          {
+            "pid": 224306,
+            "start_ticks": "16011518",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 224304,
+            "start_ticks": "16011512",
+            "binary": "/usr/bin/WebKitWebDriver"
+          },
+          {
+            "pid": 224306,
+            "start_ticks": "16011518",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 224508,
+            "start_ticks": "16011778",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+              "--mcp",
+              "--port",
+              "28867",
+              "--",
+              "/mnt/c/Users/max/branchline-bench/kernel-windows"
+            ]
+          },
+          {
+            "pid": 224303,
+            "start_ticks": "16011493",
+            "binary": "/usr/bin/python3.14"
+          }
+        ],
+        "exact_owned_processes_absent": true,
+        "ports_free": true,
+        "host_wrapper_absent_from_vm_environment": true
+      },
+      "supervisor_exit": 0,
+      "host_supervisor_pid": 763410,
+      "valid": true
+    },
+    {
+      "case": "wsl_windows",
+      "variant": "B",
+      "number": 3,
+      "repetitions": 20,
+      "launch": {
+        "app_process": {
+          "args": [
+            "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+          ],
+          "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+          "pid": 224602,
+          "start_ticks": "16029516"
+        },
+        "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+        "created": "16029516",
+        "display": ":0",
+        "driver_process": {
+          "binary": "/usr/bin/WebKitWebDriver",
+          "pid": 224600,
+          "start_ticks": "16029510"
+        },
+        "gdk_backend": "x11",
+        "mcp_port": 28867,
+        "pid": 224602,
+        "port": 29225,
+        "profile": "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows",
+        "session": "63a5561c-1f63-46fb-a4b8-6ba76e1f2842",
+        "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+        "supervisor_pid": 224599
+      },
+      "verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/verdict.json",
+      "cleanup": {
+        "exact_launch_cleanup": [
+          224600,
+          224800
+        ],
+        "observed_identities": [
+          {
+            "pid": 224602,
+            "start_ticks": "16029516",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 224600,
+            "start_ticks": "16029510",
+            "binary": "/usr/bin/WebKitWebDriver"
+          },
+          {
+            "pid": 224602,
+            "start_ticks": "16029516",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+              "/home/max/benchmarks/branchline-boundary/profiles/candidate-worker-v1-wsl-windows/welcome"
+            ]
+          },
+          {
+            "pid": 224800,
+            "start_ticks": "16029807",
+            "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+            "args": [
+              "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+              "--mcp",
+              "--port",
+              "28867",
+              "--",
+              "/mnt/c/Users/max/branchline-bench/kernel-windows"
+            ]
+          },
+          {
+            "pid": 224599,
+            "start_ticks": "16029493",
+            "binary": "/usr/bin/python3.14"
+          }
+        ],
+        "exact_owned_processes_absent": true,
+        "ports_free": true,
+        "host_wrapper_absent_from_vm_environment": true
+      },
+      "supervisor_exit": 0,
+      "host_supervisor_pid": 808183,
+      "valid": true
+    }
+  ],
+  "fixture_before": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_after": {
+    "windows": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614734418472500,
+          "device": 87,
+          "inode": 2814749767263140,
+          "mode": 33279,
+          "mtime_ns": 1795614733000000000,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994331971400,
+          "device": 87,
+          "inode": 3377699720684454,
+          "mode": 33279,
+          "mtime_ns": 1795615994331971400,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615947971522900,
+          "device": 87,
+          "inode": 562949953782638,
+          "mode": 33279,
+          "mtime_ns": 1795615947971522900,
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "guards": {
+        "HEAD": {
+          "bytes": 39,
+          "ctime_ns": 1795614733907349066,
+          "device": 2096,
+          "inode": 272949,
+          "mode": 33188,
+          "mtime_ns": 1795614733907349066,
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+        },
+        "config": {
+          "bytes": 334,
+          "ctime_ns": 1795615994729935414,
+          "device": 2096,
+          "inode": 278185,
+          "mode": 33188,
+          "mtime_ns": 1795615994729935414,
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+        },
+        "index": {
+          "bytes": 9271771,
+          "ctime_ns": 1795615942133939671,
+          "device": 2096,
+          "inode": 278079,
+          "mode": 33188,
+          "mtime_ns": 1795615942129939671,
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+        }
+      },
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "transport_cleanup": {
+    "master": {
+      "argv": [
+        "/usr/bin/ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "-M",
+        "-S",
+        "/tmp/status-wsl-dvay7avx/ssh.sock",
+        "-o",
+        "ControlPersist=no",
+        "-N",
+        "-o",
+        "ExitOnForwardFailure=yes",
+        "-L",
+        "127.0.0.1:19227:127.0.0.1:29225",
+        "windows-vm"
+      ],
+      "pid": 735605,
+      "socket": "/tmp/status-wsl-dvay7avx/ssh.sock",
+      "start_ticks": "77801778"
+    },
+    "master_check": {
+      "exit": 0,
+      "stderr": "Master running (pid=735605)\n",
+      "stdout": ""
+    },
+    "master_exit_request": {
+      "exit": 0,
+      "stderr": "Exit request sent.\n",
+      "stdout": ""
+    },
+    "master_exit": 255,
+    "control_socket_absent": true,
+    "host_port_free": true,
+    "host_wrapper": {
+      "path": "/tmp/status-wsl-dvay7avx/bin/ssh",
+      "sha256": "f4a58571854a50c9820316b93dc886296d6f99c69b6981f22dbae640b28c1cff"
+    }
+  },
+  "exact_host_controller_and_master_absent_now": [
+    {
+      "pid": 735544,
+      "start_ticks": "77801752",
+      "exact_owned_actor_absent_now": true,
+      "current_start_ticks": null
+    },
+    {
+      "pid": 735605,
+      "start_ticks": "77801778",
+      "exact_owned_actor_absent_now": true,
+      "current_start_ticks": null
+    }
+  ],
+  "input_hashes": {
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01/verdict.json": "25cd595c7ace4f487ab5e434ce5e4db484e73c1bb45017484b0c1c2b6cbdaebb",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01.json": "f3edac726bb8921125bdcbabd951ff5516fc57e0f3ed1630127879806ae77dc3",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01/source.json": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01.cleanup.log": "2d454df51e75d3edf6f742e969d49450bcc68d979098b25a2c1caaa8967642b5",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-01/samples.jsonl": "3f3d2d8bacbe4d8f7d8fb4ab1eff850b48f9c10e02a46fd0d547ac2937d94bc9",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01/verdict.json": "659f19c711f106ed7b08684e89ccac8462921cd49092a57ff42bcff665dd8e2d",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-01.json": "cec4787faa293ce7479a69eaf19b5b687a265a4f9b71419be428cd7ee7f23275",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01/source.json": "578ad9dd3a7156e7c3777ce8733f4a46d35f6f1ad854f93ce3bd8c805b8b4f9f",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01.cleanup.log": "2c64c21d765cee8f6535872b3295a34794815ea79983f08e94b2d9c1e010f3aa",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-01/samples.jsonl": "f34b91027a1bcfe1acaace5a9517e664a4fc2c43638acd95119339c2cd146948",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02/verdict.json": "2550931d23227bb966bdda7c7fc90eb935f697944009e2df7922d8c1277b3bed",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02.json": "b12063971366869f1ae738854c765b0658d75eff6ec4dc60ab4bbea0b1fb7887",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02/source.json": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02.cleanup.log": "f2ed0a5c4d32be749c05d3d15e7fabacb4f9cd6b8cedcb5285169d53fd3c080f",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-02/samples.jsonl": "b225b43b5c4271464cd9f8f79974e30388863634ec87c325dd8c19aeca8a5ade",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02/verdict.json": "36111b242755e2dd64a7e12bd868def4ea684d07d6e68fc48d8714989bfc1da6",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-02.json": "f44975ff56884de57850820d691bb7549e24c2d04a7fb7c5575ce3f44bf11763",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02/source.json": "578ad9dd3a7156e7c3777ce8733f4a46d35f6f1ad854f93ce3bd8c805b8b4f9f",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02.cleanup.log": "ea4c944b6466e310d67c88fd0c5420ad9603cc7e94fe0d7fc92beae761d9b6bb",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-02/samples.jsonl": "f71e42e9960251c52320e7e76029fa41762a9a9170ae37a3abb609524c536bb8",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/verdict.json": "fa0a8159815f872cd1dca1827cb0737b3cc8fd20c26a4e28a463349dd34418de",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03.json": "63a38f39f3c59039759c6bad05cb0a69df1883bb95e1b97a2fe615662ee5c4e2",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/source.json": "2f646d3a01935bee95bf24d5cca7df43b9e34606b1783e2f5638039f3c27d039",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03.cleanup.log": "d3295a2212e18340867fd66b46a616e4726a498007031f3ab4f40739d54e0bf8",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-wsl-windows-20261126T011418639510Z-03/samples.jsonl": "c660f46efe7324f3a12517a6dac3de685e8bc019dd2d484ce0f612b32c982e38",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/verdict.json": "2c27437b6f860d0194b438fbc5e220adf229e8346b9dd085d4cdded6b7133c6e",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/launch-integrated-c200-r1-wsl-windows-20261126T011418639510Z-03.json": "a54e6514cc3f709fa5fd35fd9ad3e4a91cd72cf189fcf201a0a077a5e639c05c",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/source.json": "578ad9dd3a7156e7c3777ce8733f4a46d35f6f1ad854f93ce3bd8c805b8b4f9f",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03.cleanup.log": "50f3ff73a6e14a42931dbec51adafc2f0227feea4802bb2ae30ccc06814ed76c",
+    "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/integrated-c200-r1-wsl-windows-20261126T011418639510Z-03/samples.jsonl": "5bb34dfaa8efd1fadc2bbed1e45ba479cd7a8c5bbf2055f16e6cf03f6a4b402d",
+    "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/evaluation-controls/wsl_windows/run-20261126T011418639510Z/state.json": "1b8c39390bdd8eb0227c0396a4529e7452e488754fba66a0c5b75932450a4c69",
+    "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/evaluation-controls/protocol.json": "df96e50ddce3ba82bd57fbeeeddf0981c256516fff5b892ffc5c7fa01872fce1"
+  },
+  "interpretation": [
+    "Every recorded source/content/comment/fixture/identity/cleanup gate passes. No VM calls or new port checks occurred during this analysis.",
+    "No waiver, sample removal, retry or timing-causality claim. The unchanged Windows execution policy does not waive reversed-cross guards.",
+    "Foreground intervals use a union. The remainder includes UI, frames, waits and unrecorded work; it is not pure paint.",
+    "This cell cannot override the failed primary-gain requirement or other failed cells. The full250ms goal remains unmet."
+  ]
+}

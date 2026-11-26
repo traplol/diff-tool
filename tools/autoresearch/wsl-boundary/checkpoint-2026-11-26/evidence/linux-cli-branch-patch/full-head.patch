@@ -1,0 +1,55 @@
+diff --git a/src-tauri/git-worker/tests/stdio.rs b/src-tauri/git-worker/tests/stdio.rs
+index 34f0873..e56bbd1 100644
+--- a/src-tauri/git-worker/tests/stdio.rs
++++ b/src-tauri/git-worker/tests/stdio.rs
+@@ -99,6 +99,12 @@ fn real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs() {
+     let branch = worker.call(json!({"op":"compare","view":view,
+         "left":"refs/heads/main","right":"refs/heads/review"}));
+     assert_eq!(branch["head"], view["refs"]["refs/heads/review"]);
++    let mut branch_header = branch.clone();
++    branch_header.as_object_mut().unwrap().remove("files");
++    let branch_patch_request = json!({"op":"display_patch","comparison":branch_header,
++        "file":branch["files"][0]});
++    let branch_patch = json!(["@@ -1 +1 @@\n-base\n+review\n", [[1, 1]]]);
++    assert_eq!(worker.call(branch_patch_request.clone()), branch_patch);
+ 
+     std::fs::write(&file, "staged\n").unwrap();
+     git(root, &["add", "file.txt"]);
+@@ -150,6 +156,7 @@ fn real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs() {
+     git(root, &["add", "file.txt"]);
+     git(root, &["commit", "-qm", "later"]);
+     let fresh = worker.call(json!({"op":"open","path":root}))["repo"].clone();
++    assert_eq!(worker.call(branch_patch_request.clone()), branch_patch);
+     assert_eq!(worker.call(scoped_patch), patch);
+     assert_ne!(
+         fresh["refs"]["refs/heads/review"],
+@@ -172,6 +179,7 @@ fn real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs() {
+     assert_eq!(worker.call(json!({"op":"hello"}))["pid"], pid);
+     let mut restarted = Worker::start();
+     restarted.call(json!({"op":"open","path":root}));
++    assert_eq!(restarted.call(branch_patch_request), branch_patch);
+     assert_eq!(restarted.call(patch_request), patch);
+     assert_eq!(restarted.call(contents_request), json!(["unstaged"]));
+ }
+diff --git a/src-tauri/src/git.rs b/src-tauri/src/git.rs
+index 9ecaf1f..42d7468 100644
+--- a/src-tauri/src/git.rs
++++ b/src-tauri/src/git.rs
+@@ -698,7 +698,7 @@ pub fn compare_trees(
+     }
+     let files = match repo
+         .native()
+-        .filter(|repo| native::supports_diff(repo))
++        .filter(|repo| !cfg!(target_os = "linux") && native::supports_diff(repo))
+         .and_then(|native| {
+             native::branch_changes(&native, base, head, native::empty_oid(repo)).ok()
+         }) {
+@@ -1333,7 +1333,7 @@ fn with_patch_sections<T>(
+     if file.group.is_empty() {
+         if let Some(data) = repo
+             .native()
+-            .filter(|repo| native::supports_diff(repo))
++            .filter(|repo| !cfg!(target_os = "linux") && native::supports_diff(repo))
+             .and_then(|native| {
+                 native::branch_patch(&native, &c.base, &c.head, native::empty_oid(repo), file).ok()
+             })

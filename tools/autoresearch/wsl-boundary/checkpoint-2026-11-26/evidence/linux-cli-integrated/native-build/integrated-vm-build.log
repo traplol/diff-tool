@@ -1,0 +1,456 @@
+{"supervisor_pid": 210069, "record": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/supervisor.json"}
+#< CLIXML
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04"><Obj S="progress" RefId="0"><TN RefId="0"><T>System.Management.Automation.PSCustomObject</T><T>System.Object</T></TN><MS><I64 N="SourceId">1</I64><PR N="Record"><AV>Preparing modules for first use.</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj><Obj S="progress" RefId="1"><TNRef RefId="0" /><MS><I64 N="SourceId">2</I64><PR N="Record"><AV>Preparing modules for first use.</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj></Objs>#< CLIXML
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04"><Obj S="progress" RefId="0"><TN RefId="0"><T>System.Management.Automation.PSCustomObject</T><T>System.Object</T></TN><MS><I64 N="SourceId">1</I64><PR N="Record"><AV>Preparing modules for first use.</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj><Obj S="progress" RefId="1"><TNRef RefId="0" /><MS><I64 N="SourceId">2</I64><PR N="Record"><AV>Preparing modules for first use.</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj></Objs>{
+  "record": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/supervisor.json",
+  "windows_gui": {
+    "path": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline.exe",
+    "sha256": "eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25",
+    "bytes": 20661760,
+    "embedded_helper_sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+    "embedded_helper_verified": true,
+    "renderer": "production default",
+    "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe",
+    "producer_fresh": false,
+    "packaged_assets": {
+      "tauri_producer": {
+        "reason": "compiler-artifact",
+        "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri@2.11.6",
+        "manifest_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.6/Cargo.toml",
+        "target": {
+          "kind": [
+            "lib"
+          ],
+          "crate_types": [
+            "lib"
+          ],
+          "name": "tauri",
+          "src_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.6/src/lib.rs",
+          "edition": "2021",
+          "doc": true,
+          "doctest": true,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "3",
+          "debuginfo": 0,
+          "debug_assertions": false,
+          "overflow_checks": false,
+          "test": false
+        },
+        "features": [
+          "common-controls-v6",
+          "compression",
+          "custom-protocol",
+          "dbus",
+          "default",
+          "dynamic-acl",
+          "tauri-runtime-wry",
+          "webkit2gtk",
+          "webview2-com",
+          "wry",
+          "x11"
+        ],
+        "filenames": [
+          "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/tauri/d13ce480d6541678/out/libtauri-d13ce480d6541678.rlib",
+          "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/tauri/d13ce480d6541678/out/libtauri-d13ce480d6541678.rmeta"
+        ],
+        "executable": null,
+        "fresh": true
+      },
+      "macros_producer": {
+        "reason": "compiler-artifact",
+        "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri-macros@2.6.3",
+        "manifest_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/Cargo.toml",
+        "target": {
+          "kind": [
+            "proc-macro"
+          ],
+          "crate_types": [
+            "proc-macro"
+          ],
+          "name": "tauri_macros",
+          "src_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/src/lib.rs",
+          "edition": "2021",
+          "doc": true,
+          "doctest": true,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "0",
+          "debuginfo": 0,
+          "debug_assertions": false,
+          "overflow_checks": false,
+          "test": false
+        },
+        "features": [
+          "compression",
+          "custom-protocol"
+        ],
+        "filenames": [
+          "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri-macros/1e663dfcea5f4f70/out/libtauri_macros-1e663dfcea5f4f70.so"
+        ],
+        "executable": null,
+        "fresh": true
+      },
+      "root_library_producer": {
+        "reason": "compiler-artifact",
+        "package_id": "path+file:///home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri#branchline@0.2.0",
+        "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+        "target": {
+          "kind": [
+            "lib"
+          ],
+          "crate_types": [
+            "lib"
+          ],
+          "name": "branchline",
+          "src_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/src/lib.rs",
+          "edition": "2021",
+          "doc": true,
+          "doctest": true,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "3",
+          "debuginfo": 0,
+          "debug_assertions": false,
+          "overflow_checks": false,
+          "test": false
+        },
+        "features": [],
+        "filenames": [
+          "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/d4d52eb1270aa5b2/out/libbranchline-d4d52eb1270aa5b2.rlib",
+          "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/d4d52eb1270aa5b2/out/libbranchline-d4d52eb1270aa5b2.rmeta"
+        ],
+        "executable": null,
+        "fresh": false
+      },
+      "root_build_script": {
+        "reason": "build-script-executed",
+        "package_id": "path+file:///home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri#branchline@0.2.0",
+        "linked_libs": [],
+        "linked_paths": [],
+        "cfgs": [
+          "branchline_git_worker",
+          "desktop"
+        ],
+        "env": [
+          [
+            "BRANCHLINE_GIT_WORKER_PATH",
+            "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker"
+          ],
+          [
+            "TAURI_ANDROID_PACKAGE_NAME_APP_NAME",
+            "review"
+          ],
+          [
+            "TAURI_ANDROID_PACKAGE_NAME_PREFIX",
+            "dev_branchline"
+          ],
+          [
+            "TAURI_ENV_TARGET_TRIPLE",
+            "x86_64-pc-windows-msvc"
+          ]
+        ],
+        "out_dir": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/e793e4ef53fe4b3b/out"
+      },
+      "tauri_build_script": {
+        "reason": "build-script-executed",
+        "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri@2.11.6",
+        "linked_libs": [],
+        "linked_paths": [],
+        "cfgs": [
+          "custom_protocol",
+          "desktop"
+        ],
+        "env": [],
+        "out_dir": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/tauri/57899f7073bfa967/out"
+      },
+      "dist_files": {
+        "dist/web/assets/index-BqGvfgEY.js": {
+          "sha256": "bd660dbbd417b96e21abef95d7ea690a5c66b5b0f650012acaa733d33ce8dc5c",
+          "bytes": 280646
+        },
+        "dist/web/assets/index-BwaTx77s.css": {
+          "sha256": "fe8e00190be638204c55e1aaabe1c7f461f2be84e999c4d410b62ff8d195b206",
+          "bytes": 28169
+        },
+        "dist/web/index.html": {
+          "sha256": "f7d1f13a8d58030d2ee983b5dae6c5d8451c864afad1fef12202155e857caa81",
+          "bytes": 12469
+        }
+      },
+      "generated_assets": [
+        {
+          "path": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/e793e4ef53fe4b3b/out/tauri-codegen-assets/6c70ea0a0b72b72484928bb5868ad42b996b947185a790aa1708dd5baceb4f9c.css",
+          "sha256": "4a4414fdc850125e10aa0d3224023d56c53be05ca058f46c62d93c2e36089157",
+          "bytes": 6759,
+          "entire_blob_in_gui": true
+        },
+        {
+          "path": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/e793e4ef53fe4b3b/out/tauri-codegen-assets/6cd20e90bab5a40d786a1311716c2e570f9ecad751222a6f9b58348e8a657e32.html",
+          "sha256": "66a301a425aec34d110b0acd56b2cfab16453113e11e2944dfd03f0b5b8a8b89",
+          "bytes": 2465,
+          "entire_blob_in_gui": true
+        },
+        {
+          "path": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/e793e4ef53fe4b3b/out/tauri-codegen-assets/a7c9b22bceabebf04a8f8335987ecc69bbe7b8e9cfc955417fabe7f8676b3ba4.js",
+          "sha256": "bf0296456a3a886475c4ef0b285e45849c99dfea89dc51fa94db8dabb2db4305",
+          "bytes": 88945,
+          "entire_blob_in_gui": true
+        }
+      ],
+      "production_dependency_features_verified": true,
+      "root_feature_list_required": false
+    },
+    "imports": [
+      "kernel32.dll",
+      "ws2_32.dll",
+      "user32.dll",
+      "bcryptprimitives.dll",
+      "ole32.dll",
+      "comctl32.dll",
+      "shell32.dll",
+      "ntdll.dll",
+      "api-ms-win-core-synch-l1-2-0.dll",
+      "gdi32.dll",
+      "dwmapi.dll",
+      "shlwapi.dll",
+      "advapi32.dll",
+      "oleaut32.dll",
+      "secur32.dll"
+    ],
+    "static_crt_import_check": true
+  },
+  "linux_gui": {
+    "path": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+    "sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+    "bytes": 23257808,
+    "embedded_helper_sha256": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+    "embedded_helper_verified": true,
+    "renderer": "production default",
+    "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/release/branchline",
+    "producer_fresh": false,
+    "packaged_assets": {
+      "tauri_producer": {
+        "reason": "compiler-artifact",
+        "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri@2.11.6",
+        "manifest_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.6/Cargo.toml",
+        "target": {
+          "kind": [
+            "lib"
+          ],
+          "crate_types": [
+            "lib"
+          ],
+          "name": "tauri",
+          "src_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.6/src/lib.rs",
+          "edition": "2021",
+          "doc": true,
+          "doctest": true,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "3",
+          "debuginfo": 0,
+          "debug_assertions": false,
+          "overflow_checks": false,
+          "test": false
+        },
+        "features": [
+          "common-controls-v6",
+          "compression",
+          "custom-protocol",
+          "dbus",
+          "default",
+          "dynamic-acl",
+          "tauri-runtime-wry",
+          "webkit2gtk",
+          "webview2-com",
+          "wry",
+          "x11"
+        ],
+        "filenames": [
+          "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri/b2a8e6f07e573d22/out/libtauri-b2a8e6f07e573d22.rlib",
+          "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri/b2a8e6f07e573d22/out/libtauri-b2a8e6f07e573d22.rmeta"
+        ],
+        "executable": null,
+        "fresh": true
+      },
+      "macros_producer": {
+        "reason": "compiler-artifact",
+        "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri-macros@2.6.3",
+        "manifest_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/Cargo.toml",
+        "target": {
+          "kind": [
+            "proc-macro"
+          ],
+          "crate_types": [
+            "proc-macro"
+          ],
+          "name": "tauri_macros",
+          "src_path": "/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-macros-2.6.3/src/lib.rs",
+          "edition": "2021",
+          "doc": true,
+          "doctest": true,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "0",
+          "debuginfo": 0,
+          "debug_assertions": false,
+          "overflow_checks": false,
+          "test": false
+        },
+        "features": [
+          "compression",
+          "custom-protocol"
+        ],
+        "filenames": [
+          "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri-macros/1e663dfcea5f4f70/out/libtauri_macros-1e663dfcea5f4f70.so"
+        ],
+        "executable": null,
+        "fresh": true
+      },
+      "root_library_producer": {
+        "reason": "compiler-artifact",
+        "package_id": "path+file:///home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri#branchline@0.2.0",
+        "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+        "target": {
+          "kind": [
+            "lib"
+          ],
+          "crate_types": [
+            "lib"
+          ],
+          "name": "branchline",
+          "src_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/src/lib.rs",
+          "edition": "2021",
+          "doc": true,
+          "doctest": true,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "3",
+          "debuginfo": 0,
+          "debug_assertions": false,
+          "overflow_checks": false,
+          "test": false
+        },
+        "features": [],
+        "filenames": [
+          "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/baf16e45ab6efb27/out/libbranchline-baf16e45ab6efb27.rlib",
+          "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/baf16e45ab6efb27/out/libbranchline-baf16e45ab6efb27.rmeta"
+        ],
+        "executable": null,
+        "fresh": false
+      },
+      "root_build_script": {
+        "reason": "build-script-executed",
+        "package_id": "path+file:///home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri#branchline@0.2.0",
+        "linked_libs": [],
+        "linked_paths": [],
+        "cfgs": [
+          "branchline_git_worker",
+          "desktop"
+        ],
+        "env": [
+          [
+            "BRANCHLINE_GIT_WORKER_PATH",
+            "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe"
+          ],
+          [
+            "TAURI_ANDROID_PACKAGE_NAME_APP_NAME",
+            "review"
+          ],
+          [
+            "TAURI_ANDROID_PACKAGE_NAME_PREFIX",
+            "dev_branchline"
+          ],
+          [
+            "TAURI_ENV_TARGET_TRIPLE",
+            "x86_64-unknown-linux-gnu"
+          ]
+        ],
+        "out_dir": "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/20304e16f3bcab3e/out"
+      },
+      "tauri_build_script": {
+        "reason": "build-script-executed",
+        "package_id": "registry+https://github.com/rust-lang/crates.io-index#tauri@2.11.6",
+        "linked_libs": [],
+        "linked_paths": [],
+        "cfgs": [
+          "custom_protocol",
+          "desktop"
+        ],
+        "env": [],
+        "out_dir": "/home/max/workspace/diff-tool/src-tauri/target/release/build/tauri/bfeb6e963a2aad20/out"
+      },
+      "dist_files": {
+        "dist/web/assets/index-BqGvfgEY.js": {
+          "sha256": "bd660dbbd417b96e21abef95d7ea690a5c66b5b0f650012acaa733d33ce8dc5c",
+          "bytes": 280646
+        },
+        "dist/web/assets/index-BwaTx77s.css": {
+          "sha256": "fe8e00190be638204c55e1aaabe1c7f461f2be84e999c4d410b62ff8d195b206",
+          "bytes": 28169
+        },
+        "dist/web/index.html": {
+          "sha256": "f7d1f13a8d58030d2ee983b5dae6c5d8451c864afad1fef12202155e857caa81",
+          "bytes": 12469
+        }
+      },
+      "generated_assets": [
+        {
+          "path": "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/20304e16f3bcab3e/out/tauri-codegen-assets/6c70ea0a0b72b72484928bb5868ad42b996b947185a790aa1708dd5baceb4f9c.css",
+          "sha256": "4a4414fdc850125e10aa0d3224023d56c53be05ca058f46c62d93c2e36089157",
+          "bytes": 6759,
+          "entire_blob_in_gui": true
+        },
+        {
+          "path": "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/20304e16f3bcab3e/out/tauri-codegen-assets/6cd20e90bab5a40d786a1311716c2e570f9ecad751222a6f9b58348e8a657e32.html",
+          "sha256": "66a301a425aec34d110b0acd56b2cfab16453113e11e2944dfd03f0b5b8a8b89",
+          "bytes": 2465,
+          "entire_blob_in_gui": true
+        },
+        {
+          "path": "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/20304e16f3bcab3e/out/tauri-codegen-assets/a7c9b22bceabebf04a8f8335987ecc69bbe7b8e9cfc955417fabe7f8676b3ba4.js",
+          "sha256": "bf0296456a3a886475c4ef0b285e45849c99dfea89dc51fa94db8dabb2db4305",
+          "bytes": 88945,
+          "entire_blob_in_gui": true
+        }
+      ],
+      "production_dependency_features_verified": true,
+      "root_feature_list_required": false
+    }
+  },
+  "workers": {
+    "linux": {
+      "path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker",
+      "sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+      "bytes": 3967600,
+      "protocol": 1,
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/branchline-git-worker",
+      "producer_fresh": false
+    },
+    "windows": {
+      "path": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe",
+      "sha256": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+      "bytes": 2720768,
+      "protocol": 1,
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+      "producer_fresh": false,
+      "imports": [
+        "bcryptprimitives.dll",
+        "KERNEL32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "WS2_32.dll",
+        "ntdll.dll",
+        "ADVAPI32.dll",
+        "Secur32.dll"
+      ],
+      "static_crt_import_check": true
+    }
+  }
+}

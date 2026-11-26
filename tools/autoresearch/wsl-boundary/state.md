@@ -1,8 +1,61 @@
 # Campaign state
 
+Updated 2026-11-26 UTC on `ok`. Goal active; the 250 ms target is not met.
+
+## Latest checkpoint
+
+- All four integrated matrix cells completed: 24 valid processes and 1,272
+  correct samples. Fixtures, source identities and exact actor cleanup pass.
+  No build, benchmark, health-query or compiler job remains live.
+- Candidate `c2006e96` fails promotion: its primary branch p95 improves only
+  1.88%, and 20 frozen performance guards fail. The earlier qualifying one-cell
+  pilot remains separate. No samples were removed or pooled.
+- Full results are in `checkpoint-2026-11-26/`, including all raw action samples,
+  correctness reports and ten independently reconstructed source patches.
+  Manifest SHA256: `aa9c2a45ca6ae328fd50078e38f69699c4636ed2b1da15da32e78df5dcd0b84c`.
+  The archive has 1,201 artifacts, 616 JSON files, 48 JSONL files and no compiled
+  binaries. Maximum repository-relative path is 183 characters.
+- Application files remain unchanged from `ce75cd6`; no experimental runtime
+  change is promoted. Root-package Cargo cache metadata was invalidated after
+  the stale-artifact discovery. The host debug fingerprints have reversible
+  backups. VM Cargo cleaned only the four generated package profiles, with
+  all four shared GUI/worker entrypoints restored byte-for-byte. Immutable
+  baseline/candidate images and source files remain untouched. Shared target
+  entrypoints are still the last experimental images, not an installation;
+  a normal build now regenerates package metadata from its actual source.
+- Windows Git already has `core.fscache=true` in its system config. FSMonitor
+  and untracked-cache settings are unset. The read-only query preserved the
+  index, HEAD and config bytes and metadata. Do not repeat the proposed
+  fscache-enable experiment: its premise is false in this VM.
+
+## Exact next work
+
+1. Freeze a bounded A/A calibration before another GUI latency claim. The
+   current data has substantial tail variation, including unchanged execution
+   paths. Do not waive existing failures or repeat them until they pass. Keep
+   first-use, strictly repeated and fresh-process observations separate.
+2. Verify prepared native-cache candidate `89f50199` in
+   `build/experiments/native-cache-integrated/`. It is based on `ce75cd6` and
+   changes only `remote.rs`, byte-identical to the earlier `252dec` proposal.
+   Fresh KISS is clean, but this exact integrated source has run no tests or
+   native scores. Tests remain held until root explicitly releases them.
+3. Its ten worker input files are unchanged from the proven baseline. Reuse
+   GNU `328c0680` and PE `6a4067eb` only after verifying the actual bytes,
+   protocol and new GUI embeddings. Preserve the prior failed 252 GUI series
+   and all malformed-response lifecycle evidence. No acceptance is inherited.
+4. The branch-patch, index-path and UI candidates remain isolated and unscored
+   where noted. Do not combine them with a failed candidate or treat host-only
+   gates as a native GUI win. Do not modify the frozen charter or scorer.
+
+Do not restart old supervisors or use historical PIDs as live ownership. Leave
+borrowed SSH forward 19225 untouched. Do not flush OS caches, stop unrelated
+services, change the renderer, or disturb the host desktop.
+
+## Earlier campaign records
+
 Updated 2026-11-25 on host `ok`. Goal active; the 250 ms target is not met.
 
-## Current checkpoint
+## Previous checkpoint (2026-11-25)
 
 - Campaign branch: `codex/wsl-boundary-perf`. Application source is committed
   through `1135a59f3a51253709d652d1e4ec82fa8b32ce09`. Both native workers and
@@ -1033,3 +1086,329 @@ All changed VM source is present on ok. The new archive preserves portable
 patches, raw timing samples, native evidence and pending work. New four-source
 patch-chain reconstruction checks pass every recorded app-file hash. No candidate
 is promoted by this checkpoint, and the optimization goal remains unmet.
+
+
+## Goal resumed after ce75cd6 copy/push
+
+Previous turn made progress: copied all VM-changed source and native evidence to
+ok, verified 368 archive artifact hashes and four exact patch reconstructions,
+committed/pushed ce75cd6 and confirmed GitHub SHA. Goal remains active.
+
+Serial VM owner is root native build session61146, host82318/SSH82321, VM
+supervisor165337/start15194512. Bundle-r2 revalidated prior failed supervisor
+162933 absent; actual Git bundle bootstrap and source checks pass. Linux worker
+build completed; Windows worker child167008/start15204863 is compiling. No
+other VM work is authorized while this build/test/GUI supervisor remains live.
+Nativehelper agent prepares helper252 GUI A/B HOST-only; staged-anchor agent
+prepares metadata A/B and separate status confirmation HOST-only; command-native
+agent prepares e72 diagnostic HOST-only. No production/source/scorer changes.
+
+
+Staged metadata bundle-r2 native build is complete: session61146 exit0, host82318
+and VM165337/start15194512 plus children absent. All14 phases pass: Linux30unit
++1stdio, Windows28unit, both real kernel protocol2 proofs, both GUI builds and
+byte-verified opposite worker embeddings. Fixture guards/source remain exact.
+Full evidence and both GUIs/workers copied to bundle-r2/native-evidence/; receipt
+native-copy-receipt.json verifies every artifact. WindowsGUI86c90415…, LinuxGUI
+adda6c5f…, Linuxworkerd729e0ea…, Windowsworker8a72de49….
+
+Primary Windows→WSL metadata A/B run-20261125T231414353376Z is terminal0 with
+all6 valid processes and exact cleanup/source/fixture/ports/socket guards. It has
+3fresh processes per variant (3/3/20reps). Fresh Opens A1261.6/862.4/821.7 vs
+B1198.6/897.1/757.6ms. No OS-cold claim. Results are mixed and acceptance is
+being computed; no promotion. Nativehelper252 GUI A/B and separate status A4/B4
+confirmation are ready but unrun. Root holds VM idle while atomic-refresh host
+checks run; agents analyze data and inspect code only.
+
+
+Metadata primary A/B decision: all318 samples and cleanup/identity/fixture gates
+valid, but frozen acceptance fails. WorstOpenp95 improves only4.99%; medianOpen
+regresses4.02%. Four final20 p95/max guards fail. Do not promote. Read decision.md,
+summary.json and ipc-samples.json in the completed metadata run. Actual saved
+Staged shortcut eligibility/use is not proved in host artifacts; later one
+read-only boundaryProbe.state export can inspect staged: location head.
+
+Helper252 Windows→WSL GUI A/B run-20261125T231935352904Z completed session67823
+exit0, all6valid318samples and exact GUI/native worker/cache/source/fixture/socket
+cleanup guards pass. AOpen3091.1/727.6/728.2 vsBinitialinstall852.9, then Bhits
+603.3/586.3ms. Do not credit the entire first-control outlier as a stable gain.
+Native placement is proved by actual process image+ext4/9p and post-score SHA.
+Final20 branch-firstmax and branch-commentp95/max exceed10% guards; analysis is
+pending, no promotion. Unique native cache removed; borrowed19225 untouched.
+
+Root now owns serial status confirmation session34279, host94644 (see exact
+start ticks in status-wsl-control/confirmation/run-20261125T232342724804Z/state.json).
+Separate A4/B4 with20reps, original6runs remain separate, no pooling. No other
+VM work while active. Agent prepares actual GUI Open-phase diagnostic HOST-only;
+another agent analyzes helper raw IPC HOST-only. Atomic UI refresh87b7ad passes
+16 focused semantic cases, all5frontend suites/Vite and fresh KISS. Its own Git
+source identity is real pinnedb2; native behavior/timing remains unproved.
+Stable-file-tree69589c now also has fresh KISS and a prepared one-GUI build plan
+using the prior geometry build seam; not executed. No production/scorer changes.
+
+
+## Latest native profiling and next candidate
+
+Separate status A4/B4 confirmation is terminal0,242validsamples/2freshprocesses,
+all exactcleanup/source/fixture/socket/wrapper guards pass. Original branch-first
+B544 didnot recur (new B467 vs A repeated482; Afirst852 retained). New repeated
+WT-comment maxB591 vsA527 fails10%; extra64ms is foreground−14/remainder+78ms.
+No pooling, causal waiver or promotion. Summary/decision under confirmation run.
+
+E72 Windows Git construction diagnostic session86520 exited0: four A/B/B/A native
+workers allgraceful0/nativeGone, exact15-file wire/frozenpatch parity and rawguards
+pass. Full evidence copied git-command-cost-trace/native-evidence/ (tar d6894dfa…).
+Construction typically1–3ms; five serial no-index child sums266–318ms; repeated
+A805.7 vsinstrumentedB827.6ms retained as overhead/variance context. No command
+path cache justified. Childwork and duplicate scans dominate, not construction.
+
+Actual GUI Open diagnostic source29898a,WindowsGUI35a152eb,unchangedGNU328 built
+at fresh r2 after original archive omitted empty.git/refs. Host archive roundtrip
+now explicitly preserves all10Git directories and realb2 objects/206files/49app
+hashes. Build session43230 exit0,supervisor195419/start15401478+child195519 gone;
+source/helper/fixture/staticCRT checks pass; binary/evidence copied locally.
+Original runtime caller session25974 failed beforelaunch(PureWindowsPath import);
+fixed caller passed global-name check, exactprofile/newimage/listeners absence
+revalidation, and used fresh runtime-r2 output. Failures preserved, no appchange.
+
+Two diagnostic workflows completed sessions48342 and59065: oneprocess/7actions
+each,84fixedGUI-tag lines each, allnativecontent/comments/source/fixture/cleanup
+guards pass. First remoteHello345.5ms, second101.5; firstcompare746.7/588.6ms,
+later repeatedsamepair35–39ms. ScopedWT note lookup57–113ms. Parent spans include
+nestedstderr writes; loggingoverhead unmeasured/significantresidual, no GUIscore
+or launchAPI speedup claim. Paths runtime-r2/run-20261125T234105879589Z and
+run-20261125T234611476103Z. WslLaunch primary-source research is code-free; hold
+FFI prototype while larger branchdiff bottleneck is evaluated.
+
+Root native branch-vs-CLI probe session41449 exited0: four freshGNU328 workers
+firstbranch compare763.25/217.58/144.26/223.83ms, second34–38ms; four alternating
+native Linux Git raw+numstat children median24.17ms/CPU19.21 vsnativefirst
+median220.71ms/CPU215. All30 metadata/modes/OIDs/counts exactlymatch; index/config/
+HEAD rawguards unchanged; allLinuxworkers0/gone. NoOSflush/GUIclaim. Full source
+and evidence copied build/experiments/branch-native-vs-cli/; tarcef076a0….
+
+LinuxCLI branch candidatea4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5
+is a one-line !cfg!(target_os="linux") nativefilter on realownedb2 snapshot;
+Windows/otherplatforms staynative. Existing25worker+1stdio+70GUI pass/1ignored;
+fresh KISS simpleenough, exactsourceunchanged, allhostjobs terminal. Nativebuild
+for GNUworker+WindowsGUI and primarycanonical A/B being prepared HOST-only.
+
+Metadata saved-anchor eligibility read-only probe is terminal0/gone: exactd729
+worker returned validprotocol2 proof for actualseednote2; tuple andallfourlookup
+preconditions match. Raw DB/index/config/HEAD guards unchanged. No GUI/timing
+claim and no acceptancewaiver. Proof staged-anchor-metadata/eligibility-proof/.
+
+Root now owns f15 native Windows experiment session78936; see exactcontroller/SSH
+identities in parallel-untracked/native-owner.json. Serial MSVCworker+unitchecks
+then A/B/B/A first+5WTcomponent parity/timings only, noGUI. No otherVMwork while
+active. Atomic UI87b and filetree695 have prepared native build/pilot seams,
+unexecuted. Application source still1135, pushedcheckpointce75; no experimental
+candidate promoted and full250ms goal remains active/unmet.
+
+
+## Current correction and native Linux CLI recovery
+
+The f15 native component attempt is terminalfailed, notlive. Strictstderr guard
+rejected its stale e72 tracer PE (51510051...) and wrong stagedmetadata test
+executable. Actual Cargo fresh:true on the new manifest demonstrated frozen
+source mtimes/sharedtarget reuse. No f15 result is eligible. Original evidence
+retained; HOST-only R2 is preparing rootpackageclean +fresh:false producer and
+exacttestname binding. This is harness/source binding, not a production change.
+
+a4 LinuxCLI native GNUworker+WindowsGUI compilation and25+1native tests, three
+30-file metadata parity comparisons all passed. R2 supervisor197196/start15618879
+is absent, all exact phaseactors absent, all phases0, fixturebefore==after.
+Postcompile validator checked custom-protocol on the WRONG root featurelist;
+actual tauri2.11.6 dependency enables it and rootGUI lib/bin freshly compiled.
+Failure record preserved; read-only postbuild recovery being prepared. Native
+evidence and exact reported GUI copied local postbuild-input/ (archive1ba14671…).
+GUI6d19d864…/20,661,760B embeds exact GNU92d98807…;181snapshot/49apphashes and
+realHEAD rechecked. No rebuild or GUI scoring started. Hostcontroller31975 is
+terminal/unavailable; original localowner record reportsfailed.
+
+Delayedprogress57b8d4 HOSTchecks terminal0:3focusedasynccases, all5frontendfiles,
+Vite; fresh KISS simpleenough and exact49hashunchanged. Native unexecuted.
+Production source and pushedce75 checkpoint unchanged. Goal active/unmet.
+
+
+Linux CLI postbuild recovery completed without rebuild. Separate recovery.json
+SHA1bcae11954aee25e8ed06516e3a87a82898eb0af80e90da622dfc3c118c9e88f
+validates exact fresh GUIbin/lib, tauri+macro custom-protocol flags, allthree
+generated compressed asset blobs present in PE, staticCRT and freshGNU embedding.
+Original failedsupervisor bac4e311… unchanged. Cargo1.100 unit executable paths
+use release/build/package/hash/out; evaluator now binds reported paths+src+owned
+cache rather than assuming release/deps. Native source/tests/parity/guards remain.
+
+Root currently owns canonical a4 Windows→WSL A/B session10600, controller444112.
+Authoritative run: build/experiments/linux-cli-branch/evaluation-windows-wsl/
+run-20261126T002806794314Z/state.json. Sixfreshprocess A1/B1/A2/B2:3,A3/B3:20,
+unchangedcontract3db306b4…; no concurrentVM/hostheavy jobs allowed. No outcome
+until terminal and all exactcleanup guards. Other agents do HOST-only editing
+or read-only KISS. Next independent hypothesis removes serial rev-parse index
+path child via native privateGitdir/index when Git env overrides absent; no cache.
+
+
+## Qualified Linux CLI branch pilot, integration pending
+
+The primary Windows→WSL a4 pilot completed successfully. Session10600 exited0;
+controller444112 and private mux444125 are absent. All six launches and318samples
+pass native correctness, exact source/binary identity, fixture guards, comment
+visibility and cleanup. Socket removed; ports free. Original failed packaging
+assertion remains paired with the successful no-rebuild recovery proof.
+
+Final20 action p95 milliseconds, baseline → candidate:
+- First branch:197.4→161.9; final branch:148.5→118.1; stack:139.4→112.0.
+- Working tree:230.5→207.0.
+- Branch comment:227.3→179.9; working-tree comment:228.7→214.2.
+All candidate final20 maxima are below250ms. Open remains714.8/665.3/696.5ms,
+compared with1354.2/714.3/730.6ms. Median improvement is4.67%; preserve A1 outlier
+and do not call its large reduction a steady gain. Qualification instead has
+independent18–21% branch/branch-comment p95 improvements. Full frozen primary
+acceptance passes. Summary SHA22b24c71e1989bb9df2259c518774cff944f1d693826a036f7e1c2c1a684d3f4.
+See linux-cli-branch/evaluation-windows-wsl/run-20261126T002806794314Z.
+
+No promotion yet. Main includes1135 test fixes absent from the b2 pilot snapshot.
+Agent git_command_native_diagnostic now owns HOST-only integrated source/tests
+preparation at build/experiments/linux-cli-integrated/source, realHEADce75,
+canonical49hashc2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1.
+Only the a4 production line differs from main; all current tests are retained.
+Next: complete exact integrated HOST gates; build fresh GNU+WindowsGUI+LinuxGUI,
+reuse proven unchanged baseline PE, and evaluate all4cells on integrated source.
+No VM job currently live. Do not rebuild b2 pilot artifacts for missing cells.
+
+Independent index-path candidate47a2289c47378a2e0e159951218e27b973bd572ff376bddb035b0c0b733b9a08
+passes fresh HOST26worker+1stdio/71GUI+1ignored (five listener tests rerun against
+same pinned executable with loopback permission). Stale first HOST attempt is
+preserved and rejected. Fresh KISS simple enough. No native or scored result yet.
+
+f15 native-r2 is prepared with fresh KISS, archivec1f47d1c…, no runtime executed.
+Original failed native evidence copied to ok:10files/3,168,443bytes, archive
+78e5183e7a8eb4efbecd681588b08a44167eaeec387ab7b32587212b4772a340.
+Goal remains active: opening and other matrix cells still miss250ms.
+
+
+f15 repaired native R2 is terminal0 (session19120/controller458623, VM209392/
+start15787874 absent). Copied native evidence and binaries local. All28 exact
+Windows unit names/fresh:false root producers, four gracefulEOF0/nativeGone/
+zeroStderr workers, all24 frozen trees+patches, source/fixtures/rawguards pass.
+Repeated native WT p50 A837.96→B695.05ms; first835.65→692.76ms. Hello startup
+A125.54→B1208.01ms is a significant miss, not hidden. Derived existing raw clock
+offsets point to delay BEFORE nativeWindowsprocesscreation; response-end minus
+creation offsets vary only7ms acrossABBA. Relative-clock inference, cause
+unproved; do not attribute to Defender or call this a GUI winner. See
+parallel-untracked/native-r2/startup-offset-analysis.json. No promotion.
+
+Integrated c200 host gates are terminal0/fresh source-matched:25worker+1stdio,
+70GUI+1ignored. Earlier77 claim was stale; actual current source suite70 is
+authoritative. Native integratedWindows expectedunitcount23 (statusd5/f15/
+stagedmetadata unpromoted candidates have additional tests; do not mix counts).
+All4native artifacts will be freshly compiled from integrated source. Build
+controls being prepared by git_command_native_diagnostic and its children.
+VM slot is now free. No other benchmark/build is running.
+
+
+## Live integrated build ownership
+
+Root released exact integrated c200 native build. Tool session36761 is live;
+HOSTcontroller467853/start77644745, SSH468061/start77644796; upload467958 exited0.
+Authority: build/experiments/linux-cli-integrated/native-build/native-build-supervisor.json.
+Input archive052a2e9ecb7b7a7c1cee91946a754b3912715087b7ca5a1326542948f3064ee3
+(2,181,120bytes), realce75bundle1509cbcd…, canonical49+twoicons51buildinputs.
+Mandatory host extraction/realGit/noalternates/source49 roundtrip passed before
+SSH. FreshGNU25+1/PE23tests, bothGUIlib+bin producers, actualpackagedassets,
+staticworkers/WinCRT, byteembedding and3×30 metadata comparisons perOS gate
+the completed record. No timing outcome while build is live. Wait same session;
+never launch another copy after timeout. Original b2a4 packagingfailure and
+recovery remain separate. No other VM build or benchmark is live.
+
+git_command_native_diagnostic owns integrated buildprep and child matrixcontrols
+under linux-cli-integrated/evaluation-controls/; preparation only during build.
+linux_patch_path_audit prepares a next isolated candidate from c200: Linux
+branch-patch CLI selection plus branchdisplaypatch-after-reopen regression,
+all tests/builds held. Existing primaryIPC shows display_patch p95 branch_first
+A13.6→B53.3ms and branchcomment16.1→58.3ms, consistent with lost native warmup
+when CLI obtains stats. This is a new unscored hypothesis, not a claim.
+Do not mix it into integrated c200 evaluation. Production main unchanged.
+
+
+## Integrated build passed; Windows matrix live
+
+Integrated native build session36761 exited0. VM supervisor210069/start15838341
+and all exact childactors absent, fixtures/source unchanged. All4binaries and
+evidence copied locally. Progressread21936 also exited0. Sourcec200/HEADce75
+verified; GNU25+1/PE23testnames,9freshrootproducerrecords, statichelpers/WinCRT,
+Tauriassetsandembeds,3×30metadata perOS allpass. Three local adapter prepare
+checks passed with native_build_ready:true before anytiming.
+Artifact hashes:
+- GNU92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd.
+- PEc06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd.
+- LinuxGUI d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a.
+- WindowsGUI eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25.
+
+Root now owns Windows2cell matrix toolsession85204/controller595083. Authority:
+linux-cli-integrated/evaluation-controls/windows/run-20261126T010119508886Z/state.json.
+Twelvefreshprocesses6percell, 3/3/20reps, frozenprotocol/oldpilotsnotpooled.
+No other benchmark/build/resourceheavy work. Wait same handle; never duplicate.
+After successful exactcleanup, run evaluate-linux.py serially for wsl_linux and
+wsl_windows with release 'VM INTEGRATED LINUX MATRIX RELEASED'. Do not promote
+before full integrated validation. Goal stillnot achieved.
+
+A slow build-time SSHprogress read prompted read-only VMhealth checks. QMP VM
+running/8GB; guestagent pingfine, Windowsfree570MB/WSL3.64GB atthatpoint. SYSTEM
+guestagent UNCread denied; ordinaryOSpermission, notapprovalreview. No settings
+changed and no processes killed; SSHmax progress later returned builtstatus.
+Ownedguesthealth processes10860/9620 exited0/1, allQMP/QGA connections closed.
+Do not restartVMorWSL because of stale build-time diagnostics. Borrowedforward
+19225 remained untouched.
+
+Next patchcandidate fcc050e9843ae3caa7826a00cbbd684ecc6e8805ce12994f364e21dc96d5e704
+prepared fromc200; LinuxpatchCLI plus8statementsinexistingstdio regression.
+No tests/build/scoring. Fresh no-history KISS agent linux_branch_patch_kiss
+reviewing final incremental diff. Keep separateuntilc200validation completes.
+
+
+## Latest matrix checkpoint and exact next action
+
+Windows2cell integratedseries session85204 is terminal0:12validprocesses,636
+samples, fixtures/source/cleanup good; controller595083/master595088 absent,
+private socket/port free. Summary4bcdcb0143b614694b284f302934d79349da78ee6723a6d893aa5fbb82d90916
+at linux-cli-integrated/evaluation-controls/windows/run-20261126T010119508886Z.
+Partial qualification FAILS: primarybranchgroup p95gain1.88%, WT p95220.9→278.1,
+WTcomment244.1→337.1. All6WindowsNTFS actionp95guards fail(+29.75–59.38%),
+whilemedianspass. CandidateprimaryB3Open1996.7ms=FG1858.7/remainder138; native
+Open1424/patch434.7. FailedWTp95 FG176.8→234.3/remainder44.1→43.8; WTcomment
+FG198.5→285.3/rem45.6→51.8. Thusdonotblamerenderingorcallnoise/AVcauseproved.
+Olda4pilot20%gainnotreplicated; retainbothseriesseparately. No promotion.
+
+Root now owns WSLGUI→Windows NTFS serialseries tool29588/controller735544.
+Authority: linux-cli-integrated/evaluation-controls/wsl_windows/
+run-20261126T011418639510Z/state.json. Atlastpoll all6runrecords complete-valid-
+stopped but globalfinally/fixtures/mux cleanup still pending; tool stilllive.
+Waitsame29588 toterminal before anotherVMjob. A3repeatedWTp953204ms, B3p952882;
+branch/stack tailnoise/highlatency remains, do notqualifyuntilsummary.
+Afterterminal0andexactcleanup, run FINALcell:
+python3 -u build/experiments/linux-cli-integrated/evaluate-linux.py --case wsl_linux --release 'VM INTEGRATED LINUX MATRIX RELEASED'
+Thenanalyzeall4underunchangedprotocol,1272totalexpectedsamples. Do notstop
+earlyorwaivefailedWindowsgates. Entiregoalstillactive/unmet.
+
+User askedSitrep duringrun; repliedthatbuilds/testspass, primarybranch138–225ms
+p95, WT278–337ms, Open0.8–2s, checkpointce75pushed, candidatesunpromoted; continued.
+
+Futurework aftermatrix: independentGitFSMonitor/fscache primary-source audit
+(agentgit_fsmonitor_feasibility, read-only/noVM) recommends FIRST safeconfigquery
+againstpinnedWindowsGit: config --show-origin --get core.fscache. Installer
+default enablesitbutcompileddefaultfalse; effectiveVMvalueNOTYETCHECKED. If
+unset/false, pairedcommand-onlycore.fscache=true componentprobe beforecomplex
+changes. NativeFSMonitorprivateindexiswarm-cache-only: mustallowwritesonly
+ownedindexforFSMNtoken/bitmap; originalindexexternalstage/commitrequiresrecopy
+andfullscan; initialdaemon/restartalsocoldscan. Sharedgitdirdaemonwrites
+.git/fsmonitor--daemon/cookies andownershipnotisolatedbyGIT_INDEX_FILE; donot
+stop existingdaemon. No code/config/workload changesmade andnofastcoldclaim.
+Primarysources: git-scm.com/docs/git andGitHubgit/git fsmonitor.c,
+builtin/commit.c,builtin/fsmonitor--daemon.c;git-for-windows/git compat/win32/
+fscache.c andbuild-extra/installer/install.iss.
+
+Nextpatchcandidatefcc050... hasfreshno-historyKISS simpleenough from
+/root/linux_branch_patch_kiss; receipt linux-cli-branch-patch/kiss.json.
+Tests/buildsstillhelduntilcurrentmatrixcomplete; no sourcechanged.
+Mainonlystate/resultsmodified; no newproductioncommit/push afterce75.

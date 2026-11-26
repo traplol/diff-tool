@@ -1,0 +1,27 @@
+{
+  "files": {
+    "/home/max/benchmarks/branchline-boundary/helper-gui-ab-cache/run-20261125T231935352904Z/branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+      "bytes": 3969568,
+      "ctime_ns": 1795648854397941356,
+      "device": 2096,
+      "exists": true,
+      "inode": 316404,
+      "mode": "0o755",
+      "mtime_ns": 1795648826529940904
+    },
+    "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/git-workers/branchline-git-worker-328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa": {
+      "bytes": 3969568,
+      "ctime_ns": 1795627806285832400,
+      "device": 87,
+      "exists": true,
+      "inode": 3377699720889874,
+      "mode": "0o777",
+      "mtime_ns": 1795627806274878600
+    }
+  },
+  "label": "native-cache hit in a fresh process; no pre-Open hash/read/exec",
+  "metadata_only": true,
+  "root_exists": true,
+  "temporary": [],
+  "workers": []
+}

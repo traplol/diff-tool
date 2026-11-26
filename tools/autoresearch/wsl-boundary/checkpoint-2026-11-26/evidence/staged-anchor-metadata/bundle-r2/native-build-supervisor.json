@@ -1,0 +1,81 @@
+{
+  "pid": 82318,
+  "started": 1795647649.6079001,
+  "status": "native workers/checks and requested GUI builds complete; GUI scoring pending",
+  "release": "VM STAGED BUILD RELEASED",
+  "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+  "archive": {
+    "build_plan_sha256": "24cf5c843d65a37194257e580626d65afcbf936a0c4a4f40cb2cbf348c495feb",
+    "bundle_sha256": "e7b7d43e9147b2d72fdb64e49e6bbc23cb11dcddadd8f12d70a99d44c8ad6248",
+    "bytes": 3164160,
+    "host_launcher_sha256": "f3b831f96374a0b7c367d12b93f22366e9fe1e91c8b41decda21b21e0d1e7096",
+    "name": "staged-anchor-metadata-aba80d920269-bundle-r2-input.tar",
+    "path": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/staged-anchor-metadata-aba80d920269-bundle-r2-input.tar",
+    "sha256": "c13e2858b232dab788674f517c861d34624c3e919751911da622751861419c02",
+    "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+    "status": "host-verified only; no VM retry executed",
+    "vm_supervisor_sha256": "7378aa16cb3f4ce969b725e873e73bf097e9f835a6c5b876b54fcabc400fadce"
+  },
+  "phases": [
+    {
+      "name": "previous-supervisor-revalidation",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "MSYS_NO_PATHCONV=1 wsl.exe --distribution Ubuntu-26.04 --user max --exec /usr/bin/python3 -c 'import json,pathlib; r=json.loads(pathlib.Path('\"'\"'/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-native/supervisor.json'\"'\"').read_text()); assert r[\"pid\"] == 162933; assert r[\"source\"][\"source_hash\"] == '\"'\"'aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404'\"'\"'; assert r[\"input\"] == '\"'\"'/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-input'\"'\"'; assert r[\"status\"] == \"failed\" and not r[\"phases\"]; p=pathlib.Path(\"/proc\")/str(r[\"pid\"])/\"stat\"; current=p.read_text().rsplit(\") \",1)[1].split()[19] if p.exists() else None; assert current != r[\"start_ticks\"], \"Previous exact supervisor remains live; refusing retry\"; print(json.dumps({\"pid\":r[\"pid\"],\"recorded_start_ticks\":r[\"start_ticks\"],\"current_start_ticks\":current,\"exact_previous_supervisor_absent\":True}))'"
+      ],
+      "started": 1795647649.6080587,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/previous-supervisor-revalidation.log",
+      "pid": 82319,
+      "exit": 0,
+      "finished": 1795647650.0866446
+    },
+    {
+      "name": "staged-upload-input",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "cat > /c/Users/max/branchline-bench/staged-anchor-metadata-aba80d920269-bundle-r2-input.tar"
+      ],
+      "started": 1795647650.0881624,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/staged-upload-input.log",
+      "pid": 82320,
+      "exit": 0,
+      "finished": 1795647650.3880997
+    },
+    {
+      "name": "staged-vm-build",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "MSYS_NO_PATHCONV=1 wsl.exe --distribution Ubuntu-26.04 --user max --exec /bin/sh -lc 'export PATH=\"$HOME/.cargo/bin:$PATH\"; exec /usr/bin/python3 -u -c '\"'\"'import hashlib, os, pathlib, tarfile; a=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'/mnt/c/Users/max/branchline-bench/staged-anchor-metadata-aba80d920269-bundle-r2-input.tar'\"'\"'\"'\"'\"'\"'\"'\"'); assert hashlib.sha256(a.read_bytes()).hexdigest() == '\"'\"'\"'\"'\"'\"'\"'\"'c13e2858b232dab788674f517c861d34624c3e919751911da622751861419c02'\"'\"'\"'\"'\"'\"'\"'\"'; p=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input'\"'\"'\"'\"'\"'\"'\"'\"'); p.mkdir(exist_ok=False); tarfile.open(a).extractall(p, filter=\"data\"); os.execv(\"/usr/bin/python3\", [\"/usr/bin/python3\", \"-u\", str(p/\"vm-build-supervisor.py\"), '\"'\"'\"'\"'\"'\"'\"'\"'--release'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'VM STAGED BUILD RELEASED'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'--input'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-input'\"'\"'\"'\"'\"'\"'\"'\"', '\"'\"'\"'\"'\"'\"'\"'\"'--windows-gui'\"'\"'\"'\"'\"'\"'\"'\"'])'\"'\"''"
+      ],
+      "started": 1795647650.3884645,
+      "log": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/staged-vm-build.log",
+      "pid": 82321,
+      "exit": 0,
+      "finished": 1795648364.457943
+    }
+  ],
+  "host_checks": "reused unchanged successful 78 GUI + 30 worker + 1 stdio proof",
+  "windows_gui_requested": true,
+  "finished": 1795648364.4582975
+}

@@ -1,0 +1,8 @@
+{
+  "result": "simple enough",
+  "agent": "/root/native_helper_deployment/cmd_kiss",
+  "scope": "KISS only, host read-only final production diff",
+  "app_source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "patch_sha256": "5f87970efa96215e2965d90cbfcbfdace5ed725eac9e43b8a6e0fce05e2c38a7",
+  "time_utc": "2026-11-25T20:27:18.189937+00:00"
+}

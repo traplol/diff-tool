@@ -1,0 +1,295 @@
+--- a/src-tauri/src/git/remote.rs
++++ b/src-tauri/src/git/remote.rs
+@@ -18,6 +18,22 @@
+         Arc, Mutex, OnceLock, Weak,
+     },
+ };
++
++// Diagnostic-only fixed tags; stderr failures must not change request results.
++fn open_phase<T>(tag: &'static str, call: impl FnOnce() -> T) -> T {
++    use std::io::Write;
++    let started = std::time::Instant::now();
++    let result = call();
++    let elapsed_us = started.elapsed().as_micros();
++    let _ = writeln!(
++        std::io::stderr().lock(),
++        "gui_open_phase pid={} tag={} elapsed_us={}",
++        std::process::id(),
++        tag,
++        elapsed_us
++    );
++    result
++}
+ 
+ static WORKERS: OnceLock<Mutex<HashMap<PathBuf, Weak<Worker>>>> = OnceLock::new();
+ #[cfg(branchline_git_worker)]
+@@ -339,40 +355,49 @@
+ 
+ impl Worker {
+     fn start(location: Location) -> Result<Self> {
+-        #[cfg(all(test, unix))]
+-        let helper = match &location {
+-            Location::Fixture { program, .. } => program.clone(),
+-            _ => helper_path()?,
+-        };
+-        #[cfg(not(all(test, unix)))]
+-        let helper = helper_path()?;
+-        let mut connection = Connection::start(location.command(&helper)?)?;
+-        let hello = connection.request(&worker::Request::Hello)?;
+-        if hello["protocol"].as_u64() != Some(worker::PROTOCOL.into())
+-            || hello["os"].as_str() != Some(location.os())
+-        {
+-            return Err(
+-                "The embedded Git storage worker is incompatible with this application.".into(),
+-            );
+-        }
+-        let opened: worker::OpenResult =
+-            serde_json::from_value(connection.request(&worker::Request::Open {
+-                path: super::path_name(Path::new(location.root())),
+-            })?)
+-            .map_err(|error| format!("Invalid Git worker repository metadata: {error}"))?;
+-        let execution_root = opened.repo.root.clone();
+-        let logical_root = location.logical_path(&execution_root)?;
+-        let git_executable = opened.git_executable.clone();
+-        connection.initial = Some(opened);
+-        Ok(Self {
+-            location,
+-            execution_root,
+-            logical_root,
+-            git_executable,
+-            #[cfg(target_os = "linux")]
+-            git_program: OnceLock::new(),
+-            connection: Mutex::new(connection),
+-            valid: AtomicBool::new(true),
++        open_phase("remote.start", || {
++            #[cfg(all(test, unix))]
++            let helper = match &location {
++                Location::Fixture { program, .. } => program.clone(),
++                _ => open_phase("remote.helper_path", helper_path)?,
++            };
++            #[cfg(not(all(test, unix)))]
++            let helper = open_phase("remote.helper_path", helper_path)?;
++            let command = open_phase("remote.location_command", || location.command(&helper))?;
++            let mut connection =
++                open_phase("remote.connection_start", || Connection::start(command))?;
++            let hello = open_phase("remote.hello", || {
++                connection.request(&worker::Request::Hello)
++            })?;
++            if hello["protocol"].as_u64() != Some(worker::PROTOCOL.into())
++                || hello["os"].as_str() != Some(location.os())
++            {
++                return Err(
++                    "The embedded Git storage worker is incompatible with this application.".into(),
++                );
++            }
++            let opened: worker::OpenResult = open_phase("remote.open", || {
++                serde_json::from_value(connection.request(&worker::Request::Open {
++                    path: super::path_name(Path::new(location.root())),
++                })?)
++                .map_err(|error| format!("Invalid Git worker repository metadata: {error}"))
++            })?;
++            let execution_root = opened.repo.root.clone();
++            let logical_root = open_phase("remote.logical_mapping", || {
++                location.logical_path(&execution_root)
++            })?;
++            let git_executable = opened.git_executable.clone();
++            connection.initial = Some(opened);
++            Ok(Self {
++                location,
++                execution_root,
++                logical_root,
++                git_executable,
++                #[cfg(target_os = "linux")]
++                git_program: OnceLock::new(),
++                connection: Mutex::new(connection),
++                valid: AtomicBool::new(true),
++            })
+         })
+     }
+ 
+@@ -381,7 +406,20 @@
+             .connection
+             .lock()
+             .map_err(|_| "The Git storage worker lock failed. Reopen the repository.")?;
+-        let result = connection.request(request);
++        let tag = match request {
++            worker::Request::Compare { .. } => "remote.request.compare",
++            worker::Request::CompareTrees { .. } => "remote.request.compare_trees",
++            worker::Request::WorkingTree { .. } => "remote.request.working_tree",
++            worker::Request::WorkingTreePaths { .. } => "remote.request.working_tree_paths",
++            worker::Request::MergeBase { .. } => "remote.request.merge_base",
++            worker::Request::Descends { .. } => "remote.request.descends",
++            worker::Request::Blob { .. } => "remote.request.blob",
++            worker::Request::Patch { .. } => "remote.request.patch",
++            worker::Request::DisplayPatch { .. } => "remote.request.display_patch",
++            worker::Request::CheckoutState => "remote.request.checkout_state",
++            _ => "remote.request.other",
++        };
++        let result = open_phase(tag, || connection.request(request));
+         if !connection.valid {
+             self.valid.store(false, Ordering::Relaxed);
+         }
+--- a/src-tauri/src/service.rs
++++ b/src-tauri/src/service.rs
+@@ -11,6 +11,22 @@
+     path::{Path, PathBuf},
+     sync::Arc,
+ };
++
++// Diagnostic-only fixed tags; stderr failures must not change request results.
++fn open_phase<T>(tag: &'static str, call: impl FnOnce() -> T) -> T {
++    use std::io::Write;
++    let started = std::time::Instant::now();
++    let result = call();
++    let elapsed_us = started.elapsed().as_micros();
++    let _ = writeln!(
++        std::io::stderr().lock(),
++        "gui_open_phase pid={} tag={} elapsed_us={}",
++        std::process::id(),
++        tag,
++        elapsed_us
++    );
++    result
++}
+ 
+ type Pair = [String; 2];
+ 
+@@ -271,28 +287,33 @@
+         store: &Store,
+         token: u64,
+     ) -> Result<(Self, Value), String> {
+-        let mut next = Self {
+-            repo,
+-            stack,
+-            current: None,
+-            search_comparisons: Default::default(),
+-            notes: vec![],
+-            locations: BTreeMap::new(),
+-        };
+-        let result = git::compare(&next.repo, &pair[0], &pair[1]);
+-        let error = result.as_ref().err().cloned();
+-        next.current = result.ok().map(Arc::new);
+-        next.reload_notes(store)?;
+-        let viewed = next
+-            .current
+-            .as_ref()
+-            .map(|c| store.viewed(&next.repo, c))
+-            .transpose()?
++        open_phase("session.load", || {
++            let mut next = Self {
++                repo,
++                stack,
++                current: None,
++                search_comparisons: Default::default(),
++                notes: vec![],
++                locations: BTreeMap::new(),
++            };
++            let result = open_phase("session.compare", || {
++                git::compare(&next.repo, &pair[0], &pair[1])
++            });
++            let error = result.as_ref().err().cloned();
++            next.current = result.ok().map(Arc::new);
++            open_phase("session.reload_notes", || next.reload_notes(store))?;
++            let viewed = open_phase("session.viewed", || {
++                next.current
++                    .as_ref()
++                    .map(|c| store.viewed(&next.repo, c))
++                    .transpose()
++            })?
+             .unwrap_or_default();
+-        let response = json!({"snapshot":token,"repo":next.repo,"stack":next.stack,"pair":pair,
+-            "comparison":next.current.as_deref(),"notes":next.notes,"locations":next.locations,"viewed":viewed,
+-            "error":error});
+-        Ok((next, response))
++            let response = json!({"snapshot":token,"repo":next.repo,"stack":next.stack,"pair":pair,
++                "comparison":next.current.as_deref(),"notes":next.notes,"locations":next.locations,"viewed":viewed,
++                "error":error});
++            Ok((next, response))
++        })
+     }
+     fn export(&self, store: Option<&Store>, entire: bool) -> Result<Value, String> {
+         let saved = store.and_then(|s| s.notes(&self.repo).ok());
+@@ -398,7 +419,7 @@
+             }
+             _ => {}
+         }
+-        let mut store = match Store::open() {
++        let mut store = match open_phase("workspace.store_open", Store::open) {
+             Ok(store) => store,
+             Err(e) => {
+                 if let (Some(s), Request::Export { entire }) = (&self.session, &request) {
+@@ -419,25 +440,33 @@
+         store: &mut Store,
+     ) -> Result<Value, String> {
+         if let Request::Open { path, pair } = request {
+-            let repo = git::open_repo(PathBuf::from(git::path_arg(&path)?).as_path())?;
+-            let (settings, warning) = repo_settings(&repo, store, &self.settings_file()?)?;
+-            let stack = open_stack(&repo, &settings.repositories[&git::path_name(&repo.root)])?;
+-            let choices = pairs(&repo, &stack);
+-            let pair = match pair {
+-                Some(previous) if previous[1] == WORKTREE => {
+-                    [repo.checkout.clone(), WORKTREE.into()]
+-                }
+-                Some(previous) if choices.contains(&previous) => previous,
+-                _ => choices[0].clone(),
+-            };
+-            let token = self.snapshot + 1;
+-            let (session, mut data) = Session::load(repo, stack, pair, store, token)?;
+-            data["width"] = json!(settings.sidebar_width.unwrap_or(320));
+-            data["diff_layout"] = json!(settings.diff_layout);
+-            data["config_warning"] = json!(warning);
+-            self.snapshot = token;
+-            self.session = Some(session);
+-            return Ok(data);
++            return open_phase("workspace.open", || {
++                let repo = open_phase("workspace.git_open_repo", || {
++                    git::open_repo(PathBuf::from(git::path_arg(&path)?).as_path())
++                })?;
++                let (settings, warning) = open_phase("workspace.repo_settings", || {
++                    repo_settings(&repo, store, &self.settings_file()?)
++                })?;
++                let stack = open_phase("workspace.open_stack", || {
++                    open_stack(&repo, &settings.repositories[&git::path_name(&repo.root)])
++                })?;
++                let choices = pairs(&repo, &stack);
++                let pair = match pair {
++                    Some(previous) if previous[1] == WORKTREE => {
++                        [repo.checkout.clone(), WORKTREE.into()]
++                    }
++                    Some(previous) if choices.contains(&previous) => previous,
++                    _ => choices[0].clone(),
++                };
++                let token = self.snapshot + 1;
++                let (session, mut data) = Session::load(repo, stack, pair, store, token)?;
++                data["width"] = json!(settings.sidebar_width.unwrap_or(320));
++                data["diff_layout"] = json!(settings.diff_layout);
++                data["config_warning"] = json!(warning);
++                self.snapshot = token;
++                self.session = Some(session);
++                Ok(data)
++            });
+         }
+         if snapshot != Some(self.snapshot) {
+             return Err("The review changed. Open the file again.".into());
+@@ -518,7 +547,10 @@
+                 return Ok(json!(git::revision_file(&s.repo, &revision, &path)?));
+             }
+             Request::CommentFile { id } => {
+-                let note = s.notes.iter().find(|note| note["id"] == id)
++                let note = s
++                    .notes
++                    .iter()
++                    .find(|note| note["id"] == id)
+                     .ok_or("This comment has been removed.")?;
+                 let branch = if review::s(note, "right") == WORKTREE {
+                     review::s(note, "left")
+@@ -531,7 +563,8 @@
+                     branch
+                 };
+                 let current = s.repo.refs.get(reference).and_then(|revision| {
+-                    let file = git::revision_file(&s.repo, revision, review::s(note, "path")).ok()?;
++                    let file =
++                        git::revision_file(&s.repo, revision, review::s(note, "path")).ok()?;
+                     Some(json!({"revision":revision,"branch":branch,"file":file}))
+                 });
+                 return Ok(json!(current));

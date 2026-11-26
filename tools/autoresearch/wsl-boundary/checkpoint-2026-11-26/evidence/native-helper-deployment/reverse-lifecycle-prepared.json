@@ -1,0 +1,17 @@
+{
+  "status": "host-only prepared and syntax parsed; not executed",
+  "controller": "/home/max/workspace/merge-viewer-native/build/experiments/native-helper-deployment/reverse-windows-lifecycle.py",
+  "sha256": "820cc180265fc1c197f8c54849be261c191c28b4d1b21f21faab4fef5ce53f1e",
+  "native_binary_sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+  "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "cases": [
+    "raw real GNU worker idle/busy EOF and server-invalid-request recovery",
+    "abrupt GUI idle",
+    "abrupt GUI busy during real read-only Git child (bounded OS signal barrier)",
+    "abrupt MCP idle",
+    "abrupt MCP busy during real read-only Git child (bounded OS signal barrier)"
+  ],
+  "safety": "exact exe/PID/start and native creation checks; stopped read child is always resumed, with10s self-resume watchdog; no builds/scoring/forward reruns",
+  "malformed_response": "Actual client malformed-response injection remains explicitly unproved; no broad fixture created",
+  "runtime_authorization": "awaiting new exclusive lifecycle release after root Windows controls/UI diagnostic"
+}

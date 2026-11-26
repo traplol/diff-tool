@@ -1,0 +1,102 @@
+{
+  "case": "wsl_linux",
+  "comments": [
+    {
+      "anchor": [
+        3434,
+        3434
+      ],
+      "body": "Boundary benchmark branch comment",
+      "id": 1,
+      "path": "kernel/fork.c"
+    },
+    {
+      "anchor": [
+        3438,
+        3438
+      ],
+      "body": "Boundary benchmark working-tree comment",
+      "id": 2,
+      "path": "kernel/fork.c"
+    }
+  ],
+  "confirmation_caller_sha256": "44f4a11a871d1fc06bc9b776bb0a4bba52d52a292437c2c5a00c1c66c8d91283",
+  "confirmation_of": "/home/max/workspace/merge-viewer-native/build/experiments/status-wsl-control/run-20261125T223739227075Z/state.json",
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "control": "Measure the 10% regression guard; inactive opposite-OS helpers do not establish no-regression.",
+  "existing_runner_sha256": "2caebee7d2aef52e4d6ef90b89f410acf7966ee8d083f69e6dcae3fe3c103527",
+  "fixture_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "measurement": "Canonical welcome async-error readiness, measured Open, all six actions, strict native content and two frames.",
+  "order": [
+    "A4:20",
+    "B4:20"
+  ],
+  "performance_early_gate": false,
+  "pooling": "Separate confirmation pair; retain the original six runs without pooling.",
+  "ports": {
+    "driver": 29225,
+    "host": 19227,
+    "mcp": 28867
+  },
+  "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+  "renderer_and_mcp": "Unchanged canonical Linux launcher; no app environment or renderer overrides.",
+  "runner_sha256": "4a253a7a50595aeabd755be55c16c024634882567c48235b6cb07e7714ed1d42",
+  "runtime_release": "VM WSL STATUS CONFIRMATION RELEASED",
+  "seed_sha256": "80f06f8a1d1b26802d70202b5cbc27c00393a5fa1e8573cf3b968b3c297278c1",
+  "seed_verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/seed-baseline-compat-wsl-linux/verdict.json",
+  "status": "prepared-only-no-VM-or-port-access",
+  "transport": "One private master/forward; task-local host ssh wrapper selects it, forbids fresh TCP fallback and never exports host PATH.",
+  "transport_helper_sha256": "a9587333c5dd330c6fc2f830d6d9d0ae74042c45edc6a47e3ad173b210d49052",
+  "variants": {
+    "A": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline",
+      "binary_sha256": "78106ff431e6433195867048f5fae946bb1e63cc0f04f23d668be32956c444c4",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-build.json",
+      "build_record_sha256": "d2176a97a6f20429b384c73bc248a74cdca291572e9e43a70d7a342472a39384",
+      "embedded_helper": {
+        "bytes": 2720768,
+        "path": "/home/max/benchmarks/branchline-boundary/binaries/checkpoint-b2de070/branchline-git-worker.exe",
+        "preserved_from": "/home/max/benchmarks/branchline-boundary/helper-placement/placement-v3-01/windows/foreign/branchline-git-worker.exe",
+        "sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2"
+      },
+      "label": "checkpoint-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/checkpoint-b2de070-source",
+      "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+    },
+    "B": {
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+      "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+      "build_record": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-build.json",
+      "build_record_sha256": "98ed2a83f25dc30e82deba3b521c6327cc3ee1d65beb0a162c7d8122088b7da1",
+      "embedded_helper": {
+        "bytes": 2726400,
+        "imports": [
+          "bcryptprimitives.dll",
+          "KERNEL32.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "WS2_32.dll",
+          "ntdll.dll",
+          "ADVAPI32.dll",
+          "Secur32.dll"
+        ],
+        "path": "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline-git-worker.exe",
+        "recipe": {
+          "CARGO_BUILD_JOBS": "1",
+          "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+          "RUSTFLAGS": "-C target-feature=+crt-static",
+          "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+          "XWIN_CROSS_COMPILER": "clang",
+          "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+          "target": "x86_64-pc-windows-msvc"
+        },
+        "sha256": "8fafdb059c64cf88d7ab5815f3ca20af8b80e16aa7eed52be691813dcc8f16c3",
+        "source_binary": "/home/max/benchmarks/branchline-boundary/candidate-combined-v3-source/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+        "static_crt_import_check": true
+      },
+      "label": "stateless-status-b2de070",
+      "source": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-source",
+      "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+    }
+  }
+}

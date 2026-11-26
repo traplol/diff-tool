@@ -1,0 +1,11 @@
+--- a/src-tauri/src/git.rs
++++ b/src-tauri/src/git.rs
+@@ -1333,7 +1333,7 @@
+     if file.group.is_empty() {
+         if let Some(data) = repo
+             .native()
+-            .filter(|repo| native::supports_diff(repo))
++            .filter(|repo| !cfg!(target_os = "linux") && native::supports_diff(repo))
+             .and_then(|native| {
+                 native::branch_patch(&native, &c.base, &c.head, native::empty_oid(repo), file).ok()
+             })

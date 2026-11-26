@@ -1,0 +1,328 @@
+--- r1/native-experiment.py
++++ native-r2/native-experiment.py
+@@ -8,6 +8,7 @@
+ import os
+ from pathlib import Path
+ import shutil
++import signal
+ import statistics
+ import subprocess
+ import time
+@@ -16,6 +17,25 @@
+ 
+ def sha(path):
+     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
++
++
++def process_start(pid):
++    path = Path('/proc') / str(pid) / 'stat'
++    return path.read_text().rsplit(') ', 1)[1].split()[19] if path.exists() else None
++
++
++def stop(child):
++    if child.poll() is None:
++        try:
++            os.killpg(child.pid, signal.SIGTERM)
++        except ProcessLookupError:
++            child.wait()
++            return
++        try:
++            child.wait(timeout=10)
++        except subprocess.TimeoutExpired:
++            os.killpg(child.pid, signal.SIGKILL)
++            child.wait()
+ 
+ 
+ def module(name, path):
+@@ -45,7 +65,7 @@
+     parser.add_argument('--release', required=True)
+     parser.add_argument('--input', type=Path, required=True)
+     args = parser.parse_args()
+-    if args.release != 'VM PARALLEL UNTRACKED NATIVE RELEASED':
++    if args.release != 'VM PARALLEL UNTRACKED NATIVE R2 RELEASED':
+         parser.error('Wait for the root agent to release the serial VM slot')
+     inputs = args.input.resolve()
+     plan = json.loads((inputs/'plan.json').read_text())
+@@ -56,8 +76,24 @@
+     def save():
+         p=output/'state.json';t=p.with_suffix('.tmp');t.write_text(json.dumps(state,indent=2)+'\n');t.replace(p)
+     def source_check():
+-        for name,digest in plan['source']['files'].items():
+-            assert sha(inputs/'source'/name)==digest, name
++        source = inputs/'source'
++        paths = set()
++        # Match canonical score.py source_identity enumeration, including extra files.
++        for directory in ('frontend','src-tauri/src','src-tauri/git-worker/src',
++                          'src-tauri/git-worker/tests','src-tauri/capabilities'):
++            paths.update(p for p in (source/directory).rglob('*') if p.is_file())
++        for name in ('build.sh','package.json','package-lock.json','vite.config.js',
++                     'vite.config.ts','src-tauri/Cargo.toml','src-tauri/Cargo.lock',
++                     'src-tauri/build.rs','src-tauri/tauri.conf.json',
++                     'src-tauri/git-worker/Cargo.toml','src-tauri/git-worker/Cargo.lock'):
++            if (source/name).is_file():paths.add(source/name)
++        head = subprocess.check_output(['git','-C',str(source),'rev-parse','HEAD'],env=git_env,text=True).strip()
++        tree = subprocess.check_output(['git','-C',str(source),'rev-parse','HEAD^{tree}'],env=git_env,text=True).strip()
++        identity = {'git_head':head,'files':{p.relative_to(source).as_posix():sha(p) for p in sorted(paths)}}
++        identity['source_hash'] = hashlib.sha256(json.dumps(identity,sort_keys=True,separators=(',',':')).encode()).hexdigest()
++        assert len(identity['files'])==49 and identity==plan['source'],'Canonical source identity changed'
++        assert tree==plan['bundle']['git_tree'] and not (source/'.git/objects/info/alternates').exists(),'Git provenance changed'
++        state['source_identity']=identity
+     def guard():
+         return {name: {'sha256':sha(Path(plan['root'])/'.git'/name),
+                        **{key:getattr((Path(plan['root'])/'.git'/name).stat(),key)
+@@ -80,15 +116,25 @@
+             if name:h.update(name);h.update((Path(plan['root'])/os.fsdecode(name)).read_bytes())
+         value=h.hexdigest();assert value==plan['fixture_sha256'],value;return value
+     failure=None
++    git_env=dict(os.environ,GIT_CONFIG_NOSYSTEM='1',GIT_CONFIG_GLOBAL=os.devnull,
++                 GIT_TERMINAL_PROMPT='0',GIT_NO_LAZY_FETCH='1')
++    for key in ['GIT_DIR','GIT_COMMON_DIR','GIT_WORK_TREE','GIT_INDEX_FILE',
++                'GIT_OBJECT_DIRECTORY','GIT_ALTERNATE_OBJECT_DIRECTORIES','GIT_CONFIG_COUNT']:
++        git_env.pop(key,None)
++    def interrupt(signum,frame):
++        raise KeyboardInterrupt('Supervisor interrupted by signal '+str(signum))
++    for signum in [signal.SIGINT,signal.SIGTERM,signal.SIGHUP]:signal.signal(signum,interrupt)
+     try:
+-        save(); source_check()
++        save()
++        old=plan['previous_failed_supervisor']
++        assert process_start(old['pid'])!=old['start_ticks'],'Exact failed r1 supervisor still lives'
++        state['previous_failed_supervisor_absent']=old
+         for name,digest in plan['support_files'].items(): assert sha(inputs/name)==digest,name
+         host_proof=json.loads((inputs/'host-proof.json').read_text());assert host_proof['candidate_source_hash']==plan['source']['source_hash'];assert host_proof['tests']==plan['host_checks']['tests']
+         assert sha(plan['baseline_worker']['path'])==plan['baseline_worker']['sha256']
+         assert sha(plan['git'])==plan['git_sha256']
+         for key in os.environ:
+             assert not (key.startswith('GIT_TRACE') or key in ['GIT_DIR','GIT_WORK_TREE','GIT_COMMON_DIR','GIT_INDEX_FILE','GIT_OBJECT_DIRECTORY','GIT_ALTERNATE_OBJECT_DIRECTORIES']), 'Unexpected Git environment: '+key
+-        state['guard_before']=guard();state['fingerprint_before']=fingerprint();assert guard()==state['guard_before'];save()
+         env=dict(os.environ,**plan['build_environment']);env['PATH']='/home/max/.cargo/bin:'+env.get('PATH','')
+         for key in ['CARGO_ENCODED_RUSTFLAGS','BRANCHLINE_GIT_WORKER_PATH']: env.pop(key,None)
+         def run_phase(name, command, cwd):
+@@ -96,15 +142,57 @@
+             state['phases'].append(phase);save()
+             path=output/(name+'.log')
+             with path.open('wb') as log:
+-                child=subprocess.Popen(command,cwd=cwd,env=env,stdout=log,stderr=subprocess.STDOUT)
++                child=subprocess.Popen(command,cwd=cwd,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+                 phase['pid']=child.pid;phase['start_ticks']=Path(f'/proc/{child.pid}/stat').read_text().rsplit(') ',1)[1].split()[19];save()
+-                phase['exit']=child.wait()
++                try:phase['exit']=child.wait()
++                finally:stop(child)
+             phase['finished']=time.time();phase['log_sha256']=sha(path);save();assert phase['exit']==0,(name,phase['exit'])
++            assert process_start(child.pid)!=phase['start_ticks'],'Exact build/test actor remains live'
+             return path
++        source=inputs/'source';bundle=inputs/plan['bundle']['name']
++        assert sha(bundle)==plan['bundle']['sha256'] and not (source/'.git').exists()
++        for name,digest in plan['source']['files'].items():assert sha(source/name)==digest,name
++        for name,argv in [
++            ('source-git-init',['git','init','--quiet',str(source)]),
++            ('source-bundle-verify',['git','bundle','verify',str(bundle)]),
++            ('source-bundle-fetch',['git','fetch','--no-tags',str(bundle),'HEAD']),
++            ('source-git-head',['git','update-ref','--no-deref','HEAD',plan['source']['git_head']]),
++            ('source-git-index',['git','read-tree','HEAD'])]:
++            phase={'name':name,'argv':argv,'started':time.time()};state['phases'].append(phase);save()
++            result=subprocess.run(argv,cwd=source,env=git_env,capture_output=True,text=True,timeout=30)
++            phase.update(exit=result.returncode,stdout=result.stdout,stderr=result.stderr,finished=time.time());save()
++            assert result.returncode==0,(name,result.stderr)
++        source_check()
++        assert subprocess.check_output(['git','-C',str(source),'rev-parse','FETCH_HEAD'],env=git_env,text=True).strip()==plan['source']['git_head']
++        state['guard_before']=guard();state['fingerprint_before']=fingerprint();assert guard()==state['guard_before'];save()
+         manifest=str(inputs/'source/src-tauri/git-worker/Cargo.toml')
+-        build=['cargo','xwin','build','--offline','--locked','--release','--manifest-path',manifest,'--target','x86_64-pc-windows-msvc']
+-        run_phase('build-candidate-worker',build,inputs/'source')
+-        built=Path(env['CARGO_TARGET_DIR'])/'x86_64-pc-windows-msvc/release/branchline-git-worker.exe'
++        target='x86_64-pc-windows-msvc'
++        def artifact(log,test):
++            matches=[]
++            for line in log.read_text().splitlines():
++                try:value=json.loads(line)
++                except ValueError:continue
++                if (value.get('reason')=='compiler-artifact' and value.get('manifest_path')==manifest
++                    and value.get('target',{}).get('name')=='branchline-git-worker'
++                    and value['target'].get('kind')==['bin'] and value['target'].get('crate_types')==['bin']
++                    and value['target'].get('src_path')==str(source/'src-tauri/git-worker/src/main.rs')
++                    and value.get('profile',{}).get('test') is test and value.get('executable')):
++                    matches.append(value)
++            assert len(matches)==1,'Expected one exact worker producer artifact'
++            value=matches[0];executable=Path(value['executable']).resolve()
++            assert value.get('fresh') is False and value['profile'].get('opt_level')=='3','Worker artifact reused or wrong profile'
++            assert executable.is_file() and str(executable) in value.get('filenames',[]),'Reported executable missing from producer files'
++            assert executable.is_relative_to(Path(env['CARGO_TARGET_DIR']).resolve()/target/'release'),'Producer executable escaped owned release target'
++            assert sha(executable)!=plan['rejected_stale_worker_sha256'],'Reused failed r1 tracer executable'
++            return value
++        run_phase('clean-worker-root-package',
++            ['cargo','clean','--offline','--locked','--release','--package','branchline-git-worker',
++             '--manifest-path',manifest,'--target',target],source)
++        build=['cargo','xwin','build','--offline','--locked','--release','--manifest-path',manifest,
++               '--target',target,'--bin','branchline-git-worker','--message-format=json']
++        producer=artifact(run_phase('build-candidate-worker',build,source),False)
++        state['producer_artifacts']={'worker':producer};save()
++        built=Path(producer['executable'])
+         candidate=native/'candidate-worker.exe';shutil.copy2(built,candidate);assert sha(candidate)==sha(built)
+         imports=subprocess.check_output(['objdump','-p',str(candidate)],text=True);(output/'imports.txt').write_text(imports)
+         dlls=[x.split(':',1)[1].strip() for x in imports.splitlines() if 'DLL Name:' in x]
+@@ -113,15 +201,18 @@
+         test_log=run_phase('build-native-worker-unit-tests',
+             ['cargo','xwin','test','--offline','--locked','--release','--manifest-path',manifest,
+              '--target','x86_64-pc-windows-msvc','--bin','branchline-git-worker','--no-run','--message-format=json'],inputs/'source')
+-        artifacts=[]
+-        for line in test_log.read_text().splitlines():
+-            try:value=json.loads(line)
+-            except ValueError:continue
+-            if value.get('reason')=='compiler-artifact' and value.get('profile',{}).get('test') and value.get('executable'):artifacts.append(Path(value['executable']))
+-        assert len(artifacts)==1,artifacts
+-        unit=native/'worker-unit-tests.exe';shutil.copy2(artifacts[0],unit);assert sha(unit)==sha(artifacts[0])
+-        state['native_unit_tests']={'path':str(unit),'sha256':sha(unit),'source_artifact':str(artifacts[0])};save()
+-        run_phase('native-worker-unit-tests',[str(unit),'--test-threads=1'],native)
++        unit_producer=artifact(test_log,True);state['producer_artifacts']['unit_tests']=unit_producer
++        unit=native/'worker-unit-tests.exe';shutil.copy2(unit_producer['executable'],unit);assert sha(unit)==sha(unit_producer['executable'])
++        state['native_unit_tests']={'path':str(unit),'sha256':sha(unit),'source_artifact':unit_producer['executable']};save()
++        listing=run_phase('native-worker-unit-list',[str(unit),'--list'],native).read_text()
++        listed=sorted(line[:-6] for line in listing.splitlines() if line.endswith(': test'))
++        assert listed==plan['expected_unit_tests'],'Compiled native unit names differ from frozen source'
++        text=run_phase('native-worker-unit-tests',[str(unit),'--test-threads=1'],native).read_text()
++        passed=sorted(line[5:-7] for line in text.splitlines() if line.startswith('test ') and line.endswith(' ... ok'))
++        assert passed==plan['expected_unit_tests'] and '28 passed; 0 failed; 0 ignored;' in text,'Exact native unit suite did not pass'
++        state['native_unit_tests']['passed_names']=passed
++        assert sha(built)==sha(candidate),'Producer worker executable changed during unit build'
++        source_check()
+         state['versions']={k:subprocess.check_output(v,env=env,text=True).strip() for k,v in {'rustc':['rustc','-Vv'],'cargo_xwin':['cargo','xwin','--version'],'git':[plan['git'],'--version']}.items()};save()
+         helper=module('backend',inputs/'backend_compare.py')
+         manifest=json.loads((inputs/'workload.json').read_text()); expected={(g,p):info for g,files in manifest['local'].items() for p,info in files.items()};assert len(expected)==15
+@@ -156,7 +247,6 @@
+                     patches['/'.join(key)]=patch
+                 if baseline_patches is None:baseline_patches=patches
+                 assert patches==baseline_patches,'Raw frozen patches differ'
+-                assert (output/f'{number}-{label}.stderr').stat().st_size==0,'Unexpected worker stderr; no tracer/profiler is allowed'
+                 assert call('final_hello','hello')['pid']==hello['pid']
+                 assert native_identity(hello['pid'])==identity
+             finally:
+@@ -176,6 +266,9 @@
+                     run['native_after_forced_cleanup']=native_identity(identity['pid'])
+                 save()
+                 assert run['launcher_exit']==0 and after is None,'Worker EOF did not exit cleanly; run invalid'
++                run['stderr_bytes']=(output/f'{number}-{label}.stderr').stat().st_size
++                assert run['stderr_bytes']==0,'Unexpected worker stderr; no tracer/profiler is allowed'
++                save()
+             raw.extend(records)
+         state['wire_and_patch_parity']=True;state['valid']=True
+         metrics={}
+--- r1/run-native.py
++++ native-r2/run-native.py
+@@ -7,6 +7,8 @@
+ from pathlib import Path
+ import shlex
+ import subprocess
++import sys
++import tarfile
+ import time
+ 
+ 
+@@ -17,13 +19,15 @@
+     parser=argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--release',required=True)
+     args=parser.parse_args()
+-    release='VM PARALLEL UNTRACKED NATIVE RELEASED'
++    release='VM PARALLEL UNTRACKED NATIVE R2 RELEASED'
+     if args.release!=release:parser.error('Wait for root to release the serial VM slot')
+     base=Path(__file__).resolve().parent
+     archive=json.loads((base/'native-input.json').read_text());plan=json.loads((base/'native-plan.json').read_text())
+     assert sha(base/archive['name'])==archive['sha256']
+     for name,digest in archive['controls'].items():assert sha(base/name)==digest,name
+-    for name,digest in plan['source']['files'].items():assert sha(base/'source'/name)==digest,name
++    for name,digest in plan['source']['files'].items():assert sha(base.parent/'source'/name)==digest,name
++    assert sha(base/plan['bundle']['name'])==plan['bundle']['sha256']
++    subprocess.run([sys.executable,str(base/'verify-package.py')],check=True)
+     state_path=base/'native-owner.json';assert not state_path.exists(),'Existing run record: inspect same owner/results, never blindly restart'
+     state={'pid':os.getpid(),'started':time.time(),'status':'running','archive':archive,'phases':[]}
+     def save():
+@@ -46,7 +50,24 @@
+             'tarfile.open(a).extractall(p,filter="data"); '
+             f'os.execv("/usr/bin/python3",["/usr/bin/python3","-u",str(p/"native-experiment.py"),"--input",str(p),"--release",{release!r}])')
+         command='MSYS_NO_PATHCONV=1 '+shlex.join(['wsl.exe','-d','Ubuntu-26.04','-u','max','--exec','/usr/bin/python3','-u','-c',script])
+-        run('native-experiment',ssh+[command]);state.update(status='complete; copy and inspect native state before any claim',finished=time.time());save()
++        run('native-experiment',ssh+[command])
++        collect=(
++            'import json,pathlib,sys,tarfile; '
++            f'p=pathlib.Path({plan["output"]!r});s=json.loads((p/"state.json").read_text()); '
++            'assert s["status"]=="complete-backend-preliminary-only" and s["valid"] is True; '
++            'a=pathlib.Path("/proc")/str(s["pid"])/"stat"; '
++            'assert not a.exists() or a.read_text().rsplit(") ",1)[1].split()[19]!=s["start_ticks"]; '
++            't=tarfile.open(fileobj=sys.stdout.buffer,mode="w|");t.add(p,arcname="."); '
++            f't.add({plan["native_output"]!r},arcname="binaries");t.close()')
++        collect_command='MSYS_NO_PATHCONV=1 '+shlex.join(['wsl.exe','-d','Ubuntu-26.04','-u','max','--exec','/usr/bin/python3','-u','-c',collect])
++        run('native-evidence',ssh+[collect_command])
++        with tarfile.open(base/'native-evidence.log') as packed:packed.extractall(base/'native-evidence',filter='data')
++        proof=json.loads((base/'native-evidence/state.json').read_text())
++        assert proof['source_identity']==plan['source'] and proof['guard_before']==proof['guard_after']
++        assert all(value['fresh'] is False for value in proof['producer_artifacts'].values())
++        for field in ['candidate_worker','native_unit_tests']:
++            assert sha(base/'native-evidence/binaries'/Path(proof[field]['path']).name)==proof[field]['sha256']
++        state.update(status='complete backend-only; no GUI acceptance or promotion',finished=time.time());save()
+     except BaseException as error:
+         state.update(status='failed; inspect exact live owner before retry',error=str(error),finished=time.time());save();raise
+ 
+--- /dev/null
++++ native-r2/verify-package.py
+@@ -0,0 +1,61 @@
++#!/usr/bin/env python3
++"""Verify the R2 archive, real Git HEAD and canonical app identity without building."""
++import ast
++import hashlib
++import json
++import os
++from pathlib import Path
++import subprocess
++import sys
++import tarfile
++import tempfile
++
++base=Path(__file__).resolve().parent
++sys.path.insert(0,str(base.parents[3]/'tools/autoresearch/wsl-boundary'))
++from score import source_identity
++
++def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
++
++plan=json.loads((base/'native-plan.json').read_text())
++archive=json.loads((base/'native-input.json').read_text())
++assert sha(base/archive['name'])==archive['sha256']
++for name,digest in archive['controls'].items():assert sha(base/name)==digest,name
++for name in ['native-experiment.py','run-native.py','verify-package.py']:
++    ast.parse((base/name).read_text(),filename=name)
++records=[]
++with tempfile.TemporaryDirectory(prefix='parallel-untracked-r2-package-') as directory:
++    extraction=Path(directory)
++    with tarfile.open(base/archive['name']) as packed:packed.extractall(extraction,filter='data')
++    assert (extraction/'plan.json').read_bytes()==(base/'native-plan.json').read_bytes()
++    assert (extraction/'native-experiment.py').read_bytes()==(base/'native-experiment.py').read_bytes()
++    for name,digest in plan['support_files'].items():assert sha(extraction/name)==digest,name
++    source=extraction/'source';bundle=extraction/plan['bundle']['name']
++    assert not (source/'.git').exists() and sha(bundle)==plan['bundle']['sha256']
++    env=dict(os.environ,GIT_CONFIG_NOSYSTEM='1',GIT_CONFIG_GLOBAL=os.devnull,
++             GIT_TERMINAL_PROMPT='0',GIT_NO_LAZY_FETCH='1')
++    for key in ['GIT_DIR','GIT_COMMON_DIR','GIT_WORK_TREE','GIT_INDEX_FILE',
++                'GIT_OBJECT_DIRECTORY','GIT_ALTERNATE_OBJECT_DIRECTORIES','GIT_CONFIG_COUNT']:
++        env.pop(key,None)
++    for command in [
++        ['git','init','--quiet',str(source)],
++        ['git','bundle','verify',str(bundle)],
++        ['git','fetch','--no-tags',str(bundle),'HEAD'],
++        ['git','update-ref','--no-deref','HEAD',plan['source']['git_head']],
++        ['git','read-tree','HEAD']]:
++        result=subprocess.run(command,cwd=source,env=env,capture_output=True,text=True,timeout=30)
++        records.append({'argv':command,'exit':result.returncode,'stdout':result.stdout,'stderr':result.stderr})
++        assert result.returncode==0,records[-1]
++    actual=source_identity(source)
++    assert len(actual['files'])==49 and actual==plan['source'],'Canonical source identity differs'
++    fetched=subprocess.check_output(['git','rev-parse','FETCH_HEAD'],cwd=source,env=env,text=True).strip()
++    tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=source,env=env,text=True).strip()
++    assert fetched==actual['git_head'] and tree==plan['bundle']['git_tree']
++    assert not (source/'.git/objects/info/alternates').exists()
++    assert len(plan['expected_unit_tests'])==28 and len(set(plan['expected_unit_tests']))==28
++proof={'status':'host archive extraction, real Git discovery and canonical49 identity passed',
++       'archive_sha256':archive['sha256'],'bundle_sha256':plan['bundle']['sha256'],
++       'source_hash':actual['source_hash'],'git_head':actual['git_head'],'git_tree':tree,
++       'canonical_app_files':len(actual['files']),'external_alternates':False,'commands':records,
++       'syntax':'ast.parse only','vm_calls':False,'builds_tests_or_scoring':False}
++(base/'package-verification.json').write_text(json.dumps(proof,indent=2)+'\n')
++print(json.dumps({k:proof[k] for k in ['status','archive_sha256','source_hash','canonical_app_files']}))

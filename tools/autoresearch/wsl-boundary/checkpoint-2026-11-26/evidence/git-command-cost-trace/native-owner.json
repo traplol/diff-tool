@@ -1,0 +1,66 @@
+{
+  "pid": 99155,
+  "started": 1795649557.2784643,
+  "status": "complete; copy and inspect native state before any claim",
+  "archive": {
+    "name": "git-command-cost-trace-e72a63-r1-input.tar",
+    "sha256": "60733019f71d18c60038dd81f6760a0ccbb0fc35a306ae0f30c04685f65269cf",
+    "bytes": 962560,
+    "source_hash": "e72a63dcb70773427a836cc4d68f7e153f08e39c0641a2dd6c01da75be0e9b68",
+    "controls": {
+      "native-plan.json": "a296d89fd18dedce4e6ca674d7b74308491fb78d2391e204ca699396829d8062",
+      "native-diagnostic.py": "1649c0c57002b79fbc54a0762eec79fa32ba3d947efc9952a7ed99fe6848d749",
+      "run-native.py": "b99476cc20b9dfffe053ac75d969c1e2a5ce1bfe7048dd64aba2bc9115a3730c"
+    },
+    "source_files": 49,
+    "support_files": {
+      "backend_compare.py": "b184265bf085720774b3d661534878846eff5484befe3075345fbc8132e5a79b",
+      "workload.json": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9"
+    },
+    "native_builds": false,
+    "vm_calls": false,
+    "tests": false,
+    "syntax": "ast.parse only; no imports/runtime executed"
+  },
+  "phases": [
+    {
+      "name": "upload-native-input",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "cat > /c/Users/max/branchline-bench/git-command-cost-trace-e72a63-r1-input.tar"
+      ],
+      "started": 1795649557.2788868,
+      "pid": 99156,
+      "start_ticks": "77191642",
+      "exit": 0,
+      "finished": 1795649557.5773087
+    },
+    {
+      "name": "native-diagnostic",
+      "argv": [
+        "ssh",
+        "-F",
+        "/home/max/.ssh/config",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=10",
+        "windows-vm",
+        "MSYS_NO_PATHCONV=1 wsl.exe -d Ubuntu-26.04 -u max --exec /usr/bin/python3 -u -c 'import hashlib,os,pathlib,tarfile; a=pathlib.Path('\"'\"'/mnt/c/Users/max/branchline-bench/git-command-cost-trace-e72a63-r1-input.tar'\"'\"'); assert hashlib.sha256(a.read_bytes()).hexdigest()=='\"'\"'60733019f71d18c60038dd81f6760a0ccbb0fc35a306ae0f30c04685f65269cf'\"'\"'; p=pathlib.Path('\"'\"'/home/max/benchmarks/branchline-boundary/git-command-cost-trace-e72a63-r1-input'\"'\"');p.mkdir(exist_ok=False); tarfile.open(a).extractall(p,filter=\"data\"); os.execv(\"/usr/bin/python3\",[\"/usr/bin/python3\",\"-u\",str(p/\"native-diagnostic.py\"),\"--input\",str(p),\"--release\",'\"'\"'VM GIT COMMAND DIAGNOSTIC RELEASED'\"'\"'])'"
+      ],
+      "started": 1795649557.5776699,
+      "pid": 99158,
+      "start_ticks": "77191672",
+      "exit": 0,
+      "finished": 1795649609.2358413
+    }
+  ],
+  "finished": 1795649609.236118
+}

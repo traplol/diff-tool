@@ -1,0 +1,109 @@
+{
+  "actions": {
+    "branch_final": {
+      "count": 20,
+      "first_use_ms": 366,
+      "max_ms": 954,
+      "p50_ms": 534,
+      "p95_ms": 740.0000000000146
+    },
+    "branch_first": {
+      "count": 20,
+      "first_use_ms": 388.0000000000002,
+      "max_ms": 1229,
+      "p50_ms": 513,
+      "p95_ms": 791
+    },
+    "comment_branch": {
+      "count": 20,
+      "first_use_ms": 439,
+      "max_ms": 1389,
+      "p50_ms": 601,
+      "p95_ms": 1161
+    },
+    "comment_worktree": {
+      "count": 20,
+      "first_use_ms": 514,
+      "max_ms": 1726,
+      "p50_ms": 628.0000000000146,
+      "p95_ms": 1016
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 619,
+      "max_ms": 619,
+      "p50_ms": 619,
+      "p95_ms": 619
+    },
+    "stack": {
+      "count": 20,
+      "first_use_ms": 456,
+      "max_ms": 1497.0000000000073,
+      "p50_ms": 546,
+      "p95_ms": 1118.9999999999927
+    },
+    "working_tree": {
+      "count": 20,
+      "first_use_ms": 513,
+      "max_ms": 1690.0000000000018,
+      "p50_ms": 742,
+      "p95_ms": 1000
+    }
+  },
+  "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+  "case": "wsl_linux",
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "finished_at_unix": 1795656757.1915774,
+  "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "label": "integrated-c200-r1",
+  "launch": {
+    "app_process": {
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+      ],
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+      "pid": 231945,
+      "start_ticks": "16091700"
+    },
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+    "binary_sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+    "created": "16091700",
+    "display": ":0",
+    "driver_process": {
+      "binary": "/usr/bin/WebKitWebDriver",
+      "pid": 231943,
+      "start_ticks": "16091697"
+    },
+    "gdk_backend": "x11",
+    "mcp_port": 28867,
+    "pid": 231945,
+    "port": 29225,
+    "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+    "session": "c9cad489-0a14-4096-b89e-e92dceb7e0e0",
+    "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+    "supervisor_pid": 231942
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "measure",
+  "repetitions": 20,
+  "schema_version": 1,
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "started_at_unix": 1795656623.6023293,
+  "target_met": false,
+  "target_ms": 250.0,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed",
+  "worst_interaction_p95_ms": 1161
+}

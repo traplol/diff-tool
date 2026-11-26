@@ -1,0 +1,31 @@
+{
+  "analysis_frozen": {
+    "independent_raw_audit": "Passed all 24 valid/stopped runs, 1272 correct samples, 20 failed frozen guards, and recorded fixture/cleanup gates.",
+    "summary_sha256": "def6d415e796eb36b6eec21377837002906b93ec36fba5dc1db417e8dcfdcb96"
+  },
+  "archive": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-26",
+  "base_head_at_export": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "checkpoint_date": "2026-11-26",
+  "commits_or_pushes_by_exporter": false,
+  "complete_candidate_source": "Ten full-head.patch files reconstruct all 49 canonical app files from each candidate real Git HEAD. Each patch includes inherited edits. source-reconstructions.json verifies file hashes and source_hash including git_head.",
+  "excluded_bytes": "Compiled binaries/PDB, Git metadata/source bundles, source trees, build caches, tar archives and screenshots. Verbose binary-import and full-index listings have exact path/SHA256/size references; compact DLL summaries and fixture/build proof records remain.",
+  "host": "ok",
+  "host_only_export": true,
+  "included_evidence": "New raw score/verdict/source/launch/cleanup records, native build producers and static checks, controls/seeds/build records, native diagnostics, external focused harnesses/proofs, failed attempts and prepared candidates.",
+  "new_tests_or_builds": false,
+  "new_vm_calls": false,
+  "omitted_files": "omitted-artifacts.json",
+  "origin_mapping": "origin-map.json",
+  "portable_raw_reference_names": "Run labels remain unique directory names; launch.json, launch.log, cleanup.log and score.stdout.log avoid repeating long labels. origin-map.json preserves each original path and byte hash in manifest origins.",
+  "previous_checkpoint": "tools/autoresearch/wsl-boundary/checkpoint-2026-11-25",
+  "prior_unchanged_evidence": "previous-checkpoint-references.json",
+  "production_source_changed_by_exporter": false,
+  "promotion": false,
+  "repository_root": "/home/max/workspace/merge-viewer-native",
+  "source_parents": [
+    "b2de070becf3fcba2d47557efd375221c586f273",
+    "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+    "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df"
+  ],
+  "source_patch_generation": "git diff --binary HEAD -- <all 49 canonical files> from each owned candidate. A private temporary GIT_INDEX_FILE initialized with git read-tree HEAD avoids incomplete historical clone indexes; original metadata and source bytes remain unchanged."
+}

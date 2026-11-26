@@ -1,0 +1,41 @@
+{
+  "source_state_sha256": "0bcbec7062cde559a836c71022564437b3942c3b2e5325ac6525b7f4d6c89d40",
+  "method": "Compare differences of Windows process creation wall time and recorded WSL monotonic Hello start/end. Absolute cross-clock offsets are not elapsed durations. Relative paired offsets assume no cross-clock jumps during the short serial series.",
+  "observations": [
+    {
+      "variant": "A",
+      "number": 0,
+      "hello_ms": 143.694596,
+      "windows_process_created": "2026-11-25T19:42:31.2170350-05:00",
+      "birth_minus_wsl_hello_start_mono_seconds": 1795495704.437471,
+      "wsl_hello_end_mono_minus_birth_seconds": -1795495704.2937763
+    },
+    {
+      "variant": "B",
+      "number": 1,
+      "hello_ms": 1220.093084,
+      "windows_process_created": "2026-11-25T19:42:39.7304030-05:00",
+      "birth_minus_wsl_hello_start_mono_seconds": 1795495705.5175745,
+      "wsl_hello_end_mono_minus_birth_seconds": -1795495704.2974813
+    },
+    {
+      "variant": "B",
+      "number": 2,
+      "hello_ms": 1195.935589,
+      "windows_process_created": "2026-11-25T19:42:47.1450940-05:00",
+      "birth_minus_wsl_hello_start_mono_seconds": 1795495705.4968145,
+      "wsl_hello_end_mono_minus_birth_seconds": -1795495704.300879
+    },
+    {
+      "variant": "A",
+      "number": 3,
+      "hello_ms": 107.381699,
+      "windows_process_created": "2026-11-25T19:42:53.8474860-05:00",
+      "birth_minus_wsl_hello_start_mono_seconds": 1795495704.4030492,
+      "wsl_hello_end_mono_minus_birth_seconds": -1795495704.2956676
+    }
+  ],
+  "end_minus_birth_offset_range_ms": 7.102727890014648,
+  "interpretation": "The extra candidate Hello latency is consistent with delay before Windows reports native process creation, with only 7ms range in response-end minus creation offsets. This points to executable launch or inspection rather than Rust initialization/per-file thread work. Cause unproved; no Defender attribution or acceptance waiver.",
+  "workload_metric": "backend-only; no GUI qualification or promotion"
+}

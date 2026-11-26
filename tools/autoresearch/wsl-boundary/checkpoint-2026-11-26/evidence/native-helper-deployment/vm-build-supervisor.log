@@ -1,0 +1,21 @@
+{"supervisor_pid": 121613, "record": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/supervisor.json", "status": "starting"}
+{
+  "supervisor_pid": 121613,
+  "record": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/supervisor.json",
+  "linux_gui": {
+    "path": "/home/max/benchmarks/branchline-boundary/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline",
+    "sha256": "67815591856441398d6d026bb9f828a1d67a71f73b3c241b802715f033a0fcbf",
+    "bytes": 23274280,
+    "embedded_helper_sha256": "6a4067ebc57d88b0e8b6c25a53ea92531acfc07fcb5b3b267fd2fbe19564d3f2",
+    "embedded_helper_verified": true,
+    "renderer": "production default"
+  },
+  "windows_gui": {
+    "path": "/mnt/c/Users/max/branchline-bench/binaries/native-helper-deployment-b2de070-03fecde11c0a/branchline.exe",
+    "sha256": "684cbe8293d3c737c23aaa026da190b75117d9121668ca4c838672c1152675a9",
+    "bytes": 20665344,
+    "embedded_helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+    "embedded_helper_verified": true,
+    "renderer": "production default"
+  }
+}

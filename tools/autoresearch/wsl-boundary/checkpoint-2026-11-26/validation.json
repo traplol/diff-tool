@@ -1,0 +1,13 @@
+{
+  "canonical_file_hashes_checked": 490,
+  "checksums": "All copied bytes match original host files; all unchanged prior references and omitted hash references verified.",
+  "json_files_before_validation_and_manifest": 614,
+  "jsonl_files": 48,
+  "jsonl_rows": 2651,
+  "manifest_self_excluded": true,
+  "max_repo_relative_path_length": 183,
+  "new_tests_builds_or_vm_calls": false,
+  "path_length_limit": 200,
+  "source_reconstructions": 10,
+  "status": "passed"
+}

@@ -1,0 +1,6 @@
+{
+  "status": "host preparation failed after writing a valid archive, before roundtrip/SSH",
+  "cause": "Host external controls/workload.py copy missing; same pinned bytes were already in tar",
+  "fix": "Copied exact canonical workload.py to expected host control path; no archive/source/script changes required",
+  "native_vm_calls": false
+}

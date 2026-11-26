@@ -1,0 +1,20 @@
+{
+  "time": 1795657979.5278616,
+  "action": "Moved only generated own-package release fingerprints to force a fresh ordinary project rebuild after snapshot experiments",
+  "no_active_compiler": true,
+  "sources_or_executables_deleted_or_changed": false,
+  "executable_hashes_before": {
+    "gui-linux": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+    "gui-windows": "eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25",
+    "worker-linux": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+    "worker-windows": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd"
+  },
+  "executable_hashes_after": {
+    "gui-linux": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+    "gui-windows": "eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25",
+    "worker-linux": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+    "worker-windows": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd"
+  },
+  "moved": [],
+  "artifact_note": "Shared target binaries remain the last experimental build; immutable baseline and candidate artifacts remain separately labeled. No application installed or deployed."
+}

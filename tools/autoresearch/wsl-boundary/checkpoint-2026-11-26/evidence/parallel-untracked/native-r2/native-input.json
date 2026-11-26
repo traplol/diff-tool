@@ -1,0 +1,25 @@
+{
+  "name": "parallel-untracked-f15e85-r2-input.tar",
+  "sha256": "c1f47d1cbe98e400900f6481a580bf0e0a2cb49c64df792e518327aa78515955",
+  "bytes": 1566720,
+  "source_hash": "f15e85e1ec50af3bdc82e792a4d2d1189b67f4e56375679d88e0b035fe587a0f",
+  "baseline_source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+  "controls": {
+    "native-plan.json": "247c120d22d33472aa51411cc095bd6ed35f951f20b5ceaf5d64c400ad85ecb5",
+    "native-experiment.py": "3cf769707b5ac7369dfb1cb4a48966bbb6c53adb914e880b3f36a90f9ee48343",
+    "run-native.py": "2217aba2be7826217059bca8e7baaa9a85111b9f77b5257f4c5c9f1bf3e97b8c",
+    "verify-package.py": "14f46eb54047a01ce356b43e665d7ee9d18a6d677af019a8f405d89eefa856ee"
+  },
+  "source_files": 49,
+  "support_files": {
+    "backend_compare.py": "b184265bf085720774b3d661534878846eff5484befe3075345fbc8132e5a79b",
+    "workload.json": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+    "host-proof.json": "b526c63d9e001edc199ff9547def4a071bf9fcbba7463c16dc7a39ff324774c9"
+  },
+  "bundle_sha256": "d0743fee8d66c2548dca63636e0f484fee68be27f24da4adc6f682dfa05fe197",
+  "status": "host-prepared-only; mandatory archive verification before SSH; fresh root producers required",
+  "native_builds": false,
+  "vm_calls": false,
+  "tests": false,
+  "syntax": "ast.parse only"
+}

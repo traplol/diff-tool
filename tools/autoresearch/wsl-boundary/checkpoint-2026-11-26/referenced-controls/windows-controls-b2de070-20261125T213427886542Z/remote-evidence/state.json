@@ -1,0 +1,1092 @@
+{
+  "builds": [
+    {
+      "BRANCHLINE_GIT_WORKER_PATH": "/home/max/benchmarks/branchline-boundary/windows-controls-b2de070-20261125T213427886542Z/helper/branchline-git-worker",
+      "command": [
+        "./build.sh",
+        "--windows"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/checkpoint-b2de070-source",
+      "effective_windows_rustflags": "-C target-feature=+crt-static (added by frozen build.sh)",
+      "environment": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target",
+        "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+        "RUSTFLAGS": "",
+        "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+        "XWIN_CROSS_COMPILER": "clang",
+        "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot"
+      },
+      "exit": 0,
+      "finished_unix": 1795642572.4979007,
+      "label": "checkpoint-b2de070",
+      "log": "/home/max/benchmarks/branchline-boundary/windows-controls-b2de070-20261125T213427886542Z/checkpoint-b2de070-windows-build.log",
+      "log_sha256": "9f65407854530bc80cc6189b7f5e33b3d61a878e352cd6f4944f2e999cbab808",
+      "source": {
+        "files": {
+          "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+          "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+          "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+          "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+          "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+          "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+          "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+          "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+          "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+          "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+          "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+          "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+          "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+          "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+          "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+          "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+          "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+          "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+          "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+          "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+          "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+          "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+          "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+          "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+          "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+          "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+          "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+          "src-tauri/src/git.rs": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+          "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+          "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+          "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+          "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+          "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+          "src-tauri/src/git_tests.rs": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+          "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+          "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+          "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+          "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+          "src-tauri/src/mcp/desktop_tests.rs": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f",
+          "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+          "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+          "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+          "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+          "src-tauri/src/search.rs": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f",
+          "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+          "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+          "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+          "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+          "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        },
+        "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "source_after": {
+        "files": {
+          "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+          "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+          "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+          "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+          "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+          "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+          "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+          "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+          "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+          "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+          "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+          "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+          "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+          "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+          "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+          "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+          "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+          "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+          "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+          "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+          "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+          "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+          "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+          "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+          "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+          "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+          "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+          "src-tauri/src/git.rs": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+          "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+          "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+          "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+          "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+          "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+          "src-tauri/src/git_tests.rs": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+          "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+          "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+          "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+          "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+          "src-tauri/src/mcp/desktop_tests.rs": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f",
+          "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+          "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+          "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+          "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+          "src-tauri/src/search.rs": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f",
+          "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+          "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+          "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+          "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+          "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        },
+        "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+        "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+      },
+      "started_unix": 1795642476.7544975,
+      "windows_gui": {
+        "bytes": 20663296,
+        "embedded_helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+        "embedded_helper_verified": true,
+        "imports": [
+          "kernel32.dll",
+          "ws2_32.dll",
+          "user32.dll",
+          "bcryptprimitives.dll",
+          "ole32.dll",
+          "comctl32.dll",
+          "shell32.dll",
+          "ntdll.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "gdi32.dll",
+          "dwmapi.dll",
+          "shlwapi.dll",
+          "advapi32.dll",
+          "oleaut32.dll",
+          "secur32.dll"
+        ],
+        "path": "/mnt/c/Users/max/branchline-bench/binaries/checkpoint-b2de070/branchline.exe",
+        "renderer": "production defaults; no runtime launch",
+        "sha256": "b1fe0280f22a28551e753c656362222b5f840afe045ef86770d07ff8aa1d5481",
+        "static_crt_import_check": true,
+        "windows_path": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe"
+      }
+    },
+    {
+      "BRANCHLINE_GIT_WORKER_PATH": "/home/max/benchmarks/branchline-boundary/windows-controls-b2de070-20261125T213427886542Z/helper/branchline-git-worker",
+      "command": [
+        "./build.sh",
+        "--windows"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source",
+      "effective_windows_rustflags": "-C target-feature=+crt-static (added by frozen build.sh)",
+      "environment": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target",
+        "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+        "RUSTFLAGS": "",
+        "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+        "XWIN_CROSS_COMPILER": "clang",
+        "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot"
+      },
+      "exit": 0,
+      "finished_unix": 1795642674.4115992,
+      "label": "candidate-stateless-status-b2de070",
+      "log": "/home/max/benchmarks/branchline-boundary/windows-controls-b2de070-20261125T213427886542Z/candidate-stateless-status-b2de070-windows-build.log",
+      "log_sha256": "cf03024bfc1785deec2073a2823a6ef161ee155eff117e260b16159019dc2c0c",
+      "source": {
+        "files": {
+          "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+          "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+          "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+          "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+          "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+          "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+          "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+          "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+          "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+          "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+          "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+          "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+          "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+          "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+          "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+          "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+          "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+          "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+          "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+          "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+          "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+          "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+          "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+          "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+          "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+          "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+          "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+          "src-tauri/src/git.rs": "dcae797180249d4eab4ef12d0a2848d358bbcc0953b08f5b43f15e7edaeae0fc",
+          "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+          "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+          "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+          "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+          "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+          "src-tauri/src/git_tests.rs": "f0d3d9667eede161d0bd4a05e9140ef76ce897fe1d77624d995699fac00c0ead",
+          "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+          "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+          "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+          "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+          "src-tauri/src/mcp/desktop_tests.rs": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f",
+          "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+          "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+          "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+          "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+          "src-tauri/src/search.rs": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f",
+          "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+          "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+          "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+          "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+          "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        },
+        "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+      },
+      "source_after": {
+        "files": {
+          "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+          "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+          "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+          "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+          "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+          "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+          "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+          "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+          "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+          "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+          "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+          "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+          "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+          "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+          "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+          "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+          "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+          "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+          "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+          "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+          "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+          "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+          "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+          "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+          "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+          "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+          "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+          "src-tauri/src/git.rs": "dcae797180249d4eab4ef12d0a2848d358bbcc0953b08f5b43f15e7edaeae0fc",
+          "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+          "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+          "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+          "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+          "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+          "src-tauri/src/git_tests.rs": "f0d3d9667eede161d0bd4a05e9140ef76ce897fe1d77624d995699fac00c0ead",
+          "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+          "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+          "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+          "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+          "src-tauri/src/mcp/desktop_tests.rs": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f",
+          "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+          "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+          "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+          "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+          "src-tauri/src/search.rs": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f",
+          "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+          "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+          "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+          "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+          "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+        },
+        "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+        "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+      },
+      "started_unix": 1795642576.4302156,
+      "windows_gui": {
+        "bytes": 20652032,
+        "embedded_helper_sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+        "embedded_helper_verified": true,
+        "imports": [
+          "kernel32.dll",
+          "ws2_32.dll",
+          "user32.dll",
+          "ole32.dll",
+          "gdi32.dll",
+          "dwmapi.dll",
+          "comctl32.dll",
+          "shlwapi.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "shell32.dll",
+          "ntdll.dll",
+          "bcryptprimitives.dll",
+          "advapi32.dll",
+          "oleaut32.dll",
+          "secur32.dll"
+        ],
+        "path": "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline.exe",
+        "renderer": "production defaults; no runtime launch",
+        "sha256": "bf63b06c6bcaa2f561d71ab61b25b1fb043c844487e61fb978510beb0fcbe2c3",
+        "static_crt_import_check": true,
+        "windows_path": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe"
+      }
+    }
+  ],
+  "current_phase": "native-kernel-fingerprints-after",
+  "finished_unix": 1795642682.7833793,
+  "fixture_fingerprints_after": {
+    "windows": {
+      "commands": [
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "rev-parse",
+            "HEAD"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "show-ref"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "ls-files",
+            "--stage",
+            "-z"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "status",
+            "--porcelain=v1",
+            "-z",
+            "--untracked-files=all"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "-c",
+            "diff.autoRefreshIndex=false",
+            "diff",
+            "--cached",
+            "--binary",
+            "--no-ext-diff"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "-c",
+            "diff.autoRefreshIndex=false",
+            "diff",
+            "--binary",
+            "--no-ext-diff"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "ls-files",
+            "--others",
+            "--exclude-standard",
+            "-z"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da"
+        }
+      ],
+      "configuration": "Existing user Git configuration inherited; no cache or monitor overrides.",
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "commands": [
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "rev-parse",
+            "HEAD"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "show-ref"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "ls-files",
+            "--stage",
+            "-z"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "status",
+            "--porcelain=v1",
+            "-z",
+            "--untracked-files=all"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "-c",
+            "diff.autoRefreshIndex=false",
+            "diff",
+            "--cached",
+            "--binary",
+            "--no-ext-diff"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "-c",
+            "diff.autoRefreshIndex=false",
+            "diff",
+            "--binary",
+            "--no-ext-diff"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "ls-files",
+            "--others",
+            "--exclude-standard",
+            "-z"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da"
+        }
+      ],
+      "configuration": "Existing user Git configuration inherited; no cache or monitor overrides.",
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_fingerprints_before": {
+    "windows": {
+      "commands": [
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "rev-parse",
+            "HEAD"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "show-ref"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "ls-files",
+            "--stage",
+            "-z"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "status",
+            "--porcelain=v1",
+            "-z",
+            "--untracked-files=all"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "-c",
+            "diff.autoRefreshIndex=false",
+            "diff",
+            "--cached",
+            "--binary",
+            "--no-ext-diff"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "-c",
+            "diff.autoRefreshIndex=false",
+            "diff",
+            "--binary",
+            "--no-ext-diff"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4"
+        },
+        {
+          "command": [
+            "/mnt/c/Program Files/Git/cmd/git.exe",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "C:/Users/max/branchline-bench/kernel-windows",
+            "ls-files",
+            "--others",
+            "--exclude-standard",
+            "-z"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da"
+        }
+      ],
+      "configuration": "Existing user Git configuration inherited; no cache or monitor overrides.",
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    },
+    "wsl": {
+      "commands": [
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "rev-parse",
+            "HEAD"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "show-ref"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "ls-files",
+            "--stage",
+            "-z"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "status",
+            "--porcelain=v1",
+            "-z",
+            "--untracked-files=all"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "-c",
+            "diff.autoRefreshIndex=false",
+            "diff",
+            "--cached",
+            "--binary",
+            "--no-ext-diff"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "-c",
+            "diff.autoRefreshIndex=false",
+            "diff",
+            "--binary",
+            "--no-ext-diff"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4"
+        },
+        {
+          "command": [
+            "/usr/bin/git",
+            "--no-pager",
+            "--literal-pathspecs",
+            "-C",
+            "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+            "ls-files",
+            "--others",
+            "--exclude-standard",
+            "-z"
+          ],
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da"
+        }
+      ],
+      "configuration": "Existing user Git configuration inherited; no cache or monitor overrides.",
+      "sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2"
+    }
+  },
+  "fixture_guards_after": {
+    "windows": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614734418472500,
+        "device": 87,
+        "inode": 2814749767263140,
+        "mode": 33279,
+        "mtime_ns": 1795614733000000000,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994331971400,
+        "device": 87,
+        "inode": 3377699720684454,
+        "mode": 33279,
+        "mtime_ns": 1795615994331971400,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615947971522900,
+        "device": 87,
+        "inode": 562949953782638,
+        "mode": 33279,
+        "mtime_ns": 1795615947971522900,
+        "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+      }
+    },
+    "wsl": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614733907349066,
+        "device": 2096,
+        "inode": 272949,
+        "mode": 33188,
+        "mtime_ns": 1795614733907349066,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994729935414,
+        "device": 2096,
+        "inode": 278185,
+        "mode": 33188,
+        "mtime_ns": 1795615994729935414,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615942133939671,
+        "device": 2096,
+        "inode": 278079,
+        "mode": 33188,
+        "mtime_ns": 1795615942129939671,
+        "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+      }
+    }
+  },
+  "fixture_guards_before": {
+    "windows": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614734418472500,
+        "device": 87,
+        "inode": 2814749767263140,
+        "mode": 33279,
+        "mtime_ns": 1795614733000000000,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994331971400,
+        "device": 87,
+        "inode": 3377699720684454,
+        "mode": 33279,
+        "mtime_ns": 1795615994331971400,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615947971522900,
+        "device": 87,
+        "inode": 562949953782638,
+        "mode": 33279,
+        "mtime_ns": 1795615947971522900,
+        "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129"
+      }
+    },
+    "wsl": {
+      "HEAD": {
+        "bytes": 39,
+        "ctime_ns": 1795614733907349066,
+        "device": 2096,
+        "inode": 272949,
+        "mode": 33188,
+        "mtime_ns": 1795614733907349066,
+        "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e"
+      },
+      "config": {
+        "bytes": 334,
+        "ctime_ns": 1795615994729935414,
+        "device": 2096,
+        "inode": 278185,
+        "mode": 33188,
+        "mtime_ns": 1795615994729935414,
+        "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08"
+      },
+      "index": {
+        "bytes": 9271771,
+        "ctime_ns": 1795615942133939671,
+        "device": 2096,
+        "inode": 278079,
+        "mode": 33188,
+        "mtime_ns": 1795615942129939671,
+        "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017"
+      }
+    }
+  },
+  "helper": {
+    "bytes": 3969568,
+    "interpreter": false,
+    "needed_dependencies": [],
+    "path": "/home/max/benchmarks/branchline-boundary/windows-controls-b2de070-20261125T213427886542Z/helper/branchline-git-worker",
+    "preserved_from": "/home/max/benchmarks/branchline-boundary/helper-placement/placement-v3-01/linux/native/branchline-git-worker",
+    "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa"
+  },
+  "native_git": {
+    "windows": {
+      "path": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "sha256": "177bc8a9af84fa3a400c694c975fda731d048279c074e1a93947ce8b067ebb48",
+      "version": "git version 2.56.1.windows.1"
+    },
+    "wsl": {
+      "path": "/usr/bin/git",
+      "sha256": "ed8b2df973b28c0fb773b9c0dc0816d3ee2b3835bb932d9153c21417bb51b362",
+      "version": "git version 2.53.0"
+    }
+  },
+  "pid": 133558,
+  "plan": {
+    "builds": [
+      {
+        "artifact": "/mnt/c/Users/max/branchline-bench/binaries/checkpoint-b2de070/branchline.exe",
+        "command": [
+          "./build.sh",
+          "--windows"
+        ],
+        "label": "checkpoint-b2de070",
+        "source": {
+          "files": {
+            "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+            "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+            "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+            "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+            "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+            "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+            "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+            "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+            "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+            "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+            "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+            "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+            "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+            "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+            "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+            "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+            "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+            "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+            "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+            "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+            "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+            "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+            "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+            "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+            "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+            "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+            "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+            "src-tauri/src/git.rs": "c99e2c48478f762684aa08d32e08929e18c05667cb1a0b4b783009c49efbc191",
+            "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+            "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+            "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+            "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+            "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+            "src-tauri/src/git_tests.rs": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+            "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+            "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+            "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+            "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+            "src-tauri/src/mcp/desktop_tests.rs": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f",
+            "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+            "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+            "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+            "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+            "src-tauri/src/search.rs": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f",
+            "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+            "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+            "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+            "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+            "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+          },
+          "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+          "source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272"
+        },
+        "vm_source": "/home/max/benchmarks/branchline-boundary/checkpoint-b2de070-source",
+        "windows_artifact": "C:\\Users\\max\\branchline-bench\\binaries\\checkpoint-b2de070\\branchline.exe"
+      },
+      {
+        "artifact": "/mnt/c/Users/max/branchline-bench/binaries/candidate-stateless-status-b2de070/branchline.exe",
+        "command": [
+          "./build.sh",
+          "--windows"
+        ],
+        "label": "candidate-stateless-status-b2de070",
+        "source": {
+          "files": {
+            "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+            "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+            "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+            "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+            "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+            "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+            "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+            "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+            "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+            "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+            "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+            "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+            "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+            "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+            "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+            "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+            "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+            "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+            "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+            "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+            "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+            "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+            "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+            "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+            "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+            "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+            "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+            "src-tauri/src/git.rs": "dcae797180249d4eab4ef12d0a2848d358bbcc0953b08f5b43f15e7edaeae0fc",
+            "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+            "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+            "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+            "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+            "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+            "src-tauri/src/git_tests.rs": "f0d3d9667eede161d0bd4a05e9140ef76ce897fe1d77624d995699fac00c0ead",
+            "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+            "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+            "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+            "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+            "src-tauri/src/mcp/desktop_tests.rs": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f",
+            "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+            "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+            "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+            "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+            "src-tauri/src/search.rs": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f",
+            "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+            "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+            "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+            "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+            "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+          },
+          "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+          "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb"
+        },
+        "vm_source": "/home/max/benchmarks/branchline-boundary/candidate-stateless-status-b2de070-source",
+        "windows_artifact": "C:\\Users\\max\\branchline-bench\\binaries\\candidate-stateless-status-b2de070\\branchline.exe"
+      }
+    ],
+    "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+    "environment": {
+      "CARGO_BUILD_JOBS": "1",
+      "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target",
+      "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+      "RUSTFLAGS": "",
+      "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+      "XWIN_CROSS_COMPILER": "clang",
+      "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot"
+    },
+    "execution_gate": "Wait for root: VM WINDOWS CONTROLS BUILD RELEASED",
+    "fixture_fingerprint": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+    "fixtures": [
+      {
+        "git": "/usr/bin/git",
+        "git_root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "platform": "wsl",
+        "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl"
+      },
+      {
+        "git": "/mnt/c/Program Files/Git/cmd/git.exe",
+        "git_root": "C:/Users/max/branchline-bench/kernel-windows",
+        "git_sha256": "177bc8a9af84fa3a400c694c975fda731d048279c074e1a93947ce8b067ebb48",
+        "platform": "windows",
+        "root": "/mnt/c/Users/max/branchline-bench/kernel-windows"
+      }
+    ],
+    "helper": {
+      "bytes": 3969568,
+      "recipe": "Existing verified static GNU helper; copy and embed; never rebuild.",
+      "sha256": "328c0680bb2d74b61cdc42b242dd944500a7240307ded0869d753dfd0842acaa",
+      "source": "/home/max/benchmarks/branchline-boundary/helper-placement/placement-v3-01/linux/native/branchline-git-worker"
+    },
+    "host_run_directory": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/windows-controls-b2de070-20261125T213427886542Z",
+    "kernel_base": "adc218676eef25575469234709c2d87185ca223a",
+    "proof": "Source identities and native fixture fingerprints/guards before and after; full GUI/helper SHA256; static ELF and CRT-import checks; exact embedded helper bytes.",
+    "run_id": "windows-controls-b2de070-20261125T213427886542Z",
+    "scope": "Two serial GUI builds only; no tests, helper builds, GUI launch, scoring, source edits or commits.",
+    "status": "prepared-host-only-not-executed",
+    "tracked_files": 86680,
+    "vm_run_directory": "/home/max/benchmarks/branchline-boundary/windows-controls-b2de070-20261125T213427886542Z",
+    "workload_manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9"
+  },
+  "started_unix": 1795642467.4667628,
+  "status": "complete-build-proof-passed-no-GUI-execution",
+  "versions": {
+    "cargo": "cargo 1.100.0 (3acc79c0c 2026-11-05)",
+    "cargo_xwin": "cargo-xwin-xwin 0.24.1",
+    "clang": "Ubuntu clang version 21.1.8 (6ubuntu1)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/lib/llvm-21/bin",
+    "cmake": "cmake version 4.2.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "node": "v22.22.1",
+    "npm": "9.2.0",
+    "rustc": "rustc 1.100.0 (0ef1bc386 2026-11-09)\nbinary: rustc\ncommit-hash: 0ef1bc386059596dada8fb65b50425aab2ea637a\ncommit-date: 2026-11-09\nhost: x86_64-unknown-linux-gnu\nrelease: 1.100.0\nLLVM version: 23.1.5"
+  }
+}

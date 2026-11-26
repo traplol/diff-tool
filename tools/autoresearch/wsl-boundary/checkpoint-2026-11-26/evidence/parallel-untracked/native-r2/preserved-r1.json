@@ -1,0 +1,82 @@
+{
+  "status": "all pre-existing parent files preserved unchanged",
+  "files": {
+    "README.md": {
+      "sha256": "51278fa104d8af39c34dd824bbf3ec4793ab08dc2f6b6514cc810a8335a79c39",
+      "bytes": 9085
+    },
+    "baseline-source.json": {
+      "sha256": "90b47f28804dd7020b7f32ed996bc629549b627886d99cce34f13d9d9e6245fc",
+      "bytes": 5050
+    },
+    "baseline.json": {
+      "sha256": "488af191f78415c31ade6c1b6729f3f275343b2244d7853655352c631b5100e6",
+      "bytes": 547
+    },
+    "candidate.patch": {
+      "sha256": "5a9c9f3c778544f7508c19e3d68c56c5a167b48c553247a6bd83d5d3dcfb8253",
+      "bytes": 14742
+    },
+    "focused-tests-oracle-path-failure.log": {
+      "sha256": "7fdc4fc03a3b171645e57a0b443db8e3b998c42285c5c07fa93452cd433790c5",
+      "bytes": 1840
+    },
+    "gui-rust-tests-loopback.log": {
+      "sha256": "abde3ad0498be034735330b7c081b65ca32e8e264cf9ea2bcc93fddce2025f49",
+      "bytes": 7256
+    },
+    "gui-rust-tests.log": {
+      "sha256": "1a723ffc796b7a5d9800e8e4c3d2d31e31e20fff4d7c4080048ebd2e38f6b871",
+      "bytes": 9691
+    },
+    "native-experiment.log": {
+      "sha256": "0952ac8d5390f4adc5055b5492ee6a3dded62bfcda148061fd24e6b758f71e0c",
+      "bytes": 3882
+    },
+    "native-experiment.py": {
+      "sha256": "3bc23ffb978b4689a8befe9591774b08dc9dd1c020b3628d85a313a60a386b6e",
+      "bytes": 14770
+    },
+    "native-input.json": {
+      "sha256": "48e07fefd5de95e8adae7738857f9cee2f7ee55f6b5377878afef550cb464fee",
+      "bytes": 1075
+    },
+    "native-owner.json": {
+      "sha256": "571d7a364fbd7d42cfeca05ba68678a95300d969db207bfd29adb869ef48fedf",
+      "bytes": 2908
+    },
+    "native-plan.json": {
+      "sha256": "e2ab203ad25e5c247932eb477b89bd7466f137194dd93bf9e1b1371d74369617",
+      "bytes": 15255
+    },
+    "parallel-untracked-f15e85-r1-input.tar": {
+      "sha256": "79453f4aae86ec8079e35f040192acbd39e2b5e526a9c2dfe6482c053cf38b83",
+      "bytes": 972800
+    },
+    "proof.json": {
+      "sha256": "b526c63d9e001edc199ff9547def4a071bf9fcbba7463c16dc7a39ff324774c9",
+      "bytes": 3127
+    },
+    "run-native.py": {
+      "sha256": "f8258aea008e81a4e3d35645209b319c6665d36978cea363972bd1b20ea4030f",
+      "bytes": 3287
+    },
+    "source.json": {
+      "sha256": "c05b1ac831e2ed561228371bff1d13fae1d60659d31c18506547aa22a3e1acb5",
+      "bytes": 5050
+    },
+    "upload-native-input.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "worker-tests-oracle-binary-failure.log": {
+      "sha256": "010bd22bcfebf1f9df18a50dadf5d6f960c9c7e9dfd5c8327cd570e968cc98b3",
+      "bytes": 3835
+    },
+    "worker-tests.log": {
+      "sha256": "6b983600e403034ad0aa5e92a65f6cba869d8a307b578185318f63e945aa0dff",
+      "bytes": 3550
+    }
+  },
+  "candidate_native_result": "invalid reused tracer; no speed claim"
+}

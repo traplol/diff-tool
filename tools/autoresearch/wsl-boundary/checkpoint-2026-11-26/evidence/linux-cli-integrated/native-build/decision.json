@@ -1,0 +1,1059 @@
+{
+  "status": "native build qualified for canonical evaluation; performance remains unproved for integrated source",
+  "decision": "Retain exact integrated artifacts for the frozen full4cell comparison. No promotion or250ms goal claim from build evidence.",
+  "written_unix": 1795655043.6821876,
+  "source": {
+    "canonical_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+    "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+    "git_tree": "c3d380fd97b2bf2113d0b94db74ff62bc22ab33b",
+    "canonical_app_files": 49,
+    "build_snapshot_files": 51,
+    "single_production_change": "Linux execution uses existing CLI branch-summary path; Windows policy and current main tests preserved.",
+    "real_git_provenance": {
+      "head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+      "tree": "c3d380fd97b2bf2113d0b94db74ff62bc22ab33b",
+      "bundle_sha256": "1509cbcd868db0160fc1b8299b3755283afbfc8e0ba8244cb63b39540737d1e5",
+      "external_alternates": false,
+      "working_files_preserved": true,
+      "method": "init/fetch/update-ref/read-tree; no checkout"
+    },
+    "vm_source_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+    "host_source_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source"
+  },
+  "input": {
+    "archive": {
+      "name": "integrated-c200-r1-input.tar",
+      "sha256": "052a2e9ecb7b7a7c1cee91946a754b3912715087b7ca5a1326542948f3064ee3",
+      "bytes": 2181120,
+      "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+      "bundle_sha256": "1509cbcd868db0160fc1b8299b3755283afbfc8e0ba8244cb63b39540737d1e5",
+      "build_plan_sha256": "8142b26ea7c677893447d0ff0c27d694541c397b9f5d7bbe5937abe061a54f0a",
+      "vm_supervisor_sha256": "83d3e37672e3c7e50c474fc142365caa2f8a7f656fc736bfa42b508582cea158",
+      "host_launcher_sha256": "06b97dc8584529a1cdd2abcca221d717c53dca9c5cf07b243137e1b109a8f7cb",
+      "host_verifier_sha256": "af3075c0f5651b1f1bffbb8d6792abfe49e1e888956b33e11fa0efb71702a58a",
+      "status": "prepared; mandatory realGit hostextract/49hash verification before SSH"
+    },
+    "host_package_roundtrip": {
+      "path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/package-verification.json",
+      "sha256": "547caa3664d1db6991417e93d6160a17f1ba63e3d2566e3011597fd376d333e5",
+      "status": "host-extract-git-discovery-and-source-passed"
+    }
+  },
+  "artifacts": {
+    "linux_worker": {
+      "vm_immutable_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker",
+      "host_copy_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/branchline-git-worker",
+      "bytes": 3967600,
+      "sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+      "reported_compiler_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/branchline-git-worker",
+      "root_producer_fresh": false,
+      "format": "ELF"
+    },
+    "windows_worker": {
+      "vm_immutable_path": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe",
+      "host_copy_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/branchline-git-worker.exe",
+      "bytes": 2720768,
+      "sha256": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+      "reported_compiler_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+      "root_producer_fresh": false,
+      "format": "PE",
+      "static_crt_import_check": true,
+      "imports": [
+        "bcryptprimitives.dll",
+        "KERNEL32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "WS2_32.dll",
+        "ntdll.dll",
+        "ADVAPI32.dll",
+        "Secur32.dll"
+      ]
+    },
+    "linux_gui": {
+      "vm_immutable_path": "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline",
+      "host_copy_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/branchline",
+      "bytes": 23257808,
+      "sha256": "d5927b652c75b837d84039b15993737392fcce43fd7d3c364943fb4b9fa0e37a",
+      "reported_compiler_executable": "/home/max/workspace/diff-tool/src-tauri/target/release/branchline",
+      "root_producer_fresh": false,
+      "format": "ELF",
+      "embedded_opposite_helper_sha256": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+      "byte_embedding_verified": true,
+      "renderer": "production default",
+      "packaged_assets": {
+        "dependency_custom_protocol": true,
+        "root_library_fresh": false,
+        "compressed_css_html_js_blobs_verified": 3,
+        "dist_file_count": 3,
+        "root_feature_list_not_required": true
+      }
+    },
+    "windows_gui": {
+      "vm_immutable_path": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline.exe",
+      "host_copy_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/branchline.exe",
+      "bytes": 20661760,
+      "sha256": "eeb0346fc58f8723c545b753007ab4a4e0a589ef335258567d34997dbcb1af25",
+      "reported_compiler_executable": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe",
+      "root_producer_fresh": false,
+      "format": "PE",
+      "embedded_opposite_helper_sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+      "byte_embedding_verified": true,
+      "renderer": "production default",
+      "packaged_assets": {
+        "dependency_custom_protocol": true,
+        "root_library_fresh": false,
+        "compressed_css_html_js_blobs_verified": 3,
+        "dist_file_count": 3,
+        "root_feature_list_not_required": true
+      },
+      "static_crt_import_check": true,
+      "imports": [
+        "kernel32.dll",
+        "ws2_32.dll",
+        "user32.dll",
+        "bcryptprimitives.dll",
+        "ole32.dll",
+        "comctl32.dll",
+        "shell32.dll",
+        "ntdll.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "gdi32.dll",
+        "dwmapi.dll",
+        "shlwapi.dll",
+        "advapi32.dll",
+        "oleaut32.dll",
+        "secur32.dll"
+      ]
+    }
+  },
+  "producer_artifacts": {
+    "linux_worker": {
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+      "target_name": "branchline-git-worker",
+      "target_kind": [
+        "bin"
+      ],
+      "target_source": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/src/main.rs",
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "fresh": false,
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/branchline-git-worker",
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/branchline-git-worker"
+      ]
+    },
+    "linux_worker_tests": {
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+      "target_name": "branchline-git-worker",
+      "target_kind": [
+        "bin"
+      ],
+      "target_source": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/src/main.rs",
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": true
+      },
+      "fresh": false,
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/build/branchline-git-worker/fbb791997f71a45e/out/branchline_git_worker-fbb791997f71a45e",
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/build/branchline-git-worker/fbb791997f71a45e/out/branchline_git_worker-fbb791997f71a45e"
+      ]
+    },
+    "linux_worker_stdio": {
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+      "target_name": "stdio",
+      "target_kind": [
+        "test"
+      ],
+      "target_source": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/tests/stdio.rs",
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": true
+      },
+      "fresh": false,
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/build/branchline-git-worker/127cb01452fe0364/out/stdio-127cb01452fe0364",
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/build/branchline-git-worker/127cb01452fe0364/out/stdio-127cb01452fe0364"
+      ]
+    },
+    "windows_worker": {
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+      "target_name": "branchline-git-worker",
+      "target_kind": [
+        "bin"
+      ],
+      "target_source": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/src/main.rs",
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "fresh": false,
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline-git-worker.exe",
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/branchline_git_worker.pdb"
+      ]
+    },
+    "windows_worker_tests": {
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+      "target_name": "branchline-git-worker",
+      "target_kind": [
+        "bin"
+      ],
+      "target_source": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/src/main.rs",
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": true
+      },
+      "fresh": false,
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/09f6db754efdc325/out/branchline_git_worker-09f6db754efdc325.exe",
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/09f6db754efdc325/out/branchline_git_worker-09f6db754efdc325.exe",
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/09f6db754efdc325/out/branchline_git_worker-09f6db754efdc325.pdb"
+      ]
+    },
+    "windows_gui": {
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+      "target_name": "branchline",
+      "target_kind": [
+        "bin"
+      ],
+      "target_source": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/src/main.rs",
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "fresh": false,
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe",
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/branchline.exe",
+        "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/branchline.pdb"
+      ]
+    },
+    "windows_gui_library": {
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+      "target_name": "branchline",
+      "target_kind": [
+        "lib"
+      ],
+      "target_source": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/src/lib.rs",
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "fresh": false,
+      "executable": null,
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/d4d52eb1270aa5b2/out/libbranchline-d4d52eb1270aa5b2.rlib",
+        "/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/branchline/d4d52eb1270aa5b2/out/libbranchline-d4d52eb1270aa5b2.rmeta"
+      ]
+    },
+    "linux_gui": {
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+      "target_name": "branchline",
+      "target_kind": [
+        "bin"
+      ],
+      "target_source": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/src/main.rs",
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "fresh": false,
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/release/branchline",
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/release/branchline"
+      ]
+    },
+    "linux_gui_library": {
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+      "target_name": "branchline",
+      "target_kind": [
+        "lib"
+      ],
+      "target_source": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/src/lib.rs",
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "fresh": false,
+      "executable": null,
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/baf16e45ab6efb27/out/libbranchline-baf16e45ab6efb27.rlib",
+        "/home/max/workspace/diff-tool/src-tauri/target/release/build/branchline/baf16e45ab6efb27/out/libbranchline-baf16e45ab6efb27.rmeta"
+      ]
+    }
+  },
+  "native_test_results": {
+    "linux_worker_unit": 25,
+    "linux_real_stdio": 1,
+    "windows_worker_unit": 23,
+    "all_exact_names_validated_against_frozen_plan": true,
+    "linux_names": [
+      "git::tests::advertised_remote_default_and_orphan_and_detached_checkout",
+      "git::tests::configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs",
+      "git::tests::display_patch_preserves_git_rows_and_frozen_working_tree",
+      "git::tests::first_commit_diverged_base_stack_and_forks",
+      "git::tests::libgit2_reads_normal_review_changes_without_the_compatibility_backend",
+      "git::tests::literal_names_binary_rename_line_numbers_and_scoped_untracked",
+      "git::tests::merge_conflict_shows_existing_stage_two_and_other_staged_changes",
+      "git::tests::partially_staged_snapshot_survives_file_and_index_changes",
+      "git::tests::patch_process_is_reaped_when_a_silent_search_is_superseded",
+      "git::tests::patch_reader_checks_cancellation_while_git_is_silent",
+      "git::tests::patch_stream_stops_at_201_matches_inside_the_first_file",
+      "git::tests::raw_and_numstat_parsers_keep_counts_errors_and_stat_only_changes",
+      "git::tests::revision_file_distinguishes_text_binary_and_missing_submodule_objects",
+      "git::tests::skip_worktree_entries_preserve_git_status_and_frozen_patches",
+      "git::tests::sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged",
+      "git::tests::streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes",
+      "git::tests::streamed_patches_keep_type_change_sections_and_byte_paths",
+      "git::tests::symlinks_type_changes_nested_repo_and_non_utf8_names",
+      "git::tests::whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move",
+      "git::tests::whole_file_reconstructs_unstaged_gaps_after_the_index_and_disk_change",
+      "git::tests::working_tree_snapshot_does_not_rewrite_stat_stale_index",
+      "git::worker::tests::invalid_sections_are_rejected_before_git_access",
+      "git::worker::tests::null_success_is_distinct_from_failure",
+      "git::worker::tests::protocol_rejects_mutating_and_unknown_operations",
+      "git::worker::tests::wire_sections_are_lossless_and_do_not_change_frontend_serialization",
+      "real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs"
+    ],
+    "windows_names": [
+      "git::tests::advertised_remote_default_and_orphan_and_detached_checkout",
+      "git::tests::configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs",
+      "git::tests::display_patch_preserves_git_rows_and_frozen_working_tree",
+      "git::tests::first_commit_diverged_base_stack_and_forks",
+      "git::tests::libgit2_reads_normal_review_changes_without_the_compatibility_backend",
+      "git::tests::literal_names_binary_rename_line_numbers_and_scoped_untracked",
+      "git::tests::merge_conflict_shows_existing_stage_two_and_other_staged_changes",
+      "git::tests::partially_staged_snapshot_survives_file_and_index_changes",
+      "git::tests::patch_reader_checks_cancellation_while_git_is_silent",
+      "git::tests::patch_stream_stops_at_201_matches_inside_the_first_file",
+      "git::tests::raw_and_numstat_parsers_keep_counts_errors_and_stat_only_changes",
+      "git::tests::revision_file_distinguishes_text_binary_and_missing_submodule_objects",
+      "git::tests::skip_worktree_entries_preserve_git_status_and_frozen_patches",
+      "git::tests::sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged",
+      "git::tests::streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes",
+      "git::tests::whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move",
+      "git::tests::whole_file_reconstructs_unstaged_gaps_after_the_index_and_disk_change",
+      "git::tests::working_tree_snapshot_does_not_rewrite_stat_stale_index",
+      "git::windows::tests::wsl_paths_round_trip_through_the_named_distribution",
+      "git::worker::tests::invalid_sections_are_rejected_before_git_access",
+      "git::worker::tests::null_success_is_distinct_from_failure",
+      "git::worker::tests::protocol_rejects_mutating_and_unknown_operations",
+      "git::worker::tests::wire_sections_are_lossless_and_do_not_change_frontend_serialization"
+    ],
+    "windows_unit_executable": {
+      "path": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/worker-unit-tests.exe",
+      "sha256": "a42b05bb6784e5a77d5cb8924ec2188ec3dba4c9f260f96f3fae41041b488f6a",
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-pc-windows-msvc/release/build/branchline-git-worker/09f6db754efdc325/out/branchline_git_worker-09f6db754efdc325.exe"
+    }
+  },
+  "kernel_proofs": [
+    {
+      "platform": "linux",
+      "binary_sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+      "hello": {
+        "architecture": "x86_64",
+        "os": "linux",
+        "pid": 211563,
+        "protocol": 1
+      },
+      "native_identity": {
+        "pid": 211563,
+        "start_ticks": "15848590",
+        "exe": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker"
+      },
+      "pid": 211563,
+      "start_ticks": "15848590",
+      "interop_pid": null,
+      "exit": 0,
+      "exact_actor_absent": true,
+      "pairs": [
+        {
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-first",
+          "exact_metadata_count": 30,
+          "metadata_oid_count_parity": true
+        },
+        {
+          "left": "refs/heads/feature/boundary-first",
+          "right": "refs/heads/feature/boundary-final",
+          "exact_metadata_count": 30,
+          "metadata_oid_count_parity": true
+        },
+        {
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "exact_metadata_count": 30,
+          "metadata_oid_count_parity": true
+        }
+      ]
+    },
+    {
+      "platform": "windows",
+      "binary_sha256": "c06c741751358d5d855455328cfa6d5a2d7e1090c4dc1c95423d039f077da3cd",
+      "hello": {
+        "architecture": "x86_64",
+        "os": "windows",
+        "pid": 14300,
+        "protocol": 1
+      },
+      "native_identity": {
+        "pid": 14300,
+        "created": "2026-11-25T19:53:36.5692860-05:00",
+        "exe": "C:\\Users\\max\\branchline-bench\\binaries\\integrated-c200-r1\\branchline-git-worker.exe"
+      },
+      "pid": 212061,
+      "start_ticks": "15871149",
+      "interop_pid": null,
+      "exit": 0,
+      "exact_actor_absent": true,
+      "pairs": [
+        {
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-first",
+          "exact_metadata_count": 30,
+          "metadata_oid_count_parity": true
+        },
+        {
+          "left": "refs/heads/feature/boundary-first",
+          "right": "refs/heads/feature/boundary-final",
+          "exact_metadata_count": 30,
+          "metadata_oid_count_parity": true
+        },
+        {
+          "left": "refs/heads/main",
+          "right": "refs/heads/feature/boundary-final",
+          "exact_metadata_count": 30,
+          "metadata_oid_count_parity": true
+        }
+      ]
+    }
+  ],
+  "fixture_integrity": {
+    "both_fingerprints_equal_frozen": true,
+    "fingerprint": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+    "before_equals_after": true,
+    "raw_index_config_HEAD_bytes_and_stat_preserved": true,
+    "evidence_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/supervisor.json"
+  },
+  "build_phase_wall_seconds": [
+    {
+      "name": "source-git-init",
+      "argv": [
+        "git",
+        "init",
+        "--quiet",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 210077,
+      "start_ticks": "15838389",
+      "exit": 0,
+      "started_unix": 1795654088.2210493,
+      "finished_unix": 1795654088.2831094,
+      "wall_seconds": 0.06206011772155762,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/source-git-init.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/source-git-init.log"
+    },
+    {
+      "name": "source-bundle-verify",
+      "argv": [
+        "git",
+        "bundle",
+        "verify",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source-ce75cd6.bundle"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 210078,
+      "start_ticks": "15838395",
+      "exit": 0,
+      "started_unix": 1795654088.2834575,
+      "finished_unix": 1795654088.288871,
+      "wall_seconds": 0.005413532257080078,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/source-bundle-verify.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/source-bundle-verify.log"
+    },
+    {
+      "name": "source-bundle-fetch",
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source-ce75cd6.bundle",
+        "HEAD"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 210079,
+      "start_ticks": "15838396",
+      "exit": 0,
+      "started_unix": 1795654088.28935,
+      "finished_unix": 1795654088.4227295,
+      "wall_seconds": 0.13337945938110352,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/source-bundle-fetch.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/source-bundle-fetch.log"
+    },
+    {
+      "name": "source-git-head",
+      "argv": [
+        "git",
+        "update-ref",
+        "--no-deref",
+        "HEAD",
+        "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 210091,
+      "start_ticks": "15838410",
+      "exit": 0,
+      "started_unix": 1795654088.4289954,
+      "finished_unix": 1795654088.4376876,
+      "wall_seconds": 0.008692264556884766,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/source-git-head.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/source-git-head.log"
+    },
+    {
+      "name": "source-git-index",
+      "argv": [
+        "git",
+        "read-tree",
+        "HEAD"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 210092,
+      "start_ticks": "15838411",
+      "exit": 0,
+      "started_unix": 1795654088.4379883,
+      "finished_unix": 1795654088.445857,
+      "wall_seconds": 0.007868766784667969,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/source-git-index.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/source-git-index.log"
+    },
+    {
+      "name": "linux-worker-root-clean",
+      "argv": [
+        "cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline-git-worker",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-unknown-linux-gnu"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 210211,
+      "start_ticks": "15841194",
+      "exit": 0,
+      "started_unix": 1795654116.266356,
+      "finished_unix": 1795654116.5644805,
+      "wall_seconds": 0.2981245517730713,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/linux-worker-root-clean.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/linux-worker-root-clean.log"
+    },
+    {
+      "name": "linux-worker-build",
+      "argv": [
+        "cargo",
+        "build",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-unknown-linux-gnu",
+        "--message-format=json"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 210221,
+      "start_ticks": "15841223",
+      "exit": 0,
+      "started_unix": 1795654116.5649292,
+      "finished_unix": 1795654177.6696587,
+      "wall_seconds": 61.104729413986206,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/linux-worker-build.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/linux-worker-build.log"
+    },
+    {
+      "name": "linux-worker-format",
+      "argv": [
+        "file",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 211058,
+      "start_ticks": "15847335",
+      "exit": 0,
+      "started_unix": 1795654177.684125,
+      "finished_unix": 1795654177.716196,
+      "wall_seconds": 0.03207111358642578,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/linux-worker-format.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/linux-worker-format.log"
+    },
+    {
+      "name": "linux-worker-program-headers",
+      "argv": [
+        "readelf",
+        "-l",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 211059,
+      "start_ticks": "15847339",
+      "exit": 0,
+      "started_unix": 1795654177.7165222,
+      "finished_unix": 1795654177.7279913,
+      "wall_seconds": 0.011469125747680664,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/linux-worker-program-headers.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/linux-worker-program-headers.log"
+    },
+    {
+      "name": "linux-worker-dynamic",
+      "argv": [
+        "readelf",
+        "-d",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 211060,
+      "start_ticks": "15847340",
+      "exit": 0,
+      "started_unix": 1795654177.728308,
+      "finished_unix": 1795654177.732058,
+      "wall_seconds": 0.0037500858306884766,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/linux-worker-dynamic.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/linux-worker-dynamic.log"
+    },
+    {
+      "name": "linux-worker-tests",
+      "argv": [
+        "cargo",
+        "test",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-unknown-linux-gnu",
+        "--message-format=json",
+        "--",
+        "--test-threads=1"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 211061,
+      "start_ticks": "15847340",
+      "exit": 0,
+      "started_unix": 1795654177.7324903,
+      "finished_unix": 1795654190.204562,
+      "wall_seconds": 12.472071647644043,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/linux-worker-tests.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/linux-worker-tests.log"
+    },
+    {
+      "name": "linux-kernel-proof",
+      "argv": [
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker",
+        "--stdio"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "pid": 211563,
+      "start_ticks": "15848590",
+      "exit": 0,
+      "started_unix": 1795654190.232336,
+      "finished_unix": 1795654190.8778074,
+      "wall_seconds": 0.6454713344573975,
+      "vm_log": null,
+      "host_log": null
+    },
+    {
+      "name": "windows-worker-root-clean",
+      "argv": [
+        "cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline-git-worker",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 211570,
+      "start_ticks": "15848655",
+      "exit": 0,
+      "started_unix": 1795654190.88144,
+      "finished_unix": 1795654190.9559186,
+      "wall_seconds": 0.0744786262512207,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/windows-worker-root-clean.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/windows-worker-root-clean.log"
+    },
+    {
+      "name": "windows-worker-build",
+      "argv": [
+        "cargo",
+        "xwin",
+        "build",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc",
+        "--message-format=json"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 211580,
+      "start_ticks": "15848663",
+      "exit": 0,
+      "started_unix": 1795654190.9578662,
+      "finished_unix": 1795654361.5948296,
+      "wall_seconds": 170.63696336746216,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/windows-worker-build.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/windows-worker-build.log"
+    },
+    {
+      "name": "windows-worker-imports",
+      "argv": [
+        "objdump",
+        "-p",
+        "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 211983,
+      "start_ticks": "15865780",
+      "exit": 0,
+      "started_unix": 1795654362.1336184,
+      "finished_unix": 1795654362.2746973,
+      "wall_seconds": 0.14107894897460938,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/windows-worker-imports.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/windows-worker-imports.log"
+    },
+    {
+      "name": "windows-worker-tests-build",
+      "argv": [
+        "cargo",
+        "xwin",
+        "test",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc",
+        "--bin",
+        "branchline-git-worker",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 211984,
+      "start_ticks": "15865796",
+      "exit": 0,
+      "started_unix": 1795654362.2872984,
+      "finished_unix": 1795654397.8992436,
+      "wall_seconds": 35.611945152282715,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/windows-worker-tests-build.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/windows-worker-tests-build.log"
+    },
+    {
+      "name": "windows-worker-tests",
+      "argv": [
+        "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/worker-unit-tests.exe",
+        "--test-threads=1"
+      ],
+      "cwd": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1",
+      "pid": 212050,
+      "start_ticks": "15869410",
+      "exit": 0,
+      "started_unix": 1795654398.428115,
+      "finished_unix": 1795654415.6611228,
+      "wall_seconds": 17.23300790786743,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/windows-worker-tests.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/windows-worker-tests.log"
+    },
+    {
+      "name": "windows-kernel-proof",
+      "argv": [
+        "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe",
+        "--stdio"
+      ],
+      "cwd": "/mnt/c/Users/max/branchline-bench/kernel-windows",
+      "pid": 212061,
+      "start_ticks": "15871149",
+      "exit": 0,
+      "started_unix": 1795654415.8185692,
+      "finished_unix": 1795654420.6126156,
+      "wall_seconds": 4.794046401977539,
+      "vm_log": null,
+      "host_log": null
+    },
+    {
+      "name": "windows-gui-root-clean",
+      "argv": [
+        "cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 212067,
+      "start_ticks": "15871629",
+      "exit": 0,
+      "started_unix": 1795654420.6169746,
+      "finished_unix": 1795654421.784106,
+      "wall_seconds": 1.1671314239501953,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/windows-gui-root-clean.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/windows-gui-root-clean.log"
+    },
+    {
+      "name": "windows-gui-build",
+      "argv": [
+        "./build.sh",
+        "--windows",
+        "--",
+        "--message-format=json"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 212078,
+      "start_ticks": "15871746",
+      "exit": 0,
+      "started_unix": 1795654421.787416,
+      "finished_unix": 1795654551.110337,
+      "wall_seconds": 129.32292103767395,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/windows-gui-build.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/windows-gui-build.log"
+    },
+    {
+      "name": "windows-gui-imports",
+      "argv": [
+        "objdump",
+        "-p",
+        "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline.exe"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 212411,
+      "start_ticks": "15885197",
+      "exit": 0,
+      "started_unix": 1795654556.2987263,
+      "finished_unix": 1795654557.4618037,
+      "wall_seconds": 1.1630773544311523,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/windows-gui-imports.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/windows-gui-imports.log"
+    },
+    {
+      "name": "linux-gui-root-clean",
+      "argv": [
+        "cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source/src-tauri/Cargo.toml"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 212412,
+      "start_ticks": "15885356",
+      "exit": 0,
+      "started_unix": 1795654557.890652,
+      "finished_unix": 1795654558.3730998,
+      "wall_seconds": 0.48244786262512207,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/linux-gui-root-clean.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/linux-gui-root-clean.log"
+    },
+    {
+      "name": "linux-gui-build",
+      "argv": [
+        "./build.sh",
+        "--no-bundle",
+        "--",
+        "--message-format=json"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 212422,
+      "start_ticks": "15885404",
+      "exit": 0,
+      "started_unix": 1795654558.3750975,
+      "finished_unix": 1795654665.6496818,
+      "wall_seconds": 107.27458429336548,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/linux-gui-build.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/linux-gui-build.log"
+    },
+    {
+      "name": "linux-gui-format",
+      "argv": [
+        "file",
+        "/home/max/benchmarks/branchline-boundary/binaries/integrated-c200-r1/branchline"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-input/source",
+      "pid": 212734,
+      "start_ticks": "15896162",
+      "exit": 0,
+      "started_unix": 1795654665.9484007,
+      "finished_unix": 1795654666.0221763,
+      "wall_seconds": 0.0737755298614502,
+      "vm_log": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/linux-gui-format.log",
+      "host_log": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/linux-gui-format.log"
+    }
+  ],
+  "native_supervisor_total_wall_seconds": 610.7028276920319,
+  "caller_phase_wall_seconds": [
+    {
+      "name": "integrated-upload-input",
+      "pid": 467958,
+      "exit": 0,
+      "wall_seconds": 0.340224027633667
+    },
+    {
+      "name": "integrated-vm-build",
+      "pid": 468061,
+      "exit": 0,
+      "wall_seconds": 611.6494188308716
+    },
+    {
+      "name": "copy-native-evidence",
+      "pid": 585026,
+      "exit": 0,
+      "wall_seconds": 3.456597089767456
+    }
+  ],
+  "build_environments": {
+    "linux_worker": {
+      "CARGO_BUILD_JOBS": "1",
+      "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+      "CARGO_NET_OFFLINE": "true",
+      "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target/git-worker",
+      "RUSTFLAGS": "-C target-feature=+crt-static",
+      "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+      "XWIN_CROSS_COMPILER": "clang",
+      "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+      "LIBZ_SYS_STATIC": "1"
+    },
+    "windows_worker": {
+      "CARGO_BUILD_JOBS": "1",
+      "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+      "CARGO_NET_OFFLINE": "true",
+      "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target/git-worker",
+      "RUSTFLAGS": "-C target-feature=+crt-static",
+      "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+      "XWIN_CROSS_COMPILER": "clang",
+      "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin"
+    },
+    "gui": {
+      "windows": {
+        "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target",
+        "BRANCHLINE_GIT_WORKER_PATH": "/home/max/benchmarks/branchline-boundary/integrated-c200-r1-native/branchline-git-worker",
+        "renderer": "production default",
+        "RUSTFLAGS": "build.sh adds +crt-static for Windows; unset for Linux"
+      },
+      "linux": {
+        "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target",
+        "BRANCHLINE_GIT_WORKER_PATH": "/mnt/c/Users/max/branchline-bench/binaries/integrated-c200-r1/branchline-git-worker.exe",
+        "renderer": "production default",
+        "RUSTFLAGS": "build.sh adds +crt-static for Windows; unset for Linux"
+      }
+    }
+  },
+  "versions": {
+    "rustc": "rustc 1.100.0 (0ef1bc386 2026-11-09)\nbinary: rustc\ncommit-hash: 0ef1bc386059596dada8fb65b50425aab2ea637a\ncommit-date: 2026-11-09\nhost: x86_64-unknown-linux-gnu\nrelease: 1.100.0\nLLVM version: 23.1.5",
+    "cargo": "cargo 1.100.0 (3acc79c0c 2026-11-05)",
+    "cargo_xwin": "cargo-xwin-xwin 0.24.1",
+    "clang": "Ubuntu clang version 21.1.8 (6ubuntu1)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/lib/llvm-21/bin",
+    "gcc": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "node": "v22.22.1",
+    "npm": "9.2.0"
+  },
+  "native_supervisor_identity": {
+    "pid": 210069,
+    "start_ticks": "15838341",
+    "exit_observed_by_caller": 0
+  },
+  "caller_identity": {
+    "pid": 467853,
+    "start_ticks": "77644745",
+    "tool_session": 36761,
+    "terminal_exit": 0
+  },
+  "cleanup_and_operations": {
+    "exact_actor_cleanup": "Validated by completed native gates and coordinator terminal observations; no new VM inventory in this host summary.",
+    "read_only_progress_session": {
+      "tool_session": 21936,
+      "terminal_exit": 0
+    },
+    "coordinator_guest_health_processes": [
+      {
+        "pid": 10860,
+        "exit": 0
+      },
+      {
+        "pid": 9620,
+        "exit": 1
+      }
+    ],
+    "vm_settings_changed": false,
+    "borrowed_forward19225_untouched": true,
+    "system_UNC_read": "Denied by ordinary SYSTEM filesystem permissions; SSH max access remains operational. No automatic-approval rejection or workflow blocker."
+  },
+  "active_runtime_owner_from_coordinator": {
+    "scope": "Canonical Windows two-cell evaluation; results not analyzed here",
+    "tool_session": 85204,
+    "controller_pid": 595083,
+    "run": "run20261126T010119508886Z"
+  },
+  "proof_files": {
+    "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-evidence/supervisor.json": "9efc646fbd95ad2ffca7d72c688c90fd9a3b2b3be7540655134a676fbecedf6e",
+    "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/native-build-supervisor.json": "d1311785084b5e212bcc50fac118b4eeec79628532e89d06542d5b31dc32cfec",
+    "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/build-plan.json": "8142b26ea7c677893447d0ff0c27d694541c397b9f5d7bbe5937abe061a54f0a",
+    "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/input-tar.json": "689f35efa235382cc40acfefc87e87c0020384af14a1e01505823f65d88593cb",
+    "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/native-build/package-verification.json": "547caa3664d1db6991417e93d6160a17f1ba63e3d2566e3011597fd376d333e5",
+    "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/proof.json": "7606e8c1b8d25fe97536f87be3bbeef7324428ddd3fb9bdbc7bf2b17a85abf1b"
+  },
+  "analysis_scope": "Host read-only JSON/metadata summary. Only this new decision.json was written. No large binary rehashing during active canonical timing, no VM/network/ports, tests, builds, benchmark/retry or control/source edits."
+}

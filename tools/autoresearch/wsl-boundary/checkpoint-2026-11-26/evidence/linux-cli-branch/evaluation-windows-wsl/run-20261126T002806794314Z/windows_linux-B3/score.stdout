@@ -1,0 +1,214 @@
+{"action": "open", "repetition": 0, "elapsed_ms": 696.5}
+{"action": "branch_first", "repetition": 0, "elapsed_ms": 113.80000001192093}
+{"action": "branch_final", "repetition": 0, "elapsed_ms": 110}
+{"action": "working_tree", "repetition": 0, "elapsed_ms": 204.5}
+{"action": "stack", "repetition": 0, "elapsed_ms": 109.7000000178814}
+{"action": "comment_branch", "repetition": 0, "elapsed_ms": 167.5}
+{"action": "comment_worktree", "repetition": 0, "elapsed_ms": 196.59999999403954}
+{"action": "branch_first", "repetition": 1, "elapsed_ms": 148.39999997615814}
+{"action": "branch_final", "repetition": 1, "elapsed_ms": 105.90000000596046}
+{"action": "working_tree", "repetition": 1, "elapsed_ms": 188.89999997615814}
+{"action": "stack", "repetition": 1, "elapsed_ms": 107.7999999821186}
+{"action": "comment_branch", "repetition": 1, "elapsed_ms": 167.90000000596046}
+{"action": "comment_worktree", "repetition": 1, "elapsed_ms": 214.19999998807907}
+{"action": "branch_first", "repetition": 2, "elapsed_ms": 149.7999999821186}
+{"action": "branch_final", "repetition": 2, "elapsed_ms": 105}
+{"action": "working_tree", "repetition": 2, "elapsed_ms": 189.90000000596046}
+{"action": "stack", "repetition": 2, "elapsed_ms": 108.60000002384186}
+{"action": "comment_branch", "repetition": 2, "elapsed_ms": 166.69999998807907}
+{"action": "comment_worktree", "repetition": 2, "elapsed_ms": 197.90000000596046}
+{"action": "branch_first", "repetition": 3, "elapsed_ms": 149}
+{"action": "branch_final", "repetition": 3, "elapsed_ms": 117.69999998807907}
+{"action": "working_tree", "repetition": 3, "elapsed_ms": 189.40000000596046}
+{"action": "stack", "repetition": 3, "elapsed_ms": 111.90000000596046}
+{"action": "comment_branch", "repetition": 3, "elapsed_ms": 151}
+{"action": "comment_worktree", "repetition": 3, "elapsed_ms": 198.19999998807907}
+{"action": "branch_first", "repetition": 4, "elapsed_ms": 150.60000002384186}
+{"action": "branch_final", "repetition": 4, "elapsed_ms": 104.5}
+{"action": "working_tree", "repetition": 4, "elapsed_ms": 204.2000000178814}
+{"action": "stack", "repetition": 4, "elapsed_ms": 108.59999999403954}
+{"action": "comment_branch", "repetition": 4, "elapsed_ms": 151.19999998807907}
+{"action": "comment_worktree", "repetition": 4, "elapsed_ms": 198.7999999821186}
+{"action": "branch_first", "repetition": 5, "elapsed_ms": 150.40000000596046}
+{"action": "branch_final", "repetition": 5, "elapsed_ms": 102.40000000596046}
+{"action": "working_tree", "repetition": 5, "elapsed_ms": 187.90000000596046}
+{"action": "stack", "repetition": 5, "elapsed_ms": 106.2000000178814}
+{"action": "comment_branch", "repetition": 5, "elapsed_ms": 179.89999997615814}
+{"action": "comment_worktree", "repetition": 5, "elapsed_ms": 196.7999999821186}
+{"action": "branch_first", "repetition": 6, "elapsed_ms": 150.7999999821186}
+{"action": "branch_final", "repetition": 6, "elapsed_ms": 104.69999998807907}
+{"action": "working_tree", "repetition": 6, "elapsed_ms": 202.40000000596046}
+{"action": "stack", "repetition": 6, "elapsed_ms": 112}
+{"action": "comment_branch", "repetition": 6, "elapsed_ms": 165.7999999821186}
+{"action": "comment_worktree", "repetition": 6, "elapsed_ms": 211.2000000178814}
+{"action": "branch_first", "repetition": 7, "elapsed_ms": 148.5}
+{"action": "branch_final", "repetition": 7, "elapsed_ms": 104.7999999821186}
+{"action": "working_tree", "repetition": 7, "elapsed_ms": 193.2000000178814}
+{"action": "stack", "repetition": 7, "elapsed_ms": 111.30000001192093}
+{"action": "comment_branch", "repetition": 7, "elapsed_ms": 151.39999997615814}
+{"action": "comment_worktree", "repetition": 7, "elapsed_ms": 213}
+{"action": "branch_first", "repetition": 8, "elapsed_ms": 164.5}
+{"action": "branch_final", "repetition": 8, "elapsed_ms": 105.90000000596046}
+{"action": "working_tree", "repetition": 8, "elapsed_ms": 198.80000001192093}
+{"action": "stack", "repetition": 8, "elapsed_ms": 108.5}
+{"action": "comment_branch", "repetition": 8, "elapsed_ms": 151.30000001192093}
+{"action": "comment_worktree", "repetition": 8, "elapsed_ms": 212.59999999403954}
+{"action": "branch_first", "repetition": 9, "elapsed_ms": 150.5}
+{"action": "branch_final", "repetition": 9, "elapsed_ms": 105.10000002384186}
+{"action": "working_tree", "repetition": 9, "elapsed_ms": 200.59999999403954}
+{"action": "stack", "repetition": 9, "elapsed_ms": 121.7000000178814}
+{"action": "comment_branch", "repetition": 9, "elapsed_ms": 180.59999999403954}
+{"action": "comment_worktree", "repetition": 9, "elapsed_ms": 212.69999998807907}
+{"action": "branch_first", "repetition": 10, "elapsed_ms": 161.90000000596046}
+{"action": "branch_final", "repetition": 10, "elapsed_ms": 118.09999999403954}
+{"action": "working_tree", "repetition": 10, "elapsed_ms": 217.90000000596046}
+{"action": "stack", "repetition": 10, "elapsed_ms": 107.7000000178814}
+{"action": "comment_branch", "repetition": 10, "elapsed_ms": 165.7999999821186}
+{"action": "comment_worktree", "repetition": 10, "elapsed_ms": 212.5}
+{"action": "branch_first", "repetition": 11, "elapsed_ms": 150.5}
+{"action": "branch_final", "repetition": 11, "elapsed_ms": 107.09999999403954}
+{"action": "working_tree", "repetition": 11, "elapsed_ms": 204.80000001192093}
+{"action": "stack", "repetition": 11, "elapsed_ms": 109.30000001192093}
+{"action": "comment_branch", "repetition": 11, "elapsed_ms": 150.2000000178814}
+{"action": "comment_worktree", "repetition": 11, "elapsed_ms": 213}
+{"action": "branch_first", "repetition": 12, "elapsed_ms": 148.09999999403954}
+{"action": "branch_final", "repetition": 12, "elapsed_ms": 106.10000002384186}
+{"action": "working_tree", "repetition": 12, "elapsed_ms": 190.59999999403954}
+{"action": "stack", "repetition": 12, "elapsed_ms": 110.19999998807907}
+{"action": "comment_branch", "repetition": 12, "elapsed_ms": 151}
+{"action": "comment_worktree", "repetition": 12, "elapsed_ms": 197.09999999403954}
+{"action": "branch_first", "repetition": 13, "elapsed_ms": 150.89999997615814}
+{"action": "branch_final", "repetition": 13, "elapsed_ms": 106.2000000178814}
+{"action": "working_tree", "repetition": 13, "elapsed_ms": 202.5}
+{"action": "stack", "repetition": 13, "elapsed_ms": 109.40000000596046}
+{"action": "comment_branch", "repetition": 13, "elapsed_ms": 151}
+{"action": "comment_worktree", "repetition": 13, "elapsed_ms": 212.30000001192093}
+{"action": "branch_first", "repetition": 14, "elapsed_ms": 146.5}
+{"action": "branch_final", "repetition": 14, "elapsed_ms": 118}
+{"action": "working_tree", "repetition": 14, "elapsed_ms": 188.7000000178814}
+{"action": "stack", "repetition": 14, "elapsed_ms": 110.2999999821186}
+{"action": "comment_branch", "repetition": 14, "elapsed_ms": 166}
+{"action": "comment_worktree", "repetition": 14, "elapsed_ms": 197.69999998807907}
+{"action": "branch_first", "repetition": 15, "elapsed_ms": 147.59999999403954}
+{"action": "branch_final", "repetition": 15, "elapsed_ms": 105.5}
+{"action": "working_tree", "repetition": 15, "elapsed_ms": 190.5}
+{"action": "stack", "repetition": 15, "elapsed_ms": 112}
+{"action": "comment_branch", "repetition": 15, "elapsed_ms": 151.40000000596046}
+{"action": "comment_worktree", "repetition": 15, "elapsed_ms": 198.19999998807907}
+{"action": "branch_first", "repetition": 16, "elapsed_ms": 151.30000001192093}
+{"action": "branch_final", "repetition": 16, "elapsed_ms": 105.89999997615814}
+{"action": "working_tree", "repetition": 16, "elapsed_ms": 190.09999999403954}
+{"action": "stack", "repetition": 16, "elapsed_ms": 111.80000001192093}
+{"action": "comment_branch", "repetition": 16, "elapsed_ms": 150.2999999821186}
+{"action": "comment_worktree", "repetition": 16, "elapsed_ms": 213.30000001192093}
+{"action": "branch_first", "repetition": 17, "elapsed_ms": 152}
+{"action": "branch_final", "repetition": 17, "elapsed_ms": 104.80000001192093}
+{"action": "working_tree", "repetition": 17, "elapsed_ms": 207}
+{"action": "stack", "repetition": 17, "elapsed_ms": 109.90000000596046}
+{"action": "comment_branch", "repetition": 17, "elapsed_ms": 150.40000000596046}
+{"action": "comment_worktree", "repetition": 17, "elapsed_ms": 214.5}
+{"action": "branch_first", "repetition": 18, "elapsed_ms": 151.19999998807907}
+{"action": "branch_final", "repetition": 18, "elapsed_ms": 106.09999999403954}
+{"action": "working_tree", "repetition": 18, "elapsed_ms": 190.80000001192093}
+{"action": "stack", "repetition": 18, "elapsed_ms": 111.5}
+{"action": "comment_branch", "repetition": 18, "elapsed_ms": 151.2000000178814}
+{"action": "comment_worktree", "repetition": 18, "elapsed_ms": 213.59999999403954}
+{"action": "branch_first", "repetition": 19, "elapsed_ms": 136}
+{"action": "branch_final", "repetition": 19, "elapsed_ms": 123.09999999403954}
+{"action": "working_tree", "repetition": 19, "elapsed_ms": 191.2000000178814}
+{"action": "stack", "repetition": 19, "elapsed_ms": 112}
+{"action": "comment_branch", "repetition": 19, "elapsed_ms": 152}
+{"action": "comment_worktree", "repetition": 19, "elapsed_ms": 197.10000002384186}
+{
+  "actions": {
+    "branch_final": {
+      "count": 20,
+      "first_use_ms": 110,
+      "max_ms": 123.09999999403954,
+      "p50_ms": 105.90000000596046,
+      "p95_ms": 118.09999999403954
+    },
+    "branch_first": {
+      "count": 20,
+      "first_use_ms": 113.80000001192093,
+      "max_ms": 164.5,
+      "p50_ms": 150.40000000596046,
+      "p95_ms": 161.90000000596046
+    },
+    "comment_branch": {
+      "count": 20,
+      "first_use_ms": 167.5,
+      "max_ms": 180.59999999403954,
+      "p50_ms": 151.39999997615814,
+      "p95_ms": 179.89999997615814
+    },
+    "comment_worktree": {
+      "count": 20,
+      "first_use_ms": 196.59999999403954,
+      "max_ms": 214.5,
+      "p50_ms": 211.2000000178814,
+      "p95_ms": 214.19999998807907
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 696.5,
+      "max_ms": 696.5,
+      "p50_ms": 696.5,
+      "p95_ms": 696.5
+    },
+    "stack": {
+      "count": 20,
+      "first_use_ms": 109.7000000178814,
+      "max_ms": 121.7000000178814,
+      "p50_ms": 109.90000000596046,
+      "p95_ms": 112
+    },
+    "working_tree": {
+      "count": 20,
+      "first_use_ms": 204.5,
+      "max_ms": 217.90000000596046,
+      "p50_ms": 191.2000000178814,
+      "p95_ms": 207
+    }
+  },
+  "binary_sha256": "6d19d864c30a9753b6570f83e890356cd3445e591047f5e877992c7289a90c77",
+  "case": "windows_linux",
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "finished_at_unix": 1795653045.783244,
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "label": "linux-cli-branch-a4a08d-r2",
+  "launch": {
+    "binary": "C:\\Users\\max\\branchline-bench\\binaries\\linux-cli-branch-a4a08d-r2\\branchline.exe",
+    "binary_sha256": "6d19d864c30a9753b6570f83e890356cd3445e591047f5e877992c7289a90c77",
+    "cdp_port": 29223,
+    "created": "2026-11-25T19:30:12.9029760-05:00",
+    "mcp_port": 28865,
+    "pid": 3500,
+    "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+    "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+    "session": 1,
+    "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5"
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "measure",
+  "repetitions": 20,
+  "schema_version": 1,
+  "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+  "started_at_unix": 1795653015.8592806,
+  "target_met": false,
+  "target_ms": 250.0,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed",
+  "worst_interaction_p95_ms": 696.5
+}

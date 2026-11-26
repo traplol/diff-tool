@@ -1,0 +1,24 @@
+{
+  "status": "frozen-before-integrated-matrix-measurement",
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "contract_sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04",
+  "scope": "Exact integrated source and all four source-bound native artifacts. The older b2/a4 primary series remains separate pilot evidence and is never pooled.",
+  "hypothesis": "Linux-only branch-summary CLI routing improves the primary Windows-GUI/WSL branch interactions. Existing Windows native policy and GUI behavior remain unchanged.",
+  "matrix": ["windows_linux", "windows_windows", "wsl_windows", "wsl_linux"],
+  "serial_execution": "Run the Windows two-cell caller, then each Linux --case caller separately. No builds, tests, profilers, other benchmark or parallel resource work during scoring.",
+  "order_per_cell": ["A1:3", "B1:3", "A2:3", "B2:3", "A3:20", "B3:20"],
+  "fresh_processes": 24,
+  "expected_samples": 1272,
+  "measurement": "Original canonical welcome async-error readiness, measured Open, six actions, exact native Git/content/comment correctness and two completion frames. Default renderer. Existing two-comment profiles are reused; no copies, seeding, prewarming, helper preparation or cache flush.",
+  "baseline_identity": "A remains exact b2/source56a8. Integrated base ce75 differs in current tests only; full source identities stay distinct. New B is ce75 plus only the Linux branch-filter condition and preserves all current tests.",
+  "qualification": {
+    "correctness": "Every source/build/producer/fixture/native-content/comment/identity/cleanup gate must pass. Invalid runs stop without automatic measurement retries.",
+    "primary_gain": "Windows GUI/WSL maximum final20 p95 across branch_first, branch_final, stack and comment_branch must improve by at least10% against its new matched A series. A1 Open alone cannot establish a gain.",
+    "same_side_guards": "For windows_windows and wsl_linux, every action final20 median and p95 and fresh-process Open median and p95 must be at most110% of matching A.",
+    "cross_guards": "For windows_linux and reversed wsl_windows, every action final20 p95 and fresh-process Open p95 must be at most110% of matching A while the primary branch gain passes. No global worst-latency improvement is required in unaffected controls.",
+    "maximums_and_first_use": "Retain all fresh Opens and first-use values, full20 p50/p95/max, strict repeated19 and all-series maxima. Investigate max outliers; do not introduce a new hard maximum gate for this expansion.",
+    "decision": "This protocol qualifies an optimization for further delivery verification. It does not complete the full goal merely because partial gains pass. Keep failed or inconclusive evidence without waivers."
+  },
+  "full_goal": "Every cross-cell opening and interaction p95 below250ms, representative first/cold behavior, exact delivered source/builds and correctness must still be verified. Fresh processes are not OS-cold. No contract or charter has been weakened."
+}

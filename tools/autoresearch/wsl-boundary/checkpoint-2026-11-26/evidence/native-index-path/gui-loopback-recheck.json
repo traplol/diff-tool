@@ -1,0 +1,56 @@
+{
+  "status": "passed; same exact fresh R2 artifact and unchanged source",
+  "pid": 453969,
+  "start_ticks": "77566339",
+  "producer": {
+    "reason": "compiler-artifact",
+    "package_id": "path+file:///home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri#branchline@0.2.0",
+    "manifest_path": "/home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/Cargo.toml",
+    "target": {
+      "kind": [
+        "lib"
+      ],
+      "crate_types": [
+        "lib"
+      ],
+      "name": "branchline",
+      "src_path": "/home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/src/lib.rs",
+      "edition": "2021",
+      "doc": true,
+      "doctest": true,
+      "test": true
+    },
+    "profile": {
+      "opt_level": "0",
+      "debuginfo": 0,
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "test": true
+    },
+    "features": [],
+    "filenames": [
+      "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/deps/branchline-66cb84fd26a30aae"
+    ],
+    "executable": "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/deps/branchline-66cb84fd26a30aae",
+    "fresh": false
+  },
+  "executable_sha256": "27f4bc18c9f67266b085b04ce7c160a3ac5cc1e99fb4fe25513df44ed15603e1",
+  "source_hash": "47a2289c47378a2e0e159951218e27b973bd572ff376bddb035b0c0b733b9a08",
+  "started": 1795653304.3310232,
+  "argv": [
+    "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/deps/branchline-66cb84fd26a30aae",
+    "mcp::desktop::tests",
+    "--test-threads=1"
+  ],
+  "cwd": "/home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source",
+  "prior_failure": "gui-tests-r2.log",
+  "reason": "Existing listener fixtures require local loopback permission",
+  "child_pid": 453971,
+  "child_start_ticks": "77566347",
+  "exit": 0,
+  "finished": 1795653304.5967784,
+  "log_sha256": "03b760ed8248560bd5660bddc4de3a253e8fcadfaf6497981e82b2f03051feb5",
+  "test_result_lines": [
+    "test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 67 filtered out; finished in 0.24s"
+  ]
+}

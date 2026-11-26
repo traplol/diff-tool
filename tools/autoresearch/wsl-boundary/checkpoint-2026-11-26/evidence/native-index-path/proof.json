@@ -1,0 +1,208 @@
+{
+  "status": "host gates passed; native validation and timing pending",
+  "time_unix": 1795653374.7577205,
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "source_hash": "47a2289c47378a2e0e159951218e27b973bd572ff376bddb035b0c0b733b9a08",
+  "baseline_source_hash": "56a8fe492b376ef76bca7c6e17ac1327e0b6c5a805277916aec8fcb4306c7272",
+  "canonical_app_files": 49,
+  "tracked_files": 181,
+  "owned_git_metadata": true,
+  "git_alternates": false,
+  "changed_files": [
+    "src-tauri/src/git.rs",
+    "src-tauri/src/git_tests.rs"
+  ],
+  "patch_sha256": "8c98e414074f1a608fb31834dc7b067a4e23b175335f0df8bc91413c0310d6ae",
+  "host_worker": {
+    "unit_passed": 26,
+    "real_stdio_passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "fresh_test_producers": [
+      {
+        "reason": "compiler-artifact",
+        "package_id": "path+file:///home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+        "manifest_path": "/home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/git-worker/Cargo.toml",
+        "target": {
+          "kind": [
+            "bin"
+          ],
+          "crate_types": [
+            "bin"
+          ],
+          "name": "branchline-git-worker",
+          "src_path": "/home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/git-worker/src/main.rs",
+          "edition": "2021",
+          "doc": true,
+          "doctest": false,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "0",
+          "debuginfo": 2,
+          "debug_assertions": true,
+          "overflow_checks": true,
+          "test": true
+        },
+        "features": [
+          "default",
+          "storage-worker"
+        ],
+        "filenames": [
+          "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/deps/branchline_git_worker-ec14863b7131678d"
+        ],
+        "executable": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/deps/branchline_git_worker-ec14863b7131678d",
+        "fresh": false
+      },
+      {
+        "reason": "compiler-artifact",
+        "package_id": "path+file:///home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+        "manifest_path": "/home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/git-worker/Cargo.toml",
+        "target": {
+          "kind": [
+            "test"
+          ],
+          "crate_types": [
+            "bin"
+          ],
+          "name": "stdio",
+          "src_path": "/home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/git-worker/tests/stdio.rs",
+          "edition": "2021",
+          "doc": false,
+          "doctest": false,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "0",
+          "debuginfo": 2,
+          "debug_assertions": true,
+          "overflow_checks": true,
+          "test": true
+        },
+        "features": [
+          "default",
+          "storage-worker"
+        ],
+        "filenames": [
+          "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/deps/stdio-ed737cf310c0694c"
+        ],
+        "executable": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/deps/stdio-ed737cf310c0694c",
+        "fresh": false
+      }
+    ],
+    "record": "host-gates-r2.json",
+    "log": "worker-tests-r2.log"
+  },
+  "host_gui_rust": {
+    "passed": 71,
+    "failed": 0,
+    "ignored": 1,
+    "sandbox_passed": 66,
+    "sandbox_loopback_denials": 5,
+    "loopback_recheck_passed": 5,
+    "same_exact_test_artifact": true,
+    "fresh_test_producer": {
+      "reason": "compiler-artifact",
+      "package_id": "path+file:///home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri#branchline@0.2.0",
+      "manifest_path": "/home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/Cargo.toml",
+      "target": {
+        "kind": [
+          "lib"
+        ],
+        "crate_types": [
+          "lib"
+        ],
+        "name": "branchline",
+        "src_path": "/home/max/workspace/merge-viewer-native/build/experiments/native-index-path/source/src-tauri/src/lib.rs",
+        "edition": "2021",
+        "doc": true,
+        "doctest": true,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "0",
+        "debuginfo": 0,
+        "debug_assertions": true,
+        "overflow_checks": true,
+        "test": true
+      },
+      "features": [],
+      "filenames": [
+        "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/deps/branchline-66cb84fd26a30aae"
+      ],
+      "executable": "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/deps/branchline-66cb84fd26a30aae",
+      "fresh": false
+    },
+    "recheck_record": "gui-loopback-recheck.json",
+    "source_unchanged": true
+  },
+  "preserved_attempts": {
+    "host-gates.json": "Rejected stale Cargo worker artifacts: fresh:true and only old25 unit tests",
+    "host-gates-r2.json": "Fresh worker and GUI builds; GUI sandbox denies5 existing listener binds",
+    "gui-loopback-recheck.json": "Those5 listener tests pass with loopback permission using same pinned fresh artifact"
+  },
+  "kiss": {
+    "result": "simple enough",
+    "agent": "/root/open_path_review/index_path_kiss",
+    "fork_turns": "none",
+    "source_diff_unchanged_since_review": true
+  },
+  "all_started_host_actors_absent": [
+    {
+      "pid": 2,
+      "start_ticks": "77552086",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 6,
+      "start_ticks": "77552093",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 2,
+      "start_ticks": "77557295",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 4,
+      "start_ticks": "77557301",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 29,
+      "start_ticks": "77557309",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 1030,
+      "start_ticks": "77558030",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 1055,
+      "start_ticks": "77558073",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 453969,
+      "start_ticks": "77566339",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 453971,
+      "start_ticks": "77566347",
+      "exact_actor_absent": true
+    }
+  ],
+  "vm_calls": false,
+  "native_vm_builds": false,
+  "candidate_benchmarks": false,
+  "promoted": false,
+  "main_source_changed": false,
+  "canonical_controls_changed": false,
+  "remaining": [
+    "Native-platform ordinary/sparse/linked index paths and real isolated-child override checks",
+    "Fresh exact native worker and GUI producer/embedding checks",
+    "Canonical GUI measurement and acceptance with unchanged fixture guards"
+  ]
+}

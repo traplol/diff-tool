@@ -1,0 +1,137 @@
+{
+  "time": 1795657932.3876517,
+  "action": "Moved only generated own-package debug fingerprints so future ordinary builds cannot reuse frozen-snapshot test artifacts",
+  "sources_or_executables_deleted_or_changed": false,
+  "release_cache_untouched": true,
+  "moved": [
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/.fingerprint/branchline-56bed21f9d094abc",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/gui-debug/branchline-56bed21f9d094abc",
+      "file_hashes": {
+        "run-build-script-build-script-build": "ad16581356ded2400437bcec77129a292ef679c2ba4c18e3e30f3f22f94accba",
+        "run-build-script-build-script-build.json": "a82a79acd49eaba05162e93ad0329e849ac7514297c409e222680c2d09522036"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/.fingerprint/branchline-66cb84fd26a30aae",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/gui-debug/branchline-66cb84fd26a30aae",
+      "file_hashes": {
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "test-lib-branchline.json": "4423bb45b816f2276dd471137d4cd5543c6722f172e4f060b26a280cdaa43967",
+        "dep-test-lib-branchline": "58e8e97cfff5a9906939ca601e9acb34ffe566f4a069c0598ca84384684ba2bd",
+        "test-lib-branchline": "5db227717de75f09d6aff4c4b8fbde6394717090d674d40a450d209f64534b7e"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/.fingerprint/branchline-39a3ec14d7d8c16b",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/gui-debug/branchline-39a3ec14d7d8c16b",
+      "file_hashes": {
+        "build-script-build-script-build": "8fae050f62d5e5207c4f7472191eada5bb7bc595bf93ccb97bf38dca3ce8da71",
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "build-script-build-script-build.json": "db332894434384270c5a5c8484fcccaf0e743e5a468e5f58f2813b887925ac50",
+        "dep-build-script-build-script-build": "a71f952e7f3252ef5608298951fd55b25f3590c98bc0765ae4145e623604ee7d"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-exact-untracked-listing-e9bc63e9498caa68",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-exact-untracked-listing-e9bc63e9498caa68",
+      "file_hashes": {
+        "test-integration-test-stdio": "ab737db4fed26232fda07e0bae784893caf391fee127b33d15c4d9ca191e5407",
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "dep-test-integration-test-stdio": "ae9c7ef7883f8cb7bbda969edb2bb91fab2d5cb3c3e361b7df7614b69034abc0",
+        "test-integration-test-stdio.json": "274858bb07d82f6f8f9883d14e18208186860029e26930aec99dc951c281db2e"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-windows-status-experiment-a6aaa88e796b3bbc",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-windows-status-experiment-a6aaa88e796b3bbc",
+      "file_hashes": {
+        "bin-branchline-windows-status-experiment.json": "5720bf06d363706c322a1ee8f25440e443b16777ea8f6674354b432ad58ced40",
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "dep-bin-branchline-windows-status-experiment": "a6caecd5c6c111399750c39c72d41145c3eb31a9cefe2f05ec0edc292f95326d",
+        "bin-branchline-windows-status-experiment": "d8e62d625a0fe39e94abdab62e9bec47eeb2c80c8406df87c3fc3c7a8adcc4d7"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-windows-status-experiment-dca91b8fa2fd5fd4",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-windows-status-experiment-dca91b8fa2fd5fd4",
+      "file_hashes": {
+        "dep-test-bin-branchline-windows-status-experiment": "516916070aded7a9a44e2a8ed97e9cb096e089b30fcb002b9f901059935bce1e",
+        "test-bin-branchline-windows-status-experiment": "797b29c25e49dcc54455e4c5795bb33261395f37c21f3288152bcd05506db44f",
+        "test-bin-branchline-windows-status-experiment.json": "533dace2acff9e8471972ccada0a13263f9ee7c8a71d14a142f70868825446fd",
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-git-worker-ed737cf310c0694c",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-git-worker-ed737cf310c0694c",
+      "file_hashes": {
+        "test-integration-test-stdio": "618736c20387550fd37e02ecd18dc7ff5cceddf2375e05a5bea7399c45415f7f",
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "dep-test-integration-test-stdio": "ae9c7ef7883f8cb7bbda969edb2bb91fab2d5cb3c3e361b7df7614b69034abc0",
+        "test-integration-test-stdio.json": "c6557c0e952922ce37e2f873b388c491d4b0885581b4f4ae5ad2333e2831c046"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-exact-untracked-listing-d9c22465683a7e8e",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-exact-untracked-listing-d9c22465683a7e8e",
+      "file_hashes": {
+        "test-bin-branchline-exact-untracked-listing.json": "34b4e49f55616c7a9dc8ee62ce2a2b07fe6ba1599ca23f3586d22201c2674c86",
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "test-bin-branchline-exact-untracked-listing": "d17639834af031a9e194a0de9d8f80f56330d1ac7296f31044340e7f3912570f",
+        "dep-test-bin-branchline-exact-untracked-listing": "3b0e746ce66be46edb8acf78af116b947712e97652ee9858862e0f2448c315c4"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-git-worker-7b9af29f086789c2",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-git-worker-7b9af29f086789c2",
+      "file_hashes": {
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "bin-branchline-git-worker": "a8b888f9206689299a68fdb36e2ac082250c7471996ff7476f3fb219659f8b1f",
+        "dep-bin-branchline-git-worker": "b76cb17296a0460729a6d32208bead7cb00e3f01dd68caaf4cf61464f782cdd3",
+        "bin-branchline-git-worker.json": "48a49398e58fdd0eda281d3160731c5ef6084ef4d189416224a09ba0d4e01281"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-git-worker-ec14863b7131678d",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-git-worker-ec14863b7131678d",
+      "file_hashes": {
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "test-bin-branchline-git-worker": "b61ba3ac392707f118ad3c76b828f171885adffe73ed98e5f71448ceb190031b",
+        "test-bin-branchline-git-worker.json": "c3edbc7e18c77b4eb8e00559d97b800096dedcbba09354e320b8c18c7c3bf256",
+        "dep-test-bin-branchline-git-worker": "f6ad6777ea2e398f88aecbbb201bc332f93771c831536f455908755c234dee49"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-exact-untracked-listing-7ecd7e5590d3a38e",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-exact-untracked-listing-7ecd7e5590d3a38e",
+      "file_hashes": {
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "test-integration-test-review": "62b7025a8bec5e64d518e11ebfac274bc3d7942d3d87db6140f878f7de03535d",
+        "test-integration-test-review.json": "c7e7ced01fa40ecad09a51d80963700ec134f534d5237ccd9f410d5ac63b294e",
+        "output-test-integration-test-review": "4b0872984b81572b2863747788491713b9a27eb89ff489af64feefcce59c8e1b",
+        "dep-test-integration-test-review": "6358b8c623b0c155d9107075b1fb26def04f786a33d3b0c498e3798c324986e0"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-exact-untracked-listing-c1cde96d52c3df1a",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-exact-untracked-listing-c1cde96d52c3df1a",
+      "file_hashes": {
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "dep-bin-branchline-exact-untracked-listing": "27703e4172d6f7395b15010168f59b5a84f21c43114cc98b52362936278fb68a",
+        "bin-branchline-exact-untracked-listing": "14aa2d9428f97eaa2c41d9c0d274c97bbbbdda20b8005b542fc4b55208ec54a5",
+        "bin-branchline-exact-untracked-listing.json": "b2bb8c6f8ea61cd44ac8f07356f90f5e49d7e75829d54254b2d02df8083df1fe"
+      }
+    },
+    {
+      "source": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/.fingerprint/branchline-windows-status-experiment-722e52da000b831e",
+      "backup": "/home/max/workspace/merge-viewer-native/build/checkpoint/cache-hygiene-2026-11-26/host-fingerprints/worker-debug/branchline-windows-status-experiment-722e52da000b831e",
+      "file_hashes": {
+        "test-integration-test-stdio": "9cb6b8a1ad3c5503e8c1dd41da8537f890e46738a87cb2fe086298aad6fb1925",
+        "invoked.timestamp": "5a109e6643e8d3e88642e3f35e85d2a83e639d07523aa6e99166c48178e965c3",
+        "dep-test-integration-test-stdio": "ae9c7ef7883f8cb7bbda969edb2bb91fab2d5cb3c3e361b7df7614b69034abc0",
+        "test-integration-test-stdio.json": "784cfb5eabe8bcd10d8d035287820dc3345c9d7e6bfb8a34552626cea081d16b"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "integrated-c200-r1-input.tar",
+  "sha256": "052a2e9ecb7b7a7c1cee91946a754b3912715087b7ca5a1326542948f3064ee3",
+  "bytes": 2181120,
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "bundle_sha256": "1509cbcd868db0160fc1b8299b3755283afbfc8e0ba8244cb63b39540737d1e5",
+  "build_plan_sha256": "8142b26ea7c677893447d0ff0c27d694541c397b9f5d7bbe5937abe061a54f0a",
+  "vm_supervisor_sha256": "83d3e37672e3c7e50c474fc142365caa2f8a7f656fc736bfa42b508582cea158",
+  "host_launcher_sha256": "06b97dc8584529a1cdd2abcca221d717c53dca9c5cf07b243137e1b109a8f7cb",
+  "host_verifier_sha256": "af3075c0f5651b1f1bffbb8d6792abfe49e1e888956b33e11fa0efb71702a58a",
+  "status": "prepared; mandatory realGit hostextract/49hash verification before SSH"
+}

@@ -1,0 +1,7 @@
+{"supervisor_pid": 162976, "start_ticks": "15134395", "record": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/evidence/supervisor.json"}
+{"phase": "one-windows-fixture-build", "child_pid": 163005, "start_ticks": "15134541", "log": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/evidence/one-windows-fixture-build.log"}
+{"phase": "linux-focused-harness-build", "child_pid": 163040, "start_ticks": "15134975", "log": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/evidence/linux-focused-harness-build.log"}
+{"phase": "linux-native-client", "child_pid": 164761, "start_ticks": "15139597", "log": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/evidence/linux-native-client.log"}
+{"phase": "windows-focused-harness-build", "child_pid": 164780, "start_ticks": "15139906", "log": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/evidence/windows-focused-harness-build.log"}
+{"phase": "windows-native-client", "child_pid": 165208, "start_ticks": "15143498", "log": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/evidence/windows-native-client.log"}
+{"status": "passed-both-native-malformed-response-cleanup-gates", "record": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/evidence/supervisor.json", "error": null, "cleanup_error": null}

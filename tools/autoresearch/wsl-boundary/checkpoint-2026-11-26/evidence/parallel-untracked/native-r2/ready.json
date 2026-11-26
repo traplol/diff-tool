@@ -1,0 +1,20 @@
+{
+  "status": "host-prepared-ready; not executed",
+  "archive_sha256": "c1f47d1cbe98e400900f6481a580bf0e0a2cb49c64df792e518327aa78515955",
+  "candidate_source_hash": "f15e85e1ec50af3bdc82e792a4d2d1189b67f4e56375679d88e0b035fe587a0f",
+  "baseline_source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+  "final_archive_contents_verified": true,
+  "source_git_discovery_proof": "package-verification.json",
+  "source_and_bundle_unchanged_since_git_roundtrip": true,
+  "mandatory_full_verification_before_ssh": "run-native.py invokes verify-package.py",
+  "native_builds_tests_vm_calls_scoring": false,
+  "windows_gui_requested": false,
+  "kiss": {
+    "agent": "/root/parallel_untracked_repair/kiss_r2",
+    "fork_turns": "none",
+    "result": "simple enough",
+    "scope": "KISS only; read-only final scripts/diff"
+  },
+  "release_command": "python3 build/experiments/parallel-untracked/native-r2/run-native.py --release 'VM PARALLEL UNTRACKED NATIVE R2 RELEASED'",
+  "r1_preserved_manifest": "preserved-r1.json"
+}

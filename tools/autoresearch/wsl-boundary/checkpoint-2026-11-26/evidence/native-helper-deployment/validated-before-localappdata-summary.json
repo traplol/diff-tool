@@ -1,0 +1,48 @@
+{
+  "decision": "host-validated candidate; not measured or promoted",
+  "base_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "source": "build/experiments/native-helper-deployment/source",
+  "changed_source_files": [
+    "src-tauri/src/git/remote.rs"
+  ],
+  "candidate_manifest_sha256": "992ff8a63faa28b58f15b53af60b6f186a72bb8c680dd7931d08f2cbc2b9c56d",
+  "patch_sha256": "f45861ea6d32256a285d768404423a02d1b73c5a25baa4eb082f000f2f6360d0",
+  "host_all_tests": {
+    "passed": 39,
+    "failed": 0,
+    "ignored": 1,
+    "log": "host-all-tests.log"
+  },
+  "embedded_cfg_remote_tests": {
+    "passed": 14,
+    "failed": 0,
+    "ignored": 1,
+    "log": "host-embedded-tests.log",
+    "embedded_bytes": "baseline-remote.rs compile-only fixture, not executable"
+  },
+  "windows_source_check": {
+    "status": "pass",
+    "target": "x86_64-pc-windows-gnu",
+    "log": "windows-source-check-sysroot.log",
+    "sysroot": "/tmp/branchline-windows-check/sysroot",
+    "runtime_windows_validation": false
+  },
+  "initial_windows_build_std_attempt": {
+    "status": "infrastructure failure",
+    "reason": "offline addr2line v0.25.0 missing",
+    "log": "windows-source-check.log",
+    "superseded_by": "windows-source-check-sysroot.log"
+  },
+  "kiss_review": "simple enough",
+  "vm_touched": false,
+  "performance_measured": false,
+  "production_remote_unchanged": true,
+  "unverified": [
+    "actual native Windows/WSL cache discovery and deployment",
+    "NTFS materialize permissions/rename under WSL",
+    "initial and existing-cache open latency including PowerShell/hash/copy",
+    "actual cross-OS EOF/drop/protocol-failure/abrupt-parent-death cleanup while idle and busy",
+    "native/foreign fallback runtime paths and unchanged Git cwd/env/root identity"
+  ],
+  "followup": "Missing/empty XDG_CACHE_HOME and HOME now reach the verified source fallback; all four absent/empty combinations tested against valid and changed source bytes."
+}

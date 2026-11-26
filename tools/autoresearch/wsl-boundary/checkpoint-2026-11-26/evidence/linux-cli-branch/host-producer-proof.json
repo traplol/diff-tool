@@ -1,0 +1,25 @@
+{
+  "status": "existing-host-root-compilations-proved-no-repeat",
+  "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5",
+  "proof": {
+    "worker": {
+      "log": "build/experiments/linux-cli-branch/worker-tests.log",
+      "sha256": "33b43364e41cb58e2c329108809a95dc720d936513480869c243fb4a01d0f938",
+      "producer_evidence": "Compiling branchline-git-worker v0.2.0 (/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/source/src-tauri/git-worker)",
+      "exact_owned_candidate_package_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/source/src-tauri/git-worker",
+      "root_compilation_observed": true,
+      "fresh_cached_only": false
+    },
+    "gui": {
+      "log": "build/experiments/linux-cli-branch/gui-tests.log",
+      "sha256": "18572bd511b95718f780baffca890aa2f6f8eb5ae3d43839ea584bdc160118b2",
+      "producer_evidence": "Compiling branchline v0.2.0 (/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/source/src-tauri)",
+      "exact_owned_candidate_package_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-branch/source/src-tauri",
+      "root_compilation_observed": true,
+      "fresh_cached_only": false
+    }
+  },
+  "scope": "Host logs explicitly compile both current candidate root package paths. Existing successful suites are retained; no destructive cache cleanup or repeat occurred. Future VM builds require fresh compiler-artifact records in addition.",
+  "vm_calls": false,
+  "new_tests_or_builds": false
+}

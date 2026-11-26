@@ -1,0 +1,3867 @@
+{
+  "pid": 197196,
+  "start_ticks": "15618879",
+  "started": 1795651894.0919838,
+  "status": "failed",
+  "source": {
+    "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+    "files": {
+      "build.sh": "6357aefd3b6e9167baa62385604d352c9bfb3eef55663d72dc8c7c9f98a67499",
+      "frontend/app.js": "07cdaa5e0eb93edebfd569b6a7310c90a39bfda0b51718d603ced7f138838dd9",
+      "frontend/context.js": "69aba3432610308faf337e4d23b61d26f1d07df2ff6257ca85522c7b41ec6f6a",
+      "frontend/context.test.js": "b04e897cc0d5e0b841d6479f2087e98e8494aaa31eeb95c35ed72d87361fe1cc",
+      "frontend/dialogs.js": "d950295d10f5ffe3e8a36a442fbbab8db3a5e3e66d6a492b8c95d11af335a6c6",
+      "frontend/editor.css": "3ae235bc6bd603e0c8f7985d327bb64d63c05dc0da24bea8c3a3afaf0ab8a18c",
+      "frontend/editor.js": "5d40c06116bb311499aaa12feff20b8b4780f8d0ae353aa1fc9bd1510f9e25af",
+      "frontend/editor.test.js": "ee195aa94cab4bb4db69e9034104e8b5d7f21377d7c55b7966312d54ddefc263",
+      "frontend/icons.js": "a5bc46c4a1a54e6c693e7d9e944c03f32e7f6c059bf177c3ca1b44317b3e59b6",
+      "frontend/index.html": "17b089af310f5bcc59db8de842369b687548695d4a62b4c6828bcea0292b15e7",
+      "frontend/patch.test.js": "8f0cd7bf33675604caa4a95bd391e78889adc519d332089dd0a26136c37d6547",
+      "frontend/review-ui.js": "9a87f05fc87613cf6e5b7e40e0bfff7ca52a7922b5a8c038f7631cdbca11df28",
+      "frontend/review-ui.test.js": "02bd5f6aa46f6b04aad18c8b08c094abd21f4d3de8fdfc90d9237ca4322bf62b",
+      "frontend/search-palette.js": "a8dd4dc163e7e3f83e9688ebf78af3137781db648efa52bf8c5f2bff247827d2",
+      "frontend/search-palette.test.js": "67a4c55dd46ac8968b1f98943142f2ea65de8a38636a5235e0ff8a82f6d12832",
+      "frontend/style.css": "53d295f0006e8654a2dd28a4326c4896212a8b082a67a796c7d0952c6fca2408",
+      "package-lock.json": "94be4c58bb85a2f9f84374febe2f94f16e3ed6c9b3aacf06a77daa283885ad24",
+      "package.json": "1ec9db39bcf883e2247cd6c73cc4ac0f94ea292c8e6293d04131c5e22ce1809d",
+      "src-tauri/Cargo.lock": "83bbad4ddacda7311efcd3a450e50e697da5537e87ac5e030f9d447225184e5b",
+      "src-tauri/Cargo.toml": "03d4cc93c86e81db681b57b68d1d99fd8e4b34c027abd1354213b4ae8a34e763",
+      "src-tauri/build.rs": "b31ac01d73af66f273b1da2eb7f532ee6bf756442616868f92ca7eeb54b50ba8",
+      "src-tauri/capabilities/default.json": "0a926af109b3251379d81fbb10ecc702908adacdb82719cc22fa24afada7aa77",
+      "src-tauri/git-worker/Cargo.lock": "cd9990a70acb45be918a6440023029cfedad667d978f0dc461c63bd390fdbc79",
+      "src-tauri/git-worker/Cargo.toml": "42c81b1b3751a04a4019572d00901d3799063a27d0a553d74a0cd267a3cb7032",
+      "src-tauri/git-worker/src/main.rs": "88ca134f077031350c53fb3aee44d44dbec447378695c814fbba6de497d167f3",
+      "src-tauri/git-worker/tests/stdio.rs": "ff8a799deea1d084970babd08b5f397ebd6266fe3a8d186c44b69031c45d8baa",
+      "src-tauri/src/config.rs": "2eba9a098506f9865247903dedfb810cc0dcddaa5a3c0c01aac5f46b982e4eff",
+      "src-tauri/src/git/native.rs": "4175e43986d1a15b6f28f0b56b4a350cc9c48e4821e31535aba15a2acffb89df",
+      "src-tauri/src/git/patch_data.rs": "5035854e8b57b1e3738f063112dc4c9d94ba9b057a375c70195a9527c3eff7d6",
+      "src-tauri/src/git/remote.rs": "fd9d6f8384c1fb9e222a575b9dbb32ec5517de20b3b1c13e2c8214cadad9f3ba",
+      "src-tauri/src/git/windows.rs": "3325a1c7858cb92d715e954ac519af11cad46556cdc4dd8997cebfaa1fbbf406",
+      "src-tauri/src/git/worker.rs": "2b0f631ed823390690aa3b9978c5e17ff49fa416800bec2e833ab36d668e3ba3",
+      "src-tauri/src/git.rs": "f709df7ab0c1d7f9119436cdc060b492bb6452b19adfbdea07c1897c65657e0f",
+      "src-tauri/src/git_tests.rs": "1387b93f3bc7f6e243f37db061d3d5c406b29d157e637c81d8b4fcbb95a71d4e",
+      "src-tauri/src/lib.rs": "b296b91893206d040763f9e1bd3014a7850f442096823201646a5491f82b2a1d",
+      "src-tauri/src/main.rs": "31fbd9311dc81611345e3a62093508df710b2a5622c73da215e2ce02d3636230",
+      "src-tauri/src/mcp/desktop.rs": "da3dacf5748f33bde07f665eaaaabbee722547ba63eff8ec67759cafdb3a354d",
+      "src-tauri/src/mcp/desktop_tests.rs": "6eabc8326678a5ad21d80dd9717dc5f29bdfd4c7b4e99b7140554f5089fbf19f",
+      "src-tauri/src/mcp/tools.rs": "f4bb49655166a6c1a79aecb019ce5b56d74f3f7d68eb9b0dfd927b3007b588a3",
+      "src-tauri/src/mcp.rs": "dff5a738900007cec79efcc15691e85c2ff4f8dd4b98db83bc9d4bff9a4e423a",
+      "src-tauri/src/report.rs": "145ca10c2200a7797d932ba8b0993040bff39dfbd41d5bf90ed106ca60218640",
+      "src-tauri/src/review.rs": "04db3f8869d5b09bf2f0949297130538d156e8466834838ffd0a0ce7810e29d4",
+      "src-tauri/src/review_tests.rs": "d4eba81180f7a08ee8fef48be41df1e69141066c04dd67174c206cafad9e8fe1",
+      "src-tauri/src/search.rs": "54d3615dc4fb3056865879840bb711df714fd62ab5928275c55b541aa036be6f",
+      "src-tauri/src/service.rs": "16c25299dba0a69b9bc5c5661e1b67dd0434ba17bd2861e49b1ef4708a3eab35",
+      "src-tauri/src/stored_paths.rs": "54dc76d2e46ea1cb2a9f26f770797ae9e4ae56ecf7918cc2664c3a04d171eb3a",
+      "src-tauri/src/suggestions.rs": "753447e21e72d3bbe8f5bf97a04d108aa4b1a8f3d79630e4eb08c30cc9e0ca23",
+      "src-tauri/src/tracking.rs": "64de059191b46074ac06d9a3e33e70dc2e4ac9f2be860a69594c722595e849d8",
+      "src-tauri/tauri.conf.json": "7572a071bfef0f416c1f544d0e59dfc3d1f554dc3c219abafd20ea6ec6fcac8b"
+    },
+    "source_hash": "a4a08d4123b2c72cfc2c12aa56cefeb06c57316ac647c7d59d7ee58d0b4ba9d5"
+  },
+  "release": "VM LINUX CLI BRANCH BUILD RELEASED",
+  "input": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input",
+  "phases": [
+    {
+      "name": "source-git-init",
+      "argv": [
+        "git",
+        "init",
+        "--quiet",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651894.1148102,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/source-git-init.log",
+      "pid": 197206,
+      "start_ticks": "15618978",
+      "exit": 0,
+      "finished": 1795651894.187538
+    },
+    {
+      "name": "source-bundle-verify",
+      "argv": [
+        "git",
+        "bundle",
+        "verify",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source-b2de070.bundle"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651894.187874,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/source-bundle-verify.log",
+      "pid": 197207,
+      "start_ticks": "15618986",
+      "exit": 0,
+      "finished": 1795651894.1933095
+    },
+    {
+      "name": "source-bundle-fetch",
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source-b2de070.bundle",
+        "HEAD"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651894.1938078,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/source-bundle-fetch.log",
+      "pid": 197208,
+      "start_ticks": "15618986",
+      "exit": 0,
+      "finished": 1795651894.331833
+    },
+    {
+      "name": "source-git-head",
+      "argv": [
+        "git",
+        "update-ref",
+        "--no-deref",
+        "HEAD",
+        "b2de070becf3fcba2d47557efd375221c586f273"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651894.3380547,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/source-git-head.log",
+      "pid": 197220,
+      "start_ticks": "15619001",
+      "exit": 0,
+      "finished": 1795651894.3545554
+    },
+    {
+      "name": "source-git-index",
+      "argv": [
+        "git",
+        "read-tree",
+        "HEAD"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651894.354878,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/source-git-index.log",
+      "pid": 197221,
+      "start_ticks": "15619002",
+      "exit": 0,
+      "finished": 1795651894.3617363
+    },
+    {
+      "name": "linux-worker-root-clean",
+      "argv": [
+        "cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline-git-worker",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-unknown-linux-gnu"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651919.7729628,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/linux-worker-root-clean.log",
+      "pid": 197298,
+      "start_ticks": "15621544",
+      "exit": 0,
+      "finished": 1795651919.8814983
+    },
+    {
+      "name": "linux-worker-build",
+      "argv": [
+        "cargo",
+        "build",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-unknown-linux-gnu",
+        "--message-format=json"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651919.8818777,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/linux-worker-build.log",
+      "pid": 197308,
+      "start_ticks": "15621555",
+      "exit": 0,
+      "finished": 1795651984.3290818
+    },
+    {
+      "name": "linux-worker-format",
+      "argv": [
+        "file",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/branchline-git-worker"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651984.350196,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/linux-worker-format.log",
+      "pid": 198143,
+      "start_ticks": "15628002",
+      "exit": 0,
+      "finished": 1795651984.4065602
+    },
+    {
+      "name": "linux-worker-program-headers",
+      "argv": [
+        "readelf",
+        "-l",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/branchline-git-worker"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651984.4075508,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/linux-worker-program-headers.log",
+      "pid": 198144,
+      "start_ticks": "15628008",
+      "exit": 0,
+      "finished": 1795651984.4222686
+    },
+    {
+      "name": "linux-worker-dynamic",
+      "argv": [
+        "readelf",
+        "-d",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/branchline-git-worker"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651984.4228272,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/linux-worker-dynamic.log",
+      "pid": 198145,
+      "start_ticks": "15628009",
+      "exit": 0,
+      "finished": 1795651984.427141
+    },
+    {
+      "name": "linux-worker-tests",
+      "argv": [
+        "cargo",
+        "test",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker/Cargo.toml",
+        "--target",
+        "x86_64-unknown-linux-gnu",
+        "--message-format=json",
+        "--",
+        "--test-threads=1"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651984.4275334,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/linux-worker-tests.log",
+      "pid": 198146,
+      "start_ticks": "15628010",
+      "exit": 0,
+      "finished": 1795651997.6912034
+    },
+    {
+      "name": "linux-kernel-proof",
+      "argv": [
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/branchline-git-worker",
+        "--stdio"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "started": 1795651997.7573009,
+      "pid": 198649,
+      "start_ticks": "15629343",
+      "exit": 0,
+      "finished": 1795651998.3931637
+    },
+    {
+      "name": "windows-gui-root-clean",
+      "argv": [
+        "cargo",
+        "clean",
+        "--offline",
+        "--locked",
+        "--release",
+        "--package",
+        "branchline",
+        "--manifest-path",
+        "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/Cargo.toml",
+        "--target",
+        "x86_64-pc-windows-msvc"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651998.3953376,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/windows-gui-root-clean.log",
+      "pid": 198656,
+      "start_ticks": "15629407",
+      "exit": 0,
+      "finished": 1795651999.9135244
+    },
+    {
+      "name": "windows-gui-build",
+      "argv": [
+        "./build.sh",
+        "--windows",
+        "--",
+        "--message-format=json"
+      ],
+      "cwd": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source",
+      "started": 1795651999.9154694,
+      "log": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/windows-gui-build.log",
+      "pid": 198669,
+      "start_ticks": "15629559",
+      "exit": 0,
+      "finished": 1795652118.3867502
+    }
+  ],
+  "windows_gui_requested": true,
+  "kernel_git_environment": {
+    "linux": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_CONFIG_NOSYSTEM": "1",
+      "GIT_CONFIG_GLOBAL": "/dev/null",
+      "GIT_TERMINAL_PROMPT": "0"
+    },
+    "windows": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_CONFIG_NOSYSTEM": "1",
+      "GIT_CONFIG_GLOBAL": "NUL",
+      "GIT_TERMINAL_PROMPT": "0"
+    }
+  },
+  "build_environments": {
+    "linux_worker": {
+      "CARGO_BUILD_JOBS": "1",
+      "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+      "CARGO_NET_OFFLINE": "true",
+      "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target/git-worker",
+      "RUSTFLAGS": "-C target-feature=+crt-static",
+      "XWIN_MSVC_SYSROOT": "/home/max/workspace/diff-tool/build/prebuilt-msvc/windows-msvc-sysroot",
+      "XWIN_CROSS_COMPILER": "clang",
+      "XWIN_CACHE_DIR": "/home/max/workspace/diff-tool/build/xwin",
+      "LIBZ_SYS_STATIC": "1"
+    },
+    "windows_gui": {
+      "CARGO_TARGET_DIR": "/home/max/workspace/diff-tool/src-tauri/target",
+      "BRANCHLINE_GIT_WORKER_PATH": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/branchline-git-worker",
+      "RUSTFLAGS": "build.sh adds -C target-feature=+crt-static"
+    }
+  },
+  "source_git_environment": {
+    "GIT_CONFIG_NOSYSTEM": "1",
+    "GIT_CONFIG_GLOBAL": "/dev/null",
+    "GIT_TERMINAL_PROMPT": "0",
+    "GIT_NO_LAZY_FETCH": "1"
+  },
+  "current_phase": "windows-gui-build",
+  "source_git_provenance": {
+    "head": "b2de070becf3fcba2d47557efd375221c586f273",
+    "tree": "f479c6a62a6fb2664aced380e7aafe860bfa0db6",
+    "bundle_sha256": "d0743fee8d66c2548dca63636e0f484fee68be27f24da4adc6f682dfa05fe197",
+    "external_alternates": false,
+    "working_files_preserved": true,
+    "method": "init/fetch/update-ref/read-tree; no checkout"
+  },
+  "kernel_read_commands": [
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stdout_bytes": 41
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "show-ref"
+      ],
+      "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5",
+      "stdout_bytes": 264
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48",
+      "stdout_bytes": 7748183
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b",
+      "stdout_bytes": 396
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--cached",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290",
+      "stdout_bytes": 1618
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4",
+      "stdout_bytes": 1659
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stdout_bytes": 215
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stdout_bytes": 41
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "show-ref"
+      ],
+      "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5",
+      "stdout_bytes": 264
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48",
+      "stdout_bytes": 7748183
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b",
+      "stdout_bytes": 396
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--cached",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290",
+      "stdout_bytes": 1618
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4",
+      "stdout_bytes": 1659
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stdout_bytes": 215
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--find-renames",
+        "--ignore-submodules=none",
+        "--raw",
+        "--no-abbrev",
+        "--numstat",
+        "-z",
+        "adc218676eef25575469234709c2d87185ca223a",
+        "856700f06bf917bd363dd835fe6f6bd3923254da",
+        "--"
+      ],
+      "stdout_sha256": "09cabc0d6243be5567c0a6457fb26e9ead073acae05c024bcf81af4882267690",
+      "stdout_bytes": 4540
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--find-renames",
+        "--ignore-submodules=none",
+        "--raw",
+        "--no-abbrev",
+        "--numstat",
+        "-z",
+        "856700f06bf917bd363dd835fe6f6bd3923254da",
+        "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+        "--"
+      ],
+      "stdout_sha256": "c81b0b918e12a243d7730a86376d3e82bf5b05aa5d01f1486e8cbd51dbd45404",
+      "stdout_bytes": 4540
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--find-renames",
+        "--ignore-submodules=none",
+        "--raw",
+        "--no-abbrev",
+        "--numstat",
+        "-z",
+        "adc218676eef25575469234709c2d87185ca223a",
+        "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+        "--"
+      ],
+      "stdout_sha256": "23dbb183ebb88906fcfc67457a14682eaa2dbe424e04c9e94e7309a6ffe04931",
+      "stdout_bytes": 4540
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stdout_bytes": 41
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "show-ref"
+      ],
+      "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5",
+      "stdout_bytes": 264
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48",
+      "stdout_bytes": 7748183
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b",
+      "stdout_bytes": 396
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--cached",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290",
+      "stdout_bytes": 1618
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4",
+      "stdout_bytes": 1659
+    },
+    {
+      "platform": "linux",
+      "executable": "git",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stdout_bytes": 215
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "stdout_sha256": "9dfbc3ed682c43dddd6646759449d6b333b8f9cbf15ab07c8450d75fcd2fd1a3",
+      "stdout_bytes": 41
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "show-ref"
+      ],
+      "stdout_sha256": "b8c04348766c77273eac5767e752090d5b5b13792a796ded0ae4206180356fc5",
+      "stdout_bytes": 264
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--stage",
+        "-z"
+      ],
+      "stdout_sha256": "bd1d13d872de26477d665eeaa5af335ca1ade50218ed2f81f9c06bdb6bc4ed48",
+      "stdout_bytes": 7748183
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "stdout_sha256": "2f3d9e3348955e46bcb75b1fe0a444aca4731d68940a933cc56a2df549d7aa9b",
+      "stdout_bytes": 396
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--cached",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "5afc51e53bd03a0636fedc7995029388d50266b1e6803f3fd882b55893c6e290",
+      "stdout_bytes": 1618
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "diff",
+        "--binary",
+        "--no-ext-diff"
+      ],
+      "stdout_sha256": "cd6f80370c1f4246133dbb0b1a4454bb506872bd1e2937481ab0cda644b9e8f4",
+      "stdout_bytes": 1659
+    },
+    {
+      "platform": "windows",
+      "executable": "/mnt/c/Program Files/Git/cmd/git.exe",
+      "cwd": "C:/Users/max/branchline-bench/kernel-windows",
+      "argv": [
+        "--no-optional-locks",
+        "-C",
+        "C:/Users/max/branchline-bench/kernel-windows",
+        "-c",
+        "diff.autoRefreshIndex=false",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "stdout_sha256": "3f819dc4452e149f14f72593b37c9321f648a0fe5667429fa2a2252dd3c636da",
+      "stdout_bytes": 215
+    }
+  ],
+  "fixture_before": {
+    "linux": {
+      "git_state_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+      "files": {
+        ".git/index": {
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017",
+          "size": 9271771,
+          "mtime_ns": 1795615942129939671,
+          "inode": 278079,
+          "mode": 33188
+        },
+        ".git/HEAD": {
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+          "size": 39,
+          "mtime_ns": 1795614733907349066,
+          "inode": 272949,
+          "mode": 33188
+        },
+        ".git/config": {
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+          "size": 334,
+          "mtime_ns": 1795615994729935414,
+          "inode": 278185,
+          "mode": 33188
+        }
+      }
+    },
+    "windows": {
+      "git_state_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+      "files": {
+        ".git/index": {
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129",
+          "size": 9271771,
+          "mtime_ns": 1795615947971522900,
+          "inode": 562949953782638,
+          "mode": 33279
+        },
+        ".git/HEAD": {
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+          "size": 39,
+          "mtime_ns": 1795614733000000000,
+          "inode": 2814749767263140,
+          "mode": 33279
+        },
+        ".git/config": {
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+          "size": 334,
+          "mtime_ns": 1795615994331971400,
+          "inode": 3377699720684454,
+          "mode": 33279
+        }
+      }
+    }
+  },
+  "producer_artifacts": {
+    "linux_worker": {
+      "reason": "compiler-artifact",
+      "package_id": "path+file:///home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker/Cargo.toml",
+      "target": {
+        "kind": [
+          "bin"
+        ],
+        "crate_types": [
+          "bin"
+        ],
+        "name": "branchline-git-worker",
+        "src_path": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker/src/main.rs",
+        "edition": "2021",
+        "doc": true,
+        "doctest": false,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "features": [
+        "default",
+        "storage-worker"
+      ],
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/branchline-git-worker"
+      ],
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/branchline-git-worker",
+      "fresh": false
+    },
+    "linux_worker_tests": {
+      "reason": "compiler-artifact",
+      "package_id": "path+file:///home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker/Cargo.toml",
+      "target": {
+        "kind": [
+          "bin"
+        ],
+        "crate_types": [
+          "bin"
+        ],
+        "name": "branchline-git-worker",
+        "src_path": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker/src/main.rs",
+        "edition": "2021",
+        "doc": true,
+        "doctest": false,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": true
+      },
+      "features": [
+        "default",
+        "storage-worker"
+      ],
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/build/branchline-git-worker/fbb791997f71a45e/out/branchline_git_worker-fbb791997f71a45e"
+      ],
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/build/branchline-git-worker/fbb791997f71a45e/out/branchline_git_worker-fbb791997f71a45e",
+      "fresh": false
+    },
+    "linux_worker_stdio": {
+      "reason": "compiler-artifact",
+      "package_id": "path+file:///home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+      "manifest_path": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker/Cargo.toml",
+      "target": {
+        "kind": [
+          "test"
+        ],
+        "crate_types": [
+          "bin"
+        ],
+        "name": "stdio",
+        "src_path": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/source/src-tauri/git-worker/tests/stdio.rs",
+        "edition": "2021",
+        "doc": false,
+        "doctest": false,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": true
+      },
+      "features": [
+        "default",
+        "storage-worker"
+      ],
+      "filenames": [
+        "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/build/branchline-git-worker/127cb01452fe0364/out/stdio-127cb01452fe0364"
+      ],
+      "executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/build/branchline-git-worker/127cb01452fe0364/out/stdio-127cb01452fe0364",
+      "fresh": false
+    }
+  },
+  "workers": {
+    "linux": {
+      "path": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/branchline-git-worker",
+      "sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+      "bytes": 3967600,
+      "protocol": 1,
+      "producer_executable": "/home/max/workspace/diff-tool/src-tauri/target/git-worker/x86_64-unknown-linux-gnu/release/branchline-git-worker",
+      "producer_fresh": false
+    }
+  },
+  "native_test_names": [
+    "git::tests::advertised_remote_default_and_orphan_and_detached_checkout",
+    "git::tests::configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs",
+    "git::tests::display_patch_preserves_git_rows_and_frozen_working_tree",
+    "git::tests::first_commit_diverged_base_stack_and_forks",
+    "git::tests::libgit2_reads_normal_review_changes_without_the_compatibility_backend",
+    "git::tests::literal_names_binary_rename_line_numbers_and_scoped_untracked",
+    "git::tests::merge_conflict_shows_existing_stage_two_and_other_staged_changes",
+    "git::tests::partially_staged_snapshot_survives_file_and_index_changes",
+    "git::tests::patch_process_is_reaped_when_a_silent_search_is_superseded",
+    "git::tests::patch_reader_checks_cancellation_while_git_is_silent",
+    "git::tests::patch_stream_stops_at_201_matches_inside_the_first_file",
+    "git::tests::raw_and_numstat_parsers_keep_counts_errors_and_stat_only_changes",
+    "git::tests::revision_file_distinguishes_text_binary_and_missing_submodule_objects",
+    "git::tests::skip_worktree_entries_preserve_git_status_and_frozen_patches",
+    "git::tests::sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged",
+    "git::tests::streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes",
+    "git::tests::streamed_patches_keep_type_change_sections_and_byte_paths",
+    "git::tests::symlinks_type_changes_nested_repo_and_non_utf8_names",
+    "git::tests::whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move",
+    "git::tests::whole_file_reconstructs_unstaged_gaps_after_the_index_and_disk_change",
+    "git::tests::working_tree_snapshot_does_not_rewrite_stat_stale_index",
+    "git::worker::tests::invalid_sections_are_rejected_before_git_access",
+    "git::worker::tests::null_success_is_distinct_from_failure",
+    "git::worker::tests::protocol_rejects_mutating_and_unknown_operations",
+    "git::worker::tests::wire_sections_are_lossless_and_do_not_change_frontend_serialization",
+    "real_pipe_preserves_frozen_working_tree_payloads_and_caller_refs"
+  ],
+  "kernel_proofs": [
+    {
+      "platform": "linux",
+      "executable": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/branchline-git-worker",
+      "sha256": "92d98807a79d628c0c6b28da28845d669e869b08bf68885ce29ed7748f7a0ffd",
+      "cwd": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+      "started": 1795651997.7572818,
+      "pid": 198649,
+      "start_ticks": "15629343",
+      "hello": {
+        "architecture": "x86_64",
+        "os": "linux",
+        "pid": 198649,
+        "protocol": 1
+      },
+      "exe": "/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-native/branchline-git-worker",
+      "expected": [
+        {
+          "status": "M",
+          "old": "arch/parisc/include/asm/extable.h",
+          "path": "arch/parisc/include/asm/extable.h",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "4ea23e3d79dc9034543465db2b0a4856324a4477",
+          "oid": "bdd722cb902101a1cb25f74be76a47eb78ed3580",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "arch/s390/kernel/unwind_bc.c",
+          "path": "arch/s390/kernel/unwind_bc.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "cd44be2b6ce8d97123e5cf03122a85270c6d286b",
+          "oid": "f67a15c202903f2749f8506782a48da7d62aa77f",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "arch/x86/include/asm/pm-trace.h",
+          "path": "arch/x86/include/asm/pm-trace.h",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "bfa32aa428e59190455b3026deeb67f721367610",
+          "oid": "35ebbf3b86c0bd3041a45f71a04fd533418deb7d",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "block/blk-mq.h",
+          "path": "block/blk-mq.h",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "3bd43b10032f8325e7d3dfd93f2bcefd15bb0291",
+          "oid": "dfa1e0df7395a89412c5370fd45f399f234e6459",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "block/partitions/atari.h",
+          "path": "block/partitions/atari.h",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "678202442fd3738b47df11cbd8bc1a967a697277",
+          "oid": "42e54e9100be44a1525c9d25780351cbc7ed01df",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "block/partitions/sysv68.c",
+          "path": "block/partitions/sysv68.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "6f6257fd4eb4e9f05b96b844327a02f014711e42",
+          "oid": "a72e641c317e2b941cf3c74876ba4c6641fc82ce",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "drivers/base/core.c",
+          "path": "drivers/base/core.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "048ff98dbdfd846ae67729e46d7acc9cde546a70",
+          "oid": "5b7378bf333d796e9f3d7a5ad101348c298b75ef",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+          "path": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "74dafe7106be014f07b7e07995699163567e5b7a",
+          "oid": "5cb7535b43bd27c1a3c3f930d976c83b40166011",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+          "path": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "f6a212e542cb9301cab1ad19c43e00e4ea07b128",
+          "oid": "e026253dbd48ad584f0b925d5f2c652e417d8ac9",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "fs/nfs/blocklayout/extent_tree.c",
+          "path": "fs/nfs/blocklayout/extent_tree.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "8f7cff7a42938e293072d5bc6fc4a7adc2de2c4e",
+          "oid": "306981710944e1158274c3d9636faf4fad337293",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "fs/open.c",
+          "path": "fs/open.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "5da4df2f9b18a637ed83cde8f2fe52f9034f5290",
+          "oid": "b760ef1e551e172ef40d4ca2ac1139d4b1fa4834",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "fs/smb/client/smb2pdu.h",
+          "path": "fs/smb/client/smb2pdu.h",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "076d9e83e1a0448b092fc8e2ab5b5523c88dcfa2",
+          "oid": "46040f8501606aa473f82ce22a602b82d819342f",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+          "path": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "79e52aca5912766d9b3636c5e8295b85e3f96342",
+          "oid": "fa24bedb2da52efc33563aa18c63bb7d553e6493",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "include/uapi/linux/auto_fs4.h",
+          "path": "include/uapi/linux/auto_fs4.h",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "d01ef0a0189cc71ef84619cdf162b144b8593eff",
+          "oid": "63aba3e1343ef1091212ce7df4fffad5dd5e6edd",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "include/video/sisfb.h",
+          "path": "include/video/sisfb.h",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "76ff628a122039944907d8f9c0c6faf683d9c5c8",
+          "oid": "f799286ff92f2c7f0278959840f25c60a551adff",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "kernel/fork.c",
+          "path": "kernel/fork.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "22f43721d031d48fd5be2606e86642334be9735f",
+          "oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "kernel/time/time.c",
+          "path": "kernel/time/time.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "642647f5046be01834633bc3f5568bed9217e14f",
+          "oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "kernel/trace/blktrace.c",
+          "path": "kernel/trace/blktrace.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "8fd292d34d8984c3cbea54a3297bd2280c603957",
+          "oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "lib/842/842_debugfs.h",
+          "path": "lib/842/842_debugfs.h",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "4469407c3e0d46c4fe3b1f7415c28c88451597cc",
+          "oid": "6ff80bad376faf944d3a76ec397d11f90481e941",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "lib/hweight.c",
+          "path": "lib/hweight.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "c94586b6255187906cfde38fda8b84f33c9fc21f",
+          "oid": "db856baa99c4d299a38cf5f737308e0903978ba8",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "lib/test_free_pages.c",
+          "path": "lib/test_free_pages.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "48952364c5404756deebf96a39a96b953416fd1c",
+          "oid": "4e0a60446ef2de5964b63d5a6ec11c47140b11d0",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "mm/kfence/core.c",
+          "path": "mm/kfence/core.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "67fc321db79b7edd5b33c90f48508d19bb94d197",
+          "oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "mm/madvise.c",
+          "path": "mm/madvise.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "ff139e57cca292edcae682b8afc3b7a8c43f1cab",
+          "oid": "6d668b9b67bbf61bbd1dc2ea77448e474c20fc13",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "mm/memory.c",
+          "path": "mm/memory.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "bdf77a3ec47bc26a8560c41a7ab0d485a9f99367",
+          "oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "net/core/dev.c",
+          "path": "net/core/dev.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "8453e14d301b63a84f3d505a1f3dc08f88fe8f7b",
+          "oid": "a2fc7dff466de6a570a9793e1ca8f093571c8f45",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "net/ipv6/exthdrs_core.c",
+          "path": "net/ipv6/exthdrs_core.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "49e31e4ae7b7f661d555e73e0515983e9584eec4",
+          "oid": "0b758d02e6734afc263252b2ea95bf0affe36a14",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "net/sched/em_u32.c",
+          "path": "net/sched/em_u32.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "fdec4db5ec89d047427d62fb6ce95b3649a80f9f",
+          "oid": "e90fa0ba6470f58c4d0504a1046b5629aec242fe",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "security/keys/request_key.c",
+          "path": "security/keys/request_key.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "a7673ad86d18df9a551b04eedae48454fe73b147",
+          "oid": "c44c9ec686d505c0a36d0c4fde93bc4dcee0f2f5",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "security/selinux/netport.c",
+          "path": "security/selinux/netport.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "2e22ad9c2bd0d116668985e0fb579b5934df9394",
+          "oid": "f6d6dd7ff44f9769097beed746687bf6cbd41ef5",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "status": "M",
+          "old": "security/tomoyo/file.c",
+          "path": "security/tomoyo/file.c",
+          "old_mode": "100644",
+          "mode": "100644",
+          "old_oid": "8f3b90b6e03d24d3ba8a258a4958a09735dc5b13",
+          "oid": "fff1662f23b77a32c99c11d9db2d639423e96419",
+          "added": 4,
+          "removed": 0
+        }
+      ],
+      "result": {
+        "metadata": [
+          {
+            "status": "M",
+            "old": "arch/parisc/include/asm/extable.h",
+            "path": "arch/parisc/include/asm/extable.h",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "4ea23e3d79dc9034543465db2b0a4856324a4477",
+            "oid": "bdd722cb902101a1cb25f74be76a47eb78ed3580",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "arch/s390/kernel/unwind_bc.c",
+            "path": "arch/s390/kernel/unwind_bc.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "cd44be2b6ce8d97123e5cf03122a85270c6d286b",
+            "oid": "f67a15c202903f2749f8506782a48da7d62aa77f",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "arch/x86/include/asm/pm-trace.h",
+            "path": "arch/x86/include/asm/pm-trace.h",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "bfa32aa428e59190455b3026deeb67f721367610",
+            "oid": "35ebbf3b86c0bd3041a45f71a04fd533418deb7d",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "block/blk-mq.h",
+            "path": "block/blk-mq.h",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "3bd43b10032f8325e7d3dfd93f2bcefd15bb0291",
+            "oid": "dfa1e0df7395a89412c5370fd45f399f234e6459",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "block/partitions/atari.h",
+            "path": "block/partitions/atari.h",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "678202442fd3738b47df11cbd8bc1a967a697277",
+            "oid": "42e54e9100be44a1525c9d25780351cbc7ed01df",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "block/partitions/sysv68.c",
+            "path": "block/partitions/sysv68.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "6f6257fd4eb4e9f05b96b844327a02f014711e42",
+            "oid": "a72e641c317e2b941cf3c74876ba4c6641fc82ce",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "drivers/base/core.c",
+            "path": "drivers/base/core.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "048ff98dbdfd846ae67729e46d7acc9cde546a70",
+            "oid": "5b7378bf333d796e9f3d7a5ad101348c298b75ef",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+            "path": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "74dafe7106be014f07b7e07995699163567e5b7a",
+            "oid": "5cb7535b43bd27c1a3c3f930d976c83b40166011",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+            "path": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "f6a212e542cb9301cab1ad19c43e00e4ea07b128",
+            "oid": "e026253dbd48ad584f0b925d5f2c652e417d8ac9",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "fs/nfs/blocklayout/extent_tree.c",
+            "path": "fs/nfs/blocklayout/extent_tree.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "8f7cff7a42938e293072d5bc6fc4a7adc2de2c4e",
+            "oid": "306981710944e1158274c3d9636faf4fad337293",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "fs/open.c",
+            "path": "fs/open.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "5da4df2f9b18a637ed83cde8f2fe52f9034f5290",
+            "oid": "b760ef1e551e172ef40d4ca2ac1139d4b1fa4834",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "fs/smb/client/smb2pdu.h",
+            "path": "fs/smb/client/smb2pdu.h",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "076d9e83e1a0448b092fc8e2ab5b5523c88dcfa2",
+            "oid": "46040f8501606aa473f82ce22a602b82d819342f",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+            "path": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "79e52aca5912766d9b3636c5e8295b85e3f96342",
+            "oid": "fa24bedb2da52efc33563aa18c63bb7d553e6493",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "include/uapi/linux/auto_fs4.h",
+            "path": "include/uapi/linux/auto_fs4.h",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "d01ef0a0189cc71ef84619cdf162b144b8593eff",
+            "oid": "63aba3e1343ef1091212ce7df4fffad5dd5e6edd",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "include/video/sisfb.h",
+            "path": "include/video/sisfb.h",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "76ff628a122039944907d8f9c0c6faf683d9c5c8",
+            "oid": "f799286ff92f2c7f0278959840f25c60a551adff",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "kernel/fork.c",
+            "path": "kernel/fork.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "22f43721d031d48fd5be2606e86642334be9735f",
+            "oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "kernel/time/time.c",
+            "path": "kernel/time/time.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "642647f5046be01834633bc3f5568bed9217e14f",
+            "oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "kernel/trace/blktrace.c",
+            "path": "kernel/trace/blktrace.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "8fd292d34d8984c3cbea54a3297bd2280c603957",
+            "oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "lib/842/842_debugfs.h",
+            "path": "lib/842/842_debugfs.h",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "4469407c3e0d46c4fe3b1f7415c28c88451597cc",
+            "oid": "6ff80bad376faf944d3a76ec397d11f90481e941",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "lib/hweight.c",
+            "path": "lib/hweight.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "c94586b6255187906cfde38fda8b84f33c9fc21f",
+            "oid": "db856baa99c4d299a38cf5f737308e0903978ba8",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "lib/test_free_pages.c",
+            "path": "lib/test_free_pages.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "48952364c5404756deebf96a39a96b953416fd1c",
+            "oid": "4e0a60446ef2de5964b63d5a6ec11c47140b11d0",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "mm/kfence/core.c",
+            "path": "mm/kfence/core.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "67fc321db79b7edd5b33c90f48508d19bb94d197",
+            "oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "mm/madvise.c",
+            "path": "mm/madvise.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "ff139e57cca292edcae682b8afc3b7a8c43f1cab",
+            "oid": "6d668b9b67bbf61bbd1dc2ea77448e474c20fc13",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "mm/memory.c",
+            "path": "mm/memory.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "bdf77a3ec47bc26a8560c41a7ab0d485a9f99367",
+            "oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "net/core/dev.c",
+            "path": "net/core/dev.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "8453e14d301b63a84f3d505a1f3dc08f88fe8f7b",
+            "oid": "a2fc7dff466de6a570a9793e1ca8f093571c8f45",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "net/ipv6/exthdrs_core.c",
+            "path": "net/ipv6/exthdrs_core.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "49e31e4ae7b7f661d555e73e0515983e9584eec4",
+            "oid": "0b758d02e6734afc263252b2ea95bf0affe36a14",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "net/sched/em_u32.c",
+            "path": "net/sched/em_u32.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "fdec4db5ec89d047427d62fb6ce95b3649a80f9f",
+            "oid": "e90fa0ba6470f58c4d0504a1046b5629aec242fe",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "security/keys/request_key.c",
+            "path": "security/keys/request_key.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "a7673ad86d18df9a551b04eedae48454fe73b147",
+            "oid": "c44c9ec686d505c0a36d0c4fde93bc4dcee0f2f5",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "security/selinux/netport.c",
+            "path": "security/selinux/netport.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "2e22ad9c2bd0d116668985e0fb579b5934df9394",
+            "oid": "f6d6dd7ff44f9769097beed746687bf6cbd41ef5",
+            "added": 4,
+            "removed": 0
+          },
+          {
+            "status": "M",
+            "old": "security/tomoyo/file.c",
+            "path": "security/tomoyo/file.c",
+            "old_mode": "100644",
+            "mode": "100644",
+            "old_oid": "8f3b90b6e03d24d3ba8a258a4958a09735dc5b13",
+            "oid": "fff1662f23b77a32c99c11d9db2d639423e96419",
+            "added": 4,
+            "removed": 0
+          }
+        ],
+        "comparisons": [
+          {
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-first",
+            "expected": [
+              {
+                "status": "M",
+                "old": "arch/parisc/include/asm/extable.h",
+                "path": "arch/parisc/include/asm/extable.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4ea23e3d79dc9034543465db2b0a4856324a4477",
+                "oid": "4c3455d2cf99a19122f451efe6dcc558cb8fdb98",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/s390/kernel/unwind_bc.c",
+                "path": "arch/s390/kernel/unwind_bc.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "cd44be2b6ce8d97123e5cf03122a85270c6d286b",
+                "oid": "a6730991a56cb3add67ab7ce9ef4a6c38ea29880",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/x86/include/asm/pm-trace.h",
+                "path": "arch/x86/include/asm/pm-trace.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "bfa32aa428e59190455b3026deeb67f721367610",
+                "oid": "5b3fff7450b3ac7ce04185bf481013947a324dd8",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/blk-mq.h",
+                "path": "block/blk-mq.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "3bd43b10032f8325e7d3dfd93f2bcefd15bb0291",
+                "oid": "04d3dcb737f4e56df3f41e18483eff31eed1a971",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/atari.h",
+                "path": "block/partitions/atari.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "678202442fd3738b47df11cbd8bc1a967a697277",
+                "oid": "cc9cd72b63db99e9796d5d67891d92890d9af0ef",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/sysv68.c",
+                "path": "block/partitions/sysv68.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "6f6257fd4eb4e9f05b96b844327a02f014711e42",
+                "oid": "7a917bc1921706ea7e10651bde239f4d167db7ba",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/base/core.c",
+                "path": "drivers/base/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "048ff98dbdfd846ae67729e46d7acc9cde546a70",
+                "oid": "55a814bee8ea46d6d09e6fd9b6daf879fe25e788",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "path": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "74dafe7106be014f07b7e07995699163567e5b7a",
+                "oid": "c3cdc31e78f359136cc07a84e97f0a88a1a6e9f5",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "path": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "f6a212e542cb9301cab1ad19c43e00e4ea07b128",
+                "oid": "82a5b642d8068a6bc25964eb0f0489b042e155c7",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/nfs/blocklayout/extent_tree.c",
+                "path": "fs/nfs/blocklayout/extent_tree.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8f7cff7a42938e293072d5bc6fc4a7adc2de2c4e",
+                "oid": "ae9115c813b9600a0ea984db0e945a81c4b0335e",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/open.c",
+                "path": "fs/open.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "5da4df2f9b18a637ed83cde8f2fe52f9034f5290",
+                "oid": "f66a50dd6d77b0be9e6fa2962bbdc4dc6fc42463",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/smb/client/smb2pdu.h",
+                "path": "fs/smb/client/smb2pdu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "076d9e83e1a0448b092fc8e2ab5b5523c88dcfa2",
+                "oid": "0e21fe9ed407c825385215fb08aad931cb46dd19",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "path": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "79e52aca5912766d9b3636c5e8295b85e3f96342",
+                "oid": "3babbb68c1269ced6f7eec3bb4d69d51d07207c0",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/uapi/linux/auto_fs4.h",
+                "path": "include/uapi/linux/auto_fs4.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "d01ef0a0189cc71ef84619cdf162b144b8593eff",
+                "oid": "235426f3d4ca2e297371dcb15390d572d14bf311",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/video/sisfb.h",
+                "path": "include/video/sisfb.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "76ff628a122039944907d8f9c0c6faf683d9c5c8",
+                "oid": "fafa3aafd74e7749b65371f004077efa6cc07d93",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/fork.c",
+                "path": "kernel/fork.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "22f43721d031d48fd5be2606e86642334be9735f",
+                "oid": "944283a1d19bd3105b43925b04fb44bed1438ba2",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/time/time.c",
+                "path": "kernel/time/time.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "642647f5046be01834633bc3f5568bed9217e14f",
+                "oid": "c94ac7778de791ab4c97f48e8eb927d0c7d51f49",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/trace/blktrace.c",
+                "path": "kernel/trace/blktrace.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8fd292d34d8984c3cbea54a3297bd2280c603957",
+                "oid": "04bbe9c5748e0736f43793579c0d8f5f1a3db9f5",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/842/842_debugfs.h",
+                "path": "lib/842/842_debugfs.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4469407c3e0d46c4fe3b1f7415c28c88451597cc",
+                "oid": "78498cb9f96c34a07f6b5e1cbdbbd3c127da784f",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/hweight.c",
+                "path": "lib/hweight.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c94586b6255187906cfde38fda8b84f33c9fc21f",
+                "oid": "29a67f4c7fba12f88b82e79716cd73696aaeb08f",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/test_free_pages.c",
+                "path": "lib/test_free_pages.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "48952364c5404756deebf96a39a96b953416fd1c",
+                "oid": "830f2f682bc80dab5238b93a6ff6a14e968ba262",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/kfence/core.c",
+                "path": "mm/kfence/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "67fc321db79b7edd5b33c90f48508d19bb94d197",
+                "oid": "3901c29bc71053be7d423ee18b8f1ff8829da699",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/madvise.c",
+                "path": "mm/madvise.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "ff139e57cca292edcae682b8afc3b7a8c43f1cab",
+                "oid": "27e9c09189f259096f27de7b554a760f8e6ed8ca",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/memory.c",
+                "path": "mm/memory.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "bdf77a3ec47bc26a8560c41a7ab0d485a9f99367",
+                "oid": "19a12e3bee38e3b4c0d3d53106fc1e3faef58862",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/core/dev.c",
+                "path": "net/core/dev.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8453e14d301b63a84f3d505a1f3dc08f88fe8f7b",
+                "oid": "24eecdfa61c542b65bc5009c321f89b0436802f1",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/ipv6/exthdrs_core.c",
+                "path": "net/ipv6/exthdrs_core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "49e31e4ae7b7f661d555e73e0515983e9584eec4",
+                "oid": "cf6b122db601303f410af4818c519d017088e483",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/sched/em_u32.c",
+                "path": "net/sched/em_u32.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "fdec4db5ec89d047427d62fb6ce95b3649a80f9f",
+                "oid": "c0e1f1a8fa291752f83019d810372ba9fcd84cca",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/keys/request_key.c",
+                "path": "security/keys/request_key.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "a7673ad86d18df9a551b04eedae48454fe73b147",
+                "oid": "1fd91c5861201c5bae9222cbb663a6256359a129",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/selinux/netport.c",
+                "path": "security/selinux/netport.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "2e22ad9c2bd0d116668985e0fb579b5934df9394",
+                "oid": "e0e8080e30286244ca23bf8cd97bbeedbfe4a06a",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/tomoyo/file.c",
+                "path": "security/tomoyo/file.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8f3b90b6e03d24d3ba8a258a4958a09735dc5b13",
+                "oid": "979fac254621e4ada4595ca775b31cdcc8f999d5",
+                "added": 2,
+                "removed": 0
+              }
+            ],
+            "metadata": [
+              {
+                "status": "M",
+                "old": "arch/parisc/include/asm/extable.h",
+                "path": "arch/parisc/include/asm/extable.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4ea23e3d79dc9034543465db2b0a4856324a4477",
+                "oid": "4c3455d2cf99a19122f451efe6dcc558cb8fdb98",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/s390/kernel/unwind_bc.c",
+                "path": "arch/s390/kernel/unwind_bc.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "cd44be2b6ce8d97123e5cf03122a85270c6d286b",
+                "oid": "a6730991a56cb3add67ab7ce9ef4a6c38ea29880",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/x86/include/asm/pm-trace.h",
+                "path": "arch/x86/include/asm/pm-trace.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "bfa32aa428e59190455b3026deeb67f721367610",
+                "oid": "5b3fff7450b3ac7ce04185bf481013947a324dd8",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/blk-mq.h",
+                "path": "block/blk-mq.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "3bd43b10032f8325e7d3dfd93f2bcefd15bb0291",
+                "oid": "04d3dcb737f4e56df3f41e18483eff31eed1a971",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/atari.h",
+                "path": "block/partitions/atari.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "678202442fd3738b47df11cbd8bc1a967a697277",
+                "oid": "cc9cd72b63db99e9796d5d67891d92890d9af0ef",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/sysv68.c",
+                "path": "block/partitions/sysv68.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "6f6257fd4eb4e9f05b96b844327a02f014711e42",
+                "oid": "7a917bc1921706ea7e10651bde239f4d167db7ba",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/base/core.c",
+                "path": "drivers/base/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "048ff98dbdfd846ae67729e46d7acc9cde546a70",
+                "oid": "55a814bee8ea46d6d09e6fd9b6daf879fe25e788",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "path": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "74dafe7106be014f07b7e07995699163567e5b7a",
+                "oid": "c3cdc31e78f359136cc07a84e97f0a88a1a6e9f5",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "path": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "f6a212e542cb9301cab1ad19c43e00e4ea07b128",
+                "oid": "82a5b642d8068a6bc25964eb0f0489b042e155c7",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/nfs/blocklayout/extent_tree.c",
+                "path": "fs/nfs/blocklayout/extent_tree.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8f7cff7a42938e293072d5bc6fc4a7adc2de2c4e",
+                "oid": "ae9115c813b9600a0ea984db0e945a81c4b0335e",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/open.c",
+                "path": "fs/open.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "5da4df2f9b18a637ed83cde8f2fe52f9034f5290",
+                "oid": "f66a50dd6d77b0be9e6fa2962bbdc4dc6fc42463",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/smb/client/smb2pdu.h",
+                "path": "fs/smb/client/smb2pdu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "076d9e83e1a0448b092fc8e2ab5b5523c88dcfa2",
+                "oid": "0e21fe9ed407c825385215fb08aad931cb46dd19",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "path": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "79e52aca5912766d9b3636c5e8295b85e3f96342",
+                "oid": "3babbb68c1269ced6f7eec3bb4d69d51d07207c0",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/uapi/linux/auto_fs4.h",
+                "path": "include/uapi/linux/auto_fs4.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "d01ef0a0189cc71ef84619cdf162b144b8593eff",
+                "oid": "235426f3d4ca2e297371dcb15390d572d14bf311",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/video/sisfb.h",
+                "path": "include/video/sisfb.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "76ff628a122039944907d8f9c0c6faf683d9c5c8",
+                "oid": "fafa3aafd74e7749b65371f004077efa6cc07d93",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/fork.c",
+                "path": "kernel/fork.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "22f43721d031d48fd5be2606e86642334be9735f",
+                "oid": "944283a1d19bd3105b43925b04fb44bed1438ba2",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/time/time.c",
+                "path": "kernel/time/time.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "642647f5046be01834633bc3f5568bed9217e14f",
+                "oid": "c94ac7778de791ab4c97f48e8eb927d0c7d51f49",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/trace/blktrace.c",
+                "path": "kernel/trace/blktrace.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8fd292d34d8984c3cbea54a3297bd2280c603957",
+                "oid": "04bbe9c5748e0736f43793579c0d8f5f1a3db9f5",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/842/842_debugfs.h",
+                "path": "lib/842/842_debugfs.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4469407c3e0d46c4fe3b1f7415c28c88451597cc",
+                "oid": "78498cb9f96c34a07f6b5e1cbdbbd3c127da784f",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/hweight.c",
+                "path": "lib/hweight.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c94586b6255187906cfde38fda8b84f33c9fc21f",
+                "oid": "29a67f4c7fba12f88b82e79716cd73696aaeb08f",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/test_free_pages.c",
+                "path": "lib/test_free_pages.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "48952364c5404756deebf96a39a96b953416fd1c",
+                "oid": "830f2f682bc80dab5238b93a6ff6a14e968ba262",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/kfence/core.c",
+                "path": "mm/kfence/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "67fc321db79b7edd5b33c90f48508d19bb94d197",
+                "oid": "3901c29bc71053be7d423ee18b8f1ff8829da699",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/madvise.c",
+                "path": "mm/madvise.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "ff139e57cca292edcae682b8afc3b7a8c43f1cab",
+                "oid": "27e9c09189f259096f27de7b554a760f8e6ed8ca",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/memory.c",
+                "path": "mm/memory.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "bdf77a3ec47bc26a8560c41a7ab0d485a9f99367",
+                "oid": "19a12e3bee38e3b4c0d3d53106fc1e3faef58862",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/core/dev.c",
+                "path": "net/core/dev.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8453e14d301b63a84f3d505a1f3dc08f88fe8f7b",
+                "oid": "24eecdfa61c542b65bc5009c321f89b0436802f1",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/ipv6/exthdrs_core.c",
+                "path": "net/ipv6/exthdrs_core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "49e31e4ae7b7f661d555e73e0515983e9584eec4",
+                "oid": "cf6b122db601303f410af4818c519d017088e483",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/sched/em_u32.c",
+                "path": "net/sched/em_u32.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "fdec4db5ec89d047427d62fb6ce95b3649a80f9f",
+                "oid": "c0e1f1a8fa291752f83019d810372ba9fcd84cca",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/keys/request_key.c",
+                "path": "security/keys/request_key.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "a7673ad86d18df9a551b04eedae48454fe73b147",
+                "oid": "1fd91c5861201c5bae9222cbb663a6256359a129",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/selinux/netport.c",
+                "path": "security/selinux/netport.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "2e22ad9c2bd0d116668985e0fb579b5934df9394",
+                "oid": "e0e8080e30286244ca23bf8cd97bbeedbfe4a06a",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/tomoyo/file.c",
+                "path": "security/tomoyo/file.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8f3b90b6e03d24d3ba8a258a4958a09735dc5b13",
+                "oid": "979fac254621e4ada4595ca775b31cdcc8f999d5",
+                "added": 2,
+                "removed": 0
+              }
+            ],
+            "raw_sha256": "09cabc0d6243be5567c0a6457fb26e9ead073acae05c024bcf81af4882267690"
+          },
+          {
+            "left": "refs/heads/feature/boundary-first",
+            "right": "refs/heads/feature/boundary-final",
+            "expected": [
+              {
+                "status": "M",
+                "old": "arch/parisc/include/asm/extable.h",
+                "path": "arch/parisc/include/asm/extable.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4c3455d2cf99a19122f451efe6dcc558cb8fdb98",
+                "oid": "bdd722cb902101a1cb25f74be76a47eb78ed3580",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/s390/kernel/unwind_bc.c",
+                "path": "arch/s390/kernel/unwind_bc.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "a6730991a56cb3add67ab7ce9ef4a6c38ea29880",
+                "oid": "f67a15c202903f2749f8506782a48da7d62aa77f",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/x86/include/asm/pm-trace.h",
+                "path": "arch/x86/include/asm/pm-trace.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "5b3fff7450b3ac7ce04185bf481013947a324dd8",
+                "oid": "35ebbf3b86c0bd3041a45f71a04fd533418deb7d",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/blk-mq.h",
+                "path": "block/blk-mq.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "04d3dcb737f4e56df3f41e18483eff31eed1a971",
+                "oid": "dfa1e0df7395a89412c5370fd45f399f234e6459",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/atari.h",
+                "path": "block/partitions/atari.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "cc9cd72b63db99e9796d5d67891d92890d9af0ef",
+                "oid": "42e54e9100be44a1525c9d25780351cbc7ed01df",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/sysv68.c",
+                "path": "block/partitions/sysv68.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "7a917bc1921706ea7e10651bde239f4d167db7ba",
+                "oid": "a72e641c317e2b941cf3c74876ba4c6641fc82ce",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/base/core.c",
+                "path": "drivers/base/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "55a814bee8ea46d6d09e6fd9b6daf879fe25e788",
+                "oid": "5b7378bf333d796e9f3d7a5ad101348c298b75ef",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "path": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c3cdc31e78f359136cc07a84e97f0a88a1a6e9f5",
+                "oid": "5cb7535b43bd27c1a3c3f930d976c83b40166011",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "path": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "82a5b642d8068a6bc25964eb0f0489b042e155c7",
+                "oid": "e026253dbd48ad584f0b925d5f2c652e417d8ac9",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/nfs/blocklayout/extent_tree.c",
+                "path": "fs/nfs/blocklayout/extent_tree.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "ae9115c813b9600a0ea984db0e945a81c4b0335e",
+                "oid": "306981710944e1158274c3d9636faf4fad337293",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/open.c",
+                "path": "fs/open.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "f66a50dd6d77b0be9e6fa2962bbdc4dc6fc42463",
+                "oid": "b760ef1e551e172ef40d4ca2ac1139d4b1fa4834",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/smb/client/smb2pdu.h",
+                "path": "fs/smb/client/smb2pdu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "0e21fe9ed407c825385215fb08aad931cb46dd19",
+                "oid": "46040f8501606aa473f82ce22a602b82d819342f",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "path": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "3babbb68c1269ced6f7eec3bb4d69d51d07207c0",
+                "oid": "fa24bedb2da52efc33563aa18c63bb7d553e6493",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/uapi/linux/auto_fs4.h",
+                "path": "include/uapi/linux/auto_fs4.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "235426f3d4ca2e297371dcb15390d572d14bf311",
+                "oid": "63aba3e1343ef1091212ce7df4fffad5dd5e6edd",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/video/sisfb.h",
+                "path": "include/video/sisfb.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "fafa3aafd74e7749b65371f004077efa6cc07d93",
+                "oid": "f799286ff92f2c7f0278959840f25c60a551adff",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/fork.c",
+                "path": "kernel/fork.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "944283a1d19bd3105b43925b04fb44bed1438ba2",
+                "oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/time/time.c",
+                "path": "kernel/time/time.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c94ac7778de791ab4c97f48e8eb927d0c7d51f49",
+                "oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/trace/blktrace.c",
+                "path": "kernel/trace/blktrace.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "04bbe9c5748e0736f43793579c0d8f5f1a3db9f5",
+                "oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/842/842_debugfs.h",
+                "path": "lib/842/842_debugfs.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "78498cb9f96c34a07f6b5e1cbdbbd3c127da784f",
+                "oid": "6ff80bad376faf944d3a76ec397d11f90481e941",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/hweight.c",
+                "path": "lib/hweight.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "29a67f4c7fba12f88b82e79716cd73696aaeb08f",
+                "oid": "db856baa99c4d299a38cf5f737308e0903978ba8",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/test_free_pages.c",
+                "path": "lib/test_free_pages.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "830f2f682bc80dab5238b93a6ff6a14e968ba262",
+                "oid": "4e0a60446ef2de5964b63d5a6ec11c47140b11d0",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/kfence/core.c",
+                "path": "mm/kfence/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "3901c29bc71053be7d423ee18b8f1ff8829da699",
+                "oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/madvise.c",
+                "path": "mm/madvise.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "27e9c09189f259096f27de7b554a760f8e6ed8ca",
+                "oid": "6d668b9b67bbf61bbd1dc2ea77448e474c20fc13",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/memory.c",
+                "path": "mm/memory.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "19a12e3bee38e3b4c0d3d53106fc1e3faef58862",
+                "oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/core/dev.c",
+                "path": "net/core/dev.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "24eecdfa61c542b65bc5009c321f89b0436802f1",
+                "oid": "a2fc7dff466de6a570a9793e1ca8f093571c8f45",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/ipv6/exthdrs_core.c",
+                "path": "net/ipv6/exthdrs_core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "cf6b122db601303f410af4818c519d017088e483",
+                "oid": "0b758d02e6734afc263252b2ea95bf0affe36a14",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/sched/em_u32.c",
+                "path": "net/sched/em_u32.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c0e1f1a8fa291752f83019d810372ba9fcd84cca",
+                "oid": "e90fa0ba6470f58c4d0504a1046b5629aec242fe",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/keys/request_key.c",
+                "path": "security/keys/request_key.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "1fd91c5861201c5bae9222cbb663a6256359a129",
+                "oid": "c44c9ec686d505c0a36d0c4fde93bc4dcee0f2f5",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/selinux/netport.c",
+                "path": "security/selinux/netport.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "e0e8080e30286244ca23bf8cd97bbeedbfe4a06a",
+                "oid": "f6d6dd7ff44f9769097beed746687bf6cbd41ef5",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/tomoyo/file.c",
+                "path": "security/tomoyo/file.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "979fac254621e4ada4595ca775b31cdcc8f999d5",
+                "oid": "fff1662f23b77a32c99c11d9db2d639423e96419",
+                "added": 2,
+                "removed": 0
+              }
+            ],
+            "metadata": [
+              {
+                "status": "M",
+                "old": "arch/parisc/include/asm/extable.h",
+                "path": "arch/parisc/include/asm/extable.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4c3455d2cf99a19122f451efe6dcc558cb8fdb98",
+                "oid": "bdd722cb902101a1cb25f74be76a47eb78ed3580",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/s390/kernel/unwind_bc.c",
+                "path": "arch/s390/kernel/unwind_bc.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "a6730991a56cb3add67ab7ce9ef4a6c38ea29880",
+                "oid": "f67a15c202903f2749f8506782a48da7d62aa77f",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/x86/include/asm/pm-trace.h",
+                "path": "arch/x86/include/asm/pm-trace.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "5b3fff7450b3ac7ce04185bf481013947a324dd8",
+                "oid": "35ebbf3b86c0bd3041a45f71a04fd533418deb7d",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/blk-mq.h",
+                "path": "block/blk-mq.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "04d3dcb737f4e56df3f41e18483eff31eed1a971",
+                "oid": "dfa1e0df7395a89412c5370fd45f399f234e6459",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/atari.h",
+                "path": "block/partitions/atari.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "cc9cd72b63db99e9796d5d67891d92890d9af0ef",
+                "oid": "42e54e9100be44a1525c9d25780351cbc7ed01df",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/sysv68.c",
+                "path": "block/partitions/sysv68.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "7a917bc1921706ea7e10651bde239f4d167db7ba",
+                "oid": "a72e641c317e2b941cf3c74876ba4c6641fc82ce",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/base/core.c",
+                "path": "drivers/base/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "55a814bee8ea46d6d09e6fd9b6daf879fe25e788",
+                "oid": "5b7378bf333d796e9f3d7a5ad101348c298b75ef",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "path": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c3cdc31e78f359136cc07a84e97f0a88a1a6e9f5",
+                "oid": "5cb7535b43bd27c1a3c3f930d976c83b40166011",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "path": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "82a5b642d8068a6bc25964eb0f0489b042e155c7",
+                "oid": "e026253dbd48ad584f0b925d5f2c652e417d8ac9",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/nfs/blocklayout/extent_tree.c",
+                "path": "fs/nfs/blocklayout/extent_tree.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "ae9115c813b9600a0ea984db0e945a81c4b0335e",
+                "oid": "306981710944e1158274c3d9636faf4fad337293",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/open.c",
+                "path": "fs/open.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "f66a50dd6d77b0be9e6fa2962bbdc4dc6fc42463",
+                "oid": "b760ef1e551e172ef40d4ca2ac1139d4b1fa4834",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/smb/client/smb2pdu.h",
+                "path": "fs/smb/client/smb2pdu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "0e21fe9ed407c825385215fb08aad931cb46dd19",
+                "oid": "46040f8501606aa473f82ce22a602b82d819342f",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "path": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "3babbb68c1269ced6f7eec3bb4d69d51d07207c0",
+                "oid": "fa24bedb2da52efc33563aa18c63bb7d553e6493",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/uapi/linux/auto_fs4.h",
+                "path": "include/uapi/linux/auto_fs4.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "235426f3d4ca2e297371dcb15390d572d14bf311",
+                "oid": "63aba3e1343ef1091212ce7df4fffad5dd5e6edd",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/video/sisfb.h",
+                "path": "include/video/sisfb.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "fafa3aafd74e7749b65371f004077efa6cc07d93",
+                "oid": "f799286ff92f2c7f0278959840f25c60a551adff",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/fork.c",
+                "path": "kernel/fork.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "944283a1d19bd3105b43925b04fb44bed1438ba2",
+                "oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/time/time.c",
+                "path": "kernel/time/time.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c94ac7778de791ab4c97f48e8eb927d0c7d51f49",
+                "oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/trace/blktrace.c",
+                "path": "kernel/trace/blktrace.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "04bbe9c5748e0736f43793579c0d8f5f1a3db9f5",
+                "oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/842/842_debugfs.h",
+                "path": "lib/842/842_debugfs.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "78498cb9f96c34a07f6b5e1cbdbbd3c127da784f",
+                "oid": "6ff80bad376faf944d3a76ec397d11f90481e941",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/hweight.c",
+                "path": "lib/hweight.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "29a67f4c7fba12f88b82e79716cd73696aaeb08f",
+                "oid": "db856baa99c4d299a38cf5f737308e0903978ba8",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/test_free_pages.c",
+                "path": "lib/test_free_pages.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "830f2f682bc80dab5238b93a6ff6a14e968ba262",
+                "oid": "4e0a60446ef2de5964b63d5a6ec11c47140b11d0",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/kfence/core.c",
+                "path": "mm/kfence/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "3901c29bc71053be7d423ee18b8f1ff8829da699",
+                "oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/madvise.c",
+                "path": "mm/madvise.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "27e9c09189f259096f27de7b554a760f8e6ed8ca",
+                "oid": "6d668b9b67bbf61bbd1dc2ea77448e474c20fc13",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/memory.c",
+                "path": "mm/memory.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "19a12e3bee38e3b4c0d3d53106fc1e3faef58862",
+                "oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/core/dev.c",
+                "path": "net/core/dev.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "24eecdfa61c542b65bc5009c321f89b0436802f1",
+                "oid": "a2fc7dff466de6a570a9793e1ca8f093571c8f45",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/ipv6/exthdrs_core.c",
+                "path": "net/ipv6/exthdrs_core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "cf6b122db601303f410af4818c519d017088e483",
+                "oid": "0b758d02e6734afc263252b2ea95bf0affe36a14",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/sched/em_u32.c",
+                "path": "net/sched/em_u32.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c0e1f1a8fa291752f83019d810372ba9fcd84cca",
+                "oid": "e90fa0ba6470f58c4d0504a1046b5629aec242fe",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/keys/request_key.c",
+                "path": "security/keys/request_key.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "1fd91c5861201c5bae9222cbb663a6256359a129",
+                "oid": "c44c9ec686d505c0a36d0c4fde93bc4dcee0f2f5",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/selinux/netport.c",
+                "path": "security/selinux/netport.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "e0e8080e30286244ca23bf8cd97bbeedbfe4a06a",
+                "oid": "f6d6dd7ff44f9769097beed746687bf6cbd41ef5",
+                "added": 2,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/tomoyo/file.c",
+                "path": "security/tomoyo/file.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "979fac254621e4ada4595ca775b31cdcc8f999d5",
+                "oid": "fff1662f23b77a32c99c11d9db2d639423e96419",
+                "added": 2,
+                "removed": 0
+              }
+            ],
+            "raw_sha256": "c81b0b918e12a243d7730a86376d3e82bf5b05aa5d01f1486e8cbd51dbd45404"
+          },
+          {
+            "left": "refs/heads/main",
+            "right": "refs/heads/feature/boundary-final",
+            "expected": [
+              {
+                "status": "M",
+                "old": "arch/parisc/include/asm/extable.h",
+                "path": "arch/parisc/include/asm/extable.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4ea23e3d79dc9034543465db2b0a4856324a4477",
+                "oid": "bdd722cb902101a1cb25f74be76a47eb78ed3580",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/s390/kernel/unwind_bc.c",
+                "path": "arch/s390/kernel/unwind_bc.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "cd44be2b6ce8d97123e5cf03122a85270c6d286b",
+                "oid": "f67a15c202903f2749f8506782a48da7d62aa77f",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/x86/include/asm/pm-trace.h",
+                "path": "arch/x86/include/asm/pm-trace.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "bfa32aa428e59190455b3026deeb67f721367610",
+                "oid": "35ebbf3b86c0bd3041a45f71a04fd533418deb7d",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/blk-mq.h",
+                "path": "block/blk-mq.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "3bd43b10032f8325e7d3dfd93f2bcefd15bb0291",
+                "oid": "dfa1e0df7395a89412c5370fd45f399f234e6459",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/atari.h",
+                "path": "block/partitions/atari.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "678202442fd3738b47df11cbd8bc1a967a697277",
+                "oid": "42e54e9100be44a1525c9d25780351cbc7ed01df",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/sysv68.c",
+                "path": "block/partitions/sysv68.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "6f6257fd4eb4e9f05b96b844327a02f014711e42",
+                "oid": "a72e641c317e2b941cf3c74876ba4c6641fc82ce",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/base/core.c",
+                "path": "drivers/base/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "048ff98dbdfd846ae67729e46d7acc9cde546a70",
+                "oid": "5b7378bf333d796e9f3d7a5ad101348c298b75ef",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "path": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "74dafe7106be014f07b7e07995699163567e5b7a",
+                "oid": "5cb7535b43bd27c1a3c3f930d976c83b40166011",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "path": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "f6a212e542cb9301cab1ad19c43e00e4ea07b128",
+                "oid": "e026253dbd48ad584f0b925d5f2c652e417d8ac9",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/nfs/blocklayout/extent_tree.c",
+                "path": "fs/nfs/blocklayout/extent_tree.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8f7cff7a42938e293072d5bc6fc4a7adc2de2c4e",
+                "oid": "306981710944e1158274c3d9636faf4fad337293",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/open.c",
+                "path": "fs/open.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "5da4df2f9b18a637ed83cde8f2fe52f9034f5290",
+                "oid": "b760ef1e551e172ef40d4ca2ac1139d4b1fa4834",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/smb/client/smb2pdu.h",
+                "path": "fs/smb/client/smb2pdu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "076d9e83e1a0448b092fc8e2ab5b5523c88dcfa2",
+                "oid": "46040f8501606aa473f82ce22a602b82d819342f",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "path": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "79e52aca5912766d9b3636c5e8295b85e3f96342",
+                "oid": "fa24bedb2da52efc33563aa18c63bb7d553e6493",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/uapi/linux/auto_fs4.h",
+                "path": "include/uapi/linux/auto_fs4.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "d01ef0a0189cc71ef84619cdf162b144b8593eff",
+                "oid": "63aba3e1343ef1091212ce7df4fffad5dd5e6edd",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/video/sisfb.h",
+                "path": "include/video/sisfb.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "76ff628a122039944907d8f9c0c6faf683d9c5c8",
+                "oid": "f799286ff92f2c7f0278959840f25c60a551adff",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/fork.c",
+                "path": "kernel/fork.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "22f43721d031d48fd5be2606e86642334be9735f",
+                "oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/time/time.c",
+                "path": "kernel/time/time.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "642647f5046be01834633bc3f5568bed9217e14f",
+                "oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/trace/blktrace.c",
+                "path": "kernel/trace/blktrace.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8fd292d34d8984c3cbea54a3297bd2280c603957",
+                "oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/842/842_debugfs.h",
+                "path": "lib/842/842_debugfs.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4469407c3e0d46c4fe3b1f7415c28c88451597cc",
+                "oid": "6ff80bad376faf944d3a76ec397d11f90481e941",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/hweight.c",
+                "path": "lib/hweight.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c94586b6255187906cfde38fda8b84f33c9fc21f",
+                "oid": "db856baa99c4d299a38cf5f737308e0903978ba8",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/test_free_pages.c",
+                "path": "lib/test_free_pages.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "48952364c5404756deebf96a39a96b953416fd1c",
+                "oid": "4e0a60446ef2de5964b63d5a6ec11c47140b11d0",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/kfence/core.c",
+                "path": "mm/kfence/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "67fc321db79b7edd5b33c90f48508d19bb94d197",
+                "oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/madvise.c",
+                "path": "mm/madvise.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "ff139e57cca292edcae682b8afc3b7a8c43f1cab",
+                "oid": "6d668b9b67bbf61bbd1dc2ea77448e474c20fc13",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/memory.c",
+                "path": "mm/memory.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "bdf77a3ec47bc26a8560c41a7ab0d485a9f99367",
+                "oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/core/dev.c",
+                "path": "net/core/dev.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8453e14d301b63a84f3d505a1f3dc08f88fe8f7b",
+                "oid": "a2fc7dff466de6a570a9793e1ca8f093571c8f45",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/ipv6/exthdrs_core.c",
+                "path": "net/ipv6/exthdrs_core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "49e31e4ae7b7f661d555e73e0515983e9584eec4",
+                "oid": "0b758d02e6734afc263252b2ea95bf0affe36a14",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/sched/em_u32.c",
+                "path": "net/sched/em_u32.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "fdec4db5ec89d047427d62fb6ce95b3649a80f9f",
+                "oid": "e90fa0ba6470f58c4d0504a1046b5629aec242fe",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/keys/request_key.c",
+                "path": "security/keys/request_key.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "a7673ad86d18df9a551b04eedae48454fe73b147",
+                "oid": "c44c9ec686d505c0a36d0c4fde93bc4dcee0f2f5",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/selinux/netport.c",
+                "path": "security/selinux/netport.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "2e22ad9c2bd0d116668985e0fb579b5934df9394",
+                "oid": "f6d6dd7ff44f9769097beed746687bf6cbd41ef5",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/tomoyo/file.c",
+                "path": "security/tomoyo/file.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8f3b90b6e03d24d3ba8a258a4958a09735dc5b13",
+                "oid": "fff1662f23b77a32c99c11d9db2d639423e96419",
+                "added": 4,
+                "removed": 0
+              }
+            ],
+            "metadata": [
+              {
+                "status": "M",
+                "old": "arch/parisc/include/asm/extable.h",
+                "path": "arch/parisc/include/asm/extable.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4ea23e3d79dc9034543465db2b0a4856324a4477",
+                "oid": "bdd722cb902101a1cb25f74be76a47eb78ed3580",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/s390/kernel/unwind_bc.c",
+                "path": "arch/s390/kernel/unwind_bc.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "cd44be2b6ce8d97123e5cf03122a85270c6d286b",
+                "oid": "f67a15c202903f2749f8506782a48da7d62aa77f",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "arch/x86/include/asm/pm-trace.h",
+                "path": "arch/x86/include/asm/pm-trace.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "bfa32aa428e59190455b3026deeb67f721367610",
+                "oid": "35ebbf3b86c0bd3041a45f71a04fd533418deb7d",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/blk-mq.h",
+                "path": "block/blk-mq.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "3bd43b10032f8325e7d3dfd93f2bcefd15bb0291",
+                "oid": "dfa1e0df7395a89412c5370fd45f399f234e6459",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/atari.h",
+                "path": "block/partitions/atari.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "678202442fd3738b47df11cbd8bc1a967a697277",
+                "oid": "42e54e9100be44a1525c9d25780351cbc7ed01df",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "block/partitions/sysv68.c",
+                "path": "block/partitions/sysv68.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "6f6257fd4eb4e9f05b96b844327a02f014711e42",
+                "oid": "a72e641c317e2b941cf3c74876ba4c6641fc82ce",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/base/core.c",
+                "path": "drivers/base/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "048ff98dbdfd846ae67729e46d7acc9cde546a70",
+                "oid": "5b7378bf333d796e9f3d7a5ad101348c298b75ef",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "path": "drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "74dafe7106be014f07b7e07995699163567e5b7a",
+                "oid": "5cb7535b43bd27c1a3c3f930d976c83b40166011",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "path": "drivers/gpu/drm/panel/panel-tpo-tpg110.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "f6a212e542cb9301cab1ad19c43e00e4ea07b128",
+                "oid": "e026253dbd48ad584f0b925d5f2c652e417d8ac9",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/nfs/blocklayout/extent_tree.c",
+                "path": "fs/nfs/blocklayout/extent_tree.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8f7cff7a42938e293072d5bc6fc4a7adc2de2c4e",
+                "oid": "306981710944e1158274c3d9636faf4fad337293",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/open.c",
+                "path": "fs/open.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "5da4df2f9b18a637ed83cde8f2fe52f9034f5290",
+                "oid": "b760ef1e551e172ef40d4ca2ac1139d4b1fa4834",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "fs/smb/client/smb2pdu.h",
+                "path": "fs/smb/client/smb2pdu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "076d9e83e1a0448b092fc8e2ab5b5523c88dcfa2",
+                "oid": "46040f8501606aa473f82ce22a602b82d819342f",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "path": "include/dt-bindings/reset/sun20i-d1-ccu.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "79e52aca5912766d9b3636c5e8295b85e3f96342",
+                "oid": "fa24bedb2da52efc33563aa18c63bb7d553e6493",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/uapi/linux/auto_fs4.h",
+                "path": "include/uapi/linux/auto_fs4.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "d01ef0a0189cc71ef84619cdf162b144b8593eff",
+                "oid": "63aba3e1343ef1091212ce7df4fffad5dd5e6edd",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "include/video/sisfb.h",
+                "path": "include/video/sisfb.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "76ff628a122039944907d8f9c0c6faf683d9c5c8",
+                "oid": "f799286ff92f2c7f0278959840f25c60a551adff",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/fork.c",
+                "path": "kernel/fork.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "22f43721d031d48fd5be2606e86642334be9735f",
+                "oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/time/time.c",
+                "path": "kernel/time/time.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "642647f5046be01834633bc3f5568bed9217e14f",
+                "oid": "07290a2df142d95d23517fd8d2bedda7e363ff05",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "kernel/trace/blktrace.c",
+                "path": "kernel/trace/blktrace.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8fd292d34d8984c3cbea54a3297bd2280c603957",
+                "oid": "8fb9d5c047872c425a896704cf1e7655f8c0240b",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/842/842_debugfs.h",
+                "path": "lib/842/842_debugfs.h",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "4469407c3e0d46c4fe3b1f7415c28c88451597cc",
+                "oid": "6ff80bad376faf944d3a76ec397d11f90481e941",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/hweight.c",
+                "path": "lib/hweight.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "c94586b6255187906cfde38fda8b84f33c9fc21f",
+                "oid": "db856baa99c4d299a38cf5f737308e0903978ba8",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "lib/test_free_pages.c",
+                "path": "lib/test_free_pages.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "48952364c5404756deebf96a39a96b953416fd1c",
+                "oid": "4e0a60446ef2de5964b63d5a6ec11c47140b11d0",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/kfence/core.c",
+                "path": "mm/kfence/core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "67fc321db79b7edd5b33c90f48508d19bb94d197",
+                "oid": "74342f372fc751e03baf510b4a579323fb8f6c39",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/madvise.c",
+                "path": "mm/madvise.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "ff139e57cca292edcae682b8afc3b7a8c43f1cab",
+                "oid": "6d668b9b67bbf61bbd1dc2ea77448e474c20fc13",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "mm/memory.c",
+                "path": "mm/memory.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "bdf77a3ec47bc26a8560c41a7ab0d485a9f99367",
+                "oid": "d50bcbf70a2ba838f8022197420bf936f51a96a8",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/core/dev.c",
+                "path": "net/core/dev.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8453e14d301b63a84f3d505a1f3dc08f88fe8f7b",
+                "oid": "a2fc7dff466de6a570a9793e1ca8f093571c8f45",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/ipv6/exthdrs_core.c",
+                "path": "net/ipv6/exthdrs_core.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "49e31e4ae7b7f661d555e73e0515983e9584eec4",
+                "oid": "0b758d02e6734afc263252b2ea95bf0affe36a14",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "net/sched/em_u32.c",
+                "path": "net/sched/em_u32.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "fdec4db5ec89d047427d62fb6ce95b3649a80f9f",
+                "oid": "e90fa0ba6470f58c4d0504a1046b5629aec242fe",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/keys/request_key.c",
+                "path": "security/keys/request_key.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "a7673ad86d18df9a551b04eedae48454fe73b147",
+                "oid": "c44c9ec686d505c0a36d0c4fde93bc4dcee0f2f5",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/selinux/netport.c",
+                "path": "security/selinux/netport.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "2e22ad9c2bd0d116668985e0fb579b5934df9394",
+                "oid": "f6d6dd7ff44f9769097beed746687bf6cbd41ef5",
+                "added": 4,
+                "removed": 0
+              },
+              {
+                "status": "M",
+                "old": "security/tomoyo/file.c",
+                "path": "security/tomoyo/file.c",
+                "old_mode": "100644",
+                "mode": "100644",
+                "old_oid": "8f3b90b6e03d24d3ba8a258a4958a09735dc5b13",
+                "oid": "fff1662f23b77a32c99c11d9db2d639423e96419",
+                "added": 4,
+                "removed": 0
+              }
+            ],
+            "raw_sha256": "23dbb183ebb88906fcfc67457a14682eaa2dbe424e04c9e94e7309a6ffe04931"
+          }
+        ]
+      },
+      "exit": 0,
+      "exact_actor_absent": true,
+      "finished": 1795651998.3931637
+    }
+  ],
+  "error": "GUI producer lacks packaged custom-protocol assets",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/max/benchmarks/branchline-boundary/linux-cli-branch-a4a08d-r2-input/vm-build-supervisor.py\", line 308, in main\n    if 'custom-protocol' not in gui_producer.get('features',[]):raise RuntimeError('GUI producer lacks packaged custom-protocol assets')\n                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: GUI producer lacks packaged custom-protocol assets\n",
+  "fixture_after": {
+    "linux": {
+      "git_state_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+      "files": {
+        ".git/index": {
+          "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017",
+          "size": 9271771,
+          "mtime_ns": 1795615942129939671,
+          "inode": 278079,
+          "mode": 33188
+        },
+        ".git/HEAD": {
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+          "size": 39,
+          "mtime_ns": 1795614733907349066,
+          "inode": 272949,
+          "mode": 33188
+        },
+        ".git/config": {
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+          "size": 334,
+          "mtime_ns": 1795615994729935414,
+          "inode": 278185,
+          "mode": 33188
+        }
+      }
+    },
+    "windows": {
+      "git_state_sha256": "db66016f41a604c102cc81121c4e81f9c93db3b3f4430ef51dab5ba1c9da97c2",
+      "files": {
+        ".git/index": {
+          "sha256": "b459d30e50f964114d6b3f205335a8865b340778fd7909bc95919c71e13e7129",
+          "size": 9271771,
+          "mtime_ns": 1795615947971522900,
+          "inode": 562949953782638,
+          "mode": 33279
+        },
+        ".git/HEAD": {
+          "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+          "size": 39,
+          "mtime_ns": 1795614733000000000,
+          "inode": 2814749767263140,
+          "mode": 33279
+        },
+        ".git/config": {
+          "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+          "size": 334,
+          "mtime_ns": 1795615994331971400,
+          "inode": 3377699720684454,
+          "mode": 33279
+        }
+      }
+    }
+  },
+  "finished": 1795652140.2336295
+}

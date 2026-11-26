@@ -1,0 +1,77 @@
+{
+  "base_commit": "1135a59f3a51253709d652d1e4ec82fa8b32ce09",
+  "committed": false,
+  "host_gui_rust": {
+    "exact_final_source": true,
+    "failed": 0,
+    "ignored": 1,
+    "log": "gui-rust-tests-final-serial.log",
+    "loopback_required": true,
+    "passed": 77,
+    "test_threads": 1
+  },
+  "host_worker": {
+    "failed": 0,
+    "log": "worker-tests-final.log",
+    "stdio_passed": 1,
+    "unit_passed": 30
+  },
+  "independent_review": {
+    "fixed": "Use TreeEntry::filemode_raw rather than normalized filemode to reject unsupported raw modes",
+    "remaining_blockers": [],
+    "reviewer": "proof_review"
+  },
+  "initial_sandbox_suite": {
+    "failed": 5,
+    "failure": "existing MCP fixture sockets blocked by sandbox EPERM; rerun passed with loopback permissions",
+    "ignored": 1,
+    "log": "gui-rust-tests.log",
+    "passed": 71
+  },
+  "kiss_review": {
+    "applied": "Share the existing displayed/scoped M-file matching, ancestry and location block",
+    "reviewer": "kiss_review",
+    "state": "simple enough"
+  },
+  "not_tested": [
+    "deterministic mid-read HEAD/index races: no existing mutation hook/seam",
+    "Windows and cross-OS GUI/native execution",
+    "kernel fixture backend timing",
+    "canonical GUI2x2 performance matrix"
+  ],
+  "owned_test_processes": "all exited, command sessions collected",
+  "patch_sha256": "ee02e7209b9ee54ed3cb1177a80cbdc1c19b027fa2b4a8fd8a1f6f2dea267270",
+  "post_simplification_parallel_suite": {
+    "failed": 1,
+    "failure": "Existing blocked_search_preparation fixture child startup failed ETXTBSY executing just-written Python fixture; no workaround applied",
+    "ignored": 1,
+    "log": "gui-rust-tests-final.log",
+    "passed": 76
+  },
+  "production_files_changed": false,
+  "proof_coverage": [
+    "partial staging and missing/externally edited worktree",
+    "worktree filter/encoding/config changes do not reinterpret staged OIDs",
+    "restaging invalidates changed saved staged OIDs",
+    "stale HEAD",
+    "chmod-only",
+    "outside sparse omission allowed with core.sparseCheckout",
+    "requested SKIP_WORKTREE rejected",
+    "INTENT_TO_ADD with nonzero emptyblob rejected",
+    "conflicts and unchanged pairs rejected",
+    "exact raw path including case-only rename and directory component spelling",
+    "NUL/dot/empty components rejected before git2 unwraps",
+    "unsupported raw HEAD mode rejected",
+    "one proof request for100 notes",
+    "authoritative displayed frozen comparison wins after restage",
+    "unrelated ancestry uses existing lookup",
+    "real stage-to-commit location retained",
+    "real persistent stdio proof request, unchanged disk edit, restage and HEAD invalidation",
+    "frozen working_tree_paths patches unchanged"
+  ],
+  "protocol": 2,
+  "requires_matching_rebuilt_workers": true,
+  "source_hash": "935501731502ce5f5fbe144284c0564073f52dd3087af11604f58cbb2fe72c9f",
+  "state": "host-correctness-passed, native-platform and performance validation pending",
+  "vm_accessed": false
+}

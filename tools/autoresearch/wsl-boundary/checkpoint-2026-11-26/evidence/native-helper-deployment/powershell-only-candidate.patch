@@ -1,0 +1,410 @@
+--- a/src-tauri/src/git/remote.rs
++++ b/src-tauri/src/git/remote.rs
+@@ -22,6 +22,57 @@
+ static WORKERS: OnceLock<Mutex<HashMap<PathBuf, Weak<Worker>>>> = OnceLock::new();
+ #[cfg(branchline_git_worker)]
+ static HELPER: OnceLock<Result<PathBuf>> = OnceLock::new();
++
++// The Windows cache contains GUI-validated source bytes. Copy and validate the
++// worker inside WSL, then replace the shell so the existing process owner and
++// raw worker pipes remain unchanged. Paths and the digest are positional data.
++#[cfg(any(windows, all(test, unix)))]
++const WSL_BOOTSTRAP: &str = r#"set -eu
++source=$(wslpath -u "$1")
++digest=$2
++temporary=
++matches() {
++    [ -f "$1" ] || return 1
++    actual=$(sha256sum < "$1") || return 1
++    [ "${actual%% *}" = "$digest" ]
++}
++fallback() {
++    if [ -n "$temporary" ]; then
++        rm -f -- "$temporary" || exit 1
++        temporary=
++    fi
++    matches "$source" || exit 1
++    exec "$source" --stdio
++}
++cache=${XDG_CACHE_HOME:-${HOME:+$HOME/.cache}}
++case "$cache" in /*) ;; *) fallback ;; esac
++directory=$cache/branchline/git-workers
++umask 077
++mkdir -p -- "$directory" || fallback
++worker=$directory/branchline-git-worker-$digest
++if ! matches "$worker"; then
++    temporary=$(mktemp "$directory/.branchline-git-worker.XXXXXX") || fallback
++    trap 'rm -f -- "$temporary"' EXIT
++    trap 'exit 1' HUP INT TERM
++    cp -- "$source" "$temporary" || fallback
++    matches "$temporary" || exit 1
++    chmod 755 "$temporary" || fallback
++    mv -fT -- "$temporary" "$worker" || fallback
++    temporary=
++fi
++chmod 755 "$worker" || fallback
++[ -x "$worker" ] || fallback
++exec "$worker" --stdio"#;
++
++#[cfg(windows)]
++fn cached_worker_digest(helper: &Path) -> Result<&str> {
++    helper
++        .file_name()
++        .and_then(OsStr::to_str)
++        .and_then(|name| name.strip_prefix("branchline-git-worker-"))
++        .filter(|digest| digest.len() == 64 && digest.bytes().all(|byte| byte.is_ascii_hexdigit()))
++        .ok_or_else(|| "Invalid cached Git worker digest.".into())
++}
+ 
+ #[derive(Serialize)]
+ struct Call<'a> {
+@@ -184,8 +235,6 @@
+             #[cfg(windows)]
+             Self::Wsl(checkout) => {
+                 let mut command = checkout.launcher()?;
+-                // Only the constant program is shell code. The cached helper
+-                // path is a separate positional argument, never interpolated.
+                 command
+                     .arg("--cd")
+                     .arg(&checkout.directory)
+@@ -193,10 +242,11 @@
+                         "--exec",
+                         "/bin/sh",
+                         "-c",
+-                        r#"exec "$(wslpath -u "$1")" --stdio"#,
++                        WSL_BOOTSTRAP,
+                         "branchline-git-worker",
+                     ])
+-                    .arg(helper);
++                    .arg(helper)
++                    .arg(cached_worker_digest(helper)?);
+                 Ok(command)
+             }
+             #[cfg(target_os = "linux")]
+@@ -573,6 +623,40 @@
+     }
+ }
+ 
++#[cfg(target_os = "linux")]
++fn windows_worker_cache() -> Result<PathBuf> {
++    // Finish and reap this discovery process before creating the worker. A
++    // retained PowerShell wrapper would become Connection's child and prevent
++    // its existing kill/wait path from owning the worker directly.
++    let output = Command::new("powershell.exe")
++        .args([
++            "-NoLogo",
++            "-NoProfile",
++            "-NonInteractive",
++            "-Command",
++            "[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false); $directory = $env:LOCALAPPDATA; if ([string]::IsNullOrEmpty($directory)) { $directory = [Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData) }; [Console]::Write($directory)",
++        ])
++        .stdin(Stdio::null())
++        .output()
++        .map_err(|error| format!("Could not locate the Windows Git worker cache: {error}"))?;
++    if !output.status.success() {
++        return Err("Could not locate the Windows Git worker cache.".into());
++    }
++    let directory = windows_cache_path(&output.stdout)?;
++    Ok(wslpath("-u", OsStr::new(directory))?.join("Branchline/git-workers"))
++}
++
++#[cfg(target_os = "linux")]
++fn windows_cache_path(output: &[u8]) -> Result<&str> {
++    let directory = std::str::from_utf8(output)
++        .map_err(|_| "Windows returned a non-Unicode Git worker cache path.")?;
++    // A WSL UNC cache would recreate the foreign-filesystem startup cost.
++    if !windows_drive_path(directory) || directory.contains(['\r', '\n', '\0']) {
++        return Err("Windows did not return a local Git worker cache path.".into());
++    }
++    Ok(directory)
++}
++
+ fn helper_path() -> Result<PathBuf> {
+     #[cfg(not(branchline_git_worker))]
+     {
+@@ -588,6 +672,12 @@
+                     .map(PathBuf::from)
+                     .filter(|path| path.is_absolute())
+                     .map(|path| path.join("Branchline/git-workers"));
++                #[cfg(target_os = "linux")]
++                if let Ok(directory) = windows_worker_cache() {
++                    if let Ok(path) = materialize(&directory, bytes) {
++                        return Ok(path);
++                    }
++                }
+                 #[cfg(not(windows))]
+                 let directory = env::var_os("XDG_CACHE_HOME")
+                     .map(PathBuf::from)
+@@ -865,6 +955,248 @@
+         assert_eq!(fs::read(path).unwrap(), bytes);
+     }
+ 
++    #[cfg(target_os = "linux")]
++    #[test]
++    fn windows_native_cache_path_preserves_unicode_and_rejects_foreign_storage() {
++        let path = r"D:\Users\réview space;$()\AppData\Local";
++        assert_eq!(windows_cache_path(path.as_bytes()).unwrap(), path);
++        for invalid in [
++            b"".as_slice(),
++            b"relative",
++            b"C:relative",
++            b"/home/cache",
++            br"\\wsl.localhost\Ubuntu\home\cache",
++            b"C:\\cache\n",
++            b"C:\\cache\0",
++            b"C:\\cache\xff",
++        ] {
++            assert!(windows_cache_path(invalid).is_err(), "{invalid:?}");
++        }
++    }
++
++    #[cfg(unix)]
++    fn bootstrap_command(source: &Path, cache: &Path, digest: &str, bin: &Path) -> Command {
++        let mut command = Command::new("/bin/sh");
++        command
++            .args(["-c", WSL_BOOTSTRAP, "branchline-git-worker"])
++            .arg(source)
++            .arg(digest)
++            .env("XDG_CACHE_HOME", cache)
++            .env("PATH", format!("{}:/usr/bin:/bin", bin.display()));
++        command
++    }
++
++    #[cfg(unix)]
++    fn bootstrap_fixture(directory: &Path) -> (PathBuf, PathBuf, String, Vec<u8>) {
++        use std::os::unix::fs::PermissionsExt;
++        let bin = directory.join("bin");
++        fs::create_dir(&bin).unwrap();
++        // Translation is the only WSL-specific command in this host test.
++        let translate = bin.join("wslpath");
++        fs::write(&translate, "#!/bin/sh\nprintf '%s\\n' \"$2\"\n").unwrap();
++        fs::set_permissions(&translate, fs::Permissions::from_mode(0o755)).unwrap();
++        let source = directory.join("source worker's réview ;$(touch injected).worker");
++        let bytes = br#"#!/usr/bin/python3
++import os, sys
++if sys.argv != [sys.argv[0], '--stdio']:
++    raise RuntimeError('wrong arguments')
++sys.stdout.buffer.write((str(os.getpid()) + '\n').encode())
++sys.stdout.buffer.flush()
++sys.stdout.buffer.write(sys.stdin.buffer.read())
++"#
++        .to_vec();
++        fs::write(&source, &bytes).unwrap();
++        fs::set_permissions(&source, fs::Permissions::from_mode(0o755)).unwrap();
++        let digest = format!("{:x}", Sha256::digest(&bytes));
++        (source, bin, digest, bytes)
++    }
++
++    #[cfg(unix)]
++    #[test]
++    fn native_wsl_bootstrap_execs_one_worker_and_preserves_raw_pipes() {
++        use std::io::Read;
++        let directory = tempfile::tempdir().unwrap();
++        let (source, bin, digest, bytes) = bootstrap_fixture(directory.path());
++        let cache = directory
++            .path()
++            .join("cache's réview space ;$(touch injected)");
++        for corrupt in [false, true, false] {
++            let native = cache.join(format!(
++                "branchline/git-workers/branchline-git-worker-{digest}"
++            ));
++            if corrupt {
++                fs::write(&native, b"broken cache").unwrap();
++            }
++            let mut child = bootstrap_command(&source, &cache, &digest, &bin)
++                .stdin(Stdio::piped())
++                .stdout(Stdio::piped())
++                .stderr(Stdio::piped())
++                .spawn()
++                .unwrap();
++            let mut output = BufReader::new(child.stdout.take().unwrap());
++            let mut pid = String::new();
++            output.read_line(&mut pid).unwrap();
++            // exec keeps the owned shell PID rather than adding a worker child.
++            assert_eq!(pid.trim().parse::<u32>().unwrap(), child.id());
++            let raw = [0, 255, 128, b'\n', b'\r', b'"', b'\\'];
++            child.stdin.take().unwrap().write_all(&raw).unwrap();
++            let mut returned = Vec::new();
++            output.read_to_end(&mut returned).unwrap();
++            assert_eq!(returned, raw);
++            assert!(child.wait().unwrap().success());
++            assert_eq!(fs::read(&native).unwrap(), bytes);
++            assert_eq!(fs::read_dir(native.parent().unwrap()).unwrap().count(), 1);
++            assert!(!directory.path().join("injected").exists());
++        }
++        // A correct native cache can start after its foreign source disappears.
++        fs::remove_file(&source).unwrap();
++        assert!(bootstrap_command(&source, &cache, &digest, &bin)
++            .stdin(Stdio::null())
++            .output()
++            .unwrap()
++            .status
++            .success());
++    }
++
++    #[cfg(unix)]
++    #[test]
++    fn native_wsl_bootstrap_rejects_wrong_bytes_and_cleans_temporary_copy() {
++        let directory = tempfile::tempdir().unwrap();
++        let (source, bin, digest, _) = bootstrap_fixture(directory.path());
++        fs::write(&source, b"bytes changed after GUI validation").unwrap();
++        let cache = directory.path().join("cache");
++        let output = bootstrap_command(&source, &cache, &digest, &bin)
++            .stdin(Stdio::null())
++            .output()
++            .unwrap();
++        assert!(!output.status.success());
++        assert!(output.stdout.is_empty());
++        assert_eq!(
++            fs::read_dir(cache.join("branchline/git-workers"))
++                .unwrap()
++                .count(),
++            0
++        );
++        assert!(
++            !bootstrap_command(&source, Path::new("relative-cache"), &digest, &bin)
++                .stdin(Stdio::null())
++                .output()
++                .unwrap()
++                .status
++                .success()
++        );
++    }
++
++    #[cfg(unix)]
++    #[test]
++    fn native_wsl_bootstrap_unavailable_cache_execs_verified_source_without_temporary_leaks() {
++        use std::os::unix::fs::PermissionsExt;
++        let directory = tempfile::tempdir().unwrap();
++        let (source, bin, digest, _) = bootstrap_fixture(directory.path());
++        let readonly = directory.path().join("readonly-cache");
++        fs::create_dir(&readonly).unwrap();
++        fs::set_permissions(&readonly, fs::Permissions::from_mode(0o555)).unwrap();
++        let blocked = directory.path().join("blocked-destination");
++        let cache_directory = blocked.join("branchline/git-workers");
++        let blocked_worker = cache_directory.join(format!("branchline-git-worker-{digest}"));
++        fs::create_dir_all(&blocked_worker).unwrap();
++        for cache in [&readonly, &blocked, Path::new("relative-cache")] {
++            let mut child = bootstrap_command(&source, cache, &digest, &bin)
++                .stdin(Stdio::null())
++                .stdout(Stdio::piped())
++                .stderr(Stdio::null())
++                .spawn()
++                .unwrap();
++            let mut pid = String::new();
++            BufReader::new(child.stdout.take().unwrap())
++                .read_line(&mut pid)
++                .unwrap();
++            assert_eq!(pid.trim().parse::<u32>().unwrap(), child.id());
++            assert!(child.wait().unwrap().success());
++        }
++        fs::set_permissions(&readonly, fs::Permissions::from_mode(0o755)).unwrap();
++        assert_eq!(fs::read_dir(&readonly).unwrap().count(), 0);
++        assert_eq!(fs::read_dir(&cache_directory).unwrap().count(), 1);
++        assert_eq!(fs::read_dir(&blocked_worker).unwrap().count(), 0);
++        // The fallback must not execute source bytes changed after validation.
++        fs::write(&source, b"#!/bin/sh\nprintf 'wrong source executed'\n").unwrap();
++        let output = bootstrap_command(&source, &blocked, &digest, &bin)
++            .stdin(Stdio::null())
++            .output()
++            .unwrap();
++        assert!(!output.status.success());
++        assert!(output.stdout.is_empty());
++        assert_eq!(fs::read_dir(cache_directory).unwrap().count(), 1);
++    }
++
++    #[cfg(unix)]
++    #[test]
++    fn native_wsl_bootstrap_missing_cache_environment_execs_only_verified_source() {
++        let directory = tempfile::tempdir().unwrap();
++        let (source, bin, digest, _) = bootstrap_fixture(directory.path());
++        for changed_source in [false, true] {
++            if changed_source {
++                fs::write(&source, b"#!/bin/sh\nprintf 'wrong source executed'\n").unwrap();
++            }
++            for (cache, home) in [
++                (None, None),
++                (Some(""), None),
++                (None, Some("")),
++                (Some(""), Some("")),
++            ] {
++                let mut command = bootstrap_command(&source, Path::new(""), &digest, &bin);
++                command.env_remove("XDG_CACHE_HOME").env_remove("HOME");
++                if let Some(value) = cache {
++                    command.env("XDG_CACHE_HOME", value);
++                }
++                if let Some(value) = home {
++                    command.env("HOME", value);
++                }
++                let output = command.stdin(Stdio::null()).output().unwrap();
++                assert_eq!(
++                    output.status.success(),
++                    !changed_source,
++                    "{cache:?}, {home:?}"
++                );
++                if changed_source {
++                    assert!(output.stdout.is_empty());
++                } else {
++                    assert!(std::str::from_utf8(&output.stdout)
++                        .unwrap()
++                        .trim()
++                        .parse::<u32>()
++                        .is_ok());
++                }
++            }
++        }
++    }
++
++    #[cfg(unix)]
++    #[test]
++    fn native_wsl_bootstrap_parallel_installs_publish_only_verified_bytes() {
++        let directory = tempfile::tempdir().unwrap();
++        let (source, bin, digest, bytes) = bootstrap_fixture(directory.path());
++        let cache = directory.path().join("cache");
++        let mut children: Vec<_> = (0..4)
++            .map(|_| {
++                bootstrap_command(&source, &cache, &digest, &bin)
++                    .stdin(Stdio::null())
++                    .stdout(Stdio::null())
++                    .spawn()
++                    .unwrap()
++            })
++            .collect();
++        for child in &mut children {
++            assert!(child.wait().unwrap().success());
++        }
++        let directory = cache.join("branchline/git-workers");
++        assert_eq!(
++            fs::read(directory.join(format!("branchline-git-worker-{digest}"))).unwrap(),
++            bytes
++        );
++        assert_eq!(fs::read_dir(directory).unwrap().count(), 1);
++    }
++
+     #[cfg(windows)]
+     #[test]
+     fn wsl_worker_command_keeps_storage_cwd_and_helper_as_separate_arguments() {
+@@ -872,7 +1204,10 @@
+             r"\\wsl.localhost\Ubuntu-26.04\home\réview space\repo;$(noop)",
+         ))
+         .unwrap();
+-        let helper = Path::new(r"C:\Users\max\worker's cache\git-worker");
++        let helper = Path::new(concat!(
++            r"C:\Users\max\worker's cache\branchline-git-worker-",
++            "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
++        ));
+         let command = Location::Wsl(checkout).command(helper).unwrap();
+         assert_eq!(
+             command.get_args().collect::<Vec<_>>(),
+@@ -884,9 +1219,10 @@
+                 OsStr::new("--exec"),
+                 OsStr::new("/bin/sh"),
+                 OsStr::new("-c"),
+-                OsStr::new(r#"exec "$(wslpath -u "$1")" --stdio"#),
++                OsStr::new(WSL_BOOTSTRAP),
+                 OsStr::new("branchline-git-worker"),
+                 helper.as_os_str(),
++                OsStr::new("0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"),
+             ]
+         );
+         assert_eq!(command.get_current_dir(), None);

@@ -1,0 +1,11 @@
+{
+  "build_plan_sha256": "d2b3b25fc2ecb16dfebc5f94fa97348e25767f47513b1b43dd4b75f6118eb8e5",
+  "bytes": 6225920,
+  "host_launcher_sha256": "071baf89d134b574797c78822d97394b93c6de4ae5730433a82c5c8d24209255",
+  "name": "staged-anchor-metadata-aba80d920269-input.tar",
+  "path": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/staged-anchor-metadata-aba80d920269-input.tar",
+  "sha256": "16e1e18a368acf505c89a1c402f3b101c4b13d688496fedfae60201ea92ca56e",
+  "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+  "status": "prepared only; no VM commands run",
+  "vm_supervisor_sha256": "1eed4e65cc9178d5a79fce38b9ce84c99182e082598d28fc931ed56f6f0a0dfd"
+}

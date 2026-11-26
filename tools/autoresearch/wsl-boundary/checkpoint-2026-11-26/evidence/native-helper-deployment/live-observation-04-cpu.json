@@ -1,0 +1,60 @@
+{
+  "pid": 121613,
+  "start_ticks": "14259473",
+  "status": "running",
+  "current_phase": "windows-remote-tests-build",
+  "observed_phase": {
+    "name": "windows-remote-tests-build",
+    "argv": [
+      "cargo",
+      "xwin",
+      "test",
+      "--offline",
+      "--locked",
+      "--release",
+      "--manifest-path",
+      "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input/source/src-tauri/Cargo.toml",
+      "--target",
+      "x86_64-pc-windows-msvc",
+      "--no-run",
+      "--message-format=json"
+    ],
+    "cwd": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input/source",
+    "started": 1795638684.9446099,
+    "log": "/home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-native/windows-remote-tests-build.log",
+    "pid": 128892
+  },
+  "cpu_sample_seconds": 1.0004147060099058,
+  "owned_child_tree": [
+    {
+      "pid": 128892,
+      "start_ticks": "14298062",
+      "state": "S",
+      "cpu_ticks": 5,
+      "rss_mb": 3.91796875,
+      "args": "/home/max/.cargo/bin/cargo-xwin xwin test --offline --locked --release --manifest-path /home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input/source/src-tauri/Cargo.toml --target x86_64-pc-windows-msvc --no-run --message-format=json ",
+      "cpu_percent_over_sample": 0.0
+    },
+    {
+      "pid": 128901,
+      "start_ticks": "14298069",
+      "state": "S",
+      "cpu_ticks": 74,
+      "rss_mb": 96.41796875,
+      "args": "/home/max/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --target x86_64-pc-windows-msvc --message-format json --locked --offline --manifest-path /home/max/benchmarks/branchline-boundary/native-helper-deployment-b2de070-03fecde11c0a-input/source/src-tauri/Cargo.toml --release --no-run ",
+      "cpu_percent_over_sample": 0.0
+    },
+    {
+      "pid": 128909,
+      "start_ticks": "14298283",
+      "state": "S",
+      "cpu_ticks": 2065,
+      "rss_mb": 431.90625,
+      "args": "/home/max/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name tauri --edition=2021 /home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.6/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no --cfg feature=\"common-controls-v6\" --cfg feature=\"compression\" --cfg feature=\"dbus\" --cfg feature=\"default\" --cfg feature=\"dynamic-acl\" --cfg feature=\"tauri-runtime-wry\" --cfg feature=\"webkit2gtk\" --cfg feature=\"webview2-com\" ",
+      "cpu_percent_over_sample": 99.95854658998769
+    }
+  ],
+  "log_bytes": 376851,
+  "log_mtime_unix": 1795638687.153941,
+  "log_tail": "d67798cc92/out/libfutures_util-1fcc80d67798cc92.rlib\",\"/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/futures-util/1fcc80d67798cc92/out/libfutures_util-1fcc80d67798cc92.rmeta\"],\"executable\":null,\"fresh\":true}\n{\"reason\":\"build-script-executed\",\"package_id\":\"registry+https://github.com/rust-lang/crates.io-index#rfd@0.16.1\",\"linked_libs\":[],\"linked_paths\":[],\"cfgs\":[],\"env\":[],\"out_dir\":\"/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/rfd/c9adfed23b390618/out\"}\n{\"reason\":\"compiler-artifact\",\"package_id\":\"registry+https://github.com/rust-lang/crates.io-index#hyper@1.12.0\",\"manifest_path\":\"/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hyper-1.12.0/Cargo.toml\",\"target\":{\"kind\":[\"lib\"],\"crate_types\":[\"lib\"],\"name\":\"hyper\",\"src_path\":\"/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hyper-1.12.0/src/lib.rs\",\"edition\":\"2021\",\"doc\":true,\"doctest\":true,\"test\":true},\"profile\":{\"opt_level\":\"3\",\"debuginfo\":0,\"debug_assertions\":false,\"overflow_checks\":false,\"test\":false},\"features\":[\"default\",\"http1\",\"server\"],\"filenames\":[\"/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/hyper/eb0a646d7a5f0147/out/libhyper-eb0a646d7a5f0147.rlib\",\"/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/hyper/eb0a646d7a5f0147/out/libhyper-eb0a646d7a5f0147.rmeta\"],\"executable\":null,\"fresh\":true}\n{\"reason\":\"compiler-artifact\",\"package_id\":\"registry+https://github.com/rust-lang/crates.io-index#hashbrown@0.15.5\",\"manifest_path\":\"/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hashbrown-0.15.5/Cargo.toml\",\"target\":{\"kind\":[\"lib\"],\"crate_types\":[\"lib\"],\"name\":\"hashbrown\",\"src_path\":\"/home/max/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hashbrown-0.15.5/src/lib.rs\",\"edition\":\"2021\",\"doc\":true,\"doctest\":true,\"test\":true},\"profile\":{\"opt_level\":\"3\",\"debuginfo\":0,\"debug_assertions\":false,\"overflow_checks\":false,\"test\":false},\"features\":[\"default-hasher\",\"inline-more\"],\"filenames\":[\"/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/hashbrown/8c7c736993065ac4/out/libhashbrown-8c7c736993065ac4.rlib\",\"/home/max/workspace/diff-tool/src-tauri/target/x86_64-pc-windows-msvc/release/build/hashbrown/8c7c736993065ac4/out/libhashbrown-8c7c736993065ac4.rmeta\"],\"executable\":null,\"fresh\":true}\n"
+}

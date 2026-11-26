@@ -1,0 +1,34 @@
+{
+  "all_native_actors_absent": true,
+  "supervisor_status": "built; canonical GUI evaluation pending",
+  "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404",
+  "copied": [
+    {
+      "label": "linux-gui",
+      "sha256": "adda6c5f3e9cc40e5454d3999f76c0de00f76326b22b67fcee483ff2e387442d",
+      "bytes": 23358912,
+      "path": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/native-evidence/artifacts/linux-gui/branchline"
+    },
+    {
+      "label": "windows-gui",
+      "sha256": "86c90415605b2f4841c36abd390d48c45d2af094fdb9829f5ecb923c85331462",
+      "bytes": 20818944,
+      "path": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/native-evidence/artifacts/windows-gui/branchline.exe"
+    },
+    {
+      "label": "linux-worker",
+      "sha256": "d729e0eaaff4d8ef4f7f8bed374b984115b2270aae210022ca91470f90741e2e",
+      "bytes": 4036144,
+      "path": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/native-evidence/artifacts/linux-worker/branchline-git-worker"
+    },
+    {
+      "label": "windows-worker",
+      "sha256": "8a72de49d410742c2fc7ad4010c9b4c96be94dac3dd83ec733485a1d88b3788d",
+      "bytes": 2784768,
+      "path": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/native-evidence/artifacts/windows-worker/branchline-git-worker.exe"
+    }
+  ],
+  "archive_sha256": "866e90e6e3925714010f9d92a6c30a0a2fd826e721d3e3fb6dd1570cb1f093bd",
+  "archive_bytes": 55193600,
+  "fixture_guards_unchanged": true
+}

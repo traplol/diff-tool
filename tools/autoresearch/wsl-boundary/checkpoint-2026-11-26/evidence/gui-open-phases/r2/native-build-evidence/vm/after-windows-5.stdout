@@ -1,0 +1,50 @@
+diff --git a/kernel/fork.c b/kernel/fork.c
+index afba33a60..aeb14599c 100644
+--- a/kernel/fork.c
++++ b/kernel/fork.c
+@@ -3434,3 +3434,5 @@ int sysctl_max_threads(const struct ctl_table *table, int write,
+ /* BRANCHLINE_BOUNDARY_LAYER_1_00 */
+ 
+ /* BRANCHLINE_BOUNDARY_LAYER_2_00 */
++
++/* BRANCHLINE_BOUNDARY_STAGED_00 */
+diff --git a/kernel/time/time.c b/kernel/time/time.c
+index 07290a2df..b69a89d30 100644
+--- a/kernel/time/time.c
++++ b/kernel/time/time.c
+@@ -1058,3 +1058,5 @@ EXPORT_SYMBOL_GPL(put_old_itimerspec32);
+ /* BRANCHLINE_BOUNDARY_LAYER_1_02 */
+ 
+ /* BRANCHLINE_BOUNDARY_LAYER_2_02 */
++
++/* BRANCHLINE_BOUNDARY_STAGED_02 */
+diff --git a/kernel/trace/blktrace.c b/kernel/trace/blktrace.c
+index 8fb9d5c04..4d0cf8a17 100644
+--- a/kernel/trace/blktrace.c
++++ b/kernel/trace/blktrace.c
+@@ -1919,3 +1919,5 @@ EXPORT_SYMBOL_GPL(blk_fill_rwbs);
+ /* BRANCHLINE_BOUNDARY_LAYER_1_01 */
+ 
+ /* BRANCHLINE_BOUNDARY_LAYER_2_01 */
++
++/* BRANCHLINE_BOUNDARY_STAGED_01 */
+diff --git a/mm/kfence/core.c b/mm/kfence/core.c
+index 74342f372..1a53e8e53 100644
+--- a/mm/kfence/core.c
++++ b/mm/kfence/core.c
+@@ -1262,3 +1262,5 @@ bool kfence_handle_page_fault(unsigned long addr, bool is_write, struct pt_regs
+ /* BRANCHLINE_BOUNDARY_LAYER_1_04 */
+ 
+ /* BRANCHLINE_BOUNDARY_LAYER_2_04 */
++
++/* BRANCHLINE_BOUNDARY_STAGED_04 */
+diff --git a/mm/memory.c b/mm/memory.c
+index d50bcbf70..a55a6e02a 100644
+--- a/mm/memory.c
++++ b/mm/memory.c
+@@ -6943,3 +6943,5 @@ void vma_pgtable_walk_end(struct vm_area_struct *vma)
+ /* BRANCHLINE_BOUNDARY_LAYER_1_03 */
+ 
+ /* BRANCHLINE_BOUNDARY_LAYER_2_03 */
++
++/* BRANCHLINE_BOUNDARY_STAGED_03 */

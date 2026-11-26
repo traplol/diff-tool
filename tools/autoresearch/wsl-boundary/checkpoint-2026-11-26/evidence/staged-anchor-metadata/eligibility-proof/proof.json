@@ -1,0 +1,179 @@
+{
+  "scope": "read-only saved note eligibility only; no GUI-path or benchmark claim",
+  "parameters": {
+    "worker": {
+      "path": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker",
+      "sha256": "d729e0eaaff4d8ef4f7f8bed374b984115b2270aae210022ca91470f90741e2e",
+      "bytes": 4036144
+    },
+    "seam": "/home/max/benchmarks/branchline-boundary/git-command-cost-trace-e72a63-r1-input/backend_compare.py",
+    "seam_sha256": "b184265bf085720774b3d661534878846eff5484befe3075345fbc8132e5a79b",
+    "root": "/home/max/benchmarks/branchline-boundary/kernel-wsl",
+    "db": "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/reviews.sqlite3"
+  },
+  "controller": {
+    "pid": 196974,
+    "start_ticks": "15539095",
+    "image": "/usr/bin/python3.14",
+    "cwd": "/mnt/c/Users/max"
+  },
+  "before": {
+    "/home/max/benchmarks/branchline-boundary/kernel-wsl/.git/index": {
+      "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017",
+      "bytes": 9271771,
+      "mtime_ns": 1795615942129939671,
+      "ctime_ns": 1795615942133939671,
+      "inode": 278079,
+      "device": 2096,
+      "mode": 33188
+    },
+    "/home/max/benchmarks/branchline-boundary/kernel-wsl/.git/config": {
+      "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+      "bytes": 334,
+      "mtime_ns": 1795615994729935414,
+      "ctime_ns": 1795615994729935414,
+      "inode": 278185,
+      "device": 2096,
+      "mode": 33188
+    },
+    "/home/max/benchmarks/branchline-boundary/kernel-wsl/.git/HEAD": {
+      "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+      "bytes": 39,
+      "mtime_ns": 1795614733907349066,
+      "ctime_ns": 1795614733907349066,
+      "inode": 272949,
+      "device": 2096,
+      "mode": 33188
+    },
+    "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/reviews.sqlite3": {
+      "sha256": "e54d55d4a0f2ac1985ad41603c944cb38345a084e4e683500ce43bde0089b844",
+      "bytes": 36864,
+      "mtime_ns": 1795616961784560500,
+      "ctime_ns": 1795616961784560500,
+      "inode": 562949953783100,
+      "device": 87,
+      "mode": 33279
+    }
+  },
+  "database_mode": "ro",
+  "output": "/home/max/benchmarks/branchline-boundary/staged-note2-eligibility-20261125T235815Z",
+  "note": {
+    "old_path": "kernel/fork.c",
+    "path": "kernel/fork.c",
+    "left": "refs/heads/feature/boundary-final",
+    "left_tip": "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+    "group": "Staged",
+    "file_version": [
+      "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+      "aeb14599caf65d5f8fbdf9051d296e5b5894c250",
+      "100644",
+      "100644"
+    ],
+    "id": 2
+  },
+  "hello": {
+    "architecture": "x86_64",
+    "os": "linux",
+    "pid": 196975,
+    "protocol": 2
+  },
+  "worker": {
+    "pid": 196975,
+    "start_ticks": "15539169",
+    "image": "/home/max/benchmarks/branchline-boundary/staged-anchor-metadata-aba80d920269-bundle-r2-native/branchline-git-worker",
+    "cwd": "/home/max/benchmarks/branchline-boundary/staged-note2-eligibility-20261125T235815Z"
+  },
+  "repo": {
+    "checkout": "refs/heads/feature/boundary-final",
+    "refs": {
+      ":empty:": "4b825dc642cb6eb9a060e54bf8d69288fbee4904",
+      "HEAD^": "856700f06bf917bd363dd835fe6f6bd3923254da",
+      "refs/heads/feature/boundary-final": "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+      "refs/heads/feature/boundary-first": "856700f06bf917bd363dd835fe6f6bd3923254da",
+      "refs/heads/main": "adc218676eef25575469234709c2d87185ca223a"
+    }
+  },
+  "expected": {
+    "path": "kernel/fork.c",
+    "old_oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+    "oid": "aeb14599caf65d5f8fbdf9051d296e5b5894c250",
+    "old_mode": "100644",
+    "mode": "100644"
+  },
+  "proof": {
+    "base": "997032e932bfa5fcefdab0c986c8d01fe56c8229",
+    "location_head": "staged:457e783e6ffe51f867e9e9560e8afc7f8fc136ff88d68c7a3f8f9b47496b01c1",
+    "versions": [
+      {
+        "mode": "100644",
+        "oid": "aeb14599caf65d5f8fbdf9051d296e5b5894c250",
+        "old_mode": "100644",
+        "old_oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+        "path": "kernel/fork.c"
+      }
+    ]
+  },
+  "metadata_proof_pass": true,
+  "lookup_preconditions": {
+    "same_raw_path": true,
+    "checkout_matches_note_left": true,
+    "staged_group": true,
+    "left_tip_equals_current_checkout_tip": true
+  },
+  "worker_exit": 0,
+  "after": {
+    "/home/max/benchmarks/branchline-boundary/kernel-wsl/.git/index": {
+      "sha256": "1f10b8526cf5a9ebf50fc62579d2a20110a41b6244e6f73a45121a7e196f6017",
+      "bytes": 9271771,
+      "mtime_ns": 1795615942129939671,
+      "ctime_ns": 1795615942133939671,
+      "inode": 278079,
+      "device": 2096,
+      "mode": 33188
+    },
+    "/home/max/benchmarks/branchline-boundary/kernel-wsl/.git/config": {
+      "sha256": "8e638c8580a08a398a4026aeae58dde5bbc13a8fa45dad442e8ef7948502de08",
+      "bytes": 334,
+      "mtime_ns": 1795615994729935414,
+      "ctime_ns": 1795615994729935414,
+      "inode": 278185,
+      "device": 2096,
+      "mode": 33188
+    },
+    "/home/max/benchmarks/branchline-boundary/kernel-wsl/.git/HEAD": {
+      "sha256": "39bb9661fc723eed319f42fcb848af0b0c7b8f392e168ddfe856cf47205af90e",
+      "bytes": 39,
+      "mtime_ns": 1795614733907349066,
+      "ctime_ns": 1795614733907349066,
+      "inode": 272949,
+      "device": 2096,
+      "mode": 33188
+    },
+    "/mnt/c/Users/max/branchline-bench/profiles/baseline-windows-linux/data/Branchline/reviews.sqlite3": {
+      "sha256": "e54d55d4a0f2ac1985ad41603c944cb38345a084e4e683500ce43bde0089b844",
+      "bytes": 36864,
+      "mtime_ns": 1795616961784560500,
+      "ctime_ns": 1795616961784560500,
+      "inode": 562949953783100,
+      "device": 87,
+      "mode": 33279
+    }
+  },
+  "guards_unchanged": true,
+  "exact_native_absent": true,
+  "worker_stderr": "",
+  "requests": [
+    {
+      "op": "hello",
+      "response_sha256": "a5bb242e07ecaa79833956d0e267bef74dab0de781f223aa48961282f7ed6245"
+    },
+    {
+      "op": "open",
+      "response_sha256": "b857ce26d26b827a141f1842cc1deff17866027849efb249107be7d688e202de"
+    },
+    {
+      "op": "verify_staged_versions",
+      "response_sha256": "648140cd251e88106f82c12dc69a669505d45205d9a7e557c112dfb0c8f27616"
+    }
+  ]
+}

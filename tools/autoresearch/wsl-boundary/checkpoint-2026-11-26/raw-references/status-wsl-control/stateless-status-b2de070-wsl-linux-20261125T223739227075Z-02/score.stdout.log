@@ -1,0 +1,128 @@
+{"action": "open", "repetition": 0, "elapsed_ms": 722}
+{"action": "branch_first", "repetition": 0, "elapsed_ms": 378.0000000000002}
+{"action": "branch_final", "repetition": 0, "elapsed_ms": 377.00000000000045}
+{"action": "working_tree", "repetition": 0, "elapsed_ms": 510}
+{"action": "stack", "repetition": 0, "elapsed_ms": 426}
+{"action": "comment_branch", "repetition": 0, "elapsed_ms": 483}
+{"action": "comment_worktree", "repetition": 0, "elapsed_ms": 518.0000000000009}
+{"action": "branch_first", "repetition": 1, "elapsed_ms": 436}
+{"action": "branch_final", "repetition": 1, "elapsed_ms": 363}
+{"action": "working_tree", "repetition": 1, "elapsed_ms": 387}
+{"action": "stack", "repetition": 1, "elapsed_ms": 436}
+{"action": "comment_branch", "repetition": 1, "elapsed_ms": 489.0000000000009}
+{"action": "comment_worktree", "repetition": 1, "elapsed_ms": 393.0000000000018}
+{"action": "branch_first", "repetition": 2, "elapsed_ms": 458}
+{"action": "branch_final", "repetition": 2, "elapsed_ms": 390}
+{"action": "working_tree", "repetition": 2, "elapsed_ms": 493.9999999999982}
+{"action": "stack", "repetition": 2, "elapsed_ms": 435}
+{"action": "comment_branch", "repetition": 2, "elapsed_ms": 479}
+{"action": "comment_worktree", "repetition": 2, "elapsed_ms": 468}
+{
+  "actions": {
+    "branch_final": {
+      "count": 3,
+      "first_use_ms": 377.00000000000045,
+      "max_ms": 390,
+      "p50_ms": 377.00000000000045,
+      "p95_ms": 390
+    },
+    "branch_first": {
+      "count": 3,
+      "first_use_ms": 378.0000000000002,
+      "max_ms": 458,
+      "p50_ms": 436,
+      "p95_ms": 458
+    },
+    "comment_branch": {
+      "count": 3,
+      "first_use_ms": 483,
+      "max_ms": 489.0000000000009,
+      "p50_ms": 483,
+      "p95_ms": 489.0000000000009
+    },
+    "comment_worktree": {
+      "count": 3,
+      "first_use_ms": 518.0000000000009,
+      "max_ms": 518.0000000000009,
+      "p50_ms": 468,
+      "p95_ms": 518.0000000000009
+    },
+    "open": {
+      "count": 1,
+      "first_use_ms": 722,
+      "max_ms": 722,
+      "p50_ms": 722,
+      "p95_ms": 722
+    },
+    "stack": {
+      "count": 3,
+      "first_use_ms": 426,
+      "max_ms": 436,
+      "p50_ms": 435,
+      "p95_ms": 436
+    },
+    "working_tree": {
+      "count": 3,
+      "first_use_ms": 510,
+      "max_ms": 510,
+      "p50_ms": 493.9999999999982,
+      "p95_ms": 510
+    }
+  },
+  "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+  "case": "wsl_linux",
+  "contract": {
+    "files": {
+      "charter.md": "1524e0692030583ac4a243cbf800cac89026ba46ea74c445cebb61d80668b58b",
+      "driver.py": "e37aa3dca1cafacec15bae8e41368317652f362c3748cab358a93484828f1cac",
+      "launch.py": "b41d82604ee39806a7af726e506c5457f8d5727c78ca8f05d680db47423af252",
+      "launch_linux.py": "a901d82046a65c544f830b69d949c3ebbe7efa82bfe80cdd4d1a94b21267dc77",
+      "probe.js": "1de90bf330fc611db2d1effcdb69eec07a6d054b15df44c2af127e99f9fe7357",
+      "score.py": "258550e2b97dc3f30a32b98eda20306ecea2a068db16005cd776fe943c1f6366",
+      "workload.py": "01135bbd73d654b3f2ab0ae82905a4aed88905956612276721070c215a389223"
+    },
+    "sha256": "3db306b466166cb39b8c5a9dc27a9739b16df52fa9f83d32bd6656f226026b04"
+  },
+  "finished_at_unix": 1795646347.4693758,
+  "git_head": "b2de070becf3fcba2d47557efd375221c586f273",
+  "label": "stateless-status-b2de070",
+  "launch": {
+    "app_process": {
+      "args": [
+        "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+        "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux/welcome"
+      ],
+      "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+      "pid": 154375,
+      "start_ticks": "15062734"
+    },
+    "binary": "/home/max/benchmarks/branchline-boundary/binaries/candidate-stateless-status-b2de070/branchline",
+    "binary_sha256": "dc75494705df50590e744c62699dbb5ad849553c6ff4c7f7a0c7b659462b603a",
+    "created": "15062734",
+    "display": ":0",
+    "driver_process": {
+      "binary": "/usr/bin/WebKitWebDriver",
+      "pid": 154373,
+      "start_ticks": "15062733"
+    },
+    "gdk_backend": "x11",
+    "mcp_port": 28867,
+    "pid": 154375,
+    "port": 29225,
+    "profile": "/home/max/benchmarks/branchline-boundary/profiles/baseline-compat-wsl-linux",
+    "session": "f1fe4552-d78a-4056-90cf-036fcabd053a",
+    "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+    "supervisor_pid": 154372
+  },
+  "manifest_sha256": "a35f058b28823fbbd3addb58249e5d4146a4fefd672463b45a8fa44bda3238e9",
+  "mode": "measure",
+  "repetitions": 3,
+  "schema_version": 1,
+  "source_hash": "d5b05d3585f7f04dea63f4f8786c67e253c9337c24793c71c57f707ee36c9bbb",
+  "started_at_unix": 1795646333.5555286,
+  "target_met": false,
+  "target_ms": 250.0,
+  "valid": true,
+  "warmup": "none; setup uses a separate process; OS caches are not flushed",
+  "worst_interaction_p95_ms": 722
+}

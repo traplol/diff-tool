@@ -1,0 +1,143 @@
+diff --git a/src-tauri/src/git.rs b/src-tauri/src/git.rs
+index 9ecaf1f..2de2e96 100644
+--- a/src-tauri/src/git.rs
++++ b/src-tauri/src/git.rs
+@@ -984,6 +984,28 @@ pub(crate) fn take_working_tree_read_counts() -> (usize, usize) {
+     WT_READS.with(|counts| counts.replace((0, 0)))
+ }
+ 
++fn working_tree_index_path(
++    root: &Path,
++    native: Option<&native::Access<'_>>,
++    environment_overrides: bool,
++) -> Result<PathBuf> {
++    if !environment_overrides {
++        if let Some(repo) = native {
++            return Ok(repo.path().join("index"));
++        }
++    }
++    let index_data = git(root, &["rev-parse", "--git-path", "index"])?;
++    let index = PathBuf::from(path_arg(&name(
++        index_data.strip_suffix(b"\n").unwrap_or(&index_data),
++    ))?);
++    #[cfg(windows)]
++    let index = match windows::WslCheckout::from_path(root) {
++        Some(wsl) if index_data.starts_with(b"/") => wsl.host_path(&index)?,
++        _ => index,
++    };
++    Ok(root.join(index))
++}
++
+ fn working_tree_impl(
+     repo: &Repository,
+     checkout: &str,
+@@ -999,27 +1021,15 @@ fn working_tree_impl(
+         checkout
+     });
+     let base = head.unwrap_or(&repo.refs[EMPTY]);
+-    let native_repo = repo
+-        .native()
+-        .filter(|repo| native::supports_working_tree(repo));
+-    let native_index = native_repo
+-        .as_ref()
+-        .and_then(|repo| repo.index().ok())
+-        .and_then(|index| index.path().map(Path::to_path_buf));
+-    let index_path = if let Some(path) = native_index {
+-        path
+-    } else {
+-        let index_data = git(&repo.root, &["rev-parse", "--git-path", "index"])?;
+-        let index = PathBuf::from(path_arg(&name(
+-            index_data.strip_suffix(b"\n").unwrap_or(&index_data),
+-        ))?);
+-        #[cfg(windows)]
+-        let index = match windows::WslCheckout::from_path(&repo.root) {
+-            Some(wsl) if index_data.starts_with(b"/") => wsl.host_path(&index)?,
+-            _ => index,
+-        };
+-        repo.root.join(index)
+-    };
++    let native_repo = repo.native();
++    // Native discovery ignores Git's environment overrides. Let Git resolve
++    // those paths, including an alternate index selected by the caller.
++    let environment_overrides = ["GIT_INDEX_FILE", "GIT_DIR", "GIT_COMMON_DIR"]
++        .iter()
++        .any(|key| std::env::var_os(key).is_some());
++    let index_path =
++        working_tree_index_path(&repo.root, native_repo.as_ref(), environment_overrides)?;
++    let native_repo = native_repo.filter(|repo| native::supports_working_tree(repo));
+     let index_state = || -> Result<_> {
+         match fs::metadata(&index_path) {
+             Ok(m) => {
+diff --git a/src-tauri/src/git_tests.rs b/src-tauri/src/git_tests.rs
+index a40b994..1f29f4f 100644
+--- a/src-tauri/src/git_tests.rs
++++ b/src-tauri/src/git_tests.rs
+@@ -822,6 +822,10 @@ fn configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs() {
+     let access = repo.native().unwrap();
+     assert!(native::supports_diff(&access), "Branch reviews remain native");
+     assert!(!native::supports_working_tree(&access));
++    assert_eq!(
++        working_tree_index_path(root, Some(&access), false).unwrap(),
++        root.join(".git/index")
++    );
+     drop(access);
+     let actual = work(&repo);
+     let mut cli = repo.clone();
+@@ -875,3 +879,57 @@ fn sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged() {
+         assert_eq!(native::supports_working_tree(&repo), expected);
+     }
+ }
++
++#[test]
++fn index_path_resolution_uses_the_private_git_directory_and_preserves_git_fallback() {
++    let dir = history();
++    write(&dir, "tracked", b"base\n");
++    record(&dir, "Base");
++    let linked = tempdir().unwrap();
++    git(
++        dir.path(),
++        &[
++            "worktree",
++            "add",
++            "--detach",
++            linked.path().to_str().unwrap(),
++            "HEAD",
++        ],
++    )
++    .unwrap();
++    let main_repo = open_repo(dir.path()).unwrap();
++    let main_native = main_repo.native().unwrap();
++    let linked_repo = open_repo(linked.path()).unwrap();
++    let linked_native = linked_repo.native().unwrap();
++    let private_index = linked_native.path().join("index");
++    assert_ne!(private_index, main_native.path().join("index"));
++    assert_ne!(private_index, linked_native.commondir().join("index"));
++    assert_eq!(
++        working_tree_index_path(linked.path(), Some(&linked_native), false).unwrap(),
++        private_index
++    );
++    // Force the environment-override branch without changing global process
++    // state. The fallback must use Git's root, rather than the supplied handle.
++    for native in [Some(&main_native), None] {
++        assert_eq!(
++            working_tree_index_path(linked.path(), native, true)
++                .unwrap()
++                .canonicalize()
++                .unwrap(),
++            private_index.canonicalize().unwrap()
++        );
++    }
++    assert_eq!(
++        working_tree_index_path(linked.path(), None, false)
++            .unwrap()
++            .canonicalize()
++            .unwrap(),
++        private_index.canonicalize().unwrap()
++    );
++    // Resolving the filename must not open or parse the index itself.
++    fs::write(&private_index, b"not an index").unwrap();
++    assert_eq!(
++        working_tree_index_path(linked.path(), Some(&linked_native), false).unwrap(),
++        private_index
++    );
++}

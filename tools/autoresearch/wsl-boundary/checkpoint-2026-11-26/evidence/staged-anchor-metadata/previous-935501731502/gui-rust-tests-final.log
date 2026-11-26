@@ -1,0 +1,99 @@
+   Compiling branchline v0.2.0 (/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/source/src-tauri)
+    Finished `test` profile [unoptimized] target(s) in 4.09s
+     Running unittests src/lib.rs (/home/max/workspace/merge-viewer-native/src-tauri/target/debug/deps/branchline-66cb84fd26a30aae)
+
+running 78 tests
+test git::remote::tests::windows_worker_command_maps_its_storage_cwd_before_interop ... ignored, Requires WSL path translation; run explicitly inside WSL
+test git::remote::tests::only_drive_absolute_paths_identify_windows_storage ... ok
+test git::remote::tests::native_git_failures_remain_domain_errors ... ok
+test git::remote::tests::request_frames_escape_newlines_and_match_response_ids ... ok
+test git::remote::tests::stale_truncated_and_invalid_responses_are_rejected ... ok
+test git::remote::tests::cached_worker_is_verified_and_corruption_is_replaced_atomically ... ok
+test git::remote::tests::a_protocol_failure_stops_and_reaps_only_the_owned_child ... ok
+test git::remote::tests::a_git_failure_does_not_disconnect_the_persistent_child ... ok
+test git::tests::raw_and_numstat_parsers_keep_counts_errors_and_stat_only_changes ... ok
+test config::tests::concurrent_edits_keep_other_checkouts_and_hand_edited_preferences ... ok
+test git::tests::display_patch_preserves_git_rows_and_frozen_working_tree ... ok
+test git::tests::patch_reader_checks_cancellation_while_git_is_silent ... ok
+test git::tests::sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged ... ok
+test git::worker::tests::invalid_sections_are_rejected_before_git_access ... ok
+test git::worker::tests::null_success_is_distinct_from_failure ... ok
+test git::worker::tests::protocol_rejects_mutating_and_unknown_operations ... ok
+test git::worker::tests::wire_sections_are_lossless_and_do_not_change_frontend_serialization ... ok
+test git::remote::tests::blocked_search_preparation_does_not_queue_foreground_requests ... FAILED
+test git::tests::revision_file_distinguishes_text_binary_and_missing_submodule_objects ... ok
+test git::tests::staged_metadata_accepts_chmod_and_unrelated_sparse_omissions_but_rejects_requested_skip ... ok
+test mcp::desktop::tests::authenticated_listener_identity_does_not_bypass_registration_denial ... ok
+test mcp::desktop::tests::free_prelaunch_probe_releases_the_port_before_spawn ... ok
+test git::tests::advertised_remote_default_and_orphan_and_detached_checkout ... ok
+test mcp::desktop::tests::registration_keeps_the_checkout_and_identity_headers ... ok
+test git::tests::streamed_patches_keep_type_change_sections_and_byte_paths ... ok
+test git::tests::libgit2_reads_normal_review_changes_without_the_compatibility_backend ... ok
+test git::tests::staged_metadata_declines_unsupported_raw_tree_mode ... ok
+test git::tests::partially_staged_snapshot_survives_file_and_index_changes ... ok
+test mcp::desktop::tests::wrong_or_malformed_listeners_are_not_treated_as_free ... ok
+test git::tests::staged_metadata_rejects_intent_to_add_conflicts_and_non_modifications ... ok
+test git::tests::literal_names_binary_rename_line_numbers_and_scoped_untracked ... ok
+test git::tests::whole_file_reconstructs_unstaged_gaps_after_the_index_and_disk_change ... ok
+test git::tests::working_tree_snapshot_does_not_rewrite_stat_stale_index ... ok
+test git::tests::staged_metadata_requires_exact_raw_path_and_regular_modes ... ok
+test git::tests::patch_stream_stops_at_201_matches_inside_the_first_file ... ok
+test git::tests::patch_process_is_reaped_when_a_silent_search_is_superseded ... ok
+test git::tests::symlinks_type_changes_nested_repo_and_non_utf8_names ... ok
+test git::tests::skip_worktree_entries_preserve_git_status_and_frozen_patches ... ok
+test git::tests::staged_metadata_reads_index_not_worktree_and_rejects_restage_or_stale_head ... ok
+test git::tests::merge_conflict_shows_existing_stage_two_and_other_staged_changes ... ok
+test git::tests::whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move ... ok
+test search::tests::palette_paths_use_the_shared_budget_before_patch_contents ... ok
+test git::tests::configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs ... ok
+test review::tests::exact_modified_anchor_with_unrelated_history_uses_full_lookup ... ok
+test review::tests::file_edit_receipt_remains_exportable_when_sqlite_update_fails ... ok
+test review::tests::python_non_utf8_paths_roundtrip_without_conflating_literal_escape_text ... ok
+test review::tests::migrates_existing_json_notes_and_merges_concurrent_edits ... ok
+test git::tests::streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes ... ok
+test review::tests::reads_python_viewed_keys_and_isolates_partial_staging ... ok
+test search::tests::result_limit_distinguishes_an_exact_count_from_overflow ... ok
+test review::tests::replies_preserve_desktop_edits_and_can_resolve_the_same_thread ... ok
+test git::tests::first_commit_diverged_base_stack_and_forks ... ok
+test review::tests::changed_modified_anchors_fall_back_for_external_edits_stage_and_commit ... ok
+test suggestions::tests::preserves_mixed_line_endings_and_deletes_at_eof ... ok
+test suggestions::tests::refuses_hard_links_and_paths_outside_the_checkout ... ok
+test review::tests::apply_verifies_checkout_preserves_crlf_and_exports_current_receipt ... ok
+test service::tests::non_utf8_checkout_root_roundtrips_through_desktop_commands ... ok
+test service::tests::failed_comparison_load_keeps_previous_snapshot_and_export ... ok
+test service::tests::refresh_notes_reads_external_replies_and_resolution_without_changing_snapshot ... ok
+test suggestions::tests::stale_duplicate_selection_cannot_edit_an_unrelated_block ... ok
+test review::tests::local_comment_follows_index_and_commit_without_matching_stale_duplicates ... ok
+test search::tests::cancelled_and_failed_comparison_preparation_can_be_retried ... ok
+test review::tests::staged_anchors_share_metadata_proof_and_displayed_snapshot_takes_precedence ... ok
+test review::tests::staged_metadata_preserves_ancestry_fallback_and_commit_tracking ... ok
+test service::tests::rejects_edits_from_old_views_and_keeps_worktree_on_checkout_switch ... ok
+test search::tests::all_scope_stays_within_review_stack_changes ... ok
+test review::tests::committed_change_on_sibling_branch_cannot_take_a_local_note ... ok
+test review::tests::branch_comment_follows_an_unrelated_commit_only_at_exact_anchors ... ok
+test service::tests::migrates_preferences_and_keeps_the_selected_base_after_a_layer_is_deleted ... ok
+test service::tests::search_preparation_is_shared_only_within_the_loaded_session ... ok
+test search::tests::repeated_queries_keep_local_snapshot_until_the_review_is_refreshed ... ok
+test search::tests::palette_search_prioritizes_paths_and_preserves_scope_provenance ... ok
+test search::tests::searches_branch_blobs_layer_patches_and_frozen_working_tree ... ok
+test review::tests::scoped_worktree_keeps_frozen_payloads_and_never_updates_the_index ... ok
+test search::tests::patch_search_keeps_review_rows_for_renames_literal_paths_and_frozen_local_edits ... ok
+test review::tests::added_and_renamed_anchors_use_full_rename_detection ... ok
+test review::tests::unchanged_modified_anchors_share_one_scoped_read_and_reuse_primary ... ok
+test mcp::desktop::tests::existing_listener_keeps_the_http_timeout_in_both_phases ... ok
+
+failures:
+
+---- git::remote::tests::blocked_search_preparation_does_not_queue_foreground_requests stdout ----
+
+thread 'git::remote::tests::blocked_search_preparation_does_not_queue_foreground_requests' panicked at src/git/remote.rs:825:14:
+called `Result::unwrap()` on an `Err` value: "Could not start the Git storage worker: Text file busy (os error 26)"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    git::remote::tests::blocked_search_preparation_does_not_queue_foreground_requests
+
+test result: FAILED. 76 passed; 1 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.27s
+
+error: test failed, to rerun pass `--lib`

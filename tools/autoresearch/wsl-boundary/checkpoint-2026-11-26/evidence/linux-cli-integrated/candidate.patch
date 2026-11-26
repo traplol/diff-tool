@@ -1,0 +1,13 @@
+diff --git a/src-tauri/src/git.rs b/src-tauri/src/git.rs
+index 9ecaf1f..30bc12d 100644
+--- a/src-tauri/src/git.rs
++++ b/src-tauri/src/git.rs
+@@ -698,7 +698,7 @@ pub fn compare_trees(
+     }
+     let files = match repo
+         .native()
+-        .filter(|repo| native::supports_diff(repo))
++        .filter(|repo| !cfg!(target_os = "linux") && native::supports_diff(repo))
+         .and_then(|native| {
+             native::branch_changes(&native, base, head, native::empty_oid(repo)).ok()
+         }) {

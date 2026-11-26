@@ -1,0 +1,30 @@
+git::tests::advertised_remote_default_and_orphan_and_detached_checkout: test
+git::tests::configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs: test
+git::tests::display_patch_preserves_git_rows_and_frozen_working_tree: test
+git::tests::first_commit_diverged_base_stack_and_forks: test
+git::tests::libgit2_reads_normal_review_changes_without_the_compatibility_backend: test
+git::tests::literal_names_binary_rename_line_numbers_and_scoped_untracked: test
+git::tests::merge_conflict_shows_existing_stage_two_and_other_staged_changes: test
+git::tests::parallel_untracked_keeps_git_order_raw_patches_and_frozen_content: test
+git::tests::partially_staged_snapshot_survives_file_and_index_changes: test
+git::tests::patch_reader_checks_cancellation_while_git_is_silent: test
+git::tests::patch_stream_stops_at_201_matches_inside_the_first_file: test
+git::tests::raw_and_numstat_parsers_keep_counts_errors_and_stat_only_changes: test
+git::tests::revision_file_distinguishes_text_binary_and_missing_submodule_objects: test
+git::tests::skip_worktree_entries_preserve_git_status_and_frozen_patches: test
+git::tests::sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged: test
+git::tests::streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes: test
+git::tests::whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move: test
+git::tests::whole_file_reconstructs_unstaged_gaps_after_the_index_and_disk_change: test
+git::tests::windows_status_git_parity_handles_unborn_conflicts_and_linked_worktrees: test
+git::tests::windows_status_git_parity_preserves_ignores_partial_staging_and_user_cache_configuration: test
+git::tests::windows_status_parser_keeps_raw_question_paths_and_ignores_valid_tracked_records: test
+git::tests::windows_status_parser_rejects_malformed_and_unsupported_records_for_fallback: test
+git::tests::working_tree_snapshot_does_not_rewrite_stat_stale_index: test
+git::windows::tests::wsl_paths_round_trip_through_the_named_distribution: test
+git::worker::tests::invalid_sections_are_rejected_before_git_access: test
+git::worker::tests::null_success_is_distinct_from_failure: test
+git::worker::tests::protocol_rejects_mutating_and_unknown_operations: test
+git::worker::tests::wire_sections_are_lossless_and_do_not_change_frontend_serialization: test
+
+28 tests, 0 benchmarks

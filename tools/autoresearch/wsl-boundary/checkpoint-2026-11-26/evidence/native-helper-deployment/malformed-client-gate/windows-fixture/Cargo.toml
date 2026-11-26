@@ -1,0 +1,4 @@
+[package]
+name = "branchline-malformed-response-fixture"
+version = "0.1.0"
+edition = "2021"

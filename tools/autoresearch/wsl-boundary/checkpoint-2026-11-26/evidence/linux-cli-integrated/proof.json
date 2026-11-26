@@ -1,0 +1,189 @@
+{
+  "status": "exact-integrated-host-gates-passed",
+  "source_hash": "c2006e96fdcb418c83b35c02741f3acafe5d79fc4bdfa0608f5256fd3ef176c1",
+  "git_head": "ce75cd6be9f0a0f1d0587aef0ce603d21c0fc3df",
+  "canonical_app_files": 49,
+  "single_production_changed_file": "src-tauri/src/git.rs",
+  "main_current_tests_preserved": true,
+  "host_worker": {
+    "unit_passed": 25,
+    "real_stdio_passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "log": "worker-tests.log",
+    "log_sha256": "e8edf145c467bb99fd8b176fd32d8f575172933334df5f5dc1b692a4f80c1e58",
+    "producer_artifacts": {
+      "unit": {
+        "reason": "compiler-artifact",
+        "package_id": "path+file:///home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+        "manifest_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source/src-tauri/git-worker/Cargo.toml",
+        "target": {
+          "kind": [
+            "bin"
+          ],
+          "crate_types": [
+            "bin"
+          ],
+          "name": "branchline-git-worker",
+          "src_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source/src-tauri/git-worker/src/main.rs",
+          "edition": "2021",
+          "doc": true,
+          "doctest": false,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "0",
+          "debuginfo": 2,
+          "debug_assertions": true,
+          "overflow_checks": true,
+          "test": true
+        },
+        "features": [
+          "default",
+          "storage-worker"
+        ],
+        "filenames": [
+          "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/deps/branchline_git_worker-ec14863b7131678d"
+        ],
+        "executable": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/deps/branchline_git_worker-ec14863b7131678d",
+        "fresh": false
+      },
+      "stdio": {
+        "reason": "compiler-artifact",
+        "package_id": "path+file:///home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source/src-tauri/git-worker#branchline-git-worker@0.2.0",
+        "manifest_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source/src-tauri/git-worker/Cargo.toml",
+        "target": {
+          "kind": [
+            "test"
+          ],
+          "crate_types": [
+            "bin"
+          ],
+          "name": "stdio",
+          "src_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source/src-tauri/git-worker/tests/stdio.rs",
+          "edition": "2021",
+          "doc": false,
+          "doctest": false,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "0",
+          "debuginfo": 2,
+          "debug_assertions": true,
+          "overflow_checks": true,
+          "test": true
+        },
+        "features": [
+          "default",
+          "storage-worker"
+        ],
+        "filenames": [
+          "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/deps/stdio-ed737cf310c0694c"
+        ],
+        "executable": "/home/max/workspace/merge-viewer-native/src-tauri/target/git-worker/debug/deps/stdio-ed737cf310c0694c",
+        "fresh": false
+      }
+    }
+  },
+  "host_gui_rust": {
+    "passed": 70,
+    "failed": 0,
+    "ignored": 1,
+    "log": "gui-tests.log",
+    "log_sha256": "e169474099b16e286f619e0a83e860158a5bd72ac2dc6e4970c4c6453d46050f",
+    "producer_artifacts": {
+      "unit": {
+        "reason": "compiler-artifact",
+        "package_id": "path+file:///home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source/src-tauri#branchline@0.2.0",
+        "manifest_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source/src-tauri/Cargo.toml",
+        "target": {
+          "kind": [
+            "lib"
+          ],
+          "crate_types": [
+            "lib"
+          ],
+          "name": "branchline",
+          "src_path": "/home/max/workspace/merge-viewer-native/build/experiments/linux-cli-integrated/source/src-tauri/src/lib.rs",
+          "edition": "2021",
+          "doc": true,
+          "doctest": true,
+          "test": true
+        },
+        "profile": {
+          "opt_level": "0",
+          "debuginfo": 0,
+          "debug_assertions": true,
+          "overflow_checks": true,
+          "test": true
+        },
+        "features": [],
+        "filenames": [
+          "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/deps/branchline-66cb84fd26a30aae"
+        ],
+        "executable": "/home/max/workspace/merge-viewer-native/src-tauri/target/debug/deps/branchline-66cb84fd26a30aae",
+        "fresh": false
+      }
+    }
+  },
+  "all_required_root_producers_fresh_false": true,
+  "source_unchanged": true,
+  "source_mtime_touches_only_in_owned_clone": true,
+  "all_host_actors_absent": [
+    {
+      "pid": 455117,
+      "start_ticks": "77581348",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 455120,
+      "start_ticks": "77581354",
+      "exact_actor_absent": true
+    },
+    {
+      "pid": 456227,
+      "start_ticks": "77581968",
+      "exact_actor_absent": true
+    }
+  ],
+  "kiss": {
+    "result": "simple enough",
+    "agent": "/root/git_command_native_diagnostic/integrated_cli_kiss",
+    "fork_turns": "none",
+    "scope": "final one-line integrated production diff only"
+  },
+  "expected_windows_unit_tests": [
+    "git::tests::advertised_remote_default_and_orphan_and_detached_checkout",
+    "git::tests::configured_sparse_working_tree_uses_git_and_preserves_frozen_outputs",
+    "git::tests::display_patch_preserves_git_rows_and_frozen_working_tree",
+    "git::tests::first_commit_diverged_base_stack_and_forks",
+    "git::tests::libgit2_reads_normal_review_changes_without_the_compatibility_backend",
+    "git::tests::literal_names_binary_rename_line_numbers_and_scoped_untracked",
+    "git::tests::merge_conflict_shows_existing_stage_two_and_other_staged_changes",
+    "git::tests::partially_staged_snapshot_survives_file_and_index_changes",
+    "git::tests::patch_reader_checks_cancellation_while_git_is_silent",
+    "git::tests::patch_stream_stops_at_201_matches_inside_the_first_file",
+    "git::tests::raw_and_numstat_parsers_keep_counts_errors_and_stat_only_changes",
+    "git::tests::revision_file_distinguishes_text_binary_and_missing_submodule_objects",
+    "git::tests::skip_worktree_entries_preserve_git_status_and_frozen_patches",
+    "git::tests::sparse_config_selection_keeps_non_sparse_native_and_branches_unchanged",
+    "git::tests::streamed_patches_keep_snapshot_order_rows_and_frozen_local_bytes",
+    "git::tests::whole_file_keeps_branch_blob_ids_after_a_rename_and_tip_move",
+    "git::tests::whole_file_reconstructs_unstaged_gaps_after_the_index_and_disk_change",
+    "git::tests::working_tree_snapshot_does_not_rewrite_stat_stale_index",
+    "git::windows::tests::wsl_paths_round_trip_through_the_named_distribution",
+    "git::worker::tests::invalid_sections_are_rejected_before_git_access",
+    "git::worker::tests::null_success_is_distinct_from_failure",
+    "git::worker::tests::protocol_rejects_mutating_and_unknown_operations",
+    "git::worker::tests::wire_sections_are_lossless_and_do_not_change_frontend_serialization"
+  ],
+  "windows_name_oracle": {
+    "source": "build/autoresearch/wsl-boundary/candidate-stateless-status-b2de070-native/vm-evidence/candidate-stateless-status-b2de070-native/native-test-0.log",
+    "source_sha256": "d9f113b616c7439e43165fdd92f93069f71f8527256239c8be6eba0d1c1760d8",
+    "method": "Known native d5b05 Windows23 baseline test names after excluding four status-candidate tests; every remaining function exists in current integrated Rust source. Main committed changes only fix tests and do not add/remove these names. New Windows artifact must still be fresh:false from exact current manifest.",
+    "known_native_total": 27,
+    "excluded_status_only_names": 4
+  },
+  "native_builds_or_vm_calls": false,
+  "promoted": false
+}

@@ -1,0 +1,12 @@
+{
+  "binary": "C:\\Users\\max\\branchline-bench\\binaries\\staged-anchor-metadata-aba80d920269-bundle-r2\\branchline.exe",
+  "binary_sha256": "86c90415605b2f4841c36abd390d48c45d2af094fdb9829f5ecb923c85331462",
+  "cdp_port": 29223,
+  "created": "2026-11-25T18:15:00.5129190-05:00",
+  "mcp_port": 28865,
+  "pid": 7112,
+  "profile": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux",
+  "repo": "C:\\Users\\max\\branchline-bench\\profiles\\baseline-windows-linux\\welcome",
+  "session": 1,
+  "source_hash": "aba80d9202698734d4915c9b652d58406e3602c1dc277983e97a7f6b59e80404"
+}

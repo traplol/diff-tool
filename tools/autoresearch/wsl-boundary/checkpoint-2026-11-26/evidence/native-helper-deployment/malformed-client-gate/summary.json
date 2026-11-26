@@ -1,0 +1,156 @@
+{
+  "status": "passed-both-native-malformed-response-cleanup-gates",
+  "source_hash": "252dec099fcf4ca2187615b852730458a47c1a13a5070fae6081574792a85500",
+  "original_remote_sha256": "1046beee3c3dbbad93fc6c8837c2d164ac5ecc26bb536bf39fa106f2d6f52cec",
+  "copied_remote_sha256": "99cf2c959e5ef38197b4ff68247356866cd6d6aa969f1a5d7111e78f4a2d5ed5",
+  "original_remote_prefix_bytes": 52378,
+  "test_module_sha256": "d8b453173fc2b01e9b3af90de5236dd9f1794a56a90bd8581f6c2fa73dea9c60",
+  "fixture": {
+    "path": "/home/max/benchmarks/branchline-boundary/native-helper-malformed-252dec/source/src-tauri/src/git/fixtures/malformed-windows.exe",
+    "sha256": "068c07db2acef8ce845df54da26e2bf7989bfb91fec437358c719a20e862ab12",
+    "bytes": 239616,
+    "static_crt_import_check": true
+  },
+  "actual_gate": "Wrong responseID999 after valid protocol1 Hello. Actual unchanged materialize + Location.command + Connection.start/request. Error invalidated Connection and killed/reaped launcher. Exact native child disappearance was checked while Connection retained its stdin/stdout, before Drop; subsequent request rejected disconnected.",
+  "passed_directions": [
+    {
+      "test": "linux-native-client",
+      "native_before": {
+        "exe": "C:\\Users\\max\\AppData\\Local\\Branchline\\git-workers\\branchline-git-worker-2ecb43080af18055f125f0e94b88e789880dcb8c2f366cb72cfa35b3af6bbeed.exe",
+        "identity": "2026-11-25T17:51:41.8570380-05:00",
+        "pid": 1704
+      },
+      "native_after": null,
+      "launcher_pid": 164773,
+      "launcher_exit": "Some(ExitStatus(unix_wait_status(9)))",
+      "retained_stdin": true
+    },
+    {
+      "test": "windows-native-client",
+      "native_before": {
+        "args": [
+          "/usr/bin/python3",
+          "-u",
+          "/home/max/.cache/branchline/git-workers/branchline-git-worker-6e8f4920a5f2fd54fee9c3262c1830d43545ecb6769ef5652a82cbe60cc05bde",
+          "--stdio",
+          ""
+        ],
+        "exe": "/usr/bin/python3.14",
+        "expected_exe": "/usr/bin/python3.14",
+        "filesystem_type": "0xef53",
+        "identity": "15143625",
+        "image": "/home/max/.cache/branchline/git-workers/branchline-git-worker-6e8f4920a5f2fd54fee9c3262c1830d43545ecb6769ef5652a82cbe60cc05bde",
+        "pid": 165221,
+        "sha256": "6e8f4920a5f2fd54fee9c3262c1830d43545ecb6769ef5652a82cbe60cc05bde",
+        "state": "S"
+      },
+      "native_after": null,
+      "launcher_pid": 8360,
+      "launcher_exit": "Some(ExitStatus(ExitStatus(1)))",
+      "retained_stdin": true
+    }
+  ],
+  "phase_exits": [
+    {
+      "name": "one-windows-fixture-build",
+      "pid": 163005,
+      "start_ticks": "15134541",
+      "exit": 0,
+      "reaped": true,
+      "log_sha256": "b8b12a8f7e93abbeaa1a32b8a3432a4ab0a60e41a73a2be6c31e3a03d88576b4"
+    },
+    {
+      "name": "linux-focused-harness-build",
+      "pid": 163040,
+      "start_ticks": "15134975",
+      "exit": 0,
+      "reaped": true,
+      "log_sha256": "6dbf5824e682cd1ff087462b1263386e86ef238b881105141cd1a2c0a43807cf"
+    },
+    {
+      "name": "linux-native-client",
+      "pid": 164761,
+      "start_ticks": "15139597",
+      "exit": 0,
+      "reaped": true,
+      "log_sha256": "f9ec566f9873de590b20daf70f501f47fe62f9aeadcf1a9bb7bb697cc1b7579b"
+    },
+    {
+      "name": "windows-focused-harness-build",
+      "pid": 164780,
+      "start_ticks": "15139906",
+      "exit": 0,
+      "reaped": true,
+      "log_sha256": "35e6e840cd897484d7a4d2681749934c9ff3b79c40beb42336d01c90cf19ab13"
+    },
+    {
+      "name": "windows-native-client",
+      "pid": 165208,
+      "start_ticks": "15143498",
+      "exit": 0,
+      "reaped": true,
+      "log_sha256": "f41e514fefaff3f036a8007694f8c3b26f3bbda3a13f8dccf5677a088a3cf28f"
+    }
+  ],
+  "cleanup": [
+    {
+      "gone": true,
+      "pid": 1704,
+      "cleanup_killed": false
+    },
+    {
+      "pid": 165221,
+      "cleanup_killed": false,
+      "gone": true
+    },
+    {
+      "owned_cache": "/mnt/c/Users/max/AppData/Local/Branchline/git-workers/branchline-git-worker-2ecb43080af18055f125f0e94b88e789880dcb8c2f366cb72cfa35b3af6bbeed.exe",
+      "already_absent": true,
+      "removed": false
+    },
+    {
+      "owned_cache": "/mnt/c/Users/max/AppData/Local/Branchline/git-workers/branchline-git-worker-6e8f4920a5f2fd54fee9c3262c1830d43545ecb6769ef5652a82cbe60cc05bde",
+      "already_absent": true,
+      "removed": false
+    },
+    {
+      "owned_cache": "/home/max/.cache/branchline/git-workers/branchline-git-worker-6e8f4920a5f2fd54fee9c3262c1830d43545ecb6769ef5652a82cbe60cc05bde",
+      "already_absent": true,
+      "removed": false
+    }
+  ],
+  "vm_release": {
+    "exact_owned_linux_actors": [],
+    "build_test_process_groups": [],
+    "owned_windows_harnesses": []
+  },
+  "controller": {
+    "tool_exec": 65921,
+    "exit": 0,
+    "host_pid": 77494,
+    "vm_supervisor_pid": 162976,
+    "vm_supervisor_start_ticks": "15134395"
+  },
+  "source_verified_before_after": true,
+  "production_edits": false,
+  "benchmark_or_app_runtime": false,
+  "scope_limit": "One real wrong-responseID fixture per OS; arbitrary malformed payload variants remain covered only by existing parser units, and this gate makes no performance claim.",
+  "observer_notes": "Two terminal read-only observer attempts failed from nested Windows path quoting; the encoded final observer passed. No gate was rerun or assertion weakened. Host owner.json preserved its benign SystemExit0 diagnostic from the caller BaseException handler; native supervisor and tool exec both exited0.",
+  "github_selection": [
+    "summary.json",
+    "host-evidence/vm/evidence/supervisor.json",
+    "host-evidence/vm/evidence/linux-native-client.log",
+    "host-evidence/vm/evidence/windows-native-client.log",
+    "host-evidence/release.json",
+    "source/src-tauri/src/git/malformed_response_test.rs",
+    "source/src-tauri/src/git/fixtures/malformed-linux.py",
+    "windows-fixture/src/main.rs",
+    "windows-fixture/Cargo.toml",
+    "windows-fixture/Cargo.lock",
+    "test-module-delta.txt",
+    "execution-plan.json"
+  ],
+  "local_binary_only": [
+    "host-evidence/malformed-windows.exe"
+  ]
+}

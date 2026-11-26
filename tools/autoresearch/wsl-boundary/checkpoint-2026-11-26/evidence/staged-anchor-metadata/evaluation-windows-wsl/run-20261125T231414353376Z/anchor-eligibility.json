@@ -1,0 +1,51 @@
+{
+  "status": "saved artifacts support structural eligibility; actual saved tuple equality and typed path use are unproved",
+  "seed_verdict": "/home/max/workspace/merge-viewer-native/build/autoresearch/wsl-boundary/seed-windows-linux-02/verdict.json",
+  "seed_sha256": "5da3f8249310dd9a33a7c19e94c23036cee5d78367fb6907be7882722fad8b78",
+  "followed_exact_run_plan": true,
+  "seed_source_hash": "fc3c6f04f234cf84be1b80679cb33327843e8d75c950c3854713718921ce0c4a",
+  "seed_git_head": "82402a7087cdd54f2d84a7b064adab61f1bf8b00",
+  "saved_seed_comment": {
+    "anchor": [
+      3438,
+      3438
+    ],
+    "body": "Boundary benchmark working-tree comment",
+    "id": 2,
+    "path": "kernel/fork.c"
+  },
+  "current_kernel_staged_facts": {
+    "path": "kernel/fork.c",
+    "old_mode": "100644",
+    "old_oid": "afba33a6041fa1bd392bc15cef3fa26eac6c3015",
+    "mode": "100644",
+    "oid": "aeb14599caf65d5f8fbdf9051d296e5b5894c250"
+  },
+  "native_kernel_proof_record": "/home/max/workspace/merge-viewer-native/build/experiments/staged-anchor-metadata/bundle-r2/native-evidence/supervisor.json",
+  "proof_record_sha256": "cd7b89d60a2d9a6e3e2566dec7b14d784e3e965ec1124a23da2a69184ae52f6b",
+  "evidence": [
+    "Seed routine explicitly selected kernel/fork.c in Staged and created the working-tree note on new line 3438.",
+    "Original seed make_note already stored old_path, file_version and left_tip. Canonical scoring checks the Staged group, refs/path, visible comment and exact span.",
+    "Both rebuilt native workers returned protocol 2 and verified the current fork.c staged facts on the pinned fixture."
+  ],
+  "missing_evidence": [
+    "Seed verdict/browser snapshots/scoring samples omit full saved-note old_path, file_version and left_tip values. No relevant full note export or SQLite snapshot was found on the host.",
+    "No existing artifact records note location.head or operation-level tracing that identifies the typed proof branch. Current staged facts do not establish equality with the unexported saved tuple."
+  ],
+  "minimal_later_read_only_proof": {
+    "when": "Only after a separate runtime release, in the candidate GUI after canonical Open settles on its default branch comparison, before switching to Working tree.",
+    "read": "const s=boundaryProbe.state(); const note=s.notes.find(n=>n.id===2 && n.body===\"Boundary benchmark working-tree comment\"); return {checkout:s.repo.checkout,comparison:{left:s.comparison.left,right:s.comparison.right},note,location:s.locations[2]};",
+    "requirements": [
+      "Primary comparison.right must differ from WORKTREE so displayed frozen-WT precedence does not explain the location.",
+      "Persist the full note; check old_path equals path, exact saved file_version tuple equals current proof facts and saved left_tip satisfies the existing ancestry condition.",
+      "A WT location.head starting staged: is emitted by the typed metadata path and proves that it ran for this note."
+    ],
+    "mutations": "None; no source change, note edit, Git write or extra backend request is needed. No VM access was performed for this analysis."
+  },
+  "later_read_only_proof": {
+    "summary": "build/experiments/staged-anchor-metadata/eligibility-proof/summary.json",
+    "sha256": "5ceea37a7c51047cfd14db8ead77b3f7f3bb377b6b6c226a2b99eb83fd10a694",
+    "saved_tuple_eligibility_proved": true,
+    "actual_measured_GUI_typed_path_proved": false
+  }
+}

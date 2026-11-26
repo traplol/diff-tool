@@ -1,0 +1,44 @@
+
+Elf file type is DYN (Position-Independent Executable file)
+Entry point 0xc3480
+There are 11 program headers, starting at offset 64
+
+Program Headers:
+  Type           Offset             VirtAddr           PhysAddr
+                 FileSiz            MemSiz              Flags  Align
+  PHDR           0x0000000000000040 0x0000000000000040 0x0000000000000040
+                 0x0000000000000268 0x0000000000000268  R      0x8
+  LOAD           0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x00000000000c2464 0x00000000000c2464  R      0x1000
+  LOAD           0x00000000000c2480 0x00000000000c3480 0x00000000000c3480
+                 0x0000000000272a70 0x0000000000272a70  R E    0x1000
+  LOAD           0x0000000000334ef0 0x0000000000336ef0 0x0000000000336ef0
+                 0x000000000000bb20 0x000000000000c110  RW     0x1000
+  LOAD           0x0000000000340a10 0x0000000000343a10 0x0000000000343a10
+                 0x0000000000005c58 0x000000000000c6b8  RW     0x1000
+  TLS            0x0000000000334ef0 0x0000000000336ef0 0x0000000000336ef0
+                 0x0000000000000080 0x000000000000010c  R      0x8
+  DYNAMIC        0x000000000033efe8 0x0000000000340fe8 0x0000000000340fe8
+                 0x0000000000000130 0x0000000000000130  RW     0x8
+  GNU_RELRO      0x0000000000334ef0 0x0000000000336ef0 0x0000000000336ef0
+                 0x000000000000bb20 0x000000000000c110  R      0x1
+  GNU_EH_FRAME   0x0000000000084480 0x0000000000084480 0x0000000000084480
+                 0x00000000000093f4 0x00000000000093f4  R      0x4
+  GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x0000000000000000 0x0000000000000000  RW     0x0
+  NOTE           0x00000000000002a8 0x00000000000002a8 0x00000000000002a8
+                 0x0000000000000044 0x0000000000000044  R      0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .note.ABI-tag .note.gnu.build-id .dynsym .gnu.hash .dynstr .rela.dyn .gcc_except_table .rodata rodata.cst32 .eh_frame_hdr .eh_frame 
+   02     .text .init .fini .iplt 
+   03     .tdata .fini_array .init_array .data.rel.ro .dynamic .got .got.plt .relro_padding 
+   04     .tm_clone_table .data .bss 
+   05     .tdata .tbss 
+   06     .dynamic 
+   07     .tdata .fini_array .init_array .data.rel.ro .dynamic .got .got.plt .relro_padding 
+   08     .eh_frame_hdr 
+   09     
+   10     .note.ABI-tag .note.gnu.build-id 

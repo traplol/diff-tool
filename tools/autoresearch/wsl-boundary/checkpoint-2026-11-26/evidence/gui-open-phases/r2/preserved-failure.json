@@ -1,0 +1,13 @@
+{
+  "original_files_unchanged": {
+    "build-plan.json": "24a0304faf02de9796e1a8a78b2c0eb37f707c35a3d095d894c4d871abfc7eb7",
+    "run-build.py": "33fb9d5fc68ceabcb839fdf2c5fbdfa35d92b3f0df0a145618e31db69edce213",
+    "vm-build-supervisor.py": "985b42e2d7b2104e6d772431218a5e1d8f4e4575cae9a7f806c8532c43e595dc",
+    "native-build-proof.json": "09a4885d3d834ade1553c9aa9bbdff20d2df59103cac58982999599ea39a7dd4",
+    "native-build-evidence/host-owner.json": "04caaa59011e6c0815e782111f6e8edace5ca91bd4c29e07e1ba68fa52298d6a",
+    "native-build-evidence/vm/supervisor.json": "44e8544197fd0e6cdefb0d17098d4226c9edf026075067bc227e9070dd5564b5",
+    "native-build-evidence/supervisor.stdout.log": "940490f964235c0f1b5520153b276934c0c0956aa03f9ed20e47c591dbe74450"
+  },
+  "failure": "Missing actual empty .git/refs directory in files-only tar; source preflight failed before any build",
+  "original_source_hash": "29898a628ed57d5a4688800e87966729bc6e9391d5ece489cadb424702f588cc"
+}
